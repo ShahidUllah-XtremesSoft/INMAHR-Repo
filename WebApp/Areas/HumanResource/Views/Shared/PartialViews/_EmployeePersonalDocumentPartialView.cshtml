@@ -1,0 +1,39 @@
+﻿<input type="hidden" name="PersonalDocumentId" id="PersonalDocumentId" value="0">
+<input type="hidden" name="PersonalDocumentCreatedBy" id="PersonalDocumentCreatedBy" value="0">
+<input type="hidden" name="PersonalDocumentEmployeeId" id="PersonalDocumentEmployeeId" value="0">
+<input type="hidden" name="type" id="type" value="HR_Employee_PersonalDocument_Save">
+<input type="hidden" name="PersonalDocumentLanguage" id="PersonalDocumentLanguage" class="Language" value="">
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPersonalDocument</label><span style="color:red">*</span><br />
+            <input type="file" class="form-control" name="PersonalDocumentFile" id="PersonalDocumentFile" onchange="validatePersonalDocument('PersonalDocumentFile');" required />
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPersonalDocumentType</label><span style="color:red"> *</span><br />
+            <input type="text" class="form-control pname" name="PersonalDocumentSetupDetailTypeId" id="PersonalDocumentSetupDetailTypeId" required>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblIssueDate</label> <span style="color:red">*</span> <br />            
+            <input type="date" class="form-control" id="PersonalDocumentReleaseDate" name="PersonalDocumentReleaseDate" required />
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPersonalDocumentExpiryDate</label> <span style="color:red">*</span> <br />            
+            <input type="date" class="form-control" id="PersonalDocumentExpiryDate" name="PersonalDocumentExpiryDate" required />
+        </div>
+    </div>
+</div>
+
+
+
+

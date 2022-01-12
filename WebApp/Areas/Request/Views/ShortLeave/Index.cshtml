@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Short Leave Request";
+}
+
+<div class="card">
+    <div class="card-block">
+        <form id="frmShortLeaveDetail" name="frmShortLeaveDetail" action="/services/Xtreme/multipart" method="post">
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="Request_ShortLeave_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+            <input type="hidden" name="EditLeaveHours" id="EditLeaveHours" value="0" />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblRequestDate</label>
+                        <input class="form-control" id="RequestDate" name="RequestDate" required />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblAvailableBalance</label>
+                        <input class="form-control" id="AvailableShortLeave" name="AvailableShortLeave" readonly />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblStartTime </label>
+                        <input class="form-control" id="StartTime" name="StartTime" required />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblReturnTime </label>
+                        <input class="form-control" id="EndTime" name="EndTime" required />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblNumberOfHours </label>
+                        <input class="form-control" id="NumberOfHours" name="NumberOfHours" value="0" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ShortLeaveGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/ShortLeave/short-leave.js"></script>
+
+    <script>
+        //Grid columns
+        var requestDate = '@RequestUI.RequestResourceUI.lblRequestDate';
+        var comment = '@RequestUI.RequestResourceUI.lblComment';
+        var availableBalance = '@RequestUI.RequestResourceUI.lblAvailableBalance';
+        var status = '@RequestUI.RequestResourceUI.lblStatus';
+        var startTime = '@RequestUI.RequestResourceUI.lblStartTime';
+        var returnTime = '@RequestUI.RequestResourceUI.lblReturnTime';
+        var numberOfHourse = '@RequestUI.RequestResourceUI.lblNumberOfHours';
+          var requestDenyComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
+        var action = '@Resources.Global.lblAction';
+
+    </script>
+
+}
+
+
+

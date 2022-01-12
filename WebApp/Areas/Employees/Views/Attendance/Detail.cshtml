@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Attendance Detail";
+}
+
+@{
+    Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePersonalInfoPartialView.cshtml");
+
+}
+@{
+    Html.RenderPartial("~/Areas/Employees/Views/Shared/PartialViews/Attendance/_EmployeeAttendancePartialView.cshtml");
+
+}
+
+@section scripts {
+    
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/EmployeeAttendancePartialView.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeePersonalInfoPartialView.js"></script>
+    <script>
+
+
+        //Grid columns
+         var employeeName = '@Resources.EmployeeResourcesUI.lblEmployeeName';
+         var empNum = '@HRUI.HumanResourceUI.lblEmpNum';
+         var department= '@Resources.EmployeeResourcesUI.lblDepartment';
+         var checkinDate= '@Resources.EmployeeResourcesUI.lblCheckInDate';
+         var checkinTime= '@Resources.EmployeeResourcesUI.lblCheckinTime';
+         var checkoutTime= '@Resources.EmployeeResourcesUI.lblCheckoutTime';
+         var status= '@Resources.EmployeeResourcesUI.lblStatus';
+    </script>
+}

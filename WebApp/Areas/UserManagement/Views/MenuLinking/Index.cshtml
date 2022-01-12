@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Menu Linking";
+}
+
+<div class="card">
+    <div class="card-block">
+        @*<form id="frmModuleDetail" name="frmModuleDetail" action="/services/Xtreme/multipart" method="post">*@
+        <form id="frmMenuLinking" name="frmMenuLinking">
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="UserManagement_Module_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+
+            <input type="hidden" name="ModuleId" id="ModuleId" value="0" />
+            <input type="hidden" name="RoleId" id="RoleId" value="0" />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="kendo-direction">
+                            <label class="col-form-label">Module</label>
+                            <input class="form-control" id="ModuleDropdownList" name="ModuleDropdownList" required />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+                    @*<div class="demo-section k-content">
+                        <div class="kendo-direction">*@
+                    <label class="col-form-label">Select Role To Assign Menu</label>
+                    <div class="k-rtl demo-section k-content kendo-direction">
+                        <input class="form-control" id="RoleDropdownList" name="RoleDropdownList" required />
+                    </div>
+                    @*</div>
+                        </div>*@
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+
+                        <button type="button" id="btnSearch" class="btn btn-success  pull-right "  style="margin-top:33px;"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="row">
+            <div class="form-group">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <label class="col-form-label">Select Role To Assign Menu</label>
+                    <input class="form-control" id="RoleDropdownList" name="RoleDropdownList" />-->
+            @*<button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-save"></i> Save</button>*@
+            <!--</div>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="btnSave" class="btn btn-success  pull-right  m-t-10"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="menu-linking-grid"></div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/MenuLinking/menu-linking-index.js"></script>
+
+}
+

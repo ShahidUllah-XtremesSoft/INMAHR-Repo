@@ -1,0 +1,5 @@
+[dbo].[CustomerOrder_DeleteByID]    
+[dbo].[SupplierOrder_DeleteByID]  
+[dbo].[CustomerOrder_SelectForStoreByID]
+[dbo].[SupplierOrder_SelectForStoreByID] 
+  

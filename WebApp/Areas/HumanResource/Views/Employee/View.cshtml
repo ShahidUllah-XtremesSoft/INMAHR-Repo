@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "View Employee Detail";
+}
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-12 col-xl-12">
+                <!-- Date card start -->
+                <div disabled id="MainDiv">
+                    <div class="col-sm-6">
+                        <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:50%;width:110px;" alt="Employee Profile Image" />
+                    </div>
+                    @{
+                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePartialView.cshtml");
+                    }
+
+
+
+                    <!-- Date card end -->
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Page body end -->
+    </div>
+    @*<div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary  pull-right" id="btn-save-employee"><i class="fa fa-save"></i> Save</button>
+                    <a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id=""> Cancel</a>
+                </div>
+            </div>
+        </div>*@
+</div>
+
+
+
+@section scripts {    
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-view.js"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-edit.js"></script>*@
+    <script>
+        // GET ALL FORM ELEMENTS
+        var allform = document.querySelectorAll("#MainDiv input, #MainDiv textarea");
+        // DISABLE ALL
+        for (let el of allform) { el.disabled = true; }
+  // TO ENABLE
+  // for (let el of allform) { el.disabled = false; }
+    </script>
+}
+
+
+

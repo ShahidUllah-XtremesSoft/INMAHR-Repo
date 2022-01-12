@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Personal Attendance";
+}
+
+@{
+    Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePersonalInfoPartialView.cshtml");
+
+}
+@{
+    Html.RenderPartial("~/Areas/Employees/Views/Shared/PartialViews/Attendance/_EmployeeAttendancePartialView.cshtml");
+
+}
+
+@*<div class="card">
+        <div class="card-block">
+            <input type="hidden" name="Language" id="Language" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" />
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblStartDate</label>
+                        <input type="text" class="form-control" id="StartDate" name="StartDate" value="" />
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblEndDate</label>
+                        <input type="date" class="form-control" id="EndDate" name="EndDate" value="" />
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> Search</button>
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success @Resources.Common.PullRight" value="Search" style="margin-top:33px;" id="btnReset"><i class="fa fa-refresh"></i> Reset</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="AttendanceGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/EmployeeAttendancePartialView.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeePersonalInfoPartialView.js"></script>
+    <script>
+
+
+        //Grid columns
+         var employeeName = '@Resources.EmployeeResourcesUI.lblEmployeeName';
+         var empNum = '@HRUI.HumanResourceUI.lblEmpNum';
+         var department= '@Resources.EmployeeResourcesUI.lblDepartment';
+         var checkinDate= '@Resources.EmployeeResourcesUI.lblCheckInDate';
+         var checkinTime= '@Resources.EmployeeResourcesUI.lblCheckinTime';
+         var checkoutTime= '@Resources.EmployeeResourcesUI.lblCheckoutTime';
+         var status= '@Resources.EmployeeResourcesUI.lblStatus';
+    </script>
+
+}

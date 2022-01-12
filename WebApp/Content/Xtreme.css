@@ -1,0 +1,20 @@
+﻿.bg-xtreme {
+    background-color: #ad8d55 !important;
+}
+    .bg-xtreme:hover {
+        background-color: #343a40 !important;
+    }
+
+
+.login-bg {
+    /*background-size: cover;*/
+    background-position: center;
+    background-image: url(../../Content/Images/bg-pattern.jpg);
+}
+.auth-wrapper .auth-box {
+    background: #e8d487 !important
+}
+
+#navbarSupportedContent {
+    background: #1F262D !important;
+}

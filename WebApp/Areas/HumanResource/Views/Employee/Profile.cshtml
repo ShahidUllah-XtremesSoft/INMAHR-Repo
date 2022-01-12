@@ -1,0 +1,383 @@
+﻿
+@{
+    ViewBag.Title = "Employee Profile";
+
+}
+
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+<input type="hidden" id="EmployeeId" name="EmployeeId" value="0" />
+<div class="row">
+
+</div>
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmployeeNumber</label>
+                                    <div class="col-xs-7 controls pull-right" id="EmployeeNumber"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmployeeName</label>
+                                    <div class="col-xs-7 controls pull-right" id="EmployeeName"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5   ">@HRUI.HumanResourceUI.lblJoinDate</label>
+                                    <div class="col-xs-7 controls pull-right" id="JoinDate"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblPhone</label>
+                                    <div class="col-xs-7 controls pull-right" id="PhoneNumber"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmail</label>
+                                    <div class="col-xs-7 controls pull-right" id="Email"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">
+                                        @HRUI.HumanResourceUI.lblDepartment
+                                    </label>
+                                    <div class="col-xs-7 controls pull-right" id="Department">                                       
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">
+                                       @HRUI.HumanResourceUI.lblLineManager
+                                    </label>
+                                    <div class="col-xs-7 controls pull-right" id="DirectResponsible">
+
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2"></div>
+
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">  @HRUI.HumanResourceUI.lblOccupation</label>
+                                    <div class="col-xs-7 controls pull-right" id="Profession">
+                                        
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5">@HRUI.HumanResourceUI.lblEmploymentStatus</label>
+                                    <div class="col-xs-7 controls pull-right" id="ContractType">
+                                        
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblNationality</label>
+                                    <div class="col-xs-7 controls pull-right" id="Nationality">
+                                        
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3 text-right">
+                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:50%;width:110px;" alt="Employee Profile Image" />
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <!--<div class="card">
+            <div class="card-header">
+                <strong>Preparation</strong>-->
+                @*<small>Form</small>*@
+            <!--</div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="experience-list">
+                            <li>
+                                <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                </div>
+                                <div class="experience-content">
+                                    <div class="timeline-content">
+                                        <a href="#/" class="name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tourism</font></font></a>
+                                        <div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tourism plays an essential role in the economic development of the Emirate, and major investments are being carried out in new luxury resorts, and the construction of prestigious hotels for businessmen. </font></font></div>
+                                        <span class="time"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20-09-2021 - 22-09-2021</font></font></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                </div>
+                                <div class="experience-content">
+                                    <div class="timeline-content">
+                                        <a href="#/" class="name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Economy</font></font></a>
+                                        <div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">During recent decades, the economy of the Emirate of Abu Dhabi has witnessed remarkable growth </font></font></div>
+                                        <span class="time"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">09/26/2021 - 09/27/2021</font></font></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="card">
+            <div class="card-header">
+                <strong>Annual leave balance deduction details</strong>
+                @*<small>Form</small>*@
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table" id="employeeAnnualLeaveBalanceDeductionGrid">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@RequestUI.RequestResourceUI.lblLeaveType</th>
+                                    <th>@RequestUI.RequestResourceUI.lblDeductionDate</th>
+                                    <th>@RequestUI.RequestResourceUI.lblDays</th>
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <strong>@HRUI.HumanResourceUI.lblLeavebalance</strong>
+                @*<small>Form</small>*@
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table" id="employeeVacationLeaveBalanceGrid">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@RequestUI.RequestResourceUI.lblLeaveType</th>
+                                    <th>@RequestUI.RequestResourceUI.lblBalance</th>
+                                    <th>@RequestUI.RequestResourceUI.lblTakenLeave</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+
+        <div class="card">
+            <div class="card-header">
+                <strong>@HRUI.HumanResourceUI.tabPersonalDocument</strong>
+                @*<small>Form</small>*@
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table" id="employeePersonalDocumentGrid">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@HRUI.HumanResourceUI.lblPersonalDocumentType</th>
+                                    <th>@HRUI.HumanResourceUI.lblIssueDate</th>
+                                    <th>@HRUI.HumanResourceUI.lblExpiryDate</th>
+                                    <th>@HRUI.HumanResourceUI.lblExpiresIn</th>
+                                    <th>@Resources.Global.lblStatus</th>
+                                    <th>@HRUI.HumanResourceUI.lblFile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <strong>@HRUI.HumanResourceUI.tabEducationalDocument</strong>
+                @*<small>Form</small>*@
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table" id="employeeEducationalDocumentGrid">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    @*<th>Degree Name Eng</th>
+                                    <th>Degree Name Arb</th>*@
+                                <th>@HRUI.HumanResourceUI.lblCertificateName</th>
+                                    @*<th>Institute Name Eng</th>
+                                    <th>Institute Name Arb</th>*@
+                                <th>@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</th>
+                                <th>@HRUI.HumanResourceUI.lblIssueDate</th>
+                                <th>@HRUI.HumanResourceUI.lblMarksPercentage</th>
+                                <th>@HRUI.HumanResourceUI.lblCountry</th>
+                                <th>@HRUI.HumanResourceUI.lblFile</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--<div class="card">
+<div class="card-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- card start -->
+<!--<div class="card">
+            <div class="card-header">
+                <h5 id="Name">Leave Request</h5>
+                <div class="card-header-right">
+
+                </div>
+            </div>
+
+            <div class="card-block">
+
+
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div id="document-grid">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="">
+
+    </div>-->
+@*<div class="col-md-6">
+        <div class="card table-card">
+            <div class="card-header">
+                <h5>Short Leave Request</h5>
+                <div class="card-header-right">
+                </div>
+            </div>
+            <div class="card-block p-b-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="ShortLeaveRequestGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!--</div>-->
+@*<div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Letter Request</h5>
+
+                    <div class="card-header-right">
+                    </div>
+                </div>
+
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="LetterRequestGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-profile.js"></script>
+
+}
+
+

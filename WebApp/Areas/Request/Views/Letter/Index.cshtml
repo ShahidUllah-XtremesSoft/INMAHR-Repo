@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Letter Request";
+}
+
+<div class="card">
+    <div class="card-block">
+        <form id="frmLetterDetail" name="frmLetterDetail" action="/services/Xtreme/multipart" method="post">
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="Request_Letter_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblLetterType </label>
+                        <input class="form-control" id="LetterTypeId" name="LetterTypeId" required />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" id="OtherDiv">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblComment</label>
+                        <input class="form-control" id="Other" name="Other" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblNote</label>
+                        <textarea class="form-control" id="Note" name="Note" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="LetterGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Letter/letter.js"></script>
+    <script>
+        //Grid columns
+        var letterType = '@RequestUI.RequestResourceUI.lblLetterType';
+        var comment = '@RequestUI.RequestResourceUI.lblComment';
+        var note = '@RequestUI.RequestResourceUI.lblNote';
+        var comment = '@RequestUI.RequestResourceUI.lblComment';
+        var requestDenyComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
+        var action = '@Resources.Global.lblAction';
+        var Status = '@RequestUI.RequestResourceUI.lblStatus';
+        var Other = '@RequestUI.RequestResourceUI.lblOther';
+
+    </script>
+}
+
+
+

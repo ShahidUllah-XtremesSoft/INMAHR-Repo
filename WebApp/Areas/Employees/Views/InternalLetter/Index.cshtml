@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Internal Letter";
+}
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-success @Resources.Common.PullRight  m-r-10" href="@Url.Action("New","InternalLetter")"><i class="fa fa-plus"></i> @Resources.EmployeeResourcesUI.lblNew</a>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+
+                <div class="btn-group" role="group" aria-label="Requests">
+                    <button type="button" class="btn btn-sm btn-primary" id="btnLetterInboxTab">@Resources.EmployeeResourcesUI.btnReceivedLetters</button>
+                    <button type="button" class="btn btn-sm btn-dark" id="btnLetterOutboxTab">@Resources.EmployeeResourcesUI.btnSentLetters</button>
+                </div>
+            </div>
+        </div>       
+        <div class="row form-group">
+            <div class="col-md-12" id="divInternalLetterInOutboxPartialView">
+            </div>
+        </div>        
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-index.js"></script>
+}
+
+

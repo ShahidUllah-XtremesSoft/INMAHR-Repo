@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "User Management - Role";
+}
+
+
+<div class="pcoded-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Role</h5>
+                    </div>
+                    @*<ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <i class="feather icon-phone"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#!">Contact</a></li>
+                        </ul>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="pcoded-inner-content page-header">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <!-- card start -->
+                            <div class="card">
+
+                                <div class="card-block">
+                                    <form id="frmRoleDetail" name="frmRoleDetail" action="/services/Xtreme/multipart" method="post">
+                                        <!--type is required should be same as command name-->
+                                        <input type="hidden" name="type" id="type" value="UserManagement_Role_Save" />
+                                        <input type="hidden" name="Id" id="Id" value="0" />
+                                        <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                                        <input type="hidden" name="Language" id="Language" value="" />
+                                        <input type="hidden" name="ParentId" id="ParentId" value="0" />
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Parent Role</label>
+                                                    <input class="form-control" id="dropDownListParentId" name="dropDownListParentId" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Name</label>
+                                                    <input class="form-control" id="Name" name="Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-save"></i> Save</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="role-grid"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Role/role-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Role/role-save.js"></script>
+
+}
+

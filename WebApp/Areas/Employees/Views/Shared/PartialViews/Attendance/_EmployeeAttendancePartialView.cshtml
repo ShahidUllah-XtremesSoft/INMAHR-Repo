@@ -1,0 +1,43 @@
+﻿
+
+<div class="card">
+    <div class="card-block">
+        <input type="hidden" name="Language" id="Language" />
+        <input type="hidden" name="CreatedBy" id="CreatedBy" />
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.Global.lblStartDate</label>
+                    <input type="text" class="form-control" id="StartDate" name="StartDate" value="" />
+                </div>
+
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.Global.lblEndDate</label>
+                    <input type="date" class="form-control" id="EndDate" name="EndDate" value="" />
+                </div>
+
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @Resources.EmployeeResourcesUI.lblSearch</button>
+                </div>
+
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success @Resources.Common.PullRight" value="Search" style="margin-top:33px;" id="btnReset"><i class="fa fa-refresh"></i> @HRUI.HumanResourceUI.lblReset</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div id="AttendanceGrid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

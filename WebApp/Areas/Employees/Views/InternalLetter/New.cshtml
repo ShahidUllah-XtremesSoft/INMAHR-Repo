@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Internal Letter";
+}
+
+<div class="card">
+    <div class="card-block">
+
+        <form id="frmEmployeeInternalLetter" name="frmEmployeeInternalLetter" action="/services/Xtreme/multipart" method="post">
+            <input type="hidden" name="type" id="type" value="Employee_InternalLetter_Save">
+            <input type="hidden" name="Id" id="Id" value="0">
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0">            
+            <input type="hidden" name="Language" id="Language" value="">
+            <input type="hidden" name="Tag" id="Tag" value="">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.EmployeeResourcesUI.lblLetterNumber</label><span style="color:red">*</span><br />
+                        <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.EmployeeResourcesUI.lblDate</label> <span style="color:red">*</span> <br />
+                        <input type="date" class="form-control" name="LetterDate" id="LetterDate" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.EmployeeResourcesUI.lblSubject</label><span style="color:red"> *</span><br />
+                        <input type="text" class="form-control pname" name="Subject" id="Subject" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.EmployeeResourcesUI.lblDepartment </label> <span style="color: red">*</span><br />
+                        @*<select class="form-control" multiple="multiple" id="DepartmentIds" name="DepartmentIds" required></select>*@
+                        @*<select class="form-control" multiple="multiple" required id="DepartmentIds"></select>*@
+                        <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" />
+                        <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
+                        @*<select class="form-control" id="DepartmentIds"></select>*@
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.EmployeeResourcesUI.lblSignature</label><span style="color:red">*</span><br />
+                        <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" required/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.EmployeeResourcesUI.lblAttachment</label> <span style="color:red">*</span> <br />
+                        <input type="file" class="form-control" name="Attachment" id="Attachment" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <textarea type="text" class="form-control editor" name="Body" id="Body"  value=""></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button class="btn btn-success pull-right  m-r-10" id="btnSave"><i class="fa fa-save"></i>@Resources.Global.btnSave</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-new.js"></script>
+}
+

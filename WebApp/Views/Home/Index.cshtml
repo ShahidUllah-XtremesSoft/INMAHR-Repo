@@ -1,0 +1,355 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Dashboard";
+    
+}
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
+
+
+<div class="pcoded-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Contact</h5>
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="feather icon-phone"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="row">
+                    <!-- web statustic card start -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card o-hidden bg-c-blue web-num-card">
+                            <div class="card-block text-white">
+                                <h5 class="m-t-15">Sales</h5>
+                                <h3 class="m-b-15">$ 53,120</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card o-hidden bg-c-green web-num-card">
+                            <div class="card-block text-white">
+                                <h5 class="m-t-15">New Order</h5>
+                                <h3 class="m-b-15">$ 2,536</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card o-hidden bg-c-red web-num-card">
+                            <div class="card-block text-white">
+                                <h5 class="m-t-15">Total Profit</h5>
+                                <h3 class="m-b-15">$ 40,560</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card o-hidden bg-c-yellow web-num-card">
+                            <div class="card-block text-white">
+                                <h5 class="m-t-15">Income</h5>
+                                <h3 class="m-b-15">$ 421,980</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- web statustic card end -->
+                    <!-- Lead, Today’s  Schedule start -->
+                    <div class="col-xl-8 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Leads Overview</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                        <li><i class="feather icon-maximize full-card"></i></li>
+                                        <li><i class="feather icon-minus minimize-card"></i></li>
+                                        <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                        <li><i class="feather icon-trash close-card"></i></li>
+                                        <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div id="lead-overview-chart" class="chart-shadow" style="height:345px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="card amount-close-card">
+                            <div class="card-header">
+                                <h5>Amount Closed by Lead Source</h5>
+                            </div>
+                            <div class="card-block">
+                                <div class="row align-items-center m-b-15">
+                                    <div class="col-auto">
+                                        <h6 class="m-b-0 text-c-blue">By Web</h6>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="m-b-0">64%</p>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-c-blue" style="width:65%"></div>
+                                </div>
+                                <div class="row align-items-center m-b-15">
+                                    <div class="col-auto">
+                                        <h6 class="m-b-0 text-c-red">Phone Call</h6>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="m-b-0">23%</p>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-c-red" style="width:23%"></div>
+                                </div>
+                                <div class="row align-items-center m-b-15">
+                                    <div class="col-auto">
+                                        <h6 class="m-b-0 text-c-yellow">E- mail</h6>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="m-b-0">44%</p>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-c-yellow" style="width:44%"></div>
+                                </div>
+                                <div class="row align-items-center m-b-15">
+                                    <div class="col-auto">
+                                        <h6 class="m-b-0 text-c-green">Advertisement</h6>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="m-b-0">79%</p>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-c-green" style="width:79%"></div>
+                                </div>
+                                <div class="row align-items-center m-b-15">
+                                    <div class="col-auto">
+                                        <h6 class="m-b-0 text-c-blue">By Application</h6>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p class="m-b-0">76%</p>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-c-blue" style="width:46%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- Lead, Today’s  Schedule end -->
+                    <!-- market, Bandwidth usage card start -->
+                    <div class="col-md-6">
+                        <div class="card table-card">
+                            <div class="card-header">
+                                <h5>Markets</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                        <li><i class="feather icon-maximize full-card"></i></li>
+                                        <li><i class="feather icon-minus minimize-card"></i></li>
+                                        <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                        <li><i class="feather icon-trash close-card"></i></li>
+                                        <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-block p-b-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Last Price</th>
+                                                <th>Best bid</th>
+                                                <th>Best Ask</th>
+                                                <th>24hr</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <i class="fab fa-bitcoin text-c-blue f-18 m-r-10"></i>Bitcoin
+                                                </td>
+                                                <td>511,000.09</td>
+                                                <td>500,010.02</td>
+                                                <td>511,008.00</td>
+                                                <td>-0.20%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <i class="fab fa-ethereum text-c-red f-18 m-r-10"></i>Ether
+                                                </td>
+                                                <td>302,000.09</td>
+                                                <td>300,010.02</td>
+                                                <td>411,008.00</td>
+                                                <td>-0.10%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <i class="fab fa-asymmetrik text-c-yellow f-18 m-r-10"></i>Neo
+                                                </td>
+                                                <td>201,000.09</td>
+                                                <td>500,010.02</td>
+                                                <td>511,008.00</td>
+                                                <td>-0.20%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <i class="fab fa-cloudsmith text-c-green f-18 m-r-10"></i>Ripple
+                                                </td>
+                                                <td>11,000.09</td>
+                                                <td>10,010.02</td>
+                                                <td>11,008.00</td>
+                                                <td>-0.20%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <i class="fab fa-gitkraken text-c-red f-18 m-r-10"></i>gitkraken
+                                                </td>
+                                                <td>211,000.09</td>
+                                                <td>210,010.02</td>
+                                                <td>211,008.00</td>
+                                                <td>-0.50%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="row text-center m-t-10">
+                                    <div class="col-sm-6">
+                                        <h5 class="text-c-blue"><i class="fas fa-database m-r-10"></i>5 TB</h5>
+                                        <h5>Bandwidth usage</h5>
+                                        <p>May 2018</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="text-c-yellow"><i class="fas fa-download m-r-10"></i>5689</h5>
+                                        <h5>Download count</h5>
+                                        <p>May 2018</p>
+                                    </div>
+                                </div>
+                                <div id="data-use-chart" style="height:245px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- market, Bandwidth usage card end -->
+                    <!-- Amount Closed and Revenue start -->
+                    <div class="col-xl-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Today’s Schedule</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                        <li><i class="feather icon-maximize full-card"></i></li>
+                                        <li><i class="feather icon-minus minimize-card"></i></li>
+                                        <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                        <li><i class="feather icon-trash close-card"></i></li>
+                                        <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="schedule-block">
+                                    <div class="schedule-list">
+                                        <img src="../Content/Themes/Dashable/files/assets/images/avatar-4.jpg" alt="user image" class="schedule-image">
+                                        <h6>Meeting Today<small class="m-l-10 text-c-blue f-w-700">5:00 PM</small></h6>
+                                        <p class="m-b-0">You can write anything</p>
+                                    </div>
+                                    <div class="schedule-list">
+                                        <img src="../Content/Themes/Dashable/files/assets/images/avatar-3.jpg" alt="user image" class="schedule-image">
+                                        <h6>Send document to clerk</h6>
+                                        <p class="m-b-0">You can write anything</p>
+                                    </div>
+                                    <div class="schedule-list">
+                                        <img src="../Content/Themes/Dashable/files/assets/images/avatar-4.jpg" alt="user image" class="schedule-image">
+                                        <h6>Meeting Today<small class="m-l-10 text-c-blue f-w-700">5:00 PM</small></h6>
+                                        <p class="">You can write anything</p>
+                                        <button class="btn btn-success btn-outline-success btn-sm">Approve</button>
+                                        <button class="btn btn-danger btn-outline-danger btn-sm m-l-15">Refuse</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Revenue</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                        <li><i class="feather icon-maximize full-card"></i></li>
+                                        <li><i class="feather icon-minus minimize-card"></i></li>
+                                        <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                        <li><i class="feather icon-trash close-card"></i></li>
+                                        <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-block ">
+                                <div id="revenue-chart" style="height:345px" class="chart-shadow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Amount Closed and Revenue end -->
+                </div>
+            </div>
+        </div>
+        <!-- Page-body end -->
+    </div>
+</div>
+
+<script>
+
+</script>

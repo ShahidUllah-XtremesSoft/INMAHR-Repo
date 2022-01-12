@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "HumanResource - Profession";
+    
+}
+
+
+
+<form id="frmProfessionDetail" name="frmProfessionDetail" action="/services/Xtreme/multipart" method="post">
+    <div class="card">
+        <div class="card-block">
+            <input type="hidden" name="type" id="type" value="HR_Profession_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRUI.HumanResourceUI.lblNameEng <span style="color:red">*</span></label>
+                        <input class="form-control" id="NameEng" name="NameEng" placeholder="Enter Profession Name " required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRUI.HumanResourceUI.lblNameArb <span style="color:red">*</span></label>
+                        <input class="form-control" id="NameArb" name="NameArb" placeholder="Enter Profession Name " required />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btn-save-Profession" class="btn btn-success  pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="profession-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Profession/profession-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Profession/profession-save.js"></script>
+    <script>
+        //Grid columns
+        var nameEng = '@HRUI.HumanResourceUI.lblNameEng';
+        var nameArb  = '@HRUI.HumanResourceUI.lblNameArb';
+        var action  = '@HRUI.HumanResourceUI.lblAction';
+    </script>
+}
+

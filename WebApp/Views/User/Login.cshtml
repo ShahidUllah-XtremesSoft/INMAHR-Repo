@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "INMA Login";
+    Layout = null;
+}
+
+<html>
+<head>
+    @*<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">*@
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    @*<link rel="icon" type="image/png" sizes="16x16" href="https://xtremessoft.com/theme/assets/images/favicon.png">*@
+
+
+
+    <link href="~/Content/Login/style.min.css" rel="stylesheet" />
+    @*<link href="~/Content/Login/Xtreme.css" rel="stylesheet" />*@
+
+
+    <!--[endif]---->
+    <style>
+        .login-bg {
+            /* background-size: cover; */
+            background-position: center;
+            background-image: url('../../content/login/img/bg-pattern.jpg') !important;
+        }
+
+        .login-half-bg {
+            background-size: cover;
+            background-position: center;
+            background-image: url('../../content/login/img/appointment-1.jpg');
+        }
+
+        .loginformsize {
+            font-size: 50px;
+        }
+    </style>
+    @*<style type="text/css">
+            .jqstooltip {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                visibility: hidden;
+                background: rgb(0, 0, 0) transparent;
+                background-color: rgba(0,0,0,0.6);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+                -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+                color: white;
+                font: 10px arial, san serif;
+                text-align: left;
+                white-space: nowrap;
+                padding: 5px;
+                border: 1px solid white;
+                z-index: 10000;
+            }
+
+            .jqsfield {
+                color: white;
+                font: 10px arial, san serif;
+                text-align: left;
+            }
+        </style>*@
+</head>
+
+
+
+<body>
+
+
+
+
+    <div class="row">
+
+        <div class="col-sm-6 login-bg">
+            <div class="auth-wrapper d-flex  justify-content-center align-items-center">
+                <div class="auth-box    border-secondary">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            Language : 
+                        </div>
+                        <div class="col-sm-2">
+
+
+                            <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })">@Resources.Common.LanguageText </a>
+
+
+                        </div>
+                    </div>
+                    <div id="loginform">
+                        <div class="text-center p-t-20 p-b-20">
+                            <span class="db"><img src="~/Content/Login/img/logo1.png" alt="logo" width="70" height="70"></span>
+
+                        </div><br><br>
+                        <!-- Form -->
+                        <form class="form-horizontal m-t-20" id="loginform">
+                            <div class="row p-b-30">
+                                <div class="col-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <input type="hidden" id="Language" name="Language" />
+                                            <span class="input-group-text bg-warning text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input type="text" id="Email" name="Email" class="form-control form-control-lg" placeholder="@UserManagement.UserManagementUI.phEmployeeNumber" aria-label="Email" aria-describedby="basic-addon1" required="">
+                                    </div> <br>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                        </div>
+                                        <input id="Password" name="Password" type="password" class="form-control form-control-lg" placeholder="@UserManagement.UserManagementUI.phPassword" aria-label="Password" aria-describedby="basic-addon1" required="">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="form-group">
+                                            <span style="color:red; font-size:18px" id="error_span" name="error_span"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <hr>
+                            <div class="row   border-secondary">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="p-t-20">
+
+                                            <button class="btn btn-warning float-right" type="button" id="btnLogin"><i class="fa fa-key m-r-5"></i> @UserManagement.UserManagementUI.btnSignIn</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 login-half-bg">
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+
+    <!--<script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/bootstrap/js/bootstrap.min.js"></script>-->
+    <!-- waves js -->
+    <!--<script src="~/Content/Themes/Dashable/files/assets/pages/waves/js/waves.min.js"></script>-->
+    <!-- jquery slimscroll js -->
+    <!--<script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+
+    <script src="~/Content/Themes/Dashable/files/assets/js/common-pages.js"></script>-->
+
+    <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Login/user-login.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <!--Sweet Alert 2-->
+</body>
+</html>
+<script>
+    var _currentLanguage = '@Resources.Common.CurrentLang';
+    $(function () {
+
+
+        $('#Language').val(_currentLanguage);
+    })
+</script>

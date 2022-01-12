@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "User Management - Module";
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <form id="frmModuleDetail" name="frmModuleDetail" action="/services/Xtreme/multipart" method="post">
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="UserManagement_Module_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+            @*<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">File</label>
+                        <input type="file" class="form-control" name="profileImage" id="profileImage" required />
+                    </div>
+                </div>
+
+            </div>*@
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">Name</label>
+                        <input class="form-control" id="Name" name="Name" required />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="col-form-label">Description</label>
+                        <input class="form-control" id="Description" name="Description" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="module-grid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Module/module-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Module/module-save.js"></script>
+
+}
+

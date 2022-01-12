@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - INMA INT.LLC</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!--Theme links-->
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Dash Able bootstrap admin template suitable for any project backend need. It comes with lots of UI components, pages, plugins with easy to use well structured code." />
+    <meta name="keywords" content="admin template, bootstrap admin template, bootstrap dashboard, admin theme, dashboard template, bootstrap dashboard template, bootstrap admin panel, dashboard theme, best admin template, dashboard theme, website templates, bootstrap 4 admin template">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    @*<link rel="icon" href="http://html.phoenixcoded.net/dash-able/bootstrap/files/assets/images/favicon.ico" type="image/x-icon">*@
+
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/jquery/js/jquery.min.js"></script>*@
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/js/pace.min.js"></script>*@
+
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <!--Already exist hence commented-->
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/bower_components/bootstrap/css/bootstrap.min.css">*@
+    <!-- waves.css -->
+    @*<link rel="stylesheet" href="~/Content/Themes/Dashable/files/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+        <link href="~/Content/Themes/Dashable/files/assets/pages/waves/css/waves.min.css" rel="stylesheet" />*@
+    <!-- feather icon -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/assets/icon/feather/css/feather.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/assets/css/font-awesome-n.min.css">
+    <!-- Redial css -->
+    <link rel="stylesheet" href="~/Content/Themes/Dashable/files/assets/pages/chart/radial/css/radial.css" type="text/css" media="all">
+
+    <!-- Switch component css -->
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/bower_components/switchery/css/switchery.min.css" />*@
+
+
+
+
+
+    <!-- Syntax highlighter Prism css -->
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/assets/pages/prism/prism.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css" />*@
+
+    @**@
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/assets/css/widget.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Themes/Dashable/files/assets/css/pages.css">
+
+
+
+    <!--End Kendo css-->
+    <!--Theme links-->
+    <!-- Style.css -->
+    <!--Kendo css-->
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Themes/Dashable/files/assets/css/custom-css.css" rel="stylesheet" />
+    <link href="~/Content/@Resources.Common.LanguageDirection" rel="stylesheet" />
+    <style>
+        .card {
+            background-color: #f6f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="hidden" id="LayoutCurrentLanguage" />
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <!-- [ Header ] start -->
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+                    <div class="navbar-logo">
+                        <a href="~/HumanResource/Employee/Profile">
+                            @*<img class="img-fluid" src="~/Content/Themes/Dashable/files/assets/images/logo.png" alt="Theme-Logo" />*@
+                            @*<img class="img-fluid" src="~/Content/Themes/Dashable/files/assets/images/xtremessoft logo.png" alt="Xtremes Software Services" style="height:45px; width:155px" />*@
+                            <img class="img-fluid" src="~/Content/Images/logo.png" alt="INMA" style="height:45px; width:155px" />
+                            
+                        </a>
+                        <a class="mobile-options waves-effect waves-light">
+                            <i class="feather icon-more-horizontal"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-container container-fluid">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2" style="padding-top:18px;">
+                                <ul class="nav-left">
+                                    <li>
+                                        <div class="col-sm-12 col-xl-3 m-b-30">
+                                            <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })">@Resources.Common.LanguageText </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3" style="padding-top:18px;">
+                                <ul class="nav-right">
+                                    <li>
+                                        <div class="col-sm-12 col-xl-3 m-b-30">
+                                            Welcome <label class="label label-success" id="LoggedInEmployeeName" style="font-weight:bold;font-size:12px;"></label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <!-- [ navigation menu ] start -->
+                    <nav class="pcoded-navbar">
+                        <div class="nav-list">
+                            <div class="pcoded-inner-navbar main-menu">
+                                <div class="pcoded-navigation-label">Navigation</div>
+                                <div id="left-menu-item"></div>
+                                @*<ul class="pcoded-item pcoded-left-item" id="left-menu-item">*@
+
+
+                                @*</ul>*@
+
+
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- [ navigation menu ] end -->
+
+                    <div class="page-body">
+                        @RenderBody()
+                    </div>
+                </div>
+
+                <!-- [ style Customizer ] start -->
+                @*<div id="styleSelector">
+                    </div>*@
+                <!-- [ style Customizer ] end -->
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="" id="txt-lanaguageid" />
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Scripts/jquery.form.min.js"></script>
+
+    <!--Theme files-->
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/popper.js/js/popper.min.js"></script>*@
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/js/pace.min.js"></script>*@
+    <!-- waves js -->
+    @*<script src="~/Content/Themes/Dashable/files/assets/pages/waves/js/waves.min.js"></script>*@
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- amchart js -->
+    @*<script src="~/Content/Themes/Dashable/files/assets/pages/widget/amchart/amcharts.js"></script>
+        <script src="~/Content/Themes/Dashable/files/assets/pages/widget/amchart/serial.js"></script>
+        <script src="~/Content/Themes/Dashable/files/assets/pages/widget/amchart/light.js"></script>*@
+    <!-- Chartlist charts -->
+    @*<script src="~/Content/Themes/Dashable/files/bower_components/chartist/js/chartist.js"></script>*@
+
+
+
+    <!-- Custom js -->
+    <script src="~/Content/Themes/Dashable/files/assets/js/pcoded.min.js"></script>
+
+
+
+
+    @*<script src="~/Content/Themes/Dashable/files/assets/js/vertical/vertical-layout.min.js"></script>*@
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/pages/dashboard/custom-dashboard.min.js"></script>
+        <script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/js/script.min.js"></script>*@
+
+    <!--Theme files-->
+    <!-- waves js -->
+    <!-- jquery slimscroll js -->
+    <!-- modernizr js -->
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/modernizr/js/modernizr.js"></script>
+
+    <!-- Syntax highlighter prism js -->
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/pages/prism/custom-prism.js"></script>*@
+    <!-- Custom js -->
+    @*@if // (Session["Language"] != null && Session["Language"].ToString().Equals("Arabic"))
+        {*@
+    <script src="~/Content/Themes/Dashable/files/assets/js/vertical/menu/menu-@Resources.Common.PageDirection"></script>
+
+
+
+    @*<script src="~/Content/Themes/Dashable/files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>*@
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/js/script.js"></script>*@
+
+    <!-- Switch component js -->
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/switchery/js/switchery.min.js"></script>*@
+
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/modernizr/js/css-scrollbars.js"></script>*@
+
+    <!-- Tags js -->
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+    @*<script type="text/javascript" src="~/Content/Themes/Dashable/files/assets/pages/advance-elements/swithces.js"></script>*@
+    <!-- Max-length js -->
+    <script type="text/javascript" src="~/Content/Themes/Dashable/files/bower_components/bootstrap-maxlength/js/bootstrap-maxlength.js"></script>
+    <!-- Custom js -->
+    <!--Kendo js-->
+    <script src="~/Content/JS/kendo/kendo.all.min.js"></script>
+    <script src="~/Content/JS/kendo/jszip.min.js"></script>
+    <!--End Kendo js-->
+    <!--Sweet Alert 2-->
+    <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
+    <script src="~/Scripts/common-labels.js"></script>
+</body>
+</html>
+<style>
+    .page-header .page-block {
+        padding: 0px 0px 0px;
+    }
+
+    .page-header {
+        padding-bottom: 9px;
+        margin: 0px 0 0px;
+        padding-left: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .k-autocomplete, .k-colorpicker, .k-combobox, .k-datepicker, .k-datetimepicker, .k-dropdown, .k-dropdowntree, .k-listbox, .k-multiselect, .k-numerictextbox, .k-selectbox, .k-textbox, .k-timepicker {
+        width: 100%;
+    }
+
+    .card .card-header {
+        padding-left: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .card .card-block {
+        padding: 5px 10px 10px 15px;
+    }
+    .card .card-header {
+      /*  padding: 10px !important;
+        padding-top: 10px !important;
+        padding-right: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 10px !important;*/
+    }
+</style>
+<script>
+    var _currentLanguage ='@Resources.Common.CurrentLang';
+    $(function () {
+        $('#LayoutCurrentLanguage').val(_currentLanguage);
+        var assingedRoleMenus = localStorage.getItem('Menus');
+        var menuGroupArray = [];
+
+        $("#left-menu-item").load("/Home/LoadLeftMenuPartialView",
+            { menuItems: assingedRoleMenus }
+        );
+
+        //JSON.parse(assingedRoleMenus).forEach(function (menuItem) {
+        //    //console.log(menuItem);
+        //    var isMenuGroupFound = false;
+        //    menuGroupArray.forEach(function (menuGroup) {
+        //        if (menuGroup.MenuGroup == menuItem.menuGroup) {
+        //            isMenuGroupFound = true;
+        //        }
+        //    });
+        //    if (!isMenuGroupFound) {
+        //        menuGroupArray.push({ 'MenuGroup': menuItem.menuGroup });
+        //    }
+
+        //});
+        ////console.log('MenuGroup : ' + JSON.stringify(menuGroupArray));
+        //var li = '';
+        //menuGroupArray.forEach(function (menuGroup) {
+        //    console.log(menuGroup.MenuGroup);
+
+        //});
+
+        //$('#languageCheckBox').bind('change', function () {
+        //    var language = $(this).val();
+
+        //    var url = $("#languageChangeForm").attr("action");
+
+        //    //Add the Field values to FormData object.
+        //    var formData = new FormData();
+        //    formData.append("language", language);
+
+
+        //    $.ajax({
+        //        type: 'POST',
+        //        url: url,
+        //        data: formData,
+        //        processData: false,
+        //        contentType: false
+        //    }).done(function (response) {
+        //        if (response) {
+        //            window.location.reload();
+        //        }
+        //        else {
+        //            console.log("Invalid Form data!");
+        //        }
+        //    });
+
+        //});
+        setTimeout(function () {
+            $('.pcoded-main-container').css('margin-top', '23px');
+            //$('.pcoded-main-container').css('min-height', '13px');
+            //$('.pcoded-main-container').css('max-height', '13px');
+
+        }, 500);
+        $('#LoggedInEmployeeName').text(JSON.parse(localStorage.getItem('User')).employeeName);
+    });
+
+
+
+    function formatDate(date) {
+        if (date != null) {
+            var d = new Date(date),
+
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+            console.log([year, month, day].join('-'));
+            return [year, month, day].join('-');
+        }
+        else {
+            return '';
+        }
+    }
+
+
+
+
+</script>

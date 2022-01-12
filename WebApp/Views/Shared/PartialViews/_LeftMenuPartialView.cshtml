@@ -1,0 +1,154 @@
+﻿
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+@using System.Web.Mvc;
+
+@{
+
+    string currentLanguage = Request.Cookies["Lang"] == null ? Resources.Common.CurrentLang : Request.Cookies["Lang"].Value;
+    var menuItemsJSONOString = (dynamic)ViewBag.MenuItems; // (dynamic)Session["MenuItems"];
+
+    //Deserialize JSON string to dynamic object so that we can loop through
+    var menuItems = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(menuItemsJSONOString);
+
+    #region To Get Unique MenuGroup
+    //In this region we will get unique menu groups
+    bool isMenuGroupExist = false;
+    List<string> uniqueMenuGroup = new List<string>();
+
+    dynamic withOutGroupMenus = new List<dynamic>();
+    dynamic withGroupMenus = new List<dynamic>();
+    foreach (var row in menuItems)
+    {
+
+        if (!string.IsNullOrEmpty(row.menuGroupEng.ToString()) && !string.IsNullOrWhiteSpace(row.menuGroupEng.ToString()))
+        {
+            isMenuGroupExist = false;
+            foreach (var item in uniqueMenuGroup)
+            {
+                if (currentLanguage == "en-US")
+                {
+                    if (item.Equals(row.menuGroupEng.ToString()))
+                    {
+                        isMenuGroupExist = true;
+                    }
+                }
+                else
+                {
+                    if (item.Equals(row.menuGroupArb.ToString()))
+                    {
+                        isMenuGroupExist = true;
+                    }
+                }
+
+            }
+            if (!isMenuGroupExist)
+            {
+                if (currentLanguage == "en-US")
+                {
+                    uniqueMenuGroup.Add(row.menuGroupEng.ToString());
+                }
+                else
+                {
+                    uniqueMenuGroup.Add(row.menuGroupArb.ToString());
+                }
+
+            }
+            withGroupMenus.Add(row);
+        }
+        else
+        {
+            withOutGroupMenus.Add(row);
+        }
+    }
+
+    #endregion
+
+
+}
+
+
+
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+
+            @foreach (var item in withOutGroupMenus)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="@item.url">
+                        <i class="@item.icon"></i>
+                        @if (currentLanguage == "en-US")
+                        {
+
+                            @item.nameEng
+
+                        }
+                        else
+                        {
+
+                            @item.nameArb
+
+                        }
+                    </a>
+                </li>
+            }
+            @foreach (var menuGroup in uniqueMenuGroup)
+            {
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-list"></i> @menuGroup</a>
+                    <ul class="nav-dropdown-items">
+                        @foreach (var item in withGroupMenus)//menuItems)
+                        {
+
+                            //Gets menu items by menu group in current iteration of parent loop
+                            if (currentLanguage == "en-US")
+                            {
+                                if (menuGroup.ToString().Trim() == item.menuGroup.ToString().Trim())
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@item.url">
+                                            <i class="@item.icon"></i>
+
+                                            @item.nameEng
+
+                                        </a>
+                                    </li>
+
+                                }
+                            }
+                            else
+                            {
+
+                                if (menuGroup.ToString().Trim() == item.menuGroupArb.ToString().Trim())
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@item.url">
+                                            <i class="@item.icon"></i>
+
+                                            @item.nameArb
+
+                                        </a>
+                                    </li>
+
+                                }
+                            }
+
+
+                        }
+                    </ul>
+                </li>
+
+            }
+            <li class="nav-item" style="position:fixed;bottom:20px;width:200px;">
+                <a class="nav-link" href="~/"><i class="icon-log-out"></i> @Resources.EmployeeResourcesUI.lblSignOut</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+
+
+<script src="~/Content/Themes/CoreUI/js/app.js"></script>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+    <title>@ViewBag.Title - INMA INT.LLC</title>
+
+    <link href="~/Content/Themes/CoreUI/css/style.min.css" rel="stylesheet" />
+    <!-- Icons -->
+    <link href="~/Content/Themes/CoreUI/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Themes/CoreUI/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Main styles for this application -->
+
+    <link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/Themes/CoreUI/css/@Resources.Common.PageLayout" rel="stylesheet">
+    <link href="~/Content/custom-css.css" rel="stylesheet" />
+    <style>
+        .k-filter-row .k-dropdown-operator {
+            display: none;
+        }
+
+        .k-filtercell, .k-filtercell .k-widget, .k-filtercell > span {
+            width: 100% !important;
+        }
+        td, th {
+
+            text-align: @Resources.Global.textAlign;
+
+        }
+        .k-grid-header th.k-header {
+            text-align: @Resources.Global.textAlign;
+        }
+         .k-grid-content td {
+            text-align: @Resources.Global.textAlign;
+        }
+
+        .k-widget .k-icon.k-i-collapse, .k-widget .k-icon.k-i-expand {
+            padding-left: @Resources.Global.treeViewPaddingLeft;
+        }
+       
+    </style>
+
+</head>
+
+
+<body class="navbar-fixed sidebar-nav fixed-nav">
+    <header class="navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+            <a class="navbar-brand" href="#"></a>
+            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullLeft" style="padding-left:61px;">
+                <li class="nav-item p-x-1">
+
+                    <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
+
+
+                <li class="nav-item p-x-10"></li>
+                <li class="nav-item p-x-1" id="LoggedInEmployeeName">
+
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div id="left-menu-item"></div>
+    <!-- Main content -->
+    <main class="main" style="padding-top:30px;">
+        <!-- Breadcrumb -->
+        <!--<ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">
+                <a href="#">Admin</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>-->
+        <!-- Breadcrumb Menu-->
+        <!--<li class="breadcrumb-menu">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+                    <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+                </div>
+            </li>
+        </ol>-->
+        <div class="container-fluid">
+            <div class="">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+
+    <footer class="footer">
+        <span class="text-left">
+            <a href="https://xtremessoft.com">INMA</a>  &copy; 2022 Xtreme Software
+        </span>
+        <span class="@Resources.Common.PullRight">
+            Powered by <a href="https://xtremessoft.com"> XtremeSoft</a>
+        </span>
+    </footer>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap and necessary plugins -->
+    @*<script src="~/Content/Themes/CoreUI/js/libs/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    <script src="~/Content/Themes/CoreUI/js/libs/tether.min.js"></script>
+    <script src="~/Content/Themes/CoreUI/js/libs/bootstrap.min.js"></script>
+    <script src="~/Content/Themes/CoreUI/js/libs/pace.min.js"></script>
+
+    <!-- Plugins and scripts required by all views -->
+    <script src="~/Content/Themes/CoreUI/js/libs/Chart.min.js"></script>
+
+    <!-- CoreUI main scripts -->
+
+    <script src="~/Content/Themes/CoreUI/js/app.js"></script>
+    <!-- Plugins and scripts required by this views -->
+    <!-- Custom scripts required by this view -->
+    <script src="~/Content/Themes/CoreUI/js/views/main.js"></script>
+    <!-- Grunt watch plugin -->
+    <!--Kendo js-->
+    <script src="~/Content/JS/kendo/kendo.all.min.js"></script>
+    <script src="~/Content/JS/kendo/jszip.min.js"></script>
+    <!--End Kendo js-->
+    <script src="~/Scripts/crypto-script.js"></script>
+    <!--Sweet Alert 2-->
+    <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <script src="~/Scripts/tinymce.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
+
+
+
+</body>
+
+</html>
+<script>
+    var _currentLanguage ='@Resources.Common.CurrentLang';
+    $(function () {
+
+        $('#LayoutCurrentLanguage').val(_currentLanguage);
+        var assingedRoleMenus = localStorage.getItem('Menus');
+        var menuGroupArray = [];
+
+        $("#left-menu-item").load("/Home/LoadLeftMenuPartialView",
+            { menuItems: assingedRoleMenus }
+        );
+        setTimeout(function () {
+            $('.pcoded-main-container').css('margin-top', '23px');
+            //$('.pcoded-main-container').css('min-height', '13px');
+            //$('.pcoded-main-container').css('max-height', '13px');
+
+        }, 500);
+        var loggedUserName = _currentLanguage == 'en-US' ? (JSON.parse(localStorage.getItem('User')).employeeNameEng) : (JSON.parse(localStorage.getItem('User')).employeeNameArb);
+        loggedUserName = '@Resources.Global.Welcome  ' + loggedUserName;
+        $('#LoggedInEmployeeName').text(loggedUserName);
+
+        setTimeout(function () {
+            addTinyMCE();
+
+        }, 500);
+        
+    });
+
+
+
+    function formatDate(date) {
+        if (date != null) {
+            var d = new Date(date),
+
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+            console.log([year, month, day].join('-'));
+            return [year, month, day].join('-');
+        }
+        else {
+            return '';
+        }
+    }
+
+    // Add TinyMCE
+    function addTinyMCE() {
+        // Initialize
+        tinymce.init({
+            selector: '.editor',
+            themes: 'advanced',
+            height: 300,
+            menubar: true, width: "100%",
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+        });
+
+
+    }
+
+
+</script>

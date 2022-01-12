@@ -1,0 +1,72 @@
+﻿<input type="hidden" name="EducationalDocumentId" id="EducationalDocumentId" value="0">
+<input type="hidden" name="EducationalDocumentCreatedBy" id="EducationalDocumentCreatedBy" value="0">
+<input type="hidden" name="EducationalDocumentEmployeeId" id="EducationalDocumentEmployeeId" value="0">
+<input type="hidden" name="type" id="type" value="HR_Employee_EducationalDocument_Save">
+<input type="hidden" name="EducationalDocumentLanguage" id="EducationalDocumentLanguage" class="Language" value="">
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEducationalDocument</label><span style="color:red">*</span><br />
+            <input type="file" class="form-control" name="EducationalDocumentFile" id="EducationalDocumentFile" onchange="validateEducationalDocument('EducationalDocumentFile');" required />
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblDegressIssueDate</label><span style="color:red"> *</span><br />
+            <input type="date" class="form-control" id="EducationalDocumentReleaseDate" name="EducationalDocumentReleaseDate" required />
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblCertificateName</label> <span style="color:red">*</span> <br />
+            <input type="text" class="form-control" id="EducationalDocumentDegreeNameEng" name="EducationalDocumentDegreeNameEng" required />
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblCertificateName</label> <span style="color:red">*</span> <br />
+            <input type="text" class="form-control" id="EducationalDocumentDegreeNameArb" name="EducationalDocumentDegreeNameArb" required />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</label> <span style="color:red">*</span> <br />
+            <input type="text" class="form-control" id="EducationalDocumentInstituteEng" name="EducationalDocumentInstituteEng" required />
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameArb</label> <span style="color:red">*</span> <br />
+            <input type="text" class="form-control" id="EducationalDocumentInstituteArb" name="EducationalDocumentInstituteArb" required />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMarksPercentage</label><span style="color:red">*</span> <br />
+            <input type="number" class="form-control" id="EducationalDocumentMarks" name="EducationalDocumentMarks" required />
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblCountry</label> <span style="color:red">*</span> <br />
+            <input type="text" class="form-control pname" name="EducationalDocumentDegreeFromCountryId" id="EducationalDocumentDegreeFromCountryId" required>
+        </div>
+    </div>
+</div>
+
+
+
+

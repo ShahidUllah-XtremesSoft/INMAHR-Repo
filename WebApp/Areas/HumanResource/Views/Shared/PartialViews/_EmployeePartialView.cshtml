@@ -1,0 +1,244 @@
+﻿
+
+
+
+
+<input type="hidden" name="Id" id="Id" value="0">
+<input type="hidden" name="CreatedBy " id="CreatedBy" value="0">
+<input type="hidden" name="type" id="type" value="HR_Employee_Save">
+<input type="hidden" name="Language" id="Language" value="">
+<div class="row">
+    <div class="col-sm-6" id="ProfileImageDiv">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblProfileImage</label><span style="color:red">*</span><br />
+            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" onchange="validateFileType('ProfileImage',['png', 'jpg']);"  />
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblJoinDate</label> <span style="color:red">*</span> <br />
+            <input type="date" class="form-control pname" name="JoinDate" id="JoinDate" value=""  required>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblNameEng</label><span style="color:red"> *</span><br />
+            <input type="text" class="form-control pname" name="NameEng" id="NameEng" value="" placeholder="Enter Name"  required>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblNameArb</label><span style="color:red"> *</span><br />
+            <input type="text" class="form-control pname" name="NameArb" id="NameArb" value="" placeholder="Enter Name"  required>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblSalary </label> <span style="color: red">*</span><br />
+            <input type="number" class="form-control" id="Salary" name="Salary" placeholder="Enter Salary"  required/>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblDepartment </label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control" id="DepartmentId" name="DepartmentId"  required/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPhone</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="PhoneNumber" name="PhoneNumber" placeholder="Enter Phone Number"   required/>
+        </div>
+    </div>
+    
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEmail </label> <span style="color: red">*</span><br />
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter Email"  required/>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+
+    @*<div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@HRUI.HumanResourceUI.lblEmiratesOfResidencyEng</label> <span style="color: red">*</span><br />
+                <input type="text" class="form-control " id="EmiratesOfResidencyEng" name="EmiratesOfResidencyEng" placeholder="Enter Emirates Of Residency"  />
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@HRUI.HumanResourceUI.lblEmiratesOfResidencyArb</label> <span style="color: red">*</span><br />
+                <input type="text" class="form-control " id="EmiratesOfResidencyArb" name="EmiratesOfResidencyArb" placeholder="Enter Emirates Of Residency"  />
+            </div>
+        </div>*@
+    @*<div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEmiratesOfResidency</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="EmiratesStateId" name="EmiratesStateId"  />
+        </div>
+    </div>*@
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblProfession </label><br />
+            <input class="form-control" id="ProfessionId" name="ProfessionId"   required/>
+        </div>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblContractType </label><br />
+            <input class="form-control" id="ContractTypeId" name="ContractTypeId"   required/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@Resources.EmployeeResourcesUI.lblSocialStatusEnglish</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control" id="SocialStatusEng" name="SocialStatusEng" placeholder="Enter Social Status"   required/>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@Resources.EmployeeResourcesUI.lblSocialStatusArabic </label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control" id="SocialStatusArb" name="SocialStatusArb" placeholder="Enter Social Status"   required/>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEmirates </label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="EIDNumber" name="EIDNumber" placeholder="Enter EID Number"   required/>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardNumber </label> <span style="color: red">*</span><br />
+            <input class="form-control " id="MunicipalityCardNumber" name="MunicipalityCardNumber" placeholder="Enter Municipality Card Number"  required />
+        </div>
+    </div>
+</div>
+<div class="row">
+
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardIssueDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="MunicipalityCardReleaseDate" name="MunicipalityCardReleaseDate"   required/>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardExpiryDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="MunicipalityCardExpirtDate" name="MunicipalityCardExpirtDate"   required/>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    @*<div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@HRUI.HumanResourceUI.lblVisaSponsorship </label><br />
+                <input class="form-control" id="VisaSponsorshipId" name="VisaSponsorshipId"  />
+            </div>
+        </div>*@
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEmiratesOfResidency</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="EmiratesStateId" name="EmiratesStateId" required />
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportNumber</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="PassportNumber" name="PassportNumber" placeholder="Enter Passport Number"  required/>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportIssueDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="ReleaseDate" name="ReleaseDate"   required/>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportExpiryDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="ExpiryDate" name="ExpiryDate"   required/>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+            <div class="form-group">
+                <label class="col-form-label">@HRUI.HumanResourceUI.lblVisaSponsorship </label><br />
+                <input class="form-control" id="VisaSponsorshipId" name="VisaSponsorshipId"   required/>
+            </div>
+        </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblVisaIssueDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="VisaReleaseDate" name="VisaReleaseDate"  required/>
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblVisaExpiryDate </label> <span style="color: red">*</span><br />
+            <input type="date" accept="" class="form-control " id="VisaExpiryDate" name="VisaExpiryDate"  required/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblOtherStatusEng</label> <span style="color: red">*</span><br />
+            <input class="form-control " id="OtherStatusEng" name="OtherStatusEng" placeholder="Enter Other Status"   required/>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblOtherStatusArb </label> <span style="color: red">*</span><br />
+            <input class="form-control " id="OtherStatusArb" name="OtherStatusArb" placeholder="Enter Other Status"   required/>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblNationality </label> <span style="color: red">*</span><br />
+            <input class="form-control" id="NationalityId" name="NationalityId"   required/>
+        </div>
+    </div>
+
+</div>

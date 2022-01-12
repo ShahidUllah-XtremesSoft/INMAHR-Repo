@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Today Attendance";
+}
+
+<div class="card">
+    <div class="card-block">
+        <input type="hidden" name="Language" id="Language" />
+        <input type="hidden" name="CreatedBy" id="CreatedBy" />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="divSearchControls">
+                    <label class="col-form-label">@Resources.EmployeeResourcesUI.lblDepartment</label>
+                    <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" value="" />
+                    <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" value="" />
+                </div>
+
+            </div>
+            <div class="col-md-4" hidden>
+                <div class="form-group divSearchControls">
+                    <label class="col-form-label">@Resources.EmployeeResourcesUI.lblDate</label>
+                    <input type="date" class="form-control" id="CheckinDate" name="CheckinDate" value="" />
+                </div>
+
+            </div>
+            <div class="col-md-1">
+                <div class="form-group divSearchControls">
+                    <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i>@Resources.EmployeeResourcesUI.lblSearch</button>
+                </div>
+            </div> 
+            <div class="col-md-1 ">
+                <div class="form-group divSearchControls">
+                    <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnShowAll"><i class="fa fa-eye"></i> @Resources.EmployeeResourcesUI.lblShowAll</button>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="button" id="btnProcess" class="btn btn-success @Resources.Common.PullRight" style="margin-top:0px;"><i class="fa fa-refresh"></i> @Resources.Global.btnProcess</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div id="AttendanceGrid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @*<script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-grid.js"></script>*@
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-today.js"></script>
+    
+    <script>
+        //Grid columns
+         var employeeName = '@Resources.EmployeeResourcesUI.lblEmployeeName';
+         var empNum = '@HRUI.HumanResourceUI.lblEmpNum';
+         var department= '@Resources.EmployeeResourcesUI.lblDepartment';
+         var checkinDate= '@Resources.EmployeeResourcesUI.lblCheckInDate';
+         var checkinTime= '@Resources.EmployeeResourcesUI.lblCheckinTime';
+         var checkoutTime= '@Resources.EmployeeResourcesUI.lblCheckoutTime';
+         var status= '@Resources.EmployeeResourcesUI.lblStatus';
+        var processed = '@Resources.EmployeeResourcesUI.lblProcessed';
+         
+    </script>
+}

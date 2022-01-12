@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "Edit Employee Detail";
+}
+
+
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#PersonalInfoTab" role="tab">@HRUI.HumanResourceUI.tabPersonalInfo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#PersonalDocumentTab" role="tab" id="PersonalDocumentTabLi">@HRUI.HumanResourceUI.tabPersonalDocument</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#EducationalDocumentTab" role="tab">@HRUI.HumanResourceUI.tabEducationalDocument</a>
+                </li>
+
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="PersonalInfoTab" role="tabpanel">
+                    <div class="row">
+                        <form id="frmAddUpdateEmployee" name="frmAddUpdateEmployee" action="/services/Xtreme/multipart" method="post">
+                            <div class="card">
+                                <div class="card-block">
+
+                                    @{
+                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePartialView.cshtml");
+                                    }
+
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary  pull-right" id="btn-edit-employee"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            <a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="PersonalDocumentTab" role="tabpanel">
+                    <div class="row">
+                        @**@
+                        <form id="frmEmployeePersonalDocument" name="frmEmployeePersonalDocument" action="/services/Xtreme/multipart" method="post">
+                            <div class="card">
+                                <div class="card-block">
+
+
+                                    @{
+                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePersonalDocumentPartialView.cshtml");
+                                    }
+                                    
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary  pull-right" id="btnSaveEmployeePersonalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            @*<a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id="">Cancel</a>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Page body end -->
+                            </div>
+                        </form>
+                        <table class="table" id="employeePersonalDocumentGrid">
+                            <thead>
+                                <tr>
+                                    <th>@HRUI.HumanResourceUI.lblPersonalDocumentType</th>
+                                    <th>@HRUI.HumanResourceUI.lblIssueDate</th>
+                                    <th>@HRUI.HumanResourceUI.lblPersonalDocumentExpiryDate</th>
+                                    <th>@HRUI.HumanResourceUI.lblFile</th>
+                                    <th>@HRUI.HumanResourceUI.lblAction</th>
+                                </tr>
+                            </thead>
+                            <tbody>                                   
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="EducationalDocumentTab" role="tabpanel">
+                    <div class="row">
+                        @**@
+                        <form id="frmEmployeeEducationalDocument" name="frmEmployeeEducationalDocument" action="/services/Xtreme/multipart" method="post">
+                            <div class="card">
+                                <div class="card-block">
+
+
+                                    @{
+                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeEducationalDocumentPartialView.cshtml");
+                                    }
+
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary  pull-right" id="btnSaveEmployeeEducationalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            @*<a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id="">Cancel</a>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Page body end -->
+                            </div>
+                        </form>
+                        <table class="table" id="employeeEducationalDocumentGrid">
+                            <thead>
+                                <tr>
+                                    <th>@HRUI.HumanResourceUI.lblCertificateName</th>
+                                    <th>@HRUI.HumanResourceUI.lblCertificateName</th>
+                                    <th>@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</th>
+                                    <th>@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameArb</th>
+                                    <th>@HRUI.HumanResourceUI.lblIssueDate</th>
+                                    <th>@HRUI.HumanResourceUI.lblMarksPercentage</th>
+                                    <th>@HRUI.HumanResourceUI.lblCountry</th>
+                                    <th>@HRUI.HumanResourceUI.lblFile</th>
+                                    <th>@HRUI.HumanResourceUI.lblAction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/employee-partialViews.js"></script>
+
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/employee-personal-document-partialViews.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/employee-educational-document-partialViews.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-edit.js"></script>
+    <script>
+
+        $(function () {
+           
+        });
+    </script>
+}
+
+
+
+

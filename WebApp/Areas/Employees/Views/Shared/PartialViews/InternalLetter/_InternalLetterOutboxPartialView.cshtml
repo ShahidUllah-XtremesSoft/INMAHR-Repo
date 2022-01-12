@@ -1,0 +1,379 @@
+﻿@*<div class="row">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="email-header">
+                    <div class="row">
+                        <div class="col-md-8 top-action-left">
+                            <div class="float-left">
+                                <div class="btn-group dropdown-action">
+                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Select </font></font><i class="fa fa-angle-down "></i></button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">All</a>
+                                        <a class="dropdown-item" href="#">None</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Read</a>
+                                        <a class="dropdown-item" href="#">Unread</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group dropdown-action">
+                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actions </font></font><i class="fa fa-angle-down "></i></button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Reply</a>
+                                        <a class="dropdown-item" href="#">Forward</a>
+                                        <a class="dropdown-item" href="#">Archive</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Mark As Read</a>
+                                        <a class="dropdown-item" href="#">Mark As Unread</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group dropdown-action">
+                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><i class="fa fa-folder"></i> <i class="fa fa-angle-down"></i></button>
+                                    <div role="menu" class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Social</a>
+                                        <a class="dropdown-item" href="#">Forums</a>
+                                        <a class="dropdown-item" href="#">Updates</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Spam</a>
+                                        <a class="dropdown-item" href="#">Trash</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">New</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group dropdown-action">
+                                    <button type="button" data-toggle="dropdown" class="btn btn-white dropdown-toggle"><i class="fa fa-tags"></i> <i class="fa fa-angle-down"></i></button>
+                                    <div role="menu" class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Work</a>
+                                        <a class="dropdown-item" href="#">Family</a>
+                                        <a class="dropdown-item" href="#">Social</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Primary</a>
+                                        <a class="dropdown-item" href="#">Promotions</a>
+                                        <a class="dropdown-item" href="#">Forums</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="float-left d-none d-sm-block">
+                                <input type="text" placeholder="Search Messages" class="form-control search-message">
+                            </div>
+                        </div>
+                        <div class="col-md-2 top-action-right">
+                            <div class="text-right">
+                                <span class="text-muted d-none d-md-inline-block"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Showing 10 of 112 </font></font></span>
+                                <button type="button" title="" data-toggle="tooltip" class="btn btn-white d-none d-md-inline-block" data-original-title="Refresh"><i class="fas fa-sync-alt"></i></button>
+                                <div class="btn-group">
+                                    <a class="btn btn-white"><i class="fa fa-angle-left"></i></a>
+                                    <a class="btn btn-white"><i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <table class="table table-hover table-condensed table-striped" id="outboxTable">
+
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Department: activate to sort column descending">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+
+                                            </font>
+                                        </font><input type="checkbox" class="checkbox-all">
+                                    </th>
+                                    <th>Importance</th>
+                                    <th>Subject</th>
+                                    <th>The Description</th>
+
+                                    <th>Attachments</th>
+                                    <th>Date/Time</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="checkmail"></td>
+                                    <td><span class="mail-important"><i class="fa fa-star starred"></i></span></td>
+                                    <td style="max-width:120px;">John Doe</td>
+                                    <td>We are very proud of the launch of "Expo 2020", which represents one of the biggest chapters in the story of Emirati ambition, capping a series of achievements our country has achieved since its establishment 50 years ago</td>
+                                    <td><i class="fa fa-paperclip"></i></td>
+                                    <td>13:14</td>
+                                    <td class="text-center">
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="far fa-dot-circle text-purple"></i><font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">
+                                                        New
+                                                    </font>
+                                                </font>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#"><i class="far fa-dot-circle text-purple"></i> New</a>
+                                                <a class="dropdown-item" href="#"><i class="far fa-dot-circle text-info"></i> Read</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            loadLetterOutbox();
+        })
+        function loadLetterOutbox() {
+
+            ajaxRequest({ commandName: 'Employee_InternalLetter_Outbox_Get', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, EmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: loadLetterOutboxCallBack });
+
+        }
+        var loadLetterOutboxCallBack = function (inputDataJSON) {
+            console.log(JSON.parse(inputDataJSON.Value));
+            $('#outboxTable tbody').html('');
+            var fileCount = 1;
+            JSON.parse(inputDataJSON.Value).forEach(function (item) {
+                var extension = item.currentFileName == null ? '' : item.currentFileName.split('.').pop().toLowerCase();
+                //console.log(item);
+                if (extension == 'pdf') {
+                    var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+                }
+                else {
+                    var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
+                }
+                var letterBody = item.body.substring(0, 170);
+                var letterSubject = item.subject.substring(0, 28);
+
+                var tr = '<tr>' +
+                    //'<td>' + fileCount + '</td>' +
+                    '<td><input type="checkbox" class="checkmail"></td>'
+                    + '<td><span class="mail-important"><i class="fa fa-star starred"></i></span></td>'
+                    + '<td style="max-width:220px;">' + letterSubject + '<strong alt="read more"> ...</strong></td>'
+                    + '<td>' + letterBody + '<strong alt="read more"> ...</strong></td>'
+                    + '<td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + ' </td>'
+                    + '<td>' + item.createdDate + '</td>'
+                    + '<td class="text-center">\
+                                        <div class="dropdown action-label">\
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">\
+                                                <i class="far fa-dot-circle text-purple"></i>\
+                                            </a>\
+                                            <div class="dropdown-menu dropdown-menu-right">\
+                                                <a class="dropdown-item" href="#"><i class="far fa-dot-circle text-purple"></i> View</a>\
+                                                <a class="dropdown-item" href="#"><i class="far fa-dot-circle text-info"></i> Delete</a>\
+                                            </div>\
+                                        </div>\
+                                    </td>'
+                    + '</tr > '
+                $('#outboxTable tbody').append(tr);
+                fileCount += 1;
+            });
+
+        }
+    </script>*@
+
+@*@using System;
+    @using System.Collections.Generic;
+    @using System.Linq;
+    @using System.Web;
+    @using System.Web.Mvc;
+
+    @{
+
+        var letterOutboxJSONString = (dynamic)ViewBag.LetterOutboxJSON; // (dynamic)Session["MenuItems"];
+
+        ////Deserialize JSON string to dynamic object so that we can loop through
+        var letterOutboxObject = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(letterOutboxJSONString);
+        dynamic modals;
+    }*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box">
+            <div class="email-header">             
+            </div>
+            <div>
+                <div>
+                    <div id="SentLettersGrid"></div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    .k-grid tbody tr td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<script>
+    var sentLettersGrid = 'SentLettersGrid';
+    //Resources labels
+    var subject = '@Resources.EmployeeResourcesUI.lblSubject';
+    var description = '@Resources.EmployeeResourcesUI.lblTheDescription';
+    var attachment = '@Resources.EmployeeResourcesUI.lblAttachment';
+    var dateTime = '@Resources.EmployeeResourcesUI.lblDateTime';
+    var action = '@Resources.EmployeeResourcesUI.lblAction';
+    $(function () {
+        loadLetterOutboxGrid();        
+    })
+    function loadLetterOutboxGrid() {        
+        ajaxRequest({ commandName: 'Employee_InternalLetter_Outbox_Get', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, EmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: loadLetterOutboxGridCallBack });
+
+    }
+    var loadLetterOutboxGridCallBack = function (inputDataJSON) {
+        console.log(JSON.parse(inputDataJSON.Value));
+
+        bindLetterOutboxGrid(JSON.parse(inputDataJSON.Value));
+        // $('#inboxTable tbody').html('');
+        //var fileCount = 1;
+        //JSON.parse(inputDataJSON.Value).forEach(function (item) {
+        //    var extension = item.currentFileName == null ? '' : item.currentFileName.split('.').pop().toLowerCase();
+        //    //console.log(item);
+        //    if (extension == 'pdf') {
+        //        var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+        //    }
+        //    else {
+        //        var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
+        //    }
+        //    var letterBody = item.body.substring(0, 170);
+        //    var letterSubject = item.subject.substring(0, 28);
+
+        //    var tr = '<tr>' +
+        //        //'<td>' + fileCount + '</td>' +
+        //        '<td><input type="checkbox" class="letterCheckbox"></td>'
+        //        + '<td>' + item.id + '</td>'
+        //        + '<td><span class="mail-important"><i class="fa fa-star starred"></i></span></td>'
+        //        + '<td style="max-width:220px;">' + letterSubject + '<strong alt="read more"> ...</strong></td>'
+        //        + '<td>' + letterBody + '<strong alt="read more"> ...</strong></td>'
+        //        + '<td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + ' </td>'
+        //        + '<td>' + item.createdDate + '</td>'
+        //        + '<td class="text-center">\
+        //                            <div class="dropdown action-label">\
+        //                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">\
+        //                                    <i class="far fa-dot-circle text-purple"></i>\
+        //                                </a>\
+        //                                <div class="dropdown-menu dropdown-menu-right">\
+        //                                    <a class="dropdown-item" href="/Employees/InternalLetter/New"><i class="fa fa-plus" style="color:green;"></i> New</a>\
+        //                                    <a class="dropdown-item" href="/Employees/InternalLetter/Read?value='+ item.id + '"><i class="fa fa-eye"  style="color:gray;"></i> Read</a>\
+        //                                    <a class="dropdown-item" href="#" onClick="deleteInternalLetter('+ item.id + ');"><i class="fa fa-trash" style="color:red;"></i> Delete</a>\
+        //                                </div>\
+        //                            </div>\
+        //                        </td>'
+        //        + '</tr > '
+        //    $('#inboxTable tbody').append(tr);
+        //    fileCount += 1;
+        //});
+
+    }
+
+    var bindLetterOutboxGrid = function (inputDataJSON) {
+        var gridColumns = [
+            { field: "id", title: "id", hidden: true },
+            {
+                field: "subject", title: subject, width: 40, filterable: true,
+                template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>",
+            },
+            {
+                field: "body", title: description, width: 80, filterable: true,
+                template: "<div style='font-weight:normal;'>#=body#</div>" //"#if(isRead == false){#<div style='font-weight:bold;'>#=body#</div>#}else{#<div style='font-weight:normal;'>#=body#</div>#}# ",
+            },
+            //{ field: "body", title: description, width: 60, filterable: true },
+            {
+                field: "", title: dateTime, width: 10, filterable: true,//createdDate
+                template: "<div  class='viewbutton'>#=createdDate#</div>" //"#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
+
+            },
+            //{ field: "passportNumber", title: PassportNumber, width: 100, filterable: true, hidden: true },
+            //{ field: "eidNumber", title: eidNumber, width: 100, filterable: true, hidden: true },
+
+            {
+                field: "",
+                width: 10,
+                title: attachment,
+                template: "<a style='font-size:20px;cursor:pointer;' onClick= viewAttachment('#=currentFileName#')  title='Download Attachment'>#if(currentFileName == null){}else{ if(currentFileName.split('.').pop().toLowerCase() == 'pdf'){#<img src='/Content/Images/pdf.png' style='width:30px;cursor:pointer;'/></a>#} else {#<img src='/Content/Images/ImageIcon.png' style='width:33px;height:34px;cursor:pointer;'/></a>#} }#"
+            },
+            {
+                field: "",
+                width: 12,
+                title: action,
+                //template:"<a style='font-size:20px;cursor:pointer;' onClick= redirectToViewLetter(this) title='Mark letter as read' ><span class='fa fa-book'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteInternalLetter(this)  title='Delete Letter'><span class='fa fa-trash'></span></a>"
+                template: '<button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> Delete</button>'
+                //template: '<div class="dropdown"><button class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="position:relative;"><a class="dropdown-item" href="\\#">Action</a><a class="dropdown-item" href="\\#">Another action</a><a class="dropdown-item" href="\\#">Something else here</a></div></div>'
+
+
+            },
+
+        ];
+
+        bindKendoGrid(sentLettersGrid, 50, gridColumns, inputDataJSON, true, 750);
+    };
+     function viewAttachment(currentFileName) {
+     
+        if (currentFileName == "null") {
+            swalMessage('info', '@Resources.EmployeeResourcesUI.MsgAttachmentNotFound', 2000);
+            return false;
+        }
+        window.open('/UploadFile/' + currentFileName, '_blank');
+    }
+    function redirectToViewLetter(e) {
+        var row = $(e).closest("tr");
+        var grid = $("#" + sentLettersGrid).data("kendoGrid");
+        var dataItem = grid.dataItem(row);
+        window.location.href = '/Employees/InternalLetter/Read?value=' + dataItem.id + '&from=outbox';
+
+    }    
+    function deleteInternalLetter(e) {
+        var row = $(e).closest("tr");
+        var grid = $("#" + sentLettersGrid).data("kendoGrid");
+        var dataItem = grid.dataItem(row);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you really want to delete selected record",
+            //input: 'text',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#5cb85c',
+            cancelButtonColor: '#d9534f',
+            buttons: {
+                cancel: {
+                    text: "No",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true
+                },
+                confirm: {
+                    text: "Yes",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-warning",
+                    closeModal: true
+                }
+            }
+        }).then(function (restult) {
+            if (restult.value) {
+                ajaxRequest({ commandName: 'Employee_InternalLetter_Delete', values: { Id: dataItem.id, LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: deleteInternalLetterCallBack });
+            }
+        });
+        //alert(letterId);
+
+    }
+    var deleteInternalLetterCallBack = function (response) {
+        swal(response.Value);
+        loadLetterOutboxGrid();
+    }
+
+</script>

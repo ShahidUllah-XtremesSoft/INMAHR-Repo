@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Read Letter";
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div>From - <strong id="divFrom">Test Employee</strong></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="divTo"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="pull-right" id="divDate">12/30/2021</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">                
+                    <div id="divBody"></div>                
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-read.js"></script>
+}
+
+

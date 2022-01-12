@@ -271,3 +271,10 @@ function get_EmployeeShortLeavesAvailableBalanceCallBack(response) {
     //console.log(response);
     $('#AvailableShortLeave').val(JSON.parse(response.Value).remainingBalance);
 }
+
+
+
+
+function fnTest() {
+    alert('check test by M');
+}

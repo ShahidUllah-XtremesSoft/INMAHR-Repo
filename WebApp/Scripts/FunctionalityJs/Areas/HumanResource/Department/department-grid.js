@@ -37,15 +37,17 @@ var bindDepartmentGrid = function (inputDataJSON) {
 function editDepartment(event) {
 
     var row = $(event).closest("tr");
-    var grid = $("#" + $department_grid).data("kendoGrid");
+    var grid = $("#" + $department_grid).data("kendoTreeList");
     var dataItem = grid.dataItem(row);
+    //alert(dataItem.parentId);
     $('#Id').val(dataItem.id);
+    $('#DepartmentId').data("kendoDropDownList").value(dataItem.parentId);
     $('#NameEng').val(dataItem.nameEng);
     $('#NameArb').val(dataItem.nameArb);
 }
 function deleteDepartmentById(event) {
     var row = $(event).closest("tr");
-    var grid = $("#" + $department_grid).data("kendoGrid");
+    var grid = $("#" + $department_grid).data("kendoTreeList");
     var dataItem = grid.dataItem(row);
     Swal.fire({
         title: 'Are you sure?',

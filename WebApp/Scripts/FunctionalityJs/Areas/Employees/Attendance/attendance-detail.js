@@ -22,9 +22,7 @@ $(function () {
         loadAttendanceGrid();
     });
 });
-function testAgain() {
-    alert('test again');
-}
+ 
 function loadAttendanceGrid() {
     
 
@@ -83,8 +81,4 @@ function departmentTreeViewCheck(e) {
     $('#DepartmentIds').val(concatenatedDepartments);
     //alert($('#DepartmentIds').val());
 }
-
-function test() {
-    alert('testing...');
-    alert('again');
-}
+ 

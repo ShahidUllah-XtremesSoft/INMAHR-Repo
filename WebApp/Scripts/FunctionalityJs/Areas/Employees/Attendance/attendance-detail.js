@@ -23,6 +23,8 @@ $(function () {
     });
 });
 function loadAttendanceGrid() {
+    
+
 
     var checkInDate = $("#CheckinDate").data("kendoDatePicker").value() == null ? '' : $("#CheckinDate").val();
      
@@ -77,4 +79,8 @@ function departmentTreeViewCheck(e) {
     //alert(concatenatedDepartments);
     $('#DepartmentIds').val(concatenatedDepartments);
     //alert($('#DepartmentIds').val());
+}
+
+function test() {
+    alert('testing...');
 }

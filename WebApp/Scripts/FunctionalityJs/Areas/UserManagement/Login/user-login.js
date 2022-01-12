@@ -13,8 +13,10 @@
         }
     });
     $('#btnLogin').click(function () {
+        
         $('#error_span').text('');
-        //If admin admin logged in
+        $('#progress').show();
+        ////If admin admin logged in
         if ($('#Email').val() == 'admin' && $('#Password').val() == 'admin') {
             ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetForAdmin', values: {  }, CallBack: getAssignedMenusForRoleCallBack });
             localStorage.setItem('User', { id: 0, employeeId: 0, employeeNameEng: 'admin', employeeNameEng:'admin'});
@@ -36,6 +38,7 @@ function userLoginCallBack(userLoginResponse) {
     ) {
         //swal('warning', 'Email address or password is not matched');        
         $('#error_span').text('Employee number or password is not valid');
+        $('#progress').hide();
     }
     else {
        

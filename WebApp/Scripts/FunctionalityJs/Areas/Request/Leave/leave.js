@@ -130,7 +130,7 @@ function loadAvailableLeaveBalance(setupTypeDetailId = 0) {
 
 }
 function loadAvailableLeaveBalanceCallBack(response) {
-    debugger;
+    //debugger;
     //console.log(response);
     $('#AvailableLeave').val(JSON.parse(response.Value).remainingBalance);
 }

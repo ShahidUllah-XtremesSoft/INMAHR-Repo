@@ -31,11 +31,20 @@ $(document).ready(function () {
             alert("Only formats are allowed : " + fileExtension.join(', '));
         }
     });
+    $(document).ajaxStart(function () {
+        // Show image container
+        $('#RequestLoader').show();
+    });
+    $(document).ajaxComplete(function () {
+        // Hide image container
+        $('#RequestLoader').hide();
+    });
 });
 
 var ajaxRequest = function (options) {
     $('#loading').show().fadeIn(500);
-
+    
+    $('#RequestLoader').show();
     $.ajax({
         type: 'POST',
         url: '/services/Xtreme/process',
@@ -53,6 +62,9 @@ var ajaxRequest = function (options) {
                 $('#loading').fadeOut(500);
                 $('#loading').hide();
             }
+        },
+        complete: function () {
+            $('#RequestLoader').hide();
         }
     });
     //   $('#loading').hide();
@@ -607,6 +619,7 @@ function swal(messageResponse) {
         timer: 2000
 
     });
+    return messageResponseParse.type;
 }
 function swalMessage(type, message, delayTime) {
 

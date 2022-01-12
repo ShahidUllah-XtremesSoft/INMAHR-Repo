@@ -7,9 +7,12 @@
             buttonAddPleaseWait('btn-save-Department');
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    swal(response);
-                    loadDepartmentGrid();
-                    loadDepartmentDropdownList();
+                    var type = swal(response);                    
+                    if (type == 'success') {
+                        loadDepartmentGrid();
+                        loadDepartmentDropdownList();
+                        clearFields();
+                    }
                 },
                 error: function (xhr, status, error) {
                     buttonRemovePleaseWait('btn-save-Department', 'Save', 'save');
@@ -18,6 +21,7 @@
                 }
                 , complete: function () {
                     buttonRemovePleaseWait('btn-save-Department', 'Save', 'save');
+                    
                 }
             };
             $("#frmDepartmentDetail").ajaxSubmit(options);
@@ -27,4 +31,10 @@
             buttonRemovePleaseWait('btn-save-Department', 'Save', 'save');
         }
     });
-})
+});
+function clearFields() {
+    $('#Id').val('0');
+    $('#DepartmentId').data("kendoDropDownList").value('');
+    $('#NameEng').val('');
+    $('#NameArb').val('');
+}

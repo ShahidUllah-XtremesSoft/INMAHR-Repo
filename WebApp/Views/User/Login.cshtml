@@ -38,6 +38,42 @@
         .loginformsize {
             font-size: 50px;
         }
+        .modal {
+            position: fixed;
+            z-index: 999;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            background-color: Black;
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+            -moz-opacity: 0.8;
+            display: none;
+        }
+
+        .center {
+            /*z-index: 1000;
+            margin: 50px auto;
+            padding: 10px;
+            width: 130px;
+            background-color: White;
+            border-radius: 10px;
+            filter: alpha(opacity=100);
+            opacity: 1;
+            -moz-opacity: 1;*/
+            position: absolute;
+            top: 43%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .centerimg {
+            height: 128px;
+            width: 128px;
+        }
     </style>
     @*<style type="text/css">
             .jqstooltip {
@@ -71,7 +107,12 @@
 <body>
 
 
-
+    <div id="progress" class="modal">
+        <div class="center">
+            <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150"/>
+            <h3>Loading...</h3>
+        </div>
+    </div>
 
     <div class="row">
 
@@ -80,7 +121,7 @@
                 <div class="auth-box    border-secondary">
                     <div class="row">
                         <div class="col-sm-3">
-                            Language : 
+                            Language :
                         </div>
                         <div class="col-sm-2">
 

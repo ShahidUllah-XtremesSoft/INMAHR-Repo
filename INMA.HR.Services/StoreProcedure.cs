@@ -208,4 +208,15 @@
     #endregion
 
 
+    #region Employee Request
+    //LETTER AREA
+    Request_AllEmployee_Letter_Get,
+    Request_Employee_AllLetter_Save,
+    // LEAVES AREA
+    Employee_AllLeaves_Get,
+    Request_Employee_AllLeaves_Save,
+    
+
+    #endregion
+
 }

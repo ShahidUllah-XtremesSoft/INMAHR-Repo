@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Cancel";
+}
+
+<div class="card">
+    <div class="card-block">
+        <form id="frmLeaveCancel" name="frmLeaveCancel" action="/services/Xtreme/multipart" method="post">
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="Request_LeaveCancel_Save" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblSelect</label>
+                        <input class="form-control" id="LeaveRequestId" name="LeaveRequestId" required />
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblCommentEng </label>
+                        <input class="form-control" id="CommentEng" name="CommentEng" required />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@RequestUI.RequestResourceUI.lblCommentArb </label>
+                        <input class="form-control" id="CommentArb" name="CommentArb" required />
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CancelGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Cancel/Cancel.js"></script>
+
+    <script>
+        //Grid Columns
+        var leaveName = '@RequestUI.RequestResourceUI.lblLeaveType';
+        var startDate = '@Resources.Global.lblStartDate';
+        var endDate = '@Resources.Global.lblEndDate';
+        var commentEng = '@RequestUI.RequestResourceUI.lblCommentEng';
+        var commentArb = '@RequestUI.RequestResourceUI.lblCommentArb';
+        var action = '@Resources.Global.lblAction';
+           var requestDenyComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
+        var status = '@RequestUI.RequestResourceUI.lblStatus';
+        var comment = '@RequestUI.RequestResourceUI.lblComment';
+    </script>
+}

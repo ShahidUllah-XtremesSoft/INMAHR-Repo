@@ -163,7 +163,7 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>Department</value>
+    <value>Section</value>
   </data>
   <data name="lblDescription" xml:space="preserve">
     <value>Description</value>
@@ -316,7 +316,7 @@
     <value>Other Status (English)</value>
   </data>
   <data name="lblParentDepartment" xml:space="preserve">
-    <value>Parent Department</value>
+    <value>Parent Section</value>
   </data>
   <data name="lblParentDepartmentArb" xml:space="preserve">
     <value>Parent Department (Arabic)</value>

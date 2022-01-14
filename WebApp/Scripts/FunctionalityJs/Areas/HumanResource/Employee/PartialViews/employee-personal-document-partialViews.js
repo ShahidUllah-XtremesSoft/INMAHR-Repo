@@ -2,6 +2,18 @@
 $(function () {
     $('#PersonalDocumentLanguage').val(_currentLanguage);
     $('#PersonalDocumentCreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+
+    //console.log((new URL(location.href)).searchParams.get('id'));
+    var idQueryStirng = (new URL(location.href)).searchParams.get('id');
+    if (idQueryStirng == null) {
+        $('#PersonalDocumentEmployeeId').val(JSON.parse(localStorage.getItem('User')).employeeId);//(new URL(location.href)).searchParams.get('id');
+    }
+    else {
+        $('#PersonalDocumentEmployeeId').val(idQueryStirng);//(new URL(location.href)).searchParams.get('id');
+    }
+    
+
+
     //| Date Picker
     $("#PersonalDocumentReleaseDate").kendoDatePicker({
         format: "yyyy-MM-dd"
@@ -19,6 +31,7 @@ $(function () {
 
     //|Click Event
     $('#btnSaveEmployeePersonalDocument').click(function () {
+
         if (customValidateForm('frmEmployeePersonalDocument')) {
             buttonAddPleaseWait('btnSaveEmployeePersonalDocument');
 
@@ -26,11 +39,12 @@ $(function () {
             var options = {
                 success: function (response, statusText, jqXHR) {
                     buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', 'Save', 'save');
+                    $('#frmEmployeePersonalDocument')[0].reset();
                     $('#PersonalDocumentId').val('0');
                     loadPersonalDocumentsGrid();
                     swal(response);
                     var response = JSON.parse(response);
-                    clearFields();
+
                     //$('#PersonalDocumentId').val(response.insertedId);
                     //if (response.type != 'erorr') {
                     //    window.location.href = '/HumanResource/Employee/List';
@@ -71,11 +85,9 @@ function loadPersonalDocumentsGrid() {
     ajaxRequest({ commandName: 'HR_Employee_PersonalDocument_Get', values: { PersonalDocumentId: $('#PersonalDocumentId').val(), PersonalDocumentEmployeeId: $('#PersonalDocumentEmployeeId').val(), PersonalDocumentLanguage: _currentLanguage }, CallBack: loadPersonalDocumentsGridCallBack });
 }
 var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
-    console.log(JSON.parse(inputDataJSON.Value));
     $('#employeePersonalDocumentGrid tbody').html('');
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var extension = item.currentFileName.split('.').pop().toLowerCase();
-        console.log(item);
         if (extension == 'pdf') {
             var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
         }
@@ -109,7 +121,7 @@ function editEmployeePersonalDocument(e) {
     dropdownlist.value($(e).closest('tr').find(".PersonalDocumentSetupDetailTypeId").text());
 
 }
-function deleteEmployeePersonalDocument(e) {    
+function deleteEmployeePersonalDocument(e) {
     Swal.fire({
         title: 'Are you sure?',
         text: "Do you really want to delete selected record",
@@ -142,24 +154,14 @@ function deleteEmployeePersonalDocument(e) {
         }
     });
     var deleteEmployeePersonalDocumentCallBack = function (response) {
+        $('#frmEmployeePersonalDocument')[0].reset();
         $('#PersonalDocumentId').val(0);
         swal(response.Value);
         loadPersonalDocumentsGrid();
-        clearFields();
+
     }
 
 }
-function clearFields() {
-    $('#PersonalDocumentId').val('0');
 
-    //$("#PersonalDocumentReleaseDate").data("kendoDatePicker").value(null);
-    var personalDocumentReleaseDate = $("#PersonalDocumentReleaseDate").data("kendoDatePicker");
-    personalDocumentReleaseDate.value();
-    //$("#PersonalDocumentExpiryDate").data("kendoDatePicker").value(null);
-    var personalDocumentExpiryDate = $("#PersonalDocumentExpiryDate").data("kendoDatePicker");
-    personalDocumentExpiryDate.value(null);
-    var dropdownlist = $("#PersonalDocumentSetupDetailTypeId").data("kendoDropDownList");
-    dropdownlist.value(-1);
-}
 
 

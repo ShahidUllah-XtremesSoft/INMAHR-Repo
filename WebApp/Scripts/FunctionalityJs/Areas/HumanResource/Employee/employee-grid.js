@@ -68,6 +68,7 @@ function redirectToEmployeeDetailView(e) {
     var grid = $("#employee-grid").data("kendoGrid");
     var dataItem = grid.dataItem(row);
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
+    localStorage.setItem('LoggedInEmployeeId', dataItem.id);
     if (requestFrom == 'employee') {
         window.location.href = '/HumanResource/Employee/Detail';
     }

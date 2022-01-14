@@ -124,6 +124,15 @@ namespace HRUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Document.
+        /// </summary>
+        public static string lblCompanyDocument {
+            get {
+                return ResourceManager.GetString("lblCompanyDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract Type.
         /// </summary>
         public static string lblContractType {
@@ -192,6 +201,24 @@ namespace HRUI {
         public static string lblDepartment {
             get {
                 return ResourceManager.GetString("lblDepartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string lblDescription {
+            get {
+                return ResourceManager.GetString("lblDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description Arabic.
+        /// </summary>
+        public static string lblDescriptonArb {
+            get {
+                return ResourceManager.GetString("lblDescriptonArb", resourceCulture);
             }
         }
         
@@ -574,6 +601,15 @@ namespace HRUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Password English.
+        /// </summary>
+        public static string lblNewPassword {
+            get {
+                return ResourceManager.GetString("lblNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Occupation.
         /// </summary>
         public static string lblOccupation {
@@ -588,6 +624,15 @@ namespace HRUI {
         public static string lblOfficialLetter {
             get {
                 return ResourceManager.GetString("lblOfficialLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password English.
+        /// </summary>
+        public static string lblOldPassword {
+            get {
+                return ResourceManager.GetString("lblOldPassword", resourceCulture);
             }
         }
         
@@ -795,6 +840,15 @@ namespace HRUI {
         public static string lblSocialStatusEng {
             get {
                 return ResourceManager.GetString("lblSocialStatusEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Password Arabic.
+        /// </summary>
+        public static string lblUpdatePassword {
+            get {
+                return ResourceManager.GetString("lblUpdatePassword", resourceCulture);
             }
         }
         

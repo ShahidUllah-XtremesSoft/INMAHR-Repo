@@ -138,6 +138,9 @@
   <data name="lblClose" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="lblCompanyDocument" xml:space="preserve">
+    <value>Company Document</value>
+  </data>
   <data name="lblContractType" xml:space="preserve">
     <value>Contract Type</value>
   </data>
@@ -161,6 +164,12 @@
   </data>
   <data name="lblDepartment" xml:space="preserve">
     <value>Department</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblDescriptonArb" xml:space="preserve">
+    <value>Description Arabic</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>Document</value>
@@ -288,11 +297,17 @@
   <data name="lblNationality" xml:space="preserve">
     <value>Nationality</value>
   </data>
+  <data name="lblNewPassword" xml:space="preserve">
+    <value>New Password English</value>
+  </data>
   <data name="lblOccupation" xml:space="preserve">
     <value>Occupation</value>
   </data>
   <data name="lblOfficialLetter" xml:space="preserve">
     <value>Letter</value>
+  </data>
+  <data name="lblOldPassword" xml:space="preserve">
+    <value>Old Password English</value>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>Other Status (Arabic)</value>
@@ -362,6 +377,9 @@
   </data>
   <data name="lblSocialStatusEng" xml:space="preserve">
     <value>Social Status (English)</value>
+  </data>
+  <data name="lblUpdatePassword" xml:space="preserve">
+    <value>Update Password Arabic</value>
   </data>
   <data name="lblVisaExpiryDate" xml:space="preserve">
     <value>Visa Expiry Date</value>

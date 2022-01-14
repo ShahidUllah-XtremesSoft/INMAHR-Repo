@@ -105,8 +105,18 @@
 
                 <li class="nav-item p-x-10"></li>
                 <li class="nav-item p-x-1" id="LoggedInEmployeeName">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 
+
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> Update Password </button>
+                        <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                    </div>
                 </li>
+
             </ul>
         </div>
     </header>
@@ -129,7 +139,7 @@
                 </div>
             </li>
         </ol>-->
-        <div class="container-fluid">            
+        <div class="container-fluid">
             <div class="">
                 @RenderBody()
             </div>
@@ -146,7 +156,54 @@
         </span>
     </footer>
 
+    <div class="modal fade" id="modal-update-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblCreateUserLogin</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmUpdatePassword" name="frmUpdatePassword" action="/services/Xtreme/multipart" method="post">
+                        <input type="hidden" name="type" id="type" value="Password_Updated" />
+                        <input type="hidden" name="Id" id="Id" value="0" />
+                        <input type="hidden" name="CreateBy" id="CreatedBy" value="0" />
+                        <input type="hidden" name="Language" id="Language" value="" />
+                    
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
+                                    <input class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="Email " required readonly />
+                                </div>
+                            </div>
 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblOldPassword.</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" required  />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">@UserManagement.UserManagementUI.phPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword"  required  />
+                                </div>
+                            </div>
+ 
+ 
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@HRUI.HumanResourceUI.lblClose</button>
+                    <button type="button" class="btn btn-primary" id="btnsave">@HRUI.HumanResourceUI.btnSave</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
 
@@ -214,7 +271,11 @@
         
     });
 
+    $('#btn-update-password').click(function () {
 
+        $('#modal-update-password').modal('show');
+        
+    });
 
     function formatDate(date) {
         if (date != null) {

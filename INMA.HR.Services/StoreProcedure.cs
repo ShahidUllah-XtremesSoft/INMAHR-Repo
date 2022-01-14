@@ -57,6 +57,13 @@
     #endregion
 
 
+    #region Human Resource Profession
+    HR_CompanyDocuments_Save,
+    HR_CompanyDocument_GetAll,
+    HR_CompanyDocument_Delete,
+    #endregion
+
+
 
     #region Human Resource Nationality
 

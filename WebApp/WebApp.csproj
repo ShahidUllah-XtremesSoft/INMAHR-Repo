@@ -231,6 +231,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeResourcesUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\HumanResource\Controllers\CompanyDocumentController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\ContractTypeController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\DepartmentController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\EmployeeController.cs" />
@@ -351,6 +352,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\CompanyDocument\company-document-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\CompanyDocument\company-document-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-view.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
@@ -1063,6 +1066,7 @@
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalInfoPartialView.cshtml" />
     <Content Include="Areas\Employees\Views\Attendance\Personal.cshtml" />
     <Content Include="Areas\Employees\Views\Shared\PartialViews\Attendance\_EmployeeAttendancePartialView.cshtml" />
+    <Content Include="Areas\HumanResource\Views\CompanyDocument\Index.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1171,6 +1175,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\tinymce.min.js" />
+    <Content Include="Temp\test.txt" />
     <Content Include="theme\assets\extra-libs\calendar\calendar.css" />
     <Content Include="theme\assets\extra-libs\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.css" />
     <Content Include="theme\assets\extra-libs\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
@@ -2369,7 +2374,6 @@
     <Folder Include="Areas\UserManagement\Data\" />
     <Folder Include="Exceptions\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
-    <Folder Include="Temp\" />
     <Folder Include="_logs\" />
   </ItemGroup>
   <ItemGroup>

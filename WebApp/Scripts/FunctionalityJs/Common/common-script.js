@@ -39,6 +39,10 @@ $(document).ready(function () {
         // Hide image container
         $('#RequestLoader').hide();
     });
+    $(document).ajaxError(function () {
+        // Hide image container
+        $('#RequestLoader').hide();
+    });
 });
 
 var ajaxRequest = function (options) {

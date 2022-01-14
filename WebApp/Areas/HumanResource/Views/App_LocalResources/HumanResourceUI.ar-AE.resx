@@ -154,7 +154,7 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>القسم</value>
+    <value>Section Arb</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>
@@ -286,10 +286,10 @@
     <value>(بالغات الانجليزية)وضعيات أخرى</value>
   </data>
   <data name="lblParentDepartment" xml:space="preserve">
-    <value>القسم الرئيسية</value>
+    <value>Parent Section Arb</value>
   </data>
   <data name="lblParentDepartmentArb" xml:space="preserve">
-    <value>القسم الرئيسية</value>
+    <value>الجزء الرئيسية</value>
   </data>
   <data name="lblParentDepartmentEng" xml:space="preserve">
     <value>Parent Department (English)</value>

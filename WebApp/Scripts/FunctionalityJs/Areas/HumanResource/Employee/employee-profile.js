@@ -493,7 +493,7 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
     var fileCount = 1;
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var extension = item.currentFileName.split('.').pop().toLowerCase();
-        console.log(item);
+        //console.log(item);
         if (extension == 'pdf') {
             var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
         }
@@ -524,7 +524,7 @@ var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
     var fileCount = 1;
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var extension = item.currentFileName.split('.').pop().toLowerCase();
-        console.log(item);
+        //console.log(item);
         if (extension == 'pdf') {
             var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
         }

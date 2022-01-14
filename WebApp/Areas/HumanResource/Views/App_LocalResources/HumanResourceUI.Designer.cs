@@ -187,7 +187,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Department.
+        ///   Looks up a localized string similar to Section.
         /// </summary>
         public static string lblDepartment {
             get {
@@ -610,7 +610,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parent Department.
+        ///   Looks up a localized string similar to Parent Section.
         /// </summary>
         public static string lblParentDepartment {
             get {

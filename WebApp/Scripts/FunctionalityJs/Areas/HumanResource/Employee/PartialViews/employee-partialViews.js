@@ -39,10 +39,9 @@ function lodEmployeeById() {
     }
 }
 function loadClientDataByID(d) {
-    debugger;
-
+    
     setResponseToFormInputs(d);
-    console.log(''+d.Value);
+    //console.log(''+d.Value);
     setTimeout(function () {
     var dropdowntree = $("#DepartmentId").data("kendoDropDownTree");
         dropdowntree.value(JSON.parse(d.Value).departmentId);

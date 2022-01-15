@@ -124,7 +124,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Company Document.
+        ///   Looks up a localized string similar to Company Document (English).
         /// </summary>
         public static string lblCompanyDocument {
             get {
@@ -205,7 +205,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description.
+        ///   Looks up a localized string similar to Description (English).
         /// </summary>
         public static string lblDescription {
             get {
@@ -214,7 +214,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description Arabic.
+        ///   Looks up a localized string similar to Description ( Arabic ).
         /// </summary>
         public static string lblDescriptonArb {
             get {
@@ -844,7 +844,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Password Arabic.
+        ///   Looks up a localized string similar to Update Password (English).
         /// </summary>
         public static string lblUpdatePassword {
             get {
@@ -885,6 +885,15 @@ namespace HRUI {
         public static string lblVisaSponsorship {
             get {
                 return ResourceManager.GetString("lblVisaSponsorship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near to expire document (English).
+        /// </summary>
+        public static string nearToExpireModalHeader {
+            get {
+                return ResourceManager.GetString("nearToExpireModalHeader", resourceCulture);
             }
         }
         

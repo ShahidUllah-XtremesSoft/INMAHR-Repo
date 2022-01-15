@@ -139,7 +139,7 @@
     <value>أغلق</value>
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
-    <value>Company Document</value>
+    <value>Company Document (Arabic)</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>نوع العقد</value>
@@ -160,10 +160,10 @@
     <value>Section Arb</value>
   </data>
   <data name="lblDescription" xml:space="preserve">
-    <value>Desciption</value>
+    <value>Desciption (English)</value>
   </data>
   <data name="lblDescriptonArb" xml:space="preserve">
-    <value>Description Arabic</value>
+    <value>Description ( Arabic )</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>
@@ -364,7 +364,7 @@
     <value>Social Status  (English)</value>
   </data>
   <data name="lblUpdatePassword" xml:space="preserve">
-    <value>Update Password Arabic</value>
+    <value>Update Password (Arabic)</value>
   </data>
   <data name="lblVisaExpiryDate" xml:space="preserve">
     <value>تاريخ انتهاء الإقامة</value>
@@ -377,6 +377,9 @@
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
     <value>كفالة</value>
+  </data>
+  <data name="nearToExpireModalHeader" xml:space="preserve">
+    <value>Near to expire document (Arabic)</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>

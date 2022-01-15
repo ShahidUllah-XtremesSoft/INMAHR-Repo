@@ -123,7 +123,8 @@
                     <div class="dropdown-menu dropdown-menu-right">
 
                         <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> Update Password </button>
-                        <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> Logout </button>
+                        
                     </div>
                 </li>
 
@@ -171,37 +172,35 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblCreateUserLogin</h4>
+                    <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblUpdatePassword</h4>
                 </div>
                 <div class="modal-body">
                     <form id="frmUpdatePassword" name="frmUpdatePassword" action="/services/Xtreme/multipart" method="post">
-                        <input type="hidden" name="type" id="type" value="Password_Updated" />
+                        <input type="hidden" name="type" id="type" value="Users_UpdatedPassword" />
                         <input type="hidden" name="Id" id="Id" value="0" />
                         <input type="hidden" name="CreateBy" id="CreatedBy" value="0" />
                         <input type="hidden" name="Language" id="Language" value="" />
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="col-form-label">@HRUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
-                                    <input class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="Email " required readonly />
+                                    <input class="form-control" id="EmployeeNum" name="EmployeeNum"  required readonly />
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblOldPassword.</label><span style="color: red">*</span>
-                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" required />
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblOldPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" value="12345" readonly required  />
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="col-form-label">@UserManagement.UserManagementUI.phPassword</label><span style="color: red">*</span>
-                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword" required />
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblNewPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword"  required  />
                                 </div>
                             </div>
-
-
                         </div>
 
                     </form>
@@ -209,7 +208,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">@HRUI.HumanResourceUI.lblClose</button>
-                    <button type="button" class="btn btn-primary" id="btnsave">@HRUI.HumanResourceUI.btnSave</button>
+                    <button type="button" class="btn btn-primary" id="btn-update-user-password">@HRUI.HumanResourceUI.btnSave</button>
                 </div>
             </div>
         </div>
@@ -289,14 +288,54 @@
        
 
     });
-   
+
+
+    $('#btn-logout').click(function () {
+        window.location.href = '/User/Login';
+    });
 
 
     $('#btn-update-password').click(function () {
-
+        
+        var test = localStorage.getItem('EmployeeNumber');
+        $('#EmployeeNum').val(test);
         $('#modal-update-password').modal('show');
+    });
+
+    $('#btn-update-user-password').click(function () {
+       
+        if (customValidateForm('frmUpdatePassword')) {
+            $("#frmUpdatePassword").ajaxForm();
+            buttonAddPleaseWait('btn-update-user-password');
+            var options = {
+                success: function (response, statusText, jqXHR) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Password changed successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(function () { window.location.href = '/User/Login' }, 1500);
+                },
+                error: function (xhr, status, error) {
+                    buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+                    var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                    alert(errmsg);
+                }
+                , complete: function () {
+                    buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+                }
+            };
+            $("#frmUpdatePassword").ajaxSubmit(options);
+        }
+        else {
+
+            buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+        }
 
     });
+
 
     function formatDate(date) {
         if (date != null) {

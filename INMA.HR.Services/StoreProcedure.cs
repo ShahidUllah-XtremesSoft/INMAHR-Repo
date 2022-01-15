@@ -9,6 +9,7 @@
 
     UserManagement_Login_Save,
     Users_ChangePassword,
+    Users_UpdatedPassword,
 
     #region HR_Employee
 

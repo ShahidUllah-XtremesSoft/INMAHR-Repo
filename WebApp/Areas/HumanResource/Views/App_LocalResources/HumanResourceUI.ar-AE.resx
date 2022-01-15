@@ -364,7 +364,7 @@
     <value>Social Status  (English)</value>
   </data>
   <data name="lblUpdatePassword" xml:space="preserve">
-    <value>Update Password Arabic</value>
+    <value>Update Password (Arabic)</value>
   </data>
   <data name="lblVisaExpiryDate" xml:space="preserve">
     <value>تاريخ انتهاء الإقامة</value>
@@ -377,6 +377,9 @@
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
     <value>كفالة</value>
+  </data>
+  <data name="nearToExpireModalHeader" xml:space="preserve">
+    <value>Near to expire document (Arabic)</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>

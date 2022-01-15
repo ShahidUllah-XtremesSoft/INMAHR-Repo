@@ -31,6 +31,7 @@
 
     HR_Employee_PersonalDocument_Delete,
     HR_Employee_PersonalDocument_Exist,
+    HR_Employee_EducationalDocument_GetNearToExpire,
     #endregion
     #region Employee Educational Document
     HR_Employee_EducationalDocument_Save,

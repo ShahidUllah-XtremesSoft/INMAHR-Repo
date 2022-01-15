@@ -139,7 +139,7 @@
     <value>أغلق</value>
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
-    <value>Company Document</value>
+    <value>Company Document (Arabic)</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>نوع العقد</value>
@@ -160,10 +160,10 @@
     <value>Section Arb</value>
   </data>
   <data name="lblDescription" xml:space="preserve">
-    <value>Desciption</value>
+    <value>Desciption (English)</value>
   </data>
   <data name="lblDescriptonArb" xml:space="preserve">
-    <value>Description Arabic</value>
+    <value>Description ( Arabic )</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>

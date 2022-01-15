@@ -31,7 +31,7 @@ var bindCompanyDocumentGrid = function (inputDataJSON) {
         {
             field: "",
             width: 40,
-            title: 'Attachment',
+            title: attachment,
             template: "<a style='font-size:20px;cursor:pointer;' onClick= viewAttachment('#=currentFileName#')  title='Download Attachment'>#if(currentFileName == null){}else{ if(currentFileName.split('.').pop().toLowerCase() == 'pdf'){#<img src='/Content/Images/pdf.png' style='width:30px;cursor:pointer;'/></a>#} else {#<img src='/Content/Images/ImageIcon.png' style='width:33px;height:34px;cursor:pointer;'/></a>#} }#"
         },
         {

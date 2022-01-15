@@ -133,7 +133,10 @@
     <value>بدل نقدن للاجازة</value>
   </data>
   <data name="lblCertificateName" xml:space="preserve">
-    <value>اسم الشهادة</value>
+    <value>اسم الشهادة (بالغات الانجليزية)</value>
+  </data>
+  <data name="lblCertificateNameArb" xml:space="preserve">
+    <value>اسم الشهادة (بالغات العربية)</value>
   </data>
   <data name="lblClose" xml:space="preserve">
     <value>أغلق</value>

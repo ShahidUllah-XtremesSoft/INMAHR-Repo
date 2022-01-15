@@ -106,11 +106,20 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Certificate Name.
+        ///   Looks up a localized string similar to Certificate Name (English).
         /// </summary>
         public static string lblCertificateName {
             get {
                 return ResourceManager.GetString("lblCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificate Name (Arabic).
+        /// </summary>
+        public static string lblCertificateNameArb {
+            get {
+                return ResourceManager.GetString("lblCertificateNameArb", resourceCulture);
             }
         }
         
@@ -844,7 +853,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Password (English).
+        ///   Looks up a localized string similar to Update Password .
         /// </summary>
         public static string lblUpdatePassword {
             get {
@@ -889,7 +898,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Near to expire document (English).
+        ///   Looks up a localized string similar to Near to expire document .
         /// </summary>
         public static string nearToExpireModalHeader {
             get {

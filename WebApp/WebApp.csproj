@@ -359,6 +359,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeeEducationalDocumentGridPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalDocumentGridPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Common\common-labels.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\ContractType\contract-grid.js" />
@@ -1073,6 +1074,7 @@
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalDocumentGridPartialView.cshtml" />
     <Content Include="Areas\Employees\Views\Document\Index.cshtml" />
     <Content Include="Areas\HumanResource\Views\CompanyDocument\Index.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />

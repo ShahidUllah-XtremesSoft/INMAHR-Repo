@@ -10,7 +10,7 @@ function viewNearToExpireDocumentsModalGrid() {
 function loadNearToExpireDocumentGrid() {
 
     //values - are key value pair json object
-    ajaxRequest({ commandName: 'HR_Employee_EducationalDocument_GetNearToExpire', values: { Language: _currentLanguage }, CallBack: loadNearToExpireDocumentGridCallBack });
+    ajaxRequest({ commandName: 'HR_Employee_PersonalDocument_GetNearToExpire', values: { Language: _currentLanguage }, CallBack: loadNearToExpireDocumentGridCallBack });
 }
 var loadNearToExpireDocumentGridCallBack = function (inputDataJSON) {
     bindloadNearToExpireDocumentGrid(JSON.parse(inputDataJSON.Value));

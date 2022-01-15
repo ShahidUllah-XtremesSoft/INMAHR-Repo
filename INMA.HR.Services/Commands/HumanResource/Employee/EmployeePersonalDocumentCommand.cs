@@ -94,8 +94,8 @@ namespace INMA.HR.Services
 
         }
     }
-    [Command(Name = "HR_Employee_EducationalDocument_GetNearToExpire")]
-    public class HR_Employee_EducationalDocument_GetNearToExpireCommand : CamelCommandBase
+    [Command(Name = "HR_Employee_PersonalDocument_GetNearToExpire")]
+    public class HR_Employee_PersonalDocument_GetNearToExpireCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
@@ -110,7 +110,7 @@ namespace INMA.HR.Services
             IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
             values = _params.Get(model);
-            return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_EducationalDocument_GetNearToExpire.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_PersonalDocument_GetNearToExpire.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
         }
     }

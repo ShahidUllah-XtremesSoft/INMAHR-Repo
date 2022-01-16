@@ -42,7 +42,7 @@
         .k-widget .k-icon.k-i-collapse, .k-widget .k-icon.k-i-expand {
             padding-left: @Resources.Global.treeViewPaddingLeft;
         }
-        .modal {
+        #RequestLoader {
             position: fixed;
             z-index: 999;
             height: 100%;
@@ -90,6 +90,9 @@
             <h3>Loading...</h3>
         </div>
     </div>
+    @{
+                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
+    }
     <header class="navbar">
         <div class="container-fluid">
             <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
@@ -100,13 +103,31 @@
                     <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
 
+            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid();"><i class="fa fa-file-o"></i> Document <span class="badge badge-danger" id="documentCount">0</span></a>
+                       
+                    </div>
+                </li>
 
                 <li class="nav-item p-x-10"></li>
                 <li class="nav-item p-x-1" id="LoggedInEmployeeName">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 
+
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> Update Password </button>
+                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> Logout </button>
+                        
+                    </div>
                 </li>
+
             </ul>
         </div>
     </header>
@@ -129,7 +150,7 @@
                 </div>
             </li>
         </ol>-->
-        <div class="container-fluid">            
+        <div class="container-fluid">
             <div class="">
                 @RenderBody()
             </div>
@@ -146,7 +167,52 @@
         </span>
     </footer>
 
+    <div class="modal fade" id="modal-update-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblUpdatePassword</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmUpdatePassword" name="frmUpdatePassword" action="/services/Xtreme/multipart" method="post">
+                        <input type="hidden" name="type" id="type" value="Users_UpdatedPassword" />
+                        <input type="hidden" name="Id" id="Id" value="0" />
+                        <input type="hidden" name="CreateBy" id="CreatedBy" value="0" />
+                        <input type="hidden" name="Language" id="Language" value="" />
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
+                                    <input class="form-control" id="EmployeeNum" name="EmployeeNum"  required readonly />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblOldPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" value="12345" readonly required  />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblNewPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword"  required  />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@HRUI.HumanResourceUI.lblClose</button>
+                    <button type="button" class="btn btn-primary" id="btn-update-user-password">@HRUI.HumanResourceUI.btnSave</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
 
@@ -180,14 +246,21 @@
     <script src="~/Scripts/tinymce.min.js"></script>
     <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>
     <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
-
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>
 
 
 </body>
 
 </html>
 <script>
-    var _currentLanguage ='@Resources.Common.CurrentLang';
+    var _currentLanguage = '@Resources.Common.CurrentLang';
+
+    //Columns
+    var employeeNumber = '@HRUI.HumanResourceUI.lblEmpNum';
+    var employeeName = '@HRUI.HumanResourceUI.lblEmployeeName';
+    var documentType = '@HRUI.HumanResourceUI.lblEducationalDocument';
+    var expiryDate = '@HRUI.HumanResourceUI.lblExpiryDate';
+    var section = '@HRUI.HumanResourceUI.lblDepartment';
     $(function () {
 
         $('#LayoutCurrentLanguage').val(_currentLanguage);
@@ -211,9 +284,57 @@
             addTinyMCE();
 
         }, 500);
-        
+
+       
+
     });
 
+
+    $('#btn-logout').click(function () {
+        window.location.href = '/User/Login';
+    });
+
+
+    $('#btn-update-password').click(function () {
+        
+        var test = localStorage.getItem('EmployeeNumber');
+        $('#EmployeeNum').val(test);
+        $('#modal-update-password').modal('show');
+    });
+
+    $('#btn-update-user-password').click(function () {
+       
+        if (customValidateForm('frmUpdatePassword')) {
+            $("#frmUpdatePassword").ajaxForm();
+            buttonAddPleaseWait('btn-update-user-password');
+            var options = {
+                success: function (response, statusText, jqXHR) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Password changed successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(function () { window.location.href = '/User/Login' }, 1500);
+                },
+                error: function (xhr, status, error) {
+                    buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+                    var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                    alert(errmsg);
+                }
+                , complete: function () {
+                    buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+                }
+            };
+            $("#frmUpdatePassword").ajaxSubmit(options);
+        }
+        else {
+
+            buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+        }
+
+    });
 
 
     function formatDate(date) {

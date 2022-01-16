@@ -1,7 +1,14 @@
 ﻿
 $(function () {
     $('#EducationalDocumentLanguage').val(_currentLanguage);
-
+    var idQueryStirng = (new URL(location.href)).searchParams.get('id');
+    if (idQueryStirng == null) {
+        $('#EducationalDocumentEmployeeId').val(JSON.parse(localStorage.getItem('User')).employeeId);
+    }
+    else {
+        $('#EducationalDocumentEmployeeId').val(idQueryStirng);//(new URL(location.href)).searchParams.get('id');
+    }
+    
     //| Date Picker
     $("#EducationalDocumentReleaseDate").kendoDatePicker({
         format: "yyyy-MM-dd"
@@ -16,7 +23,7 @@ $(function () {
     //|End Function Calling
 
     //|Click Event
-    $('#btnSaveEmployeeEducationalDocument').click(function () {
+    $('#btnSaveEmployeeEducationalDocument').click(function () {        
         if (customValidateForm('frmEmployeeEducationalDocument')) {
             buttonAddPleaseWait('btnSaveEmployeeEducationalDocument');
 
@@ -24,11 +31,12 @@ $(function () {
             var options = {
                 success: function (response, statusText, jqXHR) {
                     buttonRemovePleaseWait('btnSaveEmployeeEducationalDocument', 'Save', 'save');
+                    $('#frmEmployeeEducationalDocument')[0].reset();
                     $('#EducationalDocumentId').val('0');
                     loadEducationalDocumentsGrid();
                     swal(response);
                     var response = JSON.parse(response);
-                    clearFields();
+                    //clearFields();
                     //$('#EducationalDocumentId').val(response.insertedId);
                     //if (response.type != 'erorr') {
                     //    window.location.href = '/HumanResource/Employee/List';
@@ -70,11 +78,11 @@ function loadEducationalDocumentsGrid() {
 }
 var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
      
-    console.log(JSON.parse(inputDataJSON.Value));
+    //console.log(JSON.parse(inputDataJSON.Value));
     $('#employeeEducationalDocumentGrid tbody').html('');
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var extension = item.currentFileName.split('.').pop().toLowerCase();
-        console.log(item);
+        //console.log(item);
         if (extension == 'pdf') {
             var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
         }
@@ -99,7 +107,7 @@ var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
             '<a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeeEducationalDocument(this)"></i></a>' +
             '</td>' +
             '</tr > '
-        console.log(tr);
+        //console.log(tr);
         $('#employeeEducationalDocumentGrid tbody').append(
             tr
            
@@ -154,26 +162,15 @@ function deleteEmployeeEducationalDocument(e) {
         }
     });
     var deleteEmployeeEducationalDocumentCallBack = function (response) {
+        $('#frmEmployeeEducationalDocument')[0].reset();
         $('#EducationalDocumentId').val(0);
         swal(response.Value);
         loadEducationalDocumentsGrid();
-        clearFields();
+        
     }
 
 }
-function clearFields() {
-    $('#EducationalDocumentFile').val('');
-    $('#EducationalDocumentId').val('');
-    $('#EducationalDocumentDegreeNameEng').val('');
-    $('#EducationalDocumentDegreeNameArb').val('');
-    $('#EducationalDocumentInstituteEng').val('');
-    $('#EducationalDocumentInstituteArb').val('');
-    $('#EducationalDocumentMarks').val('');
-    $("#EducationalDocumentReleaseDate").data("kendoDatePicker").value(null);
 
-    var dropdownlist = $("#EducationalDocumentDegreeFromCountryId").data("kendoDropDownList");
-    dropdownlist.value(-1);
-}
 
 
 function loadEducationalDocumentDegreeFromCountryDropdownList(isBindChangeEvent = true) {

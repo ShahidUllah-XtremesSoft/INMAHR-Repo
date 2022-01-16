@@ -77,7 +77,7 @@ namespace INMA.HR.Services
                 Service = new FileUploadService();
                 foreach (var file in model.UploadedFiles)
                 {
-                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.Employee, (int)_response.InsertedId, (int)DocumentType.EmployeeProfileImage, XtremeFactory._factory, XtremeFactory.connectionString);
+                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.Company, (int)_response.InsertedId, (int)DocumentType.CompanyDocument, XtremeFactory._factory, XtremeFactory.connectionString);
 
                 }
             }

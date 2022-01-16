@@ -133,10 +133,16 @@
     <value>Cash In Leiu</value>
   </data>
   <data name="lblCertificateName" xml:space="preserve">
-    <value>Certificate Name</value>
+    <value>Certificate Name (English)</value>
+  </data>
+  <data name="lblCertificateNameArb" xml:space="preserve">
+    <value>Certificate Name (Arabic)</value>
   </data>
   <data name="lblClose" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="lblCompanyDocument" xml:space="preserve">
+    <value>Company Document (English)</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>Contract Type</value>
@@ -160,7 +166,13 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>Department</value>
+    <value>Section</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
+  <data name="lblDescriptonArb" xml:space="preserve">
+    <value>Description ( Arabic )</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>Document</value>
@@ -288,11 +300,17 @@
   <data name="lblNationality" xml:space="preserve">
     <value>Nationality</value>
   </data>
+  <data name="lblNewPassword" xml:space="preserve">
+    <value>New Password English</value>
+  </data>
   <data name="lblOccupation" xml:space="preserve">
     <value>Occupation</value>
   </data>
   <data name="lblOfficialLetter" xml:space="preserve">
     <value>Letter</value>
+  </data>
+  <data name="lblOldPassword" xml:space="preserve">
+    <value>Old Password English</value>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>Other Status (Arabic)</value>
@@ -301,7 +319,7 @@
     <value>Other Status (English)</value>
   </data>
   <data name="lblParentDepartment" xml:space="preserve">
-    <value>Parent Department</value>
+    <value>Parent Section</value>
   </data>
   <data name="lblParentDepartmentArb" xml:space="preserve">
     <value>Parent Department (Arabic)</value>
@@ -363,6 +381,9 @@
   <data name="lblSocialStatusEng" xml:space="preserve">
     <value>Social Status (English)</value>
   </data>
+  <data name="lblUpdatePassword" xml:space="preserve">
+    <value>Update Password </value>
+  </data>
   <data name="lblVisaExpiryDate" xml:space="preserve">
     <value>Visa Expiry Date</value>
   </data>
@@ -374,6 +395,9 @@
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
     <value>Sponsorship</value>
+  </data>
+  <data name="nearToExpireModalHeader" xml:space="preserve">
+    <value>Near to expire document </value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>Educational Document</value>

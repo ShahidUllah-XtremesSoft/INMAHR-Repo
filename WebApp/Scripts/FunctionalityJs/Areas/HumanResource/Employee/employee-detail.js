@@ -394,7 +394,7 @@ function declineShortLeave(event) {
    
 }
 var declineShortLeaveCallBack = function (response) {
-    console.log(response);
+    //console.log(response);
     loadShortLeaveGrid();
     swal(response.Value);
 

@@ -106,11 +106,20 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Certificate Name.
+        ///   Looks up a localized string similar to Certificate Name (English).
         /// </summary>
         public static string lblCertificateName {
             get {
                 return ResourceManager.GetString("lblCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificate Name (Arabic).
+        /// </summary>
+        public static string lblCertificateNameArb {
+            get {
+                return ResourceManager.GetString("lblCertificateNameArb", resourceCulture);
             }
         }
         
@@ -120,6 +129,15 @@ namespace HRUI {
         public static string lblClose {
             get {
                 return ResourceManager.GetString("lblClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Document (English).
+        /// </summary>
+        public static string lblCompanyDocument {
+            get {
+                return ResourceManager.GetString("lblCompanyDocument", resourceCulture);
             }
         }
         
@@ -187,11 +205,29 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Department.
+        ///   Looks up a localized string similar to Section.
         /// </summary>
         public static string lblDepartment {
             get {
                 return ResourceManager.GetString("lblDepartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description (English).
+        /// </summary>
+        public static string lblDescription {
+            get {
+                return ResourceManager.GetString("lblDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description ( Arabic ).
+        /// </summary>
+        public static string lblDescriptonArb {
+            get {
+                return ResourceManager.GetString("lblDescriptonArb", resourceCulture);
             }
         }
         
@@ -574,6 +610,15 @@ namespace HRUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Password English.
+        /// </summary>
+        public static string lblNewPassword {
+            get {
+                return ResourceManager.GetString("lblNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Occupation.
         /// </summary>
         public static string lblOccupation {
@@ -588,6 +633,15 @@ namespace HRUI {
         public static string lblOfficialLetter {
             get {
                 return ResourceManager.GetString("lblOfficialLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password English.
+        /// </summary>
+        public static string lblOldPassword {
+            get {
+                return ResourceManager.GetString("lblOldPassword", resourceCulture);
             }
         }
         
@@ -610,7 +664,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parent Department.
+        ///   Looks up a localized string similar to Parent Section.
         /// </summary>
         public static string lblParentDepartment {
             get {
@@ -799,6 +853,15 @@ namespace HRUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Password .
+        /// </summary>
+        public static string lblUpdatePassword {
+            get {
+                return ResourceManager.GetString("lblUpdatePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Visa Expiry Date.
         /// </summary>
         public static string lblVisaExpiryDate {
@@ -831,6 +894,15 @@ namespace HRUI {
         public static string lblVisaSponsorship {
             get {
                 return ResourceManager.GetString("lblVisaSponsorship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near to expire document .
+        /// </summary>
+        public static string nearToExpireModalHeader {
+            get {
+                return ResourceManager.GetString("nearToExpireModalHeader", resourceCulture);
             }
         }
         

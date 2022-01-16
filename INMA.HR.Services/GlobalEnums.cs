@@ -12,6 +12,7 @@ namespace INMA.HR.Services
         Employee = 1,
         Requests = 2,
         InternalLetter = 3,
+        Company = 4,
     }
     public enum DocumentType
     {
@@ -19,6 +20,7 @@ namespace INMA.HR.Services
         EmployeePersonalDocument = 2,
         EmployeeEducationalDocument = 3,
         InternalLetterAttachment = 4,
+        CompanyDocument = 5,
 
 
     }

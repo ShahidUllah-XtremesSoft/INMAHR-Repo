@@ -493,7 +493,7 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
     var fileCount = 1;
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var extension = item.currentFileName.split('.').pop().toLowerCase();
-        console.log(item);
+        //console.log(item);
         if (extension == 'pdf') {
             var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
         }
@@ -524,7 +524,7 @@ var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
     var fileCount = 1;
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var extension = item.currentFileName.split('.').pop().toLowerCase();
-        console.log(item);
+        //console.log(item);
         if (extension == 'pdf') {
             var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
         }
@@ -566,28 +566,30 @@ function loadEmployeeAnnualLeaveBalanceDeductionGrid() {
     ajaxRequest({ commandName: 'HR_Employee_Leave_TakenDetail_Get', values: { EmployeeId: $('#EmployeeId').val(), Language: _currentLanguage }, CallBack: loadEmployeeAnnualLeaveBalanceDeductionGridCallBack });
 }
 var loadEmployeeAnnualLeaveBalanceDeductionGridCallBack = function (inputDataJSON) {
-  
+
+    //This code is commented as per sir shahid instructions.
+    // This is the leave detail code 
    
-    $('#employeeAnnualLeaveBalanceDeductionGrid tbody').html('');
-    var fileCount = 1,totalLeave = 0;
-    JSON.parse(inputDataJSON.Value).forEach(function (item) {        
-        var tr = '<tr>' +
-            '<td>' + fileCount + '</td>' +            
-            '<td class="leaveType">' + item.leaveType + '</td>' +
-            '<td class="startDate">' + item.startDate + '</td>' +
-            '<td class="takenLeave">' + item.takenLeave + '</td>' +          
-            '</tr > '
-        totalLeave += item.takenLeave;
-        $('#employeeAnnualLeaveBalanceDeductionGrid tbody').append(
-            tr
+    //$('#employeeAnnualLeaveBalanceDeductionGrid tbody').html('');
+    //var fileCount = 1,totalLeave = 0;
+    //JSON.parse(inputDataJSON.Value).forEach(function (item) {        
+    //    var tr = '<tr>' +
+    //        '<td>' + fileCount + '</td>' +            
+    //        '<td class="leaveType">' + item.leaveType + '</td>' +
+    //        '<td class="startDate">' + item.startDate + '</td>' +
+    //        '<td class="takenLeave">' + item.takenLeave + '</td>' +          
+    //        '</tr > '
+    //    totalLeave += item.takenLeave;
+    //    $('#employeeAnnualLeaveBalanceDeductionGrid tbody').append(
+    //        tr
 
-        );
-        fileCount += 1;
-    });
-    $('#employeeAnnualLeaveBalanceDeductionGrid tbody').append(
-        '<tr><td>Total</td><td></td><td></td><td>' + totalLeave + '</td></tr>'
+    //    );
+    //    fileCount += 1;
+    //});
+    //$('#employeeAnnualLeaveBalanceDeductionGrid tbody').append(
+    //    '<tr><td>Total</td><td></td><td></td><td>' + totalLeave + '</td></tr>'
 
-    );
+    //);
 }
 //|End //| Employee Annual Leave Balance Deduction
 

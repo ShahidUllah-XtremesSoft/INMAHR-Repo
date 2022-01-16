@@ -9,6 +9,7 @@
 
     UserManagement_Login_Save,
     Users_ChangePassword,
+    Users_UpdatedPassword,
 
     #region HR_Employee
 
@@ -30,6 +31,7 @@
 
     HR_Employee_PersonalDocument_Delete,
     HR_Employee_PersonalDocument_Exist,
+    HR_Employee_PersonalDocument_GetNearToExpire,
     #endregion
     #region Employee Educational Document
     HR_Employee_EducationalDocument_Save,
@@ -54,6 +56,13 @@
     HR_Profession_Save,
     HR_Profession_Delete,
 
+    #endregion
+
+
+    #region Human Resource Profession
+    HR_CompanyDocuments_Save,
+    HR_CompanyDocument_GetAll,
+    HR_CompanyDocument_Delete,
     #endregion
 
 

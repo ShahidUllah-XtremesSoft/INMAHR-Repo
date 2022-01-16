@@ -39,6 +39,10 @@ $(document).ready(function () {
         // Hide image container
         $('#RequestLoader').hide();
     });
+    $(document).ajaxError(function () {
+        // Hide image container
+        $('#RequestLoader').hide();
+    });
 });
 
 var ajaxRequest = function (options) {
@@ -142,8 +146,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
 
 }
-var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
-
+var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {    
     $("#" + $gridid).kendoGrid({
         //toolbar: ["excel", "pdf", "search"],
         //pdf: {

@@ -133,10 +133,16 @@
     <value>بدل نقدن للاجازة</value>
   </data>
   <data name="lblCertificateName" xml:space="preserve">
-    <value>اسم الشهادة</value>
+    <value>اسم الشهادة (بالغات الانجليزية)</value>
+  </data>
+  <data name="lblCertificateNameArb" xml:space="preserve">
+    <value>اسم الشهادة (بالغات العربية)</value>
   </data>
   <data name="lblClose" xml:space="preserve">
     <value>أغلق</value>
+  </data>
+  <data name="lblCompanyDocument" xml:space="preserve">
+    <value>Company Document (Arabic)</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>نوع العقد</value>
@@ -154,7 +160,13 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>القسم</value>
+    <value>Section Arb</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>Desciption (English)</value>
+  </data>
+  <data name="lblDescriptonArb" xml:space="preserve">
+    <value>Description ( Arabic )</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>
@@ -273,11 +285,17 @@
   <data name="lblNationality" xml:space="preserve">
     <value>الجنسية</value>
   </data>
+  <data name="lblNewPassword" xml:space="preserve">
+    <value>New Password Arabic</value>
+  </data>
   <data name="lblOccupation" xml:space="preserve">
     <value>المهنة</value>
   </data>
   <data name="lblOfficialLetter" xml:space="preserve">
     <value>رسالة رسمية</value>
+  </data>
+  <data name="lblOldPassword" xml:space="preserve">
+    <value>Old Password Arabic</value>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>(بالغات العربية) وضعيات أخرى</value>
@@ -286,10 +304,10 @@
     <value>(بالغات الانجليزية)وضعيات أخرى</value>
   </data>
   <data name="lblParentDepartment" xml:space="preserve">
-    <value>القسم الرئيسية</value>
+    <value>Parent Section Arb</value>
   </data>
   <data name="lblParentDepartmentArb" xml:space="preserve">
-    <value>القسم الرئيسية</value>
+    <value>الجزء الرئيسية</value>
   </data>
   <data name="lblParentDepartmentEng" xml:space="preserve">
     <value>Parent Department (English)</value>
@@ -348,6 +366,9 @@
   <data name="lblSocialStatusEng" xml:space="preserve">
     <value>Social Status  (English)</value>
   </data>
+  <data name="lblUpdatePassword" xml:space="preserve">
+    <value>Update Password (Arabic)</value>
+  </data>
   <data name="lblVisaExpiryDate" xml:space="preserve">
     <value>تاريخ انتهاء الإقامة</value>
   </data>
@@ -359,6 +380,9 @@
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
     <value>كفالة</value>
+  </data>
+  <data name="nearToExpireModalHeader" xml:space="preserve">
+    <value>Near to expire document (Arabic)</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>

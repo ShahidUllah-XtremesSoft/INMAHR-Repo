@@ -66,5 +66,28 @@ namespace INMA.HR.Services.Commands.UserManagement
             var _response = repository.GetSingle<dynamic>(StoreProcedure.UserManagement_Login_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
             return _response;
         }
+    }  
+    [Command(Name = "Users_UpdatedPassword")]
+    public class Users_UpdatedPasswordCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeNum = string.Empty,
+                OldPassword = string.Empty,
+                NewPassword = string.Empty,
+                Language  = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            IDictionary<string, object> ImageValues = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Users_UpdatedPassword.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return _response;
+        }
     }
 }

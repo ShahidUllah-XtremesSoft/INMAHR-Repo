@@ -907,3 +907,11 @@ var convertHHMMToSeconds = function(time24hr){
 
     return seconds;
 }
+function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDateLabel = null, secondDateLabel = null) {
+    if (firstDate > secondDate) {
+        swalMessage('info', firstDateLabel + ' can not be less than ' + secondDateLabel, 2000);
+        //$("#EndDate").data("kendoDatePicker").value('');
+        return false;
+    }
+    return true;
+}

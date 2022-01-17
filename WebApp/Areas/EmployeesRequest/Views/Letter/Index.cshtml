@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Employees Letter Request";
+}
+
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+
+<div class="card">
+    <div class="card-header">
+        <h5>Employees Official Letter Request(s)</h5>
+        @*<h5>@Resources.EmployeesRequestResourceUI.</h5>*@
+        <div class="card-header-right">
+
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> Accept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> Decline</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="LetterGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/EmployeesRequest/Letter/letter.js"></script>
+}
+
+
+

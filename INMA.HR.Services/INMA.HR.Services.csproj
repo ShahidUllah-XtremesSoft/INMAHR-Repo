@@ -102,8 +102,13 @@
   <ItemGroup>
     <Compile Include="Commands\Common\DynamicQueryExcuterCommand.cs" />
     <Compile Include="Commands\Common\SetupTypeCommand.cs" />
+    <Compile Include="Commands\Employee\CashInLeaveRequestCommand.cs" />
+    <Compile Include="Commands\Employee\LeaveRequestCommand.cs" />
+    <Compile Include="Commands\Employee\LetterRequestCommand.cs" />
     <Compile Include="Commands\Employee\AttendanceCommand.cs" />
     <Compile Include="Commands\Employee\InternalLetterCommand.cs" />
+    <Compile Include="Commands\Employee\LeaveCancellationRequestCommand.cs" />
+    <Compile Include="Commands\Employee\ShortLeaveRequestCommand.cs" />
     <Compile Include="Commands\HumanResource\DepartmentCommand.cs" />
     <Compile Include="Commands\HumanResource\EmployeeCommand.cs" />
     <Compile Include="Commands\HumanResource\Employee\EmployeeEducationalDocumentCommand.cs" />
@@ -130,6 +135,7 @@
     <Compile Include="GlobalEnums.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Models\EmployeeRequestData.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileUploaderService.cs" />

@@ -217,4 +217,22 @@
     #endregion
 
 
+    #region Employee Request
+    //LETTER AREA
+    Request_AllEmployee_Letter_Get,
+    Request_Employee_AllLetter_Save,
+    // LEAVES AREA
+    Employee_AllLeaves_Get,
+    Request_Employee_AllLeaves_Save,
+    //Short Leave AREA
+    Request_All_Employee_ShortLeave_GetBySuperiorRole,
+    Request_Employee_Short_Leaves_Save,
+    //Leave Cancel AREA
+    Request_Employees_All_LeaveCancel_GetBySuperiorRole,
+    Request_Employee_Cancel_Leaves_ApprovedORDeclined,
+    //Cash In Leave AREA
+    Request_Employees_All_CashInLeave_Get,
+    Request_Employee_CashInLeave_ApprovedORDeclined,
+    #endregion
+
 }

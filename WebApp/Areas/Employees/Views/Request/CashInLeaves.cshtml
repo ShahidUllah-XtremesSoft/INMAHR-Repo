@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = Resources.EmployeeResourcesUI.lblEmployeesCashInLeave;
+}
+<style>
+    /*.k-pivot-table*/
+
+</style>
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+
+<div class="card">
+    <div class="card-header">
+        
+
+        <h5>@Resources.EmployeeResourcesUI.lblEmployeesCashInLeave</h5>
+        <div class="card-header-right">
+
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CashInLeaveGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/cash-in-leaves.js"></script>
+
+    <script>
+        //Grid columns
+        var days = '@RequestUI.RequestResourceUI.lblDays';
+        var comment = '@RequestUI.RequestResourceUI.lblComment';
+        var requestDate = '@RequestUI.RequestResourceUI.lblRequestDate';
+        var status = '@RequestUI.RequestResourceUI.lblStatus';
+        var requestDeniedComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
+
+        var action = '@Resources.Global.lblAction';
+
+
+
+           var btnDecline= '@Resources.EmployeeResourcesUI.lblDecline';
+        var btnAccept = '@Resources.EmployeeResourcesUI.lblAccept';
+        var lblFristSelectRecordFromGrid  = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid ';
+
+
+
+ 
+
+    </script>
+}
+

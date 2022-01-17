@@ -1,19 +1,22 @@
-$(function(){
+
+
+
+$(function () {
     'use strict';
 
     //convert Hex to RGBA
-    function convertHex(hex,opacity){
-        hex = hex.replace('#','');
-        var r = parseInt(hex.substring(0,2), 16);
-        var g = parseInt(hex.substring(2,4), 16);
-        var b = parseInt(hex.substring(4,6), 16);
+    function convertHex(hex, opacity) {
+        hex = hex.replace('#', '');
+        var r = parseInt(hex.substring(0, 2), 16);
+        var g = parseInt(hex.substring(2, 4), 16);
+        var b = parseInt(hex.substring(4, 6), 16);
 
-        var result = 'rgba('+r+','+g+','+b+','+opacity/100+')';
+        var result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
         return result;
     }
 
     //Cards with Charts
-    var labels = ['January','February','March','April','May','June','July'];
+    var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     var data = {
         labels: labels,
         datasets: [
@@ -63,12 +66,15 @@ $(function(){
         }
     };
     var ctx = $('#card-chart1');
-    var cardChart1 = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
+    if (ctx.length) {
 
+        var cardChart1 = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+
+    }
     var data = {
         labels: labels,
         datasets: [
@@ -119,12 +125,13 @@ $(function(){
         }
     };
     var ctx = $('#card-chart2');
-    var cardChart2 = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
-
+    if (ctx.length) {
+        var cardChart2 = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    }
     var options = {
         maintainAspectRatio: false,
         legend: {
@@ -161,15 +168,16 @@ $(function(){
         ]
     };
     var ctx = $('#card-chart3');
-    var cardChart3 = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
-
+    if (ctx.length) {
+        var cardChart3 = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    }
     //Random Numbers
-    function random(min,max) {
-        return Math.floor(Math.random()*(max-min+1)+min);
+    function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     var elements = 16;
@@ -178,7 +186,7 @@ $(function(){
 
     for (var i = 2000; i <= 2000 + elements; i++) {
         labels.push(i);
-        data.push(random(40,100));
+        data.push(random(40, 100));
     }
 
     var options = {
@@ -208,12 +216,13 @@ $(function(){
         ]
     };
     var ctx = $('#card-chart4');
-    var cardChart4 = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: options
-    });
-
+    if (ctx.length) {
+        var cardChart4 = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    }
     //Main Chart
     var elements = 27;
     var data1 = [];
@@ -221,8 +230,8 @@ $(function(){
     var data3 = [];
 
     for (var i = 0; i <= elements; i++) {
-        data1.push(random(50,200));
-        data2.push(random(80,100));
+        data1.push(random(50, 200));
+        data2.push(random(80, 100));
         data3.push(65);
     }
 
@@ -231,7 +240,7 @@ $(function(){
         datasets: [
             {
                 label: 'My First dataset',
-                backgroundColor: convertHex($.brandInfo,10),
+                backgroundColor: convertHex($.brandInfo, 10),
                 borderColor: $.brandInfo,
                 pointHoverBackgroundColor: '#fff',
                 borderWidth: 2,
@@ -288,15 +297,16 @@ $(function(){
         },
     };
     var ctx = $('#main-chart');
-    var mainChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
-
+    if (ctx.length) {
+        var mainChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    }
 
     //Social Box Charts
-    var labels = ['January','February','March','April','May','June','July'];
+    var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
     var options = {
         responsive: true,
@@ -306,10 +316,10 @@ $(function(){
         },
         scales: {
             xAxes: [{
-                display:false,
+                display: false,
             }],
             yAxes: [{
-                display:false,
+                display: false,
             }]
         },
         elements: {
@@ -333,12 +343,13 @@ $(function(){
         }]
     };
     var ctx = $('#social-box-chart-1');
-    var socialBoxChart1 = new Chart(ctx, {
-        type: 'line',
-        data: data1,
-        options: options
-    });
-
+    if (ctx.length) {
+        var socialBoxChart1 = new Chart(ctx, {
+            type: 'line',
+            data: data1,
+            options: options
+        });
+    }
     var data2 = {
         labels: labels,
         datasets: [
@@ -351,13 +362,17 @@ $(function(){
             }
         ]
     };
-    var ctx = $('#social-box-chart-2').get(0).getContext('2d');
-    var socialBoxChart2 = new Chart(ctx, {
-        type: 'line',
-        data: data2,
-        options: options
-    });
+    if ($('#social-box-chart-2').get(0) != undefined) {
 
+        var ctx = $('#social-box-chart-2').get(0).getContext('2d');
+        if (ctx.length) {
+            var socialBoxChart2 = new Chart(ctx, {
+                type: 'line',
+                data: data2,
+                options: options
+            });
+        }
+    }
     var data3 = {
         labels: labels,
         datasets: [
@@ -370,13 +385,16 @@ $(function(){
             }
         ]
     };
-    var ctx = $('#social-box-chart-3').get(0).getContext('2d');
-    var socialBoxChart3 = new Chart(ctx, {
-        type: 'line',
-        data: data3,
-        options: options
-    });
-
+    if ($('#social-box-chart-3').get(0) != undefined) {
+        var ctx = $('#social-box-chart-3').get(0).getContext('2d');
+        if (ctx.length) {
+            var socialBoxChart3 = new Chart(ctx, {
+                type: 'line',
+                data: data3,
+                options: options
+            });
+        }
+    }
     var data4 = {
         labels: labels,
         datasets: [
@@ -389,17 +407,20 @@ $(function(){
             }
         ]
     };
-    var ctx = $('#social-box-chart-4').get(0).getContext('2d');
-    var socialBoxChart4 = new Chart(ctx, {
-        type: 'line',
-        data: data4,
-        options: options
-    });
-
+    if ($('#social-box-chart-4').get(0) != undefined) {
+        var ctx = $('#social-box-chart-4').get(0).getContext('2d');
+        if (ctx.length) {
+            var socialBoxChart4 = new Chart(ctx, {
+                type: 'line',
+                data: data4,
+                options: options
+            });
+        }
+    }
 
 
     //Sparkline Charts
-    var labels = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+    var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     var options = {
         legend: {
@@ -407,10 +428,10 @@ $(function(){
         },
         scales: {
             xAxes: [{
-                display:false,
+                display: false,
             }],
             yAxes: [{
-                display:false,
+                display: false,
             }]
         },
         elements: {
@@ -435,12 +456,13 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-1');
-    var sparklineChart1 = new Chart(ctx, {
-        type: 'line',
-        data: data1,
-        options: options
-    });
-
+    if (ctx.length) {
+        var sparklineChart1 = new Chart(ctx, {
+            type: 'line',
+            data: data1,
+            options: options
+        });
+    }
     var data2 = {
         labels: labels,
         datasets: [
@@ -453,12 +475,13 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-2');
-    var sparklineChart2 = new Chart(ctx, {
-        type: 'line',
-        data: data2,
-        options: options
-    });
-
+    if (ctx.length) {
+        var sparklineChart2 = new Chart(ctx, {
+            type: 'line',
+            data: data2,
+            options: options
+        });
+    }
     var data3 = {
         labels: labels,
         datasets: [
@@ -471,12 +494,13 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-3');
-    var sparklineChart3 = new Chart(ctx, {
-        type: 'line',
-        data: data3,
-        options: options
-    });
-
+    if (ctx.length) {
+        var sparklineChart3 = new Chart(ctx, {
+            type: 'line',
+            data: data3,
+            options: options
+        });
+    }
     var data4 = {
         labels: labels,
         datasets: [
@@ -489,12 +513,13 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-4');
-    var sparklineChart4 = new Chart(ctx, {
-        type: 'line',
-        data: data4,
-        options: options
-    });
-
+    if (ctx.length) {
+        var sparklineChart4 = new Chart(ctx, {
+            type: 'line',
+            data: data4,
+            options: options
+        });
+    }
     var data5 = {
         labels: labels,
         datasets: [
@@ -507,12 +532,13 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-5');
-    var sparklineChart5 = new Chart(ctx, {
-        type: 'line',
-        data: data5,
-        options: options
-    });
-
+    if (ctx.length) {
+        var sparklineChart5 = new Chart(ctx, {
+            type: 'line',
+            data: data5,
+            options: options
+        });
+    }
     var data6 = {
         labels: labels,
         datasets: [
@@ -525,10 +551,11 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-6');
-    var sparklineChart6= new Chart(ctx, {
-        type: 'line',
-        data: data6,
-        options: options
-    });
-
+    if (ctx.length) {
+        var sparklineChart6 = new Chart(ctx, {
+            type: 'line',
+            data: data6,
+            options: options
+        });
+    }
 });

@@ -10,9 +10,7 @@ $(function () {
     }
     
     //| Date Picker
-    $("#EducationalDocumentReleaseDate").kendoDatePicker({
-        format: "yyyy-MM-dd"
-    });   
+    renderKendoDatePicker('EducationalDocumentReleaseDate');
     //|End Date Picker
 
     //|Functions Calling

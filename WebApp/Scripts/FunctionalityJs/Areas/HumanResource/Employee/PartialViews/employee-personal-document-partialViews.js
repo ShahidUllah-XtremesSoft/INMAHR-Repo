@@ -15,12 +15,9 @@ $(function () {
 
 
     //| Date Picker
-    $("#PersonalDocumentReleaseDate").kendoDatePicker({
-        format: "yyyy-MM-dd"
-    });
-    $("#PersonalDocumentExpiryDate").kendoDatePicker({
-        format: "yyyy-MM-dd"
-    });
+    renderKendoDatePicker('PersonalDocumentReleaseDate');
+    renderKendoDatePicker('PersonalDocumentExpiryDate');
+    
     //|End Date Picker
 
     //|Functions Calling
@@ -33,6 +30,9 @@ $(function () {
     $('#btnSaveEmployeePersonalDocument').click(function () {
 
         if (customValidateForm('frmEmployeePersonalDocument')) {
+            if (!firstDateShouldBeGreaterThanSecondDate($('#PersonalDocumentReleaseDate').val(), $('#PersonalDocumentExpiryDate').val(), 'Issue date','Expiry date')) {
+                return false;
+            }
             buttonAddPleaseWait('btnSaveEmployeePersonalDocument');
 
             $("#frmEmployeePersonalDocument").ajaxForm();

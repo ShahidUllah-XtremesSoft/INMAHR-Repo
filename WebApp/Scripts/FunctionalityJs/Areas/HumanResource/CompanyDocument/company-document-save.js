@@ -1,7 +1,7 @@
 ﻿$(function () {
 
     $('#btn-save-company-document').on('click', function (e) {
-        debugger;
+ 
         if (customValidateForm('frmCompanyDocument')) {
             $("#frmCompanyDocument").ajaxForm();
             buttonAddPleaseWait('btn-save-company-document');

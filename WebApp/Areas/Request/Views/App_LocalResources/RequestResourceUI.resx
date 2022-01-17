@@ -144,6 +144,9 @@
   <data name="lblDeductionDate" xml:space="preserve">
     <value>Deduction Date</value>
   </data>
+  <data name="lblFristSelectRecordFromGrid" xml:space="preserve">
+    <value>First select records from grid</value>
+  </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hours</value>
   </data>

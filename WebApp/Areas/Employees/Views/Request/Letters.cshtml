@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = Resources.EmployeeResourcesUI.lblEmployeesOfficialLetterRequests;
+}
+
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+
+<div class="card">
+    <div class="card-header">
+        @*<h5>Employees Official Letter Request(s)</h5>*@
+        <h5>@Resources.EmployeeResourcesUI.lblEmployeesOfficialLetterRequests</h5>
+        <div class="card-header-right">
+
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="LetterGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section scripts {s
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/letters.js"></script>
+    <script>
+        //Grid columns
+        var letterType = '@Resources.EmployeeResourcesUI.lblLetterType';
+        var comment = '@Resources.EmployeeResourcesUI.lblComment';
+        var note = '@Resources.EmployeeResourcesUI.lblNote';
+        var comment = '@Resources.EmployeeResourcesUI.lblComment';
+        var btnDecline= '@Resources.EmployeeResourcesUI.lblDecline';
+        var btnAccept = '@Resources.EmployeeResourcesUI.lblAccept';
+        var requestDenyComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
+        var action = '@Resources.Global.lblAction';
+        var Status = '@Resources.EmployeeResourcesUI.lblStatus';
+        var Other = '@Resources.EmployeeResourcesUI.lblOther';
+        var lblFristSelectRecordFromGrid = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid';
+
+    </script>
+}
+
+
+

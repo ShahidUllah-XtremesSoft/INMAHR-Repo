@@ -3,12 +3,16 @@ $(function () {
     $('#Language').val(_currentLanguage);
     
     loadCompanyDocumentGrid();
-    $("#IssueDate").kendoDatePicker({
-        format: "yyyy-MM-dd"
-    });
-    $("#ExpiryDate").kendoDatePicker({
-        format: "yyyy-MM-dd"
-    });
+    renderKendoDatePicker('IssueDate', 'yyyy-MM-dd')
+    renderKendoDatePicker('ExpiryDate', 'yyyy-MM-dd')
+
+
+    //$("#IssueDate").kendoDatePicker({
+    //    format: "yyyy-MM-dd"
+    //});
+    //$("#ExpiryDate").kendoDatePicker({
+    //    format: "yyyy-MM-dd"
+    //});
 });
 function loadCompanyDocumentGrid() {
     ajaxRequest({ commandName: 'HR_CompanyDocument_GetAll', values: { Language: $('#Language').val() }, CallBack: loadCompanyDocumentCallBack });

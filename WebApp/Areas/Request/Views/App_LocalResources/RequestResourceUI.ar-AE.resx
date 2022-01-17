@@ -144,6 +144,9 @@
   <data name="lblDeductionDate" xml:space="preserve">
     <value>تاريخ الاستطاع</value>
   </data>
+  <data name="lblFristSelectRecordFromGrid" xml:space="preserve">
+    <value>حدد السجلات من الشبكة أولاً</value>
+  </data>
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
   </data>

@@ -218,6 +218,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Employees\Controllers\RequestController.cs" />
     <Compile Include="Areas\Employees\Controllers\AttendanceController.cs" />
     <Compile Include="Areas\Employees\Controllers\DocumentController.cs" />
     <Compile Include="Areas\Employees\Controllers\InternalLetterController.cs" />
@@ -350,6 +351,11 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-personal.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-today.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\EmployeeAttendancePartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\letters.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\short-leaves.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
@@ -1015,7 +1021,6 @@
     <Content Include="libs\Newtonsoft.Json.dll" />
     <Content Include="libs\System.IdentityModel.Tokens.Jwt.dll" />
     <Content Include="libs\Z.Dapper.Plus.dll" />
-    <Content Include="logs\log4net.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HumanResource\Views\web.config" />
@@ -1070,11 +1075,12 @@
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalInfoPartialView.cshtml" />
     <Content Include="Areas\Employees\Views\Attendance\Personal.cshtml" />
     <Content Include="Areas\Employees\Views\Shared\PartialViews\Attendance\_EmployeeAttendancePartialView.cshtml" />
-    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeEducationalDocumentGridPartialView.cshtml" />
-    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalDocumentGridPartialView.cshtml" />
     <Content Include="Areas\Employees\Views\Document\Index.cshtml" />
-    <Content Include="Areas\HumanResource\Views\CompanyDocument\Index.cshtml" />
-    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\CashInLeaves.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Cancel.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Letters.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\ShortLeaves.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Leaves.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -2381,6 +2387,7 @@
     <Folder Include="Areas\Request\Data\" />
     <Folder Include="Areas\UserManagement\Data\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="logs\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
     <Folder Include="_logs\" />
   </ItemGroup>

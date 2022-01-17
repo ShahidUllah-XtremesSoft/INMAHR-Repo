@@ -1081,6 +1081,10 @@
     <Content Include="Areas\Employees\Views\Request\Letters.cshtml" />
     <Content Include="Areas\Employees\Views\Request\ShortLeaves.cshtml" />
     <Content Include="Areas\Employees\Views\Request\Leaves.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalDocumentGridPartialView.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeEducationalDocumentGridPartialView.cshtml" />
+    <Content Include="Areas\HumanResource\Views\CompanyDocument\Index.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />

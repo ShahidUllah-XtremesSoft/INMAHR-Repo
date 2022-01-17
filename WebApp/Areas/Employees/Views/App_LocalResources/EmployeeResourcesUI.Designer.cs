@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string lblAccept {
+            get {
+                return ResourceManager.GetString("lblAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         public static string lblAction {
@@ -102,6 +111,15 @@ namespace Resources {
         public static string lblAttachment {
             get {
                 return ResourceManager.GetString("lblAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Balance.
+        /// </summary>
+        public static string lblAvailableBalance {
+            get {
+                return ResourceManager.GetString("lblAvailableBalance", resourceCulture);
             }
         }
         
@@ -142,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string lblComment {
+            get {
+                return ResourceManager.GetString("lblComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string lblDate {
@@ -156,6 +183,15 @@ namespace Resources {
         public static string lblDateTime {
             get {
                 return ResourceManager.GetString("lblDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline.
+        /// </summary>
+        public static string lblDecline {
+            get {
+                return ResourceManager.GetString("lblDecline", resourceCulture);
             }
         }
         
@@ -187,6 +223,78 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employees Cancel Leave Request(s).
+        /// </summary>
+        public static string lblEmployeesCancelLeaveRequest {
+            get {
+                return ResourceManager.GetString("lblEmployeesCancelLeaveRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees Cash In Leave Request(s).
+        /// </summary>
+        public static string lblEmployeesCashInLeave {
+            get {
+                return ResourceManager.GetString("lblEmployeesCashInLeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees Leave Request(s).
+        /// </summary>
+        public static string lblEmployeesleaveRequest {
+            get {
+                return ResourceManager.GetString("lblEmployeesleaveRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees Official Letter Request(s).
+        /// </summary>
+        public static string lblEmployeesOfficialLetterRequests {
+            get {
+                return ResourceManager.GetString("lblEmployeesOfficialLetterRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees Short Leave Requests.
+        /// </summary>
+        public static string lblEmployeesShortLeaveRequests {
+            get {
+                return ResourceManager.GetString("lblEmployeesShortLeaveRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First select records from grid.
+        /// </summary>
+        public static string lblFristSelectRecordFromGrid {
+            get {
+                return ResourceManager.GetString("lblFristSelectRecordFromGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave Name.
+        /// </summary>
+        public static string lblLeaveName {
+            get {
+                return ResourceManager.GetString("lblLeaveName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave Type.
+        /// </summary>
+        public static string lblLeaveType {
+            get {
+                return ResourceManager.GetString("lblLeaveType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Letter Number.
         /// </summary>
         public static string lblLetterNumber {
@@ -196,11 +304,65 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Letter Type.
+        /// </summary>
+        public static string lblLetterType {
+            get {
+                return ResourceManager.GetString("lblLetterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string lblName {
+            get {
+                return ResourceManager.GetString("lblName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string lblNew {
             get {
                 return ResourceManager.GetString("lblNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        public static string lblNote {
+            get {
+                return ResourceManager.GetString("lblNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Days.
+        /// </summary>
+        public static string lblNumberOfDays {
+            get {
+                return ResourceManager.GetString("lblNumberOfDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Hours.
+        /// </summary>
+        public static string lblNumberOfHours {
+            get {
+                return ResourceManager.GetString("lblNumberOfHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string lblOther {
+            get {
+                return ResourceManager.GetString("lblOther", resourceCulture);
             }
         }
         
@@ -219,6 +381,33 @@ namespace Resources {
         public static string lblRequest {
             get {
                 return ResourceManager.GetString("lblRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Date.
+        /// </summary>
+        public static string lblRequestDate {
+            get {
+                return ResourceManager.GetString("lblRequestDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Deny Comment.
+        /// </summary>
+        public static string lblRequestDenyComment {
+            get {
+                return ResourceManager.GetString("lblRequestDenyComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Time.
+        /// </summary>
+        public static string lblReturnTime {
+            get {
+                return ResourceManager.GetString("lblReturnTime", resourceCulture);
             }
         }
         
@@ -273,6 +462,15 @@ namespace Resources {
         public static string lblSocialStatusEnglish {
             get {
                 return ResourceManager.GetString("lblSocialStatusEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        public static string lblStartTime {
+            get {
+                return ResourceManager.GetString("lblStartTime", resourceCulture);
             }
         }
         

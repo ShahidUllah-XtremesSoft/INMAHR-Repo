@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace INMA.HR.Services.Commands.EmployeesRequest
+namespace INMA.HR.Services.Commands.Employees
 {
 
     #region Request_AllEmployee_Letter_Get 

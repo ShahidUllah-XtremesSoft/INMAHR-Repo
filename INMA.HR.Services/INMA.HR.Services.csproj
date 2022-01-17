@@ -102,10 +102,13 @@
   <ItemGroup>
     <Compile Include="Commands\Common\DynamicQueryExcuterCommand.cs" />
     <Compile Include="Commands\Common\SetupTypeCommand.cs" />
-    <Compile Include="Commands\EmployeesRequest\EmployeeLeaveRequestCommand.cs" />
-    <Compile Include="Commands\EmployeesRequest\EmployeesLetterRequestCommand.cs" />
+    <Compile Include="Commands\Employee\CashInLeaveRequestCommand.cs" />
+    <Compile Include="Commands\Employee\LeaveRequestCommand.cs" />
+    <Compile Include="Commands\Employee\LetterRequestCommand.cs" />
     <Compile Include="Commands\Employee\AttendanceCommand.cs" />
     <Compile Include="Commands\Employee\InternalLetterCommand.cs" />
+    <Compile Include="Commands\Employee\LeaveCancellationRequestCommand.cs" />
+    <Compile Include="Commands\Employee\ShortLeaveRequestCommand.cs" />
     <Compile Include="Commands\HumanResource\DepartmentCommand.cs" />
     <Compile Include="Commands\HumanResource\EmployeeCommand.cs" />
     <Compile Include="Commands\HumanResource\Employee\EmployeeEducationalDocumentCommand.cs" />

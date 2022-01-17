@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = Resources.EmployeeResourcesUI.lblEmployeesCancelLeaveRequest;
+}
+<style>
+    /*.k-pivot-table*/
+
+</style>
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+
+<div class="card">
+    <div class="card-header">
+
+
+        <h5>@Resources.EmployeeResourcesUI.lblEmployeesCancelLeaveRequest</h5>
+        <div class="card-header-right">
+
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CancelGrid"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/Cancel.js"></script>
+    <script>
+        //Grid Columns
+        var leaveName = '@RequestUI.RequestResourceUI.lblLeaveType';
+        var startDate = '@Resources.Global.lblStartDate';
+        var endDate = '@Resources.Global.lblEndDate';
+        var commentEng = '@RequestUI.RequestResourceUI.lblCommentEng';
+        var commentArb = '@RequestUI.RequestResourceUI.lblCommentArb';
+        var action = '@Resources.Global.lblAction';
+           var requestDenyComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
+        var status = '@RequestUI.RequestResourceUI.lblStatus';
+        var comment = '@RequestUI.RequestResourceUI.lblComment';
+
+
+                   var btnDecline= '@Resources.EmployeeResourcesUI.lblDecline';
+        var btnAccept = '@Resources.EmployeeResourcesUI.lblAccept';
+        var lblFristSelectRecordFromGrid  = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid ';
+
+
+
+    </script>
+}

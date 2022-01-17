@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = Resources.EmployeeResourcesUI.lblEmployeesShortLeaveRequests;
+}
+
+<div class="card">
+
+
+    <input type="hidden" id="CreatedBy" name="CreatedBy" />
+    <input type="hidden" id="Id" name="Id" value="0" />
+    <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+
+    <div class="card">
+        <div class="card-header">
+
+
+            <h5>@Resources.EmployeeResourcesUI.lblEmployeesShortLeaveRequests</h5>
+            <div class="card-header-right">
+
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-12">
+
+
+                    <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                    <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="ShortLeaveGrid"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/short-leaves.js"></script>
+    <script>
+        //Grid columns
+        var requestDate = '@Resources.EmployeeResourcesUI.lblRequestDate';
+        var comment = '@Resources.EmployeeResourcesUI.lblComment';
+        var availableBalance = '@Resources.EmployeeResourcesUI.lblAvailableBalance';
+        var status = '@Resources.EmployeeResourcesUI.lblStatus';
+        var startTime = '@Resources.EmployeeResourcesUI.lblStartTime';
+        var returnTime = '@Resources.EmployeeResourcesUI.lblReturnTime';
+        var numberOfHourse = '@Resources.EmployeeResourcesUI.lblNumberOfHours';
+          var requestDenyComment = '@Resources.EmployeeResourcesUI.lblRequestDenyComment';
+        var action = '@Resources.EmployeeResourcesUI.lblAction';
+                var lblFristSelectRecordFromGrid  = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid ';
+        var lblname  = '@Resources.EmployeeResourcesUI.lblName ';
+          var btnDecline= '@Resources.EmployeeResourcesUI.lblDecline';
+        var btnAccept = '@Resources.EmployeeResourcesUI.lblAccept';
+        var leaveType = '@Resources.EmployeeResourcesUI.lblLeaveType';
+
+    </script>
+}
+
+
+

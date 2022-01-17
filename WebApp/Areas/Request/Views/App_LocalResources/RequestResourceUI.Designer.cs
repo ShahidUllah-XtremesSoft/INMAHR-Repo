@@ -142,6 +142,15 @@ namespace RequestUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First select records from grid.
+        /// </summary>
+        public static string lblFristSelectRecordFromGrid {
+            get {
+                return ResourceManager.GetString("lblFristSelectRecordFromGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hours.
         /// </summary>
         public static string lblHours {

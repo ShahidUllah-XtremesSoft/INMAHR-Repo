@@ -218,16 +218,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\EmployeesRequest\Views\App_LocalResources\EmployeesRequestResourceUI.ar-AE.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmployeesRequestResourceUI.ar-AE.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\EmployeesRequest\Views\App_LocalResources\EmployeesRequestResourceUI.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmployeesRequestResourceUI.resx</DependentUpon>
-    </Compile>
+    <Compile Include="Areas\Employees\Controllers\RequestController.cs" />
     <Compile Include="Areas\Employees\Controllers\AttendanceController.cs" />
     <Compile Include="Areas\Employees\Controllers\DocumentController.cs" />
     <Compile Include="Areas\Employees\Controllers\InternalLetterController.cs" />
@@ -260,11 +251,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumanResourceUI.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\EmployeesRequest\Controllers\CashInLeaveController.cs" />
-    <Compile Include="Areas\EmployeesRequest\Controllers\LeaveController.cs" />
-    <Compile Include="Areas\EmployeesRequest\Controllers\LetterController.cs" />
-    <Compile Include="Areas\EmployeesRequest\Controllers\ShortLeaveController.cs" />
-    <Compile Include="Areas\EmployeesRequest\EmployeesRequestAreaRegistration.cs" />
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LetterController.cs" />
@@ -365,6 +351,11 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-personal.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-today.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\EmployeeAttendancePartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\letters.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\short-leaves.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
@@ -375,11 +366,6 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalDocumentGridPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\EmployeesRequest\Cancel\Cancel.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\EmployeesRequest\CashInLeave\cash-in-leave.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\EmployeesRequest\Leave\leave.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\EmployeesRequest\Letter\letter.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\EmployeesRequest\ShortLeave\short-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Common\common-labels.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\ContractType\contract-grid.js" />
@@ -1035,7 +1021,6 @@
     <Content Include="libs\Newtonsoft.Json.dll" />
     <Content Include="libs\System.IdentityModel.Tokens.Jwt.dll" />
     <Content Include="libs\Z.Dapper.Plus.dll" />
-    <Content Include="logs\log4net.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HumanResource\Views\web.config" />
@@ -1090,6 +1075,12 @@
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalInfoPartialView.cshtml" />
     <Content Include="Areas\Employees\Views\Attendance\Personal.cshtml" />
     <Content Include="Areas\Employees\Views\Shared\PartialViews\Attendance\_EmployeeAttendancePartialView.cshtml" />
+    <Content Include="Areas\Employees\Views\Document\Index.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\CashInLeaves.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Cancel.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Letters.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\ShortLeaves.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Leaves.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -2391,12 +2382,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\EmployeesRequest\Data\" />
     <Folder Include="Areas\Employees\Data\" />
     <Folder Include="Areas\HumanResource\Data\" />
     <Folder Include="Areas\Request\Data\" />
     <Folder Include="Areas\UserManagement\Data\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="logs\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
     <Folder Include="_logs\" />
   </ItemGroup>
@@ -2457,16 +2448,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>HRUI</CustomToolNamespace>
       <LastGenOutput>HumanResourceUI.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Areas\EmployeesRequest\Views\App_LocalResources\EmployeesRequestResourceUI.ar-AE.resx">
-      <CustomToolNamespace>EmployeesRequestResourceUI.ar</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>EmployeesRequestResourceUI.ar-AE.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Areas\EmployeesRequest\Views\App_LocalResources\EmployeesRequestResourceUI.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>EmployeesRequestResourceUI.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>EmployeesRequestResourceUI</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Areas\Request\Views\App_LocalResources\RequestResourceUI.ar-AE.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

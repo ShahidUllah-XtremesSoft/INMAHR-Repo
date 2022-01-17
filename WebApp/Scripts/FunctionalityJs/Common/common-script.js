@@ -608,7 +608,7 @@ function fnAvoidNegavtiveNumber(Inputvalue) { //Inputvalue is input field value 
 
 }
 function swal(messageResponse) {
-    debugger;
+ 
     var messageResponseParse = JSON.parse(messageResponse);
     if (messageResponseParse.type == undefined) {
         messageResponseParse = JSON.parse(messageResponseParse);

@@ -14,18 +14,18 @@ namespace INMA.HR.Services.Commands.Employee
     #region Employee_AllLeaves_Get 
 
  
-    [Command(Name = "Employee_AllLeaves_Get")]
-    public class Employee_AllLeaves_GetCommand : CamelCommandBase
+    [Command(Name = "Employees_Request_Leave_Get")]
+    public class Employees_Request_Leave_GetCommand : CamelCommandBase
     {
         protected override object DoAction(object v)
         {
             var model = base.MappedModel(new
             {
                 Id = 0,
-                CreatedBy = 0,
+              //  CreatedBy = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
-                LoggedInUserDepartementId = 0,
+                LoggedInUserDepartmentId = 0,
                 Language = string.Empty,
 
             }, v);
@@ -36,7 +36,8 @@ namespace INMA.HR.Services.Commands.Employee
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_AllLeaves_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            // Old sp Employee_AllLeaves_Get
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Employees_Request_Leave_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }

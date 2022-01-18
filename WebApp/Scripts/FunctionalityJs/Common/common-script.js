@@ -919,18 +919,35 @@ function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDate
     }
     return true;
 }
+function only0To9WithDecimalAllowed(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    
+    if (charCode != 46 && charCode > 31
+        && (charCode < 48 || charCode > 57))
+        return false;
 
-
-
-function allowOnlyUptoHunderd(controlId) {
-    debugger;
-    var FieldID = '#' + controlId;
-    var total = $(FieldID).val();
+    return true;
    
-  
-    if (total > 0 && total <= 100) {
-         oldValue = total
-    } else {
-        $(FieldID).val(oldValue);
+}
+function only1To9Allowed(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    
+    if (charCode != 46 && charCode > 31
+        && (charCode < 48 || charCode > 57)) {
+        return false;
     }
+    else if (charCode == 48 || charCode == 46) {
+        return false;
+    }
+    else if (charCode > 48 && charCode <= 57) {
+    
+        return true
+    }
+    else {
+    
+        false;
+    }
+
+
+
 }

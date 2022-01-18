@@ -373,7 +373,7 @@
     <value>Salary</value>
   </data>
   <data name="lblShortLeave" xml:space="preserve">
-    <value>Short Leave</value>
+    <value>Permission Leave</value>
   </data>
   <data name="lblSocialStatusArb" xml:space="preserve">
     <value>Social Status (Arabic)</value>

@@ -826,7 +826,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Short Leave.
+        ///   Looks up a localized string similar to Permission Leave.
         /// </summary>
         public static string lblShortLeave {
             get {

@@ -16,7 +16,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>@RequestUI.RequestResourceUI.lblDays</label>
-                        <input type="number" class="form-control" id="Days" name="Days" required />
+                        <input type="number" class="form-control" id="Days" name="Days" min="1" required onkeypress="return only1To9Allowed(event)"/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -45,7 +45,7 @@
 
     </div>
 </div>
-@section scripts {
+@section scripts {    
     <script src="~/Scripts/FunctionalityJs/Areas/Request/CashInLeave/cash-in-leave.js"></script>
 
     <script>
@@ -55,7 +55,7 @@
         var requestDate = '@RequestUI.RequestResourceUI.lblRequestDate';
         var status = '@RequestUI.RequestResourceUI.lblStatus';
         var requestDeniedComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
-        
+
         var action = '@Resources.Global.lblAction';
 
     </script>

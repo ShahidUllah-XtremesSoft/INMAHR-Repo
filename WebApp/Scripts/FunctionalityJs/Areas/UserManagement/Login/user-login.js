@@ -42,15 +42,15 @@ function userLoginCallBack(userLoginResponse) {
     }
     else {
        
-        getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId);
+        getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId, JSON.parse(userLoginResponse.Value).isHR, JSON.parse(userLoginResponse.Value).id);
         localStorage.setItem('User', userLoginResponse.Value);
         localStorage.setItem('EmployeeNumber', JSON.parse(userLoginResponse.Value).employeeNumber);
         swal('success', 'You`re logged in successfully');
 
     }
 }
-function getAssignedMenusForRole(roleId) {
-    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, Language: _currentLanguage }, CallBack: getAssignedMenusForRoleCallBack });
+function getAssignedMenusForRole(roleId,isHR,loggedInUserId) {
+    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage }, CallBack: getAssignedMenusForRoleCallBack });
 }
 function getAssignedMenusForRoleCallBack(roleMenus) {
        

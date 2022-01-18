@@ -71,6 +71,8 @@ namespace INMA.HR.Services.Commands.UserManagement
             var model = base.MappedModel(new
             {
                 RoleId = 0,
+                IsHR = false,
+                LoggedInUserId = 0,
                 Language = string.Empty
             }, v);
 

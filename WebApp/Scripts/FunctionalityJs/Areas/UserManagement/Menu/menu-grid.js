@@ -39,7 +39,15 @@ var bindMenuGrid = function (inputDataJSON) {
         { field: "url", title: "Url", width: 200, filterable: true },
         { field: "icon", title: "Icon", width: 200, filterable: true },
         { field: "moduleName", title: "ModuleName", width: 200, filterable: true },
-
+        { field: "isHRMenu", title: "IsHRMenu", width: 200, filterable: true,hidden:true },
+        {
+            title: status,
+            field: 'isHRMenuText',
+            width: 30,
+            hidden: false,
+            //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
+            template: "<span class='badge badge-success'>#:isHRMenuText#</span>"
+        },
         //Below is action column
         {
             field: "", width: 100,

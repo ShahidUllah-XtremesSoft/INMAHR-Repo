@@ -23,6 +23,7 @@ namespace INMA.HR.Services.Commands.UserManagement
                 Url = string.Empty,
                 Icon = string.Empty,
                 MenuGroup = string.Empty,
+                IsHRMenu = string.Empty,
                 ModuleId = 0,
                 CreatedBy = 0,
                 Language   = string.Empty

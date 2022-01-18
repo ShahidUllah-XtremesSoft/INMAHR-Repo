@@ -1,6 +1,13 @@
 ﻿var allNotificationCount = 0;
 $(function () {
-    loadNearToExpireDocumentGrid();
+    var isLoggedInUserHR = JSON.parse(localStorage.getItem('User')).isHR;
+    if (!isLoggedInUserHR) {
+        $('#liNewToExpireDocument').css('display', 'none');
+        $('#spanNotificationCount').text('0');
+    }
+    else {
+        loadNearToExpireDocumentGrid();
+    }
 });
 
 function viewNearToExpireDocumentsModalGrid() {

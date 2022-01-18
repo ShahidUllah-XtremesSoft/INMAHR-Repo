@@ -99,7 +99,7 @@ var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
             '<td hidden class="EducationalDocumentDegreeFromCountryId">' + item.degreeFromCountryId + '</td>' +
             '<td class="EducationalDocumentDegreeFromCountryName">' + item.degreeFromCountryName + '</td>' +
             
-            '<td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + ' </td>' +
+            '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + ' </td>' +
             '<td style="padding-top: 20px;">' +
             '<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeeEducationalDocument(this)" style="font-size: 26px;color: green;"></i></a>' +
             '<a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeeEducationalDocument(this)"></i></a>' +

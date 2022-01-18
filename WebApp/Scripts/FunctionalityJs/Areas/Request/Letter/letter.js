@@ -5,6 +5,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $("#OtherDiv").css('display', 'none');
+    $("#Other").prop('required', false);
 
     loadLetterTypeDropdownList(true);
     loadLetterGrid();
@@ -29,9 +30,11 @@ function letterTypeDropdownListOnChange(e) {
     console.log(dataItem.text);
     if (dataItem.text == 'Other') {
         $("#OtherDiv").css('display', 'block');
+        $("#Other").prop('required', true);
     }
     else {
         $("#OtherDiv").css('display', 'none');
+        $("#Other").prop('required', false);
 
     }
 

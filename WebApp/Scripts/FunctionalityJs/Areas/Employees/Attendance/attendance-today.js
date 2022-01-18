@@ -43,13 +43,38 @@ $(function () {
     });
     $('#btnProcess').click(function () {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "Do you really want to process today's attendance?",
+            //title: 'Are you sure?',
+            //text: "Do you really want to process today's attendance?",
+            ////input: 'text',
+            //icon: 'question',
+            //showCancelButton: true,
+            //confirmButtonColor: '#5cb85c',
+            //cancelButtonColor: '#d9534f',
+            //buttons: {
+            //    cancel: {
+            //        text: "No",
+            //        value: null,
+            //        visible: true,
+            //        className: "btn btn-danger",
+            //        closeModal: true
+            //    },
+            //    confirm: {
+            //        text: "Yes",
+            //        value: true,
+            //        visible: true,
+            //        className: "btn btn-warning",
+            //        closeModal: true
+            //    }
+            //}
+            title: areYouSureTitle,
+            text: areYouSureText,
             //input: 'text',
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#5cb85c',
             cancelButtonColor: '#d9534f',
+            confirmButtonText: btnYesText,
+            cancelButtonText: btnNoText,
             buttons: {
                 cancel: {
                     text: "No",

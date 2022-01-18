@@ -898,12 +898,16 @@ var convertTime12to24 = function (time12h)  {
 
     return `${hours}:${minutes}`;
 }
-var convertHHMMToSeconds = function(time24hr){
+var convertHHMMToSeconds = function (time24hr) {
+
+    //var hms = "11:00:00";
     var hms = time24hr;//'02:04:33';   // your input string
     var a = hms.split(':'); // split it at the colons
 
     // minutes are worth 60 seconds. Hours are worth 60 minutes.
-    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    //This code is commented beacuse the time which we received is only in Hours and Minutes like 11:00
+   // var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 ;
 
     return seconds;
 }
@@ -914,4 +918,19 @@ function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDate
         return false;
     }
     return true;
+}
+
+
+
+function allowOnlyUptoHunderd(controlId) {
+    debugger;
+    var FieldID = '#' + controlId;
+    var total = $(FieldID).val();
+   
+  
+    if (total > 0 && total <= 100) {
+         oldValue = total
+    } else {
+        $(FieldID).val(oldValue);
+    }
 }

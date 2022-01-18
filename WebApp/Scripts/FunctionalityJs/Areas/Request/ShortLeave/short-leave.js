@@ -53,6 +53,8 @@ $(function () {
         //if (validator.validate()) {
         //    alert("Employee Saved");
         //}
+
+ 
         if ($('#AvailableShortLeave').val() == '0') {
             swalMessage('info', 'Can not apply with available balance 0',2000);
         }
@@ -79,11 +81,15 @@ $(function () {
     
     });
     loadAvailableShortLeaveBalance();
-
-
-
 })
+
+
+ 
+ 
+
+
 function compareStartEndTime(startTime, endTime) {
+    debugger;
     startTime = convertTime12to24(startTime);
     endTime = convertTime12to24(endTime);
     var startTimeSeconds = convertHHMMToSeconds(startTime);
@@ -110,6 +116,7 @@ function calculateHourFromStartEndTime() {
     }
 }
 function requestedHoursShouldBeLessOrEqualToAvailable() {
+    debugger;
     if ($('#Id').val() == '0') {
         if (parseFloat($("#NumberOfHours").val()) > parseInt($('#AvailableShortLeave').val())) {
             swalMessage('info', 'Requested hour(s) should be less than or equal to available balance', 2500);
@@ -227,13 +234,15 @@ function deleteShortLeaveById(event) {
     var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: 'Are you sure?',
-        text: "Do you really want to delete selected record",
+        title: areYouSureTitle,
+        text: areYouSureText,
         //input: 'text',
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',
         cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
         buttons: {
             cancel: {
                 text: "No",

@@ -12,13 +12,13 @@ function loadLeaveRequestGrid() {
 
     loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
     ajaxRequest({
-        commandName: 'Employee_AllLeaves_Get',
+        commandName: 'Employees_Request_Leave_Get',
         values: {
             Id: $('#Id').val(),
-            CreatedBy: $('#CreatedBy').val(),
+         //   CreatedBy: $('#CreatedBy').val(),
             LoggedInUserId: loggedInUserDetail.id,
             LoggedInUserRoleId: loggedInUserDetail.roleId,
-            LoggedInUserDepartementId: loggedInUserDetail.departmentId,
+            LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
             Language: _currentLanguage
         }, CallBack: loadLeaveRequestGridCallBack
     });

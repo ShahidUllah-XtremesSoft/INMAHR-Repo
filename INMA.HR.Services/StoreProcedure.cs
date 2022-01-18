@@ -223,6 +223,7 @@
     Request_Employee_AllLetter_Save,
     // LEAVES AREA
     Employee_AllLeaves_Get,
+    Employees_Request_Leave_Get,
     Request_Employee_AllLeaves_Save,
     //Short Leave AREA
     Request_All_Employee_ShortLeave_GetBySuperiorRole,

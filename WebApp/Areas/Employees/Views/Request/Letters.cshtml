@@ -19,8 +19,8 @@
     <div class="card-block">
         <div class="row">
             <div class="col-md-12">
-                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
-                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right" value="Decline" ><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
             </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-@section scripts {s
+@section scripts {
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/letters.js"></script>
     <script>
         //Grid columns
@@ -47,6 +47,7 @@
         var action = '@Resources.Global.lblAction';
         var Status = '@Resources.EmployeeResourcesUI.lblStatus';
         var Other = '@Resources.EmployeeResourcesUI.lblOther';
+        var startDate = '@Resources.EmployeeResourcesUI.lblStartDate';
         var lblFristSelectRecordFromGrid = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid';
 
     </script>

@@ -10,7 +10,7 @@ $(function () {
 
 function loadCancelLeaveGrid() {
 
-    ajaxRequest({ commandName: 'Request_Employees_All_LeaveCancel_GetBySuperiorRole', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadCancelLeaveGridCallBack });
+    ajaxRequest({ commandName: 'Employees_Request_Leave_Cancellation_Get', values: { Id: $('#Id').val(),  LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadCancelLeaveGridCallBack });
 }
 var loadCancelLeaveGridCallBack = function (inputDataJSON) {
     bindLeaveCancelGrid(JSON.parse(inputDataJSON.Value));
@@ -33,11 +33,13 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         },
         { field: "id", title: "id", hidden: true },
         { field: "requestLeaveId", title: "requestLeaveId", hidden: true },
-        { field: "leave", title: leaveName, hidden: false, width: 30 },
+        { field: "name", title: lblName, hidden: false, width: 50 },
+
+        { field: "leave", title: leaveName, hidden: true, width: 30 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
-        { field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
-        { field: "commentEng", title: commentEng, hidden: false, width: 30 },
-        { field: "commentArb", title: commentArb, hidden: false, width: 30 },
+        //{ field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
+        //{ field: "commentEng", title: commentEng, hidden: false, width: 30 },
+        /*{ field: "commentArb", title: commentArb, hidden: false, width: 30 },*/
         { field: "comment", title: comment, hidden: false, width: 30 },
         //        { field: "status", title: "Status", hidden: false, width: 30 },
         {

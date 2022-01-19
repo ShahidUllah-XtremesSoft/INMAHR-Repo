@@ -5,18 +5,19 @@ $(function () {
 
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-     
+
     loadLetterGrid();
-    
+
 })
 
 function loadLetterGrid() {
 
     ajaxRequest({
-        commandName: 'Request_AllEmployee_Letter_Get',
+        // commandName: 'Request_AllEmployee_Letter_Get', old sp
+        commandName: 'Employees_Request_Letter_Get',
         values: {
             Id: $('#Id').val(),
-            CreatedBy: $('#CreatedBy').val(),
+            //     CreatedBy: $('#CreatedBy').val(),
             LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
             LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
             LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
@@ -38,12 +39,12 @@ var bindLetterGrid = function (inputDataJSON) {
             width: 5
         },
         { field: "id", title: "id", hidden: true },
-        { field: "letterType", title: letterType, hidden: false, width: 20 },
+        { field: "name", title: name, hidden: false, width: 20 },
         { field: "leaveType", title: letterType, hidden: false, width: 20 },
+        { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:startDate#</span>" },
         { field: "comment", title: comment, hidden: false, width: 20, template: "<span class='badge badge-info'>#:comment#</span>" },
-        { field: "note", title: note, hidden: false, width: 20, template: "<span class='badge badge-info'>#:note#</span>" },
-        { field: "other", title: Other, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:other#</span>" },
-        { field: "LetterTypeId", title: "LetterTypeId", hidden: true, width: 30 },
+        //{ field: "other", title: Other, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:other#</span>" },
+        { field: "letterTypeId", title: "LetterTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
             title: Status, field: 'statusForCondition', width: 15, hidden: false,
@@ -56,74 +57,110 @@ var bindLetterGrid = function (inputDataJSON) {
     bindKendoGrid($LetterGrid, 50, gridColumns, inputDataJSON, true);
 
 };
-$('#btnSave').click(function () {
+$('#btnSave').click(function (e) {
     buttonAddPleaseWait('btnSave');
-    loopThroughGrid();
-
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
- });
-$('#btnCancel').click(function () {
-    buttonAddPleaseWait('btnCancel');
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnCancel', btnDecline, 'ban');
-    
+    fnApprovedOrDeclined(this.value, 'btnSave', 'check');
 });
-function loopThroughGrid(e) {
-    debugger
-    var grid = $("#" + $LetterGrid).data("kendoGrid");
-    var gridRecord = grid.dataSource._data;
+$('#btnCancel').click(function (e) {
+    buttonAddPleaseWait('btnCancel');
+    fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
 
-    var postingArray = [];
-    for (var i = 0; i < gridRecord.length; i++) {
-        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+});
 
-        var gridRow = gridRecord[i];
+function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 
-        if (isAssigned == true) {
-            postingArray.push(
-                {
-                    Id: parseInt(gridRow.id),
-                    LetterTypeId: parseInt(gridRow.letterTypeId),
-                    StatusId: parseInt(gridRow.statusId),
-                    CreatedBy: parseInt($('#CreatedBy').val()),
-                    LoggedInUserId: loggedInUserDetail.id,
-                    LoggedInUserRoleId: loggedInUserDetail.roleId,
-                    LoggedInUserDepartementId: loggedInUserDetail.departmentId,
-                    Language: _currentLanguage
-                });
+
+    Swal.fire({
+
+        title: areYouSureTitle,
+        text: areYouSureText,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
         }
+    }).then(function (restult) {
+        if (restult.value) {
 
-    }
-    if (postingArray.length > 0) {
-        alert('');
-        //ajaxRequest({ commandName: 'Request_Employee_AllLetter_Save', values: { EmployeeRequestLetterData: postingArray }, CallBack: EmployeeRequestLetterDataCallBack });
+            var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
 
-    }
-    else {
+            if (getgridIDs.length > 0) {
 
-        buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-        
-        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
-    }
+                ajaxRequest({
+                    commandName: 'Employees_Request_Letter_ApproveOrDecline',
+                    values: {
+                        LoggedInUser: loggedInUserDetail.id,
+                        LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
+                        RequestIds: getgridIDs,
+                        Status: btnValue,
+                        Comment: '',
+                        Language: _currentLanguage
+                    }, CallBack: responseCallBack
+                });
+
+                buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+            }
+
+
+        } else {
+            buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        }
+    });
 
 }
-function EmployeeRequestLetterDataCallBack(response) {
-    loadLeave$LetterGrid();
+var responseCallBack = function (response) {
+
+    loadLetterGrid();
     swal(response.Value);
 
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-    
+}
+
+function getIdsFromGrid(btnValue, btnId, btnIcon) {
+
+    var grid = $("#" + $LetterGrid).data("kendoGrid");
+    var gridDataSource = grid.dataSource._data;
+    var ids = '';
+    for (var i = 0; i < gridDataSource.length; i++) {
+        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+        if (isAssigned == true) {
+            var gridRow = gridDataSource[i];
+            ids += ids == '' ? gridRow.id : ',' + gridRow.id;
+        }
+    }
+    if (ids.length > 0) { return ids; } else {
+        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+        return 0;
+    }
+
 
 }
 
+ 
 
 $(document).on("click", "#checkAll", function () {
 
     if (this.checked) {
-
-        $("#$LetterGrid tbody input:checkbox").attr("checked", true);
+        $("#LetterGrid tbody input:checkbox").attr("checked", true);
     } else {
-        $("#$LetterGrid tbody input:checkbox").attr("checked", false);
+        $("#LetterGrid tbody input:checkbox").attr("checked", false);
 
     }
 });

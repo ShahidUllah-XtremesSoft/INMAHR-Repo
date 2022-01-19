@@ -12,10 +12,11 @@ $(function () {
 function loadCashInLeaveGrid() {
 
     ajaxRequest({
-        commandName: 'Request_Employees_All_CashInLeave_Get',
+      //  commandName: 'Request_Employees_All_CashInLeave_Get', old sp
+        commandName: 'Employees_Request_CashInLeave_Get',
         values: {
             Id: $('#Id').val(),
-            CreatedBy: $('#CreatedBy').val(),
+         //   CreatedBy: $('#CreatedBy').val(),
             LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
             LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
             LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
@@ -45,7 +46,7 @@ var bindCashInLeaveGrid = function (inputDataJSON) {
         },
         { field: "id", title: "id", hidden: true },
         { field: "days", title: days, hidden: false, width: 30, template: "<span class='badge badge-dark'>#:days#</span>" },
-        { field: "date", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:date#</span>" },
+        { field: "createdDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:date#</span>" },
         { field: "comment", title: comment, hidden: false, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         //{ field: "status", title: "Status", hidden: false, width: 30 },

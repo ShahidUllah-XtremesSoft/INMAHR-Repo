@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 namespace INMA.HR.Services.Commands.Employees
 {
 
-    [Command(Name = "Request_Employees_All_CashInLeave_Get")]
-    public class Request_Employees_All_CashInLeave_GetCommand : CamelCommandBase
+    [Command(Name = "Employees_Request_CashInLeave_Get")]
+    public class Employees_Request_CashInLeave_GetCommand : CamelCommandBase
     {
         protected override object DoAction(object v)
         {
             var model = base.MappedModel(new
             {
                 Id = 0,
-                CreatedBy = 0,
+                //CreatedBy = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
                 LoggedInUserDepartementId = 0,
@@ -32,7 +32,7 @@ namespace INMA.HR.Services.Commands.Employees
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Request_Employees_All_CashInLeave_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Employees_Request_CashInLeave_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }

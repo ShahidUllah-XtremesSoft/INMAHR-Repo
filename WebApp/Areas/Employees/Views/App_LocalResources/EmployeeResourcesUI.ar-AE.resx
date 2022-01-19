@@ -255,6 +255,9 @@
   <data name="lblSocialStatusEnglish" xml:space="preserve">
     <value>الحالة المدنية (باللغة الإنجليزية)</value>
   </data>
+  <data name="lblStartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
   <data name="lblStartTime" xml:space="preserve">
     <value>وقت البدء</value>
   </data>

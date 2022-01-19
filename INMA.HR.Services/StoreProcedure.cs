@@ -219,20 +219,21 @@
 
     #region Employee Request
     //LETTER AREA
-    Request_AllEmployee_Letter_Get,
-    Request_Employee_AllLetter_Save,
+    Employees_Request_Letter_Get,
+    //Request_Employee_AllLetter_Save,
+    Employees_Request_Letter_ApproveOrDecline,
     // LEAVES AREA
     Employee_AllLeaves_Get,
     Employees_Request_Leave_Get,
-    Request_Employee_AllLeaves_Save,
+    Employees_Request_Leave_ApproveOrDecline,
     //Short Leave AREA
-    Request_All_Employee_ShortLeave_GetBySuperiorRole,
-    Request_Employee_Short_Leaves_Save,
+    Employees_Request_Permission_Leave_Get,
+    Employees_Request_Permission_Leave_ApproveOrDecline,
     //Leave Cancel AREA
-    Request_Employees_All_LeaveCancel_GetBySuperiorRole,
+    Employees_Request_Leave_Cancellation_Get,
     Request_Employee_Cancel_Leaves_ApprovedORDeclined,
     //Cash In Leave AREA
-    Request_Employees_All_CashInLeave_Get,
+    Employees_Request_CashInLeave_Get,
     Request_Employee_CashInLeave_ApprovedORDeclined,
     #endregion
 

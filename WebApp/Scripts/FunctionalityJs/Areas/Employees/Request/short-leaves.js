@@ -11,32 +11,17 @@ $(function () {
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
     loadShortLeaveGrid();
-
-
-    $('#btnSave').click(function () {
-        buttonAddPleaseWait('btnSave');
-
-        loopThroughGrid();
-        buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-
-    });
-    $('#btnCancel').click(function () {
-        buttonAddPleaseWait('btnCancel');
-        loopThroughGrid();
-        buttonRemovePleaseWait('btnCancel', btnDecline, 'ban');
-    });
      
-
 
 })
  function loadShortLeaveGrid() {
 
      ajaxRequest({
        //  commandName: 'Request_All_Employee_ShortLeave_GetBySuperiorRole',
-         commandName: 'Request_All_Employee_ShortLeave_GetBySuperiorRole',
+         commandName: 'Employees_Request_Permission_Leave_Get',
          values: {
              Id: $('#Id').val(),
-             CreatedBy: $('#CreatedBy').val(),
+           //  CreatedBy: $('#CreatedBy').val(),
              LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
              LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
              LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
@@ -65,8 +50,8 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             width: 8
         },
         { field: "id", title: "id", hidden: true },
-        { field: "requestDate", title: requestDate, hidden: false, width: 30 },
         { field: "name", title: lblname, hidden: false, width: 50 },
+        { field: "requestDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:requestDate#</span>" },
         { field: "startTime", title: startTime, hidden: false, width: 30, template: "<span class='badge badge-info'>#:startTime#</span>" },
         { field: "endTime", title: returnTime, hidden: false, width: 30, template: "<span class='badge badge-danger'>#:endTime#</span>" },
         { field: "leaveType", title: leaveType, hidden: true, width: 30 },
@@ -97,89 +82,104 @@ var bindShortLeaveGrid = function (inputDataJSON) {
 
 };
 
+  
  
-//function saveShortLeaveRequest() {
-//    if (customValidateForm('frmShortLeaveDetail')) {
-//        $("#frmShortLeaveDetail").ajaxForm();
-//        buttonAddPleaseWait('btnSave');
-//        var options = {
-//            success: function (response, statusText, jqXHR) {
-//                buttonRemovePleaseWait('btnSave', 'Save', 'save');
-//                swal(response);
-//                $('#Id').val(0);
-//                loadShortLeaveGrid();
-//                loadAvailableShortLeaveBalance();
-//                clearFields();
+$('#btnSave').click(function (e) {
+    buttonAddPleaseWait('btnSave');
+    fnApprovedOrDeclined(this.value, 'btnSave', 'check');
+});
+$('#btnCancel').click(function (e) {
+    buttonAddPleaseWait('btnCancel');
+    fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
 
-//            },
-//            error: function (xhr, status, error) {
-//                buttonRemovePleaseWait('btnSave', 'Save', 'save');
-//                var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+});
 
-//                swalMessage('error', errmsg, 2000);
-//            }
-//            , complete: function () {
-//                buttonRemovePleaseWait('btnSave', 'Save', 'save');
-//            }
-//        };
-//        $("#frmShortLeaveDetail").ajaxSubmit(options);
-//    }
-//    else {
+function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 
-//        buttonRemovePleaseWait('btnSave', 'Save', 'save');
 
-//    }
+    Swal.fire({
 
-//}
-
-function loopThroughGrid(e) {
-
-    var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
-    var gridRecord = grid.dataSource._data;
-
-    var postingArray = [];
-    for (var i = 0; i < gridRecord.length; i++) {
-        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
-
-        var gridRow = gridRecord[i];
-
-    
-        if (isAssigned == true) {
-            postingArray.push(
-                {
-                    Id: parseInt(gridRow.id),
-                    LeaveTypeId: parseInt(gridRow.leaveTypeId),
-                    StatusId: parseInt(gridRow.statusId),
-                    CreatedBy: parseInt($('#CreatedBy').val()),
-                    LoggedInUserId: loggedInUserDetail.id,
-                    LoggedInUserRoleId: loggedInUserDetail.roleId,
-                    LoggedInUserDepartementId: loggedInUserDetail.departmentId,
-                    Language: _currentLanguage
-                });
+        title: areYouSureTitle,
+        text: areYouSureText,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
         }
+    }).then(function (restult) {
+        if (restult.value) {
 
-    }
-    if (postingArray.length > 0) {
-        
-     ajaxRequest({ commandName: 'Request_Employee_Short_Leaves_Save', values: { EmployeeRequestData: postingArray }, CallBack: EmployeeRequestDataCallBack });
+            var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
 
-       
-        
+            if (getgridIDs.length > 0) {
+
+                ajaxRequest({
+                    commandName: 'Employees_Request_Permission_Leave_ApproveOrDecline',
+                    values: {
+                        LoggedInUser: loggedInUserDetail.id,
+                        LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
+                        RequestIds: getgridIDs,
+                        Status: btnValue,
+                        Comment: '',
+                        Language: _currentLanguage
+                    }, CallBack: responseCallBack
+                });
+
+                buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+            }
 
 
-    }
-    else {
-        buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
-    }
+        } else {
+            buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        }
+    });
 
 }
-function EmployeeRequestDataCallBack(response) {
+var responseCallBack = function (response) {
+
     loadShortLeaveGrid();
     swal(response.Value);
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
 
 }
+
+function getIdsFromGrid(btnValue, btnId, btnIcon) {
+
+    var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
+    var gridDataSource = grid.dataSource._data;
+    var ids = '';
+    for (var i = 0; i < gridDataSource.length; i++) {
+        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+        if (isAssigned == true) {
+            var gridRow = gridDataSource[i];
+            ids += ids == '' ? gridRow.id : ',' + gridRow.id;
+        }
+    }
+    if (ids.length > 0) { return ids; } else {
+        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+        return 0;
+    }
+
+
+}
+
 
 
 $(document).on("click", "#checkAll", function () {

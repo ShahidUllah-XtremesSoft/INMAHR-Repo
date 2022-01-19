@@ -252,6 +252,9 @@
   <data name="lblSocialStatusEnglish" xml:space="preserve">
     <value>Social Status (English)</value>
   </data>
+  <data name="lblStartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
   <data name="lblStartTime" xml:space="preserve">
     <value>Start Time</value>
   </data>
@@ -266,5 +269,8 @@
   </data>
   <data name="MsgAttachmentNotFound" xml:space="preserve">
     <value>Attachment not found</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Name</value>
   </data>
 </root>

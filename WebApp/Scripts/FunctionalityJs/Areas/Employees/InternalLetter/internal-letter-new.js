@@ -21,9 +21,22 @@
     }, 500);
     //Events Starts
     $('#btnSave').on('click', function (e) {
-               
+        var valid = true;
         $("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
-        if (customValidateForm('frmEmployeeInternalLetter')) {
+        if ($('#DepartmentIds').val() == null || $('#DepartmentIds').val() == '' || $('#DepartmentIds').val() == -1 || $('#DepartmentIds').val() == '0') {
+            $('#DepartmentId').addClass('invalid');
+            $('#DepartmentId').attr('title', 'This field is required');
+            $('#DepartmentId').removeClass("invalid");
+            $('#DepartmentId').next("span").remove();
+            $('#DepartmentId').after("<span style='color:red;'>This field is required</span>");
+            valid = false;
+        }
+        else {
+            $('#DepartmentId').removeClass("invalid");
+            $('#DepartmentId').next("span").remove();
+
+        }
+        if (true == customValidateForm('frmEmployeeInternalLetter') && valid == true) {            
             $("#frmEmployeeInternalLetter").ajaxForm();
             buttonAddPleaseWait('btnSave');
             var options = {
@@ -33,7 +46,7 @@
                     //clearFields();
                     //getLetterNextNumber                    
                     window.location.href = '/Employees/InternalLetter';
-
+            
                 },
                 error: function (xhr, status, error) {
                     buttonRemovePleaseWait('btnSave', 'Save', 'save');
@@ -47,6 +60,7 @@
             $("#frmEmployeeInternalLetter").ajaxSubmit(options);
         }
         else {
+            
             buttonRemovePleaseWait('btnSave', 'Save', 'save');
         }
     });
@@ -75,13 +89,13 @@ var getLetterNextNumberCallBack = function (inputDataJSON) {
 }
 
 function departmentTreeViewCheck(e) {
-  
+
     //console.log("Checking", e.sender._values);
     $('#DepartmentIds').val('');
     var selectedDepartments = e.sender._values;
     var concatenatedDepartments = '';
     selectedDepartments.forEach(function (item) {
-        console.log("item", item);
+        //console.log("item", item);
         concatenatedDepartments += concatenatedDepartments == '' ? item : ',' + item;
     });
     //alert(concatenatedDepartments);

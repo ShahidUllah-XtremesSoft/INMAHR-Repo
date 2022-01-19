@@ -163,10 +163,13 @@
     <value>Section Arb</value>
   </data>
   <data name="lblDescription" xml:space="preserve">
-    <value>Desciption (English)</value>
+    <value>الوصف</value>
   </data>
-  <data name="lblDescriptonArb" xml:space="preserve">
-    <value>Description ( Arabic )</value>
+  <data name="lblDescriptionArb" xml:space="preserve">
+    <value> الوصف (بالغات العربية)</value>
+  </data>
+  <data name="lblDescriptionEng" xml:space="preserve">
+    <value>الوصف (بالغات الانجليزية)  </value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>

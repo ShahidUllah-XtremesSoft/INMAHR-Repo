@@ -111,7 +111,6 @@ function calculateHourFromStartEndTime() {
         //var days = ((dateDifference / 1000 / 60 / 60 / 24) + 1);
         var days = (dateDifference / (60 * 60 * 1000));
         $('#NumberOfHours').val(days);        
-
     }
     else {
         $('#NumberOfHours').val(0);

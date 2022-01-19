@@ -4,6 +4,7 @@ $(function () {
     loadDepartmentDropdownList();
     loadDepartmentGrid();
 });
+/*
 function loadDepartmentGridss() {
 
     //values - are key value pair json object
@@ -19,8 +20,8 @@ var bindDepartmentGrid = function (inputDataJSON) {
         { field: "nameEng", title: departmentNameEng, width: 100, filterable: true },
         { field: "nameArb", title: departmentNameArb, width: 100, filterable: true },
         { field: "parentId", title: "ParentId", width: 100, filterable: true, hidden: true },
-        { field: "parentDepartmentEng", title: parentDepartment, width: 100, filterable: true },
         { field: "parentDepartmentArb", title: parentDepartmentNameArb, width: 100, filterable: true },
+        { field: "parentDepartmentEng", title: parentDepartment, width: 100, filterable: true },
 
         //Below is action column
         {
@@ -34,6 +35,7 @@ var bindDepartmentGrid = function (inputDataJSON) {
 
     bindKendoGrid($department_grid, 50, gridColumns, inputDataJSON);
 };
+*/
 function editDepartment(event) {
 
     var row = $(event).closest("tr");
@@ -128,13 +130,13 @@ function loadDepartmentGrid(e) {
 
 
     //KendoGlobalAjax({ commandName: 'Account_SelectForTreeGrid', values: {}, CallBack: loadChildData });
-    ajaxRequest({ commandName: 'HR_Department_GetAllWithParent', values: { Language: $('#Language').val() }, CallBack: loadChildData });
+    ajaxRequest({ commandName: 'HR_Department_GetAllWithParent', values: { Language: $('#Language').val() }, CallBack: loadDepartmentGridCallBack });
 }
 
-var loadChildData = function (d) { fnLoadTreeAccountGrid(JSON.parse(d.Value)); }
+var loadDepartmentGridCallBack = function (d) { loadoadTreeGridFromDepartment(JSON.parse(d.Value)); }
 
 
-function fnLoadTreeAccountGrid(_d) {
+function loadoadTreeGridFromDepartment(_d) {
 
     // If the parent id is 0 then it will not show any data 
     var entriess = [];
@@ -154,13 +156,13 @@ function fnLoadTreeAccountGrid(_d) {
         columns: [
             { field: "id", title: "id", hidden: true, width: 100, filterable: true },
             {
-                field: "nameEng", title: "Name English", width: 100, filterable: true
+                field: "nameEng", title: departmentNameEng, width: 100, filterable: true
             },
             {
                 field: "parentId", title: "parentId", width: 100, hidden: true, filterable: true
             },
             {
-                field: "nameArb", title: "Name Arabic", width: 100, filterable: true
+                field: "nameArb", title: departmentNameArb, width: 100, filterable: true
             },
             //Below is action column
             {

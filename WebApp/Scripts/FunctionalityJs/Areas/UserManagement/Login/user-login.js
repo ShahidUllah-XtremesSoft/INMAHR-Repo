@@ -31,7 +31,7 @@
     
 });
 function userLoginCallBack(userLoginResponse) {
-    debugger;
+  
     if (userLoginResponse.Value == 'null'       
         || JSON.parse(userLoginResponse.Value).message == 'Detail are not verified'
         //|| JSON.parse(userLoginResponse.Value).message != null    

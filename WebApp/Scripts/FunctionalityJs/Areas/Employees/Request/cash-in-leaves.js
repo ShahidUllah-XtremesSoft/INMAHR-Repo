@@ -12,11 +12,11 @@ $(function () {
 function loadCashInLeaveGrid() {
 
     ajaxRequest({
-      //  commandName: 'Request_Employees_All_CashInLeave_Get', old sp
+        //  commandName: 'Request_Employees_All_CashInLeave_Get', old sp
         commandName: 'Employees_Request_CashInLeave_Get',
         values: {
             Id: $('#Id').val(),
-         //   CreatedBy: $('#CreatedBy').val(),
+            //   CreatedBy: $('#CreatedBy').val(),
             LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
             LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
             LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
@@ -45,8 +45,10 @@ var bindCashInLeaveGrid = function (inputDataJSON) {
             width: 5
         },
         { field: "id", title: "id", hidden: true },
-        { field: "days", title: days, hidden: false, width: 30, template: "<span class='badge badge-dark'>#:days#</span>" },
-        { field: "createdDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:date#</span>" },
+        { field: "name", title: name, hidden: false, width: 30 },
+        { field: "totalDays", title: days, hidden: false, width: 30, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+        { field: "startDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:startDate#</span>" },
+       // { field: "endDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:endDate#</span>" },
         { field: "comment", title: comment, hidden: false, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         //{ field: "status", title: "Status", hidden: false, width: 30 },
@@ -73,68 +75,102 @@ var bindCashInLeaveGrid = function (inputDataJSON) {
 
 };
 
-$('#btnSave').click(function () {
+$('#btnSave').click(function (e) {
     buttonAddPleaseWait('btnSave');
-
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-
+    fnApprovedOrDeclined(this.value, 'btnSave', 'check');
 });
-$('#btnCancel').click(function () {
+$('#btnCancel').click(function (e) {
     buttonAddPleaseWait('btnCancel');
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnCancel', btnDecline, 'ban');
+    fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
+
 });
 
-function loopThroughGrid(e) {
+function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
+
+
+    Swal.fire({
+
+        title: areYouSureTitle,
+        text: areYouSureText,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
+        }
+    }).then(function (restult) {
+        if (restult.value) {
+
+            var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
+
+            if (getgridIDs.length > 0) {
+
+                ajaxRequest({
+                    commandName: 'Employees_Request_CashInLeave_ApproveOrDecline',
+                    values: {
+                        LoggedInUser: loggedInUserDetail.id,
+                        LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
+                        RequestIds: getgridIDs,
+                        Status: btnValue,
+                        Comment: '',
+                        Language: _currentLanguage
+                    }, CallBack: responseCallBack
+                });
+
+                buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+            }
+
+
+        } else {
+            buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        }
+    });
+
+}
+var responseCallBack = function (response) {
+
+    loadCashInLeaveGrid();
+    swal(response.Value);
+
+}
+
+function getIdsFromGrid(btnValue, btnId, btnIcon) {
 
     var grid = $("#" + CashInLeaveGrid).data("kendoGrid");
-    var gridRecord = grid.dataSource._data;
-
-    var postingArray = [];
-    for (var i = 0; i < gridRecord.length; i++) {
+    var gridDataSource = grid.dataSource._data;
+    var ids = '';
+    for (var i = 0; i < gridDataSource.length; i++) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
-
-        var gridRow = gridRecord[i];
-
-        //   if (isAssigned == true || gridRow.id > 0) {
         if (isAssigned == true) {
-            postingArray.push(
-                {
-                    Id: parseInt(gridRow.id),
-                    Days: parseInt(gridRow.days),
-                    RequestLeaveId: gridRow.requestLeaveId == null ? 0 : parseInt(gridRow.requestLeaveId),
-                    Date: gridRow.date,
-                    StatusId: parseInt(gridRow.statusId),
-                    CreatedBy: parseInt($('#CreatedBy').val()),
-                    LoggedInUserId: loggedInUserDetail.id,
-                    LoggedInUserRoleId: loggedInUserDetail.roleId,
-                    LoggedInUserDepartementId: loggedInUserDetail.departmentId,
-                    Language: _currentLanguage,
-                    Status: gridRow.status,
-                    Comment: '',
-                });
+            var gridRow = gridDataSource[i];
+            ids += ids == '' ? gridRow.id : ',' + gridRow.id;
         }
-
     }
-    if (postingArray.length > 0) {
-        ajaxRequest({
-            commandName: 'Request_Employee_CashInLeave_ApprovedORDeclined',
-            values: { EmployeeRequestData: postingArray }, CallBack: EmployeeRequestDataCallBack
-        });
-    }
-    else {
-        buttonRemovePleaseWait('btnSave', btnAccept, 'check');
+    if (ids.length > 0) { return ids; } else {
+        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+        return 0;
     }
 
-}
-function EmployeeRequestDataCallBack(response) {
-    loadLeaveCashInLeaveGrid();
-    swal(response.Value);
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
 
 }
+
 
 
 $(document).on("click", "#checkAll", function () {

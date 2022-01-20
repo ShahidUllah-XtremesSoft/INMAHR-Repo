@@ -65,63 +65,104 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
     bindKendoGrid(CancelGrid, 50, gridColumns, inputDataJSON, true);
 
 };
-$('#btnSave').click(function () {
+
+
+$('#btnSave').click(function (e) {
     buttonAddPleaseWait('btnSave');
-
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-
+    fnApprovedOrDeclined(this.value, 'btnSave', 'check');
 });
-$('#btnCancel').click(function () {
+$('#btnCancel').click(function (e) {
     buttonAddPleaseWait('btnCancel');
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnCancel', btnDecline, 'ban');
+    fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
+
 });
 
-function loopThroughGrid(e) {
+function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
+
+
+    Swal.fire({
+
+        title: areYouSureTitle,
+        text: areYouSureText,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
+        }
+    }).then(function (restult) {
+        if (restult.value) {
+
+            var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
+
+            if (getgridIDs.length > 0) {
+
+                ajaxRequest({
+                    commandName: 'Employees_Request_Leave_Cancellation_ApproveOrDecline',
+                    values: {
+                        LoggedInUser: loggedInUserDetail.id,
+                        LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
+                        RequestIds: getgridIDs,
+                        Status: btnValue,
+                        Comment: '',
+                        Language: _currentLanguage
+                    }, CallBack: responseCallBack
+                });
+
+                buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+            }
+
+
+        } else {
+            buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        }
+    });
+
+}
+var responseCallBack = function (response) {
+
+    loadCancelLeaveGrid();
+    swal(response.Value);
+
+}
+
+function getIdsFromGrid(btnValue, btnId, btnIcon) {
 
     var grid = $("#" + CancelGrid).data("kendoGrid");
-    var gridRecord = grid.dataSource._data;
-
-    var postingArray = [];
-    for (var i = 0; i < gridRecord.length; i++) {
+    var gridDataSource = grid.dataSource._data;
+    var ids = '';
+    for (var i = 0; i < gridDataSource.length; i++) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
-
-        var gridRow = gridRecord[i];
         if (isAssigned == true) {
-            postingArray.push(
-                {
-                    Id: parseInt(gridRow.id),
-                    RequestId: parseInt(gridRow.id),
-                    RequestLeaveId: gridRow.requestLeaveId == null ? 0 : parseInt(gridRow.requestLeaveId),
-                    StatusId: parseInt(gridRow.statusId),
-                    CreatedBy: parseInt($('#CreatedBy').val()),
-                    LoggedInUserId: loggedInUserDetail.id,
-                    LoggedInUserRoleId: loggedInUserDetail.roleId,
-                    LoggedInUserDepartementId: loggedInUserDetail.departmentId,
-                    Language: _currentLanguage,
-                    Status: gridRow.status,
-                    Comment: '',
-                });
+            var gridRow = gridDataSource[i];
+            ids += ids == '' ? gridRow.id : ',' + gridRow.id;
         }
-
     }
-    if (postingArray.length > 0) {
-        ajaxRequest({ commandName: 'Request_Employee_Cancel_Leaves_ApprovedORDeclined', values: { EmployeeRequestData: postingArray }, CallBack: EmployeeRequestDataCallBack });
-       
-    }
-    else {
-        buttonRemovePleaseWait('btnSave', btnAccept, 'check');
+    if (ids.length > 0) { return ids; } else {
+        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+        return 0;
     }
 
-}
-function EmployeeRequestDataCallBack(response) {
-    loadLeaveCancelGrid();
-    swal(response.Value);
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
 
 }
+
 
 
 $(document).on("click", "#checkAll", function () {

@@ -231,10 +231,10 @@
     Employees_Request_Permission_Leave_ApproveOrDecline,
     //Leave Cancel AREA
     Employees_Request_Leave_Cancellation_Get,
-    Request_Employee_Cancel_Leaves_ApprovedORDeclined,
+    Employees_Request_Leave_Cancellation_ApproveOrDecline,
     //Cash In Leave AREA
     Employees_Request_CashInLeave_Get,
-    Request_Employee_CashInLeave_ApprovedORDeclined,
+    Employees_Request_CashInLeave_ApproveOrDecline,
     #endregion
 
 }

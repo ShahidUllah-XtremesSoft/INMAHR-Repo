@@ -41,7 +41,7 @@
             buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     swal(response);
                     //clearFields();
                     //getLetterNextNumber                    
@@ -49,19 +49,19 @@
             
                 },
                 error: function (xhr, status, error) {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmEmployeeInternalLetter").ajaxSubmit(options);
         }
         else {
             
-            buttonRemovePleaseWait('btnSave', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
     });
     //Events ends

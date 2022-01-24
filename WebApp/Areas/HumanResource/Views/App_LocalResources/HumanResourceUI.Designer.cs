@@ -340,7 +340,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Emirates.
+        ///   Looks up a localized string similar to Emirates ID.
         /// </summary>
         public static string lblEmirates {
             get {

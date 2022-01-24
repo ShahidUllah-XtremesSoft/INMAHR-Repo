@@ -5,10 +5,14 @@ var LoginUserID = '';
 var CreatedBy = '';
 $(function () {
     $('#Language').val(_currentLanguage);
+
+    //Hide leave balance area if other than HR is logged in    
+    if (JSON.parse(localStorage.getItem('User')).isHR) {
+        $('#divLeaveBalance').css('display', 'block');
+    }
+    //Hide leave balance area if other than HR is logged in
     //var $document_grid = "document-grid";
-    $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
-
-
+    $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);    
 
     //var LeaveRequestGrid = "LeaveRequestGrid";
     loadEmployeeProfile();
@@ -91,6 +95,7 @@ $(function () {
         $('#ModalDenyRequest').modal('toggle');
     });
     //| Request Deny Modal Comment, Save Button Click Ends
+    
 });
 //|Load Employee Profile Starts
 function loadEmployeeProfile() {

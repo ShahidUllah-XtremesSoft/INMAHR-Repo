@@ -255,14 +255,18 @@
 <script>
     var _currentLanguage = '@Resources.Common.CurrentLang';
 
+    //Global Resources
+    var save = '@Resources.Global.btnSave';
+
     //Columns
     var employeeNumber = '@HRUI.HumanResourceUI.lblEmpNum';
     var employeeName = '@HRUI.HumanResourceUI.lblEmployeeName';
     var documentType = '@HRUI.HumanResourceUI.lblEducationalDocument';
     var expiryDate = '@HRUI.HumanResourceUI.lblExpiryDate';
     var section = '@HRUI.HumanResourceUI.lblDepartment';
-    $(function () {
 
+    $(function () {
+        $(':input').removeAttr('placeholder');
         $('#LayoutCurrentLanguage').val(_currentLanguage);
         var assingedRoleMenus = localStorage.getItem('Menus');
         var menuGroupArray = [];
@@ -285,7 +289,7 @@
 
         }, 500);
 
-       
+
 
     });
 
@@ -296,14 +300,14 @@
 
 
     $('#btn-update-password').click(function () {
-        
+
         var test = localStorage.getItem('EmployeeNumber');
         $('#EmployeeNum').val(test);
         $('#modal-update-password').modal('show');
     });
 
     $('#btn-update-user-password').click(function () {
-       
+
         if (customValidateForm('frmUpdatePassword')) {
             $("#frmUpdatePassword").ajaxForm();
             buttonAddPleaseWait('btn-update-user-password');

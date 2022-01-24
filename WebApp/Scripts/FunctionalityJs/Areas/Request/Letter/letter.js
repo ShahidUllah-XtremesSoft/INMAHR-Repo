@@ -100,7 +100,7 @@ function saveLetterRequest() {
             buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     swal(response);
                     $('#Id').val(0);
                     loadLetterGrid();
@@ -108,19 +108,19 @@ function saveLetterRequest() {
 
                 },
                 error: function (xhr, status, error) {                    
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;                    
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmLetterDetail").ajaxSubmit(options);
         }
         else {
             
-            buttonRemovePleaseWait('btnSave', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
 
         }
    

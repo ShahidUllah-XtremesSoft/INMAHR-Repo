@@ -18,7 +18,7 @@ $(function () {
         }
         else {
 
-            buttonRemovePleaseWait('btnSave', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
         // var gridRows = $('#menu-linking-grid').tbody.find("tr");
 
@@ -275,7 +275,7 @@ function loopThroughGrid(e) {
         ajaxRequest({ commandName: 'UserManagement_RoleMenu_Save', values: { RoleMenus: postingArray, Language: $('#Language').val() }, CallBack: menuAssignedCallBack });
     }
     else {
-        buttonRemovePleaseWait('btnSave', 'Save', 'save');
+        buttonRemovePleaseWait('btnSave', save, 'save');
         swalMessage('info', 'First select records from grid', 1500);
     }
 
@@ -283,5 +283,5 @@ function loopThroughGrid(e) {
 function menuAssignedCallBack(response) {
     loadRoleMenuGrid();    
     swal(response.Value);
-    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+    buttonRemovePleaseWait('btnSave', save, 'save');
 }

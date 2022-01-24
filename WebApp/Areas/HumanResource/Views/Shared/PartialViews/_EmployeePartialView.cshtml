@@ -125,33 +125,18 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblEmirates </label> <span style="color: red">*</span><br />
-            <input type="text" class="form-control " id="EIDNumber" name="EIDNumber" placeholder="Enter EID Number"   required/>
+            <input type="text" class="form-control " id="EIDNumber" name="EIDNumber" placeholder="Enter EID" required />
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblEmiratesOfResidency</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="EmiratesStateId" name="EmiratesStateId" required />
         </div>
     </div>
 
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardNumber </label> <span style="color: red">*</span><br />
-            <input class="form-control " id="MunicipalityCardNumber" name="MunicipalityCardNumber" placeholder="Enter Municipality Card Number"  required />
-        </div>
-    </div>
 </div>
-<div class="row">
 
-
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardIssueDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="MunicipalityCardReleaseDate" name="MunicipalityCardReleaseDate"   required/>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardExpiryDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="MunicipalityCardExpirtDate" name="MunicipalityCardExpirtDate"   required/>
-        </div>
-    </div>
-</div>
 
 
 
@@ -162,34 +147,30 @@
                 <input class="form-control" id="VisaSponsorshipId" name="VisaSponsorshipId"  />
             </div>
         </div>*@
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-form-label">@HRUI.HumanResourceUI.lblEmiratesOfResidency</label> <span style="color: red">*</span><br />
-            <input type="text" class="form-control " id="EmiratesStateId" name="EmiratesStateId" required />
-        </div>
-    </div>
+   
 
-    <div class="col-sm-6">
-        <div class="form-group">
-            <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportNumber</label> <span style="color: red">*</span><br />
-            <input type="text" class="form-control " id="PassportNumber" name="PassportNumber" placeholder="Enter Passport Number"  required/>
-        </div>
-    </div>
+   
 
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportNumber</label> <span style="color: red">*</span><br />
+            <input type="text" class="form-control " id="PassportNumber" name="PassportNumber" placeholder="Enter Passport Number" required />
+        </div>
+    </div>
+    <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportIssueDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="ReleaseDate" name="ReleaseDate"   required/>
+            <input type="date" class="form-control " id="ReleaseDate" name="ReleaseDate" required />
         </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblPassportExpiryDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="ExpiryDate" name="ExpiryDate"   required/>
+            <input type="date" class="form-control " id="ExpiryDate" name="ExpiryDate" required />
         </div>
     </div>
 </div>
@@ -216,25 +197,45 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" hidden="hidden">
     <div class="col-sm-6">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblOtherStatusEng</label> <br />
-            <input class="form-control " id="OtherStatusEng" name="OtherStatusEng" placeholder="Enter Other Status"  />
+            <input class="form-control " id="OtherStatusEng" name="OtherStatusEng" placeholder="Enter Other Status"  value=" "/>
         </div>
     </div>
 
     <div class="col-sm-6">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblOtherStatusArb </label><br />
-            <input class="form-control " id="OtherStatusArb" name="OtherStatusArb" placeholder="Enter Other Status" />
+            <input class="form-control " id="OtherStatusArb" name="OtherStatusArb" placeholder="Enter Other Status" value=" "/>
         </div>
     </div>
 </div>
-
 <div class="row">
 
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardNumber </label> <span style="color: red">*</span><br />
+            <input class="form-control " id="MunicipalityCardNumber" name="MunicipalityCardNumber" placeholder="Enter Municipality Card Number" required />
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardIssueDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="MunicipalityCardReleaseDate" name="MunicipalityCardReleaseDate" required />
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="col-form-label">@HRUI.HumanResourceUI.lblMunicipalityCardExpiryDate </label> <span style="color: red">*</span><br />
+            <input type="date" class="form-control " id="MunicipalityCardExpirtDate" name="MunicipalityCardExpirtDate" required />
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblNationality </label> <span style="color: red">*</span><br />
             <input class="form-control" id="NationalityId" name="NationalityId"   required/>

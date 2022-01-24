@@ -12,7 +12,7 @@
                     console.log(response);
                     swal(response);
                     loadMenuGrid();
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     ClearControls();
                 },
                 error: function (xhr, status, error) {
@@ -21,14 +21,14 @@
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmMenuDetail").ajaxSubmit(options);
         }
         else {
 
-            buttonRemovePleaseWait('btnSave', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
     });
     

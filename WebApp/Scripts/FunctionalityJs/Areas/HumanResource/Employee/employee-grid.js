@@ -1,10 +1,12 @@
 ﻿var $grid = "employee-grid", requestFrom = '';
 
 $(function () {
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', 0);
     requestFrom = (new URL(location.href)).searchParams.get('from');
     $('#Language').val(_currentLanguage);
     loadEmployeeGrid();
     fnLoadNationalityDDL();
+
 });
 
 
@@ -24,7 +26,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
     }
     var gridColumns = [
 
-        { field: "id", title: "id", hidden: true },
+        { field: "id", title: "id", hidden: true },        
 
 
         //{ field: "employeeNumber", title: "Employee Number", width: 130, filterable: true },
@@ -74,6 +76,7 @@ function redirectToEmployeeDetailView(e) {
     var dataItem = grid.dataItem(row);
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.id);
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);    
     if (requestFrom == 'employee') {
         window.location.href = '/HumanResource/Employee/Detail';
     }

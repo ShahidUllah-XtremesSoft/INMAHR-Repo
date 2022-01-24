@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnGridAlreadyCreated" xml:space="preserve">
-    <value> Created</value>
+    <value>تم التسجيل</value>
   </data>
   <data name="btnGridCreateLogin" xml:space="preserve">
-    <value>Create </value>
+    <value>سجل</value>
   </data>
   <data name="btnSave" xml:space="preserve">
     <value>حفظ</value>
@@ -160,7 +160,7 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>Section Arb</value>
+    <value>القسم</value>
   </data>
   <data name="lblDescription" xml:space="preserve">
     <value>الوصف</value>
@@ -170,6 +170,9 @@
   </data>
   <data name="lblDescriptionEng" xml:space="preserve">
     <value>الوصف (بالغات الانجليزية)  </value>
+  </data>
+  <data name="lblDocument" xml:space="preserve">
+    <value>وثائق</value>
   </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>
@@ -208,7 +211,7 @@
     <value>الهوية الاماراتية</value>
   </data>
   <data name="lblEmiratesOfResidency" xml:space="preserve">
-    <value>امارة الإمارات</value>
+    <value>امارة الاقامة</value>
   </data>
   <data name="lblEmiratesOfResidencyArb" xml:space="preserve">
     <value>Emirates Of Residency (Arabic)</value>
@@ -310,13 +313,13 @@
     <value>(بالغات الانجليزية)وضعيات أخرى</value>
   </data>
   <data name="lblParentDepartment" xml:space="preserve">
-    <value>Parent Section Arb</value>
+    <value>القسم الرئيس</value>
   </data>
   <data name="lblParentDepartmentArb" xml:space="preserve">
-    <value>الجزء الرئيسية</value>
+    <value>القسم الرئيس (بالغات العربية)</value>
   </data>
   <data name="lblParentDepartmentEng" xml:space="preserve">
-    <value>Parent Department (English)</value>
+    <value>القسم الرئيس (بالغات الانجليزية) </value>
   </data>
   <data name="lblPassportExpiryDate" xml:space="preserve">
     <value>تاريخ انتهاء جواز السفر</value>
@@ -349,7 +352,7 @@
     <value>الوظيفة</value>
   </data>
   <data name="lblProfileImage" xml:space="preserve">
-    <value>صورة الشخصية</value>
+    <value>الصورة الشخصية</value>
   </data>
   <data name="lblReleaseDate" xml:space="preserve">
     <value>Release Date</value>
@@ -361,7 +364,7 @@
     <value>دور</value>
   </data>
   <data name="lblSalary" xml:space="preserve">
-    <value>راتب</value>
+    <value>الراتب</value>
   </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>إجازة قصيرة</value>
@@ -388,13 +391,13 @@
     <value>كفالة</value>
   </data>
   <data name="nearToExpireModalHeader" xml:space="preserve">
-    <value>Near to expire document (Arabic)</value>
+    <value>وثيقة على وشك الانتهاء</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>
   </data>
   <data name="tabPersonalDocument" xml:space="preserve">
-    <value>الوثيقة الشخصي</value>
+    <value>الوثائق الشخصية</value>
   </data>
   <data name="tabPersonalInfo" xml:space="preserve">
     <value>معلومات الشخصي</value>

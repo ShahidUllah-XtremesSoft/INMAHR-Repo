@@ -207,6 +207,9 @@
   <data name="lblLetterType" xml:space="preserve">
     <value>نوع الرسالة</value>
   </data>
+  <data name="lblMarkAsRead" xml:space="preserve">
+    <value>ضع إشارة مقروء</value>
+  </data>
   <data name="lblName" xml:space="preserve">
     <value>اسم</value>
   </data>

@@ -1,10 +1,10 @@
 ﻿$(function () {
 
-    $('#btn-save-contract').on('click', function (e) {
+    $('#btnSave').on('click', function (e) {
 
         if (customValidateForm('frmContractTypeDetail')) {
             $("#frmContractTypeDetail").ajaxForm();
-            buttonAddPleaseWait('btn-save-contract');
+            buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
                     swal(response);
@@ -13,20 +13,21 @@
                     $('#Id').val(0);
                 },
                 error: function (xhr, status, error) {
-                    buttonRemovePleaseWait('btn-save-contract', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btn-save-contract', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmContractTypeDetail").ajaxSubmit(options);
         }
         else {
-
-            buttonRemovePleaseWait('btn-save-contract', 'Save', 'save');
+        
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
+        
     });
 })
 

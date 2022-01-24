@@ -15,7 +15,7 @@ $(function () {
 
 
     //| Date Picker
-    renderKendoDatePicker('PersonalDocumentReleaseDate');
+    renderKendoDatePicker('PersonalDocumentReleaseDate','dd-MM-yyyy');
     renderKendoDatePicker('PersonalDocumentExpiryDate');
     
     //|End Date Picker
@@ -38,7 +38,7 @@ $(function () {
             $("#frmEmployeePersonalDocument").ajaxForm();
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', save, 'save');
                     $('#frmEmployeePersonalDocument')[0].reset();
                     $('#PersonalDocumentId').val('0');
                     loadPersonalDocumentsGrid();
@@ -52,17 +52,17 @@ $(function () {
                 },
                 error: function (xhr, status, error) {
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
-                    buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', save, 'save');
                     alert(errmsg);
                 },
                 complete: function () {
-                    buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', save, 'save');
                 }
             };
             $("#frmEmployeePersonalDocument").ajaxSubmit(options);
         }
         else {
-            buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', 'Save', 'save');
+            buttonRemovePleaseWait('btnSaveEmployeePersonalDocument', save, 'save');
             return false;
         }
     });

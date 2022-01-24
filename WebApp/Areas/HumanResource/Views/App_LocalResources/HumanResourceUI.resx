@@ -177,6 +177,9 @@
   <data name="lblDescriptionEng" xml:space="preserve">
     <value>Description (English)</value>
   </data>
+  <data name="lblDocument" xml:space="preserve">
+    <value>Document</value>
+  </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>Document</value>
   </data>

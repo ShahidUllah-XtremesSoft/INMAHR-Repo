@@ -243,6 +243,15 @@ namespace HRUI {
         /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
+        public static string lblDocument {
+            get {
+                return ResourceManager.GetString("lblDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document.
+        /// </summary>
         public static string lblEducationalDocument {
             get {
                 return ResourceManager.GetString("lblEducationalDocument", resourceCulture);

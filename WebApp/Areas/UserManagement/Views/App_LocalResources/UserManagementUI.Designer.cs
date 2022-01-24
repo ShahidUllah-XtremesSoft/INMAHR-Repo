@@ -70,6 +70,42 @@ namespace UserManagement {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string lblLogout {
+            get {
+                return ResourceManager.GetString("lblLogout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        public static string lblNewPassword {
+            get {
+                return ResourceManager.GetString("lblNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password.
+        /// </summary>
+        public static string lblOldPassword {
+            get {
+                return ResourceManager.GetString("lblOldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Password.
+        /// </summary>
+        public static string lblUpdatePassword {
+            get {
+                return ResourceManager.GetString("lblUpdatePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string phEmail {

@@ -1,27 +1,27 @@
-﻿var areYouSureTitle = 'Are you sure?';
-var areYouSureText = 'Do you really want to delete selected record';
-var btnYesText = 'Yes';
+﻿////var areYouSureTitle = 'Are you sure?';
+////var areYouSureText = 'Do you really want to delete selected record';
+////var btnYesText = 'Yes';
 
-var btnNoText = 'No';
-var approveTitle = 'Approve?';
-var declineTitle = 'Decline?';
-var approveText = 'Do you really want to approve this request';
-var declineText = 'Do you really want to decline this request';
+////var btnNoText = 'No';
+////var approveTitle = 'Approve?';
+////var declineTitle = 'Decline?';
+////var approveText = 'Do you really want to approve this request';
+////var declineText = 'Do you really want to decline this request';
 
 
 $(document).ready(function () {
 
-    if (_currentLanguage != 'en-US') {
-        areYouSureTitle = 'هل أنت متأكد؟';
-        areYouSureText = 'هل تريد حقًا حذف السجل المحدد';
-        btnYesText = 'نعم';
-        btnNoText = 'رقم';
+    //if (_currentLanguage != 'en-US') {
+    //    areYouSureTitle = 'هل أنت متأكد؟';
+    //    areYouSureText = 'هل تريد حقًا حذف السجل المحدد';
+    //    btnYesText = 'نعم';
+    //    btnNoText = 'رقم';
 
-        approveTitle = 'يعتمد؟';
-        approveText = 'هل تريد حقًا الموافقة على هذه الإجازة'
-        declineTitle = 'انخفاض؟';
-        declineText = 'هل تريد حقًا رفض هذه الإجازة';
-    }
+    //    approveTitle = 'يعتمد؟';
+    //    approveText = 'هل تريد حقًا الموافقة على هذه الإجازة'
+    //    declineTitle = 'انخفاض؟';
+    //    declineText = 'هل تريد حقًا رفض هذه الإجازة';
+    //}
 
     $("#Language").val(_currentLanguage);
 
@@ -416,14 +416,14 @@ var customValidateForm = function ($form) {
         //alert($(this).attr('name'));
         //$(this).next("span").remove();
         //if ($(this).hasClass('k-dropdown')) {
-        
+        var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         if ($(this).parent().hasClass('k-dropdown')) {
             if ($(this).val() == '-1') {
                 $(this).addClass('invalid');
-                $(this).attr('title', 'This field is required');
+                $(this).attr('title', thisFieldIsRequired);
                 $(this).removeClass("invalid");
                 $(this).next("span").remove();
-                $(this).after("<span style='color:red;'>This field is required</span>");
+                $(this).after("<span style='color:red;'>" + thisFieldIsRequired+"</span>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -433,10 +433,10 @@ var customValidateForm = function ($form) {
         else if ($(this).attr('data-role') == 'datepicker') {
             if ($(this).val() == 'year-month-day') {
                 $(this).addClass('invalid');
-                $(this).attr('title', 'This field is required');
+                $(this).attr('title', thisFieldIsRequired);
                 $(this).removeClass("invalid");
                 $(this).next("div").remove();
-                $(this).after("<div class='row col-md-12'><span style='color:red;'>This field is required</span></div>");
+                $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired+"</span></div>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -446,10 +446,10 @@ var customValidateForm = function ($form) {
         else if ($(this).attr('data-role') == 'timepicker') {
             if ($(this).val() == 'hours:minutes AM/PM') {
                 $(this).addClass('invalid');
-                $(this).attr('title', 'This field is required');
+                $(this).attr('title', thisFieldIsRequired);
                 $(this).removeClass("invalid");
                 $(this).next("div").remove();
-                $(this).after("<div class='row col-md-12'><span style='color:red;'>This field is required</span></div>");
+                $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired+"</span></div>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -461,8 +461,8 @@ var customValidateForm = function ($form) {
                 $(this).addClass('invalid');
                 $(this).removeClass("invalid");
                 $(this).next("span").remove();
-                $(this).attr('title', 'This field is required');
-                $(this).after("<span style='color:red;'>This field is required</span>");
+                $(this).attr('title', thisFieldIsRequired);
+                $(this).after("<span style='color:red;'>" + thisFieldIsRequired+"</span>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -639,8 +639,9 @@ function swalMessage(type, message, delayTime) {
 
 function buttonAddPleaseWait(buttonId) {
     var btn = document.getElementById(buttonId);
+    var pleaseWait = _currentLanguage == 'en-US' ? 'Please wait...' : '...الرجاء الانتظار';
     btn.disabled = true;
-    btn.innerHTML = '<i class = "fa fa-spinner fa-spin"></i> Please wait...';
+    btn.innerHTML = '<i class = "fa fa-spinner fa-spin"></i> '+pleaseWait+'';
 }
 function buttonRemovePleaseWait(buttonId, buttonText, buttonIcon) {
     var btn = document.getElementById(buttonId);
@@ -660,8 +661,9 @@ function loadKendoDropdownList(controlId, columns, tableName, conditions = null,
 var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, controlId) {
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
+    var selectText = _currentLanguage == 'en-US' ? '-- Select --' : '-- Select Arb --';
     var optionList = [];
-    optionList.push({ text: '-- Select --', value: '-1' });
+    optionList.push({ text: selectText, value: '-1' });
     var selectedIndex = -1;
     for (var i = 0; i < JSON.parse(loadjQueryDropdownListResponse.Value).length; i++) {
         var option = { text: JSON.parse(loadjQueryDropdownListResponse.Value)[i].text, value: JSON.parse(loadjQueryDropdownListResponse.Value)[i].value };
@@ -847,7 +849,7 @@ function decrypt(cipherText, key) {
     return plainText;
 }
 
-function renderKendoDatePicker(controlId, format = 'yyyy-MM-dd') {
+function renderKendoDatePicker(controlId, format = 'yyyy-MM-dd') {//'yyyy-MM-dd') {
     var kendoDatePicker = $("#" + controlId).data("kendoDatePicker");
     if (kendoDatePicker != undefined) {
         kendoDatePicker.destroy();

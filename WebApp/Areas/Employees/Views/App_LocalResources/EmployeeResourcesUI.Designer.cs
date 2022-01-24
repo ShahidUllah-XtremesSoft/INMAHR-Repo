@@ -322,6 +322,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mark Read.
+        /// </summary>
+        public static string lblMarkAsRead {
+            get {
+                return ResourceManager.GetString("lblMarkAsRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string lblName {

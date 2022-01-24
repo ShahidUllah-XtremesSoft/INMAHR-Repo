@@ -1,10 +1,10 @@
 ﻿$(function () {
 
-    $('#btn-save-nationality').on('click', function (e) {
+    $('#btnSave').on('click', function (e) {
 
         if (customValidateForm('frmNationalityDetail')) {
             $("#frmNationalityDetail").ajaxForm();
-            buttonAddPleaseWait('btn-save-nationality');
+            buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
                     swal(response);
@@ -13,19 +13,19 @@
                     ClearControls();
                 },
                 error: function (xhr, status, error) {
-                    buttonRemovePleaseWait('btn-save-nationality', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btn-save-nationality', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmNationalityDetail").ajaxSubmit(options);
         }
         else {
 
-            buttonRemovePleaseWait('btn-save-nationality', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
     });
 })

@@ -120,6 +120,18 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+  <data name="lblLogout" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+  <data name="lblNewPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="lblOldPassword" xml:space="preserve">
+    <value>كلمة المرور القديمة</value>
+  </data>
+  <data name="lblUpdatePassword" xml:space="preserve">
+    <value>تحديث كلمة المرور</value>
+  </data>
   <data name="phEmail" xml:space="preserve">
     <value>اسم االمستخدم</value>
   </data>

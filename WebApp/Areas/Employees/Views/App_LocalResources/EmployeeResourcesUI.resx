@@ -204,6 +204,9 @@
   <data name="lblLetterType" xml:space="preserve">
     <value>Letter Type</value>
   </data>
+  <data name="lblMarkAsRead" xml:space="preserve">
+    <value>Mark Read</value>
+  </data>
   <data name="lblName" xml:space="preserve">
     <value>Name</value>
   </data>

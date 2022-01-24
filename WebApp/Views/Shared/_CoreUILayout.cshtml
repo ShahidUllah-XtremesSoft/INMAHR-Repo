@@ -108,7 +108,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid();" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> Document <span class="badge badge-danger" id="documentCount">0</span></a>
+                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid();" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
                        
                     </div>
                 </li>
@@ -122,8 +122,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
 
-                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> Update Password </button>
-                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> Logout </button>
+                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> @UserManagement.UserManagementUI.lblUpdatePassword</button>
+                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> @UserManagement.UserManagementUI.lblLogout </button>
                         
                     </div>
                 </li>
@@ -172,7 +172,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblUpdatePassword</h4>
+                    <h4 class="modal-title" id="myModalLabel">@UserManagement.UserManagementUI.lblUpdatePassword</h4>
                 </div>
                 <div class="modal-body">
                     <form id="frmUpdatePassword" name="frmUpdatePassword" action="/services/Xtreme/multipart" method="post">
@@ -257,6 +257,15 @@
 
     //Global Resources
     var save = '@Resources.Global.btnSave';
+    var btnAcceptText = '@Resources.Global.lblAccept';
+    var btnDeclineText = '@Resources.Global.lblDecline';
+    var approveText = '@Resources.Global.doYouReallyWantToApproveThisRequest';
+    var declineText = '@Resources.Global.doYouReallyWantToDeclineThisRequest';
+    var approveTitle = '@Resources.Global.lblAccept';
+    var declineTitle = '@Resources.Global.lblDecline';
+    var btnYesText = '@Resources.Global.lblYes';
+    var btnNoText = '@Resources.Global.lblNo';
+
 
     //Columns
     var employeeNumber = '@HRUI.HumanResourceUI.lblEmpNum';

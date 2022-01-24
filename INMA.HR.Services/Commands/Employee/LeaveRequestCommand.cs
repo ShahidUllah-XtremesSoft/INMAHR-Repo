@@ -44,19 +44,24 @@ namespace INMA.HR.Services.Commands.Employee
     }
     #endregion
 
-    #region BULK  Request_Employee_AllLeaves_Save
+    #region BULK  Employees_Request_Leave_ApproveOrDecline 
 
- 
-    [Command(Name = "Request_Employee_AllLeaves_Save")]
-    public class Request_Employee_AllLeaves_SaveCommand : CamelCommandBase
+    [Command(Name = "Employees_Request_Leave_ApproveOrDecline")]
+    public class Employees_Request_Leave_ApproveOrDeclineCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
             var model = base.MappedModel(new
             {
-                EmployeeRequestData = new List<EmployeeRequestData>(),
-               // Language = string.Empty
-            }, viewInput); ;
+
+                LoggedInUser = string.Empty,
+                LoggedInUserDepartmentId = 0,
+                RequestIds = string.Empty,
+                Status = string.Empty,
+                Comment = string.Empty,
+                Language = string.Empty,
+
+            }, viewInput);
 
 
             var repository = Ioc.Resolve<IRepository>();
@@ -64,16 +69,12 @@ namespace INMA.HR.Services.Commands.Employee
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-             
-            var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Request_Employee_AllLeaves_Save]", ExtensionMethods.ToDataTable(model.EmployeeRequestData));
-            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
-            ProductList.Add("@UD_Request_Employee_AllLeaves_Save", table);
-            var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Request_Employee_AllLeaves_Save.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
-            return response.ToList()[0]; 
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Employees_Request_Leave_ApproveOrDecline.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
 
         }
-
     }
+
     #endregion
 
 }

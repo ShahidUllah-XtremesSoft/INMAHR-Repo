@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 namespace INMA.HR.Services.Commands.Employees
 {
 
-    [Command(Name = "Request_Employees_All_CashInLeave_Get")]
-    public class Request_Employees_All_CashInLeave_GetCommand : CamelCommandBase
+    [Command(Name = "Employees_Request_CashInLeave_Get")]
+    public class Employees_Request_CashInLeave_GetCommand : CamelCommandBase
     {
         protected override object DoAction(object v)
         {
             var model = base.MappedModel(new
             {
                 Id = 0,
-                CreatedBy = 0,
+                //CreatedBy = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
                 LoggedInUserDepartementId = 0,
@@ -32,24 +32,29 @@ namespace INMA.HR.Services.Commands.Employees
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Request_Employees_All_CashInLeave_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Employees_Request_CashInLeave_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }
     }
-    #region BULK  Request_Employee_CashInLeave_ApprovedORDeclined
+    #region BULK  Employees_Request_CashInLeave_ApproveOrDecline
 
-
-    [Command(Name = "Request_Employee_CashInLeave_ApprovedORDeclined")]
-    public class Request_Employee_CashInLeave_ApprovedORDeclinedCommand : CamelCommandBase
+    [Command(Name = "Employees_Request_CashInLeave_ApproveOrDecline")]
+    public class Employees_Request_CashInLeave_ApproveOrDeclineCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
             var model = base.MappedModel(new
             {
-                EmployeeRequestData = new List<EmployeesCashInLeaveData>(),
-                // Language = string.Empty
-            }, viewInput); ;
+
+                LoggedInUser = string.Empty,
+                LoggedInUserDepartmentId = 0,
+                RequestIds = string.Empty,
+                Status = string.Empty,
+                Comment = string.Empty,
+                Language = string.Empty,
+
+            }, viewInput);
 
 
             var repository = Ioc.Resolve<IRepository>();
@@ -57,16 +62,11 @@ namespace INMA.HR.Services.Commands.Employees
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-
-            var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Request_Employee_CashInLeave_ApprovedORDeclined]", ExtensionMethods.ToDataTable(model.EmployeeRequestData));
-            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
-            ProductList.Add("@UD_Request_Employee_CashInLeave_ApprovedORDeclined", table);
-            var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Request_Employee_CashInLeave_ApprovedORDeclined.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
-            return response.ToList()[0];
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Employees_Request_CashInLeave_ApproveOrDecline.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
 
         }
-
-    }
+    } 
     #endregion
 
 }

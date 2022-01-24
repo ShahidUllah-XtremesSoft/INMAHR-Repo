@@ -5,6 +5,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $("#OtherDiv").css('display', 'none');
+    $("#Other").prop('required', false);
 
     loadLetterTypeDropdownList(true);
     loadLetterGrid();
@@ -27,11 +28,13 @@ function letterTypeDropdownListOnChange(e) {
     var dataItem = e.sender.dataItem();
     
     console.log(dataItem.text);
-    if (dataItem.text == 'Other') {
+    if (dataItem.text == 'Other' || dataItem.text == 'أخرة') {
         $("#OtherDiv").css('display', 'block');
+        $("#Other").prop('required', true);
     }
     else {
         $("#OtherDiv").css('display', 'none');
+        $("#Other").prop('required', false);
 
     }
 

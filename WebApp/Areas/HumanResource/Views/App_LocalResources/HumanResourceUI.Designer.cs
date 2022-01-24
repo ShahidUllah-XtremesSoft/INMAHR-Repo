@@ -223,11 +223,20 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description ( Arabic ).
+        ///   Looks up a localized string similar to Description (Arabic).
         /// </summary>
-        public static string lblDescriptonArb {
+        public static string lblDescriptionArb {
             get {
-                return ResourceManager.GetString("lblDescriptonArb", resourceCulture);
+                return ResourceManager.GetString("lblDescriptionArb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description (English).
+        /// </summary>
+        public static string lblDescriptionEng {
+            get {
+                return ResourceManager.GetString("lblDescriptionEng", resourceCulture);
             }
         }
         

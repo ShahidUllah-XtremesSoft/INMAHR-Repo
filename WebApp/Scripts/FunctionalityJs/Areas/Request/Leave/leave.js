@@ -202,6 +202,7 @@ function editLeave(event) {
     //}, 1000);
 }
 function saveLeaveRequest() {
+    debugger
     if (customValidateForm('frmLeaveDetail')) {
         $("#frmLeaveDetail").ajaxForm();
         buttonAddPleaseWait('btnSave');

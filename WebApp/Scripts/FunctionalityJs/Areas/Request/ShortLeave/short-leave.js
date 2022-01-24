@@ -55,7 +55,8 @@ $(function () {
         //}
 
  
-        if ($('#AvailableShortLeave').val() == '0') {
+        //if ($('#AvailableShortLeave').val() == '0') {
+        if ($('#AvailableShortLeave').val() == '0' && $('#NumberOfHours').val() > $('#EditLeaveHours').val()) {
             swalMessage('info', 'Can not apply with available balance 0',2000);
         }
         else {
@@ -109,7 +110,7 @@ function calculateHourFromStartEndTime() {
         dateDifference = (-1) * dateDifference;        
         //var days = ((dateDifference / 1000 / 60 / 60 / 24) + 1);
         var days = (dateDifference / (60 * 60 * 1000));
-        $('#NumberOfHours').val(days);
+        $('#NumberOfHours').val(days);        
     }
     else {
         $('#NumberOfHours').val(0);

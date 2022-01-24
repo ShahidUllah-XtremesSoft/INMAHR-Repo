@@ -25,8 +25,8 @@
             <div class="col-md-12">
 
 
-                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
-                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
             </div>
         </div>
         <div class="row">
@@ -46,6 +46,7 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/Cancel.js"></script>
     <script>
         //Grid Columns
+        var lblName = '@Resources.EmployeeResourcesUI.lblName';
         var leaveName = '@RequestUI.RequestResourceUI.lblLeaveType';
         var startDate = '@Resources.Global.lblStartDate';
         var endDate = '@Resources.Global.lblEndDate';

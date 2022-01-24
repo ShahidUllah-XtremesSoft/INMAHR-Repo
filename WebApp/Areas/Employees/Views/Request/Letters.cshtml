@@ -19,21 +19,26 @@
     <div class="card-block">
         <div class="row">
             <div class="col-md-12">
-                <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
-                <button id="btnCancel" class="btn btn-danger pull-right"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                @*<div class="btn-group" role="group" aria-label="Requests">
+
+                </div>*@
+                <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="PendingGridData"><i class=""></i> @Resources.EmployeeResourcesUI.lblPendingRequest</button>
+                <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="ApprovedGridData"><i class=""></i> @Resources.EmployeeResourcesUI.lblApprovedRequest</button>
+                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="LetterGrid"></div>
-            </div>
-        </div>
-
-
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="LetterGrid"></div>
+        </div>
+    </div>
 
-@section scripts {s
+
+</div> 
+
+@section scripts {
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/letters.js"></script>
     <script>
         //Grid columns
@@ -47,6 +52,7 @@
         var action = '@Resources.Global.lblAction';
         var Status = '@Resources.EmployeeResourcesUI.lblStatus';
         var Other = '@Resources.EmployeeResourcesUI.lblOther';
+        var startDate = '@Resources.EmployeeResourcesUI.lblStartDate';
         var lblFristSelectRecordFromGrid = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid';
 
     </script>

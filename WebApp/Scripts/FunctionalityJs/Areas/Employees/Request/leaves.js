@@ -50,7 +50,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
         { field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
-        { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+       // { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
@@ -79,54 +79,8 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
     //    grid.table.on("click", ".checkbox", selectRow);
     //}, 2000);
 };
+  
  
-//function declineLeave(event) {
-
-//    var row = $(event).closest("tr");
-//    var grid = $("#" + RequestGrid).data("kendoGrid");
-//    var dataItem = grid.dataItem(row);
-//    Swal.fire({
-//        title: declineTitle,
-//        text: declineText + " " + dataItem.leaveType,
-//        //input: 'text',
-//        icon: 'question',
-//        showCancelButton: true,
-//        confirmButtonColor: '#5cb85c',
-//        cancelButtonColor: '#d9534f',
-//        confirmButtonText: btnYesText,
-//        cancelButtonText: btnNoText,
-//        buttons: {
-//            cancel: {
-//                text: "No",
-//                value: null,
-//                visible: true,
-//                className: "btn btn-danger",
-//                closeModal: true
-//            },
-//            confirm: {
-//                text: "Yes",
-//                value: true,
-//                visible: true,
-//                className: "btn btn-warning",
-//                closeModal: true
-//            }
-//        }
-//    }).then(function (restult) {
-//        if (restult.value) {
-
-
-//            $('#ModalDenyRequestType').val('LeaveRequest');
-//            $('#ModalDenyRequestId').val(dataItem.id);
-//            $('#ModalDenyRequest').modal('show');
-
-//        }
-//    });
-//}
-var declineLeaveCallBack = function (response) {
-    loadLeaveRequestGrid();
-    swal(response.Value);
-
-}
 //|Load Leave Request Grid Ends
 //| Request Deny Modal Comment, Save Button Click
 //$('#btnModalDenyRequestSave').click(function () {
@@ -159,90 +113,104 @@ var declineLeaveCallBack = function (response) {
 //});
 //| Request Deny Modal Comment, Save Button Click Ends
 
-
-$('#btnSave').click(function () {
+$('#btnSave').click(function (e) {
     buttonAddPleaseWait('btnSave');
-
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-
-    /*
-    setTimeout(function () {
-        $('#header-chb').change(function (ev) {
-
-            var checked = ev.target.checked;
-            $('.row-checkbox').each(function (idx, item) {
-                if (checked) {
-                    if (!($(item).closest('tr').is('.k-state-selected'))) {
-                        $(item).click();
-                    }
-                } else {
-                    if ($(item).closest('tr').is('.k-state-selected')) {
-                        $(item).click();
-                    }
-                }
-            });
-        });
-        //bind click event to the checkbox
-        grid = $("#" + RequestGrid).data("kendoGrid");
-        grid.table.on("click", ".row-checkbox", selectRow);
-
-        $('.kendo-direction').removeClass('k-rtl');
-        if (_currentLanguage == 'ar-AE') {
-            $('.kendo-direction').addClass('k-rtl');
-        }
-    }, 5000);
-    */
+    fnApprovedOrDeclined(this.value, 'btnSave', 'check');
 });
-$('#btnCancel').click(function () {
+$('#btnCancel').click(function (e) {
     buttonAddPleaseWait('btnCancel');
-    loopThroughGrid();
-    buttonRemovePleaseWait('btnCancel', btnDecline, 'ban');
+    fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
+
 });
 
-function loopThroughGrid(e) {
+function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 
-    var grid = $("#" + RequestGrid).data("kendoGrid");
-    var gridRecord = grid.dataSource._data;
 
-    var postingArray = [];
-    for (var i = 0; i < gridRecord.length; i++) {
-        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+    Swal.fire({
 
-        var gridRow = gridRecord[i];
-
-        //   if (isAssigned == true || gridRow.id > 0) {
-        if (isAssigned == true) {
-            postingArray.push(
-                {
-                    Id: parseInt(gridRow.id),
-                    LeaveTypeId: parseInt(gridRow.leaveTypeId),
-                    StatusId: parseInt(gridRow.statusId),
-                    CreatedBy: parseInt($('#CreatedBy').val()),
-                    LoggedInUserId: loggedInUserDetail.id,
-                    LoggedInUserRoleId: loggedInUserDetail.roleId,
-                    LoggedInUserDepartementId: loggedInUserDetail.departmentId,
-                    Language: _currentLanguage
-                });
+        title: areYouSureTitle,
+        text: areYouSureText,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
         }
+    }).then(function (restult) {
+        if (restult.value) {
 
-    }
-    if (postingArray.length > 0) {
-        ajaxRequest({ commandName: 'Request_Employee_AllLeaves_Save', values: { EmployeeRequestData: postingArray }, CallBack: EmployeeRequestDataCallBack });
-    }
-    else {
-        buttonRemovePleaseWait('btnSave', btnAccept, 'check');
-        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
-    }
+            var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
+
+            if (getgridIDs.length > 0) {
+
+                ajaxRequest({
+                    commandName: 'Employees_Request_Leave_ApproveOrDecline',
+                    values: {
+                        LoggedInUser: loggedInUserDetail.id,
+                        LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
+                        RequestIds: getgridIDs,
+                        Status: btnValue,
+                        Comment: '',
+                        Language: _currentLanguage
+                    }, CallBack: responseCallBack
+                });
+
+                buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+            }
+
+
+        } else {
+            buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        }
+    });
 
 }
-function EmployeeRequestDataCallBack(response) {
+var responseCallBack = function (response) {
+
     loadLeaveRequestGrid();
     swal(response.Value);
-    buttonRemovePleaseWait('btnSave', btnAccept, 'check');
 
 }
 
+function getIdsFromGrid(btnValue, btnId, btnIcon) {
+
+    var grid = $("#" + RequestGrid).data("kendoGrid");
+    var gridDataSource = grid.dataSource._data;
+    var ids = '';
+    for (var i = 0; i < gridDataSource.length; i++) {
+        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+        if (isAssigned == true) {
+            var gridRow = gridDataSource[i];
+            ids += ids == '' ? gridRow.id : ',' + gridRow.id;
+        }
+    }
+    if (ids.length > 0) { return ids; } else {
+        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+        return 0;
+    }
+
+
+}
+
+
+ 
 
 $(document).on("click", "#checkAll", function () {
      if (this.checked) {
@@ -250,7 +218,7 @@ $(document).on("click", "#checkAll", function () {
         $("#RequestGrid tbody input:checkbox").attr("checked", true);
     } else {
         $("#RequestGrid tbody input:checkbox").attr("checked", false);
-        //   $("#RequestGrid tbody input:checkbox").attr("unchecked", false);
+      
 
     }
 });

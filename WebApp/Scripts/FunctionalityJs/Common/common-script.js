@@ -815,7 +815,9 @@ var treeFomatter = function (arr, parent) {
 
 //});
 function setResponseToFormInputs(response) {
+  
     $.each(JSON.parse(response.Value), function (key, value) {
+       
         //console.log('key : ' + key + ' value : ' + value);
         $('#' + capitalizeFirstLetter(key)).val(value);
     });

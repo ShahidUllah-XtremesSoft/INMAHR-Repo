@@ -132,6 +132,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
   </data>
+  <data name="lblApprovedRequest" xml:space="preserve">
+    <value>Approved Requests</value>
+  </data>
   <data name="lblAttachment" xml:space="preserve">
     <value>Attachment</value>
   </data>
@@ -219,6 +222,9 @@
   <data name="lblOther" xml:space="preserve">
     <value>Other</value>
   </data>
+  <data name="lblPendingRequest" xml:space="preserve">
+    <value>Pending Requests</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>Processed</value>
   </data>
@@ -251,6 +257,9 @@
   </data>
   <data name="lblSocialStatusEnglish" xml:space="preserve">
     <value>Social Status (English)</value>
+  </data>
+  <data name="lblStartDate" xml:space="preserve">
+    <value>Start Date</value>
   </data>
   <data name="lblStartTime" xml:space="preserve">
     <value>Start Time</value>

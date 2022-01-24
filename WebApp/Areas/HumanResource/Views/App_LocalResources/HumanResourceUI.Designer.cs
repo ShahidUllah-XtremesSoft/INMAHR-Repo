@@ -493,6 +493,15 @@ namespace HRUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Leave balance deduction details.
+        /// </summary>
+        public static string lblleavebalancedeductiondetails {
+            get {
+                return ResourceManager.GetString("lblleavebalancedeductiondetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leave Cancellation .
         /// </summary>
         public static string lblLeaveCancellation {

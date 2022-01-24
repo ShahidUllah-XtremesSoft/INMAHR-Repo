@@ -923,7 +923,7 @@ function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDate
 }
 function only0To9WithDecimalAllowed(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
-    
+
     if (charCode != 46 && charCode > 31
         && (charCode < 48 || charCode > 57))
         return false;
@@ -933,7 +933,7 @@ function only0To9WithDecimalAllowed(evt) {
 }
 function only1To9Allowed(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
-    
+
     if (charCode != 46 && charCode > 31
         && (charCode < 48 || charCode > 57)) {
         return false;

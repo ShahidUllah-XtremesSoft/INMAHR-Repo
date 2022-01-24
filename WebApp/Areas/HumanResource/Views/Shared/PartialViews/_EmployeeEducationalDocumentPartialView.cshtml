@@ -54,7 +54,7 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label class="col-form-label">@HRUI.HumanResourceUI.lblMarksPercentage</label><span style="color:red">*</span> <br />
-            <input type="number" class="form-control" id="EducationalDocumentMarks" name="EducationalDocumentMarks" required />
+            <input type="number" class="form-control" id="EducationalDocumentMarks" name="EducationalDocumentMarks" onkeypress="return only1To9Allowed(event)" min="0" max="100" required />
             @*<input type='text' class="form-control" id="EducationalDocumentMarks" name="EducationalDocumentMarks" maxlength='2' pattern='^[0-9]$' required>*@
         </div>
     </div>

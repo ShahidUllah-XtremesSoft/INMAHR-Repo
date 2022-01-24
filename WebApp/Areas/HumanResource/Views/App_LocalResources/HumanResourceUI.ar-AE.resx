@@ -249,6 +249,9 @@
   <data name="lblLeavebalance" xml:space="preserve">
     <value>الرصيد المتوفر</value>
   </data>
+  <data name="lblleavebalancedeductiondetails" xml:space="preserve">
+    <value>Leave balance deduction details</value>
+  </data>
   <data name="lblLeaveCancellation" xml:space="preserve">
     <value>العودة الي العمل/الغاء إجازة</value>
   </data>

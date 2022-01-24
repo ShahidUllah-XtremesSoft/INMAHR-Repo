@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved Requests.
+        /// </summary>
+        public static string lblApprovedRequest {
+            get {
+                return ResourceManager.GetString("lblApprovedRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
         public static string lblAttachment {
@@ -367,6 +376,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending Requests.
+        /// </summary>
+        public static string lblPendingRequest {
+            get {
+                return ResourceManager.GetString("lblPendingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processed.
         /// </summary>
         public static string lblProcessed {
@@ -516,15 +534,6 @@ namespace Resources {
         public static string MsgAttachmentNotFound {
             get {
                 return ResourceManager.GetString("MsgAttachmentNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name.
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
     }

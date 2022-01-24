@@ -357,4 +357,23 @@ namespace INMA.HR.Services
             return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_Leave_AvailableAndTakenDetail_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
         }
     }
+    [Command(Name = "HR_Employee_PopulateDropDown")]
+    public class HR_Employee_PopulateDropDownCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeId = 0,
+                Language = string.Empty,
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_Leave_AvailableAndTakenDetail_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+        }
+    }
 }

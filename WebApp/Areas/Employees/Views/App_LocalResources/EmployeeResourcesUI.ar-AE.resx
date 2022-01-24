@@ -132,6 +132,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>اضافة</value>
   </data>
+  <data name="lblApprovedRequest" xml:space="preserve">
+    <value>الطلبات المعتمدة</value>
+  </data>
   <data name="lblAttachment" xml:space="preserve">
     <value>المرفق</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="lblOther" xml:space="preserve">
     <value>آخر</value>
+  </data>
+  <data name="lblPendingRequest" xml:space="preserve">
+    <value>الطلبات المعلقة</value>
   </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>معالجتها</value>

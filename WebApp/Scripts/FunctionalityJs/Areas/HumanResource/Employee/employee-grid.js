@@ -4,16 +4,21 @@ $(function () {
     requestFrom = (new URL(location.href)).searchParams.get('from');
     $('#Language').val(_currentLanguage);
     loadEmployeeGrid();
+    fnLoadNationalityDDL();
 });
+
+
+
+
 function loadEmployeeGrid() {
-    ajaxRequest({ commandName: 'HR_Employee_GetAllForGrid', values: { LoggedInUser: JSON.parse(localStorage.getItem('User')).id, RoleId: JSON.parse(localStorage.getItem('User')).roleId,Language: $('#Language').val() }, CallBack: loadEmployeeGridCallBack });
+    ajaxRequest({ commandName: 'HR_Employee_GetAllForGrid', values: { LoggedInUser: JSON.parse(localStorage.getItem('User')).id, RoleId: JSON.parse(localStorage.getItem('User')).roleId, Language: $('#Language').val() }, CallBack: loadEmployeeGridCallBack });
 }
-var loadEmployeeGridCallBack = function (inputDataJSON) {    
+var loadEmployeeGridCallBack = function (inputDataJSON) {
     bindEmployeeGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindEmployeeGrid = function (inputDataJSON) {
     var isHR = !inputDataJSON[0].isHR;
-   
+
     if (requestFrom == 'attendance') {
         isHR = true;
     }
@@ -21,7 +26,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
 
         { field: "id", title: "id", hidden: true },
 
-       
+
         //{ field: "employeeNumber", title: "Employee Number", width: 130, filterable: true },
         {
             field: "employeeNumber", title: employeeNumber, width: 40, filterable: true,
@@ -36,7 +41,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
         { field: "phoneNumber", title: phone, width: 50, filterable: true },
         { field: "email", title: email, width: 100, filterable: true },
         { field: "joinDate", title: joinDate, width: 50, filterable: true },
-        { field: "professionId", title: "Profession", width: 100, filterable: true,hidden:true },
+        { field: "professionId", title: "Profession", width: 100, filterable: true, hidden: true },
         { field: "profession", title: profession, width: 100, filterable: true },
         { field: "passportNumber", title: PassportNumber, width: 100, filterable: true, hidden: true },
         { field: "eidNumber", title: eidNumber, width: 100, filterable: true, hidden: true },
@@ -58,10 +63,10 @@ var bindEmployeeGrid = function (inputDataJSON) {
         },
 
 
-       
+
     ];
 
-    bindKendoGrid($grid, 50, gridColumns, inputDataJSON,true,750);
+    bindKendoGrid($grid, 50, gridColumns, inputDataJSON, true, 750);
 };
 function redirectToEmployeeDetailView(e) {
     var row = $(e).closest("tr");
@@ -77,8 +82,8 @@ function redirectToEmployeeDetailView(e) {
         localStorage.setItem('EmployeeNumberForAttendance', dataItem.employeeNumber);
         window.location.href = '/Employees/Attendance/Detail';//?employeeId=' + dataItem.id + '';
     }
-    
-    
+
+
 }
 function createLogin(e) {
 
@@ -175,9 +180,9 @@ var loadRoleDropdownListCallBack = function (loadjQueryDropdownListResponse) {
 }
 
 $('#RoleId').change(function () {
-    
+
     var roleName = $("#RoleId option:selected").text();
-   
+
     var dropdownlist = $("#DepartmentId").data("kendoDropDownTree");
     dropdownlist.value("");
 
@@ -202,7 +207,7 @@ $('#RoleId').change(function () {
 });
 
 function deleteEmployeeById(event) {
-    debugger;
+   
     var row = $(event).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
@@ -266,3 +271,34 @@ function deleteEmployeeById(event) {
     }
 
 }
+function fnLoadNationalityDDL() {
+    if (_currentLanguage == 'en-US') {
+        ajaxRequest({
+            commandName: 'Common_DropdownList',
+            values: {
+                Columns: 'Id [Value], NameEng [Text]',
+                TableName: 'HR_Nationality',
+                Conditions: 'NameEng IS NOT NULL',
+                SelectedValue: 0
+            }, CallBack: loadNationalityDataDDL
+        });
+    }
+    else {
+
+        ajaxRequest({
+            commandName: 'Common_DropdownList',
+            values: {
+                Columns: 'Id [Value], NameArb [Text]',
+                TableName: 'HR_Nationality',
+                Conditions: 'NameArb IS NOT NULL',
+                SelectedValue: 0
+            }, CallBack: loadNationalityDataDDL
+        });
+    }
+
+}
+var loadNationalityDataDDL = function (inputDataJSON) {
+
+    localStorage.setItem("nationalityDDL", JSON.stringify(inputDataJSON.Value));
+}
+

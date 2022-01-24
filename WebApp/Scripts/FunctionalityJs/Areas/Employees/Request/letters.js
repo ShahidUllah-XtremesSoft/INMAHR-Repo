@@ -6,11 +6,11 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
-    loadLetterGrid();
+    loadLetterGrid('PendingGridData');
 
 })
 
-function loadLetterGrid() {
+function loadLetterGrid(btnStatus) {
 
     ajaxRequest({
         // commandName: 'Request_AllEmployee_Letter_Get', old sp
@@ -21,7 +21,8 @@ function loadLetterGrid() {
             LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
             LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
             LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
-            Language: _currentLanguage
+            Language: _currentLanguage,
+            StatusWise: btnStatus
         }, CallBack: loadLetterGridCallBack
     });
 }
@@ -57,6 +58,7 @@ var bindLetterGrid = function (inputDataJSON) {
     bindKendoGrid($LetterGrid, 50, gridColumns, inputDataJSON, true);
 
 };
+//-------------- BUTTONS AREA START--------------------------
 $('#btnSave').click(function (e) {
     buttonAddPleaseWait('btnSave');
     fnApprovedOrDeclined(this.value, 'btnSave', 'check');
@@ -66,6 +68,17 @@ $('#btnCancel').click(function (e) {
     fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
 
 });
+$('#btnSave').click(function (e) {
+    buttonAddPleaseWait('btnSave');
+    fnApprovedOrDeclined(this.value, 'btnSave', 'check');
+});
+$('#btnCancel').click(function (e) {
+    buttonAddPleaseWait('btnCancel');
+    fnApprovedOrDeclined(this.value, 'btnCancel', 'ban');
+
+});
+
+//-------------- BUTTONS AREA END --------------------------
 
 function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 
@@ -127,7 +140,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 }
 var responseCallBack = function (response) {
 
-    loadLetterGrid();
+    loadLetterGrid('PendingGridData');
     swal(response.Value);
 
 }
@@ -153,7 +166,7 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
 
 }
 
- 
+
 
 $(document).on("click", "#checkAll", function () {
 
@@ -164,3 +177,10 @@ $(document).on("click", "#checkAll", function () {
 
     }
 });
+
+
+
+//--------------------- FUNCTION AREA ----------------
+function fnLoadGridByStatus(btnValue) {
+    loadLetterGrid(btnValue);
+}

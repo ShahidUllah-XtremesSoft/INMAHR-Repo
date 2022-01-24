@@ -2,8 +2,8 @@
 
 $(function () {
     $('#Language').val(_currentLanguage);
-
-
+   
+    lodEmployeeById();
     //loadDepartmentTreeDropdownList();
 
     loadDepartmentTreeDropdownList();
@@ -14,7 +14,7 @@ $(function () {
     loadContractTypeDropdownList(isBindChangeEvent = true);
     loadRoleDropdownList(isBindChangeEvent = true);
     loadEmiratesStatesDropdownList(false);
-    lodEmployeeById();
+
     /*
       var combobox = $("#" + controlId).data("kendoDropDownList");
     if (combobox != undefined) {
@@ -22,9 +22,9 @@ $(function () {
         combobox.destroy();
     }
      */
-
-
-
+   
+        
+   
 });
 
 function lodEmployeeById() {
@@ -39,28 +39,13 @@ function lodEmployeeById() {
     }
 }
 function loadClientDataByID(d) {
-
+    
     setResponseToFormInputs(d);
     //console.log(''+d.Value);
     setTimeout(function () {
-        var dropdowntree = $("#DepartmentId").data("kendoDropDownTree");
+    var dropdowntree = $("#DepartmentId").data("kendoDropDownTree");
         dropdowntree.value(JSON.parse(d.Value).departmentId);
     }, 1000);
-
-
-
-    // $("#NationalityId").kendoDropDownList({
-    //     dataTextField: "text",
-    //     dataValueField: "value",
-    //     filter: "contains",
-    //     dataSource: JSON.parse(JSON.parse(localStorage.getItem('nationalityDDL'))),
-    //     //  index: localStorage.getItem('nationalityDDL'),
-    //     //change: onChange
-    // });
-
-
-
-
     //$professionId = JSON.parse(d.Value).professionId;
     //$departmentId = JSON.parse(d.Value).departmentId;
     //$visaSposershipId = JSON.parse(d.Value).visaSponsorshipId;
@@ -86,7 +71,7 @@ function loadClientDataByID(d) {
     //$('#MunicipalityCardReleaseDate').val(formatDate(JSON.parse(d.Value).municipalityCardReleaseDate));
     //$('#MunicipalityCardExpirtDate').val(formatDate(JSON.parse(d.Value).municipalityCardExpirtDate));
 
-
+    
     //loadDepartmentDropdownList(isBindChangeEvent = false);
     //loadNationalityDropdownList(isBindChangeEvent = false);
     //loadSponsorShipDropdownList(isBindChangeEvent = false);
@@ -95,8 +80,6 @@ function loadClientDataByID(d) {
 }
 
 function loadNationalityDropdownList(isBindChangeEvent = true) {
-
-   
     if ($('#Language').val() == 'en-US') {
         loadKendoDropdownList('NationalityId', 'Id [Value], NameEng [Text]', 'HR_Nationality', 'NameEng IS NOT NULL', 0, 'menuDropdownListOnChange');
     }
@@ -108,9 +91,6 @@ function loadNationalityDropdownList(isBindChangeEvent = true) {
             // $("#NationalityId").data("kendoDropDownList").bind("change", roleDropdownListOnChange);
         }
     }, 1500);
-
-
-
 }
 function loadEmiratesStatesDropdownList(isBindChangeEvent = true) {
     if ($('#Language').val() == 'en-US') {

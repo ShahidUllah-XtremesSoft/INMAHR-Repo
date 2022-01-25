@@ -22,10 +22,13 @@
                 @*<div class="btn-group" role="group" aria-label="Requests">
 
                 </div>*@
-                <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="PendingGridData"><i class=""></i> @Resources.EmployeeResourcesUI.lblPendingRequest</button>
-                <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="ApprovedGridData"><i class=""></i> @Resources.EmployeeResourcesUI.lblApprovedRequest</button>
-                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
+                <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @Resources.EmployeeResourcesUI.lblPendingRequest</button>
+                <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @Resources.EmployeeResourcesUI.lblApprovedRequest</button>
+                <div id="btnAreaShowHideOnConditionBase">
+
+                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblApprove</button>
                 <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                </div>
             </div>
         </div>
     </div>
@@ -42,6 +45,8 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/letters.js"></script>
     <script>
         //Grid columns
+        var lblName = '@Resources.EmployeeResourcesUI.lblName';
+        var email = '@Resources.EmployeeResourcesUI.lblemail';
         var letterType = '@Resources.EmployeeResourcesUI.lblLetterType';
         var comment = '@Resources.EmployeeResourcesUI.lblComment';
         var note = '@Resources.EmployeeResourcesUI.lblNote';

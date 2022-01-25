@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        public static string lblApprove {
+            get {
+                return ResourceManager.GetString("lblApprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Approved Requests.
         /// </summary>
         public static string lblApprovedRequest {
@@ -223,6 +232,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Emp #.
+        /// </summary>
+        public static string lblemail {
+            get {
+                return ResourceManager.GetString("lblemail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employee Name.
         /// </summary>
         public static string lblEmployeeName {
@@ -264,6 +282,15 @@ namespace Resources {
         public static string lblEmployeesOfficialLetterRequests {
             get {
                 return ResourceManager.GetString("lblEmployeesOfficialLetterRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees Permission Leave Request(s).
+        /// </summary>
+        public static string lblEmployeesPermissionLeaveRequests {
+            get {
+                return ResourceManager.GetString("lblEmployeesPermissionLeaveRequests", resourceCulture);
             }
         }
         

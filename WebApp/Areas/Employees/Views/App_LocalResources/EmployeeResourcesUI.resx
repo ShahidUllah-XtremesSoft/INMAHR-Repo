@@ -132,6 +132,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
   </data>
+  <data name="lblApprove" xml:space="preserve">
+    <value>Approve</value>
+  </data>
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>Approved Requests</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="lblDepartmentName" xml:space="preserve">
     <value>Department Name</value>
   </data>
+  <data name="lblemail" xml:space="preserve">
+    <value>Emp #</value>
+  </data>
   <data name="lblEmployeeName" xml:space="preserve">
     <value>Employee Name</value>
   </data>
@@ -185,6 +191,9 @@
   </data>
   <data name="lblEmployeesOfficialLetterRequests" xml:space="preserve">
     <value>Employees Official Letter Request(s)</value>
+  </data>
+  <data name="lblEmployeesPermissionLeaveRequests" xml:space="preserve">
+    <value>Employees Permission Leave Request(s)</value>
   </data>
   <data name="lblEmployeesShortLeaveRequests" xml:space="preserve">
     <value>Employees Short Leave Requests</value>

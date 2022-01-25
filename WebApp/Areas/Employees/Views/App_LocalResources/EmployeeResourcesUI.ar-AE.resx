@@ -132,6 +132,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>اضافة</value>
   </data>
+  <data name="lblApprove" xml:space="preserve">
+    <value>قبول</value>
+  </data>
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>الطلبات المعتمدة</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="lblDepartmentName" xml:space="preserve">
     <value>اسم القسم</value>
   </data>
+  <data name="lblemail" xml:space="preserve">
+    <value>رقم الموظف</value>
+  </data>
   <data name="lblEmployeeName" xml:space="preserve">
     <value>اسم الموظف</value>
   </data>
@@ -185,6 +191,9 @@
   </data>
   <data name="lblEmployeesOfficialLetterRequests" xml:space="preserve">
     <value>طلبات الرسائل الرسمية للموظفين</value>
+  </data>
+  <data name="lblEmployeesPermissionLeaveRequests" xml:space="preserve">
+    <value>طلبات إجازات  الموظفين</value>
   </data>
   <data name="lblEmployeesRequest" xml:space="preserve">
     <value>طلب موظفين</value>

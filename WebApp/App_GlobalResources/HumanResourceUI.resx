@@ -241,9 +241,6 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>Department</value>
-  </data>
-  <data name="lblDepartment1" xml:space="preserve">
     <value>Section</value>
   </data>
   <data name="lblDepartmentName" xml:space="preserve">

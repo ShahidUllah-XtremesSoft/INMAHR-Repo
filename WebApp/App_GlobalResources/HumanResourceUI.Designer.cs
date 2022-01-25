@@ -430,20 +430,11 @@ namespace HRModuleUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Department.
+        ///   Looks up a localized string similar to Section.
         /// </summary>
         public static string lblDepartment {
             get {
                 return ResourceManager.GetString("lblDepartment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Section.
-        /// </summary>
-        public static string lblDepartment1 {
-            get {
-                return ResourceManager.GetString("lblDepartment1", resourceCulture);
             }
         }
         

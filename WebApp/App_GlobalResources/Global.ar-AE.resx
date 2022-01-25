@@ -154,7 +154,7 @@
     <value>رفض؟</value>
   </data>
   <data name="lblDelete" xml:space="preserve">
-    <value>Delete Arb</value>
+    <value>حذف</value>
   </data>
   <data name="lblEndDate" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>

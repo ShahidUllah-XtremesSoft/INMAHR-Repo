@@ -9,7 +9,15 @@ $(function () {
     //Hide leave balance area if other than HR is logged in    
     if (JSON.parse(localStorage.getItem('User')).isHR) {
         $('#divLeaveBalance').css('display', 'block');
+        $('#internalDivPersonalDocument').css('height','496');
     }
+    else {
+        $('#divPersonalDocument').removeClass('col-md-6').addClass('col-md-12')
+        $('#internalDivPersonalDocument').css('height','auto');
+        //height: 496px; max-height: 496px;
+        
+    }
+    
     //Hide leave balance area if other than HR is logged in
     //var $document_grid = "document-grid";
     $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);    
@@ -159,7 +167,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>'+btnAcceptText+'</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>'+btnDeclineText+'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>'+btnApproveText+'</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>'+btnDeclineText+'</button>'
         },
 
     ];
@@ -172,7 +180,7 @@ function approveLeave(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: approveTitle,
+        title: approveTitleQuestion,
         text: approveText,
         //input: 'text',
         icon: 'question',
@@ -219,7 +227,7 @@ function declineLeave(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: declineTitle,
+        title: declineTitleQuestion,
         text: declineText,
         //input: 'text',
         icon: 'question',
@@ -298,7 +306,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         },
 
 
@@ -313,7 +321,7 @@ function approveShortLeave(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: approveTitle,
+        title: approveTitleQuestion,
         text: approveText,
         //input: 'text',
         icon: 'question',
@@ -360,7 +368,7 @@ function declineShortLeave(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: declineTitle,
+        title: declineTitleQuestion,
         text: declineText,
         //input: 'text',
         icon: 'question',
@@ -441,7 +449,7 @@ var bindLetterRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLetterRequest(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLetterRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLetterRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLetterRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         }
 
     ];
@@ -455,7 +463,7 @@ function approveLetterRequest(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: approveTitle,
+        title: approveTitleQuestion,
         text: approveText,
         //input: 'text',
         icon: 'question',
@@ -502,7 +510,7 @@ function declineLetterRequest(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: declineTitle,
+        title: declineTitleQuestion,
         text: declineText,
         //input: 'text',
         icon: 'question',
@@ -584,7 +592,7 @@ var bindCancelLeaveRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeaveCancelRequest(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeaveCancelRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeaveCancelRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeaveCancelRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         }
 
 
@@ -600,7 +608,7 @@ function approveLeaveCancelRequest(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: approveTitle,
+        title: approveTitleQuestion,
         text: approveText,
         //input: 'text',
         icon: 'question',
@@ -647,7 +655,7 @@ function declineLeaveCancelRequest(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: declineTitle,
+        title: declineTitleQuestion,
         text: declineText,
         //input: 'text',
         icon: 'question',
@@ -726,7 +734,7 @@ var bindCashInLeaveRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveCashInLeaveRequest(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineCashInLeaveRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveCashInLeaveRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineCashInLeaveRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         }
 
 
@@ -742,7 +750,7 @@ function approveCashInLeaveRequest(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: approveTitle,
+        title: approveTitleQuestion,
         text: approveText,
         //input: 'text',
         icon: 'question',
@@ -789,7 +797,7 @@ function declineCashInLeaveRequest(event) {
     var grid = $("#" + RequestGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-        title: declineTitle,
+        title: declineTitleQuestion,
         text: declineText,
         //input: 'text',
         icon: 'question',

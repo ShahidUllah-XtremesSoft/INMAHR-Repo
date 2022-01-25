@@ -141,8 +141,17 @@
   <data name="lblAction" xml:space="preserve">
     <value />
   </data>
+  <data name="lblApprove" xml:space="preserve">
+    <value>يعتمد</value>
+  </data>
+  <data name="lblApproveQuestion" xml:space="preserve">
+    <value>يعتمد؟</value>
+  </data>
   <data name="lblDecline" xml:space="preserve">
     <value>رفض</value>
+  </data>
+  <data name="lblDeclineQuestion" xml:space="preserve">
+    <value>رفض؟</value>
   </data>
   <data name="lblDelete" xml:space="preserve">
     <value>Delete Arb</value>

@@ -133,11 +133,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        internal static string lblApprove {
+            get {
+                return ResourceManager.GetString("lblApprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approve ?.
+        /// </summary>
+        internal static string lblApproveQuestion {
+            get {
+                return ResourceManager.GetString("lblApproveQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Decline.
         /// </summary>
         internal static string lblDecline {
             get {
                 return ResourceManager.GetString("lblDecline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline ?.
+        /// </summary>
+        internal static string lblDeclineQuestion {
+            get {
+                return ResourceManager.GetString("lblDeclineQuestion", resourceCulture);
             }
         }
         

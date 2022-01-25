@@ -336,6 +336,9 @@
   <data name="lblExpiryDate" xml:space="preserve">
     <value>Expiry Date</value>
   </data>
+  <data name="lblExpiryDateCannotBeLessThanIssue" xml:space="preserve">
+    <value>Expiry date cannot be less than issue date</value>
+  </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
   </data>

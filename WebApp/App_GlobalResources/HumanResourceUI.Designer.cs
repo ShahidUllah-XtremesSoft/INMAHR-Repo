@@ -718,6 +718,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expiry date cannot be less than issue date.
+        /// </summary>
+        public static string lblExpiryDateCannotBeLessThanIssue {
+            get {
+                return ResourceManager.GetString("lblExpiryDateCannotBeLessThanIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string lblFile {

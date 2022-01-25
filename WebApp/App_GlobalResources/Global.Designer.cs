@@ -97,11 +97,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to approve these requests.
+        /// </summary>
+        internal static string doYouReallyWantToApproveTheseRequests {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToApproveTheseRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to approve this request.
         /// </summary>
         internal static string doYouReallyWantToApproveThisRequest {
             get {
                 return ResourceManager.GetString("doYouReallyWantToApproveThisRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to decline these requests.
+        /// </summary>
+        internal static string doYouReallyWantToDeclineTheseRequests {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToDeclineTheseRequests", resourceCulture);
             }
         }
         
@@ -147,6 +165,15 @@ namespace Resources {
         internal static string lblApproveQuestion {
             get {
                 return ResourceManager.GetString("lblApproveQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Sure ?.
+        /// </summary>
+        internal static string lblAreYouSure {
+            get {
+                return ResourceManager.GetString("lblAreYouSure", resourceCulture);
             }
         }
         

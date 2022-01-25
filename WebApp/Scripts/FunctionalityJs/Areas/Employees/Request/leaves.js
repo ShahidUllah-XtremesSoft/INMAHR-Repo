@@ -59,7 +59,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             title: status,
             field: 'Status',
             width: 20,
-            hidden: false,
+            hidden: true,
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
         //{

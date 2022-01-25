@@ -91,7 +91,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
     Swal.fire({
 
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: btnValue == 'Decline' ? declineMultipleText : approveMultipleText,
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',

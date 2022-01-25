@@ -24,6 +24,7 @@ namespace INMA.HR.Services.Commands.Employees
                 LoggedInUserRoleId = 0,
                 LoggedInUserDepartementId = 0,
                 Language = string.Empty,
+                StatusWise = string.Empty,
 
             }, v);
 

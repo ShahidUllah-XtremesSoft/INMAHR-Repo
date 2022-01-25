@@ -7,6 +7,8 @@ var approveTitle = 'Approve?';
 var declineTitle = 'Decline?';
 var approveText = 'Do you really want to approve this request';
 var declineText = 'Do you really want to decline this request';
+var approveMultipleText = 'Do you really want to approve these requests';
+var declineMultipleText = 'Do you really want to decline these requests';
 
 
 $(document).ready(function () {
@@ -21,6 +23,9 @@ $(document).ready(function () {
         approveText = 'هل تريد حقًا الموافقة على هذه الإجازة'
         declineTitle = 'انخفاض؟';
         declineText = 'هل تريد حقًا رفض هذه الإجازة';
+        approveMultipleText ='هل ترغب في تاكيد الطلب'
+        declineMultipleText ='هل ترغب في الغاء الطلب'
+
     }
 
     $("#Language").val(_currentLanguage);
@@ -47,7 +52,7 @@ $(document).ready(function () {
 
 var ajaxRequest = function (options) {
     $('#loading').show().fadeIn(500);
-    
+
     $('#RequestLoader').show();
     $.ajax({
         type: 'POST',
@@ -146,7 +151,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
 
 }
-var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {    
+var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
     $("#" + $gridid).kendoGrid({
         //toolbar: ["excel", "pdf", "search"],
         //pdf: {
@@ -409,14 +414,14 @@ var validateForm = function ($form) {
 
     return valid;
 }
-var customValidateForm = function ($form) {    
+var customValidateForm = function ($form) {
     var valid = true;
     $('#' + $form + " input[required],#" + $form + " textarea[required],#" + $form + " select[required]").each(function () {
-        
+
         //alert($(this).attr('name'));
         //$(this).next("span").remove();
         //if ($(this).hasClass('k-dropdown')) {
-        
+
         if ($(this).parent().hasClass('k-dropdown')) {
             if ($(this).val() == '-1') {
                 $(this).addClass('invalid');
@@ -608,7 +613,7 @@ function fnAvoidNegavtiveNumber(Inputvalue) { //Inputvalue is input field value 
 
 }
 function swal(messageResponse) {
- 
+
     var messageResponseParse = JSON.parse(messageResponse);
     if (messageResponseParse.type == undefined) {
         messageResponseParse = JSON.parse(messageResponseParse);
@@ -676,7 +681,7 @@ var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, c
     }
     var combobox = $("#" + controlId).data("kendoDropDownList");
     if (combobox != undefined) {
-        
+
         combobox.destroy();
     }
     $("#" + controlId).kendoDropDownList({
@@ -739,7 +744,7 @@ function loadDepartmentTreeDropdownList() {
     ajaxRequest({ commandName: 'HR_Department_Dropdown_GetAll', values: { Language: _currentLanguage, }, CallBack: loadTreeDropdownList });
 }
 function loadTreeDropdownList(d) {
-    
+
     var _data = treeFomatter(JSON.parse(d.Value), 0);
     $("#DepartmentId").kendoDropDownTree({
         tagMode: 'single',
@@ -752,7 +757,7 @@ function loadDepartmentTreeDropdownListWithCheckbox() {
     ajaxRequest({ commandName: 'HR_Department_Dropdown_GetAll', values: { Language: _currentLanguage, }, CallBack: loadTreeDropdownListWithCheckBox });
 }
 function loadTreeDropdownListWithCheckBox(d) {
-    
+
     var _data = treeFomatter(JSON.parse(d.Value), 0);
     $("#DepartmentId").kendoDropDownTree({
         checkboxes: true,
@@ -815,9 +820,9 @@ var treeFomatter = function (arr, parent) {
 
 //});
 function setResponseToFormInputs(response) {
-  
+
     $.each(JSON.parse(response.Value), function (key, value) {
-       
+
         //console.log('key : ' + key + ' value : ' + value);
         $('#' + capitalizeFirstLetter(key)).val(value);
     });
@@ -885,7 +890,7 @@ function renderKendoTimePicker(controlId, timeFormate = 'HH:mm', startTime = '09
 }
 
 
-var convertTime12to24 = function (time12h)  {
+var convertTime12to24 = function (time12h) {
     const [time, modifier] = time12h.split(' ');
 
     let [hours, minutes] = time.split(':');
@@ -908,8 +913,8 @@ var convertHHMMToSeconds = function (time24hr) {
 
     // minutes are worth 60 seconds. Hours are worth 60 minutes.
     //This code is commented beacuse the time which we received is only in Hours and Minutes like 11:00
-   // var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 ;
+    // var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60;
 
     return seconds;
 }
@@ -923,17 +928,17 @@ function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDate
 }
 function only0To9WithDecimalAllowed(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
-    
+
     if (charCode != 46 && charCode > 31
         && (charCode < 48 || charCode > 57))
         return false;
 
     return true;
-   
+
 }
 function only1To9Allowed(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
-    
+
     if (charCode != 46 && charCode > 31
         && (charCode < 48 || charCode > 57)) {
         return false;
@@ -942,11 +947,11 @@ function only1To9Allowed(evt) {
         return false;
     }
     else if (charCode > 48 && charCode <= 57) {
-    
+
         return true
     }
     else {
-    
+
         false;
     }
 

@@ -214,6 +214,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Global.ar-AE.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\HumanResourceUI.ar-AE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumanResourceUI.ar-AE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\HumanResourceUI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumanResourceUI.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -365,6 +375,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeeEducationalDocumentGridPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalDocumentGridPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmpoyeeLeaveBalancePartialViews.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Common\common-labels.js" />
@@ -1085,6 +1096,7 @@
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeEducationalDocumentGridPartialView.cshtml" />
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.cshtml" />
     <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmployeePersonalDocumentGridPartialView.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_EmpoyeeLeaveBalancePartialViews.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1506,6 +1518,16 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Global.Designer.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="App_GlobalResources\HumanResourceUI.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HumanResourceUI.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>HRModuleUI</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\HumanResourceUI.ar-AE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HumanResourceUI.ar-AE.designer.cs</LastGenOutput>
+      <CustomToolNamespace>HRModuleUI</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\Employees\Views\App_LocalResources\EmployeeResourcesUI.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmployeeResourcesUI.Designer.cs</LastGenOutput>

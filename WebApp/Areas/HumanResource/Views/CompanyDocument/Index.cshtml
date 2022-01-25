@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Company Document";
 }
 
 <form id="frmCompanyDocument" name="frmCompanyDocument" action="/services/Xtreme/multipart" method="post">
@@ -16,19 +16,19 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblPersonalDocument</label><span style="color:red">*</span><br />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblPersonalDocument</label><span style="color:red">*</span><br />
                         <input type="file" class="form-control" name="CompanyDocument" id="CompanyDocument" onchange="validatePersonalDocument('CompanyDocument');"  required/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblNameEng  <span style="color:red">*</span></label>
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNameEng  <span style="color:red">*</span></label>
                         <input class="form-control" id="NameEng" name="NameEng" required />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblNameArb  <span style="color:red">*</span></label>
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNameArb  <span style="color:red">*</span></label>
                         <input class="form-control" id="NameArb" name="NameArb" required />
                     </div>
                 </div>
@@ -36,14 +36,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblDescriptionEng  <span style="color:red">*</span></label>
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDescriptionEng  <span style="color:red">*</span></label>
                         <textarea class="form-control" id="DescriptionEng" name="DescriptionEng" required></textarea>
 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblDescriptionArb  <span style="color:red">*</span></label>
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDescriptionArb  <span style="color:red">*</span></label>
                         <textarea class="form-control" id="DescriptionArb" name="DescriptionArb" required></textarea>
 
                     </div>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblIssueDate</label> <span style="color:red">*</span> <br />
                         <input type="date" class="form-control" id="IssueDate" name="IssueDate" required />
                     </div>
                 </div>
@@ -60,7 +60,7 @@
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-form-label">@HRUI.HumanResourceUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
                         <input type="date" class="form-control" id="ExpiryDate" name="ExpiryDate" required />
                     </div>
                 </div>
@@ -87,13 +87,13 @@
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/CompanyDocument/company-document-save.js"></script>
     <script>
         //Grid columns
-        var NameEng = '@HRUI.HumanResourceUI.lblNameEng';
-        var NameArb = '@HRUI.HumanResourceUI.lblNameArb';
-        var DescriptionEng = '@HRUI.HumanResourceUI.lblDescriptionEng';
-        var DescriptionArb = '@HRUI.HumanResourceUI.lblDescriptionArb';
-        var IssueDate = '@HRUI.HumanResourceUI.lblIssueDate';
-        var ExpiryDate = '@HRUI.HumanResourceUI.lblExpiryDate';
-        var Action = '@HRUI.HumanResourceUI.lblAction';
-     var attachment = '@Resources.EmployeeResourcesUI.lblAttachment';
+        var NameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
+        var NameArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
+        var DescriptionEng = '@HRModuleUI.HumanResourceUI.lblDescriptionEng';
+        var DescriptionArb = '@HRModuleUI.HumanResourceUI.lblDescriptionArb';
+        var IssueDate = '@HRModuleUI.HumanResourceUI.lblIssueDate';
+        var ExpiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
+        var Action = '@HRModuleUI.HumanResourceUI.lblAction';
+     var attachment = '@HRModuleUI.HumanResourceUI.lblAttachment';
     </script>
 }

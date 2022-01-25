@@ -6,7 +6,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
-    loadLetterGrid('PendingGridData');
+    loadLetterGrid('Pending');
 
 })
 
@@ -40,15 +40,16 @@ var bindLetterGrid = function (inputDataJSON) {
             width: 5
         },
         { field: "id", title: "id", hidden: true },
-        { field: "name", title: name, hidden: false, width: 20 },
+        { field: "email", title: email, hidden: false, width: 20 },
+        { field: "name", title: lblName, hidden: false, width: 20 },
         { field: "leaveType", title: letterType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:startDate#</span>" },
-        { field: "comment", title: comment, hidden: false, width: 20, template: "<span class='badge badge-info'>#:comment#</span>" },
+        { field: "comment", title: comment, hidden: true, width: 20, template: "<span class='badge badge-info'>#:comment#</span>" },
         //{ field: "other", title: Other, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:other#</span>" },
         { field: "letterTypeId", title: "LetterTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
-            title: Status, field: 'statusForCondition', width: 15, hidden: false,
+            title: Status, field: 'statusForCondition', width: 15, hidden: true,
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         }
 
@@ -82,11 +83,11 @@ $('#btnCancel').click(function (e) {
 
 function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 
-
+    
     Swal.fire({
 
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: btnValue == 'Decline' ? declineMultipleText : approveMultipleText,
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',
@@ -140,7 +141,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 }
 var responseCallBack = function (response) {
 
-    loadLetterGrid('PendingGridData');
+    loadLetterGrid('Pending');
     swal(response.Value);
 
 }
@@ -183,4 +184,20 @@ $(document).on("click", "#checkAll", function () {
 //--------------------- FUNCTION AREA ----------------
 function fnLoadGridByStatus(btnValue) {
     loadLetterGrid(btnValue);
+
+    if (btnValue == 'Pending') {
+
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').show();
+            //$(".k-checkbox").show();
+            $('.header-checkbox').show();
+            $('.k-checkbox.row-checkbox').show();
+        }, 50);
+    } else {
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').hide();
+            $('.header-checkbox').hide();
+            $('.k-checkbox.row-checkbox').hide();
+        }, 50);
+    }
 }

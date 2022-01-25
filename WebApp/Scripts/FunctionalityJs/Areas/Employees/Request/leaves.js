@@ -4,22 +4,23 @@ $(function () {
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $('#Language').val(_currentLanguage);
 
-    loadLeaveRequestGrid();
+    loadLeaveRequestGrid('Pending');
 });
 
 //|Load Leave Request Grid Starts
-function loadLeaveRequestGrid() {
+function loadLeaveRequestGrid(btnStatus) {
 
     loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
     ajaxRequest({
         commandName: 'Employees_Request_Leave_Get',
         values: {
             Id: $('#Id').val(),
-         //   CreatedBy: $('#CreatedBy').val(),
+            //   CreatedBy: $('#CreatedBy').val(),
             LoggedInUserId: loggedInUserDetail.id,
             LoggedInUserRoleId: loggedInUserDetail.roleId,
             LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
-            Language: _currentLanguage
+            Language: _currentLanguage,
+            StatusWise: btnStatus
         }, CallBack: loadLeaveRequestGridCallBack
     });
 
@@ -46,18 +47,19 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             width: 5
         },
         { field: "id", title: "id", hidden: true },
+        { field: "email", title: email, hidden: false, width: 20 },
         { field: "name", title: name, hidden: false, width: 20 },
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
         { field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
-       // { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+        // { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
             title: status,
             field: 'Status',
             width: 20,
-            hidden: false,
+            hidden: true,
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
         //{
@@ -79,8 +81,8 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
     //    grid.table.on("click", ".checkbox", selectRow);
     //}, 2000);
 };
-  
- 
+
+
 //|Load Leave Request Grid Ends
 //| Request Deny Modal Comment, Save Button Click
 //$('#btnModalDenyRequestSave').click(function () {
@@ -129,7 +131,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
     Swal.fire({
 
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: btnValue == 'Decline' ? declineMultipleText : approveMultipleText,
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',
@@ -183,7 +185,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 }
 var responseCallBack = function (response) {
 
-    loadLeaveRequestGrid();
+    loadLeaveRequestGrid('Pending');
     swal(response.Value);
 
 }
@@ -210,15 +212,38 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
 }
 
 
- 
+
 
 $(document).on("click", "#checkAll", function () {
-     if (this.checked) {
+    if (this.checked) {
 
         $("#RequestGrid tbody input:checkbox").attr("checked", true);
     } else {
         $("#RequestGrid tbody input:checkbox").attr("checked", false);
-      
+
 
     }
 });
+
+
+
+//--------------------- FUNCTION AREA ----------------
+function fnLoadGridByStatus(btnValue) {
+    loadLeaveRequestGrid(btnValue);
+
+    if (btnValue == 'Pending') {
+
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').show();
+            //$(".k-checkbox").show();
+            $('.header-checkbox').show();
+            $('.k-checkbox.row-checkbox').show();
+        }, 50);
+    } else {
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').hide();
+            $('.header-checkbox').hide();
+            $('.k-checkbox.row-checkbox').hide();
+        }, 50);
+    }
+}

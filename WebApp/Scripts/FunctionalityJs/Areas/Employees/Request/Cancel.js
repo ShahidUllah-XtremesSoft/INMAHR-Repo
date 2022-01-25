@@ -3,14 +3,24 @@
 var CancelGrid = "CancelGrid";
 $(function () {
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-    loadCancelLeaveGrid();
+    loadCancelLeaveGrid('Pending');
 
 });
 
 
-function loadCancelLeaveGrid() {
+function loadCancelLeaveGrid(btnStatus) {
 
-    ajaxRequest({ commandName: 'Employees_Request_Leave_Cancellation_Get', values: { Id: $('#Id').val(),  LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadCancelLeaveGridCallBack });
+    ajaxRequest({
+        commandName: 'Employees_Request_Leave_Cancellation_Get', values: {
+            Id: $('#Id').val(),
+            LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            Language: _currentLanguage,
+            StatusWise: btnStatus
+
+        }, CallBack: loadCancelLeaveGridCallBack
+    });
 }
 var loadCancelLeaveGridCallBack = function (inputDataJSON) {
     bindLeaveCancelGrid(JSON.parse(inputDataJSON.Value));
@@ -33,6 +43,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         },
         { field: "id", title: "id", hidden: true },
         { field: "requestLeaveId", title: "requestLeaveId", hidden: true },
+        { field: "email", title: email, hidden: false, width: 20 },
         { field: "name", title: lblName, hidden: false, width: 50 },
 
         { field: "leave", title: leaveName, hidden: true, width: 30 },
@@ -40,7 +51,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         //{ field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
         //{ field: "commentEng", title: commentEng, hidden: false, width: 30 },
         /*{ field: "commentArb", title: commentArb, hidden: false, width: 30 },*/
-        { field: "comment", title: comment, hidden: false, width: 30 },
+        { field: "comment", title: comment, hidden: true, width: 30 },
         //        { field: "status", title: "Status", hidden: false, width: 30 },
         {
             title: status,
@@ -83,7 +94,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
     Swal.fire({
 
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: btnValue == 'Decline' ? declineMultipleText : approveMultipleText,
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',
@@ -137,7 +148,8 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 }
 var responseCallBack = function (response) {
 
-    loadCancelLeaveGrid();
+    loadCancelLeaveGrid('Pending');
+
     swal(response.Value);
 
 }
@@ -176,3 +188,24 @@ $(document).on("click", "#checkAll", function () {
 
     }
 });
+
+//--------------------- FUNCTION AREA ----------------
+function fnLoadGridByStatus(btnValue) {
+    loadCancelLeaveGrid(btnValue);
+
+    if (btnValue == 'Pending') {
+
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').show();
+            //$(".k-checkbox").show();
+            $('.header-checkbox').show();
+            $('.k-checkbox.row-checkbox').show();
+        }, 50);
+    } else {
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').hide();
+            $('.header-checkbox').hide();
+            $('.k-checkbox.row-checkbox').hide();
+        }, 50);
+    }
+}

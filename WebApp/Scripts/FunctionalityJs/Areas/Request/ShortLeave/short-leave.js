@@ -192,7 +192,7 @@ function saveShortLeaveRequest() {
         buttonAddPleaseWait('btnSave');
         var options = {
             success: function (response, statusText, jqXHR) {
-                buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                buttonRemovePleaseWait('btnSave', save, 'save');
                 swal(response);
                 $('#Id').val(0);
                 loadShortLeaveGrid();
@@ -201,20 +201,20 @@ function saveShortLeaveRequest() {
 
             },
             error: function (xhr, status, error) {
-                buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                buttonRemovePleaseWait('btnSave', save, 'save');
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                 
                 swalMessage('error', errmsg, 2000);
             }
             , complete: function () {
-                buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                buttonRemovePleaseWait('btnSave', save, 'save');
             }
         };
         $("#frmShortLeaveDetail").ajaxSubmit(options);
     }
     else {
 
-        buttonRemovePleaseWait('btnSave', 'Save', 'save');
+        buttonRemovePleaseWait('btnSave', save, 'save');
 
     }
 
@@ -236,7 +236,7 @@ function deleteShortLeaveById(event) {
     var dataItem = grid.dataItem(row);
     Swal.fire({
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: doYouReallyWantToDeletThisRecord,
         //input: 'text',
         icon: 'question',
         showCancelButton: true,

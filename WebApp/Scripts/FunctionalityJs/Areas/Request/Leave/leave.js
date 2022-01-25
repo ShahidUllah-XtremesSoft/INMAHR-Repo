@@ -208,7 +208,7 @@ function saveLeaveRequest() {
         buttonAddPleaseWait('btnSave');
         var options = {
             success: function (response, statusText, jqXHR) {
-                buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                buttonRemovePleaseWait('btnSave', save, 'save');
                 swal(response);
                 $('#Id').val(0);
                 loadLeaveGrid();
@@ -217,19 +217,19 @@ function saveLeaveRequest() {
 
             },
             error: function (xhr, status, error) {
-                buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                buttonRemovePleaseWait('btnSave', save, 'save');
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                 alert(errmsg);
             }
             , complete: function () {
-                buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                buttonRemovePleaseWait('btnSave', save, 'save');
             }
         };
         $("#frmLeaveDetail").ajaxSubmit(options);
     }
     else {
 
-        buttonRemovePleaseWait('btnSave', 'Save', 'save');
+        buttonRemovePleaseWait('btnSave', save, 'save');
 
     }
 
@@ -268,7 +268,7 @@ function deleteLeaveById(event) {
     var dataItem = grid.dataItem(row);
     Swal.fire({
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: doYouReallyWantToDeletThisRecord,
         //input: 'text',
         icon: 'question',
         showCancelButton: true,

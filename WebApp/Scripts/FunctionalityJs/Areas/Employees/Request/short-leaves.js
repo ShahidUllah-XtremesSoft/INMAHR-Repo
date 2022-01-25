@@ -10,11 +10,11 @@ $(function () {
     $('#AvailableShortLeave').val(totalShortLeave);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
-    loadShortLeaveGrid();
+    loadShortLeaveGrid('Pending');
      
 
 })
- function loadShortLeaveGrid() {
+function loadShortLeaveGrid(btnStatus) {
 
      ajaxRequest({
        //  commandName: 'Request_All_Employee_ShortLeave_GetBySuperiorRole',
@@ -25,7 +25,8 @@ $(function () {
              LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
              LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
              LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
-             Language: _currentLanguage
+             Language: _currentLanguage,
+             StatusWise: btnStatus
          }, CallBack: loadShortLeaveGridCallBack
      });
 
@@ -50,6 +51,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             width: 8
         },
         { field: "id", title: "id", hidden: true },
+        { field: "email", title: email, hidden: false, width: 20 },
         { field: "name", title: lblname, hidden: false, width: 50 },
         { field: "requestDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:requestDate#</span>" },
         { field: "startTime", title: startTime, hidden: false, width: 30, template: "<span class='badge badge-info'>#:startTime#</span>" },
@@ -57,13 +59,13 @@ var bindShortLeaveGrid = function (inputDataJSON) {
         { field: "leaveType", title: leaveType, hidden: true, width: 30 },
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
         { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 30, template: "<span class='badge badge-dark'>#:numberOfHours#</span>"},
-        { field: "comment", title: comment, hidden: false, width: 40 },
+        { field: "comment", title: comment, hidden: true, width: 40 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
             title: status,
             field: 'status',
             width: 30,
-            hidden: false,
+            hidden: true,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
@@ -100,7 +102,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
     Swal.fire({
 
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: btnValue == 'Decline' ? declineMultipleText : approveMultipleText,
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',
@@ -154,7 +156,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 }
 var responseCallBack = function (response) {
 
-    loadShortLeaveGrid();
+    loadShortLeaveGrid('Pending');
     swal(response.Value);
 
 }
@@ -193,3 +195,24 @@ $(document).on("click", "#checkAll", function () {
 
     }
 });
+
+//--------------------- FUNCTION AREA ----------------
+function fnLoadGridByStatus(btnValue) {
+    loadShortLeaveGrid(btnValue);
+
+    if (btnValue == 'Pending') {
+
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').show();
+            //$(".k-checkbox").show();
+            $('.header-checkbox').show();
+            $('.k-checkbox.row-checkbox').show();
+        }, 50);
+    } else {
+        setTimeout(function () {
+            $('#btnAreaShowHideOnConditionBase').hide();
+            $('.header-checkbox').hide();
+            $('.k-checkbox.row-checkbox').hide();
+        }, 50);
+    }
+}

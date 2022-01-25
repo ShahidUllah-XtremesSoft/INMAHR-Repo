@@ -157,11 +157,13 @@
 <script>
     var receivedLettersGrid = 'ReceivedLettersGrid';
     //Resources labels
-    var subject = '@Resources.EmployeeResourcesUI.lblSubject';
-    var description = '@Resources.EmployeeResourcesUI.lblTheDescription';
-    var attachment = '@Resources.EmployeeResourcesUI.lblAttachment';
-    var dateTime = '@Resources.EmployeeResourcesUI.lblDateTime';
-    var action = '@Resources.EmployeeResourcesUI.lblAction';
+    var subject = '@HRModuleUI.HumanResourceUI.lblSubject';
+    var description = '@HRModuleUI.HumanResourceUI.lblTheDescription';
+    var attachment = '@HRModuleUI.HumanResourceUI.lblAttachment';
+    var dateTime = '@HRModuleUI.HumanResourceUI.lblDateTime';
+    var action = '@HRModuleUI.HumanResourceUI.lblAction';
+    var markRead = '@HRModuleUI.HumanResourceUI.lblMarkAsRead';
+    var lblDelete = '@Resources.Global.lblDelete';
      
     $(function () {
         loadLetterInboxGrid();
@@ -259,10 +261,10 @@
             },
             {
                 field: "",
-                width: 25,
+                width: 30,
                 title: ' ',
                 //template:"<a style='font-size:20px;cursor:pointer;' onClick= redirectToViewLetter(this) title='Mark letter as read' ><span class='fa fa-book'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteInternalLetter(this)  title='Delete Letter'><span class='fa fa-trash'></span></a>"
-                template: '<button type="button" class="btn btn-success btn-xs" style="font-weight:normal;" onClick= markLetterAsRead(this)> <i class="fa fa-eye"></i> Mark Read</button><button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> Delete</button>'
+                template: '<button type="button" class="btn btn-success btn-xs" style="font-weight:normal;" onClick= markLetterAsRead(this)> <i class="fa fa-eye"></i> ' + markRead + '</button><button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
                 //template: '<div class="dropdown"><button class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="position:relative;"><a class="dropdown-item" href="\\#">Action</a><a class="dropdown-item" href="\\#">Another action</a><a class="dropdown-item" href="\\#">Something else here</a></div></div>'
 
 
@@ -275,7 +277,7 @@
      function viewAttachment(currentFileName) {
       
         if (currentFileName == "null") {
-            swalMessage('info', '@Resources.EmployeeResourcesUI.MsgAttachmentNotFound', 2000);
+            swalMessage('info', '@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
             return false;
         }
         window.open('/UploadFile/' + currentFileName, '_blank');

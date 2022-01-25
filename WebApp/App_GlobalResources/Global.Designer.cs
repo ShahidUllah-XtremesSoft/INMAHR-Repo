@@ -97,6 +97,60 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to approve these requests ?.
+        /// </summary>
+        internal static string doYouReallyWantToApproveTheseRequests {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToApproveTheseRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to approve this request ?.
+        /// </summary>
+        internal static string doYouReallyWantToApproveThisRequest {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToApproveThisRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to decline these requests ?.
+        /// </summary>
+        internal static string doYouReallyWantToDeclineTheseRequests {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToDeclineTheseRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to decline this request ?.
+        /// </summary>
+        internal static string doYouReallyWantToDeclineThisRequest {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToDeclineThisRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete this record ?.
+        /// </summary>
+        internal static string doYouReallyWantToDeleteThisRecord {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToDeleteThisRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        internal static string lblAccept {
+            get {
+                return ResourceManager.GetString("lblAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string lblAction {
@@ -106,11 +160,83 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        internal static string lblApprove {
+            get {
+                return ResourceManager.GetString("lblApprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approve ?.
+        /// </summary>
+        internal static string lblApproveQuestion {
+            get {
+                return ResourceManager.GetString("lblApproveQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Sure ?.
+        /// </summary>
+        internal static string lblAreYouSure {
+            get {
+                return ResourceManager.GetString("lblAreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline.
+        /// </summary>
+        internal static string lblDecline {
+            get {
+                return ResourceManager.GetString("lblDecline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline ?.
+        /// </summary>
+        internal static string lblDeclineQuestion {
+            get {
+                return ResourceManager.GetString("lblDeclineQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string lblDelete {
+            get {
+                return ResourceManager.GetString("lblDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         internal static string lblEndDate {
             get {
                 return ResourceManager.GetString("lblEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string lblNo {
+            get {
+                return ResourceManager.GetString("lblNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string lblReset {
+            get {
+                return ResourceManager.GetString("lblReset", resourceCulture);
             }
         }
         
@@ -129,6 +255,15 @@ namespace Resources {
         internal static string lblStatus {
             get {
                 return ResourceManager.GetString("lblStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string lblYes {
+            get {
+                return ResourceManager.GetString("lblYes", resourceCulture);
             }
         }
         

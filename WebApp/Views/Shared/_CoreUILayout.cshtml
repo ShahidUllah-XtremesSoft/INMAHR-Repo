@@ -108,7 +108,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid();" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> Document <span class="badge badge-danger" id="documentCount">0</span></a>
+                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid();" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
                        
                     </div>
                 </li>
@@ -122,8 +122,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
 
-                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> Update Password </button>
-                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> Logout </button>
+                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> @HRModuleUI.HumanResourceUI.lblUpdatePassword</button>                        
+                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> @HRModuleUI.HumanResourceUI.lblLogout </button>
                         
                     </div>
                 </li>
@@ -172,7 +172,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblUpdatePassword</h4>
+                    <h4 class="modal-title" id="myModalLabel">@HRModuleUI.HumanResourceUI.lblUpdatePassword</h4>
                 </div>
                 <div class="modal-body">
                     <form id="frmUpdatePassword" name="frmUpdatePassword" action="/services/Xtreme/multipart" method="post">
@@ -184,20 +184,20 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
                                     <input class="form-control" id="EmployeeNum" name="EmployeeNum"  required readonly />
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblOldPassword</label><span style="color: red">*</span>
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblOldPassword</label><span style="color: red">*</span>
                                     <input class="form-control" type="password" id="OldPassword" name="OldPassword" value="12345" readonly required  />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="col-form-label">@HRUI.HumanResourceUI.lblNewPassword</label><span style="color: red">*</span>
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNewPassword</label><span style="color: red">*</span>
                                     <input class="form-control" type="password" id="NewPassword" name="NewPassword"  required  />
                                 </div>
                             </div>
@@ -207,8 +207,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">@HRUI.HumanResourceUI.lblClose</button>
-                    <button type="button" class="btn btn-primary" id="btn-update-user-password">@HRUI.HumanResourceUI.btnSave</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@HRModuleUI.HumanResourceUI.lblClose</button>
+                    <button type="button" class="btn btn-primary" id="btn-update-user-password">@HRModuleUI.HumanResourceUI.btnSave</button>
                 </div>
             </div>
         </div>
@@ -255,14 +255,38 @@
 <script>
     var _currentLanguage = '@Resources.Common.CurrentLang';
 
-    //Columns
-    var employeeNumber = '@HRUI.HumanResourceUI.lblEmpNum';
-    var employeeName = '@HRUI.HumanResourceUI.lblEmployeeName';
-    var documentType = '@HRUI.HumanResourceUI.lblEducationalDocument';
-    var expiryDate = '@HRUI.HumanResourceUI.lblExpiryDate';
-    var section = '@HRUI.HumanResourceUI.lblDepartment';
-    $(function () {
+    //Global Resources
+    var save = '@Resources.Global.btnSave';
+    var btnAcceptText = '@Resources.Global.lblAccept';
+    var btnApproveText = '@Resources.Global.lblApprove';
+    var btnDeclineText = '@Resources.Global.lblDecline';
+    var approveText = '@Resources.Global.doYouReallyWantToApproveThisRequest';
+    var declineText = '@Resources.Global.doYouReallyWantToDeclineThisRequest';
 
+    var approveTitle = '@Resources.Global.lblApprove';
+    var approveTitleQuestion = '@Resources.Global.lblApproveQuestion';
+    var declineTitle = '@Resources.Global.lblDecline';
+    var declineTitleQuestion = '@Resources.Global.lblDeclineQuestion';
+    var btnYesText = '@Resources.Global.lblYes';
+    var btnNoText = '@Resources.Global.lblNo';
+
+
+    //Columns
+    var employeeNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+    var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+    var documentType = '@HRModuleUI.HumanResourceUI.lblEducationalDocument';
+    var expiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
+    var section = '@HRModuleUI.HumanResourceUI.lblDepartment';
+
+
+
+     var approveMultipleText = '@Resources.Global.doYouReallyWantToApproveTheseRequests';
+    var declineMultipleText = '@Resources.Global.doYouReallyWantToDeclineTheseRequests';
+    var areYouSureTitle = '@Resources.Global.lblAreYouSure';
+    var doYouReallyWantToDeletThisRecord  = '@Resources.Global.doYouReallyWantToDeleteThisRecord';
+
+    $(function () {
+        $(':input').removeAttr('placeholder');
         $('#LayoutCurrentLanguage').val(_currentLanguage);
         var assingedRoleMenus = localStorage.getItem('Menus');
         var menuGroupArray = [];
@@ -285,7 +309,7 @@
 
         }, 500);
 
-       
+
 
     });
 
@@ -296,14 +320,14 @@
 
 
     $('#btn-update-password').click(function () {
-        
+
         var test = localStorage.getItem('EmployeeNumber');
         $('#EmployeeNum').val(test);
         $('#modal-update-password').modal('show');
     });
 
     $('#btn-update-user-password').click(function () {
-       
+
         if (customValidateForm('frmUpdatePassword')) {
             $("#frmUpdatePassword").ajaxForm();
             buttonAddPleaseWait('btn-update-user-password');

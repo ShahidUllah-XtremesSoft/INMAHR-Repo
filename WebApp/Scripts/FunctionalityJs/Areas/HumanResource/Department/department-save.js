@@ -1,10 +1,10 @@
 ﻿$(function () {
 
-    $('#btn-save-Department').on('click', function (e) {
-
+    $('#btnSave').on('click', function (e) {
+        
         if (customValidateForm('frmDepartmentDetail')) {
             $("#frmModuleDetail").ajaxForm();
-            buttonAddPleaseWait('btn-save-Department');
+            buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
                     var type = swal(response);                    
@@ -15,21 +15,21 @@
                     }
                 },
                 error: function (xhr, status, error) {
-                    buttonRemovePleaseWait('btn-save-Department', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btn-save-Department', 'Save', 'save');
-                    
+                    buttonRemovePleaseWait('btnSave', save, 'save');
+                  
                 }
             };
             $("#frmDepartmentDetail").ajaxSubmit(options);
         }
         else {
 
-            buttonRemovePleaseWait('btn-save-Department', 'Save', 'save');
-        }
+            buttonRemovePleaseWait('btnSave', save, 'save');
+        }        
     });
 });
 function clearFields() {

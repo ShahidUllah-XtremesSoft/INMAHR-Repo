@@ -8,6 +8,7 @@
 <input type="hidden" id="CreatedBy" name="CreatedBy" />
 <input type="hidden" id="Id" name="Id" value="0" />
 <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+<input type="hidden" id="EmployeeId" name="LoggedInUserId" value="0" />
 <div class="row">
 
 </div>
@@ -20,7 +21,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmployeeNumber</label>
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmployeeNumber</label>
                                     <div class="col-xs-7 controls pull-right" id="EmployeeNumber"></div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -29,7 +30,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmployeeName</label>
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmployeeName</label>
                                     <div class="col-xs-7 controls pull-right" id="EmployeeName"></div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -38,7 +39,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5   ">@HRUI.HumanResourceUI.lblJoinDate</label>
+                                    <label class="col-xs-5   ">@HRModuleUI.HumanResourceUI.lblJoinDate</label>
                                     <div class="col-xs-7 controls pull-right" id="JoinDate"></div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -47,7 +48,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblPhone</label>
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblPhone</label>
                                     <div class="col-xs-7 controls pull-right" id="PhoneNumber"></div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -56,7 +57,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmail</label>
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmail</label>
                                     <div class="col-xs-7 controls pull-right" id="Email"></div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -67,7 +68,7 @@
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
                                     <label class="col-xs-5  ">
-                                        @HRUI.HumanResourceUI.lblDepartment
+                                        @HRModuleUI.HumanResourceUI.lblDepartment
                                     </label>
                                     <div class="col-xs-7 controls pull-right" id="Department">
 
@@ -81,7 +82,7 @@
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
                                     <label class="col-xs-5  ">
-                                        @HRUI.HumanResourceUI.lblLineManager
+                                        @HRModuleUI.HumanResourceUI.lblLineManager
                                     </label>
                                     <div class="col-xs-7 controls pull-right" id="DirectResponsible">
 
@@ -98,7 +99,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  "> @HRUI.HumanResourceUI.lblOccupation</label>
+                                    <label class="col-xs-5  "> @HRModuleUI.HumanResourceUI.lblOccupation</label>
                                     <div class="col-xs-7 controls pull-right" id="Profession">
 
                                     </div>
@@ -109,7 +110,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblEmploymentStatus</label>
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmploymentStatus</label>
                                     <div class="col-xs-7 controls pull-right" id="ContractType">
 
                                     </div>
@@ -121,7 +122,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
-                                    <label class="col-xs-5  ">@HRUI.HumanResourceUI.lblNationality</label>
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblNationality</label>
                                     <div class="col-xs-7 controls pull-right" id="Nationality">
 
                                     </div>
@@ -144,10 +145,10 @@
 </div>
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-6" id="divPersonalDocument">
         <div class="card">
             <div class="card-header">
-                <strong>@HRUI.HumanResourceUI.tabPersonalDocument</strong>
+                <strong>@HRModuleUI.HumanResourceUI.tabPersonalDocument</strong>
                 @*<small>Form</small>*@
             </div>
             <div class="card-block">
@@ -161,10 +162,16 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
+    <div class="col-md-6" id="divLeaveBalance" style="display:none;">
+
+        @{
+            Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmpoyeeLeaveBalancePartialViews.cshtml");            
+        }
+
+
+        <div class="card" hidden="hidden">
             <div class="card-header">
-                <strong>@HRUI.HumanResourceUI.tabEducationalDocument</strong>
+                <strong>@HRModuleUI.HumanResourceUI.tabEducationalDocument</strong>
                 @*<small>Form</small>*@
             </div>
             <div class="card-block">
@@ -183,7 +190,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h5>@Resources.EmployeeResourcesUI.lblRequest</h5>
+        <h5>@HRModuleUI.HumanResourceUI.lblRequest</h5>        
         <div class="card-header-right">
 
         </div>
@@ -194,11 +201,11 @@
             <div class="col-md-12">
 
                 <div class="btn-group" role="group" aria-label="Requests">
-                    <button type="button" class="btn btn-sm btn-primary" id="btnLeaveRequestTab">@HRUI.HumanResourceUI.lblLeave </button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnShortLeaveRequestTab">@HRUI.HumanResourceUI.lblShortLeave</button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnLetterRequestTab">@HRUI.HumanResourceUI.lblOfficialLetter</button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnLeaveCancelRequestTab">@HRUI.HumanResourceUI.lblLeaveCancellation</button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnCashInLeaveTab">@HRUI.HumanResourceUI.lblCashInLieu</button>
+                    <button type="button" class="btn btn-sm btn-primary" id="btnLeaveRequestTab">@HRModuleUI.HumanResourceUI.lblLeave </button>
+                    <button type="button" class="btn btn-sm btn-dark" id="btnShortLeaveRequestTab">@HRModuleUI.HumanResourceUI.lblShortLeave</button>
+                    <button type="button" class="btn btn-sm btn-dark" id="btnLetterRequestTab">@HRModuleUI.HumanResourceUI.lblOfficialLetter</button>
+                    <button type="button" class="btn btn-sm btn-dark" id="btnLeaveCancelRequestTab">@HRModuleUI.HumanResourceUI.lblLeaveCancellation</button>
+                    <button type="button" class="btn btn-sm btn-dark" id="btnCashInLeaveTab">@HRModuleUI.HumanResourceUI.lblCashInLieu</button>
                 </div>
             </div>
         </div>
@@ -330,22 +337,23 @@
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeePersonalDocumentGridPartialView.js"></script>
     <script>
         //Grid Columns
-        var leaveName = '@RequestUI.RequestResourceUI.lblLeaveType';
-        var note = '@RequestUI.RequestResourceUI.lblNote';
+        var leaveName = '@HRModuleUI.HumanResourceUI.lblLeaveType';
+        var leaveName = '@HRModuleUI.HumanResourceUI.lblLeaveType';
+        var note = '@HRModuleUI.HumanResourceUI.lblNote';
         var startDate = '@Resources.Global.lblStartDate';
         var endDate = '@Resources.Global.lblEndDate';
-        var commentEng = '@RequestUI.RequestResourceUI.lblCommentEng';
-        var commentArb = '@RequestUI.RequestResourceUI.lblCommentArb';
+        var commentEng = '@HRModuleUI.HumanResourceUI.lblCommentEng';
+        var commentArb = '@HRModuleUI.HumanResourceUI.lblCommentArb';
         var action = '@Resources.Global.lblAction';
-        var status = '@RequestUI.RequestResourceUI.lblStatus';
-         var days = '@RequestUI.RequestResourceUI.lblDays';
-        var requestDate = '@RequestUI.RequestResourceUI.lblRequestDate';
-        var leaveType = '@HRUI.HumanResourceUI.lblLeaveType';
-        var startTime = '@RequestUI.RequestResourceUI.lblStartTime';
-        var endTime = '@RequestUI.RequestResourceUI.lblReturnTime';
-        var hours = '@RequestUI.RequestResourceUI.lblHours';
-        var letterType = '@RequestUI.RequestResourceUI.lblLetterType';
-        var comment = '@RequestUI.RequestResourceUI.lblComment';
+        var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+         var days = '@HRModuleUI.HumanResourceUI.lblDays';
+        var requestDate = '@HRModuleUI.HumanResourceUI.lblRequestDate';
+        var leaveType = '@HRModuleUI.HumanResourceUI.lblLeaveType';
+        var startTime = '@HRModuleUI.HumanResourceUI.lblStartTime';
+        var endTime = '@HRModuleUI.HumanResourceUI.lblReturnTime';
+        var hours = '@HRModuleUI.HumanResourceUI.lblHours';
+        var letterType = '@HRModuleUI.HumanResourceUI.lblLetterType';
+        var comment = '@HRModuleUI.HumanResourceUI.lblComment';
 
     </script>
 }

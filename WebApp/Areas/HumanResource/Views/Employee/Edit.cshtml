@@ -10,13 +10,13 @@
         <div class="row">
             <ul class="nav nav-tabs  tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#PersonalInfoTab" role="tab">@HRUI.HumanResourceUI.tabPersonalInfo</a>
+                    <a class="nav-link active" data-toggle="tab" href="#PersonalInfoTab" role="tab">@HRModuleUI.HumanResourceUI.tabPersonalInfo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#PersonalDocumentTab" role="tab" id="PersonalDocumentTabLi">@HRUI.HumanResourceUI.tabPersonalDocument</a>
+                    <a class="nav-link" data-toggle="tab" href="#PersonalDocumentTab" role="tab" id="PersonalDocumentTabLi">@HRModuleUI.HumanResourceUI.tabPersonalDocument</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#EducationalDocumentTab" role="tab">@HRUI.HumanResourceUI.tabEducationalDocument</a>
+                <li class="nav-item" hidden="hidden">
+                    <a class="nav-link" data-toggle="tab" href="#EducationalDocumentTab" role="tab">@HRModuleUI.HumanResourceUI.tabEducationalDocument</a>
                 </li>
 
             </ul>
@@ -36,8 +36,8 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button class="btn btn-primary  pull-right" id="btn-edit-employee"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                                            <a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                            <a href="@Url.Action("List","Employee")" class="btn btn-danger  @Resources.Common.PullRight"  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                            <button class="btn btn-success  @Resources.Common.PullRight" id="btn-edit-employee"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button class="btn btn-primary  pull-right" id="btnSaveEmployeePersonalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            <button class="btn btn-success  @Resources.Common.PullRight" id="btnSaveEmployeePersonalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                                             @*<a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id="">Cancel</a>*@
                                         </div>
                                     </div>
@@ -73,11 +73,11 @@
                         <table class="table" id="employeePersonalDocumentGrid">
                             <thead>
                                 <tr>
-                                    <th>@HRUI.HumanResourceUI.lblPersonalDocumentType</th>
-                                    <th>@HRUI.HumanResourceUI.lblIssueDate</th>
-                                    <th>@HRUI.HumanResourceUI.lblPersonalDocumentExpiryDate</th>
-                                    <th>@HRUI.HumanResourceUI.lblFile</th>
-                                    <th>@*@HRUI.HumanResourceUI.lblAction*@</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblPersonalDocumentType</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblIssueDate</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblPersonalDocumentExpiryDate</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblFile</th>
+                                    <th>@*@HRModuleUI.HumanResourceUI.lblAction*@</th>
                                 </tr>
                             </thead>
                             <tbody>                                   
@@ -101,7 +101,7 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button class="btn btn-primary  pull-right" id="btnSaveEmployeeEducationalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            <button class="btn btn-success  @Resources.Common.PullRight" id="btnSaveEmployeeEducationalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                                             @*<a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id="">Cancel</a>*@
                                         </div>
                                     </div>
@@ -112,15 +112,15 @@
                         <table class="table" id="employeeEducationalDocumentGrid">
                             <thead>
                                 <tr>
-                                    <th>@HRUI.HumanResourceUI.lblCertificateName</th>
-                                    <th>@HRUI.HumanResourceUI.lblCertificateName</th>
-                                    <th>@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</th>
-                                    <th>@HRUI.HumanResourceUI.lblEducationalDocumentInstituteNameArb</th>
-                                    <th>@HRUI.HumanResourceUI.lblIssueDate</th>
-                                    <th>@HRUI.HumanResourceUI.lblMarksPercentage</th>
-                                    <th>@HRUI.HumanResourceUI.lblCountry</th>
-                                    <th>@HRUI.HumanResourceUI.lblFile</th>
-                                    <th>@*@HRUI.HumanResourceUI.lblAction*@</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblCertificateName</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblCertificateName</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblEducationalDocumentInstituteNameArb</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblIssueDate</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblMarksPercentage</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblCountry</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblFile</th>
+                                    <th>@*@HRModuleUI.HumanResourceUI.lblAction*@</th>
                                 </tr>
                             </thead>
                             <tbody>

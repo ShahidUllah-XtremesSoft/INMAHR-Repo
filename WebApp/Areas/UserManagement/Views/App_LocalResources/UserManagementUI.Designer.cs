@@ -59,41 +59,5 @@ namespace UserManagement {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sign In.
-        /// </summary>
-        public static string btnSignIn {
-            get {
-                return ResourceManager.GetString("btnSignIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email.
-        /// </summary>
-        public static string phEmail {
-            get {
-                return ResourceManager.GetString("phEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Employee Number.
-        /// </summary>
-        public static string phEmployeeNumber {
-            get {
-                return ResourceManager.GetString("phEmployeeNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password.
-        /// </summary>
-        public static string phPassword {
-            get {
-                return ResourceManager.GetString("phPassword", resourceCulture);
-            }
-        }
     }
 }

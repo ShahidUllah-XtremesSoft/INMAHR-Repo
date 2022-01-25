@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = Resources.EmployeeResourcesUI.lblEmployeesCancelLeaveRequest;
+    //ViewBag.Title = Resources.EmployeeResourcesUI.lblEmployeesCancelLeaveRequest;
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblEmployeesCancelLeaveRequest;
 }
 <style>
     /*.k-pivot-table*/
@@ -15,7 +16,7 @@
     <div class="card-header">
 
 
-        <h5>@Resources.EmployeeResourcesUI.lblEmployeesCancelLeaveRequest</h5>
+        <h5>@HRModuleUI.HumanResourceUI.lblEmployeesCancelLeaveRequest</h5>
         <div class="card-header-right">
 
         </div>
@@ -23,11 +24,17 @@
     <div class="card-block">
         <div class="row">
             <div class="col-md-12">
+                <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblPendingRequest</button>
+                <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
+                <div id="btnAreaShowHideOnConditionBase">
+
+                    <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
+                    <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @HRModuleUI.HumanResourceUI.lblDecline</button>
 
 
-                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblAccept</button>
-                <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                </div>
             </div>
+
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -46,21 +53,22 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/Cancel.js"></script>
     <script>
         //Grid Columns
-        var lblName = '@Resources.EmployeeResourcesUI.lblName';
-        var leaveName = '@RequestUI.RequestResourceUI.lblLeaveType';
+        var email = '@HRModuleUI.HumanResourceUI.lblEmail';
+        var lblName = '@HRModuleUI.HumanResourceUI.lblName';
+        var leaveName = '@HRModuleUI.HumanResourceUI.lblLeaveType';
         var startDate = '@Resources.Global.lblStartDate';
         var endDate = '@Resources.Global.lblEndDate';
-        var commentEng = '@RequestUI.RequestResourceUI.lblCommentEng';
-        var commentArb = '@RequestUI.RequestResourceUI.lblCommentArb';
+        var commentEng = '@HRModuleUI.HumanResourceUI.lblCommentEng';
+        var commentArb = '@HRModuleUI.HumanResourceUI.lblCommentArb';
         var action = '@Resources.Global.lblAction';
-           var requestDenyComment = '@RequestUI.RequestResourceUI.lblRequestDenyComment';
-        var status = '@RequestUI.RequestResourceUI.lblStatus';
-        var comment = '@RequestUI.RequestResourceUI.lblComment';
+           var requestDenyComment = '@HRModuleUI.HumanResourceUI.lblRequestDenyComment';
+        var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var comment = '@HRModuleUI.HumanResourceUI.lblComment';
 
 
-                   var btnDecline= '@Resources.EmployeeResourcesUI.lblDecline';
-        var btnAccept = '@Resources.EmployeeResourcesUI.lblAccept';
-        var lblFristSelectRecordFromGrid  = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid ';
+                   var btnDecline= '@HRModuleUI.HumanResourceUI.lblDecline';
+        var btnAccept = '@HRModuleUI.HumanResourceUI.lblAccept';
+        var lblFristSelectRecordFromGrid  = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid ';
 
 
 

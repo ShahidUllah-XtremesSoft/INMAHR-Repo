@@ -221,11 +221,11 @@
 <script>
     var sentLettersGrid = 'SentLettersGrid';
     //Resources labels
-    var subject = '@Resources.EmployeeResourcesUI.lblSubject';
-    var description = '@Resources.EmployeeResourcesUI.lblTheDescription';
-    var attachment = '@Resources.EmployeeResourcesUI.lblAttachment';
-    var dateTime = '@Resources.EmployeeResourcesUI.lblDateTime';
-    var action = '@Resources.EmployeeResourcesUI.lblAction';
+    var subject = '@HRModuleUI.HumanResourceUI.lblSubject';
+    var description = '@HRModuleUI.HumanResourceUI.lblTheDescription';
+    var attachment = '@HRModuleUI.HumanResourceUI.lblAttachment';
+    var dateTime = '@HRModuleUI.HumanResourceUI.lblDateTime';
+    var action = '@HRModuleUI.HumanResourceUI.lblAction';
     $(function () {
         loadLetterOutboxGrid();        
     })
@@ -323,7 +323,7 @@
      function viewAttachment(currentFileName) {
      
         if (currentFileName == "null") {
-            swalMessage('info', '@Resources.EmployeeResourcesUI.MsgAttachmentNotFound', 2000);
+            swalMessage('info', '@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
             return false;
         }
         window.open('/UploadFile/' + currentFileName, '_blank');

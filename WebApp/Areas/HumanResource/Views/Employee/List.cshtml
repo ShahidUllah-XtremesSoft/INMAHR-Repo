@@ -9,7 +9,7 @@
     <div class="card-block">
         <div class="row">
             <div class="col-md-12">
-                <a href="@Url.Action("Add","Employee")" class="btn btn-success pull-right" id="btnAddNewEmployee"><i class="fa fa-plus">  </i> @Resources.EmployeeResourcesUI.lblAddNew</a>
+                <a href="@Url.Action("Add","Employee")" class="btn btn-success pull-right" id="btnAddNewEmployee"><i class="fa fa-plus">  </i> @HRModuleUI.HumanResourceUI.lblAddNew</a>
             </div>
         </div>
         <div class="row">
@@ -29,7 +29,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">@HRUI.HumanResourceUI.lblCreateUserLogin</h4>
+                <h4 class="modal-title" id="myModalLabel">@HRModuleUI.HumanResourceUI.lblCreateUserLogin</h4>
             </div>
             <div class="modal-body">
                 <form id="frmUserLoginDetail" name="frmUserLoginDetail" action="/services/Xtreme/multipart" method="post">
@@ -41,28 +41,28 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label">@HRUI.HumanResourceUI.lblEmail</label><span style="color: red">*</span>
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblEmail</label><span style="color: red">*</span>
                                 <input class="form-control" id="Email" name="Email" placeholder="Email " required readonly/>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label">@UserManagement.UserManagementUI.phPassword</label><span style="color: red">*</span>
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.phPassword</label><span style="color: red">*</span>
                                 <input class="form-control" type="password" id="Password" name="Password" placeholder="" value="12345" required readonly />
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label">@HRUI.HumanResourceUI.lblRole</label><span style="color: red">*</span>
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblRole</label><span style="color: red">*</span>
                                 <select class="form-control" id="RoleId" name="RoleId" required></select>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group" id="divDepartmentDropdownList">
-                                <label class="col-form-label">@HRUI.HumanResourceUI.lblDepartment</label><span style="color: red">*</span>
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDepartment</label><span style="color: red">*</span>
                                 <input class="form-control" id="DepartmentId" name="DepartmentId" placeholder="Enter Profession Name " required />
                             </div>
                         </div>
@@ -72,8 +72,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">@HRUI.HumanResourceUI.lblClose</button>
-                <button type="button" class="btn btn-primary" id="btnsave">@HRUI.HumanResourceUI.btnSave</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@HRModuleUI.HumanResourceUI.lblClose</button>
+                <button type="button" class="btn btn-primary" id="btnsave">@HRModuleUI.HumanResourceUI.btnSave</button>
             </div>
         </div>
     </div>
@@ -86,21 +86,21 @@
 
     <script>
         //Grid columns
-        var login = '@HRUI.HumanResourceUI.lblLogin';
-        var employeeNumber = '@HRUI.HumanResourceUI.lblEmpNum';
-        var nameEng = '@HRUI.HumanResourceUI.lblNameEng';
-        var nameArb = '@HRUI.HumanResourceUI.lblNameArb';
-        var employeeName = '@HRUI.HumanResourceUI.lblEmployeeName';
-        var department = '@HRUI.HumanResourceUI.lblDepartment';
-        var phone = '@HRUI.HumanResourceUI.lblPhone';
-        var email = '@HRUI.HumanResourceUI.lblEmail';        
-        var joinDate = '@HRUI.HumanResourceUI.lblJoinDate';
-        var profession = '@HRUI.HumanResourceUI.lblProfession';
-        var PassportNumber = '@HRUI.HumanResourceUI.lblPassportNumber';
-        var eidNumber = '@HRUI.HumanResourceUI.lblEIDNumber';
-        var action  = '@HRUI.HumanResourceUI.lblAction';
-        var btnGridCreateLogin  = '@HRUI.HumanResourceUI.btnGridCreateLogin';
-        var btnGridAlreadyCreated  = '@HRUI.HumanResourceUI.btnGridAlreadyCreated';
+        var login = '@HRModuleUI.HumanResourceUI.lblLogin';
+        var employeeNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+        var nameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
+        var nameArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
+        var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+        var department = '@HRModuleUI.HumanResourceUI.lblDepartment';
+        var phone = '@HRModuleUI.HumanResourceUI.lblPhone';
+        var email = '@HRModuleUI.HumanResourceUI.lblEmail';        
+        var joinDate = '@HRModuleUI.HumanResourceUI.lblJoinDate';
+        var profession = '@HRModuleUI.HumanResourceUI.lblProfession';
+        var PassportNumber = '@HRModuleUI.HumanResourceUI.lblPassportNumber';
+        var eidNumber = '@HRModuleUI.HumanResourceUI.lblEIDNumber';
+        var action  = '@HRModuleUI.HumanResourceUI.lblAction';
+        var btnGridCreateLogin  = '@HRModuleUI.HumanResourceUI.btnGridCreateLogin';
+        var btnGridAlreadyCreated  = '@HRModuleUI.HumanResourceUI.btnGridAlreadyCreated';
         $(function () {
             if (JSON.parse(localStorage.getItem('User')).isHR == false) {
                 $('#btnAddNewEmployee').css('display', 'none');

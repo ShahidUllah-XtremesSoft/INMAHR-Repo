@@ -56,7 +56,7 @@ function loadEmployeeProfileCallBack(response) {
     //loadLeaveRequestGrid();
     loadPersonalDocumentsGrid();
     //loadEducationalDocumentsGrid();
-    loadEmployeeAnnualLeaveBalanceDeductionGrid();
+    //loadEmployeeAnnualLeaveBalanceDeductionGrid();
     
     loadEmployeeVacationLeaveBalanceGrid();
     //loadShortLeaveGrid();

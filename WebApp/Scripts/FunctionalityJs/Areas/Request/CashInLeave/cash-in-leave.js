@@ -139,7 +139,7 @@ function deleteCashInLeaveById(event) {
         //    }
         //}
         title: areYouSureTitle,
-        text: areYouSureText,
+        text: doYouReallyWantToDeletThisRecord,
         //input: 'text',
         icon: 'question',
         showCancelButton: true,

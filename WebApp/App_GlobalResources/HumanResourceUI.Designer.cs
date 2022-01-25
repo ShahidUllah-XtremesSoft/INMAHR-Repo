@@ -331,15 +331,6 @@ namespace HRModuleUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نوع العقد.
-        /// </summary>
-        public static string lblContractType1 {
-            get {
-                return ResourceManager.GetString("lblContractType1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string lblCountry {
@@ -957,15 +948,6 @@ namespace HRModuleUI {
         public static string lblName {
             get {
                 return ResourceManager.GetString("lblName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name.
-        /// </summary>
-        public static string lblName1 {
-            get {
-                return ResourceManager.GetString("lblName1", resourceCulture);
             }
         }
         

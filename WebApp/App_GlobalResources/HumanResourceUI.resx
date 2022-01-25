@@ -207,9 +207,6 @@
   <data name="lblContractType" xml:space="preserve">
     <value>Contract Type</value>
   </data>
-  <data name="lblContractType1" xml:space="preserve">
-    <value>نوع العقد</value>
-  </data>
   <data name="lblCountry" xml:space="preserve">
     <value>Country</value>
   </data>
@@ -415,9 +412,6 @@
     <value>Municipality Card Release Date</value>
   </data>
   <data name="lblName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="lblName1" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="lblNameArb" xml:space="preserve">

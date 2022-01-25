@@ -8,6 +8,7 @@
 <input type="hidden" id="CreatedBy" name="CreatedBy" />
 <input type="hidden" id="Id" name="Id" value="0" />
 <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+<input type="hidden" id="EmployeeId" name="LoggedInUserId" value="0" />
 <div class="row">
 
 </div>
@@ -161,8 +162,14 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
+    <div class="col-md-6" id="divLeaveBalance" style="display:none;">
+
+        @{
+            Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmpoyeeLeaveBalancePartialViews.cshtml");            
+        }
+
+
+        <div class="card" hidden="hidden">
             <div class="card-header">
                 <strong>@HRUI.HumanResourceUI.tabEducationalDocument</strong>
                 @*<small>Form</small>*@

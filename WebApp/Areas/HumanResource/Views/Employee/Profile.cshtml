@@ -184,7 +184,7 @@
         </div>-->
         <div class="card">
             <div class="card-header">
-                <strong>Annual leave balance deduction details</strong>
+                <strong>@HRUI.HumanResourceUI.lblleavebalancedeductiondetails </strong>
                 @*<small>Form</small>*@
             </div>
             <div class="card-block">
@@ -209,30 +209,33 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-header">
-                <strong>@HRUI.HumanResourceUI.lblLeavebalance</strong>
-                @*<small>Form</small>*@
-            </div>
-            <div class="card-block">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table" id="employeeVacationLeaveBalanceGrid">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>@RequestUI.RequestResourceUI.lblLeaveType</th>
-                                    <th>@RequestUI.RequestResourceUI.lblBalance</th>
-                                    <th>@RequestUI.RequestResourceUI.lblTakenLeave</th>
+            <!--<div class="card-header">
+        <strong>@HRUI.HumanResourceUI.lblLeavebalance</strong>-->
+            @*<small>Form</small>*@
+            <!--</div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" id="employeeVacationLeaveBalanceGrid">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>@RequestUI.RequestResourceUI.lblLeaveType</th>
+                            <th>@RequestUI.RequestResourceUI.lblBalance</th>
+                            <th>@RequestUI.RequestResourceUI.lblTakenLeave</th>
 
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>-->
+            @{
+                Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmpoyeeLeaveBalancePartialViews.cshtml");
+            }
         </div>
     </div>
     <div class="col-md-8">
@@ -264,7 +267,7 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" style="display:none;">
             <div class="card-header">
                 <strong>@HRUI.HumanResourceUI.tabEducationalDocument</strong>
                 @*<small>Form</small>*@

@@ -1,10 +1,12 @@
 ﻿var $grid = "employee-grid", requestFrom = '';
 
 $(function () {
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', 0);
     requestFrom = (new URL(location.href)).searchParams.get('from');
     $('#Language').val(_currentLanguage);
     loadEmployeeGrid();
     fnLoadNationalityDDL();
+
 });
 
 
@@ -24,7 +26,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
     }
     var gridColumns = [
 
-        { field: "id", title: "id", hidden: true },
+        { field: "id", title: "id", hidden: true },        
 
 
         //{ field: "employeeNumber", title: "Employee Number", width: 130, filterable: true },
@@ -51,7 +53,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
             field: "isLoginAssigned", width: 65,
             title: login,
             hidden: isHR,
-            template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this) title='Create login' ><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
+            template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
 
 
         },
@@ -74,6 +76,7 @@ function redirectToEmployeeDetailView(e) {
     var dataItem = grid.dataItem(row);
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.id);
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);    
     if (requestFrom == 'employee') {
         window.location.href = '/HumanResource/Employee/Detail';
     }

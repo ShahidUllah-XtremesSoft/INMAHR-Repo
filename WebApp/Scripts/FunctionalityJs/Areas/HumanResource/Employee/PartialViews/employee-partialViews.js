@@ -3,6 +3,12 @@
 $(function () {
     $('#Language').val(_currentLanguage);
 
+    //renderKendoDatePicker('ReleaseDate', 'dd-MM-yyyy');
+    //renderKendoDatePicker('ExpiryDate', 'dd-MM-yyyy');
+    //renderKendoDatePicker('VisaReleaseDate', 'dd-MM-yyyy');
+    //renderKendoDatePicker('VisaExpiryDate', 'dd-MM-yyyy');
+    //renderKendoDatePicker('MunicipalityCardReleaseDate', 'dd-MM-yyyy');
+    //renderKendoDatePicker('MunicipalityCardExpirtDate', 'dd-MM-yyyy');
 
     //loadDepartmentTreeDropdownList();
 

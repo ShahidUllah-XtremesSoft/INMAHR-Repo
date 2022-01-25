@@ -12,7 +12,7 @@
                     swal(response);
                     loadRoleGrid();
                     loadRoleDropdownList(true);
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
 
                 },
                 error: function (xhr, status, error) {
@@ -21,14 +21,14 @@
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmRoleDetail").ajaxSubmit(options);
         }
         else {
 
-            buttonRemovePleaseWait('btnSave', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
     });
 })

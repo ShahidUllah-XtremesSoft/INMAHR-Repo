@@ -243,6 +243,15 @@ namespace HRUI {
         /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
+        public static string lblDocument {
+            get {
+                return ResourceManager.GetString("lblDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document.
+        /// </summary>
         public static string lblEducationalDocument {
             get {
                 return ResourceManager.GetString("lblEducationalDocument", resourceCulture);
@@ -340,7 +349,7 @@ namespace HRUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Emirates.
+        ///   Looks up a localized string similar to Emirates ID.
         /// </summary>
         public static string lblEmirates {
             get {
@@ -489,6 +498,15 @@ namespace HRUI {
         public static string lblLeavebalance {
             get {
                 return ResourceManager.GetString("lblLeavebalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave balance deduction details.
+        /// </summary>
+        public static string lblleavebalancedeductiondetails {
+            get {
+                return ResourceManager.GetString("lblleavebalancedeductiondetails", resourceCulture);
             }
         }
         

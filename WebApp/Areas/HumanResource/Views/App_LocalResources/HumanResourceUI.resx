@@ -177,6 +177,9 @@
   <data name="lblDescriptionEng" xml:space="preserve">
     <value>Description (English)</value>
   </data>
+  <data name="lblDocument" xml:space="preserve">
+    <value>Document</value>
+  </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>Document</value>
   </data>
@@ -211,7 +214,7 @@
     <value>Email</value>
   </data>
   <data name="lblEmirates" xml:space="preserve">
-    <value>Emirates</value>
+    <value>Emirates ID</value>
   </data>
   <data name="lblEmiratesOfResidency" xml:space="preserve">
     <value>Emirates Of Residency</value>
@@ -260,6 +263,9 @@
   </data>
   <data name="lblLeavebalance" xml:space="preserve">
     <value>Leave Balance</value>
+  </data>
+  <data name="lblleavebalancedeductiondetails" xml:space="preserve">
+    <value>Leave balance deduction details</value>
   </data>
   <data name="lblLeaveCancellation" xml:space="preserve">
     <value>Leave Cancellation </value>

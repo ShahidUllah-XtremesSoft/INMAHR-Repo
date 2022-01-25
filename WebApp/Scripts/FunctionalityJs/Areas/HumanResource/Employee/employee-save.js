@@ -15,7 +15,7 @@ $(function () {
             $("#frmAddUpdateEmployee").ajaxForm();
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btn-save-employee', 'Save', 'save');
+                    buttonRemovePleaseWait('btn-save-employee', save, 'save');
                     
                     swal(response);
                     var messageResponseParse = JSON.parse(response);
@@ -32,17 +32,17 @@ $(function () {
                 },
                 error: function (xhr, status, error) {
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
-                    buttonRemovePleaseWait('btn-save-employee', 'Save', 'save');
+                    buttonRemovePleaseWait('btn-save-employee', save, 'save');
                     alert(errmsg);
                 },
                 complete: function () {
-                    buttonRemovePleaseWait('btn-save-employee', 'Save', 'save');
+                    buttonRemovePleaseWait('btn-save-employee', save, 'save');
                 }
             };
             $("#frmAddUpdateEmployee").ajaxSubmit(options);
         }
         else {
-            buttonRemovePleaseWait('btn-save-employee', 'Save', 'save');
+            buttonRemovePleaseWait('btn-save-employee', save, 'save');
             return false;
         }
     });

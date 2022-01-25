@@ -5,10 +5,14 @@ var LoginUserID = '';
 var CreatedBy = '';
 $(function () {
     $('#Language').val(_currentLanguage);
+
+    //Hide leave balance area if other than HR is logged in    
+    if (JSON.parse(localStorage.getItem('User')).isHR) {
+        $('#divLeaveBalance').css('display', 'block');
+    }
+    //Hide leave balance area if other than HR is logged in
     //var $document_grid = "document-grid";
-    $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
-
-
+    $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);    
 
     //var LeaveRequestGrid = "LeaveRequestGrid";
     loadEmployeeProfile();
@@ -91,6 +95,7 @@ $(function () {
         $('#ModalDenyRequest').modal('toggle');
     });
     //| Request Deny Modal Comment, Save Button Click Ends
+    
 });
 //|Load Employee Profile Starts
 function loadEmployeeProfile() {
@@ -154,7 +159,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>Accept</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>Decline</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>'+btnAcceptText+'</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>'+btnDeclineText+'</button>'
         },
 
     ];
@@ -293,7 +298,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>Accept</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>Decline</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         },
 
 
@@ -436,7 +441,7 @@ var bindLetterRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLetterRequest(this);><i class="fa fa-check"></i>Accept</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLetterRequest(this);><i class="fa fa-ban"></i>Decline</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLetterRequest(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLetterRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         }
 
     ];
@@ -579,7 +584,7 @@ var bindCancelLeaveRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeaveCancelRequest(this);><i class="fa fa-check"></i>Accept</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeaveCancelRequest(this);><i class="fa fa-ban"></i>Decline</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeaveCancelRequest(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeaveCancelRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         }
 
 
@@ -721,7 +726,7 @@ var bindCashInLeaveRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveCashInLeaveRequest(this);><i class="fa fa-check"></i>Accept</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineCashInLeaveRequest(this);><i class="fa fa-ban"></i>Decline</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveCashInLeaveRequest(this);><i class="fa fa-check"></i>' + btnAcceptText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineCashInLeaveRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
         }
 
 

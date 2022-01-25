@@ -11,7 +11,7 @@
                     console.log(response);
                     swal(response);                   
                     loadModuleGrid();
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                     
                 },
                 error: function (xhr, status, error) {
@@ -20,14 +20,14 @@
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', 'Save', 'save');
+                    buttonRemovePleaseWait('btnSave', save, 'save');
                 }
             };
             $("#frmModuleDetail").ajaxSubmit(options);
         }
         else {
 
-            buttonRemovePleaseWait('btnSave', 'Save', 'save');
+            buttonRemovePleaseWait('btnSave', save, 'save');
         }
     });
 })

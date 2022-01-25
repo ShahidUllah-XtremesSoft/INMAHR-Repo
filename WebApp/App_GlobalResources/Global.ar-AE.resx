@@ -121,7 +121,7 @@
     <value>الغاء</value>
   </data>
   <data name="btnProcess" xml:space="preserve">
-    <value>Process Arabic</value>
+    <value>قيد الاجراء</value>
   </data>
   <data name="btnSave" xml:space="preserve">
     <value>حفظ</value>
@@ -129,17 +129,41 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+  <data name="doYouReallyWantToApproveThisRequest" xml:space="preserve">
+    <value>Do you really want to approve this request arb</value>
+  </data>
+  <data name="doYouReallyWantToDeclineThisRequest" xml:space="preserve">
+    <value>Do you really want to decline this request arb</value>
+  </data>
+  <data name="lblAccept" xml:space="preserve">
+    <value>قبول</value>
+  </data>
   <data name="lblAction" xml:space="preserve">
     <value />
   </data>
+  <data name="lblDecline" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+  <data name="lblDelete" xml:space="preserve">
+    <value>Delete Arb</value>
+  </data>
   <data name="lblEndDate" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>No Arb</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>إعادة ضبط</value>
   </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>تاريخ البداء`</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>الهالة</value>
+  </data>
+  <data name="lblYes" xml:space="preserve">
+    <value>Yes Arb</value>
   </data>
   <data name="textAlign" xml:space="preserve">
     <value>right</value>

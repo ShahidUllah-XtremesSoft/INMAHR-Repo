@@ -2,8 +2,9 @@
 $(function () {
     $('#Language').val(_currentLanguage);
     loadDepartmentDropdownList();
-    loadDepartmentGrid();
+    loadDepartmentGrid();   
 });
+
 /*
 function loadDepartmentGridss() {
 
@@ -156,13 +157,13 @@ function loadoadTreeGridFromDepartment(_d) {
         columns: [
             { field: "id", title: "id", hidden: true, width: 100, filterable: true },
             {
-                field: "nameEng", title: departmentNameEng, width: 100, filterable: true
+                field: "nameEng", title: departmentNameEng, width: 100
             },
             {
-                field: "parentId", title: "parentId", width: 100, hidden: true, filterable: true
+                field: "parentId", title: "parentId", width: 100, hidden: true
             },
             {
-                field: "nameArb", title: departmentNameArb, width: 100, filterable: true
+                field: "nameArb", title: departmentNameArb, width: 100
             },
             //Below is action column
             {
@@ -175,17 +176,18 @@ function loadoadTreeGridFromDepartment(_d) {
 
 
         ],
-        toolbar: ["excel", "search"],
+        toolbar: ["excel"],
         excel: {
             fileName: "Export To Exceel.xlsx"
         },
         selectable: true,
         dragAndDrop: false,
-
-        filterable: false,
+        
         sortable: true,
         expanded: false,
-
+        //filterable: {
+        //    mode: "cell"
+        //},
         dataSource: entriess
 
         /*

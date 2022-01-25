@@ -172,13 +172,13 @@
     <value>أخرة</value>
   </data>
   <data name="lblRequestDate" xml:space="preserve">
-    <value>تاريخ الإستذان</value>
+    <value>تاريخ طلب الاذن</value>
   </data>
   <data name="lblRequestDenyComment" xml:space="preserve">
     <value>Request Deny Comment</value>
   </data>
   <data name="lblReturnTime" xml:space="preserve">
-    <value>وقت العودة</value>
+    <value>الى</value>
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>بحث</value>
@@ -190,7 +190,7 @@
     <value>Select Leave</value>
   </data>
   <data name="lblStartTime" xml:space="preserve">
-    <value>وقت المغادرة</value>
+    <value>من</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>الحالة</value>

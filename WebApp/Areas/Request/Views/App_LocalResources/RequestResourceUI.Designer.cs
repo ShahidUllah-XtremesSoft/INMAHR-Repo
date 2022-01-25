@@ -241,7 +241,7 @@ namespace RequestUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return Time.
+        ///   Looks up a localized string similar to Return Time/To.
         /// </summary>
         public static string lblReturnTime {
             get {
@@ -268,7 +268,7 @@ namespace RequestUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start Time.
+        ///   Looks up a localized string similar to Start Time/From.
         /// </summary>
         public static string lblStartTime {
             get {

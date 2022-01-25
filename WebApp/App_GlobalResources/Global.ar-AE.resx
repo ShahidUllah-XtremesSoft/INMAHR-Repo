@@ -129,8 +129,14 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+  <data name="doYouReallyWantToApproveTheseRequests" xml:space="preserve">
+    <value>هل ترغب في تاكيد الطلب</value>
+  </data>
   <data name="doYouReallyWantToApproveThisRequest" xml:space="preserve">
     <value>Do you really want to approve this request arb</value>
+  </data>
+  <data name="doYouReallyWantToDeclineTheseRequests" xml:space="preserve">
+    <value>هل ترغب في الغاء الطلب</value>
   </data>
   <data name="doYouReallyWantToDeclineThisRequest" xml:space="preserve">
     <value>Do you really want to decline this request arb</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="lblApproveQuestion" xml:space="preserve">
     <value>يعتمد؟</value>
+  </data>
+  <data name="lblAreYouSure" xml:space="preserve">
+    <value>هل أنت متأكد ؟</value>
   </data>
   <data name="lblDecline" xml:space="preserve">
     <value>رفض</value>

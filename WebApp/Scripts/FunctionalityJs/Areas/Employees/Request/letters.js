@@ -49,7 +49,7 @@ var bindLetterGrid = function (inputDataJSON) {
         { field: "letterTypeId", title: "LetterTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
-            title: Status, field: 'statusForCondition', width: 15, hidden: false,
+            title: Status, field: 'statusForCondition', width: 15, hidden: true,
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         }
 

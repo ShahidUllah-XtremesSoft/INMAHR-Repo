@@ -129,8 +129,14 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>Sign In</value>
   </data>
+  <data name="doYouReallyWantToApproveTheseRequests" xml:space="preserve">
+    <value>Do you really want to approve these requests</value>
+  </data>
   <data name="doYouReallyWantToApproveThisRequest" xml:space="preserve">
     <value>Do you really want to approve this request</value>
+  </data>
+  <data name="doYouReallyWantToDeclineTheseRequests" xml:space="preserve">
+    <value>Do you really want to decline these requests</value>
   </data>
   <data name="doYouReallyWantToDeclineThisRequest" xml:space="preserve">
     <value>Do you really want to decline this request</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="lblApproveQuestion" xml:space="preserve">
     <value>Approve ?</value>
+  </data>
+  <data name="lblAreYouSure" xml:space="preserve">
+    <value>Are You Sure ?</value>
   </data>
   <data name="lblDecline" xml:space="preserve">
     <value>Decline</value>

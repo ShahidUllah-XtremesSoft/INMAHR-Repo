@@ -43,6 +43,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         },
         { field: "id", title: "id", hidden: true },
         { field: "requestLeaveId", title: "requestLeaveId", hidden: true },
+        { field: "email", title: email, hidden: false, width: 20 },
         { field: "name", title: lblName, hidden: false, width: 50 },
 
         { field: "leave", title: leaveName, hidden: true, width: 30 },

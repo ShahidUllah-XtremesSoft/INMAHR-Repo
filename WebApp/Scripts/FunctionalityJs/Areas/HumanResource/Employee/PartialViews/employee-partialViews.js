@@ -2,19 +2,64 @@
 
 $(function () {
     $('#Language').val(_currentLanguage);
-
-
-    //loadDepartmentTreeDropdownList();
-
+    
     loadDepartmentTreeDropdownList();
-    loadProfessionDropdownList(isBindChangeEvent = true);
-    //loadDepartmentDropdownList(isBindChangeEvent = true);
-    loadNationalityDropdownList(isBindChangeEvent = true);
-    loadSponsorShipDropdownList(isBindChangeEvent = true);
-    loadContractTypeDropdownList(isBindChangeEvent = true);
-    loadRoleDropdownList(isBindChangeEvent = true);
-    loadEmiratesStatesDropdownList(false);
-    lodEmployeeById();
+    //Load DDLS from Local Storage
+    //LoadDDLSFromLocalStorage('ProfessionId', window.localStorage.getItem('ProfessionList'));
+    //LoadDDLSFromLocalStorage('NationalityId', window.localStorage.getItem('NationalityList'));
+    //LoadDDLSFromLocalStorage('VisaSponsorshipId', window.localStorage.getItem('SponsorshipList'));
+    //LoadDDLSFromLocalStorage('ContractTypeId', window.localStorage.getItem('ContractTypeList'));
+    ////LoadDDLSFromLocalStorage('ContractTypeId', window.localStorage.getItem('UserManagementRoleList'));
+    //LoadDDLSFromLocalStorage('EmiratesStateId', window.localStorage.getItem('EmiratesStatesList'));
+
+     
+    $("#ProfessionId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        dataSource: JSON.parse(localStorage.getItem('ProfessionList')),
+    });
+    $("#NationalityId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        dataSource: JSON.parse(localStorage.getItem('NationalityList')),
+    });
+    $("#VisaSponsorshipId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        index: -1,
+        dataSource: JSON.parse(localStorage.getItem('SponsorshipList')),
+    });
+    $("#ContractTypeId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        dataSource: JSON.parse(localStorage.getItem('ContractTypeList')),
+    });
+
+    $("#EmiratesStateId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        
+        dataSource: JSON.parse(localStorage.getItem('EmiratesStatesList')),
+    });
+
+
+
+    //Comment the request for better performance
+ 
+    //loadDepartmentTreeDropdownList();
+    //loadProfessionDropdownList(isBindChangeEvent = true);
+    ////loadDepartmentDropdownList(isBindChangeEvent = true);
+    //loadNationalityDropdownList(isBindChangeEvent = true);
+    //loadSponsorShipDropdownList(isBindChangeEvent = true);
+    ////loadContractTypeDropdownList(isBindChangeEvent = true);
+    //loadRoleDropdownList(isBindChangeEvent = true);
+    //loadEmiratesStatesDropdownList(false);
+     lodEmployeeById();
     /*
       var combobox = $("#" + controlId).data("kendoDropDownList");
     if (combobox != undefined) {
@@ -26,6 +71,42 @@ $(function () {
 
 
 });
+
+function LoadDDLSFromLocalStorage(ControlID, dSource) {
+
+    //$("#" + ControlID).kendoDropDownList({
+    //    dataSource: ["Apples", "Oranges"]
+    //});
+    //var dataSource = new kendo.data.DataSource({
+    //    data: ["Bananas", "Cherries"]
+    //});
+    //var dropdownlist = $("#" + ControlID).data("kendoDropDownList");
+    //dropdownlist.setDataSource(dataSource);
+     
+    var ItemList = [];
+    ItemList.push({ text: '-- Select --', value: '-1' });
+
+    for (var i = 0; i < JSON.parse(dSource).length; i++) {
+        var option = { text: JSON.parse(dSource)[i].name, value: JSON.parse(dSource)[i].id };
+        ItemList.push(option);
+    }
+
+    var combobox = $("#" + ControlID).data("kendoDropDownList");
+    if (combobox != undefined) {
+        combobox.destroy();
+    }
+    $("#" + ControlID).kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        filter: "contains",
+        dataSource: ItemList,
+       //index: selectedIndex,
+        //change: onChange
+    });
+    //var dropdownlist = $("#ContractTypeId").data("kendoDropDownList");
+    //dropdownlist.select(2005);
+}
+
 
 function lodEmployeeById() {
     var full_url = document.URL;           // Get current url
@@ -39,9 +120,24 @@ function lodEmployeeById() {
     }
 }
 function loadClientDataByID(d) {
-
+ 
     setResponseToFormInputs(d);
-    //console.log(''+d.Value);
+    var profession = $("#ProfessionId").data("kendoDropDownList");
+    profession.value(JSON.parse(d.Value).professionId);
+
+    var Nationality = $("#NationalityId").data("kendoDropDownList");
+    Nationality.value(JSON.parse(d.Value).nationalityId);
+
+    var visaSponsorshiop = $("#VisaSponsorshipId").data("kendoDropDownList");
+    visaSponsorshiop.value(JSON.parse(d.Value).visaSponsorshipId);
+
+    var contractType = $("#ContractTypeId").data("kendoDropDownList");
+    contractType.value(JSON.parse(d.Value).contractTypeId);
+
+    var emilatesState = $("#EmiratesStateId").data("kendoDropDownList");
+    emilatesState.value(JSON.parse(d.Value).emiratesStateId);
+ 
+
     setTimeout(function () {
         var dropdowntree = $("#DepartmentId").data("kendoDropDownTree");
         dropdowntree.value(JSON.parse(d.Value).departmentId);

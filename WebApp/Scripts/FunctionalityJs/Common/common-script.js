@@ -658,6 +658,7 @@ function loadKendoDropdownList(controlId, columns, tableName, conditions = null,
 }
 
 var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, controlId) {
+ 
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
     var optionList = [];
@@ -817,12 +818,14 @@ var treeFomatter = function (arr, parent) {
 function setResponseToFormInputs(response) {
   
     $.each(JSON.parse(response.Value), function (key, value) {
-       
         //console.log('key : ' + key + ' value : ' + value);
         $('#' + capitalizeFirstLetter(key)).val(value);
     });
+    
+ 
 }
 function capitalizeFirstLetter(string) {
+ 
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -953,3 +956,6 @@ function only1To9Allowed(evt) {
 
 
 }
+
+
+ 

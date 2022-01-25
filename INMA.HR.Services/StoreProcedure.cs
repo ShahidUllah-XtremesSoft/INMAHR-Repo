@@ -55,6 +55,7 @@
     HR_Profession_Save_Arb,
     HR_Profession_Save,
     HR_Profession_Delete,
+    HR_Profession_Get,
 
     #endregion
 
@@ -73,6 +74,7 @@
     HR_Nationality_Save_Arb,
     HR_Nationality_Save_Eng,
     HR_Nationality_Delete,
+    HR_Nationality_Get,
 
     #endregion
 
@@ -83,6 +85,7 @@
     HR_ContractType_Save_Arb,
     HR_ContractType_Save,
     HR_ContractType_Delete,
+    HR_ContractType_Get,
 
     #endregion
 
@@ -110,7 +113,9 @@
     HR_VisaSponsorship_GetAll,
     HR_VisaSponsorship_Save,
     HR_VisaSponsorship_Save_Eng,
-    HR_VisaSponsorship_Delete, 
+    HR_VisaSponsorship_Delete,
+    HR_VisaSponsorship_Get,
+    HR_EmiratesStates_Get,
     #endregion
 
 
@@ -141,6 +146,7 @@
     UserManagement_Role_Save_Arb,
     UserManagement_Role_GetAll,
     UserManagement_Role_Delete,
+    UserManagement_Role_Get,
     #endregion
 
     #region Role Menus

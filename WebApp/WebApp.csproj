@@ -214,6 +214,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Global.ar-AE.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\HumanResourceUI.ar-AE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumanResourceUI.ar-AE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\HumanResourceUI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumanResourceUI.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -1508,6 +1518,16 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Global.Designer.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="App_GlobalResources\HumanResourceUI.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HumanResourceUI.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>HRModuleUI</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\HumanResourceUI.ar-AE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HumanResourceUI.ar-AE.designer.cs</LastGenOutput>
+      <CustomToolNamespace>HRModuleUI</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\Employees\Views\App_LocalResources\EmployeeResourcesUI.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmployeeResourcesUI.Designer.cs</LastGenOutput>

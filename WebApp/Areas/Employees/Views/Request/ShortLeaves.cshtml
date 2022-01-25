@@ -14,7 +14,7 @@
         <div class="card-header">
 
 
-            <h5>@Resources.EmployeeResourcesUI.lblEmployeesPermissionLeaveRequests</h5>
+            <h5>@HRModuleUI.HumanResourceUI.lblEmployeesPermissionLeaveRequests</h5>
             <div class="card-header-right">
 
             </div>
@@ -22,12 +22,12 @@
         <div class="card-block">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @Resources.EmployeeResourcesUI.lblPendingRequest</button>
-                    <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @Resources.EmployeeResourcesUI.lblApprovedRequest</button>
+                    <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblPendingRequest</button>
+                    <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
                     <div id="btnAreaShowHideOnConditionBase">
 
-                        <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @Resources.EmployeeResourcesUI.lblApprove</button>
-                        <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @Resources.EmployeeResourcesUI.lblDecline</button>
+                        <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
+                        <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @HRModuleUI.HumanResourceUI.lblDecline</button>
 
 
                     </div>
@@ -53,20 +53,20 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/short-leaves.js"></script>
     <script>
         //Grid columns
-        var requestDate = '@Resources.EmployeeResourcesUI.lblRequestDate';
-        var comment = '@Resources.EmployeeResourcesUI.lblComment';
-        var availableBalance = '@Resources.EmployeeResourcesUI.lblAvailableBalance';
-        var status = '@Resources.EmployeeResourcesUI.lblStatus';
-        var startTime = '@Resources.EmployeeResourcesUI.lblStartTime';
-        var returnTime = '@Resources.EmployeeResourcesUI.lblReturnTime';
-        var numberOfHourse = '@Resources.EmployeeResourcesUI.lblNumberOfHours';
-          var requestDenyComment = '@Resources.EmployeeResourcesUI.lblRequestDenyComment';
-        var action = '@Resources.EmployeeResourcesUI.lblAction';
-                var lblFristSelectRecordFromGrid  = '@Resources.EmployeeResourcesUI.lblFristSelectRecordFromGrid ';
-        var lblname  = '@Resources.EmployeeResourcesUI.lblName ';
-          var btnDecline= '@Resources.EmployeeResourcesUI.lblDecline';
-        var btnAccept = '@Resources.EmployeeResourcesUI.lblAccept';
-        var leaveType = '@Resources.EmployeeResourcesUI.lblLeaveType';
+        var requestDate = '@HRModuleUI.HumanResourceUI.lblRequestDate';
+        var comment = '@HRModuleUI.HumanResourceUI.lblComment';
+        var availableBalance = '@HRModuleUI.HumanResourceUI.lblAvailableBalance';
+        var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var startTime = '@HRModuleUI.HumanResourceUI.lblStartTime';
+        var returnTime = '@HRModuleUI.HumanResourceUI.lblReturnTime';
+        var numberOfHourse = '@HRModuleUI.HumanResourceUI.lblNumberOfHours';
+          var requestDenyComment = '@HRModuleUI.HumanResourceUI.lblRequestDenyComment';
+        var action = '@HRModuleUI.HumanResourceUI.lblAction';
+                var lblFristSelectRecordFromGrid  = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid ';
+        var lblname  = '@HRModuleUI.HumanResourceUI.lblName ';
+          var btnDecline= '@HRModuleUI.HumanResourceUI.lblDecline';
+        var btnAccept = '@HRModuleUI.HumanResourceUI.lblAccept';
+        var leaveType = '@HRModuleUI.HumanResourceUI.lblLeaveType';
 
     </script>
 }

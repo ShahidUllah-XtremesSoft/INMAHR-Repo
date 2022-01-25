@@ -52,7 +52,7 @@ var bindCompanyDocumentGrid = function (inputDataJSON) {
 function viewAttachment(currentFileName) {
 
     if (currentFileName == "null") {
-        swalMessage('info','@Resources.EmployeeResourcesUI.MsgAttachmentNotFound', 2000);
+        swalMessage('info','@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
         return false;
     }
     window.open('/UploadFile/' + currentFileName, '_blank');

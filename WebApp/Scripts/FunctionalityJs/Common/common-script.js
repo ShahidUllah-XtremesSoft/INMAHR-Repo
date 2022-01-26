@@ -1,5 +1,5 @@
 ﻿////var areYouSureTitle = 'Are you sure?';
-////var areYouSureText = 'Do you really want to delete selected record';
+////var doYouReallyWantToDeletThisRecord = 'Do you really want to delete selected record';
 ////var btnYesText = 'Yes';
 
 ////var btnNoText = 'No';
@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     //if (_currentLanguage != 'en-US') {
     //    areYouSureTitle = 'هل أنت متأكد؟';
-    //    areYouSureText = 'هل تريد حقًا حذف السجل المحدد';
+    //    doYouReallyWantToDeletThisRecord = 'هل تريد حقًا حذف السجل المحدد';
     //    btnYesText = 'نعم';
     //    btnNoText = 'رقم';
 
@@ -659,6 +659,7 @@ function loadKendoDropdownList(controlId, columns, tableName, conditions = null,
 }
 
 var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, controlId) {
+ 
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
     var selectText = _currentLanguage == 'en-US' ? '-- Select --' : '-- Select Arb --';
@@ -819,12 +820,14 @@ var treeFomatter = function (arr, parent) {
 function setResponseToFormInputs(response) {
   
     $.each(JSON.parse(response.Value), function (key, value) {
-       
         //console.log('key : ' + key + ' value : ' + value);
         $('#' + capitalizeFirstLetter(key)).val(value);
     });
+    
+ 
 }
 function capitalizeFirstLetter(string) {
+ 
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -917,7 +920,7 @@ var convertHHMMToSeconds = function (time24hr) {
 }
 function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDateLabel = null, secondDateLabel = null) {
     if (firstDate > secondDate) {
-        swalMessage('info', firstDateLabel + ' can not be less than ' + secondDateLabel, 2000);
+        swalMessage('info', lblExpiryDateCannotBeLessThanIssue, 2000);
         //$("#EndDate").data("kendoDatePicker").value('');
         return false;
     }
@@ -955,3 +958,6 @@ function only1To9Allowed(evt) {
 
 
 }
+
+
+ 

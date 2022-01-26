@@ -76,5 +76,22 @@ namespace INMA.HR.Services
             return _response;
         }
     }
+    //This Command is for Contract Type Local Storage
+    [Command(Name = "HR_ContractType_Get")]
+    public class HR_ContractType_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+            var model = base.MappedModel(new { Language = string.Empty }, v);
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.HR_ContractType_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
 
 }

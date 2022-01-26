@@ -207,9 +207,6 @@
   <data name="lblContractType" xml:space="preserve">
     <value>Contract Type</value>
   </data>
-  <data name="lblContractType1" xml:space="preserve">
-    <value>نوع العقد</value>
-  </data>
   <data name="lblCountry" xml:space="preserve">
     <value>Country</value>
   </data>
@@ -241,9 +238,6 @@
     <value>Department Name</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
-    <value>Department</value>
-  </data>
-  <data name="lblDepartment1" xml:space="preserve">
     <value>Section</value>
   </data>
   <data name="lblDepartmentName" xml:space="preserve">
@@ -342,6 +336,9 @@
   <data name="lblExpiryDate" xml:space="preserve">
     <value>Expiry Date</value>
   </data>
+  <data name="lblExpiryDateCannotBeLessThanIssue" xml:space="preserve">
+    <value>Expiry date cannot be less than issue date</value>
+  </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
   </data>
@@ -421,9 +418,6 @@
     <value>Municipality Card Release Date</value>
   </data>
   <data name="lblName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="lblName1" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="lblNameArb" xml:space="preserve">

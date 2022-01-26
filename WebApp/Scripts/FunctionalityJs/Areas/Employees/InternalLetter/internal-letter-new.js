@@ -21,14 +21,15 @@
     }, 500);
     //Events Starts
     $('#btnSave').on('click', function (e) {
+        var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         var valid = true;
         $("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
         if ($('#DepartmentIds').val() == null || $('#DepartmentIds').val() == '' || $('#DepartmentIds').val() == -1 || $('#DepartmentIds').val() == '0') {
             $('#DepartmentId').addClass('invalid');
-            $('#DepartmentId').attr('title', 'This field is required');
+            $('#DepartmentId').attr('title', thisFieldIsRequired);
             $('#DepartmentId').removeClass("invalid");
             $('#DepartmentId').next("span").remove();
-            $('#DepartmentId').after("<span style='color:red;'>This field is required</span>");
+            $('#DepartmentId').after("<span style='color:red;'>" + thisFieldIsRequired+"</span>");
             valid = false;
         }
         else {

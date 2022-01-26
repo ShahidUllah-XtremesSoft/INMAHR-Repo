@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you really want to approve these requests.
+        ///   Looks up a localized string similar to Do you really want to approve these requests ?.
         /// </summary>
         internal static string doYouReallyWantToApproveTheseRequests {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you really want to approve this request.
+        ///   Looks up a localized string similar to Do you really want to approve this request ?.
         /// </summary>
         internal static string doYouReallyWantToApproveThisRequest {
             get {
@@ -115,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you really want to decline these requests.
+        ///   Looks up a localized string similar to Do you really want to decline these requests ?.
         /// </summary>
         internal static string doYouReallyWantToDeclineTheseRequests {
             get {
@@ -124,11 +124,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you really want to decline this request.
+        ///   Looks up a localized string similar to Do you really want to decline this request ?.
         /// </summary>
         internal static string doYouReallyWantToDeclineThisRequest {
             get {
                 return ResourceManager.GetString("doYouReallyWantToDeclineThisRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete this record ?.
+        /// </summary>
+        internal static string doYouReallyWantToDeleteThisRecord {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToDeleteThisRecord", resourceCulture);
             }
         }
         

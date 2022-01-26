@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /WebApp/UploadFile
 /WebApp/Temp
+/WebApp/Exceptions

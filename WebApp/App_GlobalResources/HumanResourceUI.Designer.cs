@@ -331,15 +331,6 @@ namespace HRModuleUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نوع العقد.
-        /// </summary>
-        public static string lblContractType1 {
-            get {
-                return ResourceManager.GetString("lblContractType1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string lblCountry {
@@ -430,20 +421,11 @@ namespace HRModuleUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Department.
+        ///   Looks up a localized string similar to Section.
         /// </summary>
         public static string lblDepartment {
             get {
                 return ResourceManager.GetString("lblDepartment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Section.
-        /// </summary>
-        public static string lblDepartment1 {
-            get {
-                return ResourceManager.GetString("lblDepartment1", resourceCulture);
             }
         }
         
@@ -736,6 +718,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expiry date cannot be less than issue date.
+        /// </summary>
+        public static string lblExpiryDateCannotBeLessThanIssue {
+            get {
+                return ResourceManager.GetString("lblExpiryDateCannotBeLessThanIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string lblFile {
@@ -975,15 +966,6 @@ namespace HRModuleUI {
         public static string lblName {
             get {
                 return ResourceManager.GetString("lblName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name.
-        /// </summary>
-        public static string lblName1 {
-            get {
-                return ResourceManager.GetString("lblName1", resourceCulture);
             }
         }
         

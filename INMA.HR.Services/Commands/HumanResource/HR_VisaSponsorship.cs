@@ -94,5 +94,40 @@ namespace INMA.HR.Services
             }
         }
 
+
+    //This Command is for Visa Sponsorship Local Storage
+    [Command(Name = "HR_VisaSponsorship_Get")]
+    public class HR_VisaSponsorship_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+            var model = base.MappedModel(new { Language = string.Empty }, v);
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.HR_VisaSponsorship_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
     }
+    //This Command is for Emirates States Local Storage
+    [Command(Name = "HR_EmiratesStates_Get")]
+    public class HR_EmiratesStates_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+            var model = base.MappedModel(new { Language = string.Empty }, v);
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.HR_EmiratesStates_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
+}
 

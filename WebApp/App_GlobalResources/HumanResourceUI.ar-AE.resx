@@ -336,6 +336,9 @@
   <data name="lblExpiryDate" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>
   </data>
+  <data name="lblExpiryDateCannotBeLessThanIssue" xml:space="preserve">
+    <value>تاريخ الاصدار لا يمكن ان يكون اقل من تاريخ الانتهاء</value>
+  </data>
   <data name="lblFile" xml:space="preserve">
     <value>الملف</value>
   </data>

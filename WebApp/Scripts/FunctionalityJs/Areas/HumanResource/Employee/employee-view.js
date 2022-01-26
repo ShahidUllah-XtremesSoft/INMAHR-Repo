@@ -3,21 +3,34 @@
 $(function () {
     $('#Language').val(_currentLanguage);
     $('#ProfileImageDiv').css('display', 'none');
-    lodEmployeeById();
-    //loadDepartmentTreeDropdownList();
-
     loadDepartmentTreeDropdownList();
-    loadProfessionDropdownList(isBindChangeEvent = true);
+
+  
+    //Load DDLS FROM Local Storage
+    LoadDDLSFromLocalStorage('ProfessionId', window.localStorage.getItem('ProfessionList'));
+    LoadDDLSFromLocalStorage('NationalityId', window.localStorage.getItem('NationalityList'));
+    LoadDDLSFromLocalStorage('VisaSponsorshipId', window.localStorage.getItem('SponsorshipList'));
+    LoadDDLSFromLocalStorage('ContractTypeId', window.localStorage.getItem('ContractTypeList'));
+    //LoadDDLSFromLocalStorage('ContractTypeId', window.localStorage.getItem('UserManagementRoleList'));
+    LoadDDLSFromLocalStorage('EmiratesStateId', window.localStorage.getItem('EmiratesStatesList'));
+
+    lodEmployeeById();
+
+
+        //Comment the request for better performance
+    //loadDepartmentTreeDropdownList();
+    //loadProfessionDropdownList(isBindChangeEvent = true);
     //loadDepartmentDropdownList(isBindChangeEvent = true);
-    loadNationalityDropdownList(isBindChangeEvent = true);
-    loadSponsorShipDropdownList(isBindChangeEvent = true);
-    loadContractTypeDropdownList(isBindChangeEvent = true);
+    //loadNationalityDropdownList(isBindChangeEvent = true);
+    //loadSponsorShipDropdownList(isBindChangeEvent = true);
+    //loadContractTypeDropdownList(isBindChangeEvent = true);
     loadRoleDropdownList(isBindChangeEvent = true);
-    loadEmiratesStatesDropdownList(false);
+    //loadEmiratesStatesDropdownList(false);
 
 });
 
 function lodEmployeeById() {
+    debugger;
     var full_url = document.URL;           // Get current url
     var url_array = full_url.split('=');  //Split
     id = url_array[url_array.length - 1];//Get ID
@@ -29,7 +42,8 @@ function lodEmployeeById() {
     }
 }
 function loadClientDataByID(d) {
-    setResponseToFormInputs(d);
+    debugger;
+     setResponseToFormInputs(d);
     //setTimeout(function () {
         console.log(JSON.parse(d.Value).currentFileName);
         if (JSON.parse(d.Value).currentFileName != null) {

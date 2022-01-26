@@ -226,10 +226,11 @@
     var attachment = '@HRModuleUI.HumanResourceUI.lblAttachment';
     var dateTime = '@HRModuleUI.HumanResourceUI.lblDateTime';
     var action = '@HRModuleUI.HumanResourceUI.lblAction';
+    var lblDelete = '@Resources.Global.lblDelete';
     $(function () {
-        loadLetterOutboxGrid();        
+        loadLetterOutboxGrid();
     })
-    function loadLetterOutboxGrid() {        
+    function loadLetterOutboxGrid() {
         ajaxRequest({ commandName: 'Employee_InternalLetter_Outbox_Get', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, EmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: loadLetterOutboxGridCallBack });
 
     }
@@ -310,7 +311,7 @@
                 width: 12,
                 title: action,
                 //template:"<a style='font-size:20px;cursor:pointer;' onClick= redirectToViewLetter(this) title='Mark letter as read' ><span class='fa fa-book'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteInternalLetter(this)  title='Delete Letter'><span class='fa fa-trash'></span></a>"
-                template: '<button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> Delete</button>'
+                template: '<button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
                 //template: '<div class="dropdown"><button class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="position:relative;"><a class="dropdown-item" href="\\#">Action</a><a class="dropdown-item" href="\\#">Another action</a><a class="dropdown-item" href="\\#">Something else here</a></div></div>'
 
 
@@ -321,7 +322,7 @@
         bindKendoGrid(sentLettersGrid, 50, gridColumns, inputDataJSON, true, 750);
     };
      function viewAttachment(currentFileName) {
-     
+
         if (currentFileName == "null") {
             swalMessage('info', '@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
             return false;
@@ -334,7 +335,7 @@
         var dataItem = grid.dataItem(row);
         window.location.href = '/Employees/InternalLetter/Read?value=' + dataItem.id + '&from=outbox';
 
-    }    
+    }
     function deleteInternalLetter(e) {
         var row = $(e).closest("tr");
         var grid = $("#" + sentLettersGrid).data("kendoGrid");
@@ -364,7 +365,7 @@
             //    }
             //}
             title: areYouSureTitle,
-            text: areYouSureText,
+            text: doYouReallyWantToDeletThisRecord,
             //input: 'text',
             icon: 'question',
             showCancelButton: true,

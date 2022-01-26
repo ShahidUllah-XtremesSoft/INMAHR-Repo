@@ -4,7 +4,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
 
  
- 
+     loadDepartmentTreeDropdownList();
 
 
     $("#ProfessionId").kendoDropDownList({

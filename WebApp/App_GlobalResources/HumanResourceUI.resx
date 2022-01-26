@@ -351,6 +351,9 @@
   <data name="lblHours" xml:space="preserve">
     <value>Hours</value>
   </data>
+  <data name="lblInternalLetter" xml:space="preserve">
+    <value>Internal Letter</value>
+  </data>
   <data name="lblIntituteName" xml:space="preserve">
     <value>Institute Name</value>
   </data>
@@ -533,6 +536,9 @@
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="lblSection" xml:space="preserve">
+    <value>Section</value>
   </data>
   <data name="lblSelect" xml:space="preserve">
     <value>Select</value>

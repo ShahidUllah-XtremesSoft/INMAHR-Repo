@@ -348,6 +348,9 @@
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
   </data>
+  <data name="lblInternalLetter" xml:space="preserve">
+    <value>المراسلات الداخلية</value>
+  </data>
   <data name="lblIssueDate" xml:space="preserve">
     <value>تاريخ الإصدار</value>
   </data>
@@ -524,6 +527,9 @@
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>بحث</value>
+  </data>
+  <data name="lblSection" xml:space="preserve">
+    <value>القسم</value>
   </data>
   <data name="lblSelect" xml:space="preserve">
     <value>اختر</value>

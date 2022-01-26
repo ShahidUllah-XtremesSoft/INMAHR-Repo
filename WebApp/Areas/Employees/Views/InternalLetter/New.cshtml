@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Internal Letter";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblInternalLetter;
 }
 
 <div class="card">
@@ -9,7 +9,7 @@
         <form id="frmEmployeeInternalLetter" name="frmEmployeeInternalLetter" action="/services/Xtreme/multipart" method="post">
             <input type="hidden" name="type" id="type" value="Employee_InternalLetter_Save">
             <input type="hidden" name="Id" id="Id" value="0">
-            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0">            
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0">
             <input type="hidden" name="Language" id="Language" value="">
             <input type="hidden" name="Tag" id="Tag" value="">
             <div class="row">
@@ -40,10 +40,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDepartment </label> <span style="color: red">*</span><br />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />
                         @*<select class="form-control" multiple="multiple" id="DepartmentIds" name="DepartmentIds" required></select>*@
                         @*<select class="form-control" multiple="multiple" required id="DepartmentIds"></select>*@
-                        <input type="text" class="form-control" id="DepartmentId" name="DepartmentId"/>
+                        <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" />
                         <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
                         @*<select class="form-control" id="DepartmentIds"></select>*@
 
@@ -55,7 +55,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature</label><span style="color:red">*</span><br />
-                        <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" required/>
+                        <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" required />
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -68,7 +68,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <textarea type="text" class="form-control editor" name="Body" id="Body"  value=""></textarea>
+                        <textarea type="text" class="form-control editor" name="Body" id="Body" value=""></textarea>
                     </div>
                 </div>
             </div>

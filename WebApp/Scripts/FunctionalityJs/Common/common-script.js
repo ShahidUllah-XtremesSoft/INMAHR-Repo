@@ -954,9 +954,6 @@ function only1To9Allowed(evt) {
     
         false;
     }
-
-
-
 }
 
 

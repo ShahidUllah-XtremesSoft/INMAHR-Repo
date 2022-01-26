@@ -37,7 +37,7 @@ namespace INMA.HR.Services
             var _response = repository.GetSingle<dynamic>(StoreProcedure.HR_Employee_PersonalDocument_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
 
-            if (model.UploadedFiles.Count > 0)
+            if (model.UploadedFiles.Count > 0 && _response.Type == "success")
             {
                 Service = new FileUploadService();
                 foreach (var file in model.UploadedFiles)

@@ -718,6 +718,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expiry date cannot be less than issue date.
+        /// </summary>
+        public static string lblExpiryDateCannotBeLessThanIssue {
+            get {
+                return ResourceManager.GetString("lblExpiryDateCannotBeLessThanIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string lblFile {
@@ -750,6 +759,15 @@ namespace HRModuleUI {
         public static string lblHours {
             get {
                 return ResourceManager.GetString("lblHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal Letter.
+        /// </summary>
+        public static string lblInternalLetter {
+            get {
+                return ResourceManager.GetString("lblInternalLetter", resourceCulture);
             }
         }
         
@@ -1299,6 +1317,15 @@ namespace HRModuleUI {
         public static string lblSearch {
             get {
                 return ResourceManager.GetString("lblSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Section.
+        /// </summary>
+        public static string lblSection {
+            get {
+                return ResourceManager.GetString("lblSection", resourceCulture);
             }
         }
         

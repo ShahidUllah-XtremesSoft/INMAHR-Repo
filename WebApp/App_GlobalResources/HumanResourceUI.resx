@@ -336,6 +336,9 @@
   <data name="lblExpiryDate" xml:space="preserve">
     <value>Expiry Date</value>
   </data>
+  <data name="lblExpiryDateCannotBeLessThanIssue" xml:space="preserve">
+    <value>Expiry date cannot be less than issue date</value>
+  </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
   </data>
@@ -347,6 +350,9 @@
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hours</value>
+  </data>
+  <data name="lblInternalLetter" xml:space="preserve">
+    <value>Internal Letter</value>
   </data>
   <data name="lblIntituteName" xml:space="preserve">
     <value>Institute Name</value>
@@ -530,6 +536,9 @@
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="lblSection" xml:space="preserve">
+    <value>Section</value>
   </data>
   <data name="lblSelect" xml:space="preserve">
     <value>Select</value>

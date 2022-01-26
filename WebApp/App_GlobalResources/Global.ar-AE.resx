@@ -142,7 +142,7 @@
     <value>هل ترغب في رفض هذا الطلب ؟ </value>
   </data>
   <data name="doYouReallyWantToDeleteThisRecord" xml:space="preserve">
-    <value>Do you really want to delete this record Arb ?</value>
+    <value>هل ترغب فعلا في حذف هذه الاظافة ؟</value>
   </data>
   <data name="lblAccept" xml:space="preserve">
     <value>قبول</value>
@@ -157,7 +157,7 @@
     <value>اعتماد؟</value>
   </data>
   <data name="lblAreYouSure" xml:space="preserve">
-    <value>Are you sure arb?</value>
+    <value>هل انت متاكد ؟</value>
   </data>
   <data name="lblDecline" xml:space="preserve">
     <value>رفض</value>

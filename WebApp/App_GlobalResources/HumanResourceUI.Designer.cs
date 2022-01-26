@@ -772,6 +772,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Internal Letter.
+        /// </summary>
+        public static string lblInternalLetter {
+            get {
+                return ResourceManager.GetString("lblInternalLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Institute Name.
         /// </summary>
         public static string lblIntituteName {
@@ -1326,6 +1335,15 @@ namespace HRModuleUI {
         public static string lblSearch {
             get {
                 return ResourceManager.GetString("lblSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Section.
+        /// </summary>
+        public static string lblSection {
+            get {
+                return ResourceManager.GetString("lblSection", resourceCulture);
             }
         }
         

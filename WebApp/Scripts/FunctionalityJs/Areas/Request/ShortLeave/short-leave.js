@@ -49,6 +49,16 @@ $(function () {
    */
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
+
+ 
+
+        if ($('#NumberOfHours').val() == "0") {
+            swalMessage('info', 'Number of hours cannot be zero', 2000);
+            return;
+        }
+
+
+
         //var validator = $("#frmShortLeaveDetail").data("kendoValidator");
         //if (validator.validate()) {
         //    alert("Employee Saved");
@@ -119,7 +129,7 @@ function calculateHourFromStartEndTime() {
 function requestedHoursShouldBeLessOrEqualToAvailable() {
     debugger;
     if ($('#Id').val() == '0') {
-        if (parseFloat($("#NumberOfHours").val()) > parseInt($('#AvailableShortLeave').val())) {
+        if (parseFloat($("#NumberOfHours").val()) > parseFloat($('#AvailableShortLeave').val())) {
             swalMessage('info', 'Requested hour(s) should be less than or equal to available balance', 2500);
             return false;
         }

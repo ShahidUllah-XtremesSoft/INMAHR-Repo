@@ -5,14 +5,7 @@ $(function () {
     $('#ProfileImageDiv').css('display', 'none');
     loadDepartmentTreeDropdownList();
 
-  
-    //Load DDLS FROM Local Storage
-    LoadDDLSFromLocalStorage('ProfessionId', window.localStorage.getItem('ProfessionList'));
-    LoadDDLSFromLocalStorage('NationalityId', window.localStorage.getItem('NationalityList'));
-    LoadDDLSFromLocalStorage('VisaSponsorshipId', window.localStorage.getItem('SponsorshipList'));
-    LoadDDLSFromLocalStorage('ContractTypeId', window.localStorage.getItem('ContractTypeList'));
-    //LoadDDLSFromLocalStorage('ContractTypeId', window.localStorage.getItem('UserManagementRoleList'));
-    LoadDDLSFromLocalStorage('EmiratesStateId', window.localStorage.getItem('EmiratesStatesList'));
+ 
 
     lodEmployeeById();
 
@@ -26,6 +19,48 @@ $(function () {
     //loadContractTypeDropdownList(isBindChangeEvent = true);
     loadRoleDropdownList(isBindChangeEvent = true);
     //loadEmiratesStatesDropdownList(false);
+
+    $("#ProfessionId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        index: -1,
+        dataSource: JSON.parse(localStorage.getItem('ProfessionList')),
+    });
+    $("#NationalityId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        index: -1,
+        dataSource: JSON.parse(localStorage.getItem('NationalityList')),
+    });
+    $("#VisaSponsorshipId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        index: -1,
+        dataSource: JSON.parse(localStorage.getItem('SponsorshipList')),
+    });
+    $("#ContractTypeId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        index: -1,
+        dataSource: JSON.parse(localStorage.getItem('ContractTypeList')),
+    });
+
+    $("#EmiratesStateId").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        index: -1,
+        dataSource: JSON.parse(localStorage.getItem('EmiratesStatesList')),
+    });
+
+
+
+
+
 
 });
 
@@ -43,7 +78,21 @@ function lodEmployeeById() {
 }
 function loadClientDataByID(d) {
     debugger;
-     setResponseToFormInputs(d);
+    setResponseToFormInputs(d);
+    var profession = $("#ProfessionId").data("kendoDropDownList");
+    profession.value(JSON.parse(d.Value).professionId);
+
+    var Nationality = $("#NationalityId").data("kendoDropDownList");
+    Nationality.value(JSON.parse(d.Value).nationalityId);
+
+    var visaSponsorshiop = $("#VisaSponsorshipId").data("kendoDropDownList");
+    visaSponsorshiop.value(JSON.parse(d.Value).visaSponsorshipId);
+
+    var contractType = $("#ContractTypeId").data("kendoDropDownList");
+    contractType.value(JSON.parse(d.Value).contractTypeId);
+
+    var emilatesState = $("#EmiratesStateId").data("kendoDropDownList");
+    emilatesState.value(JSON.parse(d.Value).emiratesStateId);
     //setTimeout(function () {
         console.log(JSON.parse(d.Value).currentFileName);
         if (JSON.parse(d.Value).currentFileName != null) {

@@ -18,6 +18,9 @@ $(function () {
 
 });
 
+
+
+//Load Lists to Local Storage
 function loadProfessionDropdownListForLS() {
     ajaxRequest({ commandName: 'HR_Profession_Get', values: { Language: $('#Language').val() }, CallBack: loadProfessionDropdownListForLSCallBack });
 }

@@ -475,6 +475,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Early Out Time.
+        /// </summary>
+        public static string lblEarlyOutTime {
+            get {
+                return ResourceManager.GetString("lblEarlyOutTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string lblEducationalDocument {
@@ -795,6 +804,15 @@ namespace HRModuleUI {
         public static string lblJoinDate {
             get {
                 return ResourceManager.GetString("lblJoinDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Late In Time.
+        /// </summary>
+        public static string lblLateInTime {
+            get {
+                return ResourceManager.GetString("lblLateInTime", resourceCulture);
             }
         }
         

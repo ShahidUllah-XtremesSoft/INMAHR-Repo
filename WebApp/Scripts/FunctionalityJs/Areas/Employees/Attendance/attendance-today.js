@@ -207,6 +207,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkInDate", title: checkinDate, width: 30, filterable: true },
         { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
+        { field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false },
+        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: false },
         //{ field: "status", title: status, width: 100, filterable: true }
         {
             title: status,

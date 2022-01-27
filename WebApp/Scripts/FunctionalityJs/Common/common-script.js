@@ -767,12 +767,106 @@ function loadTreeDropdownListWithCheckBox(d) {
     });
 }
 
-//ajaxRequest({ commandName: 'HR_Department_Dropdown_GetAll', values: { Language: _LANG, }, CallBack: loadTreeDropdownList });
+//function loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox() {
+
+//    ajaxRequest({
+//        commandName: 'HR_Department_GetAll_New_By_ID',
+//        values: {
+//            LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+//            LoggedInUserDepartementId = JSON.parse(localStorage.getItem('User')).departmentId,
+//            LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+//            Language: _currentLanguage,
+//        }, CallBack: loadTreeDropdownListWithRoleBaseAndCheckBox
+//    });
+//    //ajaxRequest({
+//    //    commandName: 'HR_Department_GetAll_New_By_ID',
+
+//    //    values:
+//    //    {
+//    //        LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+//    //        LoggedInUserDepartementId = JSON.parse(localStorage.getItem('User')).departmentId,
+//    //        LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+//    //        Language: _currentLanguage
+              
+          
+//    //    }, CallBack: loadTreeDropdownListWithRoleBaseAndCheckBox
+//    //});
+//}
+ 
+//function loadTreeDropdownListWithRoleBaseAndCheckBox(d) {
+    
+//    var _data = treeFomatter(JSON.parse(d.Value), 0);
+//    $("#DepartmentId").kendoDropDownTree({
+//        checkboxes: true,
+//        //checkAll: true,
+//        autoClose: false,
+//        tagMode: 'single',
+//        height: 'auto',
+//        dataSource: _data
+//    });
+//}
+ 
 
 
+function loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox() {
+     
+    ajaxRequest({
+        commandName: 'HR_Department_GetAll_New_By_ID',
+        values: {
+            LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            Language: _currentLanguage,
+        }, CallBack: loadTreeDropdownListWithRoleBaseAndCheckBox
+    });
 
+}
 
+function loadTreeDropdownListWithRoleBaseAndCheckBox(d) {
+    
+        var _data = treeFomatterRoleBase(JSON.parse(d.Value), 0);
+    $("#DepartmentId").kendoDropDownTree({
+        checkboxes: true,
+        //checkAll: true,
+        autoClose: false,
+        tagMode: 'single',
+        height: 'auto',
+        dataSource: _data
+    });
+    
+   
+} 
+
+var treeFomatterRoleBase = function (arr, parent) {
+
+    
+    var out = [];
+    for (var i in arr) {
+             
+        if (arr[i].parentId == parent) {
+          
+            var items = treeFomatter(arr, arr[i].value);
+            if (items.length) {
+                arr[i].items = items;
+            }
+            out.push(arr[i]);
+            return out;
+        } else {
+           
+            var items = treeFomatter(arr, arr[i].value);
+            if (items.length) {
+                arr[i].items = items;
+            }
+            out.push(arr[i]);
+
+            
+        }
+    }
+         return out;
+}
+ 
 var treeFomatter = function (arr, parent) {
+     
     var out = [];
     for (var i in arr) {
         if (arr[i].parentId == parent) {

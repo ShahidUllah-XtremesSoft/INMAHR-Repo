@@ -22,7 +22,7 @@ namespace INMA.HR.Services
                 Id = 0,
                 NameEng = string.Empty,
                 NameArb = string.Empty,
-                DepartmentId= 0,
+                DepartmentId = 0,
                 CreatedBy = 0,
                 Language = string.Empty
             }, v);
@@ -30,7 +30,7 @@ namespace INMA.HR.Services
             var repository = Ioc.Resolve<IRepository>();
             IDictionary<string, object> values = new Dictionary<string, object>();
             IDictionary<string, object> ImageValues = new Dictionary<string, object>();
-            CommandParameters _params   = new CommandParameters();
+            CommandParameters _params = new CommandParameters();
 
             //string procedure = model.Language == "English" ? StoreProcedure.HR_Department_Save.ToString() : StoreProcedure.HR_Department_Save_Arb.ToString();
             values = _params.Get(model);
@@ -125,6 +125,41 @@ namespace INMA.HR.Services
         }
     }
 
+    [Command(Name = "HR_Department_GetAll_New_By_ID")]
+    public class HR_Department_GetAll_New_By_IDCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+            var model = base.MappedModel(new
+            {
+               
+                LoggedInUserId = string.Empty,
+                LoggedInUserRoleId = 0,
+                LoggedInUserDepartementId = 0,
+                Language = string.Empty,
+                
+
+            }, v);
+
+            
+            try
+            {
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetMultiple<dynamic>(StoreProcedure.HR_Department_GetAll_New_By_ID.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            }
+            catch (Exception ex)
+            {
+                result = new { status = false, message = ex.Message };
+            }
+            return result;
+        }
+    }
+
 
     [Command(Name = "HR_Department_Delete")]
     public class HR_Department_DeleteCommand : CamelCommandBase
@@ -162,7 +197,7 @@ namespace INMA.HR.Services
 
 
             var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>();            
+            IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
 
             string procedure = StoreProcedure.HR_Department_GetOnlyDepartments.ToString();

@@ -42,6 +42,7 @@
 
     #region Human Resource Department
     HR_Department_GetAll,
+    HR_Department_GetAll_New_By_ID,
     HR_Department_GetAllWithParent,
     HR_Department_Save_Arb,
     HR_Department_Save,

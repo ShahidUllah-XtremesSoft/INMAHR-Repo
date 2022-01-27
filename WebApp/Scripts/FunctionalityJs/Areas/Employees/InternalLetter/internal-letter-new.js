@@ -9,10 +9,12 @@
     var datepicker = $("#LetterDate").data("kendoDatePicker");
     datepicker.readonly();
     //Values settings ends
-
+ 
     //Functions calling
     getLetterNextNumber();
-    loadDepartmentTreeDropdownListWithCheckbox();
+    
+    //loadDepartmentTreeDropdownListWithCheckbox();   // THIS IS OLD DEPARTMENT DDL LOAD FN
+    loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
     loadRoleDropdownList(false);
     setTimeout(function () {
         $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck);
@@ -103,3 +105,4 @@ function departmentTreeViewCheck(e) {
     $('#DepartmentIds').val(concatenatedDepartments);
     //$('#DepartmentIds').val()
 }
+

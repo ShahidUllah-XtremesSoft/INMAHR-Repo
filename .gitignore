@@ -364,3 +364,7 @@ FodyWeavers.xsd
 /WebApp/UploadFile
 /WebApp/Temp
 /WebApp/Exceptions
+/WebApp/_logs/nhibernate_sql.txt2022.01.25
+/WebApp/_logs/nh_repository.txt2022.01.25
+/WebApp/_logs/nhibernate_sql.txt2022.01.26
+/WebApp/_logs/nh_repository.txt2022.01.26

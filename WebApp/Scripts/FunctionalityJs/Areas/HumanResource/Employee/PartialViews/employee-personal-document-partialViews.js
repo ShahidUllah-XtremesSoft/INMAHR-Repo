@@ -15,7 +15,7 @@ $(function () {
 
 
     //| Date Picker
-    renderKendoDatePicker('PersonalDocumentReleaseDate','dd-MM-yyyy');
+    renderKendoDatePicker('PersonalDocumentReleaseDate');
     renderKendoDatePicker('PersonalDocumentExpiryDate');
     
     //|End Date Picker

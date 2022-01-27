@@ -255,6 +255,9 @@
   <data name="lblDocument" xml:space="preserve">
     <value>Document</value>
   </data>
+  <data name="lblEarlyOutTime" xml:space="preserve">
+    <value>Early Out Time</value>
+  </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>Document</value>
   </data>
@@ -362,6 +365,9 @@
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>Joining Date</value>
+  </data>
+  <data name="lblLateInTime" xml:space="preserve">
+    <value>Late In Time</value>
   </data>
   <data name="lblLeave" xml:space="preserve">
     <value>Leave</value>

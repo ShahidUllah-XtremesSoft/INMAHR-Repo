@@ -199,7 +199,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
-        { field: "employeeNumber", title: empNum, width: 50, filterable: true },
+        { field: "employeeNumber", title: empNum, width: 30, filterable: true },
         { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },
         { field: "employeeName", title: employeeName, width: 100, filterable: true },
         { field: "departmentId", title: 'DepartmentId', width: 100, filterable: true, hidden: true },
@@ -207,6 +207,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkInDate", title: checkinDate, width: 30, filterable: true },
         { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
+        { field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false },
+        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: false },
         //{ field: "status", title: status, width: 100, filterable: true }
         {
             title: status,

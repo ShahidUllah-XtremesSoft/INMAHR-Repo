@@ -243,4 +243,10 @@
     Employees_Request_CashInLeave_ApproveOrDecline,
     #endregion
 
+    #region Setup
+    Setup_PublicHoliday_Save,
+    Setup_PublicHoliday_Delete,
+    Setup_PublicHoliday_Get
+    #endregion
+
 }

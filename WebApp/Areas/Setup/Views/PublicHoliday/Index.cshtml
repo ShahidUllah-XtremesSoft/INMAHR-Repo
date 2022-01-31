@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Public Holiday";
+}
+<form id="frmPublicHoliday" name="frmPublicHoliday" action="/services/Xtreme/multipart" method="post">
+    <div class="card">
+        <div class="card-block">
+            <input type="hidden" name="type" id="type" value="Setup_PublicHoliday_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNameEng <span style="color:red">*</span></label>
+                        <input class="form-control" id="NameEng" name="NameEng" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNameArb <span style="color:red">*</span></label>
+                        <input class="form-control" id="NameArb" name="NameArb" required />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblStartDate <span style="color:red">*</span></label>
+                        <input class="form-control" id="StartDate" name="StartDate" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblEndDate <span style="color:red">*</span></label>
+                        <input class="form-control" id="EndDate" name="EndDate" required />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnSave" class="btn btn-success  @Resources.Common.PullRight"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="PublicHolidayGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+@section scripts {
+
+    <script>
+        //Resource 
+        var nameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
+        var nameArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
+        var startDate = '@Resources.Global.lblStartDate';
+        var endDate = '@Resources.Global.lblEndDate';
+    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/PublicHoliday/public-holiday.js"></script>
+}

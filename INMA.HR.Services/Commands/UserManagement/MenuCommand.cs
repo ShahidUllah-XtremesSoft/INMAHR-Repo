@@ -23,12 +23,16 @@ namespace INMA.HR.Services.Commands.UserManagement
                 Url = string.Empty,
                 Icon = string.Empty,
                 MenuGroup = string.Empty,
-                IsHRMenu = string.Empty,
+                IsHRMenu = "on",
                 ModuleId = 0,
                 CreatedBy = 0,
                 Language   = string.Empty
             }, v);
 
+            //if (string.IsNullOrEmpty(model.IsHRMenu))
+            //{
+            //    model.IsHRMenu = "on";
+            //}
 
             var repository = Ioc.Resolve<IRepository>();
             IDictionary<string, object> values = new Dictionary<string, object>();
@@ -37,7 +41,26 @@ namespace INMA.HR.Services.Commands.UserManagement
 
             //string procedure = model.Language == "English" ? StoreProcedure./.ToString() : StoreProcedure.UserManagement_Menu_Save_Arb.ToString();
             string procedure = StoreProcedure.UserManagement_Menu_Save.ToString();
-            values = _params.Get(model);
+            //values = _params.Get(model);
+            values.Add("@Id", model.Id);
+            values.Add("@NameEng", model.NameEng);
+            values.Add("@NameArb", model.NameArb);
+            values.Add("@Url", model.Url);
+            values.Add("@Icon", model.Icon);
+            values.Add("@MenuGroup", model.MenuGroup);
+            values.Add("@ModuleId", model.ModuleId);
+            values.Add("@CreatedBy", model.CreatedBy);
+            values.Add("@Language", model.Language);
+
+            
+            if (string.IsNullOrEmpty(model.IsHRMenu))
+            {
+                values.Add("@IsHRMenu", "off");
+            }
+            else
+            {
+                values.Add("@IsHRMenu", "on");
+            }
             var _response = repository.GetSingle<dynamic>(procedure, values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;

@@ -59,15 +59,15 @@ namespace INMA.HR.Services.Commands.Employee
 
             values = _params.Get(model);
             var _response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-            if (model.UploadedFiles.Count > 0)
-            {                
-                Service = new FileUploadService();
-                foreach (var file in model.UploadedFiles)
-                {
-                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.InternalLetter, (int)_response.InsertedId, (int)DocumentType.InternalLetterAttachment, XtremeFactory._factory, XtremeFactory.connectionString);
-
-                }
-            }
+            //if (model.UploadedFiles.Count > 0)
+            //{                
+            //    Service = new FileUploadService();
+            //    foreach (var file in model.UploadedFiles)
+            //    {
+            //        Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.InternalLetter, (int)_response.InsertedId, (int)DocumentType.InternalLetterAttachment, XtremeFactory._factory, XtremeFactory.connectionString);
+            //
+            //    }
+            //}
             return _response;
 
         }

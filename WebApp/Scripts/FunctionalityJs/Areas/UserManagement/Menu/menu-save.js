@@ -2,8 +2,12 @@
 
     $('#btnSave').on('click', function (e) {
         debugger
-
+        console.log($('#IsHRMenu').val());
+        if ($('#IsHRMenu').val() == 'on') {
+            $('#IsHRMenu').val('ON');
+        }
         if (customValidateForm('frmMenuDetail')) {
+            
             $("#frmMenuDetail").ajaxForm();
             buttonAddPleaseWait('btnSave');
             var options = {

@@ -70,7 +70,7 @@ $(function () {
 });
 
 function lodEmployeeById() {
-    debugger;
+    
     var full_url = document.URL;           // Get current url
     var url_array = full_url.split('=');  //Split
     id = url_array[url_array.length - 1];//Get ID
@@ -82,7 +82,7 @@ function lodEmployeeById() {
     }
 }
 function loadClientDataByID(d) {
-    debugger;
+    
     setResponseToFormInputs(d);
     var profession = $("#ProfessionId").data("kendoDropDownList");
     profession.value(JSON.parse(d.Value).professionId);

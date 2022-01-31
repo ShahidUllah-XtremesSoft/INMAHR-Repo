@@ -42,6 +42,7 @@
 
     #region Human Resource Department
     HR_Department_GetAll,
+    HR_Department_GetAll_New_By_ID,
     HR_Department_GetAllWithParent,
     HR_Department_Save_Arb,
     HR_Department_Save,
@@ -241,6 +242,12 @@
     //Cash In Leave AREA
     Employees_Request_CashInLeave_Get,
     Employees_Request_CashInLeave_ApproveOrDecline,
+    #endregion
+
+    #region Setup
+    Setup_PublicHoliday_Save,
+    Setup_PublicHoliday_Delete,
+    Setup_PublicHoliday_Get
     #endregion
 
 }

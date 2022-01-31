@@ -252,6 +252,9 @@
   <data name="lblDocument" xml:space="preserve">
     <value>وثائق</value>
   </data>
+  <data name="lblEarlyOutTime" xml:space="preserve">
+    <value>Early Out Time Arb</value>
+  </data>
   <data name="lblEducationalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>
   </data>
@@ -356,6 +359,9 @@
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>تاريخ التوظيف</value>
+  </data>
+  <data name="lblLateInTime" xml:space="preserve">
+    <value>Late In Time Arb</value>
   </data>
   <data name="lblLeave" xml:space="preserve">
     <value>رسالة رسمية</value>

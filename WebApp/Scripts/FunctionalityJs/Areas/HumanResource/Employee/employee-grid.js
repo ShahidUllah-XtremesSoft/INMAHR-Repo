@@ -8,12 +8,23 @@ $(function () {
     fnLoadNationalityDDL();
     
 /*    loadDepartmentTreeDropdownList();*/
-     //loadProfessionDropdownListForLS();
-     //loadNationalityDropdownListForLS();
-     //loadSponsorShipDropdownListForLS();
-     //loadContractTypeDropdownListForLS();
-     //loadRoleDropdownListForLS( );
-     //loadEmiratesStatesDropdownListForLS();
+    loadProfessionDropdownListForLSEng();
+    loadProfessionDropdownListForLSArb();
+
+    loadNationalityDropdownListForLSEng();
+    loadNationalityDropdownListForLSArb();
+
+    loadSponsorShipDropdownListForLSEng();
+    loadSponsorShipDropdownListForLSArb();
+
+    loadContractTypeDropdownListForLSEng();
+    loadContractTypeDropdownListForLSArb();
+
+    loadRoleDropdownListForLSEng();
+    loadRoleDropdownListForLSArb();
+
+     loadEmiratesStatesDropdownListForLSEng();
+     loadEmiratesStatesDropdownListForLSArb();
 
 
 });
@@ -21,43 +32,98 @@ $(function () {
 
 
 //Load Lists to Local Storage
-function loadProfessionDropdownListForLS() {
-    ajaxRequest({ commandName: 'HR_Profession_Get', values: { Language: $('#Language').val() }, CallBack: loadProfessionDropdownListForLSCallBack });
+function loadProfessionDropdownListForLSEng() {
+    ajaxRequest({ commandName: 'HR_Profession_Get', values: { Language: 'en-US' }, CallBack: loadProfessionDropdownListForLSEngCallBack });
 }
-function loadProfessionDropdownListForLSCallBack(response) {
-    window.localStorage.setItem('ProfessionList', response.Value);
-}
-function loadNationalityDropdownListForLS() {
-    ajaxRequest({ commandName: 'HR_Nationality_Get', values: { Language: $('#Language').val() }, CallBack: loadNationalityDropdownListForLSCallBack });
-}
-function loadNationalityDropdownListForLSCallBack(response) {
-    window.localStorage.setItem('NationalityList', response.Value);
-}
-function loadSponsorShipDropdownListForLS() {
-    ajaxRequest({ commandName: 'HR_VisaSponsorship_Get', values: { Language: $('#Language').val() }, CallBack: loadSponsorShipDropdownListForLSCallBack });
-}
-function loadSponsorShipDropdownListForLSCallBack(response) {
-    window.localStorage.setItem('SponsorshipList', response.Value);
-}
-function loadContractTypeDropdownListForLS() {
-    ajaxRequest({ commandName: 'HR_ContractType_Get', values: { Language: $('#Language').val() }, CallBack: loadContractTypeDropdownListForLSCallBack });
-}
-function loadContractTypeDropdownListForLSCallBack(response) {
-    window.localStorage.setItem('ContractTypeList', response.Value);
-}
-function loadRoleDropdownListForLS() {
-    ajaxRequest({ commandName: 'UserManagement_Role_Get', values: { Language: $('#Language').val() }, CallBack: loadRoleDropdownListForLSCallBack });
-}
-function loadRoleDropdownListForLSCallBack(response) {
-    window.localStorage.setItem('UserManagementRoleList', response.Value);
-}
-function loadEmiratesStatesDropdownListForLS() {
-    ajaxRequest({ commandName: 'HR_EmiratesStates_Get', values: { Language: $('#Language').val() }, CallBack: loadEmiratesStatesDropdownListForLSCallBack });
-}
-function loadEmiratesStatesDropdownListForLSCallBack(response) {
-    window.localStorage.setItem('EmiratesStatesList', response.Value);
-}
+function loadProfessionDropdownListForLSEngCallBack(response) {
  
+    window.localStorage.setItem('ProfessionListEng', response.Value);
+}
+function loadProfessionDropdownListForLSArb() {
+    ajaxRequest({ commandName: 'HR_Profession_Get', values: { Language: 'ar-AE' }, CallBack: loadProfessionDropdownListForLSArbCallBack });
+}
+function loadProfessionDropdownListForLSArbCallBack(response) {
+ 
+    window.localStorage.setItem('ProfessionListArb', response.Value);
+}
+
+
+
+
+function loadNationalityDropdownListForLSEng() {
+    ajaxRequest({ commandName: 'HR_Nationality_Get', values: { Language: 'en-US' }, CallBack: loadNationalityDropdownListForLSEngCallBack });
+}
+function loadNationalityDropdownListForLSEngCallBack(response) {
+    window.localStorage.setItem('NationalityListEng', response.Value);
+}
+function loadNationalityDropdownListForLSArb() {
+    ajaxRequest({ commandName: 'HR_Nationality_Get', values: { Language: 'ar-AE' }, CallBack: loadNationalityDropdownListForLSArbCallBack });
+}
+function loadNationalityDropdownListForLSArbCallBack(response) {
+    window.localStorage.setItem('NationalityListArb', response.Value);
+}
+
+
+
+function loadSponsorShipDropdownListForLSEng() {
+    ajaxRequest({ commandName: 'HR_VisaSponsorship_Get', values: { Language: 'en-US' }, CallBack: loadSponsorShipDropdownListForLSEngCallBack });
+}
+function loadSponsorShipDropdownListForLSEngCallBack(response) {
+    window.localStorage.setItem('SponsorshipListEng', response.Value);
+}
+function loadSponsorShipDropdownListForLSArb() {
+    ajaxRequest({ commandName: 'HR_VisaSponsorship_Get', values: { Language: 'ar-AE' }, CallBack: loadSponsorShipDropdownListForLSArbCallBack });
+}
+function loadSponsorShipDropdownListForLSArbCallBack(response) {
+    window.localStorage.setItem('SponsorshipListArb', response.Value);
+}
+
+
+
+function loadContractTypeDropdownListForLSEng() {
+    ajaxRequest({ commandName: 'HR_ContractType_Get', values: { Language: 'en-US' }, CallBack: loadContractTypeDropdownListForLSEngCallBack });
+}
+function loadContractTypeDropdownListForLSEngCallBack(response) {
+    window.localStorage.setItem('ContractTypeListEng', response.Value);
+}
+function loadContractTypeDropdownListForLSArb() {
+    ajaxRequest({ commandName: 'HR_ContractType_Get', values: { Language: 'ar-AE'  }, CallBack: loadContractTypeDropdownListForLSArbCallBack });
+}
+function loadContractTypeDropdownListForLSArbCallBack(response) {
+    window.localStorage.setItem('ContractTypeListArb', response.Value);
+}
+
+
+
+function loadRoleDropdownListForLSEng() {
+    ajaxRequest({ commandName: 'UserManagement_Role_Get', values: { Language: 'en-US' }, CallBack: loadRoleDropdownListForLSEngCallBack });
+}
+function loadRoleDropdownListForLSEngCallBack(response) {
+    window.localStorage.setItem('UserManagementRoleListEng', response.Value);
+}
+function loadRoleDropdownListForLSArb() {
+    ajaxRequest({ commandName: 'UserManagement_Role_Get', values: { Language: 'ar-AE' }, CallBack: loadRoleDropdownListForLSArbCallBack });
+}
+function loadRoleDropdownListForLSArbCallBack(response) {
+    window.localStorage.setItem('UserManagementRoleListArb', response.Value);
+}
+
+
+
+
+
+function loadEmiratesStatesDropdownListForLSEng() {
+    ajaxRequest({ commandName: 'HR_EmiratesStates_Get', values: { Language: 'en-US'  }, CallBack: loadEmiratesStatesDropdownListForLSEngCallBack });
+}
+function loadEmiratesStatesDropdownListForLSEngCallBack(response) {
+    window.localStorage.setItem('EmiratesStatesListEng', response.Value);
+}
+function loadEmiratesStatesDropdownListForLSArb() {
+    ajaxRequest({ commandName: 'HR_EmiratesStates_Get', values: { Language: 'ar-AE' }, CallBack: loadEmiratesStatesDropdownListForLSArbCallBack });
+}
+function loadEmiratesStatesDropdownListForLSArbCallBack(response) {
+    window.localStorage.setItem('EmiratesStatesListArb', response.Value);
+}
 
 
 

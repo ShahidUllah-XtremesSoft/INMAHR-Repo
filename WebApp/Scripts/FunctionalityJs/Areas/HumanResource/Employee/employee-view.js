@@ -20,35 +20,34 @@ $(function () {
     loadRoleDropdownList(isBindChangeEvent = true);
     //loadEmiratesStatesDropdownList(false);
 
-    setTimeout(function () {
-
+    
         $("#ProfessionId").kendoDropDownList({
             dataTextField: "name",
             dataValueField: "id",
             filter: "contains",
             index: -1,
-            dataSource: JSON.parse(localStorage.getItem('ProfessionList')),
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ProfessionListEng')) : JSON.parse(localStorage.getItem('ProfessionListArb')),
         });
         $("#NationalityId").kendoDropDownList({
             dataTextField: "name",
             dataValueField: "id",
             filter: "contains",
             index: -1,
-            dataSource: JSON.parse(localStorage.getItem('NationalityList')),
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('NationalityListEng')) : JSON.parse(localStorage.getItem('NationalityListArb')),
         });
         $("#VisaSponsorshipId").kendoDropDownList({
             dataTextField: "name",
             dataValueField: "id",
             filter: "contains",
             index: -1,
-            dataSource: JSON.parse(localStorage.getItem('SponsorshipList')),
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('SponsorshipListEng')) : JSON.parse(localStorage.getItem('SponsorshipListArb')),
         });
         $("#ContractTypeId").kendoDropDownList({
             dataTextField: "name",
             dataValueField: "id",
             filter: "contains",
             index: -1,
-            dataSource: JSON.parse(localStorage.getItem('ContractTypeList')),
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ContractTypeListEng')) : JSON.parse(localStorage.getItem('ContractTypeListArb')),
         });
 
         $("#EmiratesStateId").kendoDropDownList({
@@ -56,16 +55,8 @@ $(function () {
             dataValueField: "id",
             filter: "contains",
             index: -1,
-            dataSource: JSON.parse(localStorage.getItem('EmiratesStatesList')),
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : JSON.parse(localStorage.getItem('EmiratesStatesListArb')),
         });
-
-    }, 50)
-   
-
-
-
-
-
 
 });
 

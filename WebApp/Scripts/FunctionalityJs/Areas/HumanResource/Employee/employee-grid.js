@@ -8,12 +8,12 @@ $(function () {
     fnLoadNationalityDDL();
     
 /*    loadDepartmentTreeDropdownList();*/
-     loadProfessionDropdownListForLS();
-     loadNationalityDropdownListForLS();
-     loadSponsorShipDropdownListForLS();
-     loadContractTypeDropdownListForLS();
-     loadRoleDropdownListForLS( );
-     loadEmiratesStatesDropdownListForLS();
+     //loadProfessionDropdownListForLS();
+     //loadNationalityDropdownListForLS();
+     //loadSponsorShipDropdownListForLS();
+     //loadContractTypeDropdownListForLS();
+     //loadRoleDropdownListForLS( );
+     //loadEmiratesStatesDropdownListForLS();
 
 
 });

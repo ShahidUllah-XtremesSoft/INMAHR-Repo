@@ -49,23 +49,11 @@ $(function () {
    */
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
-
- 
-
         if ($('#NumberOfHours').val() == "0") {
             swalMessage('info', 'Number of hours cannot be zero', 2000);
             return;
         }
-
-
-
-        //var validator = $("#frmShortLeaveDetail").data("kendoValidator");
-        //if (validator.validate()) {
-        //    alert("Employee Saved");
-        //}
-
- 
-        //if ($('#AvailableShortLeave').val() == '0') {
+        
         if ($('#AvailableShortLeave').val() == '0' && $('#NumberOfHours').val() > $('#EditLeaveHours').val()) {
             swalMessage('info', 'Can not apply with available balance 0',2000);
         }

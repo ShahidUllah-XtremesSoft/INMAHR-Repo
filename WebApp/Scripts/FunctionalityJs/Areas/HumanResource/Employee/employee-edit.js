@@ -2,44 +2,48 @@
 $(function () {
     $('#Language').val(_currentLanguage);
 
+    setTimeout(function () {
 
+        $("#ProfessionId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: JSON.parse(localStorage.getItem('ProfessionList')),
+        });
+        $("#NationalityId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: JSON.parse(localStorage.getItem('NationalityList')),
+        });
+        $("#VisaSponsorshipId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: JSON.parse(localStorage.getItem('SponsorshipList')),
+        });
+        $("#ContractTypeId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: JSON.parse(localStorage.getItem('ContractTypeList')),
+        });
 
-    $("#ProfessionId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('ProfessionList')),
-    });
-    $("#NationalityId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('NationalityList')),
-    });
-    $("#VisaSponsorshipId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('SponsorshipList')),
-    });
-    $("#ContractTypeId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('ContractTypeList')),
-    });
+        $("#EmiratesStateId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: JSON.parse(localStorage.getItem('EmiratesStatesList')),
+        });
 
-    $("#EmiratesStateId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('EmiratesStatesList')),
-    });
+    },100);
+
+   
 
 
 

@@ -91,7 +91,8 @@ function LoadDDLSFromLocalStorage(ControlID, dSource) {
     //dropdownlist.setDataSource(dataSource);
 
     var ItemList = [];
-    ItemList.push({ text: '-- Select --', value: '-1' });
+ //   ItemList.push({ text: '-- Select --', value: '-1' });
+    ItemList.push({ text: _currentLanguage == 'en-US' ? '-- Select --' : '-- اختر --', value: '-1' });
 
     for (var i = 0; i < JSON.parse(dSource).length; i++) {
         var option = { text: JSON.parse(dSource)[i].name, value: JSON.parse(dSource)[i].id };

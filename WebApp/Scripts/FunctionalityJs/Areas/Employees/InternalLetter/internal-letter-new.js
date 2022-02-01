@@ -15,7 +15,7 @@
     
     //loadDepartmentTreeDropdownListWithCheckbox();   // THIS IS OLD DEPARTMENT DDL LOAD FN
     loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
-    loadRoleDropdownList(false);
+   // loadRoleDropdownList(false);
     setTimeout(function () {
         $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck);
         //var treeview = $("#DepartmentId").data("kendoDropDownTree");

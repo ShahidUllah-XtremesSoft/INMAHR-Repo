@@ -20,52 +20,48 @@ $(function () {
     loadRoleDropdownList(isBindChangeEvent = true);
     //loadEmiratesStatesDropdownList(false);
 
-    $("#ProfessionId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('ProfessionList')),
-    });
-    $("#NationalityId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('NationalityList')),
-    });
-    $("#VisaSponsorshipId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('SponsorshipList')),
-    });
-    $("#ContractTypeId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('ContractTypeList')),
-    });
+    
+        $("#ProfessionId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ProfessionListEng')) : JSON.parse(localStorage.getItem('ProfessionListArb')),
+        });
+        $("#NationalityId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('NationalityListEng')) : JSON.parse(localStorage.getItem('NationalityListArb')),
+        });
+        $("#VisaSponsorshipId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('SponsorshipListEng')) : JSON.parse(localStorage.getItem('SponsorshipListArb')),
+        });
+        $("#ContractTypeId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ContractTypeListEng')) : JSON.parse(localStorage.getItem('ContractTypeListArb')),
+        });
 
-    $("#EmiratesStateId").kendoDropDownList({
-        dataTextField: "name",
-        dataValueField: "id",
-        filter: "contains",
-        index: -1,
-        dataSource: JSON.parse(localStorage.getItem('EmiratesStatesList')),
-    });
-
-
-
-
-
+        $("#EmiratesStateId").kendoDropDownList({
+            dataTextField: "name",
+            dataValueField: "id",
+            filter: "contains",
+            index: -1,
+            dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : JSON.parse(localStorage.getItem('EmiratesStatesListArb')),
+        });
 
 });
 
 function lodEmployeeById() {
-    debugger;
+    
     var full_url = document.URL;           // Get current url
     var url_array = full_url.split('=');  //Split
     id = url_array[url_array.length - 1];//Get ID
@@ -77,7 +73,7 @@ function lodEmployeeById() {
     }
 }
 function loadClientDataByID(d) {
-    debugger;
+    
     setResponseToFormInputs(d);
     var profession = $("#ProfessionId").data("kendoDropDownList");
     profession.value(JSON.parse(d.Value).professionId);

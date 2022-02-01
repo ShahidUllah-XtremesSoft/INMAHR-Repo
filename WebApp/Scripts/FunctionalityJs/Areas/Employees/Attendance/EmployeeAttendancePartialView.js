@@ -9,9 +9,11 @@ $(function () {
 
     $('#StartDate').kendoDatePicker({
         format: "yyyy-MM-dd"
+        //,value: new Date()
     });
     $('#EndDate').kendoDatePicker({
         format: "yyyy-MM-dd"
+        //, value: new Date()
     });
     employeeIdForAttendance = localStorage.getItem('EmployeeIdForAttendance');
     if (employeeIdForAttendance == null || employeeIdForAttendance == 'null') {
@@ -21,6 +23,7 @@ $(function () {
         employeeIdForAttendance = localStorage.getItem('EmployeeIdForAttendance');
     }
     loadAttendanceGrid({ EmployeeId: employeeIdForAttendance, StartDate: '', EndDate: '', Language: _currentLanguage });
+    
     //loadDepartmentTreeDropdownListWithCheckbox();
 
     //setTimeout(function () {
@@ -94,6 +97,16 @@ var bindAttendanceGrid = function (inputDataJSON) {
     ];
 
     bindKendoGrid(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
+    setTimeout(function () {
+        var grid = $("#AttendanceGrid").data("kendoGrid");
+        var gridData = grid.dataSource.view();
+
+        for (var i = 0; i < gridData.length; i++) {
+            if (gridData[i].changeColor == 'Yes') {
+            grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
+            }
+        }
+    }, 1000);
 };
 
 function departmentTreeViewCheck(e) {

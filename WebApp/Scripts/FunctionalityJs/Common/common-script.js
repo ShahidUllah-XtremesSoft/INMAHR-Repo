@@ -662,7 +662,7 @@ var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, c
  
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
-    var selectText = _currentLanguage == 'en-US' ? '-- Select --' : '-- Select Arb --';
+    var selectText = '-- ' + select+' --'
     var optionList = [];
     optionList.push({ text: selectText, value: '-1' });
     var selectedIndex = -1;

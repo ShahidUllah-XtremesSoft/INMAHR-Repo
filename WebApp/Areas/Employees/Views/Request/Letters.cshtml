@@ -26,8 +26,8 @@
                 <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
                 <div id="btnAreaShowHideOnConditionBase">
 
-                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
                 <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @HRModuleUI.HumanResourceUI.lblDecline</button>
+                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
                 </div>
             </div>
         </div>
@@ -45,6 +45,7 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/letters.js"></script>
     <script>
         //Grid columns
+        var empNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
         var lblName = '@HRModuleUI.HumanResourceUI.lblName';
         var email = '@HRModuleUI.HumanResourceUI.lblEmail';
         var letterType = '@HRModuleUI.HumanResourceUI.lblLetterType';

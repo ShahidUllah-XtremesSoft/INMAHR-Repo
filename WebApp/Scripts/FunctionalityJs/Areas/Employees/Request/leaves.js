@@ -47,7 +47,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             width: 5
         },
         { field: "id", title: "id", hidden: true },
-        { field: "email", title: email, hidden: false, width: 20 },
+        { field: "email", title: empNumber, hidden: false, width: 20 },
         { field: "name", title: name, hidden: false, width: 20 },
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },

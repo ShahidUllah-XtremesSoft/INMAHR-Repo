@@ -26,9 +26,9 @@
                 <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblPendingRequest</button>
                 <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
                 <div id="btnAreaShowHideOnConditionBase">
-                
-                    <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
+
                     <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @HRModuleUI.HumanResourceUI.lblDecline</button>
+                    <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
 
 
                 </div>
@@ -50,6 +50,7 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/leaves.js"></script>
     <script>
         //Grid columns
+        var empNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
         var leaveType = '@HRModuleUI.HumanResourceUI.lblLeaveType';
         var name = '@HRModuleUI.HumanResourceUI.lblName';
         var email = '@HRModuleUI.HumanResourceUI.lblEmail';

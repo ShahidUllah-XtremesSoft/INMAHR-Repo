@@ -26,8 +26,8 @@ var loadEmployeeVacationLeaveBalanceGridCallBack = function (inputDataJSON) {
 
         fileCount += 1;
     });
-    $('#employeeVacationLeaveBalanceGrid tbody').append(
-        '<tr><td>Total</td><td></td><td>' + balanceLeaveTotal + '</td><td>' + takenLeaveTotal + '</td></tr>'
-
-    );
+    //$('#employeeVacationLeaveBalanceGrid tbody').append(
+    //    '<tr><td>Total</td><td></td><td>' + balanceLeaveTotal + '</td><td>' + takenLeaveTotal + '</td></tr>'
+    //
+    //);
 }

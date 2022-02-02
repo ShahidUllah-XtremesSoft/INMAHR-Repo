@@ -43,7 +43,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         },
         { field: "id", title: "id", hidden: true },
         { field: "requestLeaveId", title: "requestLeaveId", hidden: true },
-        { field: "email", title: email, hidden: false, width: 20 },
+        { field: "email", title: empNumber, hidden: false, width: 20 },
         { field: "name", title: lblName, hidden: false, width: 50 },
 
         { field: "leave", title: leaveName, hidden: true, width: 30 },
@@ -57,7 +57,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
             title: status,
             field: 'status',
             width: 30,
-            hidden: false,
+            hidden: true,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },

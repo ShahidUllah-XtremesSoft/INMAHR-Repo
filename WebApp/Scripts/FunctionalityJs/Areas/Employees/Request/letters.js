@@ -40,7 +40,7 @@ var bindLetterGrid = function (inputDataJSON) {
             width: 5
         },
         { field: "id", title: "id", hidden: true },
-        { field: "email", title: email, hidden: false, width: 20 },
+        { field: "email", title: empNumber, hidden: false, width: 20 },
         { field: "name", title: lblName, hidden: false, width: 20 },
         { field: "leaveType", title: letterType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:startDate#</span>" },

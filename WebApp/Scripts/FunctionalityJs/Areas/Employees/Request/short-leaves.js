@@ -51,7 +51,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             width: 8
         },
         { field: "id", title: "id", hidden: true },
-        { field: "email", title: email, hidden: false, width: 20 },
+        { field: "email", title: empNumber, hidden: false, width: 20 },
         { field: "name", title: lblname, hidden: false, width: 50 },
         { field: "requestDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:requestDate#</span>" },
         { field: "startTime", title: startTime, hidden: false, width: 30, template: "<span class='badge badge-info'>#:startTime#</span>" },

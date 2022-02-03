@@ -2,7 +2,7 @@
 $(function () {
     $('#Language').val(_currentLanguage);
 
- 
+
     $("#ProfessionId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
@@ -40,7 +40,7 @@ $(function () {
         dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : JSON.parse(localStorage.getItem('EmiratesStatesListArb')),
     });
 
-    
+
 
 
 
@@ -48,7 +48,7 @@ $(function () {
 
 
     $('#btn-edit-employee').click(function () {
-        
+
         if ($('#DepartmentId').val() == '') {
             $('#DepartmentId').val('0');
         }
@@ -60,7 +60,7 @@ $(function () {
             var options = {
                 success: function (response, statusText, jqXHR) {
                     buttonRemovePleaseWait('btn-edit-employee', save, 'save');
-              
+
                     swal(response);
                     //var messageResponseParse = JSON.parse(response);
                     //if (messageResponseParse.type == undefined) {
@@ -91,6 +91,15 @@ $(function () {
         }
     });
 
-    
+
 
 });
+
+function fnCheckDateValidation(dateOne, dateTwo,) {
+
+    var expiryDate = dateOne.value;
+    var releaseDate = dateTwo.val();
+    if (releaseDate > expiryDate == true) {
+        swalMessage('info', lblExpiryDateCannotBeLessThanIssue + '', 3500);
+    }
+}

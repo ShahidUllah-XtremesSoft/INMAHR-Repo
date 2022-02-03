@@ -163,14 +163,14 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblPassportIssueDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="ReleaseDate" name="ReleaseDate" required />
+            <input type="date" class="form-control " id="ReleaseDate" name="ReleaseDate"  required />
         </div>
     </div>
 
     <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblPassportExpiryDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="ExpiryDate" name="ExpiryDate" required />
+            <input type="date" class="form-control " id="ExpiryDate" name="ExpiryDate" required onfocusout="fnCheckDateValidation(this,$('#ReleaseDate'))"/>
         </div>
     </div>
 </div>
@@ -193,7 +193,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblVisaExpiryDate </label> <span style="color: red">*</span><br />
-            <input type="date" accept="" class="form-control " id="VisaExpiryDate" name="VisaExpiryDate"  required/>
+            <input type="date" accept="" class="form-control " id="VisaExpiryDate" name="VisaExpiryDate"  required onfocusout="fnCheckDateValidation(this,$('#VisaReleaseDate'))"/>
         </div>
     </div>
 </div>
@@ -229,7 +229,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblMunicipalityCardExpiryDate </label> <span style="color: red">*</span><br />
-            <input type="date" class="form-control " id="MunicipalityCardExpirtDate" name="MunicipalityCardExpirtDate" required />
+            <input type="date" class="form-control " id="MunicipalityCardExpirtDate" name="MunicipalityCardExpirtDate" required  onfocusout="fnCheckDateValidation(this,$('#MunicipalityCardReleaseDate'))"/>
         </div>
     </div>
 </div>

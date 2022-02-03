@@ -62,6 +62,8 @@ var bindLetterGrid = function (inputDataJSON) {
 //-------------- BUTTONS AREA START--------------------------
 $('#btnSave').click(function (e) {
     buttonAddPleaseWait('btnSave');
+
+
     fnApprovedOrDeclined(this.value, 'btnSave', 'check');
 });
 $('#btnCancel').click(function (e) {
@@ -83,7 +85,7 @@ $('#btnCancel').click(function (e) {
 
 function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
 
-    
+
     Swal.fire({
 
         title: areYouSureTitle,
@@ -111,6 +113,7 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
             }
         }
     }).then(function (restult) {
+
         if (restult.value) {
 
             var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
@@ -129,11 +132,14 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
                     }, CallBack: responseCallBack
                 });
 
+                if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
                 buttonRemovePleaseWait(btnId, btnValue, btnIcon);
             }
 
 
         } else {
+
+            if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
             buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         }
     });
@@ -159,6 +165,10 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         }
     }
     if (ids.length > 0) { return ids; } else {
+        
+        if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+
+
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         swalMessage('info', lblFristSelectRecordFromGrid, 1500);
         return 0;

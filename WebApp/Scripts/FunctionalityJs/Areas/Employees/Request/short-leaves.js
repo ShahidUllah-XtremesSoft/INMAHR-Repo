@@ -143,12 +143,15 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
                         Language: _currentLanguage
                     }, CallBack: responseCallBack
                 });
+                if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
 
                 buttonRemovePleaseWait(btnId, btnValue, btnIcon);
             }
 
 
         } else {
+            if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+
             buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         }
     });
@@ -174,6 +177,8 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         }
     }
     if (ids.length > 0) { return ids; } else {
+        if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+    
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         swalMessage('info', lblFristSelectRecordFromGrid, 1500);
         return 0;

@@ -1,4 +1,7 @@
-﻿$(function () {
+﻿var queryStringLetterId = 0, requestCameFrom;
+
+$(function () {
+    queryStringLetterId = (new URL(location.href)).searchParams.get('value');
     //Values settings starts
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $("#LetterDate").kendoDatePicker({
@@ -11,17 +14,14 @@
     //Values settings ends
 
     //Functions calling
-    getLetterNextNumber();
+    // getLetterNextNumber();
 
     //loadDepartmentTreeDropdownListWithCheckbox();   // THIS IS OLD DEPARTMENT DDL LOAD FN
     loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
-    // loadRoleDropdownList(false);
-    setTimeout(function () {
-        $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck);
-        //var treeview = $("#DepartmentId").data("kendoDropDownTree");
-        //treeview.bind("check", tree_check);
-    }, 500);
-    //Events Starts
+
+    setTimeout(function () { $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck); }, 500);
+
+
     $('#btnSave').on('click', function (e) {
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         var valid = true;
@@ -48,15 +48,9 @@
                 success: function (response, statusText, jqXHR) {
                     buttonRemovePleaseWait('btnSave', lblSend, 'send');
                     swal(response);
-                    //clearFields();
-                    //getLetterNextNumber                    
-                    // Insertion to multiple Internal letter table .
-
-                    if (JSON.parse(JSON.parse(response)).type == 'success') {
-                        setTimeout(function () {
-                            loopThroughGrid();
-                        }, 100);
-                    }
+                    setTimeout(function () {
+                        loopThroughGrid();
+                    }, 200);
 
                 },
                 error: function (xhr, status, error) {
@@ -78,8 +72,92 @@
     });
     //Events ends
     setTimeout(function () { $('.tox-notifications-container').hide(); }, 1000);
-
+    getInternalLetterById(queryStringLetterId);
 });
+
+
+//------------------ LOAD DATA AS PER LETTER ID   --------------------
+function getInternalLetterById(queryStringLetterId) {
+    ajaxRequest({ commandName: 'Employee_InternalLetter_GetById', values: { Id: queryStringLetterId, Language: _currentLanguage }, CallBack: getInternalLetterByIdCallBack });
+
+}
+var getInternalLetterByIdCallBack = function (inputDataJSON) {
+
+
+
+    var responseJSON = JSON.parse(inputDataJSON.Value);
+    var letterToArray = responseJSON.letterTo.split(',');
+    //letterToArray.forEach(function (item) {
+
+
+    //    $('#divTo').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light">' + item + '</button>');
+    //});
+    //$('#divFrom').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.createdBy + '</button>');
+    $('#Id').val(responseJSON.id);
+    $('#LetterNumber').val(responseJSON.number);
+    //  $('.letter-date').append(responseJSON.sendDate);
+
+    //  $('#divDate').html(responseJSON.createdDate);
+
+    $('#Subject').val(responseJSON.subject);
+    setTimeout(function () {
+        $('#Body').html(responseJSON.body);
+    }, 100);
+    //if (responseJSON.empCurrentFileName != null) {
+    //    var profileImage = '/UploadFile/' + responseJSON.empCurrentFileName;
+    //    $('#ProfileImage').attr('src', profileImage);
+    //}
+    //if (responseJSON.currentFileName != null) {
+
+    //    var fileExtension = "";
+    //    var attachmentName = '';
+    //    //--------------------------- ATTACHMENT FIX ICON WORK HERE ----------------------------------------
+    //    if (responseJSON.filePath.split('.')[1] == "docx" || responseJSON.filePath.split('.')[1] == "doc" || responseJSON.filePath.split('.')[1] == "docs") {
+    //        fileExtension = "icofont icofont-file-word f-28 text-muted";
+    //    } else if (responseJSON.filePath.split('.')[1] == "pdf" || responseJSON.filePath.split('.')[1] == "PDF") {
+
+    //        fileExtension = "icofont icofont-file-powerpoint f-28 text-muted";
+    //    } else if (responseJSON.filePath.split('.')[1] == "xls" || responseJSON.filePath.split('.')[1] == "xlsx") {
+
+    //        fileExtension = "icofont icofont icofont-file-excel f-28 text-muted";
+    //    }
+    //    else if (responseJSON.filePath.split('.')[1] == "jpg" || responseJSON.filePath.split('.')[1] == "JPG" || responseJSON.filePath.split('.')[1] == "jpeg" || responseJSON.filePath.split('.')[1] == "JPEG" || responseJSON.filePath.split('.')[1] == "png" || responseJSON.filePath.split('.')[1] == "PNG") {
+    //        fileExtension = "ti-gallery f-28 text-muted";
+    //    }
+
+    //    //   $('.loadEmployeeAttachments').append(' <li class="media d-flex m-b-10"><div class="m-r-20 v-middle"><i class="' + fileExtension + '"></i></div><div class="media-body"><a target="_blank" href="../../Temp/' + JSON.parse(d.Value)[i]["path"] + '" class="m-b-5 d-block">' + attachmentName + '</div><div class="f-right v-middle text-muted"><i class="icofont icofont-download-alt f-18"></i></div></a></li>')
+
+    //    //--------------------------- ATTACHMENT FIX ICON WORK END ----------------------------------------
+
+
+
+    //   // $('.attachmentRow').show();
+    //    var attachments = '/UploadFile/' + responseJSON.currentFileName;
+    //    $('#letter-attachment').attr('src', attachments);
+    //    //$('#attachment-open').attr('href', attachments);
+    //}
+
+}
+
+//--------------------------------------------------- END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function loadRoleDropdownList(isBindChangeEvent = false) {
     if ('en-US' == _currentLanguage) {
@@ -94,30 +172,28 @@ function loadRoleDropdownList(isBindChangeEvent = false) {
         }
     }, 1500);
 }
-function getLetterNextNumber() {
-    ajaxRequest({ commandName: 'Employee_InternalLetter_GetNextNumber', values: {}, CallBack: getLetterNextNumberCallBack });
+//function getLetterNextNumber() {
+//    ajaxRequest({ commandName: 'Employee_InternalLetter_GetNextNumber', values: {}, CallBack: getLetterNextNumberCallBack });
 
-}
-var getLetterNextNumberCallBack = function (inputDataJSON) {
+//}
+//var getLetterNextNumberCallBack = function (inputDataJSON) {
 
-    $('#LetterNumber').val(JSON.parse(inputDataJSON.Value).letterNumber);
-}
+//    $('#LetterNumber').val(JSON.parse(inputDataJSON.Value).letterNumber);
+//}
 
 function departmentTreeViewCheck(e) {
     var getLastValue = 0
-    //console.log("Checking", e.sender._values);
+
     $('#DepartmentIds').val('');
     var selectedDepartments = e.sender._values;
     var concatenatedDepartments = '';
     selectedDepartments.forEach(function (item) {
-        //console.log("item", item);
+
         concatenatedDepartments += concatenatedDepartments == '' ? item : ',' + item;
         getLastValue = item;
     });
-    //alert(concatenatedDepartments);
-    $('#DepartmentIds').val(concatenatedDepartments);
 
-    //$('#DepartmentIds').val() 
+    $('#DepartmentIds').val(concatenatedDepartments);
     loadAllEmployeesAsPerDepartmentId();
 }
 
@@ -201,17 +277,15 @@ $('#btn-select-records-from-grid').click(function (e) {
 function getIdsFromGrid(btnValue, btnId, btnIcon) {
     $('.showAllSelecttedEmployee').empty('');
     $('.showAllSelecttedSection').empty('');
+
     var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
     var gridDataSource = grid.dataSource._data;
     var ids = '';
-   
     for (var i = 0; i < gridDataSource.length; i++) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
         if (isAssigned == true) {
             var gridRow = gridDataSource[i];
             ids += ids == '' ? gridRow.id : ',' + gridRow.id;
-         //   nameArray.push(gridRow.name);
-        
             $('.showAllSelecttedEmployee').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light"> ' + gridRow.name + '</button>');
             $('.showAllSelecttedSection').append('<button type="button" class="btn btn-outline-danger waves-effect waves-light"> ' + gridRow.department + '</button>')
         }
@@ -224,11 +298,8 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         $('.btnClose').click();
 
-       // $('.showAllSelecttedSection').text( $('.k-multiselect-wrap.k-floatwrap').text())
-        //--ASSIGN EMPLOYEE NAMES
-        //for (var i = 0; i < nameArray.length; i++) {
-        //    $('.showAllSelecttedEmployee').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light"> ' + gridRow.name + '</button>')
-        //}
+      //  $('.showAllSelecttedSection').text($('.k-multiselect-wrap.k-floatwrap').text())
+
         return ids;
 
 
@@ -249,33 +320,8 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
 
 
 function loopThroughGrid(e) {
-    debugger
+
     var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
-    /*
-        { field: "id", title: "id", hidden: true },
-        { field: "internalLetterRoleId", title: "InternalLetterRoleId", hidden: true },
-        { field: "departmentId", title: "DepartmentId", hidden: true },
-        { field: "isCompany", title: "IsCompany", hidden: true },
-        { field: "employeeNumber", title: employeeNumber, hidden: false, width: 20 },
-        { field: "name", title: lblName, hidden: false, width: 20 },
-        { field: "department", title: section, hidden: false, width: 20 },
-        { field: "roleName", title: lblRole, hidden: false, width: 20 },
-    @Id							INT
-   ,@LetterNumber				NVARCHAR(50)
-   ,@LetterDate					DATETIME
-   ,@Subject					NVARCHAR(MAX)
-   ,@SignedBy					INT
-   ,@Body						NVARCHAR(MAX)
-   ,@IsRead						BIT = 0
-   ,@IsImportant				BIT = 0
-   ,@Tag						NVARCHAR(MAX)
-   ,@DepartmentIds				NVARCHAR(MAX)
-   ,@CreatedBy					INT
-   ,@Language					NVARCHAR(10)
-   ,@Reciever_HR_Employee_Ids	NVARCHAR(MAX)
-     
-      
-       * */
 
 
     var gridd = grid.dataSource._data;
@@ -284,12 +330,12 @@ function loopThroughGrid(e) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
 
         var gridRow = gridd[i];
-        if (isAssigned == true  ) {
+        if (isAssigned == true) {
             postingArray.push(
                 {
 
                     //--------- Grid Data-------------
-                    LetterId: 0,
+                    LetterId: parseInt($('#Id').val()),
                     C_Employee_InternalLetterMultiple_Id: 0,
                     LetterNumber: $('#LetterNumber').val(),
                     LetterDate: $('#LetterDate').val(),
@@ -300,15 +346,14 @@ function loopThroughGrid(e) {
                     SignedBy: 0,
                     IsRead: 0,
                     IsImportant: 0,
-                    LetterStatus: 'New'
+                    LetterStatus: 'Forward'
                 });
         }
 
     }
     if (postingArray.length > 0) {
-        console.log(postingArray)
         ajaxRequest({
-            commandName: 'Employee_InternalLetter_Save_Multiple',
+            commandName: 'Employee_InternalLetter_Forward_Multiple',
             values:
             {
                 InternalLetterData: postingArray,
@@ -320,9 +365,4 @@ function loopThroughGrid(e) {
             window.location.href = '/Employees/InternalLetter';
         }, 1000);
     }
-    //else {
-    //    buttonRemovePleaseWait('btnSave', save, 'save');
-    //    swalMessage('info', 'First select records from grid', 1500);
-    //}
-
 }

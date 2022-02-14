@@ -43,11 +43,17 @@ $(document).ready(function () {
         // Hide image container
         $('#RequestLoader').hide();
     });
+
+
+
+
+
+
 });
 
 var ajaxRequest = function (options) {
     $('#loading').show().fadeIn(500);
-    
+
     $('#RequestLoader').show();
     $.ajax({
         type: 'POST',
@@ -146,7 +152,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
 
 }
-var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {    
+var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
     $("#" + $gridid).kendoGrid({
         //toolbar: ["excel", "pdf", "search"],
         //pdf: {
@@ -409,10 +415,10 @@ var validateForm = function ($form) {
 
     return valid;
 }
-var customValidateForm = function ($form) {    
+var customValidateForm = function ($form) {
     var valid = true;
     $('#' + $form + " input[required],#" + $form + " textarea[required],#" + $form + " select[required]").each(function () {
-        
+
         //alert($(this).attr('name'));
         //$(this).next("span").remove();
         //if ($(this).hasClass('k-dropdown')) {
@@ -423,7 +429,7 @@ var customValidateForm = function ($form) {
                 $(this).attr('title', thisFieldIsRequired);
                 $(this).removeClass("invalid");
                 $(this).next("span").remove();
-                $(this).after("<span style='color:red;'>" + thisFieldIsRequired+"</span>");
+                $(this).after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -436,7 +442,7 @@ var customValidateForm = function ($form) {
                 $(this).attr('title', thisFieldIsRequired);
                 $(this).removeClass("invalid");
                 $(this).next("div").remove();
-                $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired+"</span></div>");
+                $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired + "</span></div>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -449,7 +455,7 @@ var customValidateForm = function ($form) {
                 $(this).attr('title', thisFieldIsRequired);
                 $(this).removeClass("invalid");
                 $(this).next("div").remove();
-                $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired+"</span></div>");
+                $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired + "</span></div>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -462,7 +468,7 @@ var customValidateForm = function ($form) {
                 $(this).removeClass("invalid");
                 $(this).next("span").remove();
                 $(this).attr('title', thisFieldIsRequired);
-                $(this).after("<span style='color:red;'>" + thisFieldIsRequired+"</span>");
+                $(this).after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
                 valid = false;
             } else {
                 $(this).removeClass("invalid");
@@ -608,7 +614,7 @@ function fnAvoidNegavtiveNumber(Inputvalue) { //Inputvalue is input field value 
 
 }
 function swal(messageResponse) {
- 
+
     var messageResponseParse = JSON.parse(messageResponse);
     if (messageResponseParse.type == undefined) {
         messageResponseParse = JSON.parse(messageResponseParse);
@@ -641,7 +647,7 @@ function buttonAddPleaseWait(buttonId) {
     var btn = document.getElementById(buttonId);
     var pleaseWait = _currentLanguage == 'en-US' ? 'Please wait...' : '...الرجاء الانتظار';
     btn.disabled = true;
-    btn.innerHTML = '<i class = "fa fa-spinner fa-spin"></i> '+pleaseWait+'';
+    btn.innerHTML = '<i class = "fa fa-spinner fa-spin"></i> ' + pleaseWait + '';
 }
 function buttonRemovePleaseWait(buttonId, buttonText, buttonIcon) {
     var btn = document.getElementById(buttonId);
@@ -659,10 +665,10 @@ function loadKendoDropdownList(controlId, columns, tableName, conditions = null,
 }
 
 var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, controlId) {
- 
+
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
-    var selectText = '-- ' + select+' --'
+    var selectText = '-- ' + select + ' --'
     var optionList = [];
     optionList.push({ text: selectText, value: '-1' });
     var selectedIndex = -1;
@@ -679,7 +685,7 @@ var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, c
     }
     var combobox = $("#" + controlId).data("kendoDropDownList");
     if (combobox != undefined) {
-        
+
         combobox.destroy();
     }
     $("#" + controlId).kendoDropDownList({
@@ -742,7 +748,7 @@ function loadDepartmentTreeDropdownList() {
     ajaxRequest({ commandName: 'HR_Department_Dropdown_GetAll', values: { Language: _currentLanguage, }, CallBack: loadTreeDropdownList });
 }
 function loadTreeDropdownList(d) {
-    
+
     var _data = treeFomatter(JSON.parse(d.Value), 0);
     $("#DepartmentId").kendoDropDownTree({
         tagMode: 'single',
@@ -755,7 +761,7 @@ function loadDepartmentTreeDropdownListWithCheckbox() {
     ajaxRequest({ commandName: 'HR_Department_Dropdown_GetAll', values: { Language: _currentLanguage, }, CallBack: loadTreeDropdownListWithCheckBox });
 }
 function loadTreeDropdownListWithCheckBox(d) {
-    
+
     var _data = treeFomatter(JSON.parse(d.Value), 0);
     $("#DepartmentId").kendoDropDownTree({
         checkboxes: true,
@@ -787,14 +793,14 @@ function loadTreeDropdownListWithCheckBox(d) {
 //    //        LoggedInUserDepartementId = JSON.parse(localStorage.getItem('User')).departmentId,
 //    //        LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
 //    //        Language: _currentLanguage
-              
-          
+
+
 //    //    }, CallBack: loadTreeDropdownListWithRoleBaseAndCheckBox
 //    //});
 //}
- 
+
 //function loadTreeDropdownListWithRoleBaseAndCheckBox(d) {
-    
+
 //    var _data = treeFomatter(JSON.parse(d.Value), 0);
 //    $("#DepartmentId").kendoDropDownTree({
 //        checkboxes: true,
@@ -805,17 +811,18 @@ function loadTreeDropdownListWithCheckBox(d) {
 //        dataSource: _data
 //    });
 //}
- 
+
 
 
 function loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox() {
-     
+
     ajaxRequest({
         commandName: 'HR_Department_GetAll_New_By_ID',
         values: {
             LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
             LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
             LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
             Language: _currentLanguage,
         }, CallBack: loadTreeDropdownListWithRoleBaseAndCheckBox
     });
@@ -823,28 +830,28 @@ function loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox() {
 }
 
 function loadTreeDropdownListWithRoleBaseAndCheckBox(d) {
-    
-        var _data = treeFomatterRoleBase(JSON.parse(d.Value), 0);
+
+    var _data = treeFomatterRoleBase(JSON.parse(d.Value), 0);
     $("#DepartmentId").kendoDropDownTree({
         checkboxes: true,
         //checkAll: true,
         autoClose: false,
-        tagMode: 'single',
+        // tagMode: 'single',
         height: 'auto',
         dataSource: _data
     });
-    
-   
-} 
+
+
+}
 
 var treeFomatterRoleBase = function (arr, parent) {
 
-    
+
     var out = [];
     for (var i in arr) {
-             
+
         if (arr[i].parentId == parent) {
-          
+
             var items = treeFomatter(arr, arr[i].value);
             if (items.length) {
                 arr[i].items = items;
@@ -852,21 +859,21 @@ var treeFomatterRoleBase = function (arr, parent) {
             out.push(arr[i]);
             return out;
         } else {
-           
+
             var items = treeFomatter(arr, arr[i].value);
             if (items.length) {
                 arr[i].items = items;
             }
             out.push(arr[i]);
 
-            
+
         }
     }
-         return out;
+    return out;
 }
- 
+
 var treeFomatter = function (arr, parent) {
-     
+
     var out = [];
     for (var i in arr) {
         if (arr[i].parentId == parent) {
@@ -912,16 +919,16 @@ var treeFomatter = function (arr, parent) {
 
 //});
 function setResponseToFormInputs(response) {
-  
+
     $.each(JSON.parse(response.Value), function (key, value) {
         //console.log('key : ' + key + ' value : ' + value);
         $('#' + capitalizeFirstLetter(key)).val(value);
     });
-    
- 
+
+
 }
 function capitalizeFirstLetter(string) {
- 
+
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -932,7 +939,11 @@ function validateFileType(inputId, fileExtension) {
     //alert($('#' + inputId).val().split('.').pop().toLowerCase());
     if ($.inArray($('#' + inputId).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
 
-        swalMessage('info', 'Allowed format(s) are (' + fileExtension.join(', ') + ')', 2000);
+
+
+
+        //  swalMessage('info', 'Allowed format(s) are (' + fileExtension.join(', ') + ')', 2000);
+        swalMessage('info', lblAllowedFormatsArePngJpgOnly, 2000);
         $('#' + inputId).val('');
     }
 }
@@ -984,7 +995,7 @@ function renderKendoTimePicker(controlId, timeFormate = 'HH:mm', startTime = '09
 }
 
 
-var convertTime12to24 = function (time12h)  {
+var convertTime12to24 = function (time12h) {
     const [time, modifier] = time12h.split(' ');
 
     let [hours, minutes] = time.split(':');
@@ -1007,8 +1018,8 @@ var convertHHMMToSeconds = function (time24hr) {
 
     // minutes are worth 60 seconds. Hours are worth 60 minutes.
     //This code is commented beacuse the time which we received is only in Hours and Minutes like 11:00
-   // var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 ;
+    // var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60;
 
     return seconds;
 }
@@ -1028,7 +1039,7 @@ function only0To9WithDecimalAllowed(evt) {
         return false;
 
     return true;
-   
+
 }
 function only1To9Allowed(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
@@ -1041,14 +1052,31 @@ function only1To9Allowed(evt) {
         return false;
     }
     else if (charCode > 48 && charCode <= 57) {
-    
+
         return true
     }
     else {
-    
+
         false;
     }
 }
 
 
- 
+//---- Check Validation between Issue and Expiry Dates .....
+
+function fnCheckDateValidation(dateOne, dateTwo,) {
+
+    var expiryDate = dateOne.value;
+    var releaseDate = dateTwo.val();
+    if (releaseDate > expiryDate == true) {
+        swalMessage('info', lblExpiryDateCannotBeLessThanIssue + '', 3500);
+    }
+}
+
+
+//---- REMOVE --Select-- in arabic format Dropdowns  only....
+function fnRemoveSelectInArabic(sessionDDL) {
+
+    sessionDDL[0].name == '-- Select --' ? sessionDDL[0].name = '-- اختر --' : sessionDDL[0].name = '-- Select --';
+    return sessionDDL
+}

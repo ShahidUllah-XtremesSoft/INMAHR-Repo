@@ -71,9 +71,9 @@ var loadAttendanceGridCallBack = function (inputDataJSON) {
     bindAttendanceGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAttendanceGrid = function (inputDataJSON) {
-
+    var record = 0;
     var gridColumns = [
-
+        { title: "#", template: "<b>#= ++record #</b>", width: 10 },
         { field: "id", title: "id", hidden: true },
         { field: "employeeNumber", title: empNum, width: 30, filterable: true },
         { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },        
@@ -84,16 +84,20 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
         { field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false },
-        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: false },
+        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: true },
         //{ field: "status", title: status, width: 100, filterable: true }
         {
             title: status,
             field: 'status',
-            width: 30,
+            width: 35,
             hidden: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (status != 'Present') { # <span class='badge badge-danger'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
+       // {
+       //     field: "remarks", title: remarks, width: 40, filterable: true, hidden: false
+       //     //, template: " <span class='badge badge-danger'>#:remarks#</span>"
+       // },
     ];
 
     bindKendoGrid(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);

@@ -133,13 +133,13 @@
     <value>سجل</value>
   </data>
   <data name="btnReceivedLetters" xml:space="preserve">
-    <value>رسائل الوارد</value>
+    <value>الرسائل الواردة</value>
   </data>
   <data name="btnSave" xml:space="preserve">
     <value>حفظ</value>
   </data>
   <data name="btnSentLetters" xml:space="preserve">
-    <value>رسائل الصادر</value>
+    <value>الرسائل الصادرة</value>
   </data>
   <data name="btnSignIn" xml:space="preserve">
     <value>تسجيل الدخول</value>
@@ -213,6 +213,9 @@
   <data name="lblCreateUserLogin" xml:space="preserve">
     <value>إنشاء تسجيل دخول المستخدم</value>
   </data>
+  <data name="lbldailyAttendance" xml:space="preserve">
+    <value>التحضير يومية</value>
+  </data>
   <data name="lblDate" xml:space="preserve">
     <value>التاريخ</value>
   </data>
@@ -223,7 +226,7 @@
     <value>الايام</value>
   </data>
   <data name="lblDecline" xml:space="preserve">
-    <value>انخفاض</value>
+    <value>الغاء</value>
   </data>
   <data name="lblDeductionDate" xml:space="preserve">
     <value>تاريخ الاستطاع</value>
@@ -306,6 +309,9 @@
   <data name="lblEmployeeNumber" xml:space="preserve">
     <value>رقم الموظف</value>
   </data>
+  <data name="lblEmployeesAttendance" xml:space="preserve">
+    <value>تحضير الموظفين</value>
+  </data>
   <data name="lblEmployeesCancelLeaveRequest" xml:space="preserve">
     <value>موظف إلغاء طلب الإجازة</value>
   </data>
@@ -345,8 +351,14 @@
   <data name="lblFile" xml:space="preserve">
     <value>الملف</value>
   </data>
+  <data name="lblForward" xml:space="preserve">
+    <value>تحويل</value>
+  </data>
   <data name="lblFristSelectRecordFromGrid" xml:space="preserve">
     <value>حدد السجلات من الشبكة أولاً</value>
+  </data>
+  <data name="lblFrom" xml:space="preserve">
+    <value>من</value>
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
@@ -379,7 +391,8 @@
     <value>Leave Name</value>
   </data>
   <data name="lblLeaveType" xml:space="preserve">
-    <value>نوع الاجارة</value>
+    <value>نوع الاجازة</value>
+    <comment>نوع الاجارة</comment>
   </data>
   <data name="lblLetterNumber" xml:space="preserve">
     <value>رقم الرسالة</value>
@@ -483,6 +496,9 @@
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>
   </data>
+  <data name="lblPersonalAttendance" xml:space="preserve">
+    <value>تحضير الشخصي</value>
+  </data>
   <data name="lblPersonalDocument" xml:space="preserve">
     <value>الإسم الوثيقة</value>
   </data>
@@ -507,8 +523,17 @@
   <data name="lblProfileImage" xml:space="preserve">
     <value>الصورة الشخصية</value>
   </data>
+  <data name="lblReadLetter" xml:space="preserve">
+    <value>اقرأ الرسالة</value>
+  </data>
   <data name="lblReleaseDate" xml:space="preserve">
     <value>Release Date</value>
+  </data>
+  <data name="lblremarks" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="lblReply" xml:space="preserve">
+    <value>الرد</value>
   </data>
   <data name="lblRequest" xml:space="preserve">
     <value>الطلب</value>
@@ -543,6 +568,9 @@
   <data name="lblSelectLeave" xml:space="preserve">
     <value>Select Leave</value>
   </data>
+  <data name="lblSend" xml:space="preserve">
+    <value>ارسل</value>
+  </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>إجازة قصيرة</value>
   </data>
@@ -556,7 +584,7 @@
     <value>خروج</value>
   </data>
   <data name="lblSocialStatusArabic" xml:space="preserve">
-    <value>الحالة المدنية (باللغة العربية)</value>
+    <value>الحالة المدنية </value>
   </data>
   <data name="lblSocialStatusArb" xml:space="preserve">
     <value>الحالة المدنية</value>
@@ -580,10 +608,17 @@
     <value>الموضوع</value>
   </data>
   <data name="lblTakenLeave" xml:space="preserve">
-    <value>الإجازات التي تم اخذو</value>
+    <value>الاجازات المعتمدة</value>
+    <comment>الإجازات التي تم اخذو</comment>
   </data>
   <data name="lblTheDescription" xml:space="preserve">
     <value>الوصف</value>
+  </data>
+  <data name="lblTime" xml:space="preserve">
+    <value>الوقت</value>
+  </data>
+  <data name="lblTo" xml:space="preserve">
+    <value>إلى</value>
   </data>
   <data name="lblUpdatePassword" xml:space="preserve">
     <value>تحديث كلمة المرور</value>
@@ -622,6 +657,6 @@
     <value>الوثائق الشخصية</value>
   </data>
   <data name="tabPersonalInfo" xml:space="preserve">
-    <value>معلومات الشخصي</value>
+    <value>معلومات الشخصية</value>
   </data>
 </root>

@@ -3,8 +3,8 @@ $(function () {
 
     $('#Language').val(_currentLanguage);
 
- 
-     loadDepartmentTreeDropdownList();
+
+    loadDepartmentTreeDropdownList();
 
 
     $("#ProfessionId").kendoDropDownList({
@@ -12,28 +12,28 @@ $(function () {
         dataValueField: "id",
         filter: "contains",
         value: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ProfessionListEng')) : JSON.parse(localStorage.getItem('ProfessionListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ProfessionListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('ProfessionListArb'))),
     });
     $("#NationalityId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
         value: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('NationalityListEng')) : JSON.parse(localStorage.getItem('NationalityListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('NationalityListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('NationalityListArb'))),
     });
     $("#VisaSponsorshipId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
         value: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('SponsorshipListEng')) : JSON.parse(localStorage.getItem('SponsorshipListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('SponsorshipListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('SponsorshipListArb'))),
     });
     $("#ContractTypeId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
         value: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ContractTypeListEng')) : JSON.parse(localStorage.getItem('ContractTypeListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ContractTypeListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('ContractTypeListArb'))),
     });
 
     $("#EmiratesStateId").kendoDropDownList({
@@ -41,19 +41,16 @@ $(function () {
         dataValueField: "id",
         filter: "contains",
         value: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : JSON.parse(localStorage.getItem('EmiratesStatesListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('EmiratesStatesListArb'))),
     });
 
 
 
- 
-   
-  
-
+     
 
 
     $('#btn-save-employee').click(function () {
-       
+
 
         if (customValidateForm('frmAddUpdateEmployee')) {
 
@@ -63,7 +60,7 @@ $(function () {
             var options = {
                 success: function (response, statusText, jqXHR) {
                     buttonRemovePleaseWait('btn-save-employee', save, 'save');
-                    
+
                     swal(response);
                     var messageResponseParse = JSON.parse(response);
                     if (messageResponseParse.type == undefined) {

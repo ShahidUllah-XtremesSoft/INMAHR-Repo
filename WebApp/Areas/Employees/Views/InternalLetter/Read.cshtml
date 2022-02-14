@@ -1,39 +1,111 @@
 ﻿
 @{
-    ViewBag.Title = "Read Letter";
+
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblReadLetter;
+
 }
-
-
 <div class="card">
     <div class="card-block">
         <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div>From - <strong id="divFrom">Test Employee</strong></div>
+            <div class="col-md-2 col-sm-2">
+                <img class="img-sm rounded-circle mr-3 " id="ProfileImage"
+                     style="border-radius: 4%; width: 200px;"
+                     src="/Content/Images/user.jpg" alt="">
+            </div>
+            <div class="col-md-10 col-sm-10">
+                <div class="details text-right">
+
+                    <p class="sender-email">
+                        <div class="form-group">
+                            <div>
+                                <strong id=""> @HRModuleUI.HumanResourceUI.lblFrom: <span id="divFrom"></span></strong>
+                                <a class="btnForward btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Forward')" style="color: white;"> @HRModuleUI.HumanResourceUI.lblForward <i class="   fa fa-mail-forward "></i></a>
+                                <a class="btnReply btn btn-danger @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Reply')" style="color: white;"><i class="   fa fa-mail-reply"  ></i> @HRModuleUI.HumanResourceUI.lblReply</a>
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-md-12">
+                                        <a class="btn btn-success @Resources.Common.PullRight  m-r-10" href="@Url.Action("Reply","InternalLetter")"><i class="fa fa-reply"></i> @HRModuleUI.HumanResourceUI.lblReply</a>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </p>
+                    <b>
+                        <p class="msg-subject ">  @HRModuleUI.HumanResourceUI.lblIssueDate:<span class="letter-date"></span> </p>
+                        <p class="msg-subject ">  @HRModuleUI.HumanResourceUI.lblTime:<span class="letter-time"></span> </p>
+                        <p class="msg-subject ">  @HRModuleUI.HumanResourceUI.lblLetterNumber:<span class="letter-number"></span> </p>
+                    </b>
+                    <hr />
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            @*<div class="col-md-1">
+                    <img class="img-sm rounded-circle mr-3 " id="ProfileImage"
+                         style="border-radius: 4%; width: 110px;"
+                         src="" alt="">
+                </div>*@
+            <div class="col-md-11">
+                <div class="details text-right">
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="divTo"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div class="pull-right" id="divDate">12/30/2021</div>
+                    <p class="sender-email">
+                        <div class="form-group">
+                            <div>
+                                <strong id="divFrom"></strong>
+                            </div>
+
+                        </div>
+                    </p>
+                    <b>
+                        <p id="">  @HRModuleUI.HumanResourceUI.lblTo: <span id="divTo"></span></p>
+                    </b>
+
                 </div>
-
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">                
-                    <div id="divBody"></div>                
 
+
+        <hr />
+        @*<div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="pull-right" id="divDate"></div>
+                    </div>
+
+                </div>
+            </div>*@
+        <div class="card shadow-none mt-3 border border-light">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <p>  <b id="txt-subject">Title</b></p><hr />
+                    </div>
+                </div>
+                <br />
+
+                <p id="txt-body"></p>
+                <hr>
+                <div class="row attachmentRow" style="display:none;">
+                    <h5><i class="fa fa-paperclip mr-2"></i> @HRModuleUI.HumanResourceUI.lblAttachment<span></span></h5>
+                    <div class="col-sm-4 col-md-3">
+                        <a target="_blank" id="attachment-open" href="">
+                            <img id="letter-attachment" src="" alt="attachment" class="img-thumbnail" style="width: 30%;">
+                        </a>
+                    </div>
+
+                </div>
+                @*<div class="media mt-3">
+                        <a href="javascript:void();" class="media-left">  </a>
+                        <div class="media-body"></div>
+                    </div>*@
             </div>
         </div>
+        @*<div class="row" style="border:2px dashed">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div id="divBody"></div>
+
+                </div>
+            </div>*@
     </div>
 </div>
 @section scripts {

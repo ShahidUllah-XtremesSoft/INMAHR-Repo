@@ -136,6 +136,7 @@
     <Compile Include="GlobalEnums.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Models\InternalLetterData.cs" />
     <Compile Include="Models\EmployeeRequestData.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

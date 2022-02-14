@@ -310,10 +310,15 @@
     <Content Include="Content\en-US.css" />
     <Content Include="Content\Images\attachment.png" />
     <Content Include="Content\Images\calander.png" />
+    <Content Include="Content\Images\docx.png" />
     <Content Include="Content\Images\ImageIcon.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\pdf.png" />
+    <Content Include="Content\Images\ppt.png" />
     <Content Include="Content\Images\user.jpg" />
+    <Content Include="Content\Images\xls.png" />
+    <Content Include="Content\kendo\kendo.material-nova.min.css" />
+    <Content Include="Content\kendo\kendo.rtl.min.css" />
     <Content Include="Content\Login\img\appointment-1.jpg" />
     <Content Include="Content\Login\img\arrow.svg" />
     <Content Include="Content\Login\img\attachment.png" />
@@ -363,6 +368,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-personal.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-today.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\EmployeeAttendancePartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-reply.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-forward.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
@@ -1104,6 +1111,8 @@
     <Content Include="Areas\Setup\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Setup\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Setup\Views\PublicHoliday\Index.cshtml" />
+    <Content Include="Areas\Employees\Views\InternalLetter\Forward.cshtml" />
+    <Content Include="Areas\Employees\Views\InternalLetter\Reply.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />

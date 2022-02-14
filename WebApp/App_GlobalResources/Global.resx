@@ -150,6 +150,12 @@
   <data name="lblAction" xml:space="preserve">
     <value />
   </data>
+  <data name="lblAllowedFormatsArePngJpgOnly" xml:space="preserve">
+    <value>Allowed format(s) are (png, jpg)</value>
+  </data>
+  <data name="lblAllowedFormatsArePngJpgPdf" xml:space="preserve">
+    <value>Allowed format(s) are (png, jpg,pdf)</value>
+  </data>
   <data name="lblApprove" xml:space="preserve">
     <value>Approve</value>
   </data>
@@ -171,8 +177,14 @@
   <data name="lblEndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="lblInma" xml:space="preserve">
+    <value>INMA INT.LLC</value>
+  </data>
   <data name="lblNo" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="lblPoweredBy" xml:space="preserve">
+    <value>Powered By</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>Reset</value>
@@ -182,6 +194,12 @@
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="lblXtremeSoft" xml:space="preserve">
+    <value>XtremeSoft</value>
+  </data>
+  <data name="lblXtremesSoftware" xml:space="preserve">
+    <value>Xtreme Software</value>
   </data>
   <data name="lblYes" xml:space="preserve">
     <value>Yes</value>

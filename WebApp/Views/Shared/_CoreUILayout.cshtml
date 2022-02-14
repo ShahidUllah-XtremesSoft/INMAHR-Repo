@@ -7,18 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
-    <title>@ViewBag.Title - INMA INT.LLC</title>
+    <title>@ViewBag.Title - @Resources.Global.lblInma</title>
 
     <link href="~/Content/Themes/CoreUI/css/style.min.css" rel="stylesheet" />
     <!-- Icons -->
     <link href="~/Content/Themes/CoreUI/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/Themes/CoreUI/css/simple-line-icons.css" rel="stylesheet">
     <!-- Main styles for this application -->
+    @*<link href="~/Content/kendo/kendo.material-nova.min.css" rel="stylesheet" />
+        <link href="~/Content/kendo/kendo.rtl.min.css" rel="stylesheet" />*@
 
     <link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" />
     <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+
+
+
     <link href="~/Content/Themes/CoreUI/css/@Resources.Common.PageLayout" rel="stylesheet">
     <link href="~/Content/custom-css.css" rel="stylesheet" />
+    <style>
+        .k-filtercell > span {
+            padding-right: 0;
+        }
+    </style>
     <style>
         .k-filter-row .k-dropdown-operator {
             display: none;
@@ -91,7 +101,7 @@
         </div>
     </div>
     @{
-                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
+        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
     }
     <header class="navbar">
         <div class="container-fluid">
@@ -109,7 +119,7 @@
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid();" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
-                       
+
                     </div>
                 </li>
 
@@ -122,9 +132,9 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
 
-                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> @HRModuleUI.HumanResourceUI.lblUpdatePassword</button>                        
+                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> @HRModuleUI.HumanResourceUI.lblUpdatePassword</button>
                         <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> @HRModuleUI.HumanResourceUI.lblLogout </button>
-                        
+
                     </div>
                 </li>
 
@@ -160,10 +170,10 @@
 
     <footer class="footer">
         <span class="text-left">
-            <a href="https://xtremessoft.com">INMA</a>  &copy; 2022 Xtreme Software
+            <a href="https://xtremessoft.com">@Resources.Global.lblInma</a>  &copy; 2022 @Resources.Global.lblXtremesSoftware
         </span>
         <span class="@Resources.Common.PullRight">
-            Powered by <a href="https://xtremessoft.com"> XtremeSoft</a>
+            @Resources.Global.lblPoweredBy <a href="https://xtremessoft.com"> @Resources.Global.lblXtremeSoft</a>
         </span>
     </footer>
 
@@ -185,20 +195,20 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
-                                    <input class="form-control" id="EmployeeNum" name="EmployeeNum"  required readonly />
+                                    <input class="form-control" id="EmployeeNum" name="EmployeeNum" required readonly />
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblOldPassword</label><span style="color: red">*</span>
-                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" value="12345" readonly required  />
+                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" value="12345" readonly required />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNewPassword</label><span style="color: red">*</span>
-                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword"  required  />
+                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword" required />
                                 </div>
                             </div>
                         </div>
@@ -287,6 +297,22 @@
     var areYouSureTitle = '@Resources.Global.lblAreYouSure';
     var doYouReallyWantToDeletThisRecord  = '@Resources.Global.doYouReallyWantToDeleteThisRecord';
 
+       var empNumber = '@HRModuleUI.HumanResourceUI.lblEmployeeNumber';
+    var lblName = '@HRModuleUI.HumanResourceUI.lblName';
+
+    var lblRole = '@HRModuleUI.HumanResourceUI.lblRole';
+
+     var lblFristSelectRecordFromGrid  = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid';
+     var lblFrom  = '@HRModuleUI.HumanResourceUI.lblFrom';
+     var lblTo  = '@HRModuleUI.HumanResourceUI.lblTo';
+     var lblSend  = '@HRModuleUI.HumanResourceUI.lblSend';
+    var lblForward = '@HRModuleUI.HumanResourceUI.lblForward';
+    var lblAllowedFormatsArePngJpgOnly = '@Resources.Global.lblAllowedFormatsArePngJpgOnly';
+    var lblAllowedFormatsArePngJpgPdf = '@Resources.Global.lblAllowedFormatsArePngJpgPdf';
+
+
+
+
     $(function () {
         $(':input').removeAttr('placeholder');
         $('#LayoutCurrentLanguage').val(_currentLanguage);
@@ -309,18 +335,18 @@
         setTimeout(function () {
             addTinyMCE();
 
-        }, 500);
+        }, 200);
 
         //alert($('#Language').val());
-        
+
             //loadProfessionDropdownListForLS()
             //loadNationalityDropdownListForLS();
             //loadSponsorShipDropdownListForLS();
             //loadContractTypeDropdownListForLS();
             //loadRoleDropdownListForLS();
             //loadEmiratesStatesDropdownListForLS();
-        
-       
+
+
     });
 
     //function loadProfessionDropdownListForLS() {
@@ -430,18 +456,21 @@
 
     // Add TinyMCE
     function addTinyMCE() {
+
         // Initialize
         tinymce.init({
             selector: '.editor',
             themes: 'advanced',
             height: 300,
-            menubar: true, width: "100%",
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+           // menubar: true,
+            width: "100%",
+            menubar: false,
+            statusbar: false,
+            plugins: ['advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code fullscreen', 'insertdatetime media table paste code help wordcount'],
+         //   contextmenu: "paste | inserttable | cell row column deletetable",
+            contextmenu:false,
+         //   toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify   '
         });
 
 

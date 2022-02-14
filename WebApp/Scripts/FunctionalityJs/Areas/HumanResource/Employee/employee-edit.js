@@ -8,28 +8,28 @@ $(function () {
         dataValueField: "id",
         filter: "contains",
         index: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ProfessionListEng')) : JSON.parse(localStorage.getItem('ProfessionListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ProfessionListEng')) : fnRemoveSelectInArabic( JSON.parse(localStorage.getItem('ProfessionListArb'))),
     });
     $("#NationalityId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
         index: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('NationalityListEng')) : JSON.parse(localStorage.getItem('NationalityListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('NationalityListEng')) : fnRemoveSelectInArabic( JSON.parse(localStorage.getItem('NationalityListArb'))),
     });
     $("#VisaSponsorshipId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
         index: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('SponsorshipListEng')) : JSON.parse(localStorage.getItem('SponsorshipListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('SponsorshipListEng')) : fnRemoveSelectInArabic( JSON.parse(localStorage.getItem('SponsorshipListArb'))),
     });
     $("#ContractTypeId").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
         index: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ContractTypeListEng')) : JSON.parse(localStorage.getItem('ContractTypeListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('ContractTypeListEng')) : fnRemoveSelectInArabic( JSON.parse(localStorage.getItem('ContractTypeListArb'))),
     });
 
     $("#EmiratesStateId").kendoDropDownList({
@@ -37,7 +37,7 @@ $(function () {
         dataValueField: "id",
         filter: "contains",
         index: -1,
-        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : JSON.parse(localStorage.getItem('EmiratesStatesListArb')),
+        dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('EmiratesStatesListEng')) : fnRemoveSelectInArabic( JSON.parse(localStorage.getItem('EmiratesStatesListArb'))),
     });
 
 
@@ -94,12 +94,3 @@ $(function () {
 
 
 });
-
-function fnCheckDateValidation(dateOne, dateTwo,) {
-
-    var expiryDate = dateOne.value;
-    var releaseDate = dateTwo.val();
-    if (releaseDate > expiryDate == true) {
-        swalMessage('info', lblExpiryDateCannotBeLessThanIssue + '', 3500);
-    }
-}

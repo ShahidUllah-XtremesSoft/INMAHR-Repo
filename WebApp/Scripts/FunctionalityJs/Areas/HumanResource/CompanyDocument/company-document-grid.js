@@ -23,8 +23,10 @@ var loadCompanyDocumentCallBack = function (inputDataJSON) {
     bindCompanyDocumentGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindCompanyDocumentGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
 
+        { title: "#", template: "<b>#= ++record #</b>", width: 20, },
         { field: "id", title: "id", hidden: true },
         { field: "nameEng", title: NameEng, width: 100, filterable: true },
         { field: "nameArb", title: NameArb, width: 100, filterable: true },

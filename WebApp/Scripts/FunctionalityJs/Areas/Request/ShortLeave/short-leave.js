@@ -140,7 +140,9 @@ var loadShortLeaveGridCallBack = function (inputDataJSON) {
     bindShortLeaveGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindShortLeaveGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
         { field: "requestDate", title: requestDate, hidden: false, width: 30 },
         { field: "startTime", title: startTime, hidden: false, width: 30 },

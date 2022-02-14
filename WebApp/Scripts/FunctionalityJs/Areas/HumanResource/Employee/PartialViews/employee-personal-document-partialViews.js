@@ -76,7 +76,8 @@ function validatePersonalDocument(inputId) {
 
     if ($.inArray($('#' + inputId).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
 
-        swalMessage('info', 'Allowed format(s) are (' + fileExtension.join(', ') + ')', 2000);
+        //   swalMessage('info', 'Allowed format(s) are (' + fileExtension.join(', ') + ')', 2000);
+        swalMessage('info', lblAllowedFormatsArePngJpgPdf, 2000);
         $('#' + inputId).val('');
     }
 

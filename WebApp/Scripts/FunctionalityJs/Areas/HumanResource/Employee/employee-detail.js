@@ -7,20 +7,22 @@ $(function () {
     $('#Language').val(_currentLanguage);
 
     //Hide leave balance area if other than HR is logged in    
+ 
     if (JSON.parse(localStorage.getItem('User')).isHR) {
+        $('#internalDivPersonalDocument').css('height', '353');
         $('#divLeaveBalance').css('display', 'block');
-        $('#internalDivPersonalDocument').css('height','496');
     }
     else {
-        $('#divPersonalDocument').removeClass('col-md-6').addClass('col-md-12')
-        $('#internalDivPersonalDocument').css('height','auto');
+        $('#divLeaveBalance').css('display', 'block');
+       // $('#divPersonalDocument').removeClass('col-md-6').addClass('col-md-12')
+        $('#internalDivPersonalDocument').css('height', '353');
         //height: 496px; max-height: 496px;
-        
+
     }
-    
+
     //Hide leave balance area if other than HR is logged in
     //var $document_grid = "document-grid";
-    $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);    
+    $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
 
     //var LeaveRequestGrid = "LeaveRequestGrid";
     loadEmployeeProfile();
@@ -74,7 +76,7 @@ $(function () {
 
 
         if ($('#RequestDenyComment').val() == '') {
-            
+
         }
 
 
@@ -95,7 +97,7 @@ $(function () {
         else if ($('#ModalDenyRequestType').val() == 'LeaveCancelRequest') {
             ajaxRequest({ commandName: 'Request_LeaveCancel_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, RoleId: loggedInUserDetail.roleId, RequestId: requestId, CreatedBy: $('#CreatedBy').val(), Comment: comment, Status: 'Decline', Language: _currentLanguage }, CallBack: declineLeaveCancelRequestCallBack });
         }
-        else if ($('#ModalDenyRequestType').val() == 'CashInLeaveRequest') {            
+        else if ($('#ModalDenyRequestType').val() == 'CashInLeaveRequest') {
             ajaxRequest({ commandName: 'Request_CashInLeave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, Comment: comment, RoleId: loggedInUserDetail.roleId, RequestId: requestId, CreatedBy: $('#CreatedBy').val(), Status: 'Decline', Language: _currentLanguage }, CallBack: declineCashInLeaveRequestCallBack });
         }
         $('#RequestDenyComment').val('');
@@ -103,7 +105,7 @@ $(function () {
         $('#ModalDenyRequest').modal('toggle');
     });
     //| Request Deny Modal Comment, Save Button Click Ends
-    
+
 });
 //|Load Employee Profile Starts
 function loadEmployeeProfile() {
@@ -133,7 +135,7 @@ function loadEmployeeProfileCallBack(response) {
 
 //|Load Leave Request Grid Starts
 function loadLeaveRequestGrid() {
-  
+
     var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
     //ajaxRequest({ commandName: 'Request_Leave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: loggedInUserDetail.id, LoggedInUserRoleId: loggedInUserDetail.roleId, LoggedInUserDepartementId: loggedInUserDetail.departmentId, Language: _currentLanguage }, CallBack: loadLeaveRequestGridCallBack });
     ajaxRequest({ commandName: 'Request_Leave_GetBySuperiorRole', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: loggedInUserDetail.id, LoggedInUserRoleId: loggedInUserDetail.roleId, LoggedInUserDepartementId: loggedInUserDetail.departmentId, Language: _currentLanguage }, CallBack: loadLeaveRequestGridCallBack });
@@ -167,7 +169,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>'+btnApproveText+'</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>'+btnDeclineText+'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
         },
 
     ];
@@ -207,9 +209,9 @@ function approveLeave(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-         
+
             var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
-            ajaxRequest({ commandName: 'Request_Leave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id,Comment:'', CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveLeaveCallBack });
+            ajaxRequest({ commandName: 'Request_Leave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, Comment: '', CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveLeaveCallBack });
             //Aprove leave logic here
             //alert(JSON.stringify(dataItem));
             //alert(JSON.stringify( JSON.parse(localStorage.getItem('User'))));
@@ -257,7 +259,7 @@ function declineLeave(event) {
             //ajaxRequest({ commandName: 'HR_Employee_Delete', values: { Id: dataItem.id, Language: $('#Language').val() }, CallBack: deleteEmployeeByIdCallBack });
             //Aprove leave logic here
             //alert(JSON.stringify(dataItem));
-             
+
             $('#ModalDenyRequestType').val('LeaveRequest');
             $('#ModalDenyRequestId').val(dataItem.id);
             $('#ModalDenyRequest').modal('show');
@@ -265,7 +267,7 @@ function declineLeave(event) {
             //ajaxRequest({ commandName: 'Request_Leave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Decline', Language: _currentLanguage }, CallBack: declineLeaveCallBack });
 
         }
-    });   
+    });
 }
 var declineLeaveCallBack = function (response) {
     loadLeaveRequestGrid();
@@ -306,7 +308,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
         },
 
 
@@ -348,7 +350,7 @@ function approveShortLeave(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-           
+
             var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
             ajaxRequest({ commandName: 'Request_ShortLeave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, Comment: '', RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveShortLeaveCallBack });
             //Aprove leave logic here
@@ -395,7 +397,7 @@ function declineShortLeave(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-           
+
             $('#ModalDenyRequestId').val(dataItem.id);
             $('#ModalDenyRequestType').val('ShortLeaveRequest');
             $('#ModalDenyRequest').modal('show');
@@ -404,7 +406,7 @@ function declineShortLeave(event) {
 
         }
     });
-   
+
 }
 var declineShortLeaveCallBack = function (response) {
     //console.log(response);
@@ -449,7 +451,7 @@ var bindLetterRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLetterRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLetterRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLetterRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLetterRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
         }
 
     ];
@@ -490,7 +492,7 @@ function approveLetterRequest(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-       
+
             var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
             ajaxRequest({ commandName: 'Request_LetterRequest_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, Comment: '', RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveLetterRequestCallBack });
             //Aprove leave logic here
@@ -537,7 +539,7 @@ function declineLetterRequest(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-          
+
             $('#ModalDenyRequestId').val(dataItem.id);
             $('#ModalDenyRequestType').val('LetterRequest');
             $('#ModalDenyRequest').modal('show');
@@ -546,7 +548,7 @@ function declineLetterRequest(event) {
 
         }
     });
-    
+
 
 }
 var declineShortLeaveCallBack = function (response) {
@@ -592,7 +594,7 @@ var bindCancelLeaveRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeaveCancelRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeaveCancelRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeaveCancelRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeaveCancelRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
         }
 
 
@@ -635,7 +637,7 @@ function approveLeaveCancelRequest(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-        
+
             var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
             ajaxRequest({ commandName: 'Request_LeaveCancel_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, Comment: '', RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveLeaveCancelRequestCallBack });
             //Aprove leave logic here
@@ -682,7 +684,7 @@ function declineLeaveCancelRequest(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-            
+
             $('#ModalDenyRequestId').val(dataItem.id);
             $('#ModalDenyRequestType').val('LeaveCancelRequest');
             $('#ModalDenyRequest').modal('show');
@@ -692,7 +694,7 @@ function declineLeaveCancelRequest(event) {
 
         }
     });
-    
+
 
 }
 var declineLeaveCancelRequestCallBack = function (response) {
@@ -734,7 +736,7 @@ var bindCashInLeaveRequestGridCallBack = function (inputDataJSON) {
             'width': 35,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveCashInLeaveRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineCashInLeaveRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText +'</button>'
+            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveCashInLeaveRequest(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineCashInLeaveRequest(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
         }
 
 
@@ -777,7 +779,7 @@ function approveCashInLeaveRequest(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-             
+
             var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
             ajaxRequest({ commandName: 'Request_CashInLeave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, Comment: '', RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveCashInLeaveRequestCallBack });
             //Aprove leave logic here
@@ -824,7 +826,7 @@ function declineCashInLeaveRequest(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-           
+
             $('#ModalDenyRequestId').val(dataItem.id);
             $('#ModalDenyRequestType').val('CashInLeaveRequest');
             $('#ModalDenyRequest').modal('show');

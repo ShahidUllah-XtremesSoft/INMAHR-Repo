@@ -12,8 +12,9 @@ var loadContractTypeGridCallBack = function (inputDataJSON) {
     bindContractTypeGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindContractTypeGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
-
+        { title: "#", template: "<b>#= ++record #</b>", width: 10 },
         { field: "id", title: "id", hidden: true },
 
         { field: "nameEng", title: nameEng, width: 100, filterable: true },

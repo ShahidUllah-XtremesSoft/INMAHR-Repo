@@ -151,6 +151,7 @@ var loadEmployeeGridCallBack = function (inputDataJSON) {
     bindEmployeeGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindEmployeeGrid = function (inputDataJSON) {
+    var record = 0;
     var isHR = !inputDataJSON[0].isHR;
 
     if (requestFrom == 'attendance') {
@@ -160,7 +161,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
 
         { field: "id", title: "id", hidden: true },        
 
-
+        { title: "#", template: "<b>#= ++record #</b>", width: 20, },
         //{ field: "employeeNumber", title: "Employee Number", width: 130, filterable: true },
         {
             field: "employeeNumber", title: employeeNumber, width: 40, filterable: true,

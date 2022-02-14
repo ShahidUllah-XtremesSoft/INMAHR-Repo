@@ -200,11 +200,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-box">
-            <div class="email-header">             
+            <div class="email-header">
             </div>
             <div>
                 <div>
-                    <div id="SentLettersGrid"></div>                    
+                    <div id="SentLettersGrid"></div>
                 </div>
             </div>
         </div>
@@ -281,19 +281,27 @@
     }
 
     var bindLetterOutboxGrid = function (inputDataJSON) {
+        var record = 0;
         var gridColumns = [
             { field: "id", title: "id", hidden: true },
+
+            { title: "#", template: "<b>#= ++record #</b>", width: 5, },
             {
-                field: "subject", title: subject, width: 40, filterable: true,
+                field: "number", title: lblLetterNumber, width: 20, filterable: true, hidden: true,
+                template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
+            },
+            { field: "departmentName", title: section, width: 40, filterable: true},
+            {
+                field: "subject", title: subject, width: 40, filterable: true, hidden: true,
                 template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>",
             },
             {
-                field: "body", title: description, width: 80, filterable: true,
+                field: "body", title: description, width: 70, filterable: true,
                 template: "<div style='font-weight:normal;'>#=body#</div>" //"#if(isRead == false){#<div style='font-weight:bold;'>#=body#</div>#}else{#<div style='font-weight:normal;'>#=body#</div>#}# ",
             },
             //{ field: "body", title: description, width: 60, filterable: true },
             {
-                field: "", title: dateTime, width: 10, filterable: true,//createdDate
+                field: "", title: dateTime, width: 20, filterable: true,//createdDate
                 template: "<div  class='viewbutton'>#=createdDate#</div>" //"#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
             },
@@ -302,7 +310,7 @@
 
             {
                 field: "",
-                width: 10,
+                width: 20,
                 title: attachment,
                 template: "<a style='font-size:20px;cursor:pointer;' onClick= viewAttachment('#=currentFileName#')  title='Download Attachment'>#if(currentFileName == null){}else{ if(currentFileName.split('.').pop().toLowerCase() == 'pdf'){#<img src='/Content/Images/pdf.png' style='width:30px;cursor:pointer;'/></a>#} else {#<img src='/Content/Images/ImageIcon.png' style='width:33px;height:34px;cursor:pointer;'/></a>#} }#"
             },
@@ -391,7 +399,14 @@
             }
         }).then(function (restult) {
             if (restult.value) {
-                ajaxRequest({ commandName: 'Employee_InternalLetter_Delete', values: { Id: dataItem.id, LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: deleteInternalLetterCallBack });
+                ajaxRequest({
+                    commandName: 'Employee_InternalLetter_Outbox_Delete', values: {
+                        Id: dataItem.id,
+                        LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId,
+                        LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+                        Language: _currentLanguage
+                    }, CallBack: deleteInternalLetterCallBack
+                });
             }
         });
         //alert(letterId);

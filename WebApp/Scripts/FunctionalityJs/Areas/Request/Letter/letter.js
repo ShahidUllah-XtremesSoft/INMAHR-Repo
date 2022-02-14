@@ -50,7 +50,9 @@ var loadLetterGridCallBack = function (inputDataJSON) {
     bindLetterGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindLetterGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
         { field: "LetterTypeId", title: "LetterTypeId", hidden: true },
         { field: "letterType", title: letterType, hidden: false, width: 20 },

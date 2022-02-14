@@ -1,56 +1,68 @@
 ﻿
 @{
-    ViewBag.Title = HRModuleUI.HumanResourceUI.lblInternalLetter;
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblReply;
 }
 
 <div class="card">
     <div class="card-block">
 
         <form id="frmEmployeeInternalLetter" name="frmEmployeeInternalLetter" action="/services/Xtreme/multipart" method="post">
-            <input type="hidden" name="type" id="type" value="Employee_InternalLetter_Save">
+            <input type="hidden" name="type" id="type" value="Employee_InternalLetter_Reply">
             <input type="hidden" name="Id" id="Id" value="0">
             <input type="hidden" name="CreatedBy" id="CreatedBy" value="0">
             <input type="hidden" name="Reciever_HR_Employee_Ids" id="Reciever_HR_Employee_Ids" value="0">
             <input type="hidden" name="Language" id="Language" value="">
-            <input type="hidden" name="LetterStatus" id="LetterStatus" value="New">
             <input type="hidden" name="Tag" id="Tag" value="">
+            <input type="hidden" name="LetterStatus" id="LetterStatus" value="Reply">
             <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLetterNumber</label><span style="color:red">*</span><br />
+                        <div>
+                            <strong id=""> @HRModuleUI.HumanResourceUI.lblTo: 
+                            <span id="divFrom"></span></strong>
+                            
+                        </div>
+
+                    </div>
+                    @*<div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTo</label><span style="color:red">*</span><br />
                         <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
-                    </div>
+                    </div>*@
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDate</label> <span style="color:red">*</span> <br />
-                        <input type="date" class="form-control" name="LetterDate" id="LetterDate" required>
-                    </div>
-                </div>
-            </div>
+                <div class="col-sm-8"> </div>
+            </div><hr />
+                  <div class="row">
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLetterNumber</label><span style="color:red">*</span><br />
+                              <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDate</label> <span style="color:red">*</span> <br />
+                              <input type="date" class="form-control" name="LetterDate" id="LetterDate" required>
+                          </div>
+                      </div>
+                      <div class="col-sm-6"> </div>
+                  </div>
+            
             <div class="row">
 
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSubject</label><span style="color:red"> *</span><br />
-                        <input type="text" class="form-control pname" name="Subject" id="Subject" required>
+                        <input type="text" class="form-control pname" name="Subject" id="Subject" readonly required  style="height: 85px; ">
                     </div>
                 </div>
+                <div class="col-sm-6"></div>
 
             </div>
-            <div class="row">
+            @*<div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label class="col-form-label showAllSelecttedSection" style="font-size:x-large; text-decoration:underline"> </label> <br />
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                          <label class="col-form-label showAllSelecttedEmployee" style="font-size:x-large; text-decoration:underline"> </label> <br />
 
                     </div>
                 </div>
@@ -64,36 +76,8 @@
                     </div>
                 </div>
 
-            </div>
+            </div>*@
 
-            <!--<div class="row">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label class="col-form-label">HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />-->
-            @*<select class="form-control" multiple="multiple" id="DepartmentIds" name="DepartmentIds" required></select>*@
-            @*<select class="form-control" multiple="multiple" required id="DepartmentIds"></select>*@
-            <!--<input type="text" class="form-control" id="DepartmentId" name="DepartmentId" />
-            <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />-->
-            @*<select class="form-control" id="DepartmentIds"></select>*@
-
-
-            <!--</div>
-                </div>
-            </div>-->
-            @*<div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature</label><span style="color:red">*</span><br />
-                            <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" value="0" />
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
-                            <input type="file" class="form-control" name="Attachment" id="Attachment">
-                        </div>
-                    </div>
-                </div>*@
 
             <div class="row">
                 <div class="col-sm-6">
@@ -114,7 +98,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <button type="button" class="btn btn-success pull-right  m-r-10" id="btnSave"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" class="btn btn-success pull-right  m-r-10" id="btnSave"><i class="fa fa-mail-reply"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
                     </div>
                 </div>
             </div>
@@ -122,7 +106,7 @@
 
         @* MODEL AREA START >>>>>>>>>>>>>>>>> *@
 
-        <div class="modal fade" id="modal-internal-letter-section-selection" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        @*<div class="modal fade" id="modal-internal-letter-section-selection" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -135,7 +119,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />
+                                    <label class="col-form-label">HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />
                                     <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" />
 
 
@@ -154,12 +138,12 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">@HRModuleUI.HumanResourceUI.lblClose</button>
-                        <button type="button" class="btn btn-primary" value="Select" disabled id="btn-select-records-from-grid"><i class="fa fa-save"></i> @HRModuleUI.HumanResourceUI.lblSelect</button>
+                        <button type="button" class="btn btn-default btnClose" data-dismiss="modal">HRModuleUI.HumanResourceUI.lblClose</button>
+                        <button type="button" class="btn btn-primary" value="Select" disabled id="btn-select-records-from-grid"><i class="fa fa-save"></i> HRModuleUI.HumanResourceUI.lblSelect</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
         @* MODEL AREA END ----------------*@
 
@@ -167,6 +151,8 @@
     </div>
 </div>
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-new.js"></script>
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-reply.js"></script>
 }
 

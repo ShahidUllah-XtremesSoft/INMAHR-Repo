@@ -1,6 +1,11 @@
-﻿$(function () {
+﻿var queryStringLetterId = 0, requestCameFrom;
+
+$(function () {
+    queryStringLetterId = (new URL(location.href)).searchParams.get('value');
+    
+    getInternalLetterById(queryStringLetterId);
     //Values settings starts
-    $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $("#LetterDate").kendoDatePicker({
         //format: "yyyy-MM-dd"
     });
@@ -11,18 +16,16 @@
     //Values settings ends
 
     //Functions calling
-    getLetterNextNumber();
+    // getLetterNextNumber();
 
     //loadDepartmentTreeDropdownListWithCheckbox();   // THIS IS OLD DEPARTMENT DDL LOAD FN
-    loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
-    // loadRoleDropdownList(false);
-    setTimeout(function () {
-        $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck);
-        //var treeview = $("#DepartmentId").data("kendoDropDownTree");
-        //treeview.bind("check", tree_check);
-    }, 500);
-    //Events Starts
+    //loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
+
+   // setTimeout(function () { $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck); }, 500);
+
+
     $('#btnSave').on('click', function (e) {
+       
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         var valid = true;
         $("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
@@ -46,40 +49,65 @@
             buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btnSave', lblSend, 'send');
+                    buttonRemovePleaseWait('btnSave', lblSend, 'reply');
                     swal(response);
-                    //clearFields();
-                    //getLetterNextNumber                    
-                    // Insertion to multiple Internal letter table .
-
-                    if (JSON.parse(JSON.parse(response)).type == 'success') {
-                        setTimeout(function () {
-                            loopThroughGrid();
-                        }, 100);
-                    }
+                    setTimeout(function () {
+                        fnInsertToMultipleTable();
+                    }, 200);
 
                 },
                 error: function (xhr, status, error) {
-                    buttonRemovePleaseWait('btnSave', lblSend, 'send');
+                    buttonRemovePleaseWait('btnSave', lblSend, 'reply');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', lblSend, 'send');
+                    buttonRemovePleaseWait('btnSave', lblSend, 'reply');
                 }
             };
             $("#frmEmployeeInternalLetter").ajaxSubmit(options);
-
+            
         }
         else {
 
-            buttonRemovePleaseWait('btnSave', lblSend, 'send');
+            buttonRemovePleaseWait('btnSave', lblSend, 'reply');
         }
     });
     //Events ends
     setTimeout(function () { $('.tox-notifications-container').hide(); }, 1000);
-
+  
 });
+
+
+//------------------ LOAD DATA AS PER LETTER ID   --------------------
+function getInternalLetterById(queryStringLetterId) {
+    ajaxRequest({ commandName: 'Employee_InternalLetter_GetById_New_For_Reply', values: { Id: parseInt(queryStringLetterId), Language: _currentLanguage }, CallBack: getInternalLetterByIdCallBack });
+
+}
+var getInternalLetterByIdCallBack = function (inputDataJSON) {
+     
+
+
+    var responseJSON = JSON.parse(inputDataJSON.Value);
+    var letterToArray = responseJSON.letterTo.split(',');
+  
+    $('#Id').val(responseJSON.id);
+    $('#LetterNumber').val(responseJSON.number); 
+    $('#Subject').val(responseJSON.subject);
+    $('#DepartmentIds').val(responseJSON.senderDepartmentID);
+    $('#Reciever_HR_Employee_Ids').val(responseJSON.senderEmployeeId);
+    $('#divFrom').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.createdBy + '</button>');
+    //setTimeout(function () {
+    //    $('#Body').html(responseJSON.body);
+    //}, 100);
+  
+}
+
+//--------------------------------------------------- END
+
+ 
+
+
 
 function loadRoleDropdownList(isBindChangeEvent = false) {
     if ('en-US' == _currentLanguage) {
@@ -94,30 +122,29 @@ function loadRoleDropdownList(isBindChangeEvent = false) {
         }
     }, 1500);
 }
-function getLetterNextNumber() {
-    ajaxRequest({ commandName: 'Employee_InternalLetter_GetNextNumber', values: {}, CallBack: getLetterNextNumberCallBack });
+//function getLetterNextNumber() {
+//    ajaxRequest({ commandName: 'Employee_InternalLetter_GetNextNumber', values: {}, CallBack: getLetterNextNumberCallBack });
 
-}
-var getLetterNextNumberCallBack = function (inputDataJSON) {
+//}
+//var getLetterNextNumberCallBack = function (inputDataJSON) {
 
-    $('#LetterNumber').val(JSON.parse(inputDataJSON.Value).letterNumber);
-}
+//    $('#LetterNumber').val(JSON.parse(inputDataJSON.Value).letterNumber);
+//}
 
+/*
 function departmentTreeViewCheck(e) {
     var getLastValue = 0
-    //console.log("Checking", e.sender._values);
+
     $('#DepartmentIds').val('');
     var selectedDepartments = e.sender._values;
     var concatenatedDepartments = '';
     selectedDepartments.forEach(function (item) {
-        //console.log("item", item);
+
         concatenatedDepartments += concatenatedDepartments == '' ? item : ',' + item;
         getLastValue = item;
     });
-    //alert(concatenatedDepartments);
-    $('#DepartmentIds').val(concatenatedDepartments);
 
-    //$('#DepartmentIds').val() 
+    $('#DepartmentIds').val(concatenatedDepartments);
     loadAllEmployeesAsPerDepartmentId();
 }
 
@@ -168,6 +195,7 @@ var bindGridData = function (inputDataJSON) {
 
     $('#btn-select-records-from-grid').attr('disabled', true)
 };
+
 function fnCheckUncheck(e) {
 
     if (e.checked) {
@@ -199,21 +227,15 @@ $('#btn-select-records-from-grid').click(function (e) {
 });
 
 function getIdsFromGrid(btnValue, btnId, btnIcon) {
-    $('.showAllSelecttedEmployee').empty('');
-    $('.showAllSelecttedSection').empty('');
+
     var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
     var gridDataSource = grid.dataSource._data;
     var ids = '';
-   
     for (var i = 0; i < gridDataSource.length; i++) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
         if (isAssigned == true) {
             var gridRow = gridDataSource[i];
             ids += ids == '' ? gridRow.id : ',' + gridRow.id;
-         //   nameArray.push(gridRow.name);
-        
-            $('.showAllSelecttedEmployee').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light"> ' + gridRow.name + '</button>');
-            $('.showAllSelecttedSection').append('<button type="button" class="btn btn-outline-danger waves-effect waves-light"> ' + gridRow.department + '</button>')
         }
     }
     if (ids.length > 0) {
@@ -224,11 +246,8 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         $('.btnClose').click();
 
-       // $('.showAllSelecttedSection').text( $('.k-multiselect-wrap.k-floatwrap').text())
-        //--ASSIGN EMPLOYEE NAMES
-        //for (var i = 0; i < nameArray.length; i++) {
-        //    $('.showAllSelecttedEmployee').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light"> ' + gridRow.name + '</button>')
-        //}
+        $('.showAllSelecttedSection').text($('.k-multiselect-wrap.k-floatwrap').text())
+
         return ids;
 
 
@@ -249,33 +268,8 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
 
 
 function loopThroughGrid(e) {
-    debugger
+
     var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
-    /*
-        { field: "id", title: "id", hidden: true },
-        { field: "internalLetterRoleId", title: "InternalLetterRoleId", hidden: true },
-        { field: "departmentId", title: "DepartmentId", hidden: true },
-        { field: "isCompany", title: "IsCompany", hidden: true },
-        { field: "employeeNumber", title: employeeNumber, hidden: false, width: 20 },
-        { field: "name", title: lblName, hidden: false, width: 20 },
-        { field: "department", title: section, hidden: false, width: 20 },
-        { field: "roleName", title: lblRole, hidden: false, width: 20 },
-    @Id							INT
-   ,@LetterNumber				NVARCHAR(50)
-   ,@LetterDate					DATETIME
-   ,@Subject					NVARCHAR(MAX)
-   ,@SignedBy					INT
-   ,@Body						NVARCHAR(MAX)
-   ,@IsRead						BIT = 0
-   ,@IsImportant				BIT = 0
-   ,@Tag						NVARCHAR(MAX)
-   ,@DepartmentIds				NVARCHAR(MAX)
-   ,@CreatedBy					INT
-   ,@Language					NVARCHAR(10)
-   ,@Reciever_HR_Employee_Ids	NVARCHAR(MAX)
-     
-      
-       * */
 
 
     var gridd = grid.dataSource._data;
@@ -284,12 +278,12 @@ function loopThroughGrid(e) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
 
         var gridRow = gridd[i];
-        if (isAssigned == true  ) {
+        if (isAssigned == true || gridRow.id > 0) {
             postingArray.push(
                 {
 
                     //--------- Grid Data-------------
-                    LetterId: 0,
+                    LetterId: parseInt($('#Id').val()),
                     C_Employee_InternalLetterMultiple_Id: 0,
                     LetterNumber: $('#LetterNumber').val(),
                     LetterDate: $('#LetterDate').val(),
@@ -300,15 +294,14 @@ function loopThroughGrid(e) {
                     SignedBy: 0,
                     IsRead: 0,
                     IsImportant: 0,
-                    LetterStatus: 'New'
+                    LetterStatus: 'Reply'
                 });
         }
 
     }
     if (postingArray.length > 0) {
-        console.log(postingArray)
         ajaxRequest({
-            commandName: 'Employee_InternalLetter_Save_Multiple',
+            commandName: 'Employee_InternalLetter_Reply_Multiple',
             values:
             {
                 InternalLetterData: postingArray,
@@ -320,9 +313,40 @@ function loopThroughGrid(e) {
             window.location.href = '/Employees/InternalLetter';
         }, 1000);
     }
-    //else {
-    //    buttonRemovePleaseWait('btnSave', save, 'save');
-    //    swalMessage('info', 'First select records from grid', 1500);
-    //}
+}
+*/
+function fnInsertToMultipleTable(e) { 
+    var postingArray = [];
+  
 
+            postingArray.push(
+                { 
+                    LetterId: parseInt($('#Id').val()),
+                    C_Employee_InternalLetterMultiple_Id: 0,
+                    LetterNumber: $('#LetterNumber').val(),
+                    LetterDate: $('#LetterDate').val(),
+                    EmployeeId: parseInt($('#Reciever_HR_Employee_Ids').val()),
+                    DepartmentId: parseInt($('#DepartmentIds').val()),
+                    EmployeeInternalLetterRoleId: 0,
+                    CreatedBy: parseInt($('#CreatedBy').val()),
+                    SignedBy: 0,
+                    IsRead: 0,
+                    IsImportant: 0,
+                    LetterStatus: 'Reply'
+                });
+ 
+    if (postingArray.length > 0) {
+        ajaxRequest({
+            commandName: 'Employee_InternalLetter_Reply_Multiple',
+            values:
+            {
+                InternalLetterData: postingArray,
+                CreatedBy: $('#CreatedBy').val(),
+                Language: $('#Language').val()
+            }, CallBack: ''
+        });
+        setTimeout(function () {
+            window.location.href = '/Employees/InternalLetter';
+        }, 1000);
+    }
 }

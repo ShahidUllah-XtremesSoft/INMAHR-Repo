@@ -144,7 +144,9 @@ var loadLeaveGridCallBack = function (inputDataJSON) {
     bindLeaveGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindLeaveGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
         { field: "leaveType", title: leaveType, hidden: false, width: 30 },
         { field: "startDate", title: startDate, hidden: false, width: 30 },

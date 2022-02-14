@@ -1,7 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Today Attendance";
+    ViewBag.Title = @HRModuleUI.HumanResourceUI.lbldailyAttendance;
 }
+
 
 <div class="card">
     <div class="card-block">
@@ -27,7 +28,7 @@
                 <div class="form-group divSearchControls">
                     <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i>@HRModuleUI.HumanResourceUI.lblSearch</button>
                 </div>
-            </div> 
+            </div>
             <div class="col-md-1 ">
                 <div class="form-group divSearchControls">
                     <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnShowAll"><i class="fa fa-eye"></i> @HRModuleUI.HumanResourceUI.lblShowAll</button>
@@ -49,7 +50,7 @@
 @section scripts {
     @*<script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-grid.js"></script>*@
     <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-today.js"></script>
-    
+
     <script>
         //Grid columns
          var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';

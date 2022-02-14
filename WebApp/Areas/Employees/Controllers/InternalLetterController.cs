@@ -22,6 +22,15 @@ namespace WebApp.Areas.Employees.Controllers
             return View();
         }
 
+        public ActionResult Forward()
+        {
+            return View();
+        }
+        public ActionResult Reply()
+        {
+            return View();
+        }
+
 
 
 
@@ -38,7 +47,7 @@ namespace WebApp.Areas.Employees.Controllers
         public PartialViewResult OutboxPartialView(string inputJSON)//object menuItems)
         {
 
-            ViewBag.LetterInboxJSON = inputJSON;            
+            ViewBag.LetterInboxJSON = inputJSON;
             //var menuItem = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(menuItems);
 
 

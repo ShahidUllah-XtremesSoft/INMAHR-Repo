@@ -1,7 +1,9 @@
 ﻿using CastleWindsor.Factory.Core;
 using CastleWindsor.Factory.Repository;
+using INMA.HR.Services.Common;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,8 +30,11 @@ namespace INMA.HR.Services.Commands.Employee
 
         }
     }
-    [Command(Name = "Employee_InternalLetter_Save")]
-    public class Employee_InternalLetter_SaveCommand : CamelCommandBase
+    #region ================ Employee Internal Letter Forward =====================
+
+
+    [Command(Name = "Employee_InternalLetter_Reply")]
+    public class Employee_InternalLetter_ReplyCommand : CamelCommandBase
     {
         public IFileService Service;
         protected override object DoAction(object viewInput)
@@ -37,17 +42,19 @@ namespace INMA.HR.Services.Commands.Employee
             var model = base.MappedModel(new
             {
                 Id = 0,
-                LetterNumber = string.Empty ,
+                LetterNumber = string.Empty,
                 LetterDate = string.Empty,
                 Subject = string.Empty,
                 SignedBy = 0,
-                Body  = string.Empty,
+                Body = string.Empty,
                 IsRead = false,
                 IsImportant = false,
                 Tag = string.Empty,
                 DepartmentIds = string.Empty,
                 CreatedBy = 0,
-                Language   = string.Empty,
+                Language = string.Empty,
+                LetterStatus = string.Empty,
+                Reciever_HR_Employee_Ids = string.Empty,
                 UploadedFiles = new List<FileUploadModel>()
 
             }, viewInput);
@@ -58,29 +65,29 @@ namespace INMA.HR.Services.Commands.Employee
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-            //if (model.UploadedFiles.Count > 0)
-            //{                
-            //    Service = new FileUploadService();
-            //    foreach (var file in model.UploadedFiles)
-            //    {
-            //        Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.InternalLetter, (int)_response.InsertedId, (int)DocumentType.InternalLetterAttachment, XtremeFactory._factory, XtremeFactory.connectionString);
-            //
-            //    }
-            //}
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_Reply.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            if (model.UploadedFiles.Count > 0)
+            {
+                Service = new FileUploadService();
+                foreach (var file in model.UploadedFiles)
+                {
+                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.InternalLetter, (int)_response.InsertedId, (int)DocumentType.InternalLetterAttachment, XtremeFactory._factory, XtremeFactory.connectionString);
+
+                }
+            }
             return _response;
 
         }
     }
-    [Command(Name = "Employee_InternalLetter_Inbox_Get")]
-    public class Employee_InternalLetter_Inbox_GetCommand : CamelCommandBase
+    [Command(Name = "Employee_InternalLetter_Reply_Multiple")]
+    public class Employee_InternalLetter_Reply_MultipleCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
             var model = base.MappedModel(new
             {
+                InternalLetterData = new List<InternalLetterData>(),
                 CreatedBy = 0,
-                EmployeeDepartmentId = 0,
                 Language = string.Empty
             }, viewInput);
 
@@ -90,11 +97,209 @@ namespace INMA.HR.Services.Commands.Employee
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_InternalLetter_Inbox_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+
+            var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Employee_InternalLetter_Save_Multiple]", ExtensionMethods.ToDataTable(model.InternalLetterData));
+            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
+            ProductList.Add("@UD_Employee_InternalLetter_Save_Multiple", table);
+            var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Employee_InternalLetter_Reply_Multiple.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response.ToList()[0];
+
+
+        }
+
+    }
+
+
+    #endregion    
+    #region ================ Employee Internal Letter Forward =====================
+
+
+    [Command(Name = "Employee_InternalLetter_Forward")]
+    public class Employee_InternalLetter_ForwardCommand : CamelCommandBase
+    {
+        public IFileService Service;
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                LetterNumber = string.Empty,
+                LetterDate = string.Empty,
+                Subject = string.Empty,
+                SignedBy = 0,
+                Body = string.Empty,
+                IsRead = false,
+                IsImportant = false,
+                Tag = string.Empty,
+                DepartmentIds = string.Empty,
+                CreatedBy = 0,
+                Language = string.Empty,
+                LetterStatus = string.Empty,
+                Reciever_HR_Employee_Ids = string.Empty,
+                UploadedFiles = new List<FileUploadModel>()
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_Forward.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            if (model.UploadedFiles.Count > 0)
+            {
+                Service = new FileUploadService();
+                foreach (var file in model.UploadedFiles)
+                {
+                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.InternalLetter, (int)_response.InsertedId, (int)DocumentType.InternalLetterAttachment, XtremeFactory._factory, XtremeFactory.connectionString);
+
+                }
+            }
+            return _response;
+
+        }
+    }
+    [Command(Name = "Employee_InternalLetter_Forward_Multiple")]
+    public class Employee_InternalLetter_Forward_MultipleCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                InternalLetterData = new List<InternalLetterData>(),
+                CreatedBy = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+
+
+            var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Employee_InternalLetter_Save_Multiple]", ExtensionMethods.ToDataTable(model.InternalLetterData));
+            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
+            ProductList.Add("@UD_Employee_InternalLetter_Save_Multiple", table);
+            var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Employee_InternalLetter_Forward_Multiple.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response.ToList()[0];
+
+
+        }
+
+    }
+
+
+    #endregion
+    [Command(Name = "Employee_InternalLetter_Save")]
+    public class Employee_InternalLetter_SaveCommand : CamelCommandBase
+    {
+        public IFileService Service;
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                LetterNumber = string.Empty,
+                LetterDate = string.Empty,
+                Subject = string.Empty,
+                SignedBy = 0,
+                Body = string.Empty,
+                IsRead = false,
+                IsImportant = false,
+                Tag = string.Empty,
+                DepartmentIds = string.Empty,
+                CreatedBy = 0,
+                Language = string.Empty,
+                Reciever_HR_Employee_Ids = string.Empty,
+                LetterStatus = string.Empty,
+                UploadedFiles = new List<FileUploadModel>()
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_Save_New.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            if (model.UploadedFiles.Count > 0)
+            {
+                Service = new FileUploadService();
+                foreach (var file in model.UploadedFiles)
+                {
+                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.InternalLetter, (int)_response.InsertedId, (int)DocumentType.InternalLetterAttachment, XtremeFactory._factory, XtremeFactory.connectionString);
+
+                }
+            }
+            return _response;
+
+        }
+    }
+    [Command(Name = "Employee_InternalLetter_Save_Multiple")]
+    public class Employee_InternalLetter_Save_MultipleCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                InternalLetterData = new List<InternalLetterData>(),
+                CreatedBy = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+
+
+            var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Employee_InternalLetter_Save_Multiple]", ExtensionMethods.ToDataTable(model.InternalLetterData));
+            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
+            ProductList.Add("@UD_Employee_InternalLetter_Save_Multiple", table);
+            var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Employee_InternalLetter_Save_Multiple.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response.ToList()[0];
+
+
+        }
+
+    }
+
+
+
+
+    [Command(Name = "Employee_InternalLetter_Inbox_Get")]
+    public class Employee_InternalLetter_Inbox_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                CreatedBy = 0,
+                EmployeeDepartmentId = 0,
+                EmployeeId = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_InternalLetter_Inbox_Get_New.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
             return response;
 
         }
     }
+
+
     [Command(Name = "Employee_InternalLetter_Outbox_Get")]
     public class Employee_InternalLetter_Outbox_GetCommand : CamelCommandBase
     {
@@ -113,7 +318,7 @@ namespace INMA.HR.Services.Commands.Employee
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_InternalLetter_Outbox_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_InternalLetter_Outbox_Get_New.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
             return response;
 
         }
@@ -135,7 +340,29 @@ namespace INMA.HR.Services.Commands.Employee
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_GetById.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_GetById_New.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+    [Command(Name = "Employee_InternalLetter_GetById_New_For_Reply")]
+    public class Employee_InternalLetter_GetById_New_For_ReplyCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_GetById_New_For_Reply.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
             return response;
 
         }
@@ -150,7 +377,8 @@ namespace INMA.HR.Services.Commands.Employee
                 Id = 0,
                 IsRead = false,
                 LoggedInUserId = 0,
-                LoggedInEmployeeDepartmentId = 0     ,
+                LoggedInEmployeeDepartmentId = 0,
+                LoggedInEmployeeId = 0,
                 Language = string.Empty
             }, viewInput);
 
@@ -174,6 +402,7 @@ namespace INMA.HR.Services.Commands.Employee
             {
                 Id = 0,
                 LoggedInEmployeeDepartmentId = 0,
+                LoggedInEmployeeId = 0,
                 Language = string.Empty
             }, viewInput);
 
@@ -188,4 +417,61 @@ namespace INMA.HR.Services.Commands.Employee
 
         }
     }
+    [Command(Name = "Employee_InternalLetter_Outbox_Delete")]
+    public class Employee_InternalLetter_Outbox_DeleteCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                LoggedInEmployeeDepartmentId = 0,
+                LoggedInEmployeeId = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Employee_InternalLetter_Outbox_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+
+    #region ========== Load Employees By Paramters
+    [Command(Name = "Employee_InternalLetter_GetEmployeesByParameters")]
+    public class Employee_InternalLetter_GetEmployeesByParametersCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                LoggedInUserId = 0,
+                LoggedInEmployeeId = 0,
+                LoggedInEmployeeDepartmentId = 0,
+                DepartmentIds = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_InternalLetter_GetEmployeesByParameters.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+    #endregion
+
+
+
+
+
 }

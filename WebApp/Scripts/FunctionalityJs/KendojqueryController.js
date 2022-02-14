@@ -498,6 +498,7 @@ function fnAvoidNegavtiveNumber(Inputvalue) { //Inputvalue is input field value 
 // Add TinyMCE
 function addTinyMCE() {
     // Initialize
+   
     tinymce.init({
         selector: '.editor',
         themes: 'advanced',
@@ -515,6 +516,7 @@ function addTinyMCE() {
 }
 $(document).ready(function () {
     setTimeout(function () {
+    
         addTinyMCE();
 
     }, 500);

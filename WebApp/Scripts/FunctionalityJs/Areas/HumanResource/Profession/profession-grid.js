@@ -13,7 +13,9 @@ var loadProfessionGridCallBack = function (inputDataJSON) {
     bindProfessionGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindProfessionGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 10 },
 
         { field: "id", title: "id", hidden: true },
 

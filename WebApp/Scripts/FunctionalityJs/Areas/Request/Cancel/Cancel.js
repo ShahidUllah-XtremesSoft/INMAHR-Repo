@@ -22,7 +22,9 @@ var loadCancelLeaveGridCallBack = function (inputDataJSON) {
     bindLeaveCancelGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindLeaveCancelGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
         { field: "requestLeaveId", title: "requestLeaveId", hidden: true },
         { field: "leave", title: leaveName, hidden: false, width: 30 },

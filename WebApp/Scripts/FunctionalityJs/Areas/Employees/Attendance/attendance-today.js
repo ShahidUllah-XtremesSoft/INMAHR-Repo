@@ -196,8 +196,9 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
         processButtonToggling(inputDataJSON);
     }
+    var record = 0;
     var gridColumns = [
-
+        { title: "#", template: "<b>#= ++record #</b>", width: 10, },
         { field: "id", title: "id", hidden: true },
         { field: "employeeNumber", title: empNum, width: 30, filterable: true },
         { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },

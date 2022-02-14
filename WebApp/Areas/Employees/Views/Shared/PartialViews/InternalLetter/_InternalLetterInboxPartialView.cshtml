@@ -164,6 +164,7 @@
     var action = '@HRModuleUI.HumanResourceUI.lblAction';
     var markRead = '@HRModuleUI.HumanResourceUI.lblMarkAsRead';
     var lblDelete = '@Resources.Global.lblDelete';
+    var lblLetterNumber = '@HRModuleUI.HumanResourceUI.lblLetterNumber';
      
     $(function () {
         loadLetterInboxGrid();
@@ -184,11 +185,19 @@
     })
     function loadLetterInboxGrid() {
 
-        ajaxRequest({ commandName: 'Employee_InternalLetter_Inbox_Get', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, EmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: loadLetterInboxGridCallBack });
+        ajaxRequest({
+            commandName: 'Employee_InternalLetter_Inbox_Get',
+            values: {
+                CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                EmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId,
+                EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+                Language: _currentLanguage
+            }, CallBack: loadLetterInboxGridCallBack
+        });
 
     }
     var loadLetterInboxGridCallBack = function (inputDataJSON) {
-        console.log(JSON.parse(inputDataJSON.Value));
+      //  console.log(JSON.parse(inputDataJSON.Value));
 
         bindLetterInboxGrid(JSON.parse(inputDataJSON.Value));
         // $('#inboxTable tbody').html('');
@@ -234,19 +243,25 @@
     }
 
     var bindLetterInboxGrid = function (inputDataJSON) {
+        var record = 0;
+        
         var gridColumns = [
             { field: "id", title: "id", hidden: true },          
+            { title: "#", template: "<b>#= ++record #</b>", width: 5, },
             {
-                field: "subject", title: subject, width: 40, filterable: true,
+                field: "number", title: lblLetterNumber, width: 20, filterable: true,
+                template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
+            },  {
+                field: "subject", title: subject, width: 40, hidden: true , filterable: true,
                 template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
             },
             {
-                field: "body", title: description, width: 80, filterable: true,
+                field: "body", title: description, width: 70, filterable: true,
                 template: "#if(isRead == false){#<div style='font-weight:bold;'>#=body#</div>#}else{#<div style='font-weight:normal;'>#=body#</div>#}# ",
             },
             //{ field: "body", title: description, width: 60, filterable: true },
             {
-                field: "", title: dateTime, width: 10, filterable: true,//createdDate
+                field: "", title: dateTime, width: 20, filterable: true,//createdDate
                 template: "#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
             },
@@ -255,18 +270,17 @@
 
             {
                 field: "",
-                width: 10,
+                width: 20,
                 title: attachment,
                 template: "<a style='font-size:20px;cursor:pointer;' onClick= viewAttachment('#=currentFileName#')  title='Download Attachment'>#if(currentFileName == null){}else{ if(currentFileName.split('.').pop().toLowerCase() == 'pdf'){#<img src='/Content/Images/pdf.png' style='width:30px;cursor:pointer;'/></a>#} else {#<img src='/Content/Images/ImageIcon.png' style='width:33px;height:34px;cursor:pointer;'/></a>#} }#"
             },
             {
                 field: "",
-                width: 30,
-                title: ' ',
-                //template:"<a style='font-size:20px;cursor:pointer;' onClick= redirectToViewLetter(this) title='Mark letter as read' ><span class='fa fa-book'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteInternalLetter(this)  title='Delete Letter'><span class='fa fa-trash'></span></a>"
-                template: '<button type="button" class="btn btn-success btn-xs" style="font-weight:normal;" onClick= markLetterAsRead(this)> <i class="fa fa-eye"></i> ' + markRead + '</button><button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
-                //template: '<div class="dropdown"><button class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="position:relative;"><a class="dropdown-item" href="\\#">Action</a><a class="dropdown-item" href="\\#">Another action</a><a class="dropdown-item" href="\\#">Something else here</a></div></div>'
-
+                width: 10,
+                title: action,
+                 template: '<button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
+             //    template: '<button type="button" class="btn btn-success btn-xs" style="font-weight:normal;" onClick= markLetterAsRead(this)> <i class="fa fa-eye"></i> ' + markRead + '</button><button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
+               
 
             },
 
@@ -288,6 +302,7 @@
         var dataItem = grid.dataItem(row);
         window.location.href = '/Employees/InternalLetter/Read?value=' + dataItem.id +'&from=inbox';
 
+        markLetterAsRead(e);
     }
     function markLetterAsRead(e) {
      
@@ -295,7 +310,16 @@
         var grid = $("#" + receivedLettersGrid).data("kendoGrid");
         var dataItem = grid.dataItem(row);
     
-        ajaxRequest({ commandName: 'Employee_InternalLetter_UpdateIsRead', values: { Id: dataItem.id, IsRead: true, LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId,Language:_currentLanguage }, CallBack: markLetterAsReadCallBack });
+        ajaxRequest({
+            commandName: 'Employee_InternalLetter_UpdateIsRead',
+            values: {
+                Id: dataItem.id, IsRead: true,
+                LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+                LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId,
+                LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+                Language: _currentLanguage
+            }, CallBack: '',//markLetterAsReadCallBack
+        });
 
         //window.location.href = '/Employees/InternalLetter/Read?value=' + dataItem.id;
 
@@ -361,7 +385,15 @@
             }
         }).then(function (restult) {
             if (restult.value) {
-                ajaxRequest({ commandName: 'Employee_InternalLetter_Delete', values: { Id: dataItem.id, LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId, Language: _currentLanguage }, CallBack: deleteInternalLetterCallBack });
+                ajaxRequest({
+                    commandName: 'Employee_InternalLetter_Delete',
+                    values: {
+                        Id: dataItem.id,
+                        LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId,
+                        LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+                        Language: _currentLanguage
+                    }, CallBack: deleteInternalLetterCallBack
+                });
             }
         });
         //alert(letterId);

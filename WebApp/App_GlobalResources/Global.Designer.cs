@@ -160,6 +160,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowed format(s) are (png, jpg).
+        /// </summary>
+        internal static string lblAllowedFormatsArePngJpgOnly {
+            get {
+                return ResourceManager.GetString("lblAllowedFormatsArePngJpgOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed format(s) are (png, jpg,pdf).
+        /// </summary>
+        internal static string lblAllowedFormatsArePngJpgPdf {
+            get {
+                return ResourceManager.GetString("lblAllowedFormatsArePngJpgPdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Approve.
         /// </summary>
         internal static string lblApprove {
@@ -223,11 +241,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INMA INT.LLC.
+        /// </summary>
+        internal static string lblInma {
+            get {
+                return ResourceManager.GetString("lblInma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string lblNo {
             get {
                 return ResourceManager.GetString("lblNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powered By.
+        /// </summary>
+        internal static string lblPoweredBy {
+            get {
+                return ResourceManager.GetString("lblPoweredBy", resourceCulture);
             }
         }
         
@@ -255,6 +291,24 @@ namespace Resources {
         internal static string lblStatus {
             get {
                 return ResourceManager.GetString("lblStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XtremeSoft.
+        /// </summary>
+        internal static string lblXtremeSoft {
+            get {
+                return ResourceManager.GetString("lblXtremeSoft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xtreme Software.
+        /// </summary>
+        internal static string lblXtremesSoftware {
+            get {
+                return ResourceManager.GetString("lblXtremesSoftware", resourceCulture);
             }
         }
         

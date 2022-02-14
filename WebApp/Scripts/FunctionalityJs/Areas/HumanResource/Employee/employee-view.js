@@ -4,7 +4,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#ProfileImageDiv').css('display', 'none');
     //loadDepartmentTreeDropdownList();
-
+    $('#ProfileImage').hide();
  
 
     lodEmployeeById();

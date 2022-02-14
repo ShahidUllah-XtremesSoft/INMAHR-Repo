@@ -43,6 +43,7 @@
     #region Human Resource Department
     HR_Department_GetAll,
     HR_Department_GetAll_New_By_ID,
+    HR_Department_GetAll_New_By_ID_New,
     HR_Department_GetAllWithParent,
     HR_Department_Save_Arb,
     HR_Department_Save,
@@ -104,7 +105,7 @@
     HR_LeaveRequest_Save,
     HR_LeaveRequest_Update,
     HR_LeaveType_GetQuota,
-    HR_LeaveRequest_GetAll, 
+    HR_LeaveRequest_GetAll,
 
     #endregion
 
@@ -157,7 +158,7 @@
     #endregion
 
     #region Request Detail
-   
+
     Request_Letter_Save,
     Request_Letter_Get,
     Request_Letter_Delete,
@@ -207,12 +208,24 @@
 
     #region Internal Letter
     Employee_InternalLetter_Save,
+    Employee_InternalLetter_Save_New,
+    Employee_InternalLetter_Save_Multiple,
+    Employee_InternalLetter_Forward,
+    Employee_InternalLetter_Forward_Multiple,
+    Employee_InternalLetter_Reply,
+    Employee_InternalLetter_Reply_Multiple,
     Employee_InternalLetter_GetNextNumber,
     Employee_InternalLetter_Inbox_Get,
+    Employee_InternalLetter_Inbox_Get_New,
     Employee_InternalLetter_Outbox_Get,
+    Employee_InternalLetter_Outbox_Get_New,
     Employee_InternalLetter_GetById,
+    Employee_InternalLetter_GetById_New,
+    Employee_InternalLetter_GetById_New_For_Reply,
     Employee_InternalLetter_UpdateIsRead,
     Employee_InternalLetter_Delete,
+    Employee_InternalLetter_Outbox_Delete,
+    Employee_InternalLetter_GetEmployeesByParameters,
     #endregion
     #region Employee Attendance
     Employee_Attendance_GetByDepartment,

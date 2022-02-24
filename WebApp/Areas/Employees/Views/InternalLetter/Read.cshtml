@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-2 col-sm-2">
                 <img class="img-sm rounded-circle mr-3 " id="ProfileImage"
-                     style="border-radius: 4%; width: 200px;"
+                     style="border-radius: 4%; width: 150px;"
                      src="/Content/Images/user.jpg" alt="">
             </div>
             <div class="col-md-10 col-sm-10">
@@ -18,9 +18,9 @@
                     <p class="sender-email">
                         <div class="form-group">
                             <div>
-                                <strong id=""> @HRModuleUI.HumanResourceUI.lblFrom: <span id="divFrom"></span></strong>
+                                <strong id=""> @HRModuleUI.HumanResourceUI.lblFrom:-<span id="divFromDepartment"></span>-<span id="divFrom"></span></strong>
                                 <a class="btnForward btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Forward')" style="color: white;"> @HRModuleUI.HumanResourceUI.lblForward <i class="   fa fa-mail-forward "></i></a>
-                                <a class="btnReply btn btn-danger @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Reply')" style="color: white;"><i class="   fa fa-mail-reply"  ></i> @HRModuleUI.HumanResourceUI.lblReply</a>
+                                <a class="btnReply btn btn-danger @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Reply')" style="color: white;"><i class="   fa fa-mail-reply"></i> @HRModuleUI.HumanResourceUI.lblReply</a>
                             </div>
                             @*<div class="row">
                                     <div class="col-md-12">
@@ -99,6 +99,34 @@
                     </div>*@
             </div>
         </div>
+
+       
+
+        <div class="row">
+            <div class="col-md-9  @Resources.Common.PullRight"></div>
+            <div class="col-md-3  @Resources.Common.PullRight">
+                <div class=" ">
+                    <div id="noSignature" style="display:none;">
+                        <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                    </div>
+                    <div id="loadSignature" style="display:none;">
+
+                        <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadEmployeeSignature" name="" style="border-radius:4%;width:200px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9  @Resources.Common.PullRight"></div>
+            <div class="col-md-3  @Resources.Common.PullRight">
+                 <hr />
+                <p>  <b id="txt-subject">@HRModuleUI.HumanResourceUI.lblSignature</b></p> 
+            </div>
+        </div>
+
+
+
+
         @*<div class="row" style="border:2px dashed">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">

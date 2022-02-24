@@ -35,6 +35,8 @@ var loadShortLeaveGridCallBack = function (inputDataJSON) {
     bindShortLeaveGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindShortLeaveGrid = function (inputDataJSON) {
+    var record = 0;
+
     var gridColumns = [
         {
             title: '',
@@ -50,6 +52,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             },
             width: 8
         },
+        { title: "#", template: "<b>#= ++record #</b>", width: 5 },
         { field: "id", title: "id", hidden: true },
         { field: "email", title: empNumber, hidden: false, width: 20 },
         { field: "name", title: lblname, hidden: false, width: 50 },
@@ -143,14 +146,14 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
                         Language: _currentLanguage
                     }, CallBack: responseCallBack
                 });
-                if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+                if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : approveTitle; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : lblDecline; }
 
                 buttonRemovePleaseWait(btnId, btnValue, btnIcon);
             }
 
 
         } else {
-            if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+            if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : approveTitle; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : lblDecline; }
 
             buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         }
@@ -177,7 +180,7 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         }
     }
     if (ids.length > 0) { return ids; } else {
-        if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+        if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : approveTitle; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : lblDecline; }
     
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         swalMessage('info', lblFristSelectRecordFromGrid, 1500);

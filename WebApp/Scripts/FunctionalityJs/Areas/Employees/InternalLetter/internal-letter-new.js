@@ -79,6 +79,9 @@
     //Events ends
     setTimeout(function () { $('.tox-notifications-container').hide(); }, 1000);
 
+    if (JSON.parse(localStorage.getItem('User')).roleName == 'User') {
+        $('#btn-signature').hide();
+    }
 });
 
 function loadRoleDropdownList(isBindChangeEvent = false) {
@@ -204,14 +207,14 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
     var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
     var gridDataSource = grid.dataSource._data;
     var ids = '';
-   
+
     for (var i = 0; i < gridDataSource.length; i++) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
         if (isAssigned == true) {
             var gridRow = gridDataSource[i];
             ids += ids == '' ? gridRow.id : ',' + gridRow.id;
-         //   nameArray.push(gridRow.name);
-        
+            //   nameArray.push(gridRow.name);
+
             $('.showAllSelecttedEmployee').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light"> ' + gridRow.name + '</button>');
             $('.showAllSelecttedSection').append('<button type="button" class="btn btn-outline-danger waves-effect waves-light"> ' + gridRow.department + '</button>')
         }
@@ -224,7 +227,7 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         $('.btnClose').click();
 
-       // $('.showAllSelecttedSection').text( $('.k-multiselect-wrap.k-floatwrap').text())
+        // $('.showAllSelecttedSection').text( $('.k-multiselect-wrap.k-floatwrap').text())
         //--ASSIGN EMPLOYEE NAMES
         //for (var i = 0; i < nameArray.length; i++) {
         //    $('.showAllSelecttedEmployee').append('<button type="button" class="btn btn-outline-primary waves-effect waves-light"> ' + gridRow.name + '</button>')
@@ -249,7 +252,7 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
 
 
 function loopThroughGrid(e) {
-    debugger
+
     var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
     /*
         { field: "id", title: "id", hidden: true },
@@ -284,7 +287,7 @@ function loopThroughGrid(e) {
         var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
 
         var gridRow = gridd[i];
-        if (isAssigned == true  ) {
+        if (isAssigned == true) {
             postingArray.push(
                 {
 
@@ -317,7 +320,8 @@ function loopThroughGrid(e) {
             }, CallBack: ''
         });
         setTimeout(function () {
-            window.location.href = '/Employees/InternalLetter';
+            //       window.location.href = '/Employees/InternalLetter';
+            window.location.href = '/Employees/InternalLetter/SendLetters';
         }, 1000);
     }
     //else {
@@ -326,3 +330,42 @@ function loopThroughGrid(e) {
     //}
 
 }
+
+
+
+
+function fnUploadEmployeeSignature() {
+
+    ajaxRequest({
+        commandName: 'HR_Employee_Signature_Get',
+        values: {
+            //LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            //LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            //LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            // Language: _currentLanguage,
+        }, CallBack: loadfnUploadEmployeeSignatureCallBack
+    });
+
+}
+
+function loadfnUploadEmployeeSignatureCallBack(d) {
+
+    var _employeeSignature = JSON.parse(d.Value);
+
+    if (_employeeSignature == null) {
+        $('#noSignature').show();
+    } else {
+        $('#noSignature').hide();
+        $('#loadSignature').show();
+
+         if (_employeeSignature.currentFileName != null) {
+            var singature_ = '/UploadFile/' + _employeeSignature.currentFileName;
+            $('#loadEmployeeSignature').attr('src', singature_);
+             $('#SignedBy').val(1);
+            $('#Signature').val(_employeeSignature.currentFileName);
+        }
+    }
+
+}
+ 

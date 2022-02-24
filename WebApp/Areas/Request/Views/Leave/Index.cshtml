@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Leave Request";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblLeaveRequest;// "Leave Request";
 }
 <style>
     /*.k-pivot-table*/
-  
+
 </style>
 <div class="card">
     <div class="card-block">
@@ -17,56 +17,70 @@
             <input type="hidden" name="EditLeavDays" id="EditLeavDays" value="0" />
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLeaveType</label>
                         <input class="form-control" id="LeaveTypeId" name="LeaveTypeId" required />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8"></div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAvailableBalance </label>
                         <input class="form-control" id="AvailableLeave" name="AvailableLeave" readonly />
                     </div>
                 </div>
+                <div class="col-md-8"></div>
 
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@Resources.Global.lblStartDate </label>
                         <input class="form-control" id="StartDate" name="StartDate" required />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8"></div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@Resources.Global.lblEndDate</label>
                         <input class="form-control" id="EndDate" name="EndDate" required />
                     </div>
                 </div>
-
+                <div class="col-md-8"></div>
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNumberOfDays</label>
                         <input class="form-control" id="TotalDays" name="TotalDays" value="0" readonly />
                     </div>
                 </div>
+                <div class="col-md-8"></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-send"></i>  @HRModuleUI.HumanResourceUI.lblSend</button>
                 </div>
             </div>
 
         </form>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <div id="LeaveGrid"></div>
+        <div class="grid-main-div">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div id="LeaveGrid"></div>
+                </div>
             </div>
         </div>
 
@@ -89,7 +103,7 @@
         var endDate = '@Resources.Global.lblEndDate';
         var action = '@Resources.Global.lblAction';
         var comment = '@HRModuleUI.HumanResourceUI.lblComment';
-        
+
 
 
     </script>

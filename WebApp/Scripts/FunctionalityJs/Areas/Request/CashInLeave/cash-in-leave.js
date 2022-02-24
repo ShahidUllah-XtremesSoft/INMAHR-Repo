@@ -10,7 +10,7 @@ $(function () {
     //Events are below
     $('#btnSave').on('click', function (e) {
         if (parseInt($('#Days').val()) > parseInt($('#AvailableBalance').val())) {
-            swalMessage('warning', 'Requested days should be less than or equal to available balance');
+            swalMessage('warning', requesteddaysshouldbelessthanorequaltoavailablebalance);
         }
         else {
             if (customValidateForm('frmCashInLeave')) {
@@ -19,11 +19,11 @@ $(function () {
                 var options = {
                     success: function (response, statusText, jqXHR) {
                         buttonRemovePleaseWait('btnSave', save, 'save');
-                        swal(response);                        
+                        swal(response);
                         clearFields();
                         loadCashInLeaveGrid();
                         loadAvailableCashInLeaveBalance();
-                        
+
 
                     },
                     error: function (xhr, status, error) {
@@ -45,18 +45,18 @@ $(function () {
         }
     });
 
-   
+
 });
 function clearFields() {
-    $('#Id').val(0);    
+    $('#Id').val(0);
     $('#Days').val('0');
-    $('#AvailableBalance').val('');    
+    $('#AvailableBalance').val('');
 }
 function loadAvailableCashInLeaveBalance() {
     ajaxRequest({ commandName: 'Request_CashInLeave_GetEmployeeAvailableBalance', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage }, CallBack: loadAvailableCashInLeaveBalanceCallBack });
 
 }
-function loadAvailableCashInLeaveBalanceCallBack(response) {    
+function loadAvailableCashInLeaveBalanceCallBack(response) {
     $('#AvailableBalance').val(JSON.parse(response.Value).remainingBalance);
 }
 function loadCashInLeaveGrid() {

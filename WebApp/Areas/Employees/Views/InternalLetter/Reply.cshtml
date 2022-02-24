@@ -15,68 +15,74 @@
             <input type="hidden" name="Tag" id="Tag" value="">
             <input type="hidden" name="LetterStatus" id="LetterStatus" value="Reply">
             <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
+
+            <input type="hidden" class="form-control" name="SignedBy" id="SignedBy" value="0" />
+            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />
+
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
                         <div>
-                            <strong id=""> @HRModuleUI.HumanResourceUI.lblTo: 
-                            <span id="divFrom"></span></strong>
-                            
+                            <strong id="">
+                                @HRModuleUI.HumanResourceUI.lblTo:
+                                <span id="divFrom"></span>
+                            </strong>
+
                         </div>
 
                     </div>
                     @*<div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTo</label><span style="color:red">*</span><br />
-                        <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
-                    </div>*@
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTo</label><span style="color:red">*</span><br />
+                    <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
+                </div>*@
                 </div>
                 <div class="col-sm-8"> </div>
             </div><hr />
-                  <div class="row">
-                      <div class="col-sm-3">
-                          <div class="form-group">
-                              <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLetterNumber</label><span style="color:red">*</span><br />
-                              <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
-                          </div>
-                      </div>
-                      <div class="col-sm-3">
-                          <div class="form-group">
-                              <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDate</label> <span style="color:red">*</span> <br />
-                              <input type="date" class="form-control" name="LetterDate" id="LetterDate" required>
-                          </div>
-                      </div>
-                      <div class="col-sm-6"> </div>
-                  </div>
-            
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLetterNumber</label><span style="color:red">*</span><br />
+                        <input type="text" class="form-control" name="LetterNumber" id="LetterNumber" required readonly />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDate</label> <span style="color:red">*</span> <br />
+                        <input type="date" class="form-control" name="LetterDate" id="LetterDate" required>
+                    </div>
+                </div>
+                <div class="col-sm-6"> </div>
+            </div>
+
             <div class="row">
 
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSubject</label><span style="color:red"> *</span><br />
-                        <input type="text" class="form-control pname" name="Subject" id="Subject" readonly required  style="height: 85px; ">
+                        <input type="text" class="form-control pname" name="Subject" id="Subject" readonly required style="height: 85px; ">
                     </div>
                 </div>
                 <div class="col-sm-6"></div>
 
             </div>
             @*<div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label class="col-form-label showAllSelecttedSection" style="font-size:x-large; text-decoration:underline"> </label> <br />
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-form-label showAllSelecttedSection" style="font-size:x-large; text-decoration:underline"> </label> <br />
 
-                    </div>
                 </div>
             </div>
-            <div class="row form-group">
+        </div>
+        <div class="row form-group">
 
-                <div class="col-sm-12">
-                    <div class="btn-group">
-                        <button type="button" id="" data-toggle="modal" data-target="#modal-internal-letter-section-selection" class="btn btn-outline-info    active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSection</button>
+            <div class="col-sm-12">
+                <div class="btn-group">
+                    <button type="button" id="" data-toggle="modal" data-target="#modal-internal-letter-section-selection" class="btn btn-outline-info    active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSection</button>
 
-                    </div>
                 </div>
+            </div>
 
-            </div>*@
+        </div>*@
 
 
             <div class="row">
@@ -97,8 +103,24 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
+                    <div class=" ">
+                        <div id="noSignature" style="display:none;">
+                            <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                        </div>
+                        <div id="loadSignature" style="display:none;">
+
+                            <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadEmployeeSignature" name="" style="border-radius:4%;width:200px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <button type="button" class="btn btn-success pull-right  m-r-10" id="btnSave"><i class="fa fa-mail-reply"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" id="btn-signature" class="btn btn-warning @Resources.Common.PullRight  m-r-10" onclick="fnUploadEmployeeSignature();"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSignature</button>
+
                     </div>
                 </div>
             </div>

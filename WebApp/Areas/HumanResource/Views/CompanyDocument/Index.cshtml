@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Company Document";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblCompanyDocument;
 }
 
 <form id="frmCompanyDocument" name="frmCompanyDocument" action="/services/Xtreme/multipart" method="post">
@@ -17,7 +17,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblPersonalDocument</label><span style="color:red">*</span><br />
-                        <input type="file" class="form-control" name="CompanyDocument" id="CompanyDocument" onchange="validatePersonalDocument('CompanyDocument');"  required/>
+                        <input type="file" class="form-control" name="CompanyDocument" id="CompanyDocument" onchange="validatePersonalDocument('CompanyDocument');" required />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -32,7 +32,7 @@
                         <input class="form-control" id="NameArb" name="NameArb" required />
                     </div>
                 </div>
-                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -70,14 +70,15 @@
                     <button type="button" id="btn-save-company-document" class="btn btn-success  pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="company-document-grid"></div>
+            <div class="grid-main-div">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="company-document-grid"></div>
+                    </div>
                 </div>
+
+
             </div>
-
-
         </div>
     </div>
 </form>

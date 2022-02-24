@@ -135,7 +135,8 @@
 
             </div>
             <div class="col-sm-3 text-right">
-                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:50%;width:110px;" alt="Employee Profile Image" />
+                @*  <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:50%;width:110px;" alt="Employee Profile Image" />*@
+                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
             </div>
         </div>
 
@@ -165,7 +166,7 @@
     <div class="col-md-6" id="divLeaveBalance" style="display:none;">
 
         @{
-            Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmpoyeeLeaveBalancePartialViews.cshtml");            
+            Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmpoyeeLeaveBalancePartialViews.cshtml");
         }
 
 
@@ -190,7 +191,7 @@
 
 <div class="card" style="display:none;">
     <div class="card-header">
-        <h5>@HRModuleUI.HumanResourceUI.lblRequest</h5>        
+        <h5>@HRModuleUI.HumanResourceUI.lblRequest</h5>
         <div class="card-header-right">
 
         </div>
@@ -209,10 +210,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="RequestGrid"></div>
-                @*<div id="LeaveRequestGrid"></div>*@
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="RequestGrid"></div>
+                    @*<div id="LeaveRequestGrid"></div>*@
+                </div>
             </div>
         </div>
     </div>

@@ -13,12 +13,18 @@
     <!-- Icons -->
     <link href="~/Content/Themes/CoreUI/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/Themes/CoreUI/css/simple-line-icons.css" rel="stylesheet">
+    @*<link href="~/Content/all.min.css" rel="stylesheet" />*@
+    @*<link href="~/Content/fontawesome.min.css" rel="stylesheet" />*@
+
+
+
     <!-- Main styles for this application -->
-    @*<link href="~/Content/kendo/kendo.material-nova.min.css" rel="stylesheet" />
-        <link href="~/Content/kendo/kendo.rtl.min.css" rel="stylesheet" />*@
+    @*<link href="~/Content/kendo/kendo.material-nova.min.css" rel="stylesheet" />*@
+
 
     <link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" />
     <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.rtl.min.css" rel="stylesheet" />
 
 
 
@@ -88,6 +94,47 @@
             height: 128px;
             width: 128px;
         }
+        .notify .heartbit {
+            position: absolute;
+            top: -20px;
+            right: -16px;
+            height: 25px;
+            width: 25px;
+            z-index: 10;
+            border: 5px solid #fb9678;
+            border-radius: 70px;
+            -moz-animation: heartbit 1s ease-out;
+            -moz-animation-iteration-count: infinite;
+            -o-animation: heartbit 1s ease-out;
+            -o-animation-iteration-count: infinite;
+            -webkit-animation: heartbit 1s ease-out;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+        .notify .point {
+            width: 6px;
+            height: 6px;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+            background-color: #fb9678;
+            position: absolute;
+            right: -6px;
+            top: -10px;
+        }
+        .Blink {
+            animation: blinker 1.3s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+        }
+
+        @@keyframes blinker {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
     </style>
 
 </head>
@@ -97,7 +144,7 @@
     <div id="RequestLoader" class="modal">
         <div class="center">
             <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150" />
-            <h3>Loading...</h3>
+            <h3>@Resources.Global.lblLoading</h3>
         </div>
     </div>
     @{
@@ -160,7 +207,7 @@
                 </div>
             </li>
         </ol>-->
-        <div class="container-fluid">
+        <div class="container-fluid mainBodyClass">
             <div class="">
                 @RenderBody()
             </div>
@@ -227,6 +274,7 @@
     @Scripts.Render("~/bundles/jquery")
 
     @RenderSection("scripts", required: false)
+
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap and necessary plugins -->
     @*<script src="~/Content/Themes/CoreUI/js/libs/jquery.min.js"></script>*@
@@ -258,7 +306,8 @@
     <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>
 
-
+    <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js"></script>
 </body>
 
 </html>
@@ -309,23 +358,67 @@
     var lblForward = '@HRModuleUI.HumanResourceUI.lblForward';
     var lblAllowedFormatsArePngJpgOnly = '@Resources.Global.lblAllowedFormatsArePngJpgOnly';
     var lblAllowedFormatsArePngJpgPdf = '@Resources.Global.lblAllowedFormatsArePngJpgPdf';
+    var lblEmployees = '@HRModuleUI.HumanResourceUI.lblEmployees';
+    var lblEmployeeDocument = '@HRModuleUI.HumanResourceUI.lblEmployeeDocument';
+    var lblDocument = '@HRModuleUI.HumanResourceUI.lblDocument';
+    var lblCompanyDocument = '@HRModuleUI.HumanResourceUI.lblCompanyDocument';
+    var canNotApplyWithAvailableBalanceZero = '@HRModuleUI.HumanResourceUI.canNotApplyWithAvailableBalanceZero';
+    var numberOfHourCannotBeZero = '@HRModuleUI.HumanResourceUI.numberOfHourCannotBeZero';
+    var starttimecannotbegreaterthanendtime = '@HRModuleUI.HumanResourceUI.starttimecannotbegreaterthanendtime';
+    var startdatecannotbegreaterthanenddate = '@HRModuleUI.HumanResourceUI.startdatecannotbegreaterthanenddate';
+    var requestedhoursshouldbelessthanorequaltoavailablebalance = '@HRModuleUI.HumanResourceUI.requestedhoursshouldbelessthanorequaltoavailablebalance';
+    var requesteddaysshouldbelessthanorequaltoavailablebalance = '@HRModuleUI.HumanResourceUI.requesteddaysshouldbelessthanorequaltoavailablebalance';
+    var startdateisrequired = '@HRModuleUI.HumanResourceUI.startdateisrequired';
+    var enddateisrequired = '@HRModuleUI.HumanResourceUI.enddateisrequired';
+    var employeeProfile = '@HRModuleUI.HumanResourceUI.employeeProfile';
+    var lblLetterNumber  = '@HRModuleUI.HumanResourceUI.lblLetterNumber';
+    var lblNoSignature  = '@HRModuleUI.HumanResourceUI.lblNoSignature';
+    var lblNote  = '@HRModuleUI.HumanResourceUI.lblNote';
+    var lblSave  = '@HRModuleUI.HumanResourceUI.btnSave';
+    var lblDecline  = '@HRModuleUI.HumanResourceUI.lblDecline';
+    var lblPublicHoliday  = '@HRModuleUI.HumanResourceUI.lblPublicHoliday';
+    var lblPresent  = '@HRModuleUI.HumanResourceUI.lblPresent';
+    var lblAbsent  = '@HRModuleUI.HumanResourceUI.lblAbsent';
 
 
 
 
     $(function () {
+       // var versionNumber = Date.now();
+
+        if (_currentLanguage == 'en-US') {
+
+          //  $('.mainBodyClass').removeClass('k-rtl');
+            $('body').find('.grid-main-div').removeClass('k-rtl mainBodyClass')
+          //  $('body').find('.grid-main-div').parent().parent().removeClass('k-rtl')
+
+        } else {
+
+            //$('.mainBodyClass').addClass('k-rtl');
+
+            $('body').find('.grid-main-div').addClass('k-rtl mainBodyClass')
+          /*  $('body').find('.grid-main-div').find('.k-i-arrow-60-down').hide();*/
+            
+        }
+
+
         $(':input').removeAttr('placeholder');
         $('#LayoutCurrentLanguage').val(_currentLanguage);
         var assingedRoleMenus = localStorage.getItem('Menus');
+        var menuCounts = localStorage.getItem('MenusCount');
         var menuGroupArray = [];
 
         $("#left-menu-item").load("/Home/LoadLeftMenuPartialView",
-            { menuItems: assingedRoleMenus }
+            { menuItems: assingedRoleMenus,menuCount: menuCounts }
         );
         setTimeout(function () {
             $('.pcoded-main-container').css('margin-top', '23px');
             //$('.pcoded-main-container').css('min-height', '13px');
             //$('.pcoded-main-container').css('max-height', '13px');
+
+
+
+            $('body').find('.grid-main-div').find('.k-i-arrow-60-down').hide();
 
         }, 500);
         var loggedUserName = _currentLanguage == 'en-US' ? (JSON.parse(localStorage.getItem('User')).employeeNameEng) : (JSON.parse(localStorage.getItem('User')).employeeNameArb);
@@ -456,6 +549,7 @@
 
     // Add TinyMCE
     function addTinyMCE() {
+
 
         // Initialize
         tinymce.init({

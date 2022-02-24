@@ -19,8 +19,7 @@ function loadCompanyDocumentGrid() {
 }
 var loadCompanyDocumentCallBack = function (inputDataJSON) {
     console.log(inputDataJSON);
-    debugger;
-    bindCompanyDocumentGrid(JSON.parse(inputDataJSON.Value));
+     bindCompanyDocumentGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindCompanyDocumentGrid = function (inputDataJSON) {
     var record = 0;
@@ -61,8 +60,7 @@ function viewAttachment(currentFileName) {
 }
 
 function editCompanyDocument(event) {
-    debugger;
-    var row = $(event).closest("tr");
+     var row = $(event).closest("tr");
     var grid = $("#" + CompanyDocumentGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     $('#Id').val(dataItem.id);

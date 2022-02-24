@@ -75,10 +75,11 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public PartialViewResult LoadLeftMenuPartialView(string menuItems)//object menuItems)
+        public PartialViewResult LoadLeftMenuPartialView(string menuItems,string menuCount)//object menuItems)
         {
             //Session["MenuItems"]
             ViewBag.MenuItems = menuItems;
+            ViewBag.MenuCount = menuCount;
             //var test = HttpContext.Request.Cookies["Lang"].Value;
             var menuItem = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(menuItems);
 

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Short Leave Request";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblShortLeaveRequest;//"Short Leave Request";
 }
 
 <div class="card">
@@ -14,63 +14,75 @@
             <input type="hidden" name="EditLeaveHours" id="EditLeaveHours" value="0" />
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblRequestDate</label>
                         <input class="form-control" id="RequestDate" name="RequestDate" required />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">  </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAvailableBalance</label>
                         <input class="form-control" id="AvailableShortLeave" name="AvailableShortLeave" readonly />
                     </div>
                 </div>
+                <div class="col-md-8">  </div>
 
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblStartTime </label>
                         <input class="form-control" id="StartTime" name="StartTime" required />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">  </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblReturnTime </label>
-                        <input class="form-control" id="EndTime" name="EndTime"   required />
+                        <input class="form-control" id="EndTime" name="EndTime" required />
                     </div>
                 </div>
+                <div class="col-md-8">  </div>
 
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNumberOfHours </label>
                         <input class="form-control" id="NumberOfHours" name="NumberOfHours" value="0" readonly />
                     </div>
-                </div>
+                </div>  <div class="col-md-8">  </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-send"></i>  @HRModuleUI.HumanResourceUI.lblSend</button>
                 </div>
             </div>
 
         </form>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div id="ShortLeaveGrid"></div>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="ShortLeaveGrid"></div>
+                </div>
             </div>
         </div>
 
 
     </div>
 </div>
-
 
 
 @section scripts {

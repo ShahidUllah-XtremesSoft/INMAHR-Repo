@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = HRModuleUI.HumanResourceUI.lblInternalLetter;
 }
-
 <div class="card">
     <div class="card-block">
 
@@ -15,6 +14,8 @@
             <input type="hidden" name="LetterStatus" id="LetterStatus" value="New">
             <input type="hidden" name="Tag" id="Tag" value="">
             <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
+            <input type="hidden" class="form-control" name="SignedBy" id="SignedBy" value="0" />
+            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -50,7 +51,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                          <label class="col-form-label showAllSelecttedEmployee" style="font-size:x-large; text-decoration:underline"> </label> <br />
+                        <label class="col-form-label showAllSelecttedEmployee" style="font-size:x-large; text-decoration:underline"> </label> <br />
 
                     </div>
                 </div>
@@ -67,33 +68,33 @@
             </div>
 
             <!--<div class="row">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label class="col-form-label">HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />-->
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label class="col-form-label">HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />-->
             @*<select class="form-control" multiple="multiple" id="DepartmentIds" name="DepartmentIds" required></select>*@
             @*<select class="form-control" multiple="multiple" required id="DepartmentIds"></select>*@
             <!--<input type="text" class="form-control" id="DepartmentId" name="DepartmentId" />
-            <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />-->
+    <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />-->
             @*<select class="form-control" id="DepartmentIds"></select>*@
 
 
             <!--</div>
-                </div>
-            </div>-->
+        </div>
+    </div>-->
             @*<div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature</label><span style="color:red">*</span><br />
-                            <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" value="0" />
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
-                            <input type="file" class="form-control" name="Attachment" id="Attachment">
-                        </div>
-                    </div>
-                </div>*@
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature</label><span style="color:red">*</span><br />
+                    <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" value="0" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
+                    <input type="file" class="form-control" name="Attachment" id="Attachment">
+                </div>
+            </div>
+        </div>*@
 
             <div class="row">
                 <div class="col-sm-6">
@@ -113,8 +114,25 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
+                    <div class=" ">
+                        <div id="noSignature" style="display:none;">
+                            <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                        </div>
+                        <div id="loadSignature" style="display:none;">
+
+                            <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadEmployeeSignature" name="" style="border-radius:4%;width:200px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-12">
+
                     <div class="form-group">
-                        <button type="button" class="btn btn-success pull-right  m-r-10" id="btnSave"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" class="btn btn-success @Resources.Common.PullRight  m-r-10" id="btnSave"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" id="btn-signature" class="btn btn-warning @Resources.Common.PullRight  m-r-10" onclick="fnUploadEmployeeSignature();"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSignature</button>
                     </div>
                 </div>
             </div>

@@ -306,8 +306,14 @@
     </Compile>
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\all.css" />
+    <Content Include="Content\all.min.css" />
     <Content Include="Content\ar-AE.css" />
+    <Content Include="Content\brands.css" />
+    <Content Include="Content\brands.min.css" />
     <Content Include="Content\en-US.css" />
+    <Content Include="Content\fontawesome.css" />
+    <Content Include="Content\fontawesome.min.css" />
     <Content Include="Content\Images\attachment.png" />
     <Content Include="Content\Images\calander.png" />
     <Content Include="Content\Images\docx.png" />
@@ -339,6 +345,12 @@
     <Content Include="Content\Login\img\video-call.jpg" />
     <Content Include="Content\Login\style.min.css" />
     <Content Include="Content\Login\Xtreme.css" />
+    <Content Include="Content\regular.css" />
+    <Content Include="Content\regular.min.css" />
+    <Content Include="Content\solid.css" />
+    <Content Include="Content\solid.min.css" />
+    <Content Include="Content\svg-with-js.css" />
+    <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\Themes\CoreUI\css\font-awesome.css" />
     <Content Include="Content\Themes\CoreUI\css\font-awesome.min.css" />
     <Content Include="Content\Themes\CoreUI\css\simple-line-icons.css" />
@@ -361,6 +373,8 @@
     <Content Include="Content\Themes\CoreUI\js\views\widgets.js" />
     <Content Include="Content\Themes\Dashable\files\assets\images\xtremessoft logo.png" />
     <Content Include="Content\Themes\Dashable\files\assets\js\vertical\menu\menu-ltr.js" />
+    <Content Include="Content\v4-shims.css" />
+    <Content Include="Content\v4-shims.min.css" />
     <Content Include="Scripts\crypto-script.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-grid.js" />
@@ -370,6 +384,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\EmployeeAttendancePartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-reply.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-forward.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\ReceivedLetters\internal-letter-received-letter-load-data.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\SendLetters\internal-letter-send-letter-load-data.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
@@ -388,6 +404,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
+    <Content Include="Scripts\FunctionalityJs\Common\clear-application-cache.js" />
+    <Content Include="Scripts\FunctionalityJs\Common\get-all-count-notifications.js" />
     <Content Include="Scripts\FunctionalityJs\Common\common-labels.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\ContractType\contract-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\ContractType\contractType-save.js" />
@@ -1113,6 +1131,8 @@
     <Content Include="Areas\Setup\Views\PublicHoliday\Index.cshtml" />
     <Content Include="Areas\Employees\Views\InternalLetter\Forward.cshtml" />
     <Content Include="Areas\Employees\Views\InternalLetter\Reply.cshtml" />
+    <Content Include="Areas\Employees\Views\InternalLetter\ReceivedLetters\Index.cshtml" />
+    <Content Include="Areas\Employees\Views\InternalLetter\SendLetters\Index.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1484,6 +1504,21 @@
     <Content Include="UploadFile\XtremeTech-fc6cbf65-94e0-442f-96ac-018d1230a1e9.pdf" />
     <Content Include="UploadFile\XtremeTech-fcd93766-9cc6-4ab8-a1fe-bb19d072e278.pdf" />
     <Content Include="UploadFile\XtremeTech-fd38a0c7-f362-4a7d-a750-4dc67408407d.pdf" />
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.eot" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

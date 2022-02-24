@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Common\DynamicQueryExcuterCommand.cs" />
+    <Compile Include="Commands\Common\NotificationsCommand.cs" />
     <Compile Include="Commands\Common\SetupTypeCommand.cs" />
     <Compile Include="Commands\Employee\CashInLeaveRequestCommand.cs" />
     <Compile Include="Commands\Employee\LeaveRequestCommand.cs" />

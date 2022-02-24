@@ -16,6 +16,9 @@
 
             <input type="hidden" name="LetterStatus" id="LetterStatus" value="Forward">
             <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
+
+            <input type="hidden" class="form-control" name="SignedBy" id="SignedBy" value="0" />
+            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -86,8 +89,24 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
+                    <div class=" ">
+                        <div id="noSignature" style="display:none;">
+                            <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                        </div>
+                        <div id="loadSignature" style="display:none;">
+
+                            <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadEmployeeSignature" name="" style="border-radius:4%;width:200px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="form-group">
-                        <button type="button" class="btn btn-success pull-right  m-r-10" id="btnSave"><i class="fa fa-send"></i>@HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" class="btn btn-success  @Resources.Common.PullRight  m-r-10" id="btnSave"><i class="fa fa-send"></i>@HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" class="btn btn-warning @Resources.Common.PullRight  m-r-10" onclick="fnUploadEmployeeSignature();"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSignature</button>
+
                     </div>
                 </div>
             </div>
@@ -116,11 +135,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div id="load-employees-by-role-and-department"></div>
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div id="load-employees-by-role-and-department"></div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>

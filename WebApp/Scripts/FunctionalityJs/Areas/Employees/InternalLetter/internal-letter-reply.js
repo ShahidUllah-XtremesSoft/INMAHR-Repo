@@ -2,10 +2,11 @@
 
 $(function () {
     queryStringLetterId = (new URL(location.href)).searchParams.get('value');
-    
+
+
     getInternalLetterById(queryStringLetterId);
     //Values settings starts
-     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $("#LetterDate").kendoDatePicker({
         //format: "yyyy-MM-dd"
     });
@@ -21,11 +22,11 @@ $(function () {
     //loadDepartmentTreeDropdownListWithCheckbox();   // THIS IS OLD DEPARTMENT DDL LOAD FN
     //loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
 
-   // setTimeout(function () { $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck); }, 500);
+    // setTimeout(function () { $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck); }, 500);
 
 
     $('#btnSave').on('click', function (e) {
-       
+
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         var valid = true;
         $("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
@@ -66,7 +67,7 @@ $(function () {
                 }
             };
             $("#frmEmployeeInternalLetter").ajaxSubmit(options);
-            
+
         }
         else {
 
@@ -75,7 +76,12 @@ $(function () {
     });
     //Events ends
     setTimeout(function () { $('.tox-notifications-container').hide(); }, 1000);
-  
+
+
+
+    if (JSON.parse(localStorage.getItem('User')).roleName == 'User') {
+        $('#btn-signature').hide();
+    }
 });
 
 
@@ -85,14 +91,14 @@ function getInternalLetterById(queryStringLetterId) {
 
 }
 var getInternalLetterByIdCallBack = function (inputDataJSON) {
-     
+
 
 
     var responseJSON = JSON.parse(inputDataJSON.Value);
     var letterToArray = responseJSON.letterTo.split(',');
-  
+
     $('#Id').val(responseJSON.id);
-    $('#LetterNumber').val(responseJSON.number); 
+    $('#LetterNumber').val(responseJSON.number);
     $('#Subject').val(responseJSON.subject);
     $('#DepartmentIds').val(responseJSON.senderDepartmentID);
     $('#Reciever_HR_Employee_Ids').val(responseJSON.senderEmployeeId);
@@ -100,12 +106,14 @@ var getInternalLetterByIdCallBack = function (inputDataJSON) {
     //setTimeout(function () {
     //    $('#Body').html(responseJSON.body);
     //}, 100);
-  
+
+    // fnUploadEmployeeSignature(responseJSON.empSignature);
+
 }
 
 //--------------------------------------------------- END
 
- 
+
 
 
 
@@ -315,26 +323,26 @@ function loopThroughGrid(e) {
     }
 }
 */
-function fnInsertToMultipleTable(e) { 
+function fnInsertToMultipleTable(e) {
     var postingArray = [];
-  
 
-            postingArray.push(
-                { 
-                    LetterId: parseInt($('#Id').val()),
-                    C_Employee_InternalLetterMultiple_Id: 0,
-                    LetterNumber: $('#LetterNumber').val(),
-                    LetterDate: $('#LetterDate').val(),
-                    EmployeeId: parseInt($('#Reciever_HR_Employee_Ids').val()),
-                    DepartmentId: parseInt($('#DepartmentIds').val()),
-                    EmployeeInternalLetterRoleId: 0,
-                    CreatedBy: parseInt($('#CreatedBy').val()),
-                    SignedBy: 0,
-                    IsRead: 0,
-                    IsImportant: 0,
-                    LetterStatus: 'Reply'
-                });
- 
+
+    postingArray.push(
+        {
+            LetterId: parseInt($('#Id').val()),
+            C_Employee_InternalLetterMultiple_Id: 0,
+            LetterNumber: $('#LetterNumber').val(),
+            LetterDate: $('#LetterDate').val(),
+            EmployeeId: parseInt($('#Reciever_HR_Employee_Ids').val()),
+            DepartmentId: parseInt($('#DepartmentIds').val()),
+            EmployeeInternalLetterRoleId: 0,
+            CreatedBy: parseInt($('#CreatedBy').val()),
+            SignedBy: 0,
+            IsRead: 0,
+            IsImportant: 0,
+            LetterStatus: 'Reply'
+        });
+
     if (postingArray.length > 0) {
         ajaxRequest({
             commandName: 'Employee_InternalLetter_Reply_Multiple',
@@ -346,7 +354,48 @@ function fnInsertToMultipleTable(e) {
             }, CallBack: ''
         });
         setTimeout(function () {
-            window.location.href = '/Employees/InternalLetter';
+            window.location.href = '/Employees/InternalLetter/ReceivedLetters';
         }, 1000);
     }
+}
+
+
+
+//--------------------- LOAD EMPLOYEE SIGNAGUE 
+
+
+function fnUploadEmployeeSignature() {
+
+    ajaxRequest({
+        commandName: 'HR_Employee_Signature_Get',
+        values: {
+            //LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            //LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            //LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            // Language: _currentLanguage,
+        }, CallBack: loadfnUploadEmployeeSignatureCallBack
+    });
+
+}
+
+function loadfnUploadEmployeeSignatureCallBack(d) {
+
+    var _employeeSignature = JSON.parse(d.Value);
+
+    if (_employeeSignature == null) {
+        $('#noSignature').show();
+    } else {
+        $('#noSignature').hide();
+        $('#loadSignature').show();
+
+
+        if (_employeeSignature.currentFileName != null) {
+            var singature_ = '/UploadFile/' + _employeeSignature.currentFileName;
+            $('#loadEmployeeSignature').attr('src', singature_);
+            $('#SignedBy').val(1);
+            $('#Signature').val(_employeeSignature.currentFileName);
+        }
+    }
+
 }

@@ -28,6 +28,7 @@ function loadLetterGrid(btnStatus) {
 }
 var loadLetterGridCallBack = function (inputDataJSON) { bindLetterGrid(JSON.parse(inputDataJSON.Value)); }
 var bindLetterGrid = function (inputDataJSON) {
+    var record = 0;
     var gridColumns = [
         {
             title: '',
@@ -39,9 +40,11 @@ var bindLetterGrid = function (inputDataJSON) {
             },
             width: 5
         },
+        { title: "#", template: "<b>#= ++record #</b>", width: 4 },
         { field: "id", title: "id", hidden: true },
         { field: "email", title: empNumber, hidden: false, width: 20 },
         { field: "name", title: lblName, hidden: false, width: 20 },
+        { field: "note", title: lblNote, hidden: false, width: 40 },
         { field: "leaveType", title: letterType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:startDate#</span>" },
         { field: "comment", title: comment, hidden: true, width: 20, template: "<span class='badge badge-info'>#:comment#</span>" },
@@ -132,14 +135,14 @@ function fnApprovedOrDeclined(btnValue, btnId, btnIcon) {
                     }, CallBack: responseCallBack
                 });
 
-                if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+                if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : approveTitle; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : lblDecline; }
                 buttonRemovePleaseWait(btnId, btnValue, btnIcon);
             }
 
 
         } else {
 
-            if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+            if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : approveTitle; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : lblDecline; }
             buttonRemovePleaseWait(btnId, btnValue, btnIcon);
         }
     });
@@ -165,8 +168,8 @@ function getIdsFromGrid(btnValue, btnId, btnIcon) {
         }
     }
     if (ids.length > 0) { return ids; } else {
-        
-        if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : "قبول"; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : "انخفاض"; }
+
+        if (btnValue == "Approved") { btnValue = _currentLanguage == "en-US" ? "Approve" : approveTitle; } else { btnValue = _currentLanguage == "en-US" ? "Decline" : lblDecline; }
 
 
         buttonRemovePleaseWait(btnId, btnValue, btnIcon);

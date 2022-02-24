@@ -141,8 +141,23 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>Sign In</value>
   </data>
+  <data name="canNotApplyWithAvailableBalanceZero" xml:space="preserve">
+    <value>Can not apply with available balance 0</value>
+  </data>
+  <data name="employeeProfile" xml:space="preserve">
+    <value>Employee Profile</value>
+  </data>
+  <data name="enddateisrequired" xml:space="preserve">
+    <value>End date is required</value>
+  </data>
+  <data name="firstselectrecordsfromgrid" xml:space="preserve">
+    <value>First select records from grid</value>
+  </data>
   <data name="Human Resouce Module Below" xml:space="preserve">
     <value>Humran Resource</value>
+  </data>
+  <data name="lblAbsent" xml:space="preserve">
+    <value>Absent</value>
   </data>
   <data name="lblAccept" xml:space="preserve">
     <value>Accept</value>
@@ -170,6 +185,9 @@
   </data>
   <data name="lblBody" xml:space="preserve">
     <value>Body</value>
+  </data>
+  <data name="lblCancelLeaveRequest" xml:space="preserve">
+    <value>Leave Cancellation</value>
   </data>
   <data name="lblCashInLieu" xml:space="preserve">
     <value>Cash In Leiu</value>
@@ -306,11 +324,17 @@
   <data name="lblEmiratesOfResidencyEng" xml:space="preserve">
     <value>Emirates Of Residency (English)</value>
   </data>
+  <data name="lblEmployeeDocument" xml:space="preserve">
+    <value>Employee Document</value>
+  </data>
   <data name="lblEmployeeName" xml:space="preserve">
     <value>Employee Name</value>
   </data>
   <data name="lblEmployeeNumber" xml:space="preserve">
     <value>Employee Number</value>
+  </data>
+  <data name="lblEmployees" xml:space="preserve">
+    <value>Employees</value>
   </data>
   <data name="lblEmployeesAttendance" xml:space="preserve">
     <value>Employees Attendance</value>
@@ -396,11 +420,17 @@
   <data name="lblLeaveName" xml:space="preserve">
     <value>Leave Name</value>
   </data>
+  <data name="lblLeaveRequest" xml:space="preserve">
+    <value>Leave Request</value>
+  </data>
   <data name="lblLeaveType" xml:space="preserve">
     <value>Leave Type</value>
   </data>
   <data name="lblLetterNumber" xml:space="preserve">
     <value>Letter Number</value>
+  </data>
+  <data name="lblLetterRequest" xml:space="preserve">
+    <value>Letter Request</value>
   </data>
   <data name="lblLetterType" xml:space="preserve">
     <value>Letter Type</value>
@@ -452,6 +482,9 @@
   </data>
   <data name="lblNewPassword" xml:space="preserve">
     <value>New Password</value>
+  </data>
+  <data name="lblNoSignature" xml:space="preserve">
+    <value>No Signature</value>
   </data>
   <data name="lblNote" xml:space="preserve">
     <value>Note</value>
@@ -522,6 +555,9 @@
   <data name="lblPhone" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="lblPresent" xml:space="preserve">
+    <value>Present</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>Processed</value>
   </data>
@@ -530,6 +566,9 @@
   </data>
   <data name="lblProfileImage" xml:space="preserve">
     <value>Profile Image</value>
+  </data>
+  <data name="lblPublicHoliday" xml:space="preserve">
+    <value>Public Holiday</value>
   </data>
   <data name="lblReadLetter" xml:space="preserve">
     <value>Read Letter</value>
@@ -581,6 +620,9 @@
   </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>Permission Leave</value>
+  </data>
+  <data name="lblShortLeaveRequest" xml:space="preserve">
+    <value>Permission Leave Request</value>
   </data>
   <data name="lblShowAll" xml:space="preserve">
     <value>Show All</value>
@@ -648,6 +690,9 @@
   <data name="nearToExpireModalHeader" xml:space="preserve">
     <value>Near to expire document </value>
   </data>
+  <data name="numberOfHourCannotBeZero" xml:space="preserve">
+    <value>Number of hours cannot be zero</value>
+  </data>
   <data name="phEmail" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -656,6 +701,21 @@
   </data>
   <data name="phPassword" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="requesteddaysshouldbelessthanorequaltoavailablebalance" xml:space="preserve">
+    <value>Requested day(s) should be less than or equal to available balance</value>
+  </data>
+  <data name="requestedhoursshouldbelessthanorequaltoavailablebalance" xml:space="preserve">
+    <value>Requested hour(s) should be less than or equal to available balance</value>
+  </data>
+  <data name="startdatecannotbegreaterthanenddate" xml:space="preserve">
+    <value>Start date can not be greater than end date</value>
+  </data>
+  <data name="startdateisrequired" xml:space="preserve">
+    <value>Start date is required</value>
+  </data>
+  <data name="starttimecannotbegreaterthanendtime" xml:space="preserve">
+    <value>Start time can not be greater than end time</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>Educational Document</value>

@@ -77,7 +77,16 @@ namespace INMA.HR.Services
                 Service = new FileUploadService();
                 foreach (var file in model.UploadedFiles)
                 {
-                    Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.Employee, (int)_response.InsertedId, (int)DocumentType.EmployeeProfileImage, XtremeFactory._factory, XtremeFactory.connectionString);
+                    if (file.AttachmentType == "EmployeeSignature")
+                    {
+                        Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.Employee, (int)_response.InsertedId, (int)DocumentType.EmployeeSignature, XtremeFactory._factory, XtremeFactory.connectionString);
+
+                    }
+                    else
+                    {
+
+                        Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.Employee, (int)_response.InsertedId, (int)DocumentType.EmployeeProfileImage, XtremeFactory._factory, XtremeFactory.connectionString);
+                    }
 
                 }
             }
@@ -179,7 +188,7 @@ namespace INMA.HR.Services
     }
 
 
-    
+
     [Command(Name = "HR_Employee_GetAll")]
     public class HR_Employye_GetAllCommand : CamelCommandBase
     {
@@ -327,7 +336,7 @@ namespace INMA.HR.Services
             var model = base.MappedModel(new
             {
                 EmployeeId = 0,
-                Language = string.Empty,               
+                Language = string.Empty,
             }, viewInput);
 
 
@@ -376,4 +385,9 @@ namespace INMA.HR.Services
             return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_Leave_AvailableAndTakenDetail_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
         }
     }
+
+
+
+
+
 }

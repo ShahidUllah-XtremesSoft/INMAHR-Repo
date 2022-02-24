@@ -133,11 +133,56 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not apply with available balance 0.
+        /// </summary>
+        public static string canNotApplyWithAvailableBalanceZero {
+            get {
+                return ResourceManager.GetString("canNotApplyWithAvailableBalanceZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee Profile.
+        /// </summary>
+        public static string employeeProfile {
+            get {
+                return ResourceManager.GetString("employeeProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date is required.
+        /// </summary>
+        public static string enddateisrequired {
+            get {
+                return ResourceManager.GetString("enddateisrequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First select records from grid.
+        /// </summary>
+        public static string firstselectrecordsfromgrid {
+            get {
+                return ResourceManager.GetString("firstselectrecordsfromgrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Humran Resource.
         /// </summary>
         public static string Human_Resouce_Module_Below {
             get {
                 return ResourceManager.GetString("Human Resouce Module Below", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent.
+        /// </summary>
+        public static string lblAbsent {
+            get {
+                return ResourceManager.GetString("lblAbsent", resourceCulture);
             }
         }
         
@@ -219,6 +264,15 @@ namespace HRModuleUI {
         public static string lblBody {
             get {
                 return ResourceManager.GetString("lblBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave Cancellation.
+        /// </summary>
+        public static string lblCancelLeaveRequest {
+            get {
+                return ResourceManager.GetString("lblCancelLeaveRequest", resourceCulture);
             }
         }
         
@@ -628,6 +682,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employee Document.
+        /// </summary>
+        public static string lblEmployeeDocument {
+            get {
+                return ResourceManager.GetString("lblEmployeeDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employee Name.
         /// </summary>
         public static string lblEmployeeName {
@@ -642,6 +705,15 @@ namespace HRModuleUI {
         public static string lblEmployeeNumber {
             get {
                 return ResourceManager.GetString("lblEmployeeNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees.
+        /// </summary>
+        public static string lblEmployees {
+            get {
+                return ResourceManager.GetString("lblEmployees", resourceCulture);
             }
         }
         
@@ -898,6 +970,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Leave Request.
+        /// </summary>
+        public static string lblLeaveRequest {
+            get {
+                return ResourceManager.GetString("lblLeaveRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leave Type.
         /// </summary>
         public static string lblLeaveType {
@@ -912,6 +993,15 @@ namespace HRModuleUI {
         public static string lblLetterNumber {
             get {
                 return ResourceManager.GetString("lblLetterNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Letter Request.
+        /// </summary>
+        public static string lblLetterRequest {
+            get {
+                return ResourceManager.GetString("lblLetterRequest", resourceCulture);
             }
         }
         
@@ -1065,6 +1155,15 @@ namespace HRModuleUI {
         public static string lblNewPassword {
             get {
                 return ResourceManager.GetString("lblNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Signature.
+        /// </summary>
+        public static string lblNoSignature {
+            get {
+                return ResourceManager.GetString("lblNoSignature", resourceCulture);
             }
         }
         
@@ -1276,6 +1375,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Present.
+        /// </summary>
+        public static string lblPresent {
+            get {
+                return ResourceManager.GetString("lblPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processed.
         /// </summary>
         public static string lblProcessed {
@@ -1299,6 +1407,15 @@ namespace HRModuleUI {
         public static string lblProfileImage {
             get {
                 return ResourceManager.GetString("lblProfileImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public Holiday.
+        /// </summary>
+        public static string lblPublicHoliday {
+            get {
+                return ResourceManager.GetString("lblPublicHoliday", resourceCulture);
             }
         }
         
@@ -1452,6 +1569,15 @@ namespace HRModuleUI {
         public static string lblShortLeave {
             get {
                 return ResourceManager.GetString("lblShortLeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permission Leave Request.
+        /// </summary>
+        public static string lblShortLeaveRequest {
+            get {
+                return ResourceManager.GetString("lblShortLeaveRequest", resourceCulture);
             }
         }
         
@@ -1654,6 +1780,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of hours cannot be zero.
+        /// </summary>
+        public static string numberOfHourCannotBeZero {
+            get {
+                return ResourceManager.GetString("numberOfHourCannotBeZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string phEmail {
@@ -1677,6 +1812,51 @@ namespace HRModuleUI {
         public static string phPassword {
             get {
                 return ResourceManager.GetString("phPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested day(s) should be less than or equal to available balance.
+        /// </summary>
+        public static string requesteddaysshouldbelessthanorequaltoavailablebalance {
+            get {
+                return ResourceManager.GetString("requesteddaysshouldbelessthanorequaltoavailablebalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested hour(s) should be less than or equal to available balance.
+        /// </summary>
+        public static string requestedhoursshouldbelessthanorequaltoavailablebalance {
+            get {
+                return ResourceManager.GetString("requestedhoursshouldbelessthanorequaltoavailablebalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start date can not be greater than end date.
+        /// </summary>
+        public static string startdatecannotbegreaterthanenddate {
+            get {
+                return ResourceManager.GetString("startdatecannotbegreaterthanenddate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start date is required.
+        /// </summary>
+        public static string startdateisrequired {
+            get {
+                return ResourceManager.GetString("startdateisrequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start time can not be greater than end time.
+        /// </summary>
+        public static string starttimecannotbegreaterthanendtime {
+            get {
+                return ResourceManager.GetString("starttimecannotbegreaterthanendtime", resourceCulture);
             }
         }
         

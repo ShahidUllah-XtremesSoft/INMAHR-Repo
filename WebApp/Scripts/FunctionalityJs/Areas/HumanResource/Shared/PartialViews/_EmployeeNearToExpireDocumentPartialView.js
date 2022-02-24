@@ -23,6 +23,7 @@ var loadNearToExpireDocumentGridCallBack = function (inputDataJSON) {
     bindloadNearToExpireDocumentGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindloadNearToExpireDocumentGrid = function (inputDataJSON) {
+    
     allNotificationCount += inputDataJSON.length;
     $('#spanNotificationCount').text(allNotificationCount);
     $('#documentCount').text(inputDataJSON.length);

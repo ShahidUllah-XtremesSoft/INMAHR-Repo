@@ -166,7 +166,7 @@
     <value>هل انت متاكد ؟</value>
   </data>
   <data name="lblDecline" xml:space="preserve">
-    <value>رفض</value>
+    <value>الغاء</value>
   </data>
   <data name="lblDeclineQuestion" xml:space="preserve">
     <value>رفض؟</value>
@@ -179,6 +179,9 @@
   </data>
   <data name="lblInma" xml:space="preserve">
     <value>إنماء العالمية ذ.م.م</value>
+  </data>
+  <data name="lblLoading" xml:space="preserve">
+    <value>...تحميل</value>
   </data>
   <data name="lblNo" xml:space="preserve">
     <value>لا</value>

@@ -39,6 +39,7 @@ var getInternalLetterByIdCallBack = function (inputDataJSON) {
     });
     //$('#divFrom').text(responseJSON.createdBy);
     $('#divFrom').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.createdBy + '</button>');
+    $('#divFromDepartment').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.senderDepartmentName + '</button>');
     $('.letter-date').append(responseJSON.sendDate);
     $('.letter-number').append(responseJSON.number);
     $('.letter-time').append(responseJSON.letterTime);
@@ -48,7 +49,7 @@ var getInternalLetterByIdCallBack = function (inputDataJSON) {
 
     $('#txt-subject').text(responseJSON.subject);
     $('#txt-body').html(responseJSON.body);
-
+    fnUploadEmployeeSignature(responseJSON.empSignature);
 
     if (responseJSON.empCurrentFileName != null) {
         var profileImage = '/UploadFile/' + responseJSON.empCurrentFileName;
@@ -88,6 +89,9 @@ var getInternalLetterByIdCallBack = function (inputDataJSON) {
         var attachments = '/UploadFile/' + responseJSON.currentFileName;
         $('#letter-attachment').attr('src', fileExtension).attr('alt', responseJSON.orignalFileName);
         $('#attachment-open').attr('href', attachments);
+
+      
+
     }
 
 }
@@ -114,4 +118,26 @@ function fnRedirectToSpecificScreen(name) {
         window.location.href = '/Employees/InternalLetter/Forward?value=' + queryStringLetterId + '';
 
     }
+}
+
+//--------------------- LOAD EMPLOYEE SIGNAGUE 
+
+function fnUploadEmployeeSignature(d) {
+      
+    var _employeeSignature = d;
+
+    if (_employeeSignature == null) {
+        $('#noSignature').show();
+    } else {
+        $('#noSignature').hide();
+        $('#loadSignature').show();
+         
+        if (_employeeSignature != null) {
+            var singature_ = '/UploadFile/' + _employeeSignature;
+            $('#loadEmployeeSignature').attr('src', singature_);
+            //$('#SignatureBy').val(1);
+            //$('#Signature').val(_employeeSignature);
+        }
+    }
+
 }

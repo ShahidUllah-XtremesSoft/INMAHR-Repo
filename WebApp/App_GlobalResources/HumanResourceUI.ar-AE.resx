@@ -144,6 +144,21 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+  <data name="canNotApplyWithAvailableBalanceZero" xml:space="preserve">
+    <value>لا يمكن التقدم مع رصيد 0</value>
+  </data>
+  <data name="employeeProfile" xml:space="preserve">
+    <value>ملف الموظف</value>
+  </data>
+  <data name="enddateisrequired" xml:space="preserve">
+    <value>تاريخ الانتهاء مطلوب</value>
+  </data>
+  <data name="firstselectrecordsfromgrid" xml:space="preserve">
+    <value>حدد السجلات من الشبكة أولاً</value>
+  </data>
+  <data name="lblAbsent" xml:space="preserve">
+    <value>غياب</value>
+  </data>
   <data name="lblAccept" xml:space="preserve">
     <value>قبول</value>
   </data>
@@ -154,7 +169,7 @@
     <value>اضافة</value>
   </data>
   <data name="lblApprove" xml:space="preserve">
-    <value>قبول</value>
+    <value>اعتماد</value>
   </data>
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>الطلبات المعتمدة</value>
@@ -170,6 +185,9 @@
   </data>
   <data name="lblBody" xml:space="preserve">
     <value>الجسم</value>
+  </data>
+  <data name="lblCancelLeaveRequest" xml:space="preserve">
+    <value>الغاء الاجازة</value>
   </data>
   <data name="lblCashInLieu" xml:space="preserve">
     <value>بدل نقدن للاجازة</value>
@@ -202,7 +220,7 @@
     <value>ملاحظات (باللغة الإنجليزية)</value>
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
-    <value>Company Document (Arabic)</value>
+    <value>وثائق الشركة</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>نوع العقد</value>
@@ -303,11 +321,17 @@
   <data name="lblEmiratesOfResidencyEng" xml:space="preserve">
     <value>Emirates Of Residency  (English)</value>
   </data>
+  <data name="lblEmployeeDocument" xml:space="preserve">
+    <value>الوثائق</value>
+  </data>
   <data name="lblEmployeeName" xml:space="preserve">
     <value>اسم الموظف</value>
   </data>
   <data name="lblEmployeeNumber" xml:space="preserve">
     <value>رقم الموظف</value>
+  </data>
+  <data name="lblEmployees" xml:space="preserve">
+    <value>الموظفين</value>
   </data>
   <data name="lblEmployeesAttendance" xml:space="preserve">
     <value>تحضير الموظفين</value>
@@ -355,7 +379,7 @@
     <value>تحويل</value>
   </data>
   <data name="lblFristSelectRecordFromGrid" xml:space="preserve">
-    <value>حدد السجلات من الشبكة أولاً</value>
+    <value>حدد الخيار من القائمة</value>
   </data>
   <data name="lblFrom" xml:space="preserve">
     <value>من</value>
@@ -390,12 +414,18 @@
   <data name="lblLeaveName" xml:space="preserve">
     <value>Leave Name</value>
   </data>
+  <data name="lblLeaveRequest" xml:space="preserve">
+    <value>طلب اجازة</value>
+  </data>
   <data name="lblLeaveType" xml:space="preserve">
     <value>نوع الاجازة</value>
     <comment>نوع الاجارة</comment>
   </data>
   <data name="lblLetterNumber" xml:space="preserve">
     <value>رقم الرسالة</value>
+  </data>
+  <data name="lblLetterRequest" xml:space="preserve">
+    <value>رسالة رسمية</value>
   </data>
   <data name="lblLetterType" xml:space="preserve">
     <value>نوع الرسالة</value>
@@ -444,6 +474,9 @@
   </data>
   <data name="lblNewPassword" xml:space="preserve">
     <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="lblNoSignature" xml:space="preserve">
+    <value> لا التوقيع</value>
   </data>
   <data name="lblNote" xml:space="preserve">
     <value>الملاحظات</value>
@@ -514,6 +547,9 @@
   <data name="lblPhone" xml:space="preserve">
     <value>رقم الهاتف</value>
   </data>
+  <data name="lblPresent" xml:space="preserve">
+    <value>حاضر</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>معالجتها</value>
   </data>
@@ -522,6 +558,9 @@
   </data>
   <data name="lblProfileImage" xml:space="preserve">
     <value>الصورة الشخصية</value>
+  </data>
+  <data name="lblPublicHoliday" xml:space="preserve">
+    <value>اجازة رسمية</value>
   </data>
   <data name="lblReadLetter" xml:space="preserve">
     <value>اقرأ الرسالة</value>
@@ -548,7 +587,8 @@
     <value>Reset</value>
   </data>
   <data name="lblReturnTime" xml:space="preserve">
-    <value>وقت العودة</value>
+    <value>الى</value>
+    <comment>وقت العودة</comment>
   </data>
   <data name="lblRole" xml:space="preserve">
     <value>دور</value>
@@ -573,6 +613,9 @@
   </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>إجازة قصيرة</value>
+  </data>
+  <data name="lblShortLeaveRequest" xml:space="preserve">
+    <value>إذن خروج</value>
   </data>
   <data name="lblShowAll" xml:space="preserve">
     <value>الكل</value>
@@ -633,13 +676,16 @@
     <value>Visa Release Date</value>
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
-    <value>كفالة</value>
+    <value>الكفيل</value>
   </data>
   <data name="MsgAttachmentNotFound" xml:space="preserve">
     <value>لايوجد المرفق</value>
   </data>
   <data name="nearToExpireModalHeader" xml:space="preserve">
     <value>وثيقة على وشك الانتهاء</value>
+  </data>
+  <data name="numberOfHourCannotBeZero" xml:space="preserve">
+    <value>عدد الساعات لا يجب ان يكون 0</value>
   </data>
   <data name="phEmail" xml:space="preserve">
     <value>اسم االمستخدم</value>
@@ -649,6 +695,21 @@
   </data>
   <data name="phPassword" xml:space="preserve">
     <value>كلمه السر</value>
+  </data>
+  <data name="requesteddaysshouldbelessthanorequaltoavailablebalance" xml:space="preserve">
+    <value>عدد الايام يجب ان يكون اقل او مساوي للرصيد المتاح</value>
+  </data>
+  <data name="requestedhoursshouldbelessthanorequaltoavailablebalance" xml:space="preserve">
+    <value>طلب الاذن يجب ان يكون اقل او مساوي للرصيد</value>
+  </data>
+  <data name="startdatecannotbegreaterthanenddate" xml:space="preserve">
+    <value>بداية المدة لا يمكن ان تكون اكثر من نهاية المدة</value>
+  </data>
+  <data name="startdateisrequired" xml:space="preserve">
+    <value>تاريخ البدء مطلوب</value>
+  </data>
+  <data name="starttimecannotbegreaterthanendtime" xml:space="preserve">
+    <value>بداية المدة لا يمكن ان تكون اكبر من مدة النهاية</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>

@@ -2,13 +2,13 @@
 var $ShortLeaveGrid = "ShortLeaveGrid";
 
 $(function () {
-    
+
 
 
     $('#Language').val(_currentLanguage);
     $('#AvailableShortLeave').val(totalShortLeave);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-   
+
     renderKendoDatePicker('RequestDate');
     renderKendoTimePicker('StartTime');
     renderKendoTimePicker('EndTime');
@@ -50,12 +50,14 @@ $(function () {
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
         if ($('#NumberOfHours').val() == "0") {
-            swalMessage('info', 'Number of hours cannot be zero', 2000);
+            // swalMessage('info', 'Number of hours cannot be zero', 2000);
+            swalMessage('info', numberOfHourCannotBeZero, 2000);
             return;
         }
-        
+
         if ($('#AvailableShortLeave').val() == '0' && $('#NumberOfHours').val() > $('#EditLeaveHours').val()) {
-            swalMessage('info', 'Can not apply with available balance 0',2000);
+            //   swalMessage('info', 'Can not apply with available balance 0',2000);
+            swalMessage('info', canNotApplyWithAvailableBalanceZero, 2000);
         }
         else {
             if (compareStartEndTime($("#StartTime").val(), $("#EndTime").val())) {
@@ -64,68 +66,69 @@ $(function () {
                 }
             }
         }
-       
+
     });
 
 
     var startDateDatePicker = $("#StartTime").data("kendoTimePicker");
-    startDateDatePicker.bind("change", function () {       
+    startDateDatePicker.bind("change", function () {
         calculateHourFromStartEndTime();
     });
 
 
     var endDateDatePicker = $("#EndTime").data("kendoTimePicker");
-    endDateDatePicker.bind("change", function () {        
+    endDateDatePicker.bind("change", function () {
         calculateHourFromStartEndTime();
-    
+
     });
     loadAvailableShortLeaveBalance();
 })
 
 
- 
- 
+
+
 
 
 function compareStartEndTime(startTime, endTime) {
-    debugger;
     startTime = convertTime12to24(startTime);
     endTime = convertTime12to24(endTime);
     var startTimeSeconds = convertHHMMToSeconds(startTime);
     var endTimeSeconds = convertHHMMToSeconds(endTime);
-                
-        if (startTimeSeconds > endTimeSeconds) {
-            swalMessage('info', 'start time can not be less than end time', 2000);
-            //$("#RequestDate").data("kendoDatePicker").value('');
-            return false;
-        }
-        
+
+    if (startTimeSeconds > endTimeSeconds) {
+        // swalMessage('info', 'start time can not be less than end time', 2000);
+        swalMessage('info', starttimecannotbegreaterthanendtime, 2000);
+        //$("#RequestDate").data("kendoDatePicker").value('');
+        return false;
+    }
+
     return true;
 }
 function calculateHourFromStartEndTime() {
     if ($("#StartTime").data("kendoTimePicker").value() != null && $("#EndTime").data("kendoTimePicker").value() != null) {
         var dateDifference = ($("#StartTime").data("kendoTimePicker").value() - $("#EndTime").data("kendoTimePicker").value());
-        dateDifference = (-1) * dateDifference;        
+        dateDifference = (-1) * dateDifference;
         //var days = ((dateDifference / 1000 / 60 / 60 / 24) + 1);
         var days = (dateDifference / (60 * 60 * 1000));
-        $('#NumberOfHours').val(days);        
+        $('#NumberOfHours').val(days);
     }
     else {
         $('#NumberOfHours').val(0);
     }
 }
 function requestedHoursShouldBeLessOrEqualToAvailable() {
-    debugger;
     if ($('#Id').val() == '0') {
         if (parseFloat($("#NumberOfHours").val()) > parseFloat($('#AvailableShortLeave').val())) {
-            swalMessage('info', 'Requested hour(s) should be less than or equal to available balance', 2500);
+            //  swalMessage('info', 'Requested hour(s) should be less than or equal to available balance', 2500);
+            swalMessage('info', requestedhoursshouldbelessthanorequaltoavailablebalance, 2500);
             return false;
         }
     }
     else {
-        
+
         if ($('#AvailableShortLeave').val() == '0' && $('#NumberOfHours').val() > $('#EditLeaveHours').val()) {
-            swalMessage('info', 'start time can not be less than end time', 2000);
+            //  swalMessage('info', 'start time can not be less than end time', 2000);
+            swalMessage('info', starttimecannotbegreaterthanendtime, 2000);
             return false;
         }
     }
@@ -133,7 +136,7 @@ function requestedHoursShouldBeLessOrEqualToAvailable() {
 }
 function loadShortLeaveGrid() {
 
-    ajaxRequest({ commandName: 'Request_ShortLeave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadShortLeaveGridCallBack });   
+    ajaxRequest({ commandName: 'Request_ShortLeave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadShortLeaveGridCallBack });
 
 }
 var loadShortLeaveGridCallBack = function (inputDataJSON) {
@@ -144,11 +147,11 @@ var bindShortLeaveGrid = function (inputDataJSON) {
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
-        { field: "requestDate", title: requestDate, hidden: false, width: 30 },
-        { field: "startTime", title: startTime, hidden: false, width: 30 },
-        { field: "endTime", title: returnTime, hidden: false, width: 30 },
-        { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 30 },
-        { field: "comment", title: comment, hidden: false, width: 30 },
+        { field: "requestDate", title: requestDate, hidden: false, width: 30, filterable: false },
+        { field: "startTime", title: startTime, hidden: false, width: 30, filterable: false },
+        { field: "endTime", title: returnTime, hidden: false, width: 30, filterable: false },
+        { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 30, filterable: false },
+        { field: "comment", title: comment, hidden: true, width: 30, filterable: false },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         //{ field: "status", title: "Status", hidden: false, width: 30 },
         {
@@ -156,6 +159,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             field: 'status',
             width: 30,
             hidden: false,
+            filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
@@ -163,6 +167,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
         {
             field: "", width: 10,
             title: ' ',
+            filterable: false,
             template: "#if(statusForCondition == 'Pending') { #<a style='font-size:20px;cursor:pointer;' onClick= editShortLeave(this) title='Edit ShortLeave' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteShortLeaveById(this)  title='Delete ShortLeave'><span class='fa fa-trash'></span></a>#}else{}#"
 
         }
@@ -177,12 +182,12 @@ function editShortLeave(event) {
     var row = $(event).closest("tr");
     var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    $('#Id').val(dataItem.id);    
+    $('#Id').val(dataItem.id);
     $('#EditLeaveHours').val(dataItem.numberOfHours);
     $("#RequestDate").data("kendoDatePicker").value(dataItem.requestDate);
     $("#StartTime").data("kendoTimePicker").value(dataItem.startTime);
     $("#EndTime").data("kendoTimePicker").value(dataItem.endTime);
-    
+
     calculateHourFromStartEndTime();
 
 }
@@ -192,7 +197,7 @@ function saveShortLeaveRequest() {
         buttonAddPleaseWait('btnSave');
         var options = {
             success: function (response, statusText, jqXHR) {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 swal(response);
                 $('#Id').val(0);
                 loadShortLeaveGrid();
@@ -201,34 +206,34 @@ function saveShortLeaveRequest() {
 
             },
             error: function (xhr, status, error) {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
-                
+
                 swalMessage('error', errmsg, 2000);
             }
             , complete: function () {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
             }
         };
         $("#frmShortLeaveDetail").ajaxSubmit(options);
     }
     else {
 
-        buttonRemovePleaseWait('btnSave', save, 'save');
+        buttonRemovePleaseWait('btnSave', lblSend, 'send');
 
     }
 
 }
 function clearFields() {
     $('#frmShortLeaveDetail')[0].reset();
-    $('#Id').val(0);    
+    $('#Id').val(0);
     $('#NumberOfHours').val('0');
     //renderKendoDatePicker('RequestDate');
     //renderKendoTimePicker('StartTime');
     //renderKendoTimePicker('EndTime');
-    
-    
-   
+
+
+
 }
 function deleteShortLeaveById(event) {
     var row = $(event).closest("tr");
@@ -277,7 +282,7 @@ function loadAvailableShortLeaveBalance() {
 
 }
 function get_EmployeeShortLeavesAvailableBalanceCallBack(response) {
-     
+
     //console.log(response);
     $('#AvailableShortLeave').val(JSON.parse(response.Value).remainingBalance);
 }

@@ -30,6 +30,14 @@ namespace WebApp.Areas.Employees.Controllers
         {
             return View();
         }
+        public ActionResult ReceivedLetters()
+        {
+            return View("~/Areas/Employees/Views/InternalLetter/ReceivedLetters/Index.cshtml");
+        }
+        public ActionResult SendLetters()
+        {
+            return View("~/Areas/Employees/Views/InternalLetter/SendLetters/Index.cshtml");
+        }
 
 
 

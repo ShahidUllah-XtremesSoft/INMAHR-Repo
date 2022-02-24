@@ -16,7 +16,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>@HRModuleUI.HumanResourceUI.lblDays</label>
-                        <input type="number" class="form-control" id="Days" name="Days" min="1" required onkeypress="return only1To9Allowed(event)"/>
+                        <input type="number" class="form-control" id="Days" name="Days" min="1" required onkeypress="return only1To9Allowed(event)" />
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -35,17 +35,18 @@
 
         </form>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div id="CashInLeaveGrid"></div>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="CashInLeaveGrid"></div>
+                </div>
             </div>
         </div>
 
 
     </div>
 </div>
-@section scripts {    
+@section scripts {
     <script src="~/Scripts/FunctionalityJs/Areas/Request/CashInLeave/cash-in-leave.js"></script>
 
     <script>

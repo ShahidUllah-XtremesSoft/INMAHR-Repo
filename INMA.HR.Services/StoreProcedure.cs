@@ -3,6 +3,7 @@
 
     #region Common
     Setup_Type_DropdownByTypeName,
+    Get_All_Count_Notifications,
     #endregion
     DashboardCounter_Select,
     UserLogin_Select,
@@ -226,6 +227,8 @@
     Employee_InternalLetter_Delete,
     Employee_InternalLetter_Outbox_Delete,
     Employee_InternalLetter_GetEmployeesByParameters,
+    HR_Employee_Signature_Get,
+
     #endregion
     #region Employee Attendance
     Employee_Attendance_GetByDepartment,
@@ -260,7 +263,7 @@
     #region Setup
     Setup_PublicHoliday_Save,
     Setup_PublicHoliday_Delete,
-    Setup_PublicHoliday_Get
+    Setup_PublicHoliday_Get,
     #endregion
-
+   
 }

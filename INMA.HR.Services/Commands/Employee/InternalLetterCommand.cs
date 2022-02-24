@@ -46,6 +46,7 @@ namespace INMA.HR.Services.Commands.Employee
                 LetterDate = string.Empty,
                 Subject = string.Empty,
                 SignedBy = 0,
+                Signature = string.Empty,
                 Body = string.Empty,
                 IsRead = false,
                 IsImportant = false,
@@ -128,6 +129,7 @@ namespace INMA.HR.Services.Commands.Employee
                 LetterDate = string.Empty,
                 Subject = string.Empty,
                 SignedBy = 0,
+                Signature = string.Empty,
                 Body = string.Empty,
                 IsRead = false,
                 IsImportant = false,
@@ -207,6 +209,7 @@ namespace INMA.HR.Services.Commands.Employee
                 LetterDate = string.Empty,
                 Subject = string.Empty,
                 SignedBy = 0,
+                Signature = string.Empty,
                 Body = string.Empty,
                 IsRead = false,
                 IsImportant = false,
@@ -471,6 +474,43 @@ namespace INMA.HR.Services.Commands.Employee
     #endregion
 
 
+    #region ============= Load Employee Signature 
+    [Command(Name = "HR_Employee_Signature_Get")]
+    public class HR_Employee_Signature_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+            var model = base.MappedModel(new
+            {
+
+                LoggedInEmployeeId = 0
+                //LoggedInUserId = string.Empty,
+                //LoggedInUserRoleId = 0,
+                //LoggedInUserDepartementId = 0,
+                //Language = string.Empty,
+
+
+            }, v);
+
+
+            try
+            {
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetSingle<dynamic>(StoreProcedure.HR_Employee_Signature_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            }
+            catch (Exception ex)
+            {
+                result = new { status = false, message = ex.Message };
+            }
+            return result;
+        }
+    }
+    #endregion
 
 
 

@@ -43,7 +43,17 @@ function letterTypeDropdownListOnChange(e) {
 function loadLetterGrid() {
 
     //ajaxRequest({ commandName: 'Request_Letter_Get', values: { Id: $('#Id').val(), Language: _currentLanguage     }, CallBack: loadLetterGridCallBack });
-    ajaxRequest({ commandName: 'Request_Letter_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadLetterGridCallBack });
+    ajaxRequest({
+        commandName: 'Request_Letter_Get',
+        values: {
+            Id: $('#Id').val(),
+            CreatedBy: $('#CreatedBy').val(),
+            LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            Language: _currentLanguage
+        }, CallBack: loadLetterGridCallBack
+    });
 
 }
 var loadLetterGridCallBack = function (inputDataJSON) {
@@ -55,10 +65,10 @@ var bindLetterGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
         { field: "LetterTypeId", title: "LetterTypeId", hidden: true },
-        { field: "letterType", title: letterType, hidden: false, width: 20 },
-        { field: "note", title: note, hidden: false, width: 30 },
-        { field: "other", title: Other, hidden: false, width: 30 },
-        { field: "comment", title: comment, hidden: false, width: 30 },
+        { field: "letterType", title: letterType, hidden: false, width: 20, filterable: false },
+        { field: "note", title: note, hidden: false, width: 30, filterable: false },
+        { field: "other", title: Other, hidden: false, width: 30, filterable: false},
+        { field: "comment", title: comment, hidden: false, width: 30, filterable: false },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         //{ field: "status", title: "Status", hidden: false, width: 30 },
         {
@@ -66,6 +76,7 @@ var bindLetterGrid = function (inputDataJSON) {
             field: 'statusForCondition',
             width: 30,
             hidden: false,
+             filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:statusForCondition#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
@@ -73,6 +84,7 @@ var bindLetterGrid = function (inputDataJSON) {
         {
             field: "", width: 10,
             title: action,
+             filterable: false,
             template: "# if(statusForCondition == 'Pending') { #<a style = 'font-size:20px;cursor:pointer;' onClick = editLetter(this) title='Edit Letter' > <span class='fa fa-edit'></span></a> <a style='font-size:20px;cursor:pointer;' onClick= deleteLetterById(this)  title = 'Delete Letter' > <span class='fa fa-trash'></span></a >#} else {}# "
 
         }
@@ -102,7 +114,7 @@ function saveLetterRequest() {
             buttonAddPleaseWait('btnSave');
             var options = {
                 success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btnSave', save, 'save');
+                    buttonRemovePleaseWait('btnSave', lblSend, 'send');
                     swal(response);
                     $('#Id').val(0);
                     loadLetterGrid();
@@ -110,19 +122,19 @@ function saveLetterRequest() {
 
                 },
                 error: function (xhr, status, error) {                    
-                    buttonRemovePleaseWait('btnSave', save, 'save');
+                    buttonRemovePleaseWait('btnSave', lblSend, 'send');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;                    
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btnSave', save, 'save');
+                    buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 }
             };
             $("#frmLetterDetail").ajaxSubmit(options);
         }
         else {
             
-            buttonRemovePleaseWait('btnSave', save, 'save');
+            buttonRemovePleaseWait('btnSave', lblSend, 'send');
 
         }
    

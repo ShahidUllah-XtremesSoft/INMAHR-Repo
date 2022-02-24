@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Letter Request";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblLetterRequest;
 }
 
 <div class="card">
@@ -13,44 +13,48 @@
             <input type="hidden" name="Language" id="Language" value="" />
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLetterType </label>
                         <input class="form-control" id="LetterTypeId" name="LetterTypeId" required />
                     </div>
                 </div>
+                <div class="col-md-8"> </div>
 
             </div>
             <div class="row" id="OtherDiv">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblComment</label>
                         <input class="form-control" id="Other" name="Other" />
                     </div>
                 </div>
+                <div class="col-md-4"></div>
 
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNote</label>
                         <textarea class="form-control" id="Note" name="Note" required></textarea>
                     </div>
                 </div>
+                <div class="col-md-4"></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
                 </div>
             </div>
 
         </form>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div id="LetterGrid"></div>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="LetterGrid"></div>
+                </div>
             </div>
         </div>
 

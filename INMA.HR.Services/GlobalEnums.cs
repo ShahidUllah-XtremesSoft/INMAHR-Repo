@@ -21,6 +21,7 @@ namespace INMA.HR.Services
         EmployeeEducationalDocument = 3,
         InternalLetterAttachment = 4,
         CompanyDocument = 5,
+        EmployeeSignature = 6,
 
 
     }

@@ -16,7 +16,7 @@ function LoadRequestLeaveDropdown() {
 function loadCancelLeaveGrid() {
 
     //ajaxRequest({ commandName: 'Request_LeaveCancel_Get', values: { Language: _currentLanguage }, CallBack: fnloadCancelLeaveGrid });
-    ajaxRequest({commandName: 'Request_LeaveCancel_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadCancelLeaveGridCallBack });
+    ajaxRequest({ commandName: 'Request_LeaveCancel_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadCancelLeaveGridCallBack });
 }
 var loadCancelLeaveGridCallBack = function (inputDataJSON) {
     bindLeaveCancelGrid(JSON.parse(inputDataJSON.Value));
@@ -27,18 +27,19 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
         { field: "requestLeaveId", title: "requestLeaveId", hidden: true },
-        { field: "leave", title: leaveName, hidden: false, width: 30 },
-        { field: "startDate", title: startDate, hidden: false, width: 30 },
-        { field: "endDate", title: endDate, hidden: false, width: 30 },
-        { field: "commentEng", title: commentEng, hidden: false, width: 30 },
-        { field: "commentArb", title: commentArb, hidden: false, width: 30 },
-        { field: "comment", title: comment, hidden: false, width: 30 },
+        { field: "leave", title: leaveName, hidden: false, width: 30, filterable: false },
+        { field: "startDate", title: startDate, hidden: false, width: 30, filterable: false },
+        { field: "endDate", title: endDate, hidden: false, width: 30, filterable: false },
+        { field: "commentEng", title: commentEng, hidden: false, width: 30, filterable: false },
+        { field: "commentArb", title: commentArb, hidden: false, width: 30, filterable: false },
+        { field: "comment", title: comment, hidden: false, width: 30, filterable: false },
         //        { field: "status", title: "Status", hidden: false, width: 30 },
         {
             title: status,
             field: 'status',
             width: 30,
             hidden: false,
+            filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
@@ -47,6 +48,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         {
             field: "", width: 10,
             title: ' ',
+            filterable: false,
             template: "# if(statusForCondition == 'Pending') { #<a style='font-size:20px;cursor:pointer;' onClick= editLeaveCancel(this) title='Edit Leave' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteLeaveById(this)  title='Delete Leave'><span class='fa fa-trash'></span></a>#}else{}#  "
 
         }
@@ -59,13 +61,13 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
 };
 
 $('#btnSave').on('click', function (e) {
-  
+
     if (customValidateForm('frmLeaveCancel')) {
         $("#frmLeaveCancel").ajaxForm();
         buttonAddPleaseWait('btnSave');
         var options = {
             success: function (response, statusText, jqXHR) {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 swal(response);
                 $('#Id').val(0);
                 loadCancelLeaveGrid();
@@ -74,27 +76,26 @@ $('#btnSave').on('click', function (e) {
 
             },
             error: function (xhr, status, error) {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                 alert(errmsg);
             }
             , complete: function () {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
             }
         };
         $("#frmLeaveCancel").ajaxSubmit(options);
     }
     else {
 
-        buttonRemovePleaseWait('btnSave', save, 'save');
-
+        buttonRemovePleaseWait('btnSave', lblSend, 'send');
     }
-   
+
 });
 
 
 function clearFields() {
-     
+
     $('#CommentArb').val('');
     $('#CommentEng').val('');
     var dropdownlist = $("#LeaveRequestId").data("kendoDropDownList");
@@ -102,7 +103,7 @@ function clearFields() {
 }
 
 function deleteLeaveById(event) {
-   
+
     var row = $(event).closest("tr");
     var grid = $("#" + CancelGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
@@ -160,11 +161,12 @@ function deleteLeaveById(event) {
             ajaxRequest({ commandName: 'Request_LeaveCancel_Delete', values: { Id: dataItem.id, Language: _currentLanguage, UserID: 0 }, CallBack: deleteLeaveCancelByIdCallBack });
         }
     });
-   
+
 }
 var deleteLeaveCancelByIdCallBack = function (response) {
-    
+
     swal(response.Value);
+    location.reload();
     loadCancelLeaveGrid();
 }
 
@@ -179,6 +181,6 @@ function editLeaveCancel(event) {
     var dropdownlist = $("#LeaveRequestId").data("kendoDropDownList");
     dropdownlist.value(dataItem.requestLeaveId);
     dropdownlist.trigger("change");
-    
+
 
 }

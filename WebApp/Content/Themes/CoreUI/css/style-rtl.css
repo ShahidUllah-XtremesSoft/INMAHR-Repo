@@ -5275,7 +5275,9 @@ body.sidebar-nav .sidebar {
 body.sidebar-nav .main {
   padding-right: 200px; }
 body.sidebar-nav .footer {
-  right: 200px; }
+    /*right: 200px; }*/
+    right: 214px;
+}
 
 body.top-nav .layout-toggler {
   display: none !important; }

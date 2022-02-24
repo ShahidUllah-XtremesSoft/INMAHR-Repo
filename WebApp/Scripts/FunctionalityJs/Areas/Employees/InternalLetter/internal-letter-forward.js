@@ -362,7 +362,49 @@ function loopThroughGrid(e) {
             }, CallBack: ''
         });
         setTimeout(function () {
-            window.location.href = '/Employees/InternalLetter';
+            window.location.href = '/Employees/InternalLetter/ReceivedLetters';
         }, 1000);
     }
+}
+
+
+
+
+//--------------------- LOAD EMPLOYEE SIGNAGUE 
+
+
+function fnUploadEmployeeSignature() {
+
+    ajaxRequest({
+        commandName: 'HR_Employee_Signature_Get',
+        values: {
+            //LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            //LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            //LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            // Language: _currentLanguage,
+        }, CallBack: loadfnUploadEmployeeSignatureCallBack
+    });
+
+}
+
+function loadfnUploadEmployeeSignatureCallBack(d) {
+
+    var _employeeSignature = JSON.parse(d.Value);
+
+    if (_employeeSignature == null) {
+        $('#noSignature').show();
+    } else {
+        $('#noSignature').hide();
+        $('#loadSignature').show();
+
+
+        if (_employeeSignature.currentFileName != null) {
+            var singature_ = '/UploadFile/' + _employeeSignature.currentFileName;
+            $('#loadEmployeeSignature').attr('src', singature_);
+            $('#SignedBy').val(1);
+            $('#Signature').val(_employeeSignature.currentFileName);
+        }
+    }
+
 }

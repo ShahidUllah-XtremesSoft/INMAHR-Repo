@@ -63,7 +63,8 @@ $(function () {
 })
 function compareStartEndDate(startDate, endDate) {
     if (startDate > endDate) {
-        swalMessage('info', 'start date can not be less than end date', 2000);
+     //   swalMessage('info', 'start date can not be less than end date', 2000);
+        swalMessage('info', startdatecannotbegreaterthanenddate, 2000);
         //$("#EndDate").data("kendoDatePicker").value('');
         return false;
     }
@@ -83,13 +84,14 @@ function calculateDaysFromStartEndDate() {
 function requestedDaysShouldBeLessOrEqualToAvailable() {
     if ($('#Id').val() == '0') {
         if (parseInt($("#TotalDays").val()) > parseInt($('#AvailableLeave').val())) {
-            swalMessage('info', 'Requested day(s) should be less than or equal to available balance', 2500);
+          //  swalMessage('info', 'Requested day(s) should be less than or equal to available balance', 2500);
+            swalMessage('info', requesteddaysshouldbelessthanorequaltoavailablebalance, 2500);
             return false;
         }
     }
     else {
         if ($('#AvailableLeave').val() == '0' && $('#TotalDays').val() > $('#EditLeavDays').val()) {
-            swalMessage('info', 'Requested day(s) should be less than or equal to available balance', 2500);
+            swalMessage('info', requesteddaysshouldbelessthanorequaltoavailablebalance, 2500);
             return false;
         }
     }
@@ -132,6 +134,7 @@ function loadAvailableLeaveBalance(setupTypeDetailId = 0) {
 function loadAvailableLeaveBalanceCallBack(response) {
     //debugger;
     //console.log(response);
+     
     $('#AvailableLeave').val(JSON.parse(response.Value).remainingBalance);
 }
 function loadLeaveGrid() {
@@ -148,11 +151,11 @@ var bindLeaveGrid = function (inputDataJSON) {
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         { field: "id", title: "id", hidden: true },
-        { field: "leaveType", title: leaveType, hidden: false, width: 30 },
-        { field: "startDate", title: startDate, hidden: false, width: 30 },
-        { field: "endDate", title: endDate, hidden: false, width: 30 },
-        { field: "totalDays", title: numberOfDays, hidden: false, width: 30 },
-        { field: "comment", title: comment, hidden: false, width: 30 },
+        { field: "leaveType", title: leaveType, hidden: false, width: 30, filterable: false },
+        { field: "startDate", title: startDate, hidden: false, width: 30, filterable: false},
+        { field: "endDate", title: endDate, hidden: false, width: 30, filterable: false},
+        { field: "totalDays", title: numberOfDays, hidden: false, width: 30, filterable: false},
+        { field: "comment", title: comment, hidden: false, width: 30, filterable: false},
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         //        { field: "status", title: "Status", hidden: false, width: 30 },
@@ -161,6 +164,7 @@ var bindLeaveGrid = function (inputDataJSON) {
             field: 'statusForCondition',
             width: 30,
             hidden: false,
+             filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:statusForCondition#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
@@ -170,6 +174,7 @@ var bindLeaveGrid = function (inputDataJSON) {
             field: ""
             , width: 10,
             title: action,
+             filterable: false,
             template: "# if (statusForCondition == 'Pending') { # <a style='font-size:20px;cursor:pointer;' onClick= editLeave(this) title='Edit Leave' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteLeaveById(this)  title='Delete Leave'><span class='fa fa-trash'></span></a> # } else {}   #"
             //template: "<a style='font-size:20px;cursor:pointer;' onClick= editLeave(this) title='Edit Leave' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteLeaveById(this)  title='Delete Leave'><span class='fa fa-trash'></span></a>  "
 
@@ -204,13 +209,13 @@ function editLeave(event) {
     //}, 1000);
 }
 function saveLeaveRequest() {
-    debugger
+     
     if (customValidateForm('frmLeaveDetail')) {
         $("#frmLeaveDetail").ajaxForm();
         buttonAddPleaseWait('btnSave');
         var options = {
             success: function (response, statusText, jqXHR) {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 swal(response);
                 $('#Id').val(0);
                 loadLeaveGrid();
@@ -219,19 +224,19 @@ function saveLeaveRequest() {
 
             },
             error: function (xhr, status, error) {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                 alert(errmsg);
             }
             , complete: function () {
-                buttonRemovePleaseWait('btnSave', save, 'save');
+                buttonRemovePleaseWait('btnSave', lblSend, 'send');
             }
         };
         $("#frmLeaveDetail").ajaxSubmit(options);
     }
     else {
 
-        buttonRemovePleaseWait('btnSave', save, 'save');
+        buttonRemovePleaseWait('btnSave', lblSend, 'send');
 
     }
 
@@ -303,6 +308,8 @@ function deleteLeaveById(event) {
         $('#Id').val(0);
         swal(response.Value);
         loadLeaveGrid();
+        location.reload();
+       // loadLeaveTypeDropdownList(true);
         //loadAvailableLeaveBalance();
     }
 }

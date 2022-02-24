@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Public Holiday";
+    //ViewBag.Title = "HumanResource - Department";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblPublicHoliday;
 }
 <form id="frmPublicHoliday" name="frmPublicHoliday" action="/services/Xtreme/multipart" method="post">
     <div class="card">
@@ -49,11 +50,12 @@
                     <button type="button" id="btnSave" class="btn btn-success  @Resources.Common.PullRight"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                 </div>
             </div>
+            <div class="grid-main-div">
 
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="PublicHolidayGrid"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="PublicHolidayGrid"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +67,7 @@
 @section scripts {
 
     <script>
-        //Resource 
+        //Resource
         var nameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
         var nameArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
         var startDate = '@Resources.Global.lblStartDate';

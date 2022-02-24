@@ -39,7 +39,7 @@ $(function () {
             return;
         }
         //searchAttendanceByDepartment();
-        loadAttendanceGrid('Employee_Attendance_TodayAttendance_Get', { CreatedBy: JSON.parse(localStorage.getItem('User')).id, LoggedInUserDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId, SearchByDepartmentId  : $('#DepartmentId').val(), RoleId: JSON.parse(localStorage.getItem('User')).roleId, Language: _currentLanguage });
+        loadAttendanceGrid('Employee_Attendance_TodayAttendance_Get', { CreatedBy: JSON.parse(localStorage.getItem('User')).id, LoggedInUserDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId, SearchByDepartmentId: $('#DepartmentId').val(), RoleId: JSON.parse(localStorage.getItem('User')).roleId, Language: _currentLanguage });
     });
     $('#btnProcess').click(function () {
         Swal.fire({
@@ -94,7 +94,7 @@ $(function () {
         }).then(function (restult) {
             if (restult.value) {
                 //Write code here if yes                
-                var attendanceIds = getAttendanceIdsFromGrid();                
+                var attendanceIds = getAttendanceIdsFromGrid();
                 ajaxRequest({ commandName: 'Employee_Attendance_UpdateTodayAttendanceAsProcessed', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, DepartmentId: JSON.parse(localStorage.getItem('User')).departmentId, AttendanceIds: attendanceIds, Language: _currentLanguage }, CallBack: updateTodayAttendanceAsProcessedCallBack });
             }
         });
@@ -106,10 +106,10 @@ $(function () {
     });
 });
 var updateTodayAttendanceAsProcessedCallBack = function (response) {
-    
 
-    
-    loadAttendanceGrid('Employee_Attendance_TodayAttendance_Get', { CreatedBy: JSON.parse(localStorage.getItem('User')).id, LoggedInUserDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId, SearchByDepartmentId : $('#DepartmentId').val(), RoleId: JSON.parse(localStorage.getItem('User')).roleId, Language: _currentLanguage });
+
+
+    loadAttendanceGrid('Employee_Attendance_TodayAttendance_Get', { CreatedBy: JSON.parse(localStorage.getItem('User')).id, LoggedInUserDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId, SearchByDepartmentId: $('#DepartmentId').val(), RoleId: JSON.parse(localStorage.getItem('User')).roleId, Language: _currentLanguage });
     swal(response.Value);
 
 }
@@ -208,17 +208,25 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkInDate", title: checkinDate, width: 30, filterable: true },
         { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
-        { field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false },
-        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: false },
+        {
+            field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false
+            , footerTemplate: "<span class='badge badge-danger'>" + lateTimeIn + ": <span   class='footerLateTimeInPlaceholder'>0</span></span>"
+        },
+        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: true },
         //{ field: "status", title: status, width: 100, filterable: true }
         {
             title: status,
             field: 'status',
-            width: 30,
+            width: 50,
             hidden: false,
 
-            template: "#if (status == 'Present') { # <span class='badge badge-success'>#:status#</span> # } else if(status == 'Absent'){# <span class='badge badge-danger'>#:status#</span> # } else{# <span class='badge badge-primary'>#:status#</span> #}#"
+         //   template: "#if (status == 'Present') { # <span class='badge badge-success'>#:status#</span> # } else if(status == 'Absent'){# <span class='badge badge-danger'>#:status#</span> # } else{# <span class='badge badge-primary'>#:status#</span> #}#"
+            template: "#if (status == 'Present') { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent'){# <span class='badge badge-danger'>" + lblAbsent + "</span> # } else{# <span class='badge badge-primary'>#:status#</span> #}#"
+            , footerTemplate: "<span class='badge badge-success'>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class='badge badge-danger'>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
+
         },
+        { field: "remarks", title: 'Remarks', width: 50, filterable: true, hidden: true },
+
         //{
         //    title: processed,
         //    field: 'ProcessedStatus',
@@ -229,6 +237,47 @@ var bindAttendanceGrid = function (inputDataJSON) {
     ];
 
     bindKendoGrid(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
+
+    setTimeout(function () {
+        var grid = $("#" + attendanceGrid).data("kendoGrid");
+        var gridData = grid.dataSource.view();
+        var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
+
+        for (var i = 0; i < gridData.length; i++) {
+
+            //if (gridData[i].changeColor == 'Yes') {
+            //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
+            //}
+            if (gridData[i].status == 'Absent') {
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-danger");
+                totalAbsent++;
+            }
+            else if (gridData[i].status == 'Present') {
+                totalPresent++;
+                // grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-success");
+            }
+
+            if (gridData[i].lateInTime != "" && gridData[i].lateInTime != null) {
+
+                totallateInTime++;
+                // grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-success");
+            }
+
+            //else {
+
+            //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-primary");
+            //}
+
+        }
+
+        $(".footerLateTimeInPlaceholder").text(totallateInTime);
+        $(".footerPresentPlaceholder").text(totalPresent);
+        $(".footerAbsentPlaceholder").text(totalAbsent);
+
+    }, 100);
+
+
+
 };
 var processButtonToggling = function (inputJSON) {
 
@@ -238,19 +287,19 @@ var processButtonToggling = function (inputJSON) {
             unProcessedExists = true;
             return;
         }
-       
-    });
-//    if (!unProcessedExists) {
-//        $('#btnProcess').removeClass('btn-success').addClass('btn-primary');
-//        $('#btnProcess').html("<i class='fa fa-refresh'></i> Today's attendance already processed");
-//        $('#btnProcess').css('pointer-events', 'none');
 
-//    }
-//    else {
-//        $('#btnProcess').removeClass('btn-primary').addClass('btn-success');
-//        $('#btnProcess').html('<i class="fa fa-refresh"></i> Process');
-//        $('#btnProcess').css('pointer-events', 'all');
-//    }    
+    });
+    //    if (!unProcessedExists) {
+    //        $('#btnProcess').removeClass('btn-success').addClass('btn-primary');
+    //        $('#btnProcess').html("<i class='fa fa-refresh'></i> Today's attendance already processed");
+    //        $('#btnProcess').css('pointer-events', 'none');
+
+    //    }
+    //    else {
+    //        $('#btnProcess').removeClass('btn-primary').addClass('btn-success');
+    //        $('#btnProcess').html('<i class="fa fa-refresh"></i> Process');
+    //        $('#btnProcess').css('pointer-events', 'all');
+    //    }    
 }
 var getAttendanceIdsFromGrid = function () {
     //debugger
@@ -264,3 +313,4 @@ var getAttendanceIdsFromGrid = function () {
     }
     return attendanceIds;
 }
+

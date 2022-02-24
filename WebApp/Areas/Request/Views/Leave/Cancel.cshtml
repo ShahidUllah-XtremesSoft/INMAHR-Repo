@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Cancel";
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblCancelLeaveRequest; //"Cancel";
 }
 
 <div class="card">
@@ -13,12 +13,13 @@
             <input type="hidden" name="Language" id="Language" value="" />
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSelect</label>
                         <input class="form-control" id="LeaveRequestId" name="LeaveRequestId" required />
                     </div>
                 </div>
+                <div class="col-md-8"></div>
 
 
             </div>
@@ -30,28 +31,34 @@
                         <input class="form-control" id="CommentEng" name="CommentEng" required />
                     </div>
                 </div>
+                <div class="col-md-6"></div>
+
+            </div>
+            <div class="row">
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblCommentArb </label>
                         <input class="form-control" id="CommentArb" name="CommentArb" required />
                     </div>
                 </div>
-
+                <div class="col-md-6"></div>
             </div>
 
 
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
                 </div>
             </div>
 
         </form>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div id="CancelGrid"></div>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="CancelGrid"></div>
+                </div>
             </div>
         </div>
 

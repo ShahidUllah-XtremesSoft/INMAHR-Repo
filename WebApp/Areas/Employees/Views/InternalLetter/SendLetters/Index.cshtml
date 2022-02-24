@@ -1,0 +1,37 @@
+﻿
+@{
+
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblInternalLetter;
+
+
+}
+
+<div class="card">
+    <div class="card-block">
+        @*<div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-success @Resources.Common.PullRight  m-r-10" href="@Url.Action("New","InternalLetter")"><i class="fa fa-plus"></i> @HRModuleUI.HumanResourceUI.lblNew</a>
+                </div>
+            </div>*@
+        <div class="row form-group">
+            <div class="col-md-12">
+
+                <div class="btn-group" role="group" aria-label="Requests">
+                    @* <button type="button" class="btn btn-sm btn-primary" id="btnLetterInboxTab">@HRModuleUI.HumanResourceUI.btnReceivedLetters</button>*@
+                    <button type="button" class="btn btn-sm btn-primary active" id="btnLetterOutboxTab">@HRModuleUI.HumanResourceUI.btnSentLetters</button>
+                </div>
+            </div>
+        </div>
+        <div class="grid-main-div">
+            <div class="row form-group">
+                <div class="col-md-12" id="divInternalLetterInOutboxPartialView">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/SendLetters/internal-letter-send-letter-load-data.js"></script>
+}
+
+

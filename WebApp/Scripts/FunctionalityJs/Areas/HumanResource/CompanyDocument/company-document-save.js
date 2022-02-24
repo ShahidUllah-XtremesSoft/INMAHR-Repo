@@ -14,19 +14,19 @@
                     $('#Id').val(0);
                 },
                 error: function (xhr, status, error) {
-                    buttonRemovePleaseWait('btn-save-company-document', 'Save', 'save');
+                    buttonRemovePleaseWait('btn-save-company-document', lblSave, 'save');
                     var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                     alert(errmsg);
                 }
                 , complete: function () {
-                    buttonRemovePleaseWait('btn-save-company-document', 'Save', 'save');
+                    buttonRemovePleaseWait('btn-save-company-document', lblSave, 'save');
                 }
             };
             $("#frmCompanyDocument").ajaxSubmit(options);
         }
         else {
 
-            buttonRemovePleaseWait('btn-save-company-document', 'Save', 'save');
+            buttonRemovePleaseWait('btn-save-company-document', lblSave, 'save');
         }
     });
 })

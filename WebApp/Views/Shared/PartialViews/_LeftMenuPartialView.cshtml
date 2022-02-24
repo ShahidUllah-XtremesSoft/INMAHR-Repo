@@ -6,12 +6,18 @@
 @using System.Web.Mvc;
 
 @{
+    object menuGroupNameParam = "", menuGroupNameParamExist = "Internal Letter", menuGroupNameParamArabicExist = "المراسلات الداخلية";
 
     string currentLanguage = Request.Cookies["Lang"] == null ? Resources.Common.CurrentLang : Request.Cookies["Lang"].Value;
     var menuItemsJSONOString = (dynamic)ViewBag.MenuItems; // (dynamic)Session["MenuItems"];
+    var menuCountJSONOString = (dynamic)ViewBag.MenuCount; // (dynamic)Session["MenuItems"];
 
     //Deserialize JSON string to dynamic object so that we can loop through
     var menuItems = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(menuItemsJSONOString);
+
+
+    //Deserialize JSON string to dynamic object so that we can loop through
+    var menuCount = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(menuCountJSONOString);
 
     #region To Get Unique MenuGroup
     //In this region we will get unique menu groups
@@ -66,81 +72,148 @@
 
     #endregion
 
-
 }
 
 
 
-<div class="sidebar">
-    <nav class="sidebar-nav">
-        <ul class="nav">
+<div class="sidebar" style=" width: min-content;">
+    <nav class="sidebar-nav" style="width: min-content;">
+        <ul class="nav" style="width: 220px !important;">
 
             @foreach (var item in withOutGroupMenus)
             {
-                <li class="nav-item">
+                <li class="nav-item @item.nameEng">
                     <a class="nav-link" href="@item.url">
                         <i class="@item.icon"></i>
                         @if (currentLanguage == "en-US")
                         {
 
                             @item.nameEng
-
+                            <span class="badge badge-danger liCountBadge" id="@item.menuId" style="display:none;">0</span>
                         }
                         else
                         {
 
                             @item.nameArb
+                            <span class="badge badge-danger liCountBadge" id="@item.menuId" style="display:none;">0</span>
 
                         }
                     </a>
                 </li>
+                if ((menuGroupNameParam.ToString() != menuGroupNameParamExist.ToString()) && (menuGroupNameParam.ToString() != menuGroupNameParamArabicExist.ToString()))
+                {
+                    foreach (var menuGroup in uniqueMenuGroup)
+                    {
+                        if (menuGroup == "Internal Letter" || menuGroup == "المراسلات الداخلية")
+                        {
+
+                            menuGroupNameParam = @menuGroup;
+                            <li class="nav-item nav-dropdown  @menuGroup" data-id="@menuGroup">
+                                <a class="nav-link nav-dropdown-toggle" href="#">
+                                    <svg xmlns="" width="16" height="16" fill="currentColor" class="bi bi-envelope-check" viewBox="0 0 16 16">
+                                        <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z" />
+                                        <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z" />
+                                    </svg>
+                                @menuGroup  <span class="badge badge-danger menuGroupCountBadge" style="display:none;">0</span></a>
+                                <ul class="nav-dropdown-items">
+                                    @foreach (var itemss in withGroupMenus)//menuItems)
+                                    {
+
+                                        //Gets menu items by menu group in current iteration of parent loop
+                                        if (currentLanguage == "en-US")
+                                        {
+                                            if (menuGroup.ToString().Trim() == itemss.menuGroup.ToString().Trim())
+                                            {
+                                                <li class="nav-item @itemss.nameEng" data-id="@itemss.nameEng">
+                                                    <a class="nav-link" href="@itemss.url">
+                                                        <i class="@itemss.icon"></i>
+
+                                                        @itemss.nameEng
+                                                        <span class="badge badge-danger liCountBadge" id="@itemss.menuId" style="display:none;">0</span>
+                                                    </a>
+                                                </li>
+
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            if (menuGroup.ToString().Trim() == itemss.menuGroupArb.ToString().Trim())
+                                            {
+                                                <li class="nav-item @itemss.nameEng" data-id="@itemss.nameEng">
+                                                    <a class="nav-link" href="@itemss.url">
+                                                        <i class="@itemss.icon"></i>
+
+                                                        @itemss.nameArb
+                                                        <span class="badge badge-danger liCountBadge" id="@itemss.menuId" style="display:none;">0</span>
+                                                    </a>
+                                                </li>
+
+                                            }
+                                        }
+
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                    }
+                }
             }
             @foreach (var menuGroup in uniqueMenuGroup)
             {
-                <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-list"></i> @menuGroup</a>
-                    <ul class="nav-dropdown-items">
-                        @foreach (var item in withGroupMenus)//menuItems)
-                        {
 
-                            //Gets menu items by menu group in current iteration of parent loop
-                            if (currentLanguage == "en-US")
+                if (menuGroup != menuGroupNameParamExist.ToString() && menuGroup != menuGroupNameParamArabicExist.ToString())
+                {
+                    <li class="nav-item nav-dropdown @menuGroup" data-id="@menuGroup">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-list"></i> @menuGroup  <span class="badge badge-danger menuGroupCountBadge" style="display:none;">0</span></a>
+                        <ul class="nav-dropdown-items">
+                            @foreach (var item in withGroupMenus)//menuItems)
                             {
-                                if (menuGroup.ToString().Trim() == item.menuGroup.ToString().Trim())
+                                if (item.menuGroup != menuGroupNameParamExist.ToString() && item.menuGroup != menuGroupNameParamArabicExist.ToString())
+                                //if (item.menuGroup != "Internal Letter" || item.menuGroup != "المراسلات الداخلية")
+
                                 {
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@item.url">
-                                            <i class="@item.icon"></i>
+                                    //Gets menu items by menu group in current iteration of parent loop
+                                    if (currentLanguage == "en-US")
+                                    {
+                                        if (menuGroup.ToString().Trim() == item.menuGroup.ToString().Trim())
+                                        {
+                                            <li class="nav-item  @item.nameEng" data-id="@item.nameEng">
+                                                <a class="nav-link" href="@item.url" >
+                                                    <i class="@item.icon"></i>
 
-                                            @item.nameEng
+                                                    @item.nameEng
+                                                    <span class="badge badge-danger liCountBadge" id="@item.menuId" style="display:none;">0</span>
+                                                </a>
+                                            </li>
 
-                                        </a>
-                                    </li>
+                                        }
+                                    }
+                                    else
+                                    {
 
+                                        if (menuGroup.ToString().Trim() == item.menuGroupArb.ToString().Trim())
+                                        {
+                                            <li class="nav-item  @item.nameEng" data-id="@item.nameEng">
+                                                <a class="nav-link" href="@item.url">
+                                                    <i class="@item.icon"></i>
+
+                                                    @item.nameArb
+                                                    <span class="badge badge-danger liCountBadge" id="@item.menuId" style="display:none;">0</span>
+                                                </a>
+                                            </li>
+
+                                        }
+                                    }
                                 }
+
+
                             }
-                            else
-                            {
-
-                                if (menuGroup.ToString().Trim() == item.menuGroupArb.ToString().Trim())
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="@item.url">
-                                            <i class="@item.icon"></i>
-
-                                            @item.nameArb
-
-                                        </a>
-                                    </li>
-
-                                }
-                            }
-
-
-                        }
-                    </ul>
-                </li>
-
+                        </ul>
+                    </li>
+                }
             }
             <li class="nav-item" style="position:fixed;bottom:20px;width:200px;">
                 <a class="nav-link" href="~/"><i class="icon-log-out"></i> @HRModuleUI.HumanResourceUI.lblLogout</a>

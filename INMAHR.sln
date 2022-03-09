@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1022
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{2C2629F0-E011-494B-8F58-0E68F8552A64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INMA.HR.Services", "INMA.HR.Services\INMA.HR.Services.csproj", "{F6A5D6A5-42A5-43E4-B0FA-316E76609E0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INMA.Projects.Services", "INMA.Projects.Services\INMA.Projects.Services.csproj", "{5E47BE81-66BC-4FB0-91FB-9CC97188AB55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,23 +23,15 @@ Global
 		{F6A5D6A5-42A5-43E4-B0FA-316E76609E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6A5D6A5-42A5-43E4-B0FA-316E76609E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6A5D6A5-42A5-43E4-B0FA-316E76609E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E47BE81-66BC-4FB0-91FB-9CC97188AB55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E47BE81-66BC-4FB0-91FB-9CC97188AB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E47BE81-66BC-4FB0-91FB-9CC97188AB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E47BE81-66BC-4FB0-91FB-9CC97188AB55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2FB88ACE-7169-4F3B-B6EF-4F14B4739F47}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://server:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = INMA.HR.Services\\INMA.HR.Services.csproj
-		SccProjectName1 = INMA.HR.Services
-		SccLocalPath1 = INMA.HR.Services
-		SccProjectUniqueName2 = WebApp\\WebApp.csproj
-		SccProjectName2 = WebApp
-		SccLocalPath2 = WebApp
 	EndGlobalSection
 EndGlobal

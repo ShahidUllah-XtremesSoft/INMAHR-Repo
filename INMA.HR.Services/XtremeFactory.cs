@@ -11,9 +11,10 @@ namespace INMA.HR.Services
     {
         public static string _factory = "xtreme";
         public static string connectionString = ConfigurationManager.ConnectionStrings["INMAConnectionString"].ConnectionString;
-        ////--------------- FOR CRM
+
+        ////--------------- FOR PROJECT
         //public static string _factoryCRM = "xtreme_crm";
-        //public static string crm_connectionString = ConfigurationManager.ConnectionStrings["INMACRMConnectionString"].ConnectionString;
+        public static string projectconnectionString = ConfigurationManager.ConnectionStrings["INMAProject"].ConnectionString;
     }
 
 }

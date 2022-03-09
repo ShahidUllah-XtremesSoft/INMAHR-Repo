@@ -7,7 +7,7 @@
             var options = {
                 success: function (response, statusText, jqXHR) {
                     swal(response);
-                    debugger;
+                    location.reload();
                     loadProfessionGrid();
                     buttonRemovePleaseWait('btnSave', save, 'save');
                     $('#Id').val('');

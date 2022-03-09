@@ -29,7 +29,7 @@ namespace INMA.HR.Services
             IDictionary<string, object> ImageValues = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
 
-            
+
             values = _params.Get(model);
             var _response = repository.GetSingle<dynamic>(StoreProcedure.HR_Profession_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
             return _response;
@@ -42,6 +42,12 @@ namespace INMA.HR.Services
     {
         protected override object DoAction(object v)
         {
+
+            /*
+              System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            //dynamic item = serializer.Deserialize<object>("{ \"test\":\"some data\" }");
+            dynamic item = serializer.Deserialize<object>(v.ToString());
+       */
 
             object result = new { status = false, returnUrl = "#" };
             var model = base.MappedModel(new { Language = string.Empty }, v);

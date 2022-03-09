@@ -219,6 +219,9 @@
   <data name="lblCommentEng" xml:space="preserve">
     <value>ملاحظات (باللغة الإنجليزية)</value>
   </data>
+  <data name="lblCompany" xml:space="preserve">
+    <value>الشركة</value>
+  </data>
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>وثائق الشركة</value>
   </data>
@@ -432,6 +435,9 @@
   </data>
   <data name="lblLineManager" xml:space="preserve">
     <value>المسؤل المباشر</value>
+  </data>
+  <data name="lblLink" xml:space="preserve">
+    <value>ربط</value>
   </data>
   <data name="lblLogin" xml:space="preserve">
     <value>تسجيل الدخول</value>

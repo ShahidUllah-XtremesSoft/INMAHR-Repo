@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "User Management - Employees Attendance Linking";
+}
+<style>
+
+    #EmployeeCode::-webkit-outer-spin-button,
+    #EmployeeCode::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    #EmployeeCode[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+<div class="card">
+    <div class="card-block">
+        @*<form id="frmModuleDetail" name="frmModuleDetail" action="/services/Xtreme/multipart" method="post">
+
+                <input type="hidden" name="type" id="type" value="UserManagement_Employees_Attendance_Save" />
+                <input type="hidden" name="Id" id="Id" value="0" />
+                <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                <input type="hidden" name="Language" id="Language" value="" />
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label">Name</label>
+                            <input class="form-control" id="Name" name="Name" required />
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-form-label">Description</label>
+                            <input class="form-control" id="Description" name="Description" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="btnSave" class="btn btn-success  pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+
+            </form>*@
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h5>INMA MISSING EMPLOYEES</h5>
+                            <div class="card-header-right">
+
+                            </div>
+                        </div>
+                        <div class="card-block">
+
+
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />
+                                <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" style="max-width:auto;" />
+                                <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="show-hide-fields" style="display:none;">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <input type="hidden" class="form-control" id="Employee_Attendance_ZkDataEmpAssociation_Id">
+                                    <input type="text" readonly class="" id="EmployeeNumber" style="FONT-SIZE: xxx-large; width: 115%;">
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <input type="number" class="" id="EmployeeCode" style="FONT-SIZE: xxx-large; width: 115%;">
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <input type="button" class=" btn-success" id="btn-save-update-employee-code" style="FONT-SIZE: xxx-large; width: 100%;" value="@HRModuleUI.HumanResourceUI.btnSave" onclick="fnSaveUpdateEmployeeAttendanceLinking()">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="">
+
+                            <div id="employee-attendance-employees-grid"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h5>BIO TIME EMPLOYEES</h5>
+                            <div class="card-header-right">
+
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />
+                                <input type="text" class="form-control" id="ZKDepartmentId" name="ZKDepartmentId" style="max-width:auto;" />
+                                <input type="hidden" class="form-control" id="ZKDepartmentIds" name="ZKDepartmentIds" />
+
+
+                            </div>
+                        </div>
+                        <div class="">
+                            <div id="zk-data-employees-grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="row">
+                        <div class="col-md-6">
+                            <div id="employee-attendance-employees-grid"></div>
+                        </div>
+                       <div class="col-md-6">
+                            <div id="zk-data-employees-grid"></div>
+                        </div>
+                    </div>*@
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/EmployeesAttendanceLinking/employees-attendance-linking.js"></script>
+
+}
+

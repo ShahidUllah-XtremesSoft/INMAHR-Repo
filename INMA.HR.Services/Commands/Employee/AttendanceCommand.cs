@@ -38,7 +38,7 @@ namespace INMA.HR.Services.Commands.Employee
         protected override object DoAction(object viewInput)
         {
             var model = base.MappedModel(new
-            {                
+            {
                 DepartmentId = 0,
                 Language = string.Empty
             }, viewInput);
@@ -137,7 +137,7 @@ namespace INMA.HR.Services.Commands.Employee
             {
                 EmployeeId = 0,
                 StartDate = string.Empty,
-                EndDate = string.Empty,                
+                EndDate = string.Empty,
                 Language = string.Empty
             }, viewInput);
 
@@ -152,4 +152,103 @@ namespace INMA.HR.Services.Commands.Employee
 
         }
     }
+    #region ========== Load Employee Attendance Linking For Admin
+    [Command(Name = "Employee_Attendance_Linking")]
+    public class Employee_Attendance_LinkingCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                DepartmentIds = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_Attendance_Linking.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+    #endregion
+    #region ========== Load ZK  DATABSE - Employee  Attendance Linking For Admin
+    [Command(Name = "ZK_Employees_Get_By_DepartmentID")]
+    public class ZK_Employees_Get_By_DepartmentIDCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                DepartmentIds = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.ZK_Employees_Get_By_DepartmentID.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+    #endregion
+    #region ==========  INMA and  ZK  DATABSE - Employee  Attendance Linking 
+    [Command(Name = "Employee_Attendance_ZkData_Emplployee_Linking")]
+    public class Employee_Attendance_ZkData_Emplployee_LinkingCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                Employee_Attendance_ZkDataEmpAssociation_Id = 0,
+                EmployeeNumber = string.Empty,
+                EmployeeCode = 0,
+                Language = string.Empty,
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Employee_Attendance_ZkData_Emplployee_Linking.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+    #endregion
+    #region ==========  INMA and  ZK  DATABSE - Employee  Attendance Linking 
+    [Command(Name = "Attendance_INMA_And_Attendance_EmployeeNumber_Association")]
+    public class Attendance_INMA_And_Attendance_EmployeeNumber_AssociationCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+           // var model = base.MappedModel(new
+          //  { 
+          //  }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+          //  values = _params.Get(model);
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Attendance_INMA_And_Attendance_EmployeeNumber_Association.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return 0;
+
+        }
+    }
+    #endregion
+
 }

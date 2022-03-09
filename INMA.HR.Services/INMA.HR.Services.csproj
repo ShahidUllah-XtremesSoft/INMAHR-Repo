@@ -89,6 +89,7 @@
     <Reference Include="System.IdentityModel.Tokens.Jwt">
       <HintPath>..\WebApp\libs\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -103,25 +104,27 @@
     <Compile Include="Commands\Common\DynamicQueryExcuterCommand.cs" />
     <Compile Include="Commands\Common\NotificationsCommand.cs" />
     <Compile Include="Commands\Common\SetupTypeCommand.cs" />
-    <Compile Include="Commands\Employee\CashInLeaveRequestCommand.cs" />
-    <Compile Include="Commands\Employee\LeaveRequestCommand.cs" />
-    <Compile Include="Commands\Employee\LetterRequestCommand.cs" />
+    <Compile Include="Commands\Common\SharedUploadImage.cs" />
     <Compile Include="Commands\Employee\AttendanceCommand.cs" />
+    <Compile Include="Commands\Employee\CashInLeaveRequestCommand.cs" />
     <Compile Include="Commands\Employee\InternalLetterCommand.cs" />
     <Compile Include="Commands\Employee\LeaveCancellationRequestCommand.cs" />
+    <Compile Include="Commands\Employee\LeaveRequestCommand.cs" />
+    <Compile Include="Commands\Employee\LetterRequestCommand.cs" />
     <Compile Include="Commands\Employee\ShortLeaveRequestCommand.cs" />
     <Compile Include="Commands\HumanResource\DepartmentCommand.cs" />
     <Compile Include="Commands\HumanResource\EmployeeCommand.cs" />
     <Compile Include="Commands\HumanResource\Employee\EmployeeEducationalDocumentCommand.cs" />
     <Compile Include="Commands\HumanResource\Employee\EmployeePersonalDocumentCommand.cs" />
     <Compile Include="Commands\HumanResource\HR_CompanyDocumentCommand .cs" />
-    <Compile Include="Commands\HumanResource\HR_ProfessionCommand.cs" />
     <Compile Include="Commands\HumanResource\HR_ContractType.cs" />
     <Compile Include="Commands\HumanResource\HR_Nationality.cs" />
+    <Compile Include="Commands\HumanResource\HR_ProfessionCommand.cs" />
     <Compile Include="Commands\HumanResource\HR_VisaSponsorship.cs" />
     <Compile Include="Commands\HumanResource\LeaveRequestCommand.cs" />
     <Compile Include="Commands\HumanResource\LetterCommand.cs" />
     <Compile Include="Commands\LetterCommand.cs" />
+    <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\Request\CashInLeaveCommand.cs" />
     <Compile Include="Commands\Request\LeaveCancelRequestCommand.cs" />
     <Compile Include="Commands\Request\LeaveRequestCommand.cs" />
@@ -136,15 +139,54 @@
     <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="GlobalEnums.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
-    <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Models\InternalLetterData.cs" />
     <Compile Include="Models\EmployeeRequestData.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
+    <Compile Include="Models\InternalLetterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileUploaderService.cs" />
     <Compile Include="StoreProcedure.cs" />
     <Compile Include="XtremeFactory.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\Castle.Core.dll" />
+    <Content Include="bin\Debug\Castle.Facilities.Logging.dll" />
+    <Content Include="bin\Debug\Castle.Services.Logging.Log4netIntegration.dll" />
+    <Content Include="bin\Debug\Castle.Windsor.dll" />
+    <Content Include="bin\Debug\CastleWindsor.Factory.Core.dll" />
+    <Content Include="bin\Debug\CastleWindsor.Factory.Repository.dll" />
+    <Content Include="bin\Debug\Dapper.Contrib.dll" />
+    <Content Include="bin\Debug\Dapper.Contrib.Ext.dll" />
+    <Content Include="bin\Debug\Dapper.dll" />
+    <Content Include="bin\Debug\Dapper.Mapper.dll" />
+    <Content Include="bin\Debug\INMA.HR.Services.dll" />
+    <Content Include="bin\Debug\INMA.HR.Services.pdb" />
+    <Content Include="bin\Debug\log4net.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.Logging.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.Tokens.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\System.IdentityModel.Tokens.Jwt.dll" />
+    <Content Include="bin\Debug\Z.Dapper.Plus.dll" />
+    <Content Include="bin\Release\Castle.Core.dll" />
+    <Content Include="bin\Release\Castle.Facilities.Logging.dll" />
+    <Content Include="bin\Release\Castle.Services.Logging.Log4netIntegration.dll" />
+    <Content Include="bin\Release\Castle.Windsor.dll" />
+    <Content Include="bin\Release\CastleWindsor.Factory.Core.dll" />
+    <Content Include="bin\Release\CastleWindsor.Factory.Repository.dll" />
+    <Content Include="bin\Release\Dapper.Contrib.dll" />
+    <Content Include="bin\Release\Dapper.Contrib.Ext.dll" />
+    <Content Include="bin\Release\Dapper.dll" />
+    <Content Include="bin\Release\Dapper.Mapper.dll" />
+    <Content Include="bin\Release\INMA.HR.Services.dll" />
+    <Content Include="bin\Release\INMA.HR.Services.pdb" />
+    <Content Include="bin\Release\log4net.dll" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.Logging.dll" />
+    <Content Include="bin\Release\Microsoft.IdentityModel.Tokens.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\System.IdentityModel.Tokens.Jwt.dll" />
+    <Content Include="bin\Release\Z.Dapper.Plus.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

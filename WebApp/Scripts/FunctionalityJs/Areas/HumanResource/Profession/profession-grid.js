@@ -9,7 +9,7 @@ function loadProfessionGrid() {
     ajaxRequest({ commandName: 'HR_Profession_GetAll', values: { Language: $('#Language').val() }, CallBack: loadProfessionGridCallBack });
 }
 var loadProfessionGridCallBack = function (inputDataJSON) {
-    console.log(JSON.parse(inputDataJSON.Value));
+ //   console.log(JSON.parse(inputDataJSON.Value));
     bindProfessionGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindProfessionGrid = function (inputDataJSON) {

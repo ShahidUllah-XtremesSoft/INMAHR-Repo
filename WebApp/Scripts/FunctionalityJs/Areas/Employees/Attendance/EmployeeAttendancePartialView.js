@@ -107,7 +107,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
         // },
     ];
 
-    bindKendoGrid(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
+    bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
     setTimeout(function () {
         var grid = $("#AttendanceGrid").data("kendoGrid");
         var gridData = grid.dataSource.view();

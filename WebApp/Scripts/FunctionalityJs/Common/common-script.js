@@ -152,6 +152,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
 
 }
+
 var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
     $("#" + $gridid).kendoGrid({
         //toolbar: ["excel", "pdf", "search"],
@@ -210,6 +211,41 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
     //    }
     //}).data("kendoGrid");
 
+}
+var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
+    $("#" + $gridid).kendoGrid({
+        //toolbar: ["excel", "pdf", "search"],
+        //pdf: {
+        //    allPages: true,
+        //    paperSize: "A4",
+        //    //  margin: { top: "3cm", right: "1cm", bottom: "1cm", left: "1cm" },
+        //    margin: { top: "3cm", right: "1cm", bottom: "1cm", left: "1cm" },
+        //    landscape: true,
+        //    template: $("#page-template").html()
+        //},
+        //excel: {
+        //    fileName: "Export To Exceel.xlsx"
+        //},
+        dataSource: {
+            data: $data,
+            pageSize:500// $pageSize
+        },
+        height: height,
+        scrollable: true,
+        sortable: true,
+        filterable: { mode: "row" },
+        selectable: selectable,
+        //pageable:false,
+       // pageable: {
+       //     pageSizes: [50, 100, 250, 500, 1000],
+       //     width: 20,
+       // },
+        columns: $colModel,
+        dataBinding: function () {
+            record = (this.dataSource.page() - 1) * this.dataSource.pageSize();// this is use to add dynamic serial number in grid 
+        }
+    }).data("kendoGrid");
+   
 }
 
 

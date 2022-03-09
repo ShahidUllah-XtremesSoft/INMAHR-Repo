@@ -50,6 +50,7 @@
     HR_Department_Save,
     HR_Department_Delete,
     HR_Department_GetOnlyDepartments,
+    ZK_Department_Dropdown_GetAll,
     #endregion
 
 
@@ -237,6 +238,10 @@
     Employee_Attendance_UpdateTodayAttendanceAsProcessed,
     Employee_Attendance_GetByEmployee,
     Employee_Attendance_TodayAttendance_Get,
+    Employee_Attendance_Linking,
+    ZK_Employees_Get_By_DepartmentID,
+    Employee_Attendance_ZkData_Emplployee_Linking,
+    Attendance_INMA_And_Attendance_EmployeeNumber_Association,
     #endregion
 
 
@@ -264,6 +269,13 @@
     Setup_PublicHoliday_Save,
     Setup_PublicHoliday_Delete,
     Setup_PublicHoliday_Get,
+    Image_Save,
     #endregion
-   
+
+}
+
+
+public enum ProjectStoreProcedure
+{
+    project_save
 }

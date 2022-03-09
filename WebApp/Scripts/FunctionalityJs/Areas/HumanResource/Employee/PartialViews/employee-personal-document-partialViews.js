@@ -11,13 +11,13 @@ $(function () {
     else {
         $('#PersonalDocumentEmployeeId').val(idQueryStirng);//(new URL(location.href)).searchParams.get('id');
     }
-    
+
 
 
     //| Date Picker
     renderKendoDatePicker('PersonalDocumentReleaseDate');
     renderKendoDatePicker('PersonalDocumentExpiryDate');
-    
+
     //|End Date Picker
 
     //|Functions Calling
@@ -30,7 +30,7 @@ $(function () {
     $('#btnSaveEmployeePersonalDocument').click(function () {
 
         if (customValidateForm('frmEmployeePersonalDocument')) {
-            if (!firstDateShouldBeGreaterThanSecondDate($('#PersonalDocumentReleaseDate').val(), $('#PersonalDocumentExpiryDate').val(), 'Issue date','Expiry date')) {
+            if (!firstDateShouldBeGreaterThanSecondDate($('#PersonalDocumentReleaseDate').val(), $('#PersonalDocumentExpiryDate').val(), 'Issue date', 'Expiry date')) {
                 return false;
             }
             buttonAddPleaseWait('btnSaveEmployeePersonalDocument');
@@ -44,7 +44,10 @@ $(function () {
                     loadPersonalDocumentsGrid();
                     swal(response);
                     var response = JSON.parse(response);
+                    setTimeout(function () {
 
+                        window.location.href = '/User/Login';
+                    }, 500);
                     //$('#PersonalDocumentId').val(response.insertedId);
                     //if (response.type != 'erorr') {
                     //    window.location.href = '/HumanResource/Employee/List';

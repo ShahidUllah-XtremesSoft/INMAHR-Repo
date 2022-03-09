@@ -367,6 +367,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company.
+        /// </summary>
+        public static string lblCompany {
+            get {
+                return ResourceManager.GetString("lblCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Document (English).
         /// </summary>
         public static string lblCompanyDocument {
@@ -1020,6 +1029,15 @@ namespace HRModuleUI {
         public static string lblLineManager {
             get {
                 return ResourceManager.GetString("lblLineManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link.
+        /// </summary>
+        public static string lblLink {
+            get {
+                return ResourceManager.GetString("lblLink", resourceCulture);
             }
         }
         

@@ -9,16 +9,45 @@
 <div class="card">
     <div class="card-block">
         <div class="row">
+            @*<div class="col-md-1 @Resources.Common.PullRight">
+                    <div class="divSearchControls">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDepartment</label>
+                    </div>
+
+                </div>*@
+            @*<div class="col-md-4">
+                    <div class="divSearchControls">
+
+                        <input type="text" class="form-control" id="DepartmentIdForSearch"  value="" />
+                        <input type="hidden" class="form-control" id="DepartmentIdsForSearch"   value="" />
+                    </div>
+
+                </div>
+
+                <div class="col-md-1 ">
+                    <div class="form-group divSearchControls">
+                        <button type="button" class="btn btn-success pull-right" value="Search" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+
+                    </div>
+                </div>*@
+
             <div class="col-md-12">
-                <a href="@Url.Action("Add","Employee")" class="btn btn-success pull-right" id="btnAddNewEmployee"><i class="fa fa-plus">  </i> @HRModuleUI.HumanResourceUI.lblAddNew</a>
+
+
+
+                <a href="@Url.Action("Add","Employee")" class="btn btn-success @Resources.Common.PullRight" id="btnAddNewEmployee"><i class="fa fa-plus">  </i> @HRModuleUI.HumanResourceUI.lblAddNew</a>
             </div>
         </div>
+
+
+
         <div class="grid-main-div">
             <div class="row">
                 <div class="col-md-12">
                     <div id="employee-grid"></div>
                 </div>
             </div>
+
 
 
         </div>

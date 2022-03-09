@@ -5,14 +5,14 @@ using Castle.Windsor;
 using System.Reflection;
 using CastleWindsor.Factory.Core;
 
-namespace INMA.HR.Services.Installer
+namespace INMA.Projects.Services.Installer
 {
     public class CommandInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             var logger = container.Resolve<ILogger>();
-            logger.Info("Started: HR.Web.Services::HR.Web.Installer.Services Install");
+            logger.Info("Started: Project.Web.Services::Project.Web.Installer.Services Install");
             container.Register(
                 Classes.FromThisAssembly()
                 .BasedOn<ICommand>().WithService.FromInterface()
@@ -25,8 +25,8 @@ namespace INMA.HR.Services.Installer
                         logger.Info(string.Format("register '{0}' by name '{1}", c.Implementation.FullName, name));
                     }).LifestyleTransient()
             );
-
-            logger.Info("Ended: HR.Web.Services::HR.Web.Installer.Services Install");
+           
+            logger.Info("Ended: Project.Web.Services::Project.Web.Installer.Services Install");
         }
     }
 }

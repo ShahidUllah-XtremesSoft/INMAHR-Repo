@@ -219,6 +219,9 @@
   <data name="lblCommentEng" xml:space="preserve">
     <value>Comment (English)</value>
   </data>
+  <data name="lblCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>Company Document (English)</value>
   </data>
@@ -437,6 +440,9 @@
   </data>
   <data name="lblLineManager" xml:space="preserve">
     <value>Line Manager</value>
+  </data>
+  <data name="lblLink" xml:space="preserve">
+    <value>Link</value>
   </data>
   <data name="lblLogin" xml:space="preserve">
     <value>Login</value>

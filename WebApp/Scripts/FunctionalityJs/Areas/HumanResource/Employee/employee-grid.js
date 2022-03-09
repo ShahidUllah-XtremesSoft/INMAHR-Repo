@@ -6,8 +6,8 @@ $(function () {
     $('#Language').val(_currentLanguage);
     loadEmployeeGrid();
     fnLoadNationalityDDL();
-    
-/*    loadDepartmentTreeDropdownList();*/
+
+    /*    loadDepartmentTreeDropdownList();*/
     loadProfessionDropdownListForLSEng();
     loadProfessionDropdownListForLSArb();
 
@@ -23,27 +23,40 @@ $(function () {
     loadRoleDropdownListForLSEng();
     loadRoleDropdownListForLSArb();
 
-     loadEmiratesStatesDropdownListForLSEng();
-     loadEmiratesStatesDropdownListForLSArb();
-
-
+    loadEmiratesStatesDropdownListForLSEng();
+    loadEmiratesStatesDropdownListForLSArb();
+    /*
+    //----------- FOR DDL SEARCH
+    loadParentDepartmentTreeDropdownList();
+    setTimeout(function () { $("#DepartmentIdForSearch").data("kendoDropDownTree").bind("change", departmentParentTreeViewCheck); }, 500);
+    //--------------- END 
+    */
 });
+/*
+//------------------------ LOAD PARENT DEPARTMENT  
+function loadParentDepartmentTreeDropdownList() {
+    ajaxRequest({ commandName: 'HR_Department_Dropdown_GetAll', values: { Language: _currentLanguage, }, CallBack: loadParentTreeDropdownList});
+}
+function loadParentTreeDropdownList(d) {
+    var _data = treeFomatter(JSON.parse(d.Value), 0);
+    $("#DepartmentIdForSearch").kendoDropDownTree({ checkboxes: true, autoClose: false, height: 'auto', dataSource: _data });
+}
 
-
+*/
 
 //Load Lists to Local Storage
 function loadProfessionDropdownListForLSEng() {
     ajaxRequest({ commandName: 'HR_Profession_Get', values: { Language: 'en-US' }, CallBack: loadProfessionDropdownListForLSEngCallBack });
 }
 function loadProfessionDropdownListForLSEngCallBack(response) {
- 
+
     window.localStorage.setItem('ProfessionListEng', response.Value);
 }
 function loadProfessionDropdownListForLSArb() {
     ajaxRequest({ commandName: 'HR_Profession_Get', values: { Language: 'ar-AE' }, CallBack: loadProfessionDropdownListForLSArbCallBack });
 }
 function loadProfessionDropdownListForLSArbCallBack(response) {
- 
+
     window.localStorage.setItem('ProfessionListArb', response.Value);
 }
 
@@ -87,7 +100,7 @@ function loadContractTypeDropdownListForLSEngCallBack(response) {
     window.localStorage.setItem('ContractTypeListEng', response.Value);
 }
 function loadContractTypeDropdownListForLSArb() {
-    ajaxRequest({ commandName: 'HR_ContractType_Get', values: { Language: 'ar-AE'  }, CallBack: loadContractTypeDropdownListForLSArbCallBack });
+    ajaxRequest({ commandName: 'HR_ContractType_Get', values: { Language: 'ar-AE' }, CallBack: loadContractTypeDropdownListForLSArbCallBack });
 }
 function loadContractTypeDropdownListForLSArbCallBack(response) {
     window.localStorage.setItem('ContractTypeListArb', response.Value);
@@ -113,7 +126,7 @@ function loadRoleDropdownListForLSArbCallBack(response) {
 
 
 function loadEmiratesStatesDropdownListForLSEng() {
-    ajaxRequest({ commandName: 'HR_EmiratesStates_Get', values: { Language: 'en-US'  }, CallBack: loadEmiratesStatesDropdownListForLSEngCallBack });
+    ajaxRequest({ commandName: 'HR_EmiratesStates_Get', values: { Language: 'en-US' }, CallBack: loadEmiratesStatesDropdownListForLSEngCallBack });
 }
 function loadEmiratesStatesDropdownListForLSEngCallBack(response) {
     window.localStorage.setItem('EmiratesStatesListEng', response.Value);
@@ -152,6 +165,19 @@ var loadEmployeeGridCallBack = function (inputDataJSON) {
 }
 var bindEmployeeGrid = function (inputDataJSON) {
     var record = 0;
+
+     
+    for (var i = 0; i < inputDataJSON.length; i++) {
+        if (inputDataJSON[i].childParent == null) {
+             
+            inputDataJSON[i].childParent = inputDataJSON[i].companyName
+
+        } else {
+            inputDataJSON[i].companyName = inputDataJSON[i].childParent
+       
+        }
+    }
+
     var isHR = !inputDataJSON[0].isHR;
 
     if (requestFrom == 'attendance') {
@@ -159,7 +185,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
     }
     var gridColumns = [
 
-        { field: "id", title: "id", hidden: true },        
+        { field: "id", title: "id", hidden: true },
 
         { title: "#", template: "<b>#= ++record #</b>", width: 20, },
         //{ field: "employeeNumber", title: "Employee Number", width: 130, filterable: true },
@@ -171,13 +197,22 @@ var bindEmployeeGrid = function (inputDataJSON) {
         },
         //{ field: "nameEng", title: nameEng, width: 100, filterable: true, },
         //{ field: "nameArb", title: nameArb, width: 100, filterable: true },
-        { field: "employeeName", title: employeeName, width: 100, filterable: true },
-        { field: "department", title: department, width: 100, filterable: true },
-        { field: "phoneNumber", title: phone, width: 50, filterable: true },
-        { field: "email", title: email, width: 100, filterable: true },
-        { field: "joinDate", title: joinDate, width: 50, filterable: true },
-        { field: "professionId", title: "Profession", width: 100, filterable: true, hidden: true },
-        { field: "profession", title: profession, width: 100, filterable: true },
+        {
+            field: "employeeName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+        },
+        {
+            field: "department", title: department, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+        },
+        { field: "phoneNumber", title: phone, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "email", title: email, width: 100, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "joinDate", title: joinDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "professionId", title: "Profession", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, hidden: true },
+        { field: "profession", title: profession, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        {
+            field: "companyName", title: lblCompany, width: 100, filterable:true,
+            //  template: "#if (companyName !=null) { # #:companyName# # } else {#  #:childParent# # }#"
+
+        },
         { field: "passportNumber", title: PassportNumber, width: 100, filterable: true, hidden: true },
         { field: "eidNumber", title: eidNumber, width: 100, filterable: true, hidden: true },
         //{ field: "releaseDate", title: "ReleaseDate", width: 100, filterable: true },
@@ -209,7 +244,7 @@ function redirectToEmployeeDetailView(e) {
     var dataItem = grid.dataItem(row);
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.id);
-    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);    
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);
     if (requestFrom == 'employee') {
         window.location.href = '/HumanResource/Employee/Detail';
     }
@@ -343,7 +378,7 @@ $('#RoleId').change(function () {
 });
 
 function deleteEmployeeById(event) {
-   
+
     var row = $(event).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
@@ -438,3 +473,51 @@ var loadNationalityDataDDL = function (inputDataJSON) {
     localStorage.setItem("nationalityDDL", JSON.stringify(inputDataJSON.Value));
 }
 
+
+
+/* NO NEED DDL BASE SEARCH
+//--------------------------- FOR SEARCH -------------------------------
+$('#btnSearch').click(function () {
+    var Department = $('#DepartmentId').val();
+    //if (Department == '' || Department == null) {
+    //    Swal.fire({
+    //        position: 'center',icon: 'error',title: 'Please select department',
+    //        showConfirmButton: false,
+    //        timer: 1500
+    //    })
+    //    return;
+    //}
+    loadAttendanceGrid('Employee_Attendance_TodayAttendance_Get', {
+        CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+        LoggedInUserDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId,
+        SearchByDepartmentId: $('#DepartmentId').val(),
+        RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+        Language: _currentLanguage
+    });
+});
+function departmentParentTreeViewCheck(e) {
+
+    var getLastValue = 0
+    $('#DepartmentIdForSearch').val('');
+    var selectedDepartments = e.sender._values;
+    var concatenatedDepartments = '';
+    selectedDepartments.forEach(function (item) {
+        concatenatedDepartments += concatenatedDepartments == '' ? item : ',' + item;
+        getLastValue = item;
+    });
+    $('#DepartmentIdForSearch').val(concatenatedDepartments);
+
+    loadAllEmployeesAsPerDepartmentId();
+}
+function loadAllEmployeesAsPerDepartmentId() {
+    ajaxRequest({
+        commandName: 'Employee_Attendance_Linking',
+        values: {
+            DepartmentIds: $('#DepartmentIdForSearch').val(),
+            Language: _currentLanguage
+        }, CallBack: getloadAllEmployeesAsPerDepartmentId
+    });
+}
+
+var getloadAllEmployeesAsPerDepartmentId = function (inputDataJSON) { bindGridData(JSON.parse(inputDataJSON.Value)); }
+*/

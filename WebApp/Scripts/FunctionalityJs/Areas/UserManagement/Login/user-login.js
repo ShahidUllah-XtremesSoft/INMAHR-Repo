@@ -17,7 +17,7 @@
         $('#error_span').text('');
         $('#progress').show();
         ////If admin admin logged in
-        if ($('#Email').val() == 'admin' && $('#Password').val() == 'admin') {
+        if ($('#Email').val() == 'admin' && $('#Password').val() == 'admin@123') {
             ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetForAdmin', values: {  }, CallBack: getAssignedMenusForRoleCallBack });
             localStorage.setItem('User', { id: 0, employeeId: 0, employeeNameEng: 'admin', employeeNameEng:'admin'});
             localStorage.setItem('EmployeeNumber', '');

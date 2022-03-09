@@ -125,6 +125,33 @@ namespace INMA.HR.Services
         }
     }
 
+    [Command(Name = "ZK_Department_Dropdown_GetAll")]
+    public class ZK_Department_Dropdown_GetAllCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new { }, v);
+
+            try
+            {
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetMultiple<dynamic>(StoreProcedure.ZK_Department_Dropdown_GetAll.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            }
+            catch (Exception ex)
+            {
+                result = new { status = false, message = ex.Message };
+            }
+            return result;
+        }
+    }
+
     [Command(Name = "HR_Department_GetAll_New_By_ID")]
     public class HR_Department_GetAll_New_By_IDCommand : CamelCommandBase
     {
@@ -134,17 +161,17 @@ namespace INMA.HR.Services
             object result = new { status = false, returnUrl = "#" };
             var model = base.MappedModel(new
             {
-               
+
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
                 LoggedInUserDepartementId = 0,
                 LoggedInEmployeeId = 0,
                 Language = string.Empty,
-                
+
 
             }, v);
 
-            
+
             try
             {
                 var repository = Ioc.Resolve<IRepository>();

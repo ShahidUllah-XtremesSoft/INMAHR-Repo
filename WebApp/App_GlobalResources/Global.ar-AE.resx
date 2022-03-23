@@ -165,6 +165,27 @@
   <data name="lblAreYouSure" xml:space="preserve">
     <value>هل انت متاكد ؟</value>
   </data>
+  <data name="lblCompanyDescription" xml:space="preserve">
+    <value>تفاصيل الوثيقة</value>
+  </data>
+  <data name="lblCompanyDescriptionArb" xml:space="preserve">
+    <value>تفاصيل الوثيقة (باللغة العربية)</value>
+  </data>
+  <data name="lblCompanyDescriptionEng" xml:space="preserve">
+    <value>تفاصيل الوثيقة (باللغة الانجليزية)</value>
+  </data>
+  <data name="lblCompanyDocument" xml:space="preserve">
+    <value>الوثيقة</value>
+  </data>
+  <data name="lblCompanyName" xml:space="preserve">
+    <value>اسم الوثيقة </value>
+  </data>
+  <data name="lblCompanyNameArb" xml:space="preserve">
+    <value>اسم الوثيقة (باللغة العربية)</value>
+  </data>
+  <data name="lblCompanyNameEng" xml:space="preserve">
+    <value>اسم الوثيقة  (باللغة الانجليزية)</value>
+  </data>
   <data name="lblDecline" xml:space="preserve">
     <value>الغاء</value>
   </data>
@@ -193,10 +214,16 @@
     <value>إعادة ضبط</value>
   </data>
   <data name="lblStartDate" xml:space="preserve">
-    <value>تاريخ البداء`</value>
+    <value>تاريخ البداية</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>الحالة</value>
+  </data>
+  <data name="lblStatusExpired" xml:space="preserve">
+    <value>منتهية الصلاحية</value>
+  </data>
+  <data name="lblStatusValid" xml:space="preserve">
+    <value>صالح</value>
   </data>
   <data name="lblXtremeSoft" xml:space="preserve">
     <value>ایکسٹریم سافٹ</value>

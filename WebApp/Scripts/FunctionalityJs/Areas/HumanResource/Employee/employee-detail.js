@@ -11,6 +11,8 @@ $(function () {
     if (JSON.parse(localStorage.getItem('User')).isHR) {
         $('#internalDivPersonalDocument').css('height', '353');
         $('#divLeaveBalance').css('display', 'block');
+        $('#onlyForHR').show();
+
     }
     else {
         $('#divLeaveBalance').css('display', 'block');

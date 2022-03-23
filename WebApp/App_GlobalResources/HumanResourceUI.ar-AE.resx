@@ -220,7 +220,7 @@
     <value>ملاحظات (باللغة الإنجليزية)</value>
   </data>
   <data name="lblCompany" xml:space="preserve">
-    <value>الشركة</value>
+    <value>شركة</value>
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>وثائق الشركة</value>
@@ -274,7 +274,7 @@
     <value>الوصف (بالغات الانجليزية)  </value>
   </data>
   <data name="lblDocument" xml:space="preserve">
-    <value>وثائق</value>
+    <value>الوثيقة</value>
   </data>
   <data name="lblEarlyOutTime" xml:space="preserve">
     <value>اظافي دقائق</value>
@@ -348,6 +348,9 @@
   <data name="lblEmployeesleaveRequest" xml:space="preserve">
     <value>طلب إجازة موظفين</value>
   </data>
+  <data name="lblEmployeesLinkToRole" xml:space="preserve">
+    <value>ارتباط الموظفين بالدور</value>
+  </data>
   <data name="lblEmployeesOfficialLetterRequests" xml:space="preserve">
     <value>طلبات الرسائل الرسمية للموظفين</value>
   </data>
@@ -394,7 +397,7 @@
     <value>المراسلات الداخلية</value>
   </data>
   <data name="lblIssueDate" xml:space="preserve">
-    <value>تاريخ الإصدار</value>
+    <value>تاريخ الاصدار</value>
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>تاريخ التوظيف</value>
@@ -467,10 +470,12 @@
     <value>الإسم </value>
   </data>
   <data name="lblNameArb" xml:space="preserve">
-    <value>الإسم (بالغات العربية)</value>
+    <value>اسم (باللغة العربية)</value>
+    <comment>الإسم (بالغات العربية)</comment>
   </data>
   <data name="lblNameEng" xml:space="preserve">
-    <value>الإسم (بالغات الانجليزية)</value>
+    <value>اسم (باللغة الانجليزية)</value>
+    <comment>الإسم (بالغات الانجليزية)</comment>
   </data>
   <data name="lblNationality" xml:space="preserve">
     <value>الجنسية</value>
@@ -503,7 +508,8 @@
     <value>كلمة المرور القديمة</value>
   </data>
   <data name="lblOther" xml:space="preserve">
-    <value>أخرة</value>
+    <value>أخرى</value>
+    <comment>أخرة</comment>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>(بالغات العربية) وضعيات أخرى</value>
@@ -531,6 +537,9 @@
   </data>
   <data name="lblPassportReleaseDate" xml:space="preserve">
     <value>Passport Release Date</value>
+  </data>
+  <data name="lblPassword" xml:space="preserve">
+    <value>كلمة المرور </value>
   </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>

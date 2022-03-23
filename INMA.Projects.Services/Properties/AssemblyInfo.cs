@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using CastleWindsor.Factory.Core;
-// General Information about an assembly is controlled through the following
+// General Information about an assembly is controlled tProjectsough the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("INMA.Projects.Services")]
@@ -20,7 +20,7 @@ using CastleWindsor.Factory.Core;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5e47be81-66bc-4fb0-91fb-9cc97188ab55")]
+[assembly: Guid("f6a5d6a5-42a5-43e4-b0fa-316e76609e0a")]
 
 // Version information for an assembly consists of the following four values:
 //

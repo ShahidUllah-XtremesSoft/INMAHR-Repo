@@ -1,0 +1,127 @@
+﻿
+
+
+
+
+<div class="row">
+    <form id="frmAddUpdateClient" name="frmAddUpdateClient" action="/services/Xtreme/multipart" method="post">
+        <div class="card">
+            <div class="card-block">
+
+                <input type="hidden" name="Id" id="Id" value="0">
+                <input type="hidden" name="CreatedBy " id="CreatedBy" value="">
+                <input type="hidden" name="type" id="type" value="Client_Save">
+                <input type="hidden" name="Language" id="Language" value="">
+
+                <div class="row">
+                    <div class="col-sm-6" id="ProfileImageDiv">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblImage</label><br />
+                            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" onchange="validateFileType('ProfileImage',['png', 'jpg']);" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblNameEng</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="NameEng" id="NameEng" value="" placeholder="Enter Name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group" style="display:none;">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblNameArb</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="NameArb" id="NameArb" value="" placeholder="Enter Name">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 1</label> <span style="color: red">*</span><br />
+                            <input type="number" class="form-control " id="PhoneNumber1" name="PhoneNumber1" placeholder="Enter Phone Number" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 2</label> <span style="color: red">*</span><br />
+                            <input type="number" class="form-control " id="PhoneNumber2" name="PhoneNumber2" placeholder="Enter Phone Number" required />
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 1</label> <span style="color: red">*</span><br />
+                            <input type="text" class="form-control" id="Email1" name="Email1" placeholder="Enter Email" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 2</label> <span style="color: red">*</span><br />
+                            <input type="text" class="form-control" id="Email2" name="Email2" placeholder="Enter Email" required />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblNationality </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="NationalityDDL" value="" required />
+                            <input type="hidden" class="form-control" id="Nationality_Id" name="Nationality_Id" value=""  />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblCity </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="CityDDL"   required />
+                            <input type="hidden" class="form-control" id="City_Id" name="City_Id"  value="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        @*<div class="form-group">
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature </label> <br />
+                    <input type="file" class="form-control" name="EmployeeSignature" id="EmployeeSignature" onchange="validateFileType('EmployeeSignature',['png', 'jpg']);" />
+                </div>*@
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="Location" name="Location" required style="height: 10rem;">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success  pull-right" id="btn-save-client"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                            <a href="@Url.Action("List","Client")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

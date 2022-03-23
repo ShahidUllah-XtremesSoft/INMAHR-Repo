@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblEmployeesLinkToRole;
+}
+<style>
+
+    #EmployeeCode::-webkit-outer-spin-button,
+    #EmployeeCode::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    #EmployeeCode[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<input type="hidden" id="Language" value="en-US" />
+<div class="card">
+    <div class="card-block">
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header"><h5>@HRModuleUI.HumanResourceUI.lblEmployeesLinkToRole</h5></div>
+
+                        <form id="frmAddUpdateProjectRoleLinking" name="frmAddUpdateProjectRoleLinking">
+                            <div class="card-block">
+
+                                <div class="col-sm-4">
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSearch @HRModuleUI.HumanResourceUI.lblProfession</label>
+                                    <div class=" demo-section k-content kendo-direction">
+                                        <input class="form-control" id="ProfessionId" name="ProfessionId" required />
+
+                                    </div>
+                                </div><div class="col-sm-4">
+                                    @*<label class="col-form-label">Select Role</label>
+                                        <div class=" demo-section k-content kendo-direction">
+                                            <input class="form-control" id="RoleDropdownList" name="RoleDropdownList" />
+
+                                        </div>*@
+                                </div>
+                                <div class="col-sm-2">
+                                    @*<div class="form-group">
+
+                                            <button type="button" id="btnSearch" class="btn btn-success  pull-left " style="margin-top:33px;"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                                        </div>*@
+                                </div>
+
+
+                            </div>
+                            <hr />
+                            <div class="row">
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-3">
+
+                                    <div class="">
+                                        <select class="form-control" name="MainModuleId" id="MainModuleId" required>
+                                            <option value="">Select Module</option>
+                                            <option value="1">HR Module</option>
+                                            <option value="2">Project Module</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    @*<label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSelect</label>*@
+                                    <div class=" demo-section k-content kendo-direction">
+                                        <input class="form-control" id="RoleDropdownList" name="RoleDropdownList" required />
+
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+
+                                    <button type="button" id="btnSave" class="btn btn-success  form-control    m-t-10"><i class="fa fa-save"></i> @HRModuleUI.HumanResourceUI.btnSave</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <div class="">
+                            <div id="employees-grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/EmployeesRoleLinking/employees-role-linking.js"></script>
+
+}
+

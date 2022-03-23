@@ -71,11 +71,13 @@ function compareStartEndDate(startDate, endDate) {
     return true;
 }
 function calculateDaysFromStartEndDate() {
+    
     if ($("#StartDate").data("kendoDatePicker").value() != null && $("#EndDate").data("kendoDatePicker").value() != null) {
         var dateDifference = (kendo.parseDate($("#EndDate").data("kendoDatePicker").value()) - kendo.parseDate($("#StartDate").data("kendoDatePicker").value()));
 
         var days = ((dateDifference / 1000 / 60 / 60 / 24) + 1);
-        $('#TotalDays').val(days);
+       
+        $('#TotalDays').val(Math.trunc(days));
     }
     else {
         $('#TotalDays').val(0);
@@ -161,12 +163,12 @@ var bindLeaveGrid = function (inputDataJSON) {
         //        { field: "status", title: "Status", hidden: false, width: 30 },
         {
             title: status,
-            field: 'statusForCondition',
+            field: 'status',
             width: 30,
             hidden: false,
              filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
-            template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:statusForCondition#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
+            template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
         },
 
         //Below is action column

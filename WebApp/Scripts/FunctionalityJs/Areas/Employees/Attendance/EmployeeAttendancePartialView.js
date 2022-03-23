@@ -87,6 +87,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
         {
             field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false
+            , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
+          //  , footerTemplate: "<span class='badge badge-danger'>" + lateTimeIn + ": <span   class='footerLateTimeInPlaceholder'>0</span></span> | <span class='badge badge-danger'>" + lateTimeIn + ": <span   class='footerLateTimeInCalculated'>0</span></span>"
             , footerTemplate: "<span class='badge badge-danger'>" + lateTimeIn + ": <span   class='footerLateTimeInPlaceholder'>0</span></span>"
         },
         { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: true },
@@ -113,6 +115,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
         var gridData = grid.dataSource.view();
 
         var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
+        var totallateInTimeCount = "";
 
 
 
@@ -133,8 +136,11 @@ var bindAttendanceGrid = function (inputDataJSON) {
             }
 
             if (gridData[i].lateInTime != "" && gridData[i].lateInTime != null) {
-
+                
                 totallateInTime++;
+                totallateInTimeCount = parseFloat(gridData[i].lateInTime);
+         
+               
                 // grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-success");
             }
 
@@ -143,9 +149,12 @@ var bindAttendanceGrid = function (inputDataJSON) {
             //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-primary");
             //}
 
+
+
         }
 
         $(".footerLateTimeInPlaceholder").text(totallateInTime);
+        $(".footerLateTimeInCalculated").text(totallateInTimeCount);
         $(".footerPresentPlaceholder").text(totalPresent);
         $(".footerAbsentPlaceholder").text(totalAbsent);
 

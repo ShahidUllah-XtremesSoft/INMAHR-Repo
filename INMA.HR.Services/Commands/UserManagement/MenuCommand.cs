@@ -26,7 +26,8 @@ namespace INMA.HR.Services.Commands.UserManagement
                 IsHRMenu = "on",
                 ModuleId = 0,
                 CreatedBy = 0,
-                Language   = string.Empty
+                Language   = string.Empty,
+                GroupIcon = string.Empty
             }, v);
 
             //if (string.IsNullOrEmpty(model.IsHRMenu))
@@ -51,6 +52,7 @@ namespace INMA.HR.Services.Commands.UserManagement
             values.Add("@ModuleId", model.ModuleId);
             values.Add("@CreatedBy", model.CreatedBy);
             values.Add("@Language", model.Language);
+            values.Add("@GroupIcon", model.GroupIcon);
 
             
             if (string.IsNullOrEmpty(model.IsHRMenu))

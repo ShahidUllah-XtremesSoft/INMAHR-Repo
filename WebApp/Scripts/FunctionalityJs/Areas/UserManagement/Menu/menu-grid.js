@@ -37,20 +37,21 @@ var bindMenuGrid = function (inputDataJSON) {
         { field: "controller", title: "Controller", width: 200, filterable: true,hidden:true },
         { field: "action", title: "Action", width: 200, filterable: true, hidden: true },
         { field: "url", title: "Url", width: 200, filterable: true },
-        { field: "icon", title: "Icon", width: 200, filterable: true },
+        { field: "icon", title: "Icon", width: 100, filterable: false },
+        { field: "groupIcon", title: "Group Icon", width: 100, filterable: false },
         { field: "moduleName", title: "ModuleName", width: 200, filterable: true },
         { field: "isHRMenu", title: "IsHRMenu", width: 200, filterable: true,hidden:true },
         {
             title: status,
             field: 'isHRMenuText',
-            width: 30,
+            width: 80,
             hidden: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "<span class='badge badge-success'>#:isHRMenuText#</span>"
         },
         //Below is action column
         {
-            field: "", width: 100,
+            field: "", width: 60,
             title: "Action",
             //template: "<a style='cursor:pointer; font-size:20px;' onClick= editMenu(this) title='Edit menu' ><span class='fa fa-eye'></span></a> <a style='font-size:20px;cursor:pointer;' onClick= deleteMenuById(this) title='Edit Menu' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteMenuById(this)  title='Delete Menu'><span class='fa fa-trash'></span></a>  "
             template: "<a style='font-size:20px;cursor:pointer;' onClick= editMenu(this) title='Edit Menu' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteMenuById(this)  title='Delete Menu'><span class='fa fa-trash'></span></a>  "
@@ -58,7 +59,7 @@ var bindMenuGrid = function (inputDataJSON) {
         }
     ];
 
-    bindKendoGrid($menu_grid, 50, gridColumns, inputDataJSON);
+    bindKendoGrid($menu_grid, 90, gridColumns, inputDataJSON);
 };
 function editMenu(event) {
     var row = $(event).closest("tr");

@@ -13,16 +13,35 @@ namespace INMA.HR.Services
         Requests = 2,
         InternalLetter = 3,
         Company = 4,
+        Client = 5,
+        Meetings = 6,
     }
     public enum DocumentType
     {
-        EmployeeProfileImage = 1,
-        EmployeePersonalDocument = 2,
-        EmployeeEducationalDocument = 3,
-        InternalLetterAttachment = 4,
-        CompanyDocument = 5,
-        EmployeeSignature = 6,
+        #region EMPLOYEE DOCUMENT ENUM
 
+        EmployeeProfileImage = 1,
+        EmployeePersonalDocument      = 2,
+        EmployeeEducationalDocument   = 3,
+        InternalLetterAttachment      = 4,
+        CompanyDocument               = 5,
+        EmployeeSignature             = 6,
+
+        #endregion
+
+        #region CLIENT DOCUMENT ENUM
+
+        ClientProfileImage      = 7,
+        ClientPersonalDocument  = 8,
+        ClientSignature         = 9,
+
+        #endregion 
+        #region CLIENT MEETINGS ENUM
+
+        Meetings = 10,
+       
+
+        #endregion
 
     }
 }

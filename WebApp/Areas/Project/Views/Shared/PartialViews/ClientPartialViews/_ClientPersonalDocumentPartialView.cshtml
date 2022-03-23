@@ -1,0 +1,61 @@
+﻿
+
+<form id="frmAddUpdateClientDocument" name="frmAddUpdateClientDocument" action="/services/Xtreme/multipart" method="post">
+
+
+    <input type="hidden" name="PersonalDocumentId" id="PersonalDocumentId" value="0">
+    <input type="hidden" name="PersonalDocumentCreatedBy" id="PersonalDocumentCreatedBy" value="0">
+    <input type="hidden" name="PersonalDocumentClientId" id="PersonalDocumentClientId" value="0">
+    <input type="hidden" name="GenericFkId" id="GenericFkId" value="0">
+    <input type="hidden" name="type" id="type" value="Client_PersonalDocument_Save">
+    <input type="hidden" name="PersonalDocumentLanguage" id="PersonalDocumentLanguage" class="Language" value="">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblPersonalDocument</label><br />
+                <input type="file" class="form-control" name="PersonalDocumentFile" id="PersonalDocumentFile" onchange="validatePersonalDocument('PersonalDocumentFile');"   />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblPersonalDocumentType</label><span style="color:red"> *</span><br />
+                <input type="text" class="form-control pname" name="PersonalDocumentSetupDetailTypeId" id="PersonalDocumentSetupDetailTypeId" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                <input type="date" class="form-control" id="PersonalDocumentReleaseDate" name="PersonalDocumentReleaseDate" required />
+            </div>
+        </div>
+
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                <input type="date" class="form-control" id="PersonalDocumentExpiryDate" name="PersonalDocumentExpiryDate" required />
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-success  pull-right" id="btn-save-client-document"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                <a href="@Url.Action("List","Client")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+<hr />
+
+
+
+<div>
+    @{
+        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/ClientPartialViews/_ClientPersonalDocumentGridPartialView.cshtml");
+    }
+
+</div>

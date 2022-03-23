@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblClientDetails;
+}
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#ClientInfo" role="tab">1.@ProjectUI.ProjectUI.lblClientInformation</a>
+                </li>
+                <li class="nav-item" id="ClientDocumentInformationLI" style="display:none;">
+                    <a class="nav-link" data-toggle="tab" href="#ClientDocumentInformation" role="tab" id="PersonalDocumentTabLi">2.@ProjectUI.ProjectUI.lblClientDocumentInformation</a>
+                </li>
+                @*<li class="nav-item" hidden="hidden">
+                    <a class="nav-link" data-toggle="tab" href="#EducationalDocumentTab" role="tab">@HRModuleUI.HumanResourceUI.tabEducationalDocument</a>
+                </li>*@
+
+            </ul>
+
+
+ 
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="ClientInfo" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/ClientPartialViews/_ClientPartialView.cshtml");
+                    }
+
+                </div>
+                <div class="tab-pane" id="ClientDocumentInformation" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared//PartialViews/ClientPartialViews/_ClientPersonalDocumentPartialView.cshtml");
+                    }
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+@section scripts {
+
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Client/client-info-save.js?v=1.0.2"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Client/client-personal-document-partialViews.js"></script>
+
+    
+}
+
+
+
+

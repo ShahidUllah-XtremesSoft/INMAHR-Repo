@@ -21,6 +21,8 @@ namespace INMA.HR.Services.Commands.Request
                 EndTime = string.Empty,
                 NumberOfHours = "0",
                 CreatedBy = 0,
+                LeaveTypeId = 0,
+                LeaveTypeName = string.Empty,
                 Language = string.Empty,
 
             }, v);
@@ -31,7 +33,8 @@ namespace INMA.HR.Services.Commands.Request
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_ShortLeave_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+           // var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_ShortLeave_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);   OLD SP IS WORKING BUT COMMENTED DUE TO CHANGES
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_ShortLeave_Save_New.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }

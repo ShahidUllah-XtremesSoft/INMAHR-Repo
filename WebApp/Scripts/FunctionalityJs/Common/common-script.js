@@ -228,7 +228,7 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
         //},
         dataSource: {
             data: $data,
-            pageSize:500// $pageSize
+            pageSize: 500// $pageSize
         },
         height: height,
         scrollable: true,
@@ -236,16 +236,16 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
         filterable: { mode: "row" },
         selectable: selectable,
         //pageable:false,
-       // pageable: {
-       //     pageSizes: [50, 100, 250, 500, 1000],
-       //     width: 20,
-       // },
+        // pageable: {
+        //     pageSizes: [50, 100, 250, 500, 1000],
+        //     width: 20,
+        // },
         columns: $colModel,
         dataBinding: function () {
             record = (this.dataSource.page() - 1) * this.dataSource.pageSize();// this is use to add dynamic serial number in grid 
         }
     }).data("kendoGrid");
-   
+
 }
 
 
@@ -473,6 +473,7 @@ var customValidateForm = function ($form) {
             }
         }
         else if ($(this).attr('data-role') == 'datepicker') {
+             
             if ($(this).val() == 'year-month-day') {
                 $(this).addClass('invalid');
                 $(this).attr('title', thisFieldIsRequired);
@@ -480,7 +481,21 @@ var customValidateForm = function ($form) {
                 $(this).next("div").remove();
                 $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired + "</span></div>");
                 valid = false;
-            } else {
+            } else if ($(this).attr('data-role') == 'datepicker') {
+
+                if ($(this).val() == 'day/month/year') {
+                    $(this).addClass('invalid');
+                    $(this).attr('title', thisFieldIsRequired);
+                    $(this).removeClass("invalid");
+                    $(this).next("div").remove();
+                    $(this).after("<div class='row col-md-12'><span style='color:red;'>" + thisFieldIsRequired + "</span></div>");
+                    valid = false;
+                } else {
+                    $(this).removeClass("invalid");
+                    $(this).next("div").remove();
+                }
+            }
+            else {
                 $(this).removeClass("invalid");
                 $(this).next("div").remove();
             }
@@ -994,6 +1009,17 @@ function decrypt(cipherText, key) {
 }
 
 function renderKendoDatePicker(controlId, format = 'yyyy-MM-dd') {//'yyyy-MM-dd') {
+    var kendoDatePicker = $("#" + controlId).data("kendoDatePicker");
+    if (kendoDatePicker != undefined) {
+        kendoDatePicker.destroy();
+    }
+    $("#" + controlId).kendoDatePicker({
+        format: format,
+        // specifies that DateInput is used for masking the input element
+        dateInput: true
+    });
+}
+function renderKendoDatePickerWithNewFormat(controlId, format = 'dd/MM/yyyy') {//'yyyy-MM-dd') {
     var kendoDatePicker = $("#" + controlId).data("kendoDatePicker");
     if (kendoDatePicker != undefined) {
         kendoDatePicker.destroy();

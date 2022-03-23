@@ -4,5 +4,23 @@
     "inputFiles": [
       "JS/ScriptController.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/FunctionalityJs/Employee-index.min.js",
+    "inputFiles": [
+      "Scripts/FunctionalityJs/Employee-index.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/FunctionalityJs/login.min.js",
+    "inputFiles": [
+      "Scripts/FunctionalityJs/login.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/FunctionalityJs/Common/common-labels.min.js",
+    "inputFiles": [
+      "Scripts/FunctionalityJs/Common/common-labels.js"
+    ]
   }
 ]

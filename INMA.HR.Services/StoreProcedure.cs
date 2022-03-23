@@ -3,6 +3,7 @@
 
     #region Common
     Setup_Type_DropdownByTypeName,
+    Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
     #endregion
     DashboardCounter_Select,
@@ -22,6 +23,7 @@
     HR_Employee_GetByNumber,
     HR_Employee_Delete,
     HR_Employee_GetAllForGrid,
+    HR_Employee_GetAll_For_Admin,
 
     HR_Employee_Leave_TakenDetail_Get,
     HR_Employee_Leave_AvailableAndTakenDetail_Get,
@@ -129,6 +131,7 @@
     UserManagement_Module_Save_Eng,
     UserManagement_Module_Save_Arb,
     UserManagement_Module_GetAll,
+    UserManagement_MainApplicationModules_Load,
     UserManagement_Module_GetById,
     UserManagement_Module_Delete,
 
@@ -169,6 +172,7 @@
     Request_Leave_Delete,
 
     Request_ShortLeave_Save,
+    Request_ShortLeave_Save_New,
     Request_ShortLeave_Get,
     Request_ShortLeave_Delete,
     Request_Leave_GetDropdown,
@@ -271,11 +275,50 @@
     Setup_PublicHoliday_Get,
     Image_Save,
     #endregion
-
+    UserManagement_Login_Role_Update,
 }
-
 
 public enum ProjectStoreProcedure
 {
-    project_save
+     
+
+    #region PROJECT  
+    Project_save,
+    Project_Role_Mapping_For_Employees_Delete,
+    #endregion
+
+    #region PROJECT  
+    Project_Role_Mapping_For_Employees_Save,
+    #endregion
+
+    #region Client
+    Client_Save,
+    Client_Get,
+    Client_Delete,
+    Client_Details_By_Id,
+    Client_Edit_By_Id,
+    // CLIENT PERSONAL DOCUMENT
+    Client_PersonalDocument_Save,
+    Client_PersonalDocument_Get,
+    Client_PersonalDocument_Delete,
+    #endregion
+
+    #region MEETING
+    Meeting_Save,
+    Meeting_Get,
+    Meeting_Delete,
+    Meeting_Details_By_Id,
+    Meeting_Edit_By_Id,
+    
+    #endregion
+
+
+
+
+    #region   DROP DOWNS
+
+    Setup_City_Get,
+    Project_DDL,
+    HR_Employee_DDL,
+    #endregion
 }

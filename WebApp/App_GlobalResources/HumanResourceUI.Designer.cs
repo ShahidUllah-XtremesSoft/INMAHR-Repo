@@ -763,6 +763,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employees Link To Role.
+        /// </summary>
+        public static string lblEmployeesLinkToRole {
+            get {
+                return ResourceManager.GetString("lblEmployeesLinkToRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employees Official Letter Request(s).
         /// </summary>
         public static string lblEmployeesOfficialLetterRequests {
@@ -1326,6 +1335,15 @@ namespace HRModuleUI {
         public static string lblPassportReleaseDate {
             get {
                 return ResourceManager.GetString("lblPassportReleaseDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string lblPassword {
+            get {
+                return ResourceManager.GetString("lblPassword", resourceCulture);
             }
         }
         

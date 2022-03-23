@@ -351,6 +351,9 @@
   <data name="lblEmployeesleaveRequest" xml:space="preserve">
     <value>Employees Leave Request(s)</value>
   </data>
+  <data name="lblEmployeesLinkToRole" xml:space="preserve">
+    <value>Employees Link To Role</value>
+  </data>
   <data name="lblEmployeesOfficialLetterRequests" xml:space="preserve">
     <value>Employees Official Letter Request(s)</value>
   </data>
@@ -539,6 +542,9 @@
   </data>
   <data name="lblPassportReleaseDate" xml:space="preserve">
     <value>Passport Release Date</value>
+  </data>
+  <data name="lblPassword" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>Pending Requests</value>

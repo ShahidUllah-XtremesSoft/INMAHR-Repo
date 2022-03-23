@@ -24,6 +24,7 @@ namespace INMA.HR.Services.Commands.UserManagement
                 Description = string.Empty,
                 CreatedBy = 0,
                 Language = string.Empty,
+                MainApplicationModules_Id = 0,
                 //UploadedFiles = new List<FileUploadModel>()
 
             }, v);
@@ -37,7 +38,7 @@ namespace INMA.HR.Services.Commands.UserManagement
             string procedure = model.Language == "en-US" ? StoreProcedure.UserManagement_Module_Save_Eng.ToString() : StoreProcedure.UserManagement_Module_Save_Arb.ToString();
             values = _params.Get(model);
             var _response = repository.GetSingle<dynamic>(procedure, values, XtremeFactory._factory, XtremeFactory.connectionString);
-            
+
             //if (model.UploadedFiles.Count > 0)
             //{                
             //    Service = new FileUploadService();
@@ -72,6 +73,25 @@ namespace INMA.HR.Services.Commands.UserManagement
 
             values = _params.Get(model);
             return repository.GetMultiple<dynamic>(StoreProcedure.UserManagement_Module_GetAll.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
+
+
+    [Command(Name = "UserManagement_MainApplicationModules_Load")]
+    public class UserManagement_MainApplicationModules_LoadCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new { Language = string.Empty }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.UserManagement_MainApplicationModules_Load.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
         }
     }

@@ -235,6 +235,31 @@ namespace INMA.HR.Services
 
         }
     }
+      [Command(Name = "HR_Employee_GetAll_For_Admin")]
+    public class HR_Employee_GetAll_For_AdminCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+               
+                Id = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_GetAll_For_Admin.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
 
 
 

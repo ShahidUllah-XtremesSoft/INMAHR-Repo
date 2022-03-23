@@ -205,6 +205,69 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string lblCompanyDescription {
+            get {
+                return ResourceManager.GetString("lblCompanyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description (Arabic).
+        /// </summary>
+        internal static string lblCompanyDescriptionArb {
+            get {
+                return ResourceManager.GetString("lblCompanyDescriptionArb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description (English).
+        /// </summary>
+        internal static string lblCompanyDescriptionEng {
+            get {
+                return ResourceManager.GetString("lblCompanyDescriptionEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document.
+        /// </summary>
+        internal static string lblCompanyDocument {
+            get {
+                return ResourceManager.GetString("lblCompanyDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string lblCompanyName {
+            get {
+                return ResourceManager.GetString("lblCompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name (Arabic).
+        /// </summary>
+        internal static string lblCompanyNameArb {
+            get {
+                return ResourceManager.GetString("lblCompanyNameArb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name (English).
+        /// </summary>
+        internal static string lblCompanyNameEng {
+            get {
+                return ResourceManager.GetString("lblCompanyNameEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Decline.
         /// </summary>
         internal static string lblDecline {
@@ -300,6 +363,24 @@ namespace Resources {
         internal static string lblStatus {
             get {
                 return ResourceManager.GetString("lblStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired.
+        /// </summary>
+        internal static string lblStatusExpired {
+            get {
+                return ResourceManager.GetString("lblStatusExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid.
+        /// </summary>
+        internal static string lblStatusValid {
+            get {
+                return ResourceManager.GetString("lblStatusValid", resourceCulture);
             }
         }
         

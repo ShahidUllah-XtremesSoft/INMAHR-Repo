@@ -2,7 +2,7 @@
 var $ShortLeaveGrid = "ShortLeaveGrid";
 
 $(function () {
-
+    loadShortLeaveTypeDropdownList();
 
 
     $('#Language').val(_currentLanguage);
@@ -49,20 +49,26 @@ $(function () {
    */
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
-        if ($('#NumberOfHours').val() == "0") {
-            // swalMessage('info', 'Number of hours cannot be zero', 2000);
-            swalMessage('info', numberOfHourCannotBeZero, 2000);
-            return;
-        }
+        $("#LeaveTypeName").val($("#LeaveTypeId").data("kendoDropDownList").text());
+        if ($("#LeaveTypeName").val() == "Work P.Leave"){
+            saveShortLeaveRequest();
+        } else { 
 
-        if ($('#AvailableShortLeave').val() == '0' && $('#NumberOfHours').val() > $('#EditLeaveHours').val()) {
-            //   swalMessage('info', 'Can not apply with available balance 0',2000);
-            swalMessage('info', canNotApplyWithAvailableBalanceZero, 2000);
-        }
-        else {
-            if (compareStartEndTime($("#StartTime").val(), $("#EndTime").val())) {
-                if (requestedHoursShouldBeLessOrEqualToAvailable()) {
-                    saveShortLeaveRequest();
+            if ($('#NumberOfHours').val() == "0") {
+                // swalMessage('info', 'Number of hours cannot be zero', 2000);
+                swalMessage('info', numberOfHourCannotBeZero, 2000);
+                return;
+            }
+
+            if ($('#AvailableShortLeave').val() == '0' && $('#NumberOfHours').val() > $('#EditLeaveHours').val()) {
+                //   swalMessage('info', 'Can not apply with available balance 0',2000);
+                swalMessage('info', canNotApplyWithAvailableBalanceZero, 2000);
+            }
+            else {
+                if (compareStartEndTime($("#StartTime").val(), $("#EndTime").val())) {
+                    if (requestedHoursShouldBeLessOrEqualToAvailable()) {
+                        saveShortLeaveRequest();
+                    }
                 }
             }
         }
@@ -282,15 +288,39 @@ function loadAvailableShortLeaveBalance() {
 
 }
 function get_EmployeeShortLeavesAvailableBalanceCallBack(response) {
-
-    //console.log(response);
+     
+   // console.log(response);
     $('#AvailableShortLeave').val(JSON.parse(response.Value).remainingBalance);
 }
 
 
 
+function loadShortLeaveTypeDropdownList(isBindChangeEvent = false) {
 
-function fnTest() {
-    alert('check test by M');
-    alert('added this by Shahid khan');
+    ajaxRequest({
+        commandName: 'Setup_Type_DropdownByTypeName_For_ShortLeave',
+        values:
+        {
+            TypeName: 'ShortLeaveType',
+            Language: _currentLanguage
+        }, CallBack: fnLoadShortLeaveDropdownListCallBack
+    });
 }
+var fnLoadShortLeaveDropdownListCallBack = function (response) {
+    var checkresult = JSON.stringify(response.Value);
+    $("#LeaveTypeId").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        filter: "contains",
+        dataSource: JSON.parse(JSON.parse(checkresult)),
+        //  index: selectedIndex,
+        //change: function (e) {
+        //    debugger
+        //    $("#LeaveTypeName").data("kendoDropDownList").text(this.text());
+        //}
+    });
+
+}
+
+//$("#LeaveTypeId").data("kendoDropDownList").text();
+//$("#LeaveTypeId").data("kendoDropDownList").value();

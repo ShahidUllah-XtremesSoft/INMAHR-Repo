@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblClientList;
+
+
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+           
+            <div class="col-md-12"> 
+                <a href="@Url.Action("Save","Client")" class="btn btn-success @Resources.Common.PullRight" id="btnAddNewClient"><i class="fa fa-plus">  </i> @HRModuleUI.HumanResourceUI.lblAddNew</a>
+            </div>
+        </div>
+
+
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="client-grid"></div>
+                </div>
+            </div>
+
+           
+
+        </div>
+    </div>
+</div>
+
+ 
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Client/client-grid.js"></script> 
+    
+
+}
+

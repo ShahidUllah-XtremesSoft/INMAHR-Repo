@@ -7,11 +7,15 @@
     <ProjectGuid>{5E47BE81-66BC-4FB0-91FB-9CC97188AB55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>INMA.HR.Services</RootNamespace>
-    <AssemblyName>INMA.HR.Services</AssemblyName>
+    <RootNamespace>INMA.Projects.Services</RootNamespace>
+    <AssemblyName>INMA.Projects.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -27,50 +31,65 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Castle.Core.dll</HintPath>
+      <HintPath>..\WebApp\libs\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Facilities.Logging">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Castle.Facilities.Logging.dll</HintPath>
+      <HintPath>..\WebApp\libs\Castle.Facilities.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Services.Logging.Log4netIntegration">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+      <HintPath>..\WebApp\libs\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Castle.Windsor.dll</HintPath>
+      <HintPath>..\WebApp\libs\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="CastleWindsor.Factory.Core">
-      <HintPath>..\INMA.HR.Services\bin\Debug\CastleWindsor.Factory.Core.dll</HintPath>
+      <HintPath>..\WebApp\libs\CastleWindsor.Factory.Core.dll</HintPath>
     </Reference>
     <Reference Include="CastleWindsor.Factory.Repository">
-      <HintPath>..\INMA.HR.Services\bin\Debug\CastleWindsor.Factory.Repository.dll</HintPath>
+      <HintPath>..\WebApp\libs\CastleWindsor.Factory.Repository.dll</HintPath>
     </Reference>
     <Reference Include="Dapper">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Dapper.dll</HintPath>
+      <HintPath>..\WebApp\libs\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Dapper.Contrib">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Dapper.Contrib.dll</HintPath>
+      <HintPath>..\WebApp\libs\Dapper.Contrib.dll</HintPath>
     </Reference>
     <Reference Include="Dapper.Contrib.Ext">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Dapper.Contrib.Ext.dll</HintPath>
+      <HintPath>..\WebApp\libs\Dapper.Contrib.Ext.dll</HintPath>
     </Reference>
     <Reference Include="Dapper.Mapper">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Dapper.Mapper.dll</HintPath>
+      <HintPath>..\WebApp\libs\Dapper.Mapper.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\INMA.HR.Services\bin\Debug\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebApp\libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens">
+      <HintPath>..\WebApp\libs\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>..\WebApp\libs\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>..\WebApp\libs\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\INMA.HR.Services\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\WebApp\libs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\WebApp\libs\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,12 +97,16 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Z.Dapper.Plus">
-      <HintPath>..\INMA.HR.Services\bin\Debug\Z.Dapper.Plus.dll</HintPath>
+      <HintPath>..\WebApp\libs\Z.Dapper.Plus.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Common\ProjectCommand.cs" />
+    <Compile Include="Commands\Meeting\MeetingCommand.cs" />
+    <Compile Include="Commands\Common\DropDowns.cs" />
+    <Compile Include="Commands\Client\ClientCommand.cs" />
+    <Compile Include="Commands\Project\ProjectCommand.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
+    <Compile Include="Models\RoleMappingDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,5 +115,6 @@
       <Name>INMA.HR.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

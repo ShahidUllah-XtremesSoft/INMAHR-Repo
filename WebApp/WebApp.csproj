@@ -224,6 +224,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumanResourceUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\ProjectUI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectUI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ProjectUI.ar-AE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectUI.ar-AE.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -261,6 +271,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumanResourceUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Project\Controllers\MeetingController.cs" />
+    <Compile Include="Areas\Project\Controllers\ClientController.cs" />
+    <Compile Include="Areas\Project\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LetterController.cs" />
@@ -278,6 +291,8 @@
     </Compile>
     <Compile Include="Areas\Setup\Controllers\PublicHolidayController.cs" />
     <Compile Include="Areas\Setup\SetupAreaRegistration.cs" />
+    <Compile Include="Areas\Project\ProjectAreaRegistration.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\EmployeesRoleLinkingController.cs" />
     <Compile Include="Areas\UserManagement\Controllers\MenuController.cs" />
     <Compile Include="Areas\UserManagement\Controllers\MenuLinkingController.cs" />
     <Compile Include="Areas\UserManagement\Controllers\EmployeesAttendanceLinkingController.cs" />
@@ -377,6 +392,11 @@
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="Scripts\crypto-script.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-personal-document-partialViews.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-personal-document-grid-for-partialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-index.js" />
@@ -403,10 +423,16 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmpoyeeLeaveBalancePartialViews.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-info-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesAttendanceLinking\employees-attendance-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Common\clear-application-cache.js" />
+    <Content Include="Scripts\FunctionalityJs\Common\common-labels.min.js">
+      <DependentUpon>common-labels.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\FunctionalityJs\Common\get-all-count-notifications.js" />
     <Content Include="Scripts\FunctionalityJs\Common\common-labels.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\ContractType\contract-grid.js" />
@@ -1136,6 +1162,27 @@
     <Content Include="Areas\Employees\Views\InternalLetter\ReceivedLetters\Index.cshtml" />
     <Content Include="Areas\Employees\Views\InternalLetter\SendLetters\Index.cshtml" />
     <Content Include="Areas\UserManagement\Views\EmployeesAttendanceLinking\Index.cshtml" />
+    <Content Include="Areas\Project\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Project\Views\web.config" />
+    <Content Include="Areas\Project\Views\Project\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Project\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Project\List.cshtml" />
+    <Content Include="Areas\Project\Views\Client\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Client\List.cshtml" />
+    <Content Include="Areas\Project\Views\Client\Save.cshtml" />
+    <EmbeddedResource Include="App_GlobalResources\ProjectUI.ar-AE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectUI.ar-AE.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProjectUI</CustomToolNamespace>
+    </EmbeddedResource>
+    <Content Include="Areas\Project\Views\Shared\PartialViews\ClientPartialViews\_ClientPartialView.cshtml" />
+    <Content Include="Areas\UserManagement\Views\EmployeesRoleLinking\Index.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\ClientPartialViews\_ClientPersonalDocumentPartialView.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\ClientPartialViews\_ClientPersonalDocumentGridPartialView.cshtml" />
+    <Content Include="Areas\Project\Views\Meeting\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Meeting\List.cshtml" />
+    <Content Include="Areas\Project\Views\Meeting\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Meeting\_MeetingSave.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1229,8 +1276,14 @@
     <Content Include="Scripts\FunctionalityJs\Common\demo.js" />
     <Content Include="Scripts\FunctionalityJs\Common\leave-setup.js" />
     <Content Include="Scripts\FunctionalityJs\Employee-index.js" />
+    <Content Include="Scripts\FunctionalityJs\Employee-index.min.js">
+      <DependentUpon>Employee-index.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\FunctionalityJs\KendojqueryController.js" />
     <Content Include="Scripts\FunctionalityJs\login.js" />
+    <Content Include="Scripts\FunctionalityJs\login.min.js">
+      <DependentUpon>login.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\FunctionalityJs\ScriptController.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1527,12 +1580,15 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Employees\Data\" />
     <Folder Include="Areas\HumanResource\Data\" />
+    <Folder Include="Areas\Project\Data\" />
+    <Folder Include="Areas\Project\Views\ProjectUnit\" />
     <Folder Include="Areas\Request\Data\" />
     <Folder Include="Areas\Setup\Data\" />
     <Folder Include="Areas\UserManagement\Data\" />
     <Folder Include="Exceptions\" />
     <Folder Include="logs\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
+    <Folder Include="Scripts\FunctionalityJs\Areas\Project\" />
     <Folder Include="_logs\" />
   </ItemGroup>
   <ItemGroup>
@@ -1559,6 +1615,10 @@
       <Project>{f6a5d6a5-42a5-43e4-b0fa-316e76609e0a}</Project>
       <Name>INMA.HR.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\INMA.Projects.Services\INMA.Projects.Services.csproj">
+      <Project>{5e47be81-66bc-4fb0-91fb-9cc97188ab55}</Project>
+      <Name>INMA.Projects.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Common.ar-AE.resx">
@@ -1572,6 +1632,7 @@
     <Content Include="App_GlobalResources\Global.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <EmbeddedResource Include="App_GlobalResources\HumanResourceUI.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1582,6 +1643,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HumanResourceUI.ar-AE.designer.cs</LastGenOutput>
       <CustomToolNamespace>HRModuleUI</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\ProjectUI.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectUI.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProjectUI</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Areas\Employees\Views\App_LocalResources\EmployeeResourcesUI.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

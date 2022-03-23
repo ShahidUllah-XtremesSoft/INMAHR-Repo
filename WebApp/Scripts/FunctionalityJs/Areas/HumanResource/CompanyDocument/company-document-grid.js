@@ -1,7 +1,7 @@
 ﻿var CompanyDocumentGrid = "company-document-grid";
 $(function () {
     $('#Language').val(_currentLanguage);
-    
+
     loadCompanyDocumentGrid();
     renderKendoDatePicker('IssueDate', 'yyyy-MM-dd')
     renderKendoDatePicker('ExpiryDate', 'yyyy-MM-dd')
@@ -19,20 +19,37 @@ function loadCompanyDocumentGrid() {
 }
 var loadCompanyDocumentCallBack = function (inputDataJSON) {
     console.log(inputDataJSON);
-     bindCompanyDocumentGrid(JSON.parse(inputDataJSON.Value));
+    bindCompanyDocumentGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindCompanyDocumentGrid = function (inputDataJSON) {
     var record = 0;
     var gridColumns = [
-
+        /*
         { title: "#", template: "<b>#= ++record #</b>", width: 20, },
         { field: "id", title: "id", hidden: true },
         { field: "nameEng", title: NameEng, width: 100, filterable: true },
         { field: "nameArb", title: NameArb, width: 100, filterable: true },
         { field: "descriptionEng", title: DescriptionEng, width: 100, filterable: true },
         { field: "descriptionArb", title: DescriptionArb, width: 100, filterable: true },
+        */
+        { title: "#", template: "<b>#= ++record #</b>", width: 20, },
+        { field: "id", title: "id", hidden: true },
+        { field: "nameEng", title: NameEng, width: 100, filterable: true, hidden: true },
+        { field: "nameArb", title: NameArb, width: 100, filterable: true, hidden: true },
+        { field: "name", title: lblCompanyName, width: 100, filterable: true },
+        { field: "description", title: lblCompanyDescription, width: 100, filterable: true },
+        { field: "descriptionEng", title: DescriptionEng, width: 100, filterable: true, hidden: true },
+        { field: "descriptionArb", title: DescriptionArb, width: 100, filterable: true, hidden: true },
         { field: "issueDate", title: IssueDate, width: 100, filterable: true },
         { field: "expiryDate", title: ExpiryDate, width: 100, filterable: true },
+        {
+            field: "totalDays", title: lblExpiresIn, width: 100, filterable: false,
+            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:totalDays#</span> # } else {# <span class='badge badge-success'>#:totalDays#</span> # }#"
+        },
+        {
+            field: "", title: lblStatus, width: 100, filterable: false,
+            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else {# <span class='badge badge-success'>" + lblStatusValid + "</span> # }#"
+        },
         {
             field: "",
             width: 40,
@@ -53,16 +70,17 @@ var bindCompanyDocumentGrid = function (inputDataJSON) {
 function viewAttachment(currentFileName) {
 
     if (currentFileName == "null") {
-        swalMessage('info','@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
+        swalMessage('info', '@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
         return false;
     }
     window.open('/UploadFile/' + currentFileName, '_blank');
 }
 
 function editCompanyDocument(event) {
-     var row = $(event).closest("tr");
+    var row = $(event).closest("tr");
     var grid = $("#" + CompanyDocumentGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+
     $('#Id').val(dataItem.id);
     $('#NameEng').val(dataItem.nameEng);
     $('#NameArb').val(dataItem.nameArb);

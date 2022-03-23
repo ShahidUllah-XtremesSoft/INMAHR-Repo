@@ -165,6 +165,27 @@
   <data name="lblAreYouSure" xml:space="preserve">
     <value>Are You Sure ?</value>
   </data>
+  <data name="lblCompanyDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblCompanyDescriptionArb" xml:space="preserve">
+    <value>Description (Arabic)</value>
+  </data>
+  <data name="lblCompanyDescriptionEng" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
+  <data name="lblCompanyDocument" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="lblCompanyName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblCompanyNameArb" xml:space="preserve">
+    <value>Name (Arabic)</value>
+  </data>
+  <data name="lblCompanyNameEng" xml:space="preserve">
+    <value>Name (English)</value>
+  </data>
   <data name="lblDecline" xml:space="preserve">
     <value>Decline</value>
   </data>
@@ -197,6 +218,12 @@
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="lblStatusExpired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="lblStatusValid" xml:space="preserve">
+    <value>Valid</value>
   </data>
   <data name="lblXtremeSoft" xml:space="preserve">
     <value>XtremeSoft</value>

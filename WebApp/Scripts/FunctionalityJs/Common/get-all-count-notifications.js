@@ -8,7 +8,7 @@ $(function () {
     setInterval(function () {
 
         fnLoadAllCountNotification();
-    }, 50000); //50 seconds
+    }, 120000); //120 seconds
 
 
 });

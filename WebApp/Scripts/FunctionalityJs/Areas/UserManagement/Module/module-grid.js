@@ -20,10 +20,12 @@ var bindModuleGrid = function (inputDataJSON) {
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
+        { field: "mainApplicationModules_Id", title: "MainApplicationModules_Id", hidden: true },
 
 
         { field: "name", title: "Name", width: 100, filterable: true },
         { field: "description", title: "Description", width: 200, filterable: true },
+        { field: "mainApplicationModuleName", title: "Main Application Module ", width: 200, filterable: true },
 
         //Below is action column
         {
@@ -44,7 +46,7 @@ function editModule(event) {
     $('#Id').val(dataItem.id);
     $('#Name').val(dataItem.name);
     $('#Description').val(dataItem.description);
-
+    $("#MainApplicationModules_Id").data('kendoDropDownList').value(dataItem.mainApplicationModules_Id);
 }
 function deleteModuleById(event) {
     var row = $(event).closest("tr");
@@ -112,10 +114,10 @@ function deleteModuleById(event) {
 function moduleDropdownListOnChange(e) {
     var dataItem = e.sender.dataItem();
     alert(dataItem.text);
-    
+
 }
 function modulessDropdownListOnChange(e) {
     var dataItem = e.sender.dataItem();
     alert(dataItem.text);
-    
+
 }

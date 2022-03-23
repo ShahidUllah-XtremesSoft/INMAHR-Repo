@@ -166,15 +166,15 @@ var loadEmployeeGridCallBack = function (inputDataJSON) {
 var bindEmployeeGrid = function (inputDataJSON) {
     var record = 0;
 
-     
+
     for (var i = 0; i < inputDataJSON.length; i++) {
         if (inputDataJSON[i].childParent == null) {
-             
+
             inputDataJSON[i].childParent = inputDataJSON[i].companyName
 
         } else {
             inputDataJSON[i].companyName = inputDataJSON[i].childParent
-       
+
         }
     }
 
@@ -209,7 +209,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
         { field: "professionId", title: "Profession", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, hidden: true },
         { field: "profession", title: profession, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
-            field: "companyName", title: lblCompany, width: 100, filterable:true,
+            field: "companyName", title: lblCompany, width: 100, filterable: true,
             //  template: "#if (companyName !=null) { # #:companyName# # } else {#  #:childParent# # }#"
 
         },
@@ -221,7 +221,9 @@ var bindEmployeeGrid = function (inputDataJSON) {
             field: "isLoginAssigned", width: 65,
             title: login,
             hidden: isHR,
-            template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
+            //template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
+            template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#} " +
+                " if(isLoginAssigned == 1) { #<div class= 'btn btn-success btn-sm' onClick= UpdateLogin(this) > <i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
 
 
         },
@@ -260,13 +262,46 @@ function createLogin(e) {
 
     loadDepartmentTreeDropdownList();
     loadRoleDropdown();
+    $('#modal-adduserlogin').modal('show');
 
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+    $('#Id').val(0);
+    $('#RoleId').val(0);
+    $('#DepartmentId').val(0);
+
     $('#EmployeeId').val(dataItem.id);
     $('#Email').val(dataItem.employeeNumber);
+
+}
+function UpdateLogin(e) {
+     
+    loadDepartmentTreeDropdownList();
+    loadRoleDropdown();
+    $('#divDepartmentDropdownList').hide();
+    var row = $(e).closest("tr");
+    var grid = $("#" + $grid).data("kendoGrid");
+    var dataItem = grid.dataItem(row);
     $('#modal-adduserlogin').modal('show');
+    setTimeout(function () {
+
+        $('#Id').val(dataItem.userId);
+        $('#EmployeeId').val(dataItem.id);
+        $('#Email').val(dataItem.employeeNumber);
+        $('#RoleId').val(dataItem.roleId);
+        $('#DepartmentId').val(dataItem.departmentId);
+
+    }, 100);
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -282,19 +317,19 @@ $('#btnsave').click(function () {
                 $('#modal-adduserlogin').modal('hide');
             },
             error: function (xhr, status, error) {
-                buttonRemovePleaseWait('btnsave', 'Save', 'save');
+                buttonRemovePleaseWait('btnsave', btnSave, 'save');
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
                 alert(errmsg);
             }
             , complete: function () {
                 $('#divDepartmentDropdownList').css('display', 'block');
-                buttonRemovePleaseWait('btnsave', 'Save', 'save');
+                buttonRemovePleaseWait('btnsave', btnSave, 'save');
             }
         };
         $("#frmUserLoginDetail").ajaxSubmit(options);
     }
     else {
-        buttonRemovePleaseWait('btnsave', 'Save', 'save');
+        buttonRemovePleaseWait('btnsave', btnSave, 'save');
     }
 });
 
@@ -315,10 +350,10 @@ function viewDetailEmployee(e) {
 
 function loadRoleDropdownList(isBindChangeEvent = false) {
     if ($('#Language').val() == 'en-US') {
-        loadKendoDropdownList('RoleIdex', 'Id [Value], NameEng [Text]', 'UserManagement_Role', 'NameEng IS NOT NULL', 0, 'moduleDropdownListOnChange');
+        loadKendoDropdownList('RoleIdex', 'Id [Value], NameEng [Text]', 'UserManagement_Role', 'NameEng IS NOT NULL and UserManagement_MainApplicationModules_Id=1', 0, 'moduleDropdownListOnChange');
     }
     else {
-        loadKendoDropdownList('RoleIdex', 'Id [Value], NameArb [Text]', 'UserManagement_Role', 'NameArb IS NOT NULL', 0, 'moduleDropdownListOnChange');
+        loadKendoDropdownList('RoleIdex', 'Id [Value], NameArb [Text]', 'UserManagement_Role', 'NameArb IS NOT NULL and UserManagement_MainApplicationModules_Id=1', 0, 'moduleDropdownListOnChange');
     }
     setTimeout(function () {
         if (isBindChangeEvent) {
@@ -333,10 +368,10 @@ function loadRoleDropdownList(isBindChangeEvent = false) {
 function loadRoleDropdown() {
 
     if ($('#Language').val() == 'en-US') {
-        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameEng [Text]', TableName: 'UserManagement_Role', Conditions: 'NameEng IS NOT NULL', SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
+        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameEng [Text]', TableName: 'UserManagement_Role', Conditions: 'NameEng IS NOT NULL and UserManagement_MainApplicationModules_Id=1', SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
     }
     else {
-        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameArb [Text]', TableName: 'UserManagement_Role', Conditions: 'NameArb IS NOT NULL', SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
+        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameArb [Text]', TableName: 'UserManagement_Role', Conditions: 'NameArb IS NOT NULL and UserManagement_MainApplicationModules_Id=1', SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
     }
 }
 var loadRoleDropdownListCallBack = function (loadjQueryDropdownListResponse) {

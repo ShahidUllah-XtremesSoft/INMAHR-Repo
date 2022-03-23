@@ -54,7 +54,7 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
         { field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
-        // { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+         { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {

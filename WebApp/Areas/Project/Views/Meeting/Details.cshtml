@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblClientDetails;
+   
+
+}
+
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+<input type="hidden" id="EmployeeId" name="LoggedInUserId" value="0" />
+<div class="row">
+
+</div>
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-2 text-right">
+                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:150px;" alt="@ProjectUI.ProjectUI.lblImage" />
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-3  ">@ProjectUI.ProjectUI.lblClientName</label>
+                                    <h3>  <div class="col-xs-9 controls pull-right ClientName" id=""></div></h3>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div><hr />
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-3  ">@ProjectUI.ProjectUI.lblPhone 1</label>
+                                    <b>  <div class="col-xs-9 controls pull-right PhoneNumber1" id=""></div></b>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-3  ">@ProjectUI.ProjectUI.lblEmail 1</label>
+                                    <b>
+                                        <div class="col-xs-9 controls pull-right Email1" id=""></div>
+                                    </b>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-3  ">@ProjectUI.ProjectUI.lblNationality</label>
+                                    <b>
+                                        <div class="col-xs-9 controls pull-right Nationality" id="">
+
+                                        </div>
+                                    </b>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#ClientInfo" role="tab">1.@ProjectUI.ProjectUI.lblClientInformation</a>
+
+                </li>
+                <li class="nav-item" onclick="fnCheckTab('ClientDocumentInformation');">
+                    <a class="nav-link" data-toggle="tab" href="#ClientDocumentInformation" role="tab" id="PersonalDocumentTabLi">2.@ProjectUI.ProjectUI.lblClientDocumentInformation</a>
+                </li>
+                <li class="nav-item" onclick="fnCheckTab('ClientProjectInformation');">
+                    <a class="nav-link" data-toggle="tab" href="#ClientProjectInformation" role="tab" id="PersonalDocumentTabLi">3.@ProjectUI.ProjectUI.lblClientProjectInformation</a>
+                </li>
+                <li class="nav-item" onclick="fnCheckTab('ClientMeetingInformation');">
+                    <a class="nav-link" data-toggle="tab" href="#ClientMeetingInformation" role="tab" id="PersonalDocumentTabLi">4.@ProjectUI.ProjectUI.lblClientMeetingInformation</a>
+                </li>
+
+            </ul>
+
+
+
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="ClientInfo" role="tabpanel">
+                    @{
+                        <div class="card profile-box flex-fill">
+                            <div class="card-block">
+                                                    <h4 class="card-title">@ProjectUI.ProjectUI.lblPersonalInformations<hr /></h4>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                            <div class="col-md-5">
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblClientName</label>
+                                                            <div class="col-xs-7 controls pull-right ClientName" id=""></div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5   ">@ProjectUI.ProjectUI.lblClientCreatedDate</label>
+                                                            <div class="col-xs-7 controls pull-right ClientCreatedDate" id=""></div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblPhone 1</label>
+                                                            <div class="col-xs-7 controls pull-right PhoneNumber1" id=""></div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblPhone 2</label>
+                                                            <div class="col-xs-7 controls pull-right PhoneNumber2" id=""></div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblEmail 1</label>
+                                                            <div class="col-xs-7 controls pull-right Email1" id=""></div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblEmail 1</label>
+                                                            <div class="col-xs-7 controls pull-right Email2" id=""></div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-2"></div>
+
+                                            <div class="col-md-5">
+
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblNationality</label>
+                                                            <div class="col-xs-7 controls pull-right Nationality" id="">
+
+                                                            </div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblCity</label>
+                                                            <div class="col-xs-7 controls pull-right ClientCity" id="">
+
+                                                            </div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="row mgbt-xs-0">
+                                                            <label class="col-xs-5  ">@ProjectUI.ProjectUI.lblLocation</label>
+                                                            <div class="col-xs-7 controls pull-right ClientLocation" id="">
+                                                            </div>
+                                                            <!-- col-sm-10 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @*<div class="col-sm-3 text-right">
+                                            <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
+                                        </div>*@
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+                <div class="tab-pane" id="ClientDocumentInformation" role="tabpanel">
+                    <div class=" ">
+
+                        @*@{
+                                Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/ClientPartialViews/_ClientPersonalDocumentGridPartialView.cshtml");
+                            }*@
+                        <div class="card profile-box flex-fill">
+                            <div class="card-block">
+                                <h4 class="card-title">@ProjectUI.ProjectUI.lblDocumentInformation<hr /></h4>
+                                <div id="div-client-personal-document"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane" id="ClientProjectInformation" role="tabpanel">
+                    <div class="card-block">
+
+                        <h4>@ProjectUI.ProjectUI.lblComingSoon</h4>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="ClientMeetingInformation" role="tabpanel">
+                    <div class="card-block">
+                        <h4>@ProjectUI.ProjectUI.lblComingSoon</h4>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Client/client-detail.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Client/client-personal-document-grid-for-partialView.js"></script>
+
+}
+
+

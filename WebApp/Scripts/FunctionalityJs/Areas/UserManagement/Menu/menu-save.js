@@ -1,7 +1,7 @@
 ﻿$(function () {
 
     $('#btnSave').on('click', function (e) {
-        debugger
+         
         console.log($('#IsHRMenu').val());
         if ($('#IsHRMenu').val() == 'on') {
             $('#IsHRMenu').val('ON');
@@ -13,7 +13,7 @@
             var options = {
                 success: function (response, statusText, jqXHR) {
                     
-                    console.log(response);
+                   
                     swal(response);
                     loadMenuGrid();
                     buttonRemovePleaseWait('btnSave', save, 'save');
@@ -47,5 +47,6 @@ function ClearControls() {
     $('#ModuleId').val('');
     $('#Url').val('');
     $('#Icon').val('');
+    $('#GroupIcon').val('');
 
 }

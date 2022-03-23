@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "lblMeetingDetails";
+}
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#MeetingInfo" role="tab">1.lblMeetingInformation</a>
+                </li>
+
+
+
+            </ul>
+
+
+
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="MeetingInfo" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Meeting/_MeetingSave.cshtml");
+                    }
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+@section scripts {
+ 
+   
+    <script src="~/Scripts/FunctionalityJs/Areas/Meetings/meeting-info-save.js"></script>
+
+
+
+}
+
+
+
+

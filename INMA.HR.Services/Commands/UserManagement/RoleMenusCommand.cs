@@ -73,7 +73,8 @@ namespace INMA.HR.Services.Commands.UserManagement
                 RoleId = 0,
                 IsHR = false,
                 LoggedInUserId = 0,
-                Language = string.Empty
+                Language = string.Empty,
+                MainApplicationModule_Id = 0
             }, v);
 
 

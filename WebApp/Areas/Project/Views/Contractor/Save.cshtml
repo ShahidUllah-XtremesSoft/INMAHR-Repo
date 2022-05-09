@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblContractorDetails;
+}
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#ContractorInfo" role="tab">1.@ProjectUI.ProjectUI.lblContractorInformation</a>
+                </li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="ContractorInfo" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Contractor/_ContractorPartialView.cshtml");
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Contractor/contractor-info-save.js?+971502324409"></script>
+
+}

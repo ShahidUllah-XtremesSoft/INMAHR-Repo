@@ -211,8 +211,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
         {
             field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-          , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
-          
+            , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
+
             , footerTemplate: "<span class='badge badge-danger'>" + lateTimeIn + ": <span   class='footerLateTimeInPlaceholder'>0</span></span>"
         },
         { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: true },
@@ -224,7 +224,10 @@ var bindAttendanceGrid = function (inputDataJSON) {
             hidden: false,
 
             //   template: "#if (status == 'Present') { # <span class='badge badge-success'>#:status#</span> # } else if(status == 'Absent'){# <span class='badge badge-danger'>#:status#</span> # } else{# <span class='badge badge-primary'>#:status#</span> #}#"
-            template: "#if (status == 'Present') { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent'){# <span class='badge badge-danger'>" + lblAbsent + "</span> # } else{# <span class='badge badge-primary'>#:status#</span> #}#"
+            template: "#if (status == 'Present')" +
+                " { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent')" +
+                " { if(status == 'Absent' && departmentId==11) {# <span class='badge badge-danger'>" + lblSite + "</span> # } else { # <span class='badge badge-danger'>" + lblAbsent + "</span> # }}   else " +
+                " {# <span class='badge badge-primary'>#:status#</span> #}#"
             , footerTemplate: "<span class='badge badge-success'>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class='badge badge-danger'>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
 
         },
@@ -252,9 +255,11 @@ var bindAttendanceGrid = function (inputDataJSON) {
             //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
             //}
             if (gridData[i].status == 'Absent') {
-                debugger
+
                 if (gridData[i].departmentId == 11) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
+
+
                 } else {
 
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-danger");

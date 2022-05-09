@@ -1,0 +1,206 @@
+﻿@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD DESIGN SECTION MODEL FOR TRANSFER RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY /\/\ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-model" data-toggle="modal" data-target="#modal-design-section-transfer-to-section"></button>
+<div class="modal fade" id="modal-design-section-transfer-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">.Transfer to</h5>
+            </div>
+            <div class="modal-body" style="height:170px;">
+                <form id="frmTransferDataModal">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                @*<label class="col-form-label">.Transfer to </label><span style="color:red"> *</span><br />*@
+                                <div id="container">
+                                    <input class="form-control pname" id="Project_Section_Parent_Type_DDL" required>
+                                </div>
+                                <input type="hidden" class="form-control pname" name="Setup_SetupType_Id" id="Setup_SetupType_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="From_SetupType_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="Attachment_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="Grid-Name" value="0">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <div class="container">
+                                    @*<label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />*@
+                                    <input type="text" class="form-control pname" name="Project_DesignSection_SetupDetailTypeDDL" id="Project_DesignSection_SetupDetailTypeDDL" required>
+                                    <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id" id="Project_DesignSection_Entity_Id" value="0">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">Remarks</label>
+                                <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                    <div class="col-md-6">-->
+                    @*<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
+                    <!--<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue" value="Available Employee"><i class=""></i> Available Employee(s) </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+                        </div>
+                    </div>
+                    <div id="div-design-section-employees-area"></div>
+
+                    <div class="div-design-section-assigned-employees-area" style="display:none;">
+                        <br />
+                        <br />
+                        <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="grid-load-all-assigned-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div id="btnAreaShowHideOnConditionBase">
+
+                            <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
+                            <button type="button" id="btn-transfer" class="btn   btn-success  pull-right" value="Save"> Transfer</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+
+
+
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD MODEL FOR ASSIGN RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY /\/\ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-assign-model" data-toggle="modal" data-target="#modal-assign-to-section"></button>
+<div class="modal fade" id="modal-assign-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">.Assign to</h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control pname" id="assignedModal_setup_type_Id" value="0">
+                <input type="hidden" class="form-control pname" id="assignedModal_setup_type_detail_Id" value="0">
+                <form id="frmAssignDataModal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @*<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
+                            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue_DesignSection" value="Available Employee"><i class=""></i> Available Employee(s) </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue_DesignSection" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+                        </div>
+                    </div>
+                    <div id="div-design-section-employees-area">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="col-form-label show-sub-section-name" style="font-size:x-large; text-decoration:underline"> </label> <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div id="grid-load-all-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-footer" id="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @*<button type="button" class="btn btn-danger pull-right btnClose " data-dismiss="modal">Close</button>*@
+
+                                                <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
+                                                <button type="button" id="projectDetail_btnSave_DesingSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Assigned</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="div-design-section-assigned-employees-area" style="display:none;">
+                        <br />
+                        <br />
+
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="grid-load-all-assigned-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            @*<div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="">
+
+                                <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
+                                <button type="button" id="btn-assigned" class="btn   btn-success  pull-right" value="Save"> Assigned</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+

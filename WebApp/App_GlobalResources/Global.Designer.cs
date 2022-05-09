@@ -115,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to change status ?.
+        /// </summary>
+        internal static string doYouReallyWantToChangeStatus {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToChangeStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to decline these requests ?.
         /// </summary>
         internal static string doYouReallyWantToDeclineTheseRequests {
@@ -138,6 +147,15 @@ namespace Resources {
         internal static string doYouReallyWantToDeleteThisRecord {
             get {
                 return ResourceManager.GetString("doYouReallyWantToDeleteThisRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to transfer this file ?.
+        /// </summary>
+        internal static string doYouReallyWantToTransferThisFile {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToTransferThisFile", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace Resources {
         internal static string lblAllowedFormatsArePngJpgPdf {
             get {
                 return ResourceManager.GetString("lblAllowedFormatsArePngJpgPdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1.
+        /// </summary>
+        internal static string lblApplicationVersionNo {
+            get {
+                return ResourceManager.GetString("lblApplicationVersionNo", resourceCulture);
             }
         }
         
@@ -232,7 +259,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Document.
+        ///   Looks up a localized string similar to Company Document.
         /// </summary>
         internal static string lblCompanyDocument {
             get {
@@ -268,6 +295,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Day.
+        /// </summary>
+        internal static string lblDay {
+            get {
+                return ResourceManager.GetString("lblDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Decline.
         /// </summary>
         internal static string lblDecline {
@@ -295,11 +331,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document/Attachment .
+        /// </summary>
+        internal static string lblDocumentAttachment {
+            get {
+                return ResourceManager.GetString("lblDocumentAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         internal static string lblEndDate {
             get {
                 return ResourceManager.GetString("lblEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hour(s).
+        /// </summary>
+        internal static string lblHours {
+            get {
+                return ResourceManager.GetString("lblHours", resourceCulture);
             }
         }
         
@@ -322,6 +376,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minute(s).
+        /// </summary>
+        internal static string lblMinutes {
+            get {
+                return ResourceManager.GetString("lblMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string lblNo {
@@ -336,6 +399,15 @@ namespace Resources {
         internal static string lblPoweredBy {
             get {
                 return ResourceManager.GetString("lblPoweredBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        internal static string lblRemarks {
+            get {
+                return ResourceManager.GetString("lblRemarks", resourceCulture);
             }
         }
         

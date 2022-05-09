@@ -46,13 +46,19 @@ function loadProfileCallBack(response) {
 
 }
 
- 
+
 
 function fnCheckTab(selectedTab) {
- 
+
     if (selectedTab == "ClientDocumentInformation") {
-    
+
         loadPersonalDocumentsKendoGrid();
+    } else if (selectedTab == "ClientProjectInformation") {
+         
+        loadClientProjectInformationKendoGrid();
+    } else if (selectedTab == "ClientMeetingInformation") {
+         
+        loadClientMeetingInformationKendoGrid();
     }
 
 }

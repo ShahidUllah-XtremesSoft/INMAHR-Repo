@@ -274,7 +274,8 @@
     <value>الوصف (بالغات الانجليزية)  </value>
   </data>
   <data name="lblDocument" xml:space="preserve">
-    <value>الوثيقة</value>
+    <value>الوثائق</value>
+    <comment>الوثيقة</comment>
   </data>
   <data name="lblEarlyOutTime" xml:space="preserve">
     <value>اظافي دقائق</value>
@@ -598,6 +599,15 @@
   <data name="lblRequestDenyComment" xml:space="preserve">
     <value>طلب رفض التعليق</value>
   </data>
+  <data name="lblRequestExpired" xml:space="preserve">
+    <value>اجازة منتهية</value>
+  </data>
+  <data name="lblRequestRunning" xml:space="preserve">
+    <value>جاري العمل بالاجازة</value>
+  </data>
+  <data name="lblRequestWaiting" xml:space="preserve">
+    <value>اجازة قيد التفعيل</value>
+  </data>
   <data name="lblReset" xml:space="preserve">
     <value>Reset</value>
   </data>
@@ -640,6 +650,9 @@
   </data>
   <data name="lblSignOut" xml:space="preserve">
     <value>خروج</value>
+  </data>
+  <data name="lblSite" xml:space="preserve">
+    <value>موقع</value>
   </data>
   <data name="lblSocialStatusArabic" xml:space="preserve">
     <value>الحالة المدنية </value>

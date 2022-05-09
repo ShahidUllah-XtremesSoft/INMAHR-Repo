@@ -1,5 +1,6 @@
 ﻿var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
 var RequestGrid = "RequestGrid";
+var _btnValue = 'Pending';
 $(function () {
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $('#Language').val(_currentLanguage);
@@ -54,7 +55,17 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
         { field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
-         { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+        { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+        {
+            field: "totalRemainingDays", title: lblStatus, hidden: false, width: 15,
+            // template: "<span class='badge badge-da'>#:totalRemainingDays#</span>"
+            template: "#if (totalRemainingDays >0 && _btnValue=='Pending' )" +
+                " { # <span class='badge badge-warning'>" + lblRequestWaiting + "</span> # } else if (totalRemainingDays >0  && startingDays > 0   && _btnValue !='Pending' )" +
+                " { # <span class='badge badge-warning'>" + lblRequestWaiting + "</span> # } else if (totalRemainingDays <=0   )" +
+                " {# <span class='badge badge-danger'>" + lblRequestExpired + "</span> # } else" +
+                " {# <span class='badge badge-success'> " + lblRequestRunning + "</span> # }#"
+
+        },
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
         {
@@ -237,7 +248,7 @@ $(document).on("click", "#checkAll", function () {
 //--------------------- FUNCTION AREA ----------------
 function fnLoadGridByStatus(btnValue) {
     loadLeaveRequestGrid(btnValue);
-
+    _btnValue = btnValue;
     if (btnValue == 'Pending') {
 
         setTimeout(function () {

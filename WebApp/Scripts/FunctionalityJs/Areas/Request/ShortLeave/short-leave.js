@@ -149,6 +149,7 @@ var loadShortLeaveGridCallBack = function (inputDataJSON) {
     bindShortLeaveGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindShortLeaveGrid = function (inputDataJSON) {
+    console.log(inputDataJSON)
     var record = 0;
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
@@ -159,6 +160,11 @@ var bindShortLeaveGrid = function (inputDataJSON) {
         { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 30, filterable: false },
         { field: "comment", title: comment, hidden: true, width: 30, filterable: false },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
+        {
+            field: "leaveType", title: " ", filterable: false, width: 20
+            , template: "<span class='badge badge-info'>#:leaveType#</span>"
+
+        },
         //{ field: "status", title: "Status", hidden: false, width: 30 },
         {
             title: status,

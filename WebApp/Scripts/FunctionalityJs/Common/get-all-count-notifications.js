@@ -57,7 +57,7 @@ var fnLoadAllCountNotificationCallBack = function (inputDataJSONs) {
             for (var x = 0; x < keysValues.length; x++) {
                 for (var i = 0; i < menusName.length; i++) {
 
-
+                     
                     var checkMenuId = parseInt(keysValues[x].split(',')[1]);
                     var checkMenuCount = parseInt(keysValues[x].split(',')[0]);
 

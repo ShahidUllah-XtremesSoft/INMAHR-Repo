@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblIssueDetails;  
+}
+
+
+<input type="hidden" id="CreatedBy" name="CreatedBy" />
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+<div class="row">
+
+</div>
+
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <div class="card shadow-none mt-3 border border-light">
+
+                    <div class="card-block">
+                       <br />
+
+                        <div class="row">
+                            <div class="col-md-6 text-right">
+                                <p>  <b id="txt-subject">@ProjectUI.ProjectUI.lblOverview</b></p><hr />
+                            </div>
+                            <div class="col-md-6" style="text-align:end" id="div-change-status"> 
+                                    <span class="badge  ">Change Status:</span>
+                                    <select class="issue_status_ddl" id="" style="background-color: #49626a; color: white; font: bold;" onchange="fnChangeStatus(this.value)">
+
+                                        <option value="Re-Open">Re-Open</option>
+                                        <option value="Closed">Closed</option>
+                                        <option value="Under Progress">Under Progress</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                 <hr />
+                            </div>
+                        </div>
+                        <br />
+
+                        <p id="txt-body"></p>
+                        <hr>
+                        <div class="row attachmentRow" style="display:none;">
+                            <h5><i class="fa fa-paperclip mr-2"></i> @HRModuleUI.HumanResourceUI.lblAttachment<span></span></h5>
+                            <div class="col-sm-4 col-md-3">
+                                <a target="_blank" id="attachment-open" href="">
+                                    <img id="letter-attachment" src="" alt="attachment" class="img-thumbnail" style="width: 30%;">
+                                </a>
+                            </div>
+
+                        </div>
+                        <hr class="bg-primary" />
+
+                        <div class="row">
+                            <div class="card-footer">
+                                <div class="col-sm-4">
+                                    <span class="badge    ">@ProjectUI.ProjectUI.lblConcernPerson:</span>
+                                    <span class="badge badge-info    concern-person">  </span>
+
+
+                                </div><div class="col-sm-2"> </div>
+                                <div class="col-sm-2" style="text-align: end;">
+                                    <span class="badge    ">@ProjectUI.ProjectUI.lblIssueDate:</span>
+                                    <span class="badge badge-danger    issue-date">  </span>
+
+
+                                </div>
+                                <div class="col-sm-2" style="text-align: end;">
+                                    <span class="badge    ">@Resources.Global.lblDay:</span>
+                                    <span class="badge badge-danger    issue-days">  </span>
+                                </div>
+
+
+                                <div class="col-sm-2" style="text-align: end;">
+
+                                    <span class="badge">.@Resources.Global.lblStatus:</span>
+                                    <span class="badge badge-danger    issue-status">   </span>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    
+    <script src="~/Scripts/FunctionalityJs/Areas/Issues/issue-detail.js?+971502324409"></script>
+
+}
+
+

@@ -1519,6 +1519,33 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expired.
+        /// </summary>
+        public static string lblRequestExpired {
+            get {
+                return ResourceManager.GetString("lblRequestExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running.
+        /// </summary>
+        public static string lblRequestRunning {
+            get {
+                return ResourceManager.GetString("lblRequestRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting.
+        /// </summary>
+        public static string lblRequestWaiting {
+            get {
+                return ResourceManager.GetString("lblRequestWaiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string lblReset {
@@ -1641,6 +1668,15 @@ namespace HRModuleUI {
         public static string lblSignOut {
             get {
                 return ResourceManager.GetString("lblSignOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site.
+        /// </summary>
+        public static string lblSite {
+            get {
+                return ResourceManager.GetString("lblSite", resourceCulture);
             }
         }
         

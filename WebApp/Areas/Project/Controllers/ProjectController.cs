@@ -23,6 +23,26 @@ namespace WebApp.Areas.Project.Controllers
         {
             return View();
         }
+        public ActionResult LoadAllEmployees()
+        {
+            return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_All_Employees.cshtml");
+        }
+        public ActionResult LoadAllEmployeess()
+        {
+            return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_DesignSection_All_Employees.cshtml");
+        }
+        //public ActionResult Load_Assigned_Employees()
+        //{
+        //    return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_DesignSection_All_Assigned_Employees.cshtml");
+        //}
+        public ActionResult Load_Technical_Section_Employees()
+        {
+            return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_Technical_Section_Employees.cshtml");
+        }
+        public ActionResult Load_Supervision_Section_Employees()
+        {
+            return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_Supervision_Section_Employees.cshtml");
+        }
         #endregion
 
 

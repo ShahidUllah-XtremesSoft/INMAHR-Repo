@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblNotificationList;
+
+
+}
+
+
+<div class="card">
+    <div class="card-block">
+        @*<div class="row">
+
+            <div class="col-md-12">
+                <a href="@Url.Action("Save","Notification")" class="btn btn-success @Resources.Common.PullRight" id=""><i class="fa fa-plus">  </i> @ProjectUI.ProjectUI.lblAddNew</a>
+            </div>
+        </div>*@
+
+
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="employees-notification-grid"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Notification/employees-notification-grid.js?+971502324409"></script>
+}
+

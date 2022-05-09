@@ -101,9 +101,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Contractor\ClientCommand.cs" />
+    <Compile Include="Commands\Notification\NotificationCommand.cs" />
+    <Compile Include="Commands\Issue\IssueCommand.cs" />
     <Compile Include="Commands\Meeting\MeetingCommand.cs" />
     <Compile Include="Commands\Common\DropDowns.cs" />
     <Compile Include="Commands\Client\ClientCommand.cs" />
+    <Compile Include="Commands\Comment\CommentCommand.cs" />
     <Compile Include="Commands\Project\ProjectCommand.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Models\RoleMappingDataModel.cs" />

@@ -58,6 +58,7 @@ function loadLetterGrid() {
 }
 var loadLetterGridCallBack = function (inputDataJSON) {
     bindLetterGrid(JSON.parse(inputDataJSON.Value));
+     
 }
 var bindLetterGrid = function (inputDataJSON) {
     var record = 0;

@@ -603,6 +603,15 @@
   <data name="lblRequestDenyComment" xml:space="preserve">
     <value>Request Deny Comment</value>
   </data>
+  <data name="lblRequestExpired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="lblRequestRunning" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="lblRequestWaiting" xml:space="preserve">
+    <value>Waiting</value>
+  </data>
   <data name="lblReset" xml:space="preserve">
     <value>Reset</value>
   </data>
@@ -644,6 +653,9 @@
   </data>
   <data name="lblSignOut" xml:space="preserve">
     <value>Sign Out</value>
+  </data>
+  <data name="lblSite" xml:space="preserve">
+    <value>Site</value>
   </data>
   <data name="lblSocialStatusArabic" xml:space="preserve">
     <value>Social Status (Arabic)</value>

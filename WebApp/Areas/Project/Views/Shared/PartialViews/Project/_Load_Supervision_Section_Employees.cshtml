@@ -1,0 +1,283 @@
+﻿@*<div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="col-form-label supervision-section-show-sub-section-name" style="font-size:x-large; text-decoration:underline"> </label> <br>
+
+            </div>
+        </div>
+    </div>*@
+
+<div class="row ">
+    @*<div class="col-md-12">
+            <div class="form-group  typeddlRow">
+                <label class="col-form-label">Select @ProjectUI.ProjectUI.lblType</label><span style="color:red"> *</span><br />
+                <div id="container">
+
+                    <input type="text" class="form-control pname" id="Project_SupervisionSection_SetupDetail_TypeDDL">
+                </div>
+                <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Type_SetupDetail_Id" id="Project_SupervisionSection_Type_SetupDetail_Id" value="0">
+            </div>
+        </div>*@
+
+    <div class="col-md-12">
+        <div class="card-footer" id="btnAreaShowHideOnConditionBase">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btn-save-Supervision-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="grid-main-div">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div id="grid-load-supervision-section-all-employees">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer"> </div>
+
+
+
+<script>
+    $(function () {
+
+
+
+        setTimeout(function () {
+            if (parameterId == null || parameterId == 0 || parameterId == '') {
+                parameterId = $('#SupervisionSection_Document_ProjectId').val()
+            }
+
+            loadSupervisionSectionAllEmployees();
+
+            //    loadProject_SupervisionSection_SetupDetail_TypeDDL();
+
+            if ($('.Supervision-section-parent-ddl-name').text().trim() != 'Structural Section' && $('.Supervision-section-parent-ddl-name').text().trim() != 'Municipality Section') {
+
+                $('.typeddlRow').show();
+            } else {
+
+                $('.typeddlRow').hide();
+            }
+
+        }, 150);
+    });
+
+    function loadSupervisionSectionAllEmployees() {
+
+        ajaxRequest({
+            commandName: 'Project_HR_Employee', values: {
+                Project_Id: parameterId,
+                Main_Section_Id: $('#Project_Supervision_Section_Parent_Type_DDL').val(),
+                Sub_Section_Id: $('#Project_SupervisionSection_SetupDetailTypeDDL').val(),
+                Language: _currentLanguage
+            }, CallBack: loadSupervisionSectionAllEmployeesCallBack
+        });
+    }
+    var loadSupervisionSectionAllEmployeesCallBack = function (inputDataJSON) {
+        bindloadSupervisionSectionAllEmployees(JSON.parse(inputDataJSON.Value));
+    }
+    var bindloadSupervisionSectionAllEmployees = function (inputDataJSON) {
+
+
+        var gridColumnss = [
+
+            { title: "#", template: "<b>#= ++record #</b>", width: 15 },
+            { field: "id", title: "id", width: 10, hidden: true },
+            {
+                field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+                //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
+            },
+            { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "professionName", title: ".professionName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            {
+                headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
+                template: function (dataItem) {
+                    if (dataItem.isAssigned == 1) {
+                        return "<div><input type='checkbox' class='k-checkbox row-checkbox' id='target' checked ></div>";
+                    }
+                    else {
+                        return "<div><input type='checkbox' class='k-checkbox row-checkbox' id='target' unchecked='true'></div>";
+                    }
+                },
+                width: 15
+            },
+
+        ];
+      
+
+            bindKendoGrid('grid-load-supervision-section-all-employees', 100, gridColumnss, inputDataJSON, true, 550);
+      
+
+
+
+    };
+
+    $(document).on("click", "#checkAll", function () {
+        if (this.checked) {
+
+            $("#grid-load-supervision-section-all-employees tbody input:checkbox").attr("checked", true);
+        } else {
+            $("#grid-load-supervision-section-all-employees tbody input:checkbox").attr("checked", false);
+
+
+        }
+    });
+
+
+    //---------------- BUTTON EVENTS
+    $('#btn-save-Supervision-section-employees').click(function (e) {
+     
+        var valid = true;
+
+        var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
+        if ($('#Project_Supervision_Section_Parent_Type_DDL').val() == '-1') {
+
+            $('#Project_Supervision_Section_Parent_Type_DDL').next("span").remove();
+            $('#Project_Supervision_Section_Parent_Type_DDL').after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
+            valid = false;
+        } else {
+            $('#Project_Supervision_Section_Parent_Type_DDL').next("span").remove();
+        }
+        if ($('#Project_SupervisionSection_SetupDetailTypeDDL').val() == '-1') {
+
+            $('#Project_SupervisionSection_SetupDetailTypeDDL').next("span").remove();
+            $('#Project_SupervisionSection_SetupDetailTypeDDL').after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
+            valid = false;
+
+        } else {
+            $('#Project_SupervisionSection_SetupDetailTypeDDL').removeClass("invalid");
+            $('#Project_SupervisionSection_SetupDetailTypeDDL').next("span").remove();
+        }
+
+
+        //if ($("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").text().trim() == 'Design Section') {
+        //    if ($('#Project_SupervisionSection_SetupDetail_TypeDDL').val() == '-1') {
+
+        //        $('#Project_SupervisionSection_SetupDetail_TypeDDL').next("span").remove();
+        //        $('#Project_SupervisionSection_SetupDetail_TypeDDL').after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
+        //        valid = false;
+
+        //    } else {
+        //        $('#Project_SupervisionSection_SetupDetail_TypeDDL').removeClass("invalid");
+        //        $('#Project_SupervisionSection_SetupDetail_TypeDDL').next("span").remove();
+        //    }
+
+        //}
+        if (valid == true) {
+            fnSaveOrCancel_SupervisionSection_Employees(this.value, 'btn-save-Supervision-section-employees', 'save');
+        }
+    });
+
+
+    function fnSaveOrCancel_SupervisionSection_Employees(btnValue, btnId, btnIcon) {
+
+        loopThroughGridDataSave(btnValue, btnId, btnIcon);
+
+    }
+
+
+    function loopThroughGridDataSave(btnValue, btnId, btnIcon) {
+
+        var grid = $("#grid-load-supervision-section-all-employees").data("kendoGrid");
+
+        var gridd = grid.dataSource._data;
+        var postingArray = [];
+        for (var i = 0; i < gridd.length; i++) {
+            var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+
+            var gridRow = gridd[i];
+            if (isAssigned == true) {
+                postingArray.push(
+                    {
+
+                        //--------- Grid Data-------------
+                        Id: 0,
+                        Project_Id: parameterId,
+                        HR_Employee_Id: parseInt(gridRow.id),
+                        Section_Entity_Id: $('#Setup_SetupType_Id_for_Supervision_Section').val(),
+                        Sub_Section_Entity_Id: $('#Project_SupervisionSection_Entity_Id').val() == 0 ? $('#Project_SupervisionSection_Entity_Id').val() : $('#Project_SupervisionSection_Entity_Id').val(),
+                        CreatedBy: parseInt(JSON.parse(localStorage.getItem('User')).id),
+                        LoggedIn_EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+
+                    });
+            }
+
+        }
+        if (postingArray.length > 0) {
+            //  console.log(postingArray)
+            ajaxRequest({
+                commandName: 'Project_Save_Multiple_Employees',
+                values:
+                {
+                    ProjectModel: postingArray,
+                    CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                    Language: _currentLanguage
+                }, CallBack: fn_project_save_Multiple_employee_callback
+            });
+
+        } else {
+            //buttonRemovePleaseWait('btn-save-Supervision-section-employees', save, 'save');
+            swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+            return 0;
+        }
+    }
+
+    var fn_project_save_Multiple_employee_callback = function (response) {
+        swal(response.Value);
+        loadSupervisionSectionAllEmployees();
+        fnloadAssignedEmployees_SupervisionSection($('#Project_Supervision_Section_Parent_Type_DDL').val(), $('#Project_SupervisionSection_SetupDetailTypeDDL').val());
+
+
+    }
+
+
+    //--------------------- FUNCTION AREA ----------------
+    function fnLoadGridById_for_Supervision_Section(btnValue) {
+
+
+
+        loadSupervisionSectionAllEmployees();
+
+    }
+
+
+    //---------------- DDL LOAD
+    /*
+    function loadProject_SupervisionSection_SetupDetail_TypeDDL() {
+
+        ajaxRequest({ commandName: 'DDL_Supervision_SECTION_Project_Setup_TypeDetail_Deleted_Get', values: { TypeName: $("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList").text().trim(), Language: _currentLanguage }, CallBack: loadProject_SupervisionSection_SetupDetail_TypeDDLCallBack });
+    }
+    var loadProject_SupervisionSection_SetupDetail_TypeDDLCallBack = function (loadjQueryDropdownListResponse, controlId) {
+
+
+        $("#Project_SupervisionSection_SetupDetail_TypeDDL").kendoDropDownList({
+            dataValueField: "id",
+            dataTextField: "name",
+            filter: "contains",
+            value: -1,
+            dataSource: JSON.parse(loadjQueryDropdownListResponse.Value),
+            popup: { appendTo: $("#container") },
+            select: onSelect_Type,
+
+        });
+
+    }
+
+    function onSelect_Type(e) {
+        var selected_Id = e.dataItem.id;
+        $('#Project_SupervisionSection_Type_SetupDetail_Id').val(selected_Id);
+
+    };
+    */
+</script>
+
+

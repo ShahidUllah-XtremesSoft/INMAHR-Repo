@@ -187,6 +187,42 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Concern Person.
+        /// </summary>
+        public static string lblConcernPerson {
+            get {
+                return ResourceManager.GetString("lblConcernPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contractor Details.
+        /// </summary>
+        public static string lblContractorDetails {
+            get {
+                return ResourceManager.GetString("lblContractorDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contractor Info.
+        /// </summary>
+        public static string lblContractorInformation {
+            get {
+                return ResourceManager.GetString("lblContractorInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contractor List.
+        /// </summary>
+        public static string lblContractorList {
+            get {
+                return ResourceManager.GetString("lblContractorList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string lblDetails {
@@ -214,6 +250,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employee.
+        /// </summary>
+        public static string lblEmployeeName {
+            get {
+                return ResourceManager.GetString("lblEmployeeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expire In.
         /// </summary>
         public static string lblExpiresIn {
@@ -223,7 +268,7 @@ namespace ProjectUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expity Date.
+        ///   Looks up a localized string similar to Expiry Date.
         /// </summary>
         public static string lblExpiryDate {
             get {
@@ -259,11 +304,101 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Issue Details.
+        /// </summary>
+        public static string lblIssueDetails {
+            get {
+                return ResourceManager.GetString("lblIssueDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue Information.
+        /// </summary>
+        public static string lblIssueInformation {
+            get {
+                return ResourceManager.GetString("lblIssueInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue List.
+        /// </summary>
+        public static string lblIssueList {
+            get {
+                return ResourceManager.GetString("lblIssueList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location.
         /// </summary>
         public static string lblLocation {
             get {
                 return ResourceManager.GetString("lblLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting.
+        /// </summary>
+        public static string lblMeeting {
+            get {
+                return ResourceManager.GetString("lblMeeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting Date.
+        /// </summary>
+        public static string lblMeetingDate {
+            get {
+                return ResourceManager.GetString("lblMeetingDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting Details.
+        /// </summary>
+        public static string lblMeetingDetails {
+            get {
+                return ResourceManager.GetString("lblMeetingDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting End Time.
+        /// </summary>
+        public static string lblMeetingEndTime {
+            get {
+                return ResourceManager.GetString("lblMeetingEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting Information.
+        /// </summary>
+        public static string lblMeetingInformation {
+            get {
+                return ResourceManager.GetString("lblMeetingInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting Start Time.
+        /// </summary>
+        public static string lblMeetingStartTime {
+            get {
+                return ResourceManager.GetString("lblMeetingStartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meeting With Engineer.
+        /// </summary>
+        public static string lblMeetingWithEngineer {
+            get {
+                return ResourceManager.GetString("lblMeetingWithEngineer", resourceCulture);
             }
         }
         
@@ -291,6 +426,33 @@ namespace ProjectUI {
         public static string lblNationality {
             get {
                 return ResourceManager.GetString("lblNationality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification Details.
+        /// </summary>
+        public static string lblNotificationDetails {
+            get {
+                return ResourceManager.GetString("lblNotificationDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification List.
+        /// </summary>
+        public static string lblNotificationList {
+            get {
+                return ResourceManager.GetString("lblNotificationList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string lblOverview {
+            get {
+                return ResourceManager.GetString("lblOverview", resourceCulture);
             }
         }
         
@@ -340,6 +502,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Design Section.
+        /// </summary>
+        public static string lblProjectDesignSection {
+            get {
+                return ResourceManager.GetString("lblProjectDesignSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Details.
         /// </summary>
         public static string lblProjectDetails {
@@ -349,11 +520,83 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Document Information.
+        /// </summary>
+        public static string lblProjectDocumentInformation {
+            get {
+                return ResourceManager.GetString("lblProjectDocumentInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Information.
+        /// </summary>
+        public static string lblProjectInformation {
+            get {
+                return ResourceManager.GetString("lblProjectInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supervision Section.
+        /// </summary>
+        public static string lblProjectSupervisionSection {
+            get {
+                return ResourceManager.GetString("lblProjectSupervisionSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical Section.
+        /// </summary>
+        public static string lblProjectTechnicalSection {
+            get {
+                return ResourceManager.GetString("lblProjectTechnicalSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Section.
+        /// </summary>
+        public static string lblSection {
+            get {
+                return ResourceManager.GetString("lblSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SMS List.
+        /// </summary>
+        public static string lblSmsList {
+            get {
+                return ResourceManager.GetString("lblSmsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string lblStatus {
             get {
                 return ResourceManager.GetString("lblStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub Section.
+        /// </summary>
+        public static string lblSubSection {
+            get {
+                return ResourceManager.GetString("lblSubSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string lblType {
+            get {
+                return ResourceManager.GetString("lblType", resourceCulture);
             }
         }
     }

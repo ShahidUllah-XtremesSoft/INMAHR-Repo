@@ -1,0 +1,91 @@
+﻿
+
+
+
+
+<div class="row">
+    <form id="frmAddUpdateContractor" name="frmAddUpdateContractor" action="/services/Xtreme/multipart" method="post">
+        <div class="card">
+            <div class="card-block">
+
+                <input type="hidden" name="Id" id="Id" value="0">
+                <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                <input type="hidden" name="type" id="type" value="Contractor_Save">
+                <input type="hidden" name="Language" id="Language" value="">
+
+                <div class="row">
+                    <div class="col-sm-4" id="ProfileImageDiv">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblImage</label><br />
+                            <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" onchange="validateFileType('ProfileImage',['png', 'jpg']);" />
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblNameEng</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="NameEng" id="NameEng" value="" placeholder="Enter Name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group" style="display:none;">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblNameArb</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="NameArb" id="NameArb" value=" " placeholder="Enter Name">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone</label> <span style="color: red">*</span><br />
+                            <input type="number" class="form-control " id="PhoneNumber" name="PhoneNumber" placeholder="Enter Phone Number" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">  </div>
+                </div>
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail</label> <span style="color: red">*</span><br />
+                            <input type="text" class="form-control" id="Email" name="Email" placeholder="Enter Email" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">  </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="Location" name="Location" required style="height: 10rem;">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success  pull-right" id="btn-save-contractor"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                            <a href="@Url.Action("List","Contractor")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+

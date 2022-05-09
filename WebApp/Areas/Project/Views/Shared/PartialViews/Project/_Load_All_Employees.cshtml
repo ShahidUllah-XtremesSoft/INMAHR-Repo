@@ -1,0 +1,338 @@
+﻿
+
+<div class="modal fade" id="modal-load-all-employees" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="max-width:1150px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="">.Select Employees</h4>
+            </div>
+            <div class="modal-body" style="height:570px;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-form-label show-sub-section-name" style="font-size:x-large; text-decoration:underline"> </label> <br>
+
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <button type="button" id="btnPendingData" onclick="fnLoadGridById(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> Available Employees</button>
+                            <button id="btnApprovedData" onclick="fnLoadGridById(this.value);" class="btn btn-outline-info pull-left" value="Assigned"><i class=""></i> Assigned </button>
+                            <div id="btnAreaShowHideOnConditionBase">
+
+                                <button type="button" class="btn btn-danger pull-right btnClose " data-dismiss="modal">Close</button>
+                                <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Save</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div id="grid-load-all-employees">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+
+        $('#modal-load-all-employees').modal();
+
+        setTimeout(function () {
+             
+            if (parameterId == null || parameterId == 0 || parameterId == '') {                
+                parameterId = $('#DesignSection_Document_ProjectId').val()
+            }
+
+
+
+            loadloadAllEmployees();
+        }, 150);
+    });
+
+    function loadloadAllEmployees() {
+
+        ajaxRequest({
+            commandName: 'Project_HR_Employee', values: {
+                Project_Id: parameterId,
+                Main_Section_Id: $('#Project_Section_Parent_Type_DDL').val(), //$('.sectionAndSubSectionId').attr('data-main-section-id'),
+                Sub_Section_Id: $('#Project_DesignSection_SetupDetailTypeDDL').val(), //$('.sectionAndSubSectionId').attr('data-sub-section-id'),
+                Language: _currentLanguage
+            }, CallBack: loadloadAllEmployeesCallBack
+        });
+    }
+    var loadloadAllEmployeesCallBack = function (inputDataJSON) {
+        bindloadloadAllEmployees(JSON.parse(inputDataJSON.Value));
+    }
+    var bindloadloadAllEmployees = function (inputDataJSON) {
+
+
+        var gridColumns = [
+
+            { title: "#", template: "<b>#= ++record #</b>", width: 15 },
+            { field: "id", title: "id", width: 10, hidden: true },
+            {
+                field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+                //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
+            },
+            { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "professionName", title: ".professionName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            {
+                headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
+                template: function (dataItem) {
+                    if (dataItem.isAssigned == 1) {
+                        return "<div><input type='checkbox' class='k-checkbox row-checkbox' id='target' checked ></div>";
+                    }
+                    else {
+                        return "<div><input type='checkbox' class='k-checkbox row-checkbox' id='target' unchecked='true'></div>";
+                    }
+                },
+                width: 15
+            },
+
+        ];
+
+        bindKendoGrid('grid-load-all-employees', 100, gridColumns, inputDataJSON, true, 550);
+        $('#checkAll').show();
+    };
+
+    $(document).on("click", "#checkAll", function () {
+        if (this.checked) {
+
+            $("#grid-load-all-employees tbody input:checkbox").attr("checked", true);
+        } else {
+            $("#grid-load-all-employees tbody input:checkbox").attr("checked", false);
+
+
+        }
+    });
+
+
+    //---------------- BUTTON EVENTS
+    $('#btnSave').click(function (e) {
+        fnSaveOrCancel(this.value, 'btnSave', 'save');
+    });
+
+
+    function fnSaveOrCancel(btnValue, btnId, btnIcon) {
+
+        loopThroughGrid(btnValue, btnId, btnIcon);
+        //    var getgridIDs = getIdsFromGrid(btnValue, btnId, btnIcon);
+
+        //    if (getgridIDs.length > 0) {
+
+        //        ajaxRequest({
+        //            commandName: 'Employees_Request_Leave_ApproveOrDecline',
+        //            values: {
+        //                LoggedInUser: loggedInUserDetail.id,
+        //                LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
+        //                RequestIds: getgridIDs,
+        //                Status: btnValue,
+        //                Comment: '',
+        //                Language: _currentLanguage
+        //            }, CallBack: responseCallBack
+        //        });
+
+        //        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+        //    }
+
+        //}
+        //var responseCallBack = function (response) {
+        //    swal(response.Value);
+
+    }
+    //function getIdsFromGrid(btnValue, btnId, btnIcon) {
+
+    //    var grid = $("#grid-load-all-employees").data("kendoGrid");
+    //    var gridDataSource = grid.dataSource._data;
+    //    var ids = '';
+    //    for (var i = 0; i < gridDataSource.length; i++) {
+    //        var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+    //        if (isAssigned == true) {
+    //            var gridRow = gridDataSource[i];
+    //            ids += ids == '' ? gridRow.id : ',' + gridRow.id;
+    //        }
+    //    }
+    //    if (ids.length > 0) {
+    //        return ids;
+    //    } else {
+    //        buttonRemovePleaseWait(btnId, btnValue, btnIcon);
+    //        swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+    //        return 0;
+    //    }
+
+
+    //}
+
+
+
+    function loopThroughGrid(btnValue, btnId, btnIcon) {
+
+        var grid = $("#grid-load-all-employees").data("kendoGrid");
+
+        var gridd = grid.dataSource._data;
+        var postingArray = [];
+        for (var i = 0; i < gridd.length; i++) {
+            var isAssigned = grid.tbody.find("tr:eq(" + i + ")").find('.row-checkbox').is(':checked');
+
+            var gridRow = gridd[i];
+            if (isAssigned == true) {
+                postingArray.push(
+                    {
+
+                        //--------- Grid Data-------------
+                        Id: 0,
+                        Project_Id: parameterId,
+                        HR_Employee_Id: parseInt(gridRow.id),
+                        Section_Entity_Id: $('#Setup_SetupType_Id').val(),
+                        Sub_Section_Entity_Id: $('#Project_DesignSection_Entity_Id').val(),
+                        CreatedBy: parseInt(JSON.parse(localStorage.getItem('User')).id),
+                        LoggedIn_EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+
+                    });
+            }
+
+        }
+        if (postingArray.length > 0) {
+            console.log(postingArray)
+            ajaxRequest({
+                commandName: 'Project_Save_Multiple_Employees',
+                values:
+                {
+                    ProjectModel: postingArray,
+                    CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                    Language: _currentLanguage
+                }, CallBack: fn_project_save_Multiple_employee_callback
+            });
+
+        } else {
+            //buttonRemovePleaseWait('btnSave', save, 'save');
+            swalMessage('info', lblFristSelectRecordFromGrid, 1500);
+            return 0;
+        }
+    }
+
+    var fn_project_save_Multiple_employee_callback = function (response) {
+        swal(response.Value);
+        loadloadAllEmployees();
+    }
+
+
+    //--------------------- FUNCTION AREA ----------------
+    function fnLoadGridById(btnValue) {
+
+
+        if (btnValue == 'Assigned') {
+
+            fnloadAssignedEmployees();
+        } else {
+            loadloadAllEmployees();
+        }
+    }
+
+
+
+    function fnloadAssignedEmployees() {
+
+
+        ajaxRequest({
+            commandName: 'Project_Linked_Employees_By_SectionId',
+            values: {
+                Project_Id: parameterId,
+                Sub_Section_Id: $('.sectionAndSubSectionId').attr('data-sub-section-id'),
+                Language: _currentLanguage
+            }, CallBack: fnloadAssignedEmployeesCallBack
+        });
+    }
+    var fnloadAssignedEmployeesCallBack = function (inputDataJSON) {
+        bindfnloadAssignedEmployees(JSON.parse(inputDataJSON.Value));
+    }
+    var bindfnloadAssignedEmployees = function (inputDataJSON) {
+
+
+        var gridColumns = [
+
+            { title: "#", template: "<b>#= ++record #</b>", width: 15 },
+            { field: "id", title: "id", width: 10, hidden: true },
+            {
+                field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+                //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
+            },
+            { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "setup_type_detail_name", title: ".Assigned Sub Section", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            {
+                field: "", width: 10, title: ' ',
+                template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById(this)  title='Delete '><span class='fa fa-trash'></span></a>  "
+            },
+        ];
+
+        bindKendoGrid('grid-load-all-employees', 100, gridColumns, inputDataJSON, true, 550);
+        $('#checkAll').hide();
+    };
+
+
+    function deleteAssignedEmployeeById(event) {
+
+        var row = $(event).closest("tr");
+        var grid = $("#grid-load-all-employees").data("kendoGrid");
+        var dataItem = grid.dataItem(row);
+        Swal.fire({
+
+            title: areYouSureTitle,
+            text: doYouReallyWantToDeletThisRecord,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#5cb85c',
+            cancelButtonColor: '#d9534f',
+            confirmButtonText: btnYesText,
+            cancelButtonText: btnNoText,
+            buttons: {
+                cancel: {
+                    text: "No",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true
+                },
+                confirm: {
+                    text: "Yes",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-warning",
+                    closeModal: true
+                }
+            }
+        }).then(function (restult) {
+            if (restult.value) {
+                ajaxRequest({ commandName: 'Project_Linked_Multiple_Employees_Delete_By_Id', values: { Id: dataItem.id, UserId: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage }, CallBack: deleteAssignedEmployeeByIdCallBack });
+            }
+        });
+        var deleteAssignedEmployeeByIdCallBack = function (response) {
+            swal(response.Value);
+            fnloadAssignedEmployees();
+        }
+
+    }
+
+</script>
+
+

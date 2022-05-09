@@ -271,8 +271,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumanResourceUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Project\Controllers\ContractorController.cs" />
+    <Compile Include="Areas\Project\Controllers\NotificationController.cs" />
     <Compile Include="Areas\Project\Controllers\MeetingController.cs" />
     <Compile Include="Areas\Project\Controllers\ClientController.cs" />
+    <Compile Include="Areas\Project\Controllers\IssueController.cs" />
     <Compile Include="Areas\Project\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
@@ -322,6 +325,7 @@
     </Compile>
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Areas\Project\Views\Meeting\Details.cshtml" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\ar-AE.css" />
@@ -330,6 +334,7 @@
     <Content Include="Content\en-US.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\Images\attachment-icon.png" />
     <Content Include="Content\Images\attachment.png" />
     <Content Include="Content\Images\calander.png" />
     <Content Include="Content\Images\docx.png" />
@@ -392,8 +397,13 @@
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="Scripts\crypto-script.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Comment\comment-area.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Contractor\contractor-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Contractor\contractor-info-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Client\client-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Client\client-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-project-information-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-meeting-information-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Client\client-personal-document-partialViews.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Client\client-personal-document-grid-for-partialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Client\client-detail.js" />
@@ -423,8 +433,32 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmpoyeeLeaveBalancePartialViews.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Notification\notification-detail.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Notification\employees-notification-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Notification\notification-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Notification\notification-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Issues\issue-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Issues\issue-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Issues\issue-detail.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-supervision-section.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-technical-section.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-design-section.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-supervision-section-assigned-employees-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-technical-section-assigned-employees-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-assigned-employees-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-supervision-section-document-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-technical-section-document-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-document-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-supervision-section-document-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-technical-section-document-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-document-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-unit-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
@@ -460,6 +494,20 @@
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\Menu\menu-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\Module\module-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\MenuLinking\menu-linking-index.js" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_TechnicalSection_Document_Grid.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_SupervisionSectionSave.cshtml" />
+    <Content Include="Areas\Project\Views\Contractor\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Contractor\List.cshtml" />
+    <Content Include="Areas\Project\Views\Contractor\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Contractor\_ContractorPartialView.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_DesignSection_All_Employees.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Comment\_Comment_PartialView.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_SupervisionSection_Document_Grid.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_Supervision_Section_Employees.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Technical_Section_Modal.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Design_Section_Modal.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Supervision_Section_Modal.cshtml" />
+    <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
     <Compile Include="token\AddChallengeOnUnauthorizedResult.cs" />
@@ -1164,9 +1212,6 @@
     <Content Include="Areas\UserManagement\Views\EmployeesAttendanceLinking\Index.cshtml" />
     <Content Include="Areas\Project\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Project\Views\web.config" />
-    <Content Include="Areas\Project\Views\Project\Save.cshtml" />
-    <Content Include="Areas\Project\Views\Project\Details.cshtml" />
-    <Content Include="Areas\Project\Views\Project\List.cshtml" />
     <Content Include="Areas\Project\Views\Client\Details.cshtml" />
     <Content Include="Areas\Project\Views\Client\List.cshtml" />
     <Content Include="Areas\Project\Views\Client\Save.cshtml" />
@@ -1179,10 +1224,28 @@
     <Content Include="Areas\UserManagement\Views\EmployeesRoleLinking\Index.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\ClientPartialViews\_ClientPersonalDocumentPartialView.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\ClientPartialViews\_ClientPersonalDocumentGridPartialView.cshtml" />
-    <Content Include="Areas\Project\Views\Meeting\Details.cshtml" />
     <Content Include="Areas\Project\Views\Meeting\List.cshtml" />
     <Content Include="Areas\Project\Views\Meeting\Save.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Meeting\_MeetingSave.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Shared\PartialViews\_CompanyNearToExpireDocument.cshtml" />
+    <Content Include="Areas\Project\Views\Project\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Project\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Project\List.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_Save.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_DesignSection_Document_Grid.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_UnitSave.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_DesignSectionSave.cshtml" />
+    <Content Include="Areas\Project\Views\Issue\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Issue\List.cshtml" />
+    <Content Include="Areas\Project\Views\Issue\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Issue\_IssueSave.cshtml" />
+    <Content Include="Areas\Project\Views\Notification\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Notification\List.cshtml" />
+    <Content Include="Areas\Project\Views\Notification\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Notification\EmployeesNotification.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_All_Employees.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_TechnicalSectionSave.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_Technical_Section_Employees.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1575,6 +1638,7 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="Views\Shared\_ProjectUILayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1588,7 +1652,6 @@
     <Folder Include="Exceptions\" />
     <Folder Include="logs\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
-    <Folder Include="Scripts\FunctionalityJs\Areas\Project\" />
     <Folder Include="_logs\" />
   </ItemGroup>
   <ItemGroup>

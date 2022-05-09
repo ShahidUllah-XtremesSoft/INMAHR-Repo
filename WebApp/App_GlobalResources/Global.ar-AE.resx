@@ -135,6 +135,9 @@
   <data name="doYouReallyWantToApproveThisRequest" xml:space="preserve">
     <value>هل ترغب في المصادقة على هذا لطلب ؟</value>
   </data>
+  <data name="doYouReallyWantToChangeStatus" xml:space="preserve">
+    <value>Do you really want to change status ?</value>
+  </data>
   <data name="doYouReallyWantToDeclineTheseRequests" xml:space="preserve">
     <value>هل ترغب في الغاء الطلب ؟</value>
   </data>
@@ -156,6 +159,9 @@
   <data name="lblAllowedFormatsArePngJpgPdf" xml:space="preserve">
     <value>الصيغة المسموح بها (png, jpg,pdf)</value>
   </data>
+  <data name="lblApplicationVersionNo" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
   </data>
@@ -175,7 +181,8 @@
     <value>تفاصيل الوثيقة (باللغة الانجليزية)</value>
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
-    <value>الوثيقة</value>
+    <value>وثائق الشركة</value>
+    <comment>لوثيقة</comment>
   </data>
   <data name="lblCompanyName" xml:space="preserve">
     <value>اسم الوثيقة </value>
@@ -186,6 +193,9 @@
   <data name="lblCompanyNameEng" xml:space="preserve">
     <value>اسم الوثيقة  (باللغة الانجليزية)</value>
   </data>
+  <data name="lblDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
   <data name="lblDecline" xml:space="preserve">
     <value>الغاء</value>
   </data>
@@ -195,8 +205,14 @@
   <data name="lblDelete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="lblDocumentAttachment" xml:space="preserve">
+    <value>Document/Attachment</value>
+  </data>
   <data name="lblEndDate" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>
+  </data>
+  <data name="lblHours" xml:space="preserve">
+    <value>Hour(s)</value>
   </data>
   <data name="lblInma" xml:space="preserve">
     <value>إنماء العالمية ذ.م.م</value>
@@ -204,11 +220,17 @@
   <data name="lblLoading" xml:space="preserve">
     <value>...تحميل</value>
   </data>
+  <data name="lblMinutes" xml:space="preserve">
+    <value>Minute(s)</value>
+  </data>
   <data name="lblNo" xml:space="preserve">
     <value>لا</value>
   </data>
   <data name="lblPoweredBy" xml:space="preserve">
     <value>انجز بواسطة</value>
+  </data>
+  <data name="lblRemarks" xml:space="preserve">
+    <value>Remarks</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>إعادة ضبط</value>

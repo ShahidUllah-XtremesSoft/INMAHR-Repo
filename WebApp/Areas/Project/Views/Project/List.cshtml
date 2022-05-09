@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = HRModuleUI.HumanResourceUI.lblEmployees;
+    ViewBag.Title = ProjectUI.ProjectUI.lblProject;
 
 
 }
@@ -9,9 +9,9 @@
 <div class="card">
     <div class="card-block">
         <div class="row">
-           
-            <div class="col-md-12"> 
-                <a href="@Url.Action("Save","Project")" class="btn btn-success @Resources.Common.PullRight" id="btnAddNewEmployee"><i class="fa fa-plus">  </i> @HRModuleUI.HumanResourceUI.lblAddNew</a>
+
+            <div class="col-md-12">
+                <a href="@Url.Action("Save","Project")" class="btn btn-success @Resources.Common.PullRight" id="btnAddNewClient"><i class="fa fa-plus">  </i> @ProjectUI.ProjectUI.lblAddNew</a>
             </div>
         </div>
 
@@ -30,36 +30,12 @@
     </div>
 </div>
 
- 
+
 
 
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-grid.js"></script>
 
-
-    <script>
-        //Grid columns
-        var login = '@HRModuleUI.HumanResourceUI.lblLogin';
-        var employeeNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
-        var nameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
-        var nameArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
-        var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
-        var department = '@HRModuleUI.HumanResourceUI.lblDepartment';
-        var phone = '@HRModuleUI.HumanResourceUI.lblPhone';
-        var email = '@HRModuleUI.HumanResourceUI.lblEmail';
-        var joinDate = '@HRModuleUI.HumanResourceUI.lblJoinDate';
-        var profession = '@HRModuleUI.HumanResourceUI.lblProfession';
-        var PassportNumber = '@HRModuleUI.HumanResourceUI.lblPassportNumber';
-        var eidNumber = '@HRModuleUI.HumanResourceUI.lblEIDNumber';
-        var action  = '@HRModuleUI.HumanResourceUI.lblAction';
-        var btnGridCreateLogin  = '@HRModuleUI.HumanResourceUI.btnGridCreateLogin';
-        var btnGridAlreadyCreated  = '@HRModuleUI.HumanResourceUI.btnGridAlreadyCreated';
-        $(function () {
-            if (JSON.parse(localStorage.getItem('User')).isHR == false) {
-                $('#btnAddNewEmployee').css('display', 'none');
-            }
-        });
-    </script>
 
 }
 

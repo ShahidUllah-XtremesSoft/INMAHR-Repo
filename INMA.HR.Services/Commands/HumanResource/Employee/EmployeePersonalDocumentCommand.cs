@@ -114,6 +114,30 @@ namespace INMA.HR.Services
 
         }
     }
+      [Command(Name = "HR_Employee_PersonalDocument_GetNearToExpire_ById")]
+    public class HR_Employee_PersonalDocument_GetNearToExpire_ByIdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeId = 0,
+                EmployeeDepartmentId = 0,
+                EmployeeRoleId = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            var checkResult= repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_PersonalDocument_GetNearToExpire_ById.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return checkResult;
+
+        }
+    }
 
 
 }

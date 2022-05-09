@@ -173,6 +173,7 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
         },
         height: height,
         scrollable: true,
+        resizable: true,
         sortable: true,
         filterable: { mode: "row" },
         selectable: selectable,
@@ -422,6 +423,68 @@ function detailInit(e) {
 }
 
 
+var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSelect, $width, $orientation) {
+
+    $("#" + $stepperId).kendoStepper({
+        orientation: $orientation,
+        linear: $linear,  // If linear true then we cant select any step ... by Mati 
+        steps: $steps,
+        //  width:$width,
+        activate: $onActivate, //pass function name  ... by /\/\ati 
+        select: $onSelect      //pass function name  ... by /\/\ati 
+    });
+
+    var stepper = $("#" + $stepperId).width($width);
+    stepper.resize();
+    
+    stepper.find('.k-step-error').css("background-color", "mistyrose");
+    // stepper.find('.k-step-done').css("background-color", "greenyellow");
+
+
+    /*
+       $("#stepper").kendoStepper({
+           linear: false, // If linear true then we cant select any step ... by Mati
+           steps: [{
+               label: "Personal Info",
+               icon: "home",
+               selected: false
+           }, {
+               label: "Education",
+               icon: "dictionary-add",
+               error: false,
+               selected: false,
+               iconTemplate: "<p style='background-color:red'>#:label#</p>"
+           }, {
+               label: "Experience",
+               icon: "flip-vertical",
+               selected: false
+           }, {
+               label: "Attachments",
+               icon: "attachment",
+               selected: false
+           }, {
+               label: "Review",
+               icon: "preview",
+               enabled: false,
+               selected: false
+           }, {
+               label: "Submit",
+               icon: "file-add",
+               selected: false
+           }, {
+               label: "Submit",
+               icon: "complete",
+               selected: false
+           }]
+       });
+      
+       */
+}
+
+
+
+
+
 
 var validateForm = function ($form) {
     var valid = true;
@@ -473,7 +536,7 @@ var customValidateForm = function ($form) {
             }
         }
         else if ($(this).attr('data-role') == 'datepicker') {
-             
+
             if ($(this).val() == 'year-month-day') {
                 $(this).addClass('invalid');
                 $(this).attr('title', thisFieldIsRequired);
@@ -1029,8 +1092,24 @@ function renderKendoDatePickerWithNewFormat(controlId, format = 'dd/MM/yyyy') {/
         // specifies that DateInput is used for masking the input element
         dateInput: true
     });
+} function renderKendoDateAndTimePickerWithNewFormat(controlId) {
+    var kendoDatePicker = $("#" + controlId).data("kendoDatePicker");
+    if (kendoDatePicker != undefined) {
+        kendoDatePicker.destroy();
+    }
+    $("#" + controlId).kendoDateTimePicker({
+        // format: 'dd/MM/yyyy hh:mm tt',
+
+        value: new Date(),
+        dateInput: true
+    });
+    //    $("#" + controlId).kendoDatePicker({
+    //        format: format,
+    //        // specifies that DateInput is used for masking the input element
+    //        dateInput: true
+    //    });
 }
-function renderKendoTimePicker(controlId, timeFormate = 'HH:mm', startTime = '09:00 AM', endTime = '06:00 PM') {
+function renderKendoTimePicker(controlId, timeFormate = 'HH:mm', startTime = '08:00 AM', endTime = '08:00 PM') {
 
     var kendoTimePicker = $("#" + controlId).data("kendoTimePicker");
     if (kendoTimePicker != undefined) {
@@ -1141,4 +1220,15 @@ function fnRemoveSelectInArabic(sessionDDL) {
 
     sessionDDL[0].name == '-- Select --' ? sessionDDL[0].name = '-- اختر --' : sessionDDL[0].name = '-- Select --';
     return sessionDDL
+}
+function validatePersonalDocument(inputId) {
+    var fileExtension = ['jpeg', 'jpg', 'pdf'];
+
+    if ($.inArray($('#' + inputId).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+
+        //   swalMessage('info', 'Allowed format(s) are (' + fileExtension.join(', ') + ')', 2000);
+        swalMessage('info', lblAllowedFormatsArePngJpgPdf, 2000);
+        $('#' + inputId).val('');
+    }
+
 }

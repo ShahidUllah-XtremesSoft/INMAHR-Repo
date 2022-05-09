@@ -9,7 +9,7 @@
                 <input type="hidden" name="Id" id="Id" value="0">
                 <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
 
-              
+
                 <input type="hidden" name="type" id="type" value="Meeting_Save">
                 <input type="hidden" name="Language" id="Language" value="">
 
@@ -19,11 +19,11 @@
                 <input type="hidden" class="" id="HR_Employee_Id" name="HR_Employee_Id" value="0" />
                 <input type="hidden" class="" id="Client_Id" name="Client_Id" value="0" />
 
-
+                 
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="col-form-label">.lblProject #</label><span style="color:red"> *</span><br />
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblProject #</label><span style="color:red"> *</span><br />
                             <input class="form-control" id="ProjectDDL" name="ProjectDDL" required />
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="col-form-label">.lblMeetingWithEngineer</label><span style="color:red"> *</span><br />
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingWithEngineer</label><span style="color:red"> *</span><br />
                             <input class="form-control" id="EmployeeDDL" name="EmployeeDDL" required />
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="col-form-label">.lblMeetingDate</label><span style="color:red"> *</span><br />
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingDate</label><span style="color:red"> *</span><br />
                             <input class="form-control" id="MeetingDate" name="MeetingDate" required />
                         </div>
                     </div>
@@ -53,9 +53,9 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="col-form-label">.lblStartTime</label><span style="color:red"> *</span><br />
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingStartTime</label><span style="color:red"> *</span><br />
 
-                            <input class="form-control" id="StartedTime" name="StartedTime" required />
+                            <input type="time" class="form-control" id="StartedTime" name="StartedTime" required />
                         </div>
                     </div>
                     <div class="col-md-8">  </div>
@@ -64,69 +64,68 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="col-form-label">.lblEndTime</label><span style="color:red"> *</span><br />
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingEndTime</label><span style="color:red"> *</span><br />
 
-                            <input class="form-control" id="EndedTime" name="EndedTime" required />
+                            <input type="time" class="form-control" id="EndedTime" name="EndedTime" onchange="calculateHourFromStartEndTime(this)" required />
                         </div>
                     </div>
-                    <div class="col-md-8">  </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="col-form-label">.Status</label><br />
-
-                            <input type="hidden" class="form-control" id="Status" name="Status" />
-                        </div>
-                    </div>
-                    <div class="col-md-8">  </div>
-                </div>
-                @*<div class="row">
-
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">.DescriptionEng</label><span style="color:red"> *</span><br />
-                    <input type="text" class="form-control pname" name="DescriptionEng" id="DescriptionEng" value="" placeholder="" required>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="form-group" style="display:none;">
-                    <label class="col-form-label">.DescriptionArb</label><span style="color:red"> *</span><br />
-                    <input type="text" class="form-control pname" name="DescriptionArb" id="DescriptionArb" value="" placeholder="">
-                </div>
-            </div>
-        </div>*@
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <textarea type="text" class="form-control editor" name="DescriptionEng" id="DescriptionEng" value=""></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6" id="ProfileImageDiv">
+                    <div class="col-md-4" id="ProfileImageDiv">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblImage</label><br />
-                            <input type="file" class="form-control" name="MeetingImage" id="MeetingImage" onchange="validateFileType('MeetingImage',['png', 'jpg']);" />
+                            @*<input type="file" class="form-control" name="MeetingImage" id="MeetingImage" onchange="validateFileType('MeetingImage',['png', 'jpg']);" />*@
+                            <input type="file" class="form-control" name="MeetingImage" id="MeetingImage" onchange="validatePersonalDocument('MeetingImage');">
+
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-md-4">  </div>
 
+                </div>
+            </div>
+            <div class="row" style="display:none;">
+                <div class="col-md-4">
+                    <div class="form-group">
+
+
+                        <input type="hidden" class="form-control" id="Status" name="Status" value="Pending" />
                     </div>
                 </div>
+                <div class="col-md-8">
 
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-success  pull-right" id="btn-save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                            <a href="@Url.Action("List","Meeting")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                </div>
+            </div>
+            @*<div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">.DescriptionEng</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="DescriptionEng" id="DescriptionEng" value="" placeholder="" required>
                         </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group" style="display:none;">
+                            <label class="col-form-label">.DescriptionArb</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="DescriptionArb" id="DescriptionArb" value="" placeholder="">
+                        </div>
+                    </div>
+                </div>*@
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <textarea type="text" class="form-control editor" name="DescriptionEng" id="DescriptionEng" value=""></textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-success  pull-right" id="btn-save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                        <a href="@Url.Action("List","Meeting")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
                     </div>
                 </div>
             </div>
         </div>
-
     </form>
-
 </div>

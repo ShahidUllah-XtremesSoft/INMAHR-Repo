@@ -159,6 +159,18 @@
   <data name="lblComingSoon" xml:space="preserve">
     <value>Coming Soon...!</value>
   </data>
+  <data name="lblConcernPerson" xml:space="preserve">
+    <value>Concern Person</value>
+  </data>
+  <data name="lblContractorDetails" xml:space="preserve">
+    <value>Contractor Details</value>
+  </data>
+  <data name="lblContractorInformation" xml:space="preserve">
+    <value>Contractor Info</value>
+  </data>
+  <data name="lblContractorList" xml:space="preserve">
+    <value>Contractor List</value>
+  </data>
   <data name="lblDetails" xml:space="preserve">
     <value>Details</value>
   </data>
@@ -168,11 +180,14 @@
   <data name="lblEmail" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="lblEmployeeName" xml:space="preserve">
+    <value>Employee</value>
+  </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>Expire In</value>
   </data>
   <data name="lblExpiryDate" xml:space="preserve">
-    <value>Expity Date</value>
+    <value>Expiry Date</value>
   </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
@@ -183,8 +198,38 @@
   <data name="lblIssueDate" xml:space="preserve">
     <value>Issue Date</value>
   </data>
+  <data name="lblIssueDetails" xml:space="preserve">
+    <value>Issue Details</value>
+  </data>
+  <data name="lblIssueInformation" xml:space="preserve">
+    <value>Issue Information</value>
+  </data>
+  <data name="lblIssueList" xml:space="preserve">
+    <value>Issue List</value>
+  </data>
   <data name="lblLocation" xml:space="preserve">
     <value>Location</value>
+  </data>
+  <data name="lblMeeting" xml:space="preserve">
+    <value>Meeting</value>
+  </data>
+  <data name="lblMeetingDate" xml:space="preserve">
+    <value>Meeting Date</value>
+  </data>
+  <data name="lblMeetingDetails" xml:space="preserve">
+    <value>Meeting Details</value>
+  </data>
+  <data name="lblMeetingEndTime" xml:space="preserve">
+    <value>Meeting End Time</value>
+  </data>
+  <data name="lblMeetingInformation" xml:space="preserve">
+    <value>Meeting Information</value>
+  </data>
+  <data name="lblMeetingStartTime" xml:space="preserve">
+    <value>Meeting Start Time</value>
+  </data>
+  <data name="lblMeetingWithEngineer" xml:space="preserve">
+    <value>Meeting With Engineer</value>
   </data>
   <data name="lblNameArb" xml:space="preserve">
     <value>Name (Arabic)</value>
@@ -194,6 +239,15 @@
   </data>
   <data name="lblNationality" xml:space="preserve">
     <value>Nationality</value>
+  </data>
+  <data name="lblNotificationDetails" xml:space="preserve">
+    <value>Notification Details</value>
+  </data>
+  <data name="lblNotificationList" xml:space="preserve">
+    <value>Notification List</value>
+  </data>
+  <data name="lblOverview" xml:space="preserve">
+    <value>Overview</value>
   </data>
   <data name="lblPersonalDocument" xml:space="preserve">
     <value>Personal Documents</value>
@@ -210,10 +264,37 @@
   <data name="lblProject" xml:space="preserve">
     <value>Project</value>
   </data>
+  <data name="lblProjectDesignSection" xml:space="preserve">
+    <value>Design Section</value>
+  </data>
   <data name="lblProjectDetails" xml:space="preserve">
     <value>Project Details</value>
   </data>
+  <data name="lblProjectDocumentInformation" xml:space="preserve">
+    <value>Project Document Information</value>
+  </data>
+  <data name="lblProjectInformation" xml:space="preserve">
+    <value>Project Information</value>
+  </data>
+  <data name="lblProjectSupervisionSection" xml:space="preserve">
+    <value>Supervision Section</value>
+  </data>
+  <data name="lblProjectTechnicalSection" xml:space="preserve">
+    <value>Technical Section</value>
+  </data>
+  <data name="lblSection" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="lblSmsList" xml:space="preserve">
+    <value>SMS List</value>
+  </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="lblSubSection" xml:space="preserve">
+    <value>Sub Section</value>
+  </data>
+  <data name="lblType" xml:space="preserve">
+    <value>Type</value>
   </data>
 </root>

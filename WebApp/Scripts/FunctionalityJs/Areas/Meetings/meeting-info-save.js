@@ -7,8 +7,8 @@ $(function () {
     loadEmployeeDropdownList();
     // LOAD KENDO DATE PICKERS
     renderKendoDatePickerWithNewFormat('MeetingDate');
-    renderKendoTimePicker('StartedTime');
-    renderKendoTimePicker('EndedTime');
+  //  renderKendoTimePicker('StartedTime');
+  //  renderKendoTimePicker('EndedTime');
 
 
 
@@ -44,7 +44,7 @@ $(function () {
                   //  $('#EmployeeId').val(messageResponseParse.insertedId);
 
 
-                    //   window.location.href = '/Project/Client/List';
+                       window.location.href = '/Project/Meeting/List';
 
                 },
                 error: function (xhr, status, error) {
@@ -116,11 +116,12 @@ $(function () {
 
 
 
-function fnEditById(clientId) {
+function fnEditById(parameterId) {
+     
     ajaxRequest({
-        commandName: 'Client_Edit_By_Id',
+        commandName: 'Meeting_Edit_By_Id',
         values: {
-            Id: clientId,
+            Id: parseInt(parameterId),
             LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
             RoleId: JSON.parse(localStorage.getItem('User')).roleId,
             LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
@@ -130,18 +131,25 @@ function fnEditById(clientId) {
 }
 function editByIdCallBack(response) {
     var response = JSON.parse(response.Value);
-    /*console.log(response)*/
-    $('#Id').val(response.id);
-    $('#NameEng').val(response.clientName);
-    $('#PhoneNumber1').val(response.phoneNumber1);
-    $('#PhoneNumber2').val(response.phoneNumber2);
-    $('#Email1').val(response.email1);
-    $('#Email2').val(response.email2);
-    $('#Location').val(response.location);
-    $('#Nationality_Id').val(response.nationality_Id);
-    $('#City_Id').val(response.city_Id);
+    console.log(response)
+    $('#Id').val(response.meetingId);
+    $('#HR_Employee_Id').val(response.employeeId);
+ 
+    $('#Client_Id').val(response.clientId);
+    $('#Project_Id').val(response.projectId);
+    $('#DescriptionEng').html(response.descriptionEng);
+    //$("#StartedTime").data("kendoTimePicker").value(response.startedTime); 
+    //$("#EndedTime").data("kendoTimePicker").value(response.endedTime);
 
-    $("#EmployeeDDL").data('kendoDropDownList').value(response.hr_Employee_Id);
-    $("#ProjectDDL").data('kendoDropDownList').value(response.project_Id);
+    $('#StartedTime').val(response.startedTime);
+    $('#EndedTime').val(response.endedTime);
 
+    $("#MeetingDate").kendoDatePicker({ value: response.meetingDate, format: "dd/MM/yyyy" });
+    $("#ProjectDDL").data('kendoDropDownList').value(response.projectId);
+    $("#EmployeeDDL").data('kendoDropDownList').value(response.employeeId);
+ 
 }
+
+
+
+  

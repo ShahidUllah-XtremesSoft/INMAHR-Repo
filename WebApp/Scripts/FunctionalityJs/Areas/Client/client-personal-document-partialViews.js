@@ -16,7 +16,7 @@ $(function () {
     //|End Date Picker
 
     //|Functions Calling
-    loadKendoDropdownByTypeName('PersonalDocumentSetupDetailTypeId', 'ClientPersonalDocument');
+    loadKendoDropdownByTypeName('PersonalDocumentSetupDetailTypeId', 'Client Personal Document');
     loadPersonalDocumentsGrid();
 
     //|End Function Calling

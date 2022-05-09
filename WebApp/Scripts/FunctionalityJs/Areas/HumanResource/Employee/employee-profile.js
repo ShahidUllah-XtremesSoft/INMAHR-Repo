@@ -7,12 +7,12 @@ $(function () {
     $('#Language').val(_currentLanguage);
     //var $document_grid = "document-grid";
     $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
-  
-    
+
+
 
     //var LeaveRequestGrid = "LeaveRequestGrid";
     loadEmployeeProfile();
-    
+
     //| Buttons Click Events
     var gridColumns = [];
     //$('#btnLeaveRequestTab').click(function () {
@@ -20,7 +20,7 @@ $(function () {
     //    $('#btnLetterRequestTab').removeClass('btn-primary').addClass('btn-dark');
     //    $('#btnShortLeaveRequestTab').removeClass('btn-primary').addClass('btn-dark');
 
-        
+
     //    loadLeaveRequestGrid();
     //})
     //$('#btnShortLeaveRequestTab').click(function () {
@@ -39,25 +39,25 @@ $(function () {
 //|Load Employee Profile Starts
 function loadEmployeeProfile() {
     var employeeNumber = JSON.parse(localStorage.getItem('User')).employeeNumber; //localStorage.getItem('EmployeeNumber');
-    ajaxRequest({ commandName: 'HR_Employee_GetByNumber', values: { Language: _currentLanguage, EmployeeNumber: employeeNumber}, CallBack: loadEmployeeProfileCallBack });    
+    ajaxRequest({ commandName: 'HR_Employee_GetByNumber', values: { Language: _currentLanguage, EmployeeNumber: employeeNumber }, CallBack: loadEmployeeProfileCallBack });
 }
 function loadEmployeeProfileCallBack(response) {
-    $('#CreatedBy').val(JSON.parse(response.Value).id);    
+    $('#CreatedBy').val(JSON.parse(response.Value).id);
     $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
     localStorage.setItem('EmployeeIdToLoadLeaveBalance', JSON.parse(response.Value).employeeId);
-    $.each(JSON.parse(response.Value), function (key, value) {        
+    $.each(JSON.parse(response.Value), function (key, value) {
         $('#' + capitalizeFirstLetter(key)).text(value);
     });
     if (JSON.parse(response.Value).currentFileName != null) {
         var profileImage = '/UploadFile/' + JSON.parse(response.Value).currentFileName;
-        $('#ProfileImage').attr('src', profileImage);        
+        $('#ProfileImage').attr('src', profileImage);
     }
-    
+
     //loadLeaveRequestGrid();
     loadPersonalDocumentsGrid();
     //loadEducationalDocumentsGrid();
     //loadEmployeeAnnualLeaveBalanceDeductionGrid();
-    
+
     loadEmployeeVacationLeaveBalanceGrid();
     //loadShortLeaveGrid();
 }
@@ -66,7 +66,7 @@ function loadEmployeeProfileCallBack(response) {
 
 ////|Load Leave Request Grid Starts
 //function loadLeaveRequestGrid() {
- 
+
 //    var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
 //    ajaxRequest({ commandName: 'Request_Leave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: loggedInUserDetail.id, LoggedInUserRoleId: loggedInUserDetail.roleId, LoggedInUserDepartementId: loggedInUserDetail.departmentId, Language: _currentLanguage }, CallBack: loadLeaveRequestGridCallBack });
 
@@ -75,7 +75,7 @@ function loadEmployeeProfileCallBack(response) {
 //    bindLeaveRequestGrid(JSON.parse(inputDataJSON.Value));
 //}
 //var bindLeaveRequestGrid = function (inputDataJSON) {
-    
+
 //    var isHidden = inputDataJSON.length  > 0 ? !inputDataJSON[0].isApproverExist : 0;
 //    var gridColumns = [
 //        { field: "id", title: "id", hidden: true },        
@@ -101,7 +101,7 @@ function loadEmployeeProfileCallBack(response) {
 //            hidden: isHidden,
 //            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>Accept</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>Decline</button>'
 //        },
-        
+
 //    ];    
 //    $('#RequestGrid').html('');
 //    bindKendoGrid(RequestGrid, 50, gridColumns, inputDataJSON, true,300);
@@ -139,7 +139,7 @@ function loadEmployeeProfileCallBack(response) {
 //        }
 //    }).then(function (restult) {
 //        if (restult.value) {
- 
+
 //            var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
 //            ajaxRequest({ commandName: 'Request_Leave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Approved', Language: _currentLanguage }, CallBack: approveLeaveCallBack });
 //            //Aprove leave logic here
@@ -150,9 +150,9 @@ function loadEmployeeProfileCallBack(response) {
 //    var approveLeaveCallBack = function (response) {
 //        loadLeaveRequestGrid();
 //        swal(response.Value);
-        
+
 //    }
-    
+
 //}
 //function declineLeave(event) {
 //    var row = $(event).closest("tr");
@@ -198,7 +198,7 @@ function loadEmployeeProfileCallBack(response) {
 //    var declineLeaveCallBack = function (response) {
 //        loadLeaveRequestGrid();
 //        swal(response.Value);
-        
+
 //    }   
 
 //}
@@ -326,10 +326,10 @@ function loadEmployeeProfileCallBack(response) {
 //    }).then(function (restult) {
 //        if (restult.value) {
 //            debugger;
-            
+
 //            //Aprove leave logic here
 //            //alert(JSON.stringify(dataItem));
-            
+
 //            var loggedInUserDetail = JSON.parse(localStorage.getItem('User'));
 //            ajaxRequest({ commandName: 'Request_ShortLeave_ApproveOrDecline', values: { LoggedInUser: loggedInUserDetail.id, LoggedInUserDepartmentId: loggedInUserDetail.departmentId, RoleId: loggedInUserDetail.roleId, RequestId: dataItem.id, CreatedBy: $('#CreatedBy').val(), Status: 'Decline', Language: _currentLanguage }, CallBack: declineShortLeaveCallBack });
 
@@ -490,7 +490,7 @@ function loadEmployeeProfileCallBack(response) {
 function loadPersonalDocumentsGrid() {
     ajaxRequest({ commandName: 'HR_Employee_PersonalDocument_Get', values: { PersonalDocumentId: $('#Id').val(), PersonalDocumentEmployeeId: $('#EmployeeId').val(), PersonalDocumentLanguage: _currentLanguage }, CallBack: loadPersonalDocumentsGridCallBack });
 }
-var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {    
+var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
     $('#employeePersonalDocumentGrid tbody').html('');
     var fileCount = 1;
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
@@ -502,15 +502,41 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
         else {
             var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
         }
+        /*
         if (item.status == 'Valid' || item.status == 'صالح') {
-            var status = '<span class="badge badge-success">' + item.status+'</span>';
+            var status = '<span class="badge badge-success">' + item.status + '</span>';
         }
         else {
             var status = '<span class="badge badge-danger">' + item.status + '</span>';
         }
-        $('#employeePersonalDocumentGrid tbody').append(            
+        */
+        /*
+         #if (totalDays <= 0) { # <span class='badge badge-danger'>#:totalDays#</span> # } else " +
+                "if (totalDays <= 29) { # <span class='badge badge-warning'>#:totalDays#</span> # } else" +
+                "{# <span class='badge badge-success'>#:totalDays#</span> # }#"
+         * */
+        var classColor = '';
+        if (item.totalDays <= 0) {
+            classColor = 'badge badge-danger';
+        } else if (item.totalDays <= 29) {
+            classColor = 'badge badge-warning';
+        } else {
+            classColor = 'badge badge-success';
+        }
+
+        $('#employeePersonalDocumentGrid tbody').append(
             //<td><a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeePersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>   <a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeePersonalDocument(this)"></i></a></td> 
-            '<tr><td hidden class="Id">' + item.id + '</td><td hidden class="SetupDetailTypeId">' + item.setupDetailTypeId + '</td><td hidden class="PersonalDocument">' + item.currentFileName + '</td><td>' + fileCount + '</td><td class="documentType">' + item.documentType + '</td> <td class="releaseDate">' + item.releaseDate + '</td> <td class="expiryDate">' + item.expiryDate + '</td><td class="expiryIn">' + item.expiryIn + '</td><td class="Status">' + status + '</td><td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '                           </td>          </tr > '
+            '<tr>' +
+            '<td hidden class="Id">' + item.id + '</td><td hidden class="SetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
+            '<td hidden class="PersonalDocument">' + item.currentFileName + '</td>' +
+            '<td>' + fileCount + '</td>' +
+            '<td class="documentType">' + item.documentType + '</td> ' +
+            '<td class="releaseDate">' + item.releaseDate + '</td> ' +
+            '<td class="expiryDate"><span class="' + classColor + '">' + item.expiryDate + '</span></td>' +
+            '<td class="expiryIn"><span class="' + classColor + '">' + item.totalDays + ' (' + lblDays + ')' + '</span></td>' +
+            '<td class="Status"><span class="' + classColor + '">' + item.status + '</span></td>' +
+            '<td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + ' </td>  ' +
+            '</tr > '
         );
         fileCount += 1;
     });
@@ -521,7 +547,7 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
 function loadEducationalDocumentsGrid() {
     ajaxRequest({ commandName: 'HR_Employee_EducationalDocument_Get', values: { EducationalDocumentId: 0, EducationalDocumentEmployeeId: $('#EmployeeId').val(), EducationalDocumentLanguage: _currentLanguage }, CallBack: loadEducationalDocumentsGridCallBack });
 }
-var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {        
+var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
     $('#employeeEducationalDocumentGrid tbody').html('');
     var fileCount = 1;
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
@@ -534,7 +560,7 @@ var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
             var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
         }
         var tr = '<tr>' +
-            '<td>'+fileCount+'</td>'+
+            '<td>' + fileCount + '</td>' +
             '<td hidden class="EducationalDocumentId">' + item.id + '</td>' +
             '<td hidden class="EducationalDocumentFile">' + item.currentFileName + '</td>' +
             //'<td class="EducationalDocumentDegreeNameEng">' + item.degreeNameEng + '</td>' +
@@ -553,7 +579,7 @@ var loadEducationalDocumentsGridCallBack = function (inputDataJSON) {
             //'<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeeEducationalDocument(this)" style="font-size: 26px;color: green;"></i></a>' +
             //'<a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeeEducationalDocument(this)"></i></a>' +
             //'</td>' +
-            '</tr > '        
+            '</tr > '
         $('#employeeEducationalDocumentGrid tbody').append(
             tr
 
@@ -571,7 +597,7 @@ var loadEmployeeAnnualLeaveBalanceDeductionGridCallBack = function (inputDataJSO
 
     //This code is commented as per sir shahid instructions.
     // This is the leave detail code 
-   
+
     //$('#employeeAnnualLeaveBalanceDeductionGrid tbody').html('');
     //var fileCount = 1,totalLeave = 0;
     //JSON.parse(inputDataJSON.Value).forEach(function (item) {        

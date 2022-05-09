@@ -102,103 +102,103 @@ namespace INMA.Projects.Services.Project
     }
     #endregion
 
-    //#region Meeting EDIT BY ID 
+    #region Meeting EDIT BY ID 
 
 
-    //[Command(Name = "Meeting_Edit_By_Id")]
-    //public class Meeting_Edit_By_IdCommand : CamelCommandBase
-    //{
-    //    protected override object DoAction(object viewInput)
-    //    {
+    [Command(Name = "Meeting_Edit_By_Id")]
+    public class Meeting_Edit_By_IdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
 
-    //        object result = new { status = false, returnUrl = "#" };
-
-
-    //        var model = base.MappedModel(new
-    //        {
-
-    //            Id = 0,
-    //            LoggedInUser = 0,
-    //            RoleId = 0,
-    //            LoggedInEmployeeId = 0,
-    //            Language = string.Empty
-    //        }, viewInput);
+            object result = new { status = false, returnUrl = "#" };
 
 
-    //        var repository = Ioc.Resolve<IRepository>();
-    //        IDictionary<string, object> values = new Dictionary<string, object>();
-    //        CommandParameters _params = new CommandParameters();
+            var model = base.MappedModel(new
+            {
 
-    //        values = _params.Get(model);
-    //        return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Edit_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-
-    //    }
-    //}
-    //#endregion
-    //#region Meeting DETAILS BY ID 
+                Id = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0,
+                Language = string.Empty
+            }, viewInput);
 
 
-    //[Command(Name = "Meeting_Details_By_Id")]
-    //public class Meeting_Details_By_IdCommand : CamelCommandBase
-    //{
-    //    protected override object DoAction(object viewInput)
-    //    {
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
 
-    //        object result = new { status = false, returnUrl = "#" };
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Edit_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
-
-    //        var model = base.MappedModel(new
-    //        {
-
-    //            Id = 0,
-    //            LoggedInUser = 0,
-    //            RoleId = 0,
-    //            LoggedInEmployeeId = 0,
-    //            Language = string.Empty
-    //        }, viewInput);
+        }
+    }
+    #endregion
+   #region Meeting DETAILS BY ID 
 
 
-    //        var repository = Ioc.Resolve<IRepository>();
-    //        IDictionary<string, object> values = new Dictionary<string, object>();
-    //        CommandParameters _params = new CommandParameters();
+    [Command(Name = "Meeting_Details_By_Id")]
+    public class Meeting_Details_By_IdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
 
-    //        values = _params.Get(model);
-    //        return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Details_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-
-    //    }
-    //}
-    //#endregion
-    //#region Meeting DELETE 
+            object result = new { status = false, returnUrl = "#" };
 
 
-    //[Command(Name = "Meeting_Delete")]
-    //public class Meeting_DeleteCommand : CamelCommandBase
-    //{
-    //    protected override object DoAction(object viewInput)
-    //    {
+            var model = base.MappedModel(new
+            {
 
-    //        object result = new { status = false, returnUrl = "#" };
-
-
-    //        var model = base.MappedModel(new
-    //        {
-
-    //            Id = 0,
-    //            UserId = 0,
-    //            Language = string.Empty
-    //        }, viewInput);
+                Id = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0,
+                Language = string.Empty
+            }, viewInput);
 
 
-    //        var repository = Ioc.Resolve<IRepository>();
-    //        IDictionary<string, object> values = new Dictionary<string, object>();
-    //        CommandParameters _params = new CommandParameters();
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
 
-    //        values = _params.Get(model);
-    //        return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Details_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
-    //    }
-    //}
-    //#endregion
+        }
+    }
+    #endregion
+    #region Meeting DELETE 
+
+
+    [Command(Name = "Meeting_Delete")]
+    public class Meeting_DeleteCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+
+                Id = 0,
+                UserId = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
 
     //#region Meeting PERSONAL DOCUMENT SAVE
 

@@ -1,0 +1,92 @@
+﻿<div class="modal fade" id="modalNearToExpireCompanyDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="max-width:1150px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">@HRModuleUI.HumanResourceUI.nearToExpireModalHeader</h4>
+            </div>
+            <div class="modal-body" style="height:570px;">
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div id="nearToExpireCompanyDocumentGrid">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+
+        $('#modalNearToExpireCompanyDocument').modal();
+
+        setTimeout(function () {
+
+            loadNearToExpireCompanyDocumentGrid();
+        }, 150);
+    });
+
+    function loadNearToExpireCompanyDocumentGrid() {
+
+        //values - are key value pair json object
+        ajaxRequest({ commandName: 'HR_CompanyDocuments_GetNearToExpire', values: { Language: _currentLanguage }, CallBack: loadNearToExpireCompanyDocumentGridCallBack });
+    }
+    var loadNearToExpireCompanyDocumentGridCallBack = function (inputDataJSON) {
+        bindloadNearToExpireCompanyDocumentGrid(JSON.parse(inputDataJSON.Value));
+    }
+    var bindloadNearToExpireCompanyDocumentGrid = function (inputDataJSON) {
+
+
+        $('#companyDocumentCount').text(inputDataJSON.length);
+        var gridColumns = [
+            { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+            { field: "id", title: "id", width: 10, hidden: true },
+            {
+                field: "document", title: documentType, width: 100, filterable: false, hidden: false
+                , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
+            },
+
+            {
+                field: "expiryDate", title: expiryDate, width: 20, filterable: false,
+                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryDate#</span> # } else " +
+                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryDate#</span> # } else" +
+                    "{# <span class='badge badge-success'>#:expiryDate#</span> # }#"
+            },
+            {
+                field: "totalDays", title: lblExpiresIn, width: 20, filterable: false,
+                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:totalDays#</span> # } else " +
+                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:totalDays#</span> # } else" +
+                    "{# <span class='badge badge-success'>#:totalDays#</span> # }#"
+
+            },
+            {
+                field: "", title: lblStatus, width: 20, filterable: false,
+                // template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else {# <span class='badge badge-success'>" + lblStatusValid + "</span> # }#"
+                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                    "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
+                    "{# <span class='badge badge-success'>" + lblStatusValid + "</span> # }#"
+            },
+        ];
+
+        bindKendoGrid('nearToExpireCompanyDocumentGrid', 20, gridColumns, inputDataJSON, true, 550);
+    };
+
+    function fnLoadDetailScreen(e) {
+        //var row = $(e).closest("tr");
+        //var grid = $("#nearToExpireCompanyDocumentGrid").data("kendoGrid");
+        //var dataItem = grid.dataItem(row);
+         
+        window.location.href = '/HumanResource/CompanyDocument/';
+    }
+</script>

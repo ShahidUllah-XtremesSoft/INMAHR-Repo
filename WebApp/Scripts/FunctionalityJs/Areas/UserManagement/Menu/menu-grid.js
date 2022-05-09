@@ -74,6 +74,8 @@ function editMenu(event) {
     $('#Url').val(dataItem.url);
     $('#Icon').val(dataItem.icon);
     $('#ModuleId').val(dataItem.moduleId);
+     
+    $('#GroupIcon').val(dataItem.groupIcon);
     //$('#moduleDropdownList').data("kendoDropdownList").value(dataItem.moduleId);
 
     var dropdownlist = $("#ModuleId").data("kendoDropDownList");

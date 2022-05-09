@@ -41,14 +41,26 @@ var bindCompanyDocumentGrid = function (inputDataJSON) {
         { field: "descriptionEng", title: DescriptionEng, width: 100, filterable: true, hidden: true },
         { field: "descriptionArb", title: DescriptionArb, width: 100, filterable: true, hidden: true },
         { field: "issueDate", title: IssueDate, width: 100, filterable: true },
-        { field: "expiryDate", title: ExpiryDate, width: 100, filterable: true },
+        {
+            field: "expiryDate", title: ExpiryDate, width: 100, filterable: true
+            , template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryDate#</span> # } else " +
+                "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryDate#</span> # } else" +
+                "{# <span class='badge badge-success'>#:expiryDate#</span> # }#"
+        },
         {
             field: "totalDays", title: lblExpiresIn, width: 100, filterable: false,
-            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:totalDays#</span> # } else {# <span class='badge badge-success'>#:totalDays#</span> # }#"
+            //  template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:totalDays#</span> # } else {# <span class='badge badge-success'>#:totalDays#</span> # }#"
+            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:totalDays#</span> # } else " +
+                "if (totalDays <= 29) { # <span class='badge badge-warning'>#:totalDays#</span> # } else" +
+                "{# <span class='badge badge-success'>#:totalDays#</span> # }#"
+
         },
         {
             field: "", title: lblStatus, width: 100, filterable: false,
-            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else {# <span class='badge badge-success'>" + lblStatusValid + "</span> # }#"
+            //   template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else {# <span class='badge badge-success'>" + lblStatusValid + "</span> # }#"
+            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
+                "{# <span class='badge badge-success'>" + lblStatusValid + "</span> # }#"
         },
         {
             field: "",

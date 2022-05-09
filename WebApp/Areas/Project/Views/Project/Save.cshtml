@@ -1,114 +1,86 @@
 ﻿
 @{
-    ViewBag.Title = "Add Employee Detail";
+    ViewBag.Title = ProjectUI.ProjectUI.lblProjectDetails;
 }
 <div class="card">
     <div class="card-block">
         <div class="row">
-            <ul class="nav nav-tabs  tabs" role="tablist">
+            <ul class="nav nav-tabs  tabs  " role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#PersonalInfo" role="tab">@HRModuleUI.HumanResourceUI.tabPersonalInfo</a>
+                    <a class="nav-link active" data-toggle="tab" href="#ProjectInfo" role="tab">1.@ProjectUI.ProjectUI.lblProjectInformation</a>
                 </li>
-                <li class="nav-item" style="pointer-events:none;">
-                    <a class="nav-link" data-toggle="tab" href="#PersonalDocument" role="tab">@HRModuleUI.HumanResourceUI.tabPersonalDocument</a>
+                <li class="nav-item " id="ProjectUnitInformationLI" style="display:none;">
+                    <a class="nav-link" data-toggle="tab" href="#ProjectUnitInformation" role="tab" id="">2.BasicInformation</a>
                 </li>
-                <li class="nav-item" style="pointer-events:none;" hidden="hidden">
-                    <a class="nav-link" data-toggle="tab" href="#EducationalDocument" role="tab">@HRModuleUI.HumanResourceUI.tabEducationalDocument</a>
+                <li class="nav-item " id="ProjectDesingSectionLI" style="display:none;">
+                    <a class="nav-link" data-toggle="tab" href="#ProjectDesingSection" role="tab" id="">3.@ProjectUI.ProjectUI.lblProjectDesignSection</a>
+                </li>
+                <li class="nav-item " id="ProjectTechnicalSectionLI" style="display:none;">
+                    <a class="nav-link" data-toggle="tab" href="#ProjectTechnicalSection" role="tab" id="">4.@ProjectUI.ProjectUI.lblProjectTechnicalSection</a>
+                </li>
+                <li class="nav-item " id="ProjectSupervisionSectionLI" style="display:none;">
+                    <a class="nav-link" data-toggle="tab" href="#ProjectSupervisionSection" role="tab" id="">5.@ProjectUI.ProjectUI.lblProjectSupervisionSection</a>
                 </li>
 
             </ul>
+
+
+
             <!-- Tab panes -->
             <div class="tab-content tabs card-block">
-                <div class="tab-pane active" id="PersonalInfo" role="tabpanel">
-                    <div class="row">
-                        <form id="frmAddUpdateEmployee" name="frmAddUpdateEmployee" action="/services/Xtreme/multipart" method="post">
-                            <div class="card">
-                                <div class="card-block">
+                <div class="tab-pane active" id="ProjectInfo" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_Save.cshtml");
+                    }
 
-                                    @{
-                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePartialView.cshtml");
-                                    }
-                                   
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button class="btn btn-success  pull-right" id="btn-save-employee"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                                            <a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
                 </div>
-                <div class="tab-pane" id="PersonalDocument" role="tabpanel">
-                    <div class="row">
-                        @**@
-                        <form id="frmEmployeePersonalDocument" name="frmEmployeePersonalDocument" action="/services/Xtreme/multipart" method="post">
-                            <div class="card">
-                                <div class="card-block">
+                <div class="tab-pane" id="ProjectUnitInformation" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_UnitSave.cshtml");
+                    }
 
-
-                                    @{
-                                        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeePersonalDocumentPartialView.cshtml");
-                                    }
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button class="btn btn-primary  pull-right" id="btnSaveEmployeePersonalDocument"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                                            @*<a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id="">Cancel</a>*@
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Page body end -->
-                            </div>
-                        </form>
-                    </div>
                 </div>
-                <div class="tab-pane" id="EducationalDocument" role="tabpanel">
-                    <div class="row">
-                        <form id="frmAddUpdateEmployee" name="frmAddUpdateEmployee" action="/services/Xtreme/multipart" method="post">
-                            <div class="card">
-                                <div class="card-block">
+                <div class="tab-pane" id="ProjectDesingSection" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_DesignSectionSave.cshtml");
+                    }
 
-                                    <h1>Educational Document</h1>
+                </div>
+                <div class="tab-pane" id="ProjectTechnicalSection" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_TechnicalSectionSave.cshtml");
+                    }
 
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button class="btn btn-primary  pull-right" id="btn-save-employee"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                                            <a href="@Url.Action("List","Employee")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Page body end -->
-                            </div>
-                        </form>
+                </div>
+                <div class="tab-pane" id="ProjectSupervisionSection" role="tabpanel">
+                    @{
+                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_SupervisionSectionSave.cshtml");
+                    }
 
-                    </div>
                 </div>
 
             </div>
-
-
-
         </div>
+
+
     </div>
 </div>
+
+
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/employee-partialViews.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-save.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/employee-personal-document-partialViews.js"></script>
-    <script>
-        //Grid columns
-        var nameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
-        var nameArb  = '@HRModuleUI.HumanResourceUI.lblNameArb';
-        var action  = '@HRModuleUI.HumanResourceUI.lblAction';
-    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-info-save.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-unit-save.js"></script>
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-design-section-document-save.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-design-section-assigned-employees-grid.js"></script>
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-technical-section-document-save.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-technical-section-assigned-employees-grid.js"></script>
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-document-save.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-document-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-assigned-employees-grid.js"></script>
 }
 
 

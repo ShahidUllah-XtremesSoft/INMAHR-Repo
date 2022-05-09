@@ -3,6 +3,7 @@
 
     #region Common
     Setup_Type_DropdownByTypeName,
+    Setup_Type_DropdownByTypeName_New,
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
     #endregion
@@ -35,6 +36,7 @@
     HR_Employee_PersonalDocument_Delete,
     HR_Employee_PersonalDocument_Exist,
     HR_Employee_PersonalDocument_GetNearToExpire,
+    HR_Employee_PersonalDocument_GetNearToExpire_ById,
     #endregion
     #region Employee Educational Document
     HR_Employee_EducationalDocument_Save,
@@ -70,6 +72,7 @@
     HR_CompanyDocuments_Save,
     HR_CompanyDocument_GetAll,
     HR_CompanyDocument_Delete,
+    HR_CompanyDocuments_GetNearToExpire,
     #endregion
 
 
@@ -196,6 +199,7 @@
     #endregion
     #region Attachment
     Attachment_Save,
+    Attachment_Save_Single_OR_Multiple,
     #endregion
 
     #region Letter Detail
@@ -280,17 +284,55 @@
 
 public enum ProjectStoreProcedure
 {
-     
+
 
     #region PROJECT  
+    Project_Get,
     Project_save,
+    Project_Edit_By_Id,
+    Project_Details_By_Id,
+    Project_Attachment_By_Id,
+    Project_Delete,
+    Project_HR_Employee,
+    Project_Linked_Employees_By_SectionId,
+    
+
+    // PROJECT UNIT
+    Project_Unit_Save,
+    Project_Unit_Edit_By_Id,
+
+    // PROJECT  DESIGN SECTION GOVERNMENT DOCUMENT
+    Return_Common_Msg,
+    Project_DesignSection_GovernmentDocument_Edit_By_Id,
+    Project_DesignSection_GovernmentDocument_Get,
+    Project_DesignSection_Document_Get,
+    Project_DesignSection_Document_Delete,
+    Project_Save_Multiple_Employees,
+    Project_Linked_Multiple_Employees_Delete_By_Id,
+    // PROJECT DETAILS DESIGN SECTION
+    Project_DesignSection_Document_GetById,
+    Project_DesignSection_Document_Transfer_ById,
+    STEPPER_SUB_SECTION_MENU,
+
+
     Project_Role_Mapping_For_Employees_Delete,
-    #endregion
-
-    #region PROJECT  
     Project_Role_Mapping_For_Employees_Save,
-    #endregion
+    // PROJECT  TECHNICAL SECTION 
+    Project_Linked_Employees_Technical_Section_By_SectionId_Get,
+    Project_TechnicalSection_Document_Get,
+    Project_TechnicalSection_Document_Delete,
+    Project_TechnicalSection_Document_GetById,
+    Project_TechnicalSection_Document_Transfer_ById,
 
+    //PROJECT SUPERVISION SECTION
+    Project_SupervisionSection_Document_Get,
+    Project_Linked_Employees_Supervision_Section_By_SectionId_Get,
+    Project_SupervisionSection_Area_Save,
+    Project_Unit_Supervision_Section_Edit_By_Id,
+    Project_SupervisionSection_Document_GetById,
+    Project_SupervisionSection_Document_Transfer_ById,
+
+    #endregion
     #region Client
     Client_Save,
     Client_Get,
@@ -301,6 +343,22 @@ public enum ProjectStoreProcedure
     Client_PersonalDocument_Save,
     Client_PersonalDocument_Get,
     Client_PersonalDocument_Delete,
+    // CLIENT PROJECT INFORMATION
+    Client_Project_Get,
+    // CLIENT MEETING INFORMATION
+    Client_Project_Meeting_Get,
+
+    #endregion
+
+
+    #region CONTRACTOR
+    Contractor_Save,
+    Contractor_Get,
+    Contractor_Delete,
+    Contractor_Details_By_Id,
+    Contractor_Edit_By_Id,
+    
+
     #endregion
 
     #region MEETING
@@ -309,7 +367,34 @@ public enum ProjectStoreProcedure
     Meeting_Delete,
     Meeting_Details_By_Id,
     Meeting_Edit_By_Id,
+
+    #endregion
+
+    #region ISSUE
+    Issue_Save,
+    Issue_Get,
+    Issue_Delete,
+    Issue_Details_By_Id,
+    Issue_Edit_By_Id,
+    Issue_Change_Status,
+
+    #endregion
+
+    #region NOTIFICATION
+    Notification_Save,
+    Notification_Get,
+    Notification_Delete,
+    Notification_Details_By_Id,
+
+    #endregion   
     
+    
+    
+    #region COMMENT
+    Comment_Save,
+    Comment_Get_ByAreaID,
+    Comment_Delete, 
+
     #endregion
 
 
@@ -317,8 +402,18 @@ public enum ProjectStoreProcedure
 
     #region   DROP DOWNS
 
-    Setup_City_Get,
-    Project_DDL,
-    HR_Employee_DDL,
+    DDL_Setup_City,
+    DDL_ProjectCategoryType_In_Setup_TypeDetail_Get,
+    DDL_Project,
+    DDL_HR_Employee,
+    DDL_Project_MainType_In_Setup_Type,
+    DDL_Project_SubSection_In_Setup_TypeDetail,
+    DDL_Client,
+    DDL_Contractor,
+    DDL_DESIGN_SECTION_Project_MainType,
+    DDL_SUPERVISION_SECTION_Project_MainType,
+    DDL_SUPERVISION_SECTION_Project_Finance,
+    DDL_TECHNICAL_SECTION_Project_MainType,
+    DDL_TECHNICAL_SECTION_Project_Setup_TypeDetail_Deleted_Get,
     #endregion
 }

@@ -1,0 +1,117 @@
+﻿
+
+
+
+
+
+
+
+<form id="frmAddUpdate_TechnicalSection_Document" name="frmAddUpdate_TechnicalSection_Document" action="/services/Xtreme/multipart" method="post">
+
+
+    <input type="hidden" name="TechnicalSection_Document_Id" id="TechnicalSection_Document_Id" value="0">
+    <input type="hidden" name="TechnicalSection_Document_CreatedBy" id="TechnicalSection_Document_CreatedBy" value="0">
+    <input type="hidden" name="TechnicalSection_Document_ProjectId" id="TechnicalSection_Document_ProjectId" value="0">
+    <input type="hidden" name="type" id="type" value="Project_TechnicalSection_Document_Save">
+    <input type="hidden" name="TechnicalSection_Document_Language" id="TechnicalSection_Document_Language" class="Language" value="">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
+                <input class="form-control" id="Project_Technical_Section_Parent_Type_DDL" name="Project_Technical_Section_Parent_Type_DDL" required />
+                <input type="hidden" class="form-control" id="Setup_SetupType_Id_for_Technical_Section" name="Setup_SetupType_Id_for_Technical_Section" value="0" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
+                <input type="text" class="form-control pname" name="Project_TechnicalSection_SetupDetailTypeDDL" id="Project_TechnicalSection_SetupDetailTypeDDL" required>
+                <input type="hidden" class="form-control pname" name="Project_TechnicalSection_Entity_Id" id="Project_TechnicalSection_Entity_Id" value="0">
+                <input type="hidden" class="form-control pname" name="Project_Technical_Section_Parent_Type_DDL_Text" id="Project_Technical_Section_Parent_Type_DDL_Text" value=" ">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>
+            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Available Employee"><i class=""></i> Available Employee(s) </button>
+            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+
+        </div>
+    </div>
+    <div class="div-technical-section-document-upload-area form-control">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
+                    <input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile" onchange="validatePersonalDocument('TechnicalSectionGovernmentDocumentFile');" />
+                </div>
+            </div>
+            <div class="col-sm-6">  </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="datetime" id="TechnicalSection_Document_StartDate" name="TechnicalSection_Document_StartDate" required />
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                    <input class="form-control" type="datetime" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                    <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-success  pull-right" id="btn-save-technical-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="div-technical-section-assigned-employees-area" style="display:none;">
+    <br />
+    <br />
+    <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+    <div class="grid-main-div">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="grid-load-technical-section-all-assigned-employees">
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="div-technical-section-document-upload-area">
+    @{
+        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_TechnicalSection_Document_Grid.cshtml");
+    }
+
+</div>
+    <div id="div-technical-section-employees-area"></div>

@@ -98,11 +98,29 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
         else {
             var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
         }
+        var classColor = '';
+        if (item.totalDays <= 0) {
+            classColor = 'badge badge-danger';
+        } else if (item.totalDays <= 29) {
+            classColor = 'badge badge-warning';
+        } else {
+            classColor = 'badge badge-success';
+        }
         $('#employeePersonalDocumentGrid tbody').append(
             //~/Content/Images/pdf.png
             //'<tr><td hidden class="SetupDetailTypeId">' + item.setupDetailTypeId + '</td><td class="documentType">' + item.documentType + '</td> <td class="releaseDate">' + item.releaseDate + '</td> <td class="expiryDate">' + item.expiryDate + '</td><td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '"> <i  style="text-align: left;font-size: x-large;color:black;"  class="fa fa-download" aria-hidden="true"></i></a>  </td><td><a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeePersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>   <a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;"></i></a></td>           </tr > '
 
-            '<tr><td hidden class="PersonalDocumentId">' + item.id + '</td><td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td><td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td><td class="PersonalDocumentType">' + item.documentType + '</td> <td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> <td class="PersonalDocumentExpiryDate">' + item.expiryDate + '</td><td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '                           </td><td style="padding-top:20px;"><a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeePersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>   <a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeePersonalDocument(this)"></i></a></td>           </tr > '
+            '<tr>' +
+            '<td hidden class="PersonalDocumentId">' + item.id + '</td>' +
+            '<td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
+            '<td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td>' +
+            '<td class="PersonalDocumentType">' + item.documentType + '</td> ' +
+            '<td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> ' +
+            '<td class="PersonalDocumentExpiryDate"><span class="' + classColor + '">' + item.expiryDate + '</span></td>' +
+            '<td class="expiryIn"><span class="' + classColor + '">' + item.totalDays + ' (' + lblDays + ')' + '</span></td>' +
+            '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
+            '<td style="padding-top:20px;"><a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeePersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>   <a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeePersonalDocument(this)"></i></a></td>      ' +
+            '</tr > '
         );
     });
 }

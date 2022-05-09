@@ -295,5 +295,61 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+    #region  CLIENT PROJECT INFORMATION  LIST
+    [Command(Name = "Client_Project_Get")]
+    public class Client_Project_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                LoggedInEmployeeId = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                Client_Id = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            var checkData=repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            return checkData;
+
+        }
+    }
+    #endregion
+    #region  CLIENT PROJECT MEETINGS INFORMATION  LIST
+    [Command(Name = "Client_Project_Meeting_Get")]
+    public class Client_Project_Meeting_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                LoggedInEmployeeId = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                Client_Id = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            var checkData=repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Meeting_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            return checkData;
+
+        }
+    }
+    #endregion
 
 }

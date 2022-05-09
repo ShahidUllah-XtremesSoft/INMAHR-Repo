@@ -141,6 +141,7 @@
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Models\EmployeeRequestData.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
+    <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\InternalLetterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileUploaderService.cs" />

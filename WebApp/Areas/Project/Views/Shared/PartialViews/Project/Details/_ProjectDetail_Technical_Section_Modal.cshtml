@@ -1,0 +1,168 @@
+﻿@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD TECHNICAL SECTION MODEL FOR TRANSFER RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY /\/\ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-technical-section-model" data-toggle="modal" data-target="#modal-technical-section-transfer-to-section"></button>
+<div class="modal fade" id="modal-technical-section-transfer-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">.Transfer to</h5>
+            </div>
+            <div class="modal-body" style="height:170px;">
+                <form id="frm_TechnicalSection_TransferDataModal">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                <div id="TechnicalSection_ParentSection_container">
+                                    <input class="form-control pname" id="Project_TechnicalSection_Parent_Type_DDL" required>
+                                </div>
+                                <input type="hidden" class="form-control pname" name="Project_TechnicalSection_Setup_SetupType_Id" id="Project_TechnicalSection_Setup_SetupType_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="TechnicalSection_From_SetupType_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="TechnicalSection_Attachment_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="TechnicalSection_Grid-Name" value="0">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <div id="TechnicalSection_SubSection_container">
+                                    <input type="text" class="form-control pname" name="Project_TechnicalSection_SetupDetailTypeDDL" id="Project_TechnicalSection_SetupDetailTypeDDL" required>
+                                    <input type="hidden" class="form-control pname" name="Project_TechnicalSection_Entity_Id" id="Project_TechnicalSection_Entity_Id" value="0">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">Remarks</label>
+                                <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div id="">
+
+                            <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
+                            <button type="button" id="btn-TechnicalSection-transfer" class="btn   btn-success  pull-right" value="Save"> Transfer</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+
+
+
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD MODEL FOR ASSIGN RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY /\/\ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-technical-section-assign-model" data-toggle="modal" data-target="#modal-technical-section-assign-to-section"></button>
+<div class="modal fade" id="modal-technical-section-assign-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">.Assign to</h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control pname" id="technicalSection_assignedModal_setup_type_Id" value="0">
+                <input type="hidden" class="form-control pname" id="technicalSection_assignedModal_setup_type_detail_Id" value="0">
+                <form id="frmAssignDataModal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @*<button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
+                            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue_TechnicalSection" value="Available Employee"><i class=""></i> Available Employee(s) </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue_TechnicalSection" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+                        </div>
+                    </div>
+                    <div id="div-technical-section-employees-area">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="col-form-label show-sub-section-name" style="font-size:x-large; text-decoration:underline"> </label> <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div id="grid-technical-section-load-all-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-footer" id="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
+                                                <button type="button" id="projectDetail_btnSave_TechnicalSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Assigned</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="div-technical-section-assigned-employees-area" style="display:none;">
+                        <br />
+                        <br />
+
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="grid-technical-section-load-all-assigned-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+           
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+

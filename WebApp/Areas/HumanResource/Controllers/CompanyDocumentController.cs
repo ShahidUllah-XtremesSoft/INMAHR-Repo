@@ -13,5 +13,9 @@ namespace WebApp.Areas.HumanResource.Controllers
         {
             return View();
         }
+        public ActionResult LoadCompanyDocument()
+        {
+            return PartialView("~/Areas/HumanResource/Views/Shared/PartialViews/_CompanyNearToExpireDocument.cshtml");
+        }
     }
 }

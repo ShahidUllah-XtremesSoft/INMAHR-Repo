@@ -2,7 +2,7 @@
 
 $(function () {
    
-     loadPersonalDocumentsGrid();
+    // loadPersonalDocumentsGrid();
 
 });
 

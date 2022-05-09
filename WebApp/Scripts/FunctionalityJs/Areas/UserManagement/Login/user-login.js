@@ -1,5 +1,5 @@
 ﻿$(function () {
-
+    loadMainApplicationModule();
     localStorage.setItem('Menus', ({}));
     localStorage.setItem('User', ({}));
     $('#Email').keyup(function (e) {
@@ -52,11 +52,28 @@ function userLoginCallBack(userLoginResponse) {
     }
 }
 function getAssignedMenusForRole(roleId, isHR, loggedInUserId) {
-    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage }, CallBack: getAssignedMenusForRoleCallBack });
+    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: $('#MainApplicationModule_Id').val() }, CallBack: getAssignedMenusForRoleCallBack });
 }
 function getAssignedMenusForRoleCallBack(roleMenus) {
 
     localStorage.setItem('Menus', (roleMenus.Value));
     window.location.href = "/HumanResource/Employee/Profile";
+
+}
+
+
+
+//Load Lists 
+function loadMainApplicationModule() {
+    ajaxRequest({ commandName: 'UserManagement_MainApplicationModules_Load', values: { Language: $('#Language').val() }, CallBack: fnLoadMainApplicationModuleCallBack });
+}
+
+function fnLoadMainApplicationModuleCallBack(response) {
+
+    var responsee = JSON.parse(response.Value);
+    $.each(responsee, function (key, value) {
+        $('#MainApplicationModule_Id').append('<option value=' + value.id + '>' + value.name + '</option>');
+    });
+
 
 }

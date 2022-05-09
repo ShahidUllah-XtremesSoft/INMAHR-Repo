@@ -1,0 +1,565 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>@ViewBag.Title - @Resources.Global.lblInma</title>
+
+    <link href="~/Content/Themes/CoreUI/css/style.min.css" rel="stylesheet" />
+    <!-- Icons -->
+    <link href="~/Content/Themes/CoreUI/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Themes/CoreUI/css/simple-line-icons.css" rel="stylesheet">
+
+
+
+    <!-- Main styles for this application -->
+
+
+    <link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.rtl.min.css" rel="stylesheet" />
+
+
+
+    <link href="~/Content/Themes/CoreUI/css/@Resources.Common.PageLayout" rel="stylesheet">
+    <link href="~/Content/custom-css.css" rel="stylesheet" />
+    <style>
+        .k-filtercell > span {
+            padding-right: 0;
+        }
+    </style>
+    <style>
+        .k-filter-row .k-dropdown-operator {
+            display: none;
+        }
+
+        .k-filtercell, .k-filtercell .k-widget, .k-filtercell > span {
+            width: 100% !important;
+        }
+        td, th {
+
+            text-align: @Resources.Global.textAlign;
+
+        }
+        .k-grid-header th.k-header {
+            text-align: @Resources.Global.textAlign;
+        }
+         .k-grid-content td {
+            text-align: @Resources.Global.textAlign;
+        }
+
+        .k-widget .k-icon.k-i-collapse, .k-widget .k-icon.k-i-expand {
+            padding-left: @Resources.Global.treeViewPaddingLeft;
+        }
+        #RequestLoader {
+            position: fixed;
+            z-index: 999;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            background-color: Black;
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+            -moz-opacity: 0.8;
+            display: none;
+        }
+
+        .center {
+            /*z-index: 1000;
+            margin: 50px auto;
+            padding: 10px;
+            width: 130px;
+            background-color: White;
+            border-radius: 10px;
+            filter: alpha(opacity=100);
+            opacity: 1;
+            -moz-opacity: 1;*/
+            position: absolute;
+            top: 43%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .centerimg {
+            height: 128px;
+            width: 128px;
+        }
+        .notify .heartbit {
+            position: absolute;
+            top: -20px;
+            right: -16px;
+            height: 25px;
+            width: 25px;
+            z-index: 10;
+            border: 5px solid #fb9678;
+            border-radius: 70px;
+            -moz-animation: heartbit 1s ease-out;
+            -moz-animation-iteration-count: infinite;
+            -o-animation: heartbit 1s ease-out;
+            -o-animation-iteration-count: infinite;
+            -webkit-animation: heartbit 1s ease-out;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+        .notify .point {
+            width: 6px;
+            height: 6px;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+            background-color: #fb9678;
+            position: absolute;
+            right: -6px;
+            top: -10px;
+        }
+        .Blink {
+            animation: blinker 1.3s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+        }
+
+        @@keyframes blinker {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body class="navbar-fixed sidebar-nav fixed-nav">
+    <div id="RequestLoader" class="modal">
+        <div class="center">
+            <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150" />
+            <h3>@Resources.Global.lblLoading</h3>
+        </div>
+    </div>
+    @{
+        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
+        //Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_CompanyNearToExpireDocument.cshtml");
+
+    }
+    <div id="load-company-document-partial-view"></div>
+    <header class="navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+            <a class="navbar-brand" href="#"></a>
+            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullLeft" style="padding-left:61px;">
+                <li class="nav-item p-x-1">
+
+                    <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
+                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('CompanyDocument');" id="liNewToExpireCompanyDocument"><i class="fa fa-file-o"></i> @Resources.Global.lblCompanyDocument <span class="badge badge-danger" id="companyDocumentCount">0</span></a>
+
+                    </div>
+                </li>
+
+                <li class="nav-item p-x-10"></li>
+                <li class="nav-item p-x-1" id="LoggedInEmployeeName">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+
+
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        <button id="btn-update-password" class="dropdown-item"><i class="fa fa-key"></i> @HRModuleUI.HumanResourceUI.lblUpdatePassword</button>
+                        <button id="btn-logout" class="dropdown-item"><i class="fa fa-lock"></i> @HRModuleUI.HumanResourceUI.lblLogout </button>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </header>
+    <div id="left-menu-item"></div>
+    <!-- Main content -->
+    <main class="main" style="padding-top:30px;">
+        <!-- Breadcrumb -->
+        <!--<ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">
+                <a href="#">Admin</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>-->
+        <!-- Breadcrumb Menu-->
+        <!--<li class="breadcrumb-menu">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+                    <a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+                    <a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+                </div>
+            </li>
+        </ol>-->
+        <div class="container-fluid mainBodyClass">
+            <div class="">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+
+    <footer class="footer">
+        <span class="text-left">
+            <a href="https://xtremessoft.com">@Resources.Global.lblInma</a>  &copy; 2022 @Resources.Global.lblXtremesSoftware
+        </span>
+        <span class="@Resources.Common.PullRight">
+            @Resources.Global.lblPoweredBy <a href="https://xtremessoft.com"> @Resources.Global.lblXtremeSoft</a>
+        </span>
+    </footer>
+
+    <div class="modal fade" id="modal-update-password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">@HRModuleUI.HumanResourceUI.lblUpdatePassword</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmUpdatePassword" name="frmUpdatePassword" action="/services/Xtreme/multipart" method="post">
+                        <input type="hidden" name="type" id="type" value="Users_UpdatedPassword" />
+                        <input type="hidden" name="Id" id="Id" value="0" />
+                        <input type="hidden" name="CreateBy" id="CreatedBy" value="0" />
+                        <input type="hidden" name="Language" id="Language" value="" />
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblEmployeeNumber</label><span style="color: red">*</span>
+                                    <input class="form-control" id="EmployeeNum" name="EmployeeNum" required readonly />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblOldPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="OldPassword" name="OldPassword" value="12345" readonly required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNewPassword</label><span style="color: red">*</span>
+                                    <input class="form-control" type="password" id="NewPassword" name="NewPassword" required />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@HRModuleUI.HumanResourceUI.lblClose</button>
+                    <button type="button" class="btn btn-primary" id="btn-update-user-password">@HRModuleUI.HumanResourceUI.btnSave</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap and necessary plugins -->
+    @*<script src="~/Content/Themes/CoreUI/js/libs/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    <script src="~/Content/Themes/CoreUI/js/libs/tether.min.js"></script>
+    <script src="~/Content/Themes/CoreUI/js/libs/bootstrap.min.js"></script>
+    <script src="~/Content/Themes/CoreUI/js/libs/pace.min.js"></script>
+
+    <!-- Plugins and scripts required by all views -->
+    <script src="~/Content/Themes/CoreUI/js/libs/Chart.min.js"></script>
+
+    <!-- CoreUI main scripts -->
+
+    <script src="~/Content/Themes/CoreUI/js/app.js"></script>
+    <!-- Plugins and scripts required by this views -->
+    <!-- Custom scripts required by this view -->
+    <script src="~/Content/Themes/CoreUI/js/views/main.js"></script>
+    <!-- Grunt watch plugin -->
+    <!--Kendo js-->
+    <script src="~/Content/JS/kendo/kendo.all.min.js"></script>
+    <script src="~/Content/JS/kendo/jszip.min.js"></script>
+    <!--End Kendo js-->
+    <script src="~/Scripts/crypto-script.js"></script>
+    <!--Sweet Alert 2-->
+    <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <script src="~/Scripts/tinymce.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Common/common-drop-downs.js"></script>*@
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>
+
+    <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js"></script>
+</body>
+
+</html>
+<script>
+    var _currentLanguage = '@Resources.Common.CurrentLang';
+
+    //Global Resources
+    var save = '@Resources.Global.btnSave';
+    var btnAcceptText = '@Resources.Global.lblAccept';
+    var btnApproveText = '@Resources.Global.lblApprove';
+    var btnDeclineText = '@Resources.Global.lblDecline';
+    var approveText = '@Resources.Global.doYouReallyWantToApproveThisRequest';
+    var declineText = '@Resources.Global.doYouReallyWantToDeclineThisRequest';
+
+    var approveTitle = '@Resources.Global.lblApprove';
+    var approveTitleQuestion = '@Resources.Global.lblApproveQuestion';
+    var declineTitle = '@Resources.Global.lblDecline';
+    var declineTitleQuestion = '@Resources.Global.lblDeclineQuestion';
+    var btnYesText = '@Resources.Global.lblYes';
+    var btnNoText = '@Resources.Global.lblNo';
+    var lblDocumentAttachment = '@Resources.Global.lblDocumentAttachment';
+    var doYouReallyWantToChangeStatus = '@Resources.Global.doYouReallyWantToChangeStatus';
+    var doYouReallyWantToTransferThisFile = '@Resources.Global.doYouReallyWantToTransferThisFile';
+
+    var lblExpiryDateCannotBeLessThanIssue = '@HRModuleUI.HumanResourceUI.lblExpiryDateCannotBeLessThanIssue';
+    var select = '@HRModuleUI.HumanResourceUI.lblSelect';
+    var lblRemarks  = '@Resources.Global.lblRemarks';
+
+    //Columns
+    var employeeNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+    var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+    var documentType = '@HRModuleUI.HumanResourceUI.lblEducationalDocument';
+    var expiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
+    var section = '@HRModuleUI.HumanResourceUI.lblDepartment';
+
+
+
+     var approveMultipleText = '@Resources.Global.doYouReallyWantToApproveTheseRequests';
+    var declineMultipleText = '@Resources.Global.doYouReallyWantToDeclineTheseRequests';
+    var areYouSureTitle = '@Resources.Global.lblAreYouSure';
+    var doYouReallyWantToDeletThisRecord  = '@Resources.Global.doYouReallyWantToDeleteThisRecord';
+
+       var empNumber = '@HRModuleUI.HumanResourceUI.lblEmployeeNumber';
+    var lblName = '@HRModuleUI.HumanResourceUI.lblName';
+
+    var lblRole = '@HRModuleUI.HumanResourceUI.lblRole';
+
+     var lblFristSelectRecordFromGrid  = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid';
+     var lblFrom  = '@HRModuleUI.HumanResourceUI.lblFrom';
+     var lblTo  = '@HRModuleUI.HumanResourceUI.lblTo';
+     var lblSend  = '@HRModuleUI.HumanResourceUI.lblSend';
+    var lblForward = '@HRModuleUI.HumanResourceUI.lblForward';
+    var lblAllowedFormatsArePngJpgOnly = '@Resources.Global.lblAllowedFormatsArePngJpgOnly';
+    var lblAllowedFormatsArePngJpgPdf = '@Resources.Global.lblAllowedFormatsArePngJpgPdf';
+    var lblEmployees = '@HRModuleUI.HumanResourceUI.lblEmployees';
+    var lblEmployeeDocument = '@HRModuleUI.HumanResourceUI.lblEmployeeDocument';
+    var lblDocument = '@HRModuleUI.HumanResourceUI.lblDocument';
+    var lblCompanyDocument = '@HRModuleUI.HumanResourceUI.lblCompanyDocument';
+    var canNotApplyWithAvailableBalanceZero = '@HRModuleUI.HumanResourceUI.canNotApplyWithAvailableBalanceZero';
+    var numberOfHourCannotBeZero = '@HRModuleUI.HumanResourceUI.numberOfHourCannotBeZero';
+    var starttimecannotbegreaterthanendtime = '@HRModuleUI.HumanResourceUI.starttimecannotbegreaterthanendtime';
+    var startdatecannotbegreaterthanenddate = '@HRModuleUI.HumanResourceUI.startdatecannotbegreaterthanenddate';
+    var requestedhoursshouldbelessthanorequaltoavailablebalance = '@HRModuleUI.HumanResourceUI.requestedhoursshouldbelessthanorequaltoavailablebalance';
+    var requesteddaysshouldbelessthanorequaltoavailablebalance = '@HRModuleUI.HumanResourceUI.requesteddaysshouldbelessthanorequaltoavailablebalance';
+    var startdateisrequired = '@HRModuleUI.HumanResourceUI.startdateisrequired';
+    var enddateisrequired = '@HRModuleUI.HumanResourceUI.enddateisrequired';
+    var employeeProfile = '@HRModuleUI.HumanResourceUI.employeeProfile';
+    var lblLetterNumber  = '@HRModuleUI.HumanResourceUI.lblLetterNumber';
+    var lblNoSignature  = '@HRModuleUI.HumanResourceUI.lblNoSignature';
+    var lblNote  = '@HRModuleUI.HumanResourceUI.lblNote';
+    var lblSave  = '@HRModuleUI.HumanResourceUI.btnSave';
+    var lblDecline  = '@HRModuleUI.HumanResourceUI.lblDecline';
+    var lblPublicHoliday  = '@HRModuleUI.HumanResourceUI.lblPublicHoliday';
+    var lblPresent  = '@HRModuleUI.HumanResourceUI.lblPresent';
+    var lblAbsent  = '@HRModuleUI.HumanResourceUI.lblAbsent';
+    var lblCompany  = '@HRModuleUI.HumanResourceUI.lblCompany';
+    var lblCompanyDocument  = '@Resources.Global.lblCompanyDocument';
+    var lblCompanyNameEng  = '@Resources.Global.lblCompanyNameEng';
+    var lblCompanyNameArb  = '@Resources.Global.lblCompanyNameArb';
+    var lblCompanyNameArb  = '@Resources.Global.lblCompanyNameArb';
+    var lblCompanyDescriptionEng    = '@Resources.Global.lblCompanyDescriptionEng';
+    var lblCompanyDescriptionArb    = '@Resources.Global.lblCompanyDescriptionArb';
+    var lblPassword                 = '@HRModuleUI.HumanResourceUI.lblPassword';
+    var lblStatus                   = '@HRModuleUI.HumanResourceUI.lblStatus';
+    var lblStatusValid              = '@Resources.Global.lblStatusValid';
+    var lblStatusExpired            = '@Resources.Global.lblStatusExpired';
+     var lblExpiresIn = '@HRModuleUI.HumanResourceUI.lblExpiresIn';
+     var lblDays = '@HRModuleUI.HumanResourceUI.lblDays';
+    //------------------ PROJECT LABELS -----------------------
+
+     var lblProject  = '@ProjectUI.ProjectUI.lblProject';
+    var lblProjectInformation  = '@ProjectUI.ProjectUI.lblProjectInformation';
+    var lblProjectDesignSection  = '@ProjectUI.ProjectUI.lblProjectDesignSection';
+    var lblProjectTechnicalSection  = '@ProjectUI.ProjectUI.lblProjectTechnicalSection';
+    var lblProjectSupervisionSection = '@ProjectUI.ProjectUI.lblProjectSupervisionSection';
+
+    var lblProjectDetails  = '@ProjectUI.ProjectUI.lblProjectDetails';
+    var lblClient  = '@ProjectUI.ProjectUI.lblClient';
+    var lblClients  = '@ProjectUI.ProjectUI.lblClients';
+    var lblClientDetails  = '@ProjectUI.ProjectUI.lblClientDetails';
+    var lblBranch  = '@ProjectUI.ProjectUI.lblBranch';
+    var lblDetails  = '@ProjectUI.ProjectUI.lblDetails';
+    var lblClientInformation  = '@ProjectUI.ProjectUI.lblClientInformation';
+    var lblCity  = '@ProjectUI.ProjectUI.lblCity';
+    var lblLocation  = '@ProjectUI.ProjectUI.lblLocation';
+
+
+
+
+    $(function () {
+       // var versionNumber = Date.now();
+
+        if (_currentLanguage == 'en-US') {
+
+          //  $('.mainBodyClass').removeClass('k-rtl');
+            $('body').find('.grid-main-div').removeClass('k-rtl mainBodyClass')
+          //  $('body').find('.grid-main-div').parent().parent().removeClass('k-rtl')
+
+        } else {
+
+            //$('.mainBodyClass').addClass('k-rtl');
+
+            $('body').find('.grid-main-div').addClass('k-rtl mainBodyClass')
+          /*  $('body').find('.grid-main-div').find('.k-i-arrow-60-down').hide();*/
+
+        }
+
+
+        $(':input').removeAttr('placeholder');
+        $('#LayoutCurrentLanguage').val(_currentLanguage);
+        var assingedRoleMenus = localStorage.getItem('Menus');
+        var menuCounts = localStorage.getItem('MenusCount');
+        var menuGroupArray = [];
+
+        $("#left-menu-item").load("/Home/LoadLeftMenuPartialView",
+            { menuItems: assingedRoleMenus,menuCount: menuCounts }
+        );
+        setTimeout(function () {
+            $('.pcoded-main-container').css('margin-top', '23px');
+            //$('.pcoded-main-container').css('min-height', '13px');
+            //$('.pcoded-main-container').css('max-height', '13px');
+
+
+
+            $('body').find('.grid-main-div').find('.k-i-arrow-60-down').hide();
+
+        }, 500);
+        var loggedUserName = _currentLanguage == 'en-US' ? (JSON.parse(localStorage.getItem('User')).employeeNameEng) : (JSON.parse(localStorage.getItem('User')).employeeNameArb);
+        loggedUserName = '@Resources.Global.Welcome  ' + loggedUserName;
+        $('#LoggedInEmployeeName').text(loggedUserName);
+
+        setTimeout(function () {
+            addTinyMCE();
+
+        }, 200);
+
+
+
+    });
+
+
+
+    $('#btn-logout').click(function () {
+        window.location.href = '/User/Login';
+    });
+
+
+    $('#btn-update-password').click(function () {
+
+        var test = localStorage.getItem('EmployeeNumber');
+        $('#EmployeeNum').val(test);
+        $('#modal-update-password').modal('show');
+    });
+
+    $('#btn-update-user-password').click(function () {
+
+        if (customValidateForm('frmUpdatePassword')) {
+            $("#frmUpdatePassword").ajaxForm();
+            buttonAddPleaseWait('btn-update-user-password');
+            var options = {
+                success: function (response, statusText, jqXHR) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Password changed successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(function () { window.location.href = '/User/Login' }, 1500);
+                },
+                error: function (xhr, status, error) {
+                    buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+                    var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                    alert(errmsg);
+                }
+                , complete: function () {
+                    buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+                }
+            };
+            $("#frmUpdatePassword").ajaxSubmit(options);
+        }
+        else {
+
+            buttonRemovePleaseWait('btn-update-user-password', 'Save', 'save');
+        }
+
+    });
+
+
+    function formatDate(date) {
+        if (date != null) {
+            var d = new Date(date),
+
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+            console.log([year, month, day].join('-'));
+            return [year, month, day].join('-');
+        }
+        else {
+            return '';
+        }
+    }
+
+    // Add TinyMCE
+    function addTinyMCE() {
+
+
+        // Initialize
+        tinymce.init({
+            selector: '.editor',
+            themes: 'advanced',
+            height: 300,
+           // menubar: true,
+            width: "100%",
+            menubar: false,
+            statusbar: false,
+            plugins: ['advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code fullscreen', 'insertdatetime media table paste code help wordcount'],
+         //   contextmenu: "paste | inserttable | cell row column deletetable",
+            contextmenu:false,
+         //   toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify   '
+        });
+
+        setTimeout(function () {
+            $('.tox-notifications-container').hide();  //Hide Yellow label which comes on editor body .
+        }, 550);
+    }
+
+
+</script>

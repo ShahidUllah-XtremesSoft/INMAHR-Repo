@@ -1,0 +1,104 @@
+﻿
+
+
+<div class="row">
+    <form id="frmAddUpdateIssue" name="frmAddUpdateIssue" action="/services/Xtreme/multipart" method="post">
+        <div class="card">
+            <div class="card-block">
+
+                <input type="hidden" name="Id" id="Id" value="0">
+                <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                <input type="hidden" name="HR_Employee_Id" id="HR_Employee_Id" value="0" />
+                <input type="hidden" name="Project_Id" id="Project_Id" value="0" />
+                <input type="hidden" name="type" id="type" value="Issue_Save">
+                <input type="hidden" name="Language" id="Language" value="">
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblProject #</label><span style="color:red"> *</span><br />
+                            <input class="form-control" id="ProjectDDL" name="ProjectDDL" required />
+                        </div>
+                    </div>
+                    <div class="col-md-8">  </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblConcernPerson</label><span style="color:red"> *</span><br />
+                            <input class="form-control" id="EmployeeDDL" name="EmployeeDDL" required />
+                        </div>
+                    </div>
+                    <div class="col-md-8">  </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
+                            <input class="form-control" id="Project_Section_Parent_Type_DDL" name="Project_Section_Parent_Type_DDL" required />
+                            <input type="hidden" class="form-control" id="Setup_SetupType_Id" name="Setup_SetupType_Id" value="0" />
+                        </div>
+                    </div>
+                    <div class="col-md-8">  </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
+                            <input class="form-control" id="Project_SubSections_DDL" name="Project_SubSections_DDL"  />
+                            <input type="hidden" class="form-control" id="Setup_SetupTypeDetail_Id" name="Setup_SetupTypeDetail_Id" value="0" />
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" id="ProfileImageDiv">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblImage</label><br />
+                            @*<input type="file" class="form-control" name="IssueImage" id="IssueImage" onchange="validateFileType('IssueImage',['png', 'jpg']);" />*@
+                            <input type="file" class="form-control" id="IssueImage"  name="IssueImage" onchange="validatePersonalDocument('IssueImage');">
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4"> </div>
+                </div>
+
+
+            </div>
+            <div class="row" style="display:none;">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="Status" name="Status" value="Pending" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <textarea type="text" class="form-control editor" name="DescriptionEng" id="DescriptionEng" value=""></textarea>
+                        <input type="hidden" class="form-control" name="DescriptionArb" id="DescriptionArb" value=" "> </input>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-success  pull-right" id="btn-save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                        <a href="@Url.Action("List","Issue")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

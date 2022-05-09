@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 @*<button type="button" class="btn btn-danger pull-right btnClose " data-dismiss="modal">Close</button>*@
-                                <button type="button" id="btnSave_DesingSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Save</button>
+                                <button type="button" id="btnSave_DesingSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                             </div>
                         </div>
                     </div>
@@ -85,11 +85,11 @@
             { title: "#", template: "<b>#= ++record #</b>", width: 15 },
             { field: "id", title: "id", width: 10, hidden: true },
             {
-                field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+                field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
                 //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
             },
-            { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-            { field: "professionName", title: ".professionName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "professionName", title: lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             {
                 headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
                 template: function (dataItem) {

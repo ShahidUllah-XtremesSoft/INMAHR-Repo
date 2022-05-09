@@ -34,15 +34,15 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
         {
-            field: "projectNumber", title: "ProjectNumber", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectNumber", title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> ",
         },
         {
-            field: "projectName", title: "projectName", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectName", title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //, template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title='Project Name'>#=projectName#</a> ",
         },
-        { field: "clientName", title: "ClientName", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "projectCreatedDate", title: "ProjectCreatedDate", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "clientName", title: lblClientName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "projectCreatedDate", title: lblIssueDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             field: "", title: "", width: 30
             , template: "#if(isEmployeeExist =='Yes'){ #" +
@@ -51,8 +51,8 @@ var bindGrid = function (inputDataJSON) {
                 " #} " +
                 "else {# " +
               
-                " <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title='Edit Project' ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title='Delete Project'><span class='fa fa-trash'></span></a>   #}#"
+                " <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>   #}#"
         },
 
 

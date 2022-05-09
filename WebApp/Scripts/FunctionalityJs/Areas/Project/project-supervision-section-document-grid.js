@@ -56,9 +56,9 @@ var fn_Load_SupervisionSection_DocumentByIdResponse = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
             field: "currentFileName",
-            title: "currentFileName",
+            title: lblDocumentAttachment,
             hidden: false,
-            width: 20,
+            width: 30,
             filterable: false,
             template: " #  if (currentFileName == null )" +
                 " { # <label class='pcoded-badge label label-danger'>No Attachment</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
@@ -70,19 +70,19 @@ var fn_Load_SupervisionSection_DocumentByIdResponse = function (inputDataJSON) {
 
         },
         { field: "documentType", title: "documentType", hidden: true},
-        { field: "combineDocumentType", title: "combineDocumentType", hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
-            field: "releaseDate", title: "issueDate", hidden: false, width: 20, filterable: false ,
+            field: "releaseDate", title: lblIssueDate, hidden: false, width: 20, filterable: false ,
             template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
         },
         {
-            field: "expiryDate", title: "expiryDate", hidden: false, width: 20, filterable: false,
+            field: "expiryDate", title: lblExpiryDate, hidden: false, width: 20, filterable: false,
             template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
         },
 
         {
-            field: "expiryIn", title: "expiryIn", hidden: false, width: 15, filterable: false,
+            field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
            // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
             template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
                 "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
@@ -106,7 +106,7 @@ var fn_Load_SupervisionSection_DocumentByIdResponse = function (inputDataJSON) {
             title: ' ',
 
             template:
-                " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_SupervisionSection_DocumentById(this)  title='Delete'><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_SupervisionSection_DocumentById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
         },
 
 

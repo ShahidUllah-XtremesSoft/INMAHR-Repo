@@ -42,7 +42,7 @@
 
                     <div class="col-sm-3 " style="text-align: end;">
 
-                        <span class="badge">.Project No:</span>
+                        <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
                         <span class="badge badge-info    project-number">   </span>
 
 
@@ -59,7 +59,7 @@
 
                 <div class="">
                     <div class="m-b-20">
-                        <h6 class="sub-title m-b-15">Overview</h6>
+                        <h6 class="sub-title m-b-15">@ProjectUI.ProjectUI.lblOverview</h6>
                         <hr />
                         <p class="txt-description" style="overflow-x: auto;height: 43rem;">
                     </div>
@@ -76,7 +76,7 @@
 
                     <div class="">
                         <div class="col-sm-4">
-                            <span class="badge ">Status:</span>
+                            <span class="badge ">@ProjectUI.ProjectUI.lblStatus:</span>
                             <select class="project_status_ddl" disabled id="" style="background-color: #49626a; color: white; font: bold;">
 
                                 <option value="Active">Active</option>
@@ -93,7 +93,7 @@
 
                         <div class="col-sm-6 " style="text-align: end;">
 
-                            <span class="badge">.Created By:</span>
+                            <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
                             <span class="badge badge-danger    text-project-created-by">   </span>
 
 
@@ -108,7 +108,7 @@
         <div class="card ">
             <div class="card-header" style="background: #eceff1;">
                 <h6>
-                    <span class="">Project details</span>
+                    <span class="">@ProjectUI.ProjectUI.lblProjectDetails</span>
                 </h6>
 
             </div>
@@ -118,14 +118,14 @@
                     <tbody>
                         <tr>
 
-                            <td>Project Client:</td>
+                            <td>@ProjectUI.ProjectUI.lblProject @ProjectUI.ProjectUI.lblClient :</td>
                             <td class="">
                                 <b><span class="text-client-name"></span></b>
                             </td>
 
                         </tr>
                         <tr>
-                            <td>Price</td>
+                            <td>@ProjectUI.ProjectUI.lblPrice</td>
                             <td class="text-price"></td>
                         </tr>
 
@@ -136,7 +136,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Completion Date:</td>
+                            <td>@ProjectUI.ProjectUI.lblCompletionDate:</td>
                             <td>
                                 <span class="badge badge-danger text-enddate"></span>
                             </td>
@@ -157,7 +157,7 @@
                                 <td class="text-end">Working</td>
                             </tr>*@
                         <tr>
-                            <td>Progress</td>
+                            <td>@ProjectUI.ProjectUI.lblProgress</td>
                             <td class="text-progress-status">0 %</td>
                         </tr>
                     </tbody>
@@ -171,7 +171,7 @@
     <div class="col-sm-4">
         <div class="card ">
             <div class="card-header" style="background: #eceff1;">
-                <h6><span class="">Project Attached Files</span></h6>
+                <h6><span class="">@ProjectUI.ProjectUI.lblProject @Resources.Global.lblDocumentAttachment</span></h6>
 
             </div>
             <div class="" style="height: 487px; overflow-x: auto; min-height: 24rem;">
@@ -241,7 +241,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="demo-section k-content">
-                                    <h5>.Progress</h5>
+                                    <h5>@ProjectUI.ProjectUI.lblProgress</h5>
                                     <div id="" class="form-control sub_section_progressBar" style="height:5px;"></div>
                                 </div>
                             </div>
@@ -264,35 +264,35 @@
                                             <tbody>
                                                 <tr>
 
-                                                    <td>.ProjectCategory:</td>
+                                                    <td>@ProjectUI.ProjectUI.lblProjectCategory:</td>
                                                     <td><span class="ProjectCategory"></span></td>
 
 
                                                 </tr>
                                                 <tr>
-                                                    <td>.ProjectType</td>
+                                                    <td>@ProjectUI.ProjectUI.lblProjectType</td>
                                                     <td class="ProjectType"></td>
-                                                    <td>.ProjectArea</td>
+                                                    <td>@ProjectUI.ProjectUI.lblProjectArea</td>
                                                     <td> <span class=" ProjectAreaType"></span>  </td>
 
                                                 </tr>
                                                 <tr>
-                                                    <td>.IsVIP</td>
+                                                    <td>@ProjectUI.ProjectUI.lblVIP</td>
                                                     <td>
                                                         <span class="badge badge-danger IsVIP"></span>
                                                     </td>
-                                                    <td>.IsUrgent</td>
+                                                    <td>@ProjectUI.ProjectUI.lblUrgent</td>
                                                     <td>
                                                         <span class="badge badge-danger IsUrgent"></span>
                                                     </td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>.PlotNo</td>
+                                                    <td>@ProjectUI.ProjectUI.lblPlotNo</td>
                                                     <td>
                                                         <span class="   PlotNo"></span>
                                                     </td>
-                                                    <td>.MulkNo</td>
+                                                    <td>@ProjectUI.ProjectUI.lblMulkNo</td>
                                                     <td>
                                                         <span class="MulkNo"></span>
                                                     </td>
@@ -300,26 +300,26 @@
                                                 </tr>
 
                                                 <tr style="display:none;">
-                                                    <td>.Room</td>
+                                                    <td>@ProjectUI.ProjectUI.lblRoom</td>
                                                     <td><span class="   Room"></span></td>
-                                                    <td>.Bathroom</td>
+                                                    <td>@ProjectUI.ProjectUI.lblBathroom</td>
                                                     <td class="Bathroom"></td>
                                                 </tr>
                                                 <tr style="display:none;">
-                                                    <td>.Hall</td>
+                                                    <td>@ProjectUI.ProjectUI.lblHall</td>
                                                     <td><span class="   Hall"></span></td>
-                                                    <td>.Kitchen</td>
+                                                    <td>@ProjectUI.ProjectUI.lblKitchen</td>
                                                     <td class="Kitchen"></td>
                                                 </tr>
                                                 <tr style="display:none;">
-                                                    <td>.Garage/Parking</td>
+                                                    <td>@ProjectUI.ProjectUI.lblGarageParking</td>
                                                     <td><span class="   Garage"></span></td>
 
-                                                    <td>.Floor</td>
+                                                    <td>@ProjectUI.ProjectUI.lblFloor</td>
                                                     <td><span class="   Floor"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>.City</td>
+                                                    <td>@ProjectUI.ProjectUI.lblCity</td>
                                                     <td><span class=" ProjectCity"></span></td>
 
                                                 </tr>
@@ -814,10 +814,10 @@
     </script>
     
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail-design-section.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail-technical-section.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail-supervision-section.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail-design-section.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail-technical-section.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details/project-detail-supervision-section.js?+971502324409"></script>
 
 
     @*<script src="~/Scripts/FunctionalityJs/Areas/Comment/comment-area.js"></script>*@

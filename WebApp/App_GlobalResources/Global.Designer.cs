@@ -232,6 +232,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string lblClose {
+            get {
+                return ResourceManager.GetString("lblClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string lblCompanyDescription {
@@ -340,11 +349,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string lblEdit {
+            get {
+                return ResourceManager.GetString("lblEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         internal static string lblEndDate {
             get {
                 return ResourceManager.GetString("lblEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Time.
+        /// </summary>
+        internal static string lblEndTime {
+            get {
+                return ResourceManager.GetString("lblEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expiry Date.
+        /// </summary>
+        internal static string lblExpiryDate {
+            get {
+                return ResourceManager.GetString("lblExpiryDate", resourceCulture);
             }
         }
         
@@ -363,6 +399,15 @@ namespace Resources {
         internal static string lblInma {
             get {
                 return ResourceManager.GetString("lblInma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue Date.
+        /// </summary>
+        internal static string lblIssueDate {
+            get {
+                return ResourceManager.GetString("lblIssueDate", resourceCulture);
             }
         }
         
@@ -426,6 +471,15 @@ namespace Resources {
         internal static string lblStartDate {
             get {
                 return ResourceManager.GetString("lblStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        internal static string lblStartTime {
+            get {
+                return ResourceManager.GetString("lblStartTime", resourceCulture);
             }
         }
         

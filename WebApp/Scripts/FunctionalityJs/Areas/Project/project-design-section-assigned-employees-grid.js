@@ -33,14 +33,14 @@ var bindfnloadAssignedEmployees = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 15 },
         { field: "id", title: "id", width: 10, hidden: true },
         {
-            field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
         },
-        { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "setup_type_detail_name", title: ".Assigned Sub Section", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "setup_type_detail_name", title: lblAssignedSubSection, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             field: "", width: 10, title: ' ',
-            template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById(this)  title='Delete '><span class='fa fa-trash'></span></a>  "
+            template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
         },
     ];
 

@@ -332,24 +332,53 @@
     var lblDocumentAttachment = '@Resources.Global.lblDocumentAttachment';
     var doYouReallyWantToChangeStatus = '@Resources.Global.doYouReallyWantToChangeStatus';
     var doYouReallyWantToTransferThisFile = '@Resources.Global.doYouReallyWantToTransferThisFile';
-
-    var lblExpiryDateCannotBeLessThanIssue = '@HRModuleUI.HumanResourceUI.lblExpiryDateCannotBeLessThanIssue';
-    var select = '@HRModuleUI.HumanResourceUI.lblSelect';
     var lblRemarks  = '@Resources.Global.lblRemarks';
-
-    //Columns
-    var employeeNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
-    var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
-    var documentType = '@HRModuleUI.HumanResourceUI.lblEducationalDocument';
-    var expiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
-    var section = '@HRModuleUI.HumanResourceUI.lblDepartment';
-
+    var lblDay  = '@Resources.Global.lblDay';
+    var lblIssueDate  = '@Resources.Global.lblIssueDate';
+    var lblExpiryDate  = '@Resources.Global.lblExpiryDate';
 
 
      var approveMultipleText = '@Resources.Global.doYouReallyWantToApproveTheseRequests';
     var declineMultipleText = '@Resources.Global.doYouReallyWantToDeclineTheseRequests';
     var areYouSureTitle = '@Resources.Global.lblAreYouSure';
-    var doYouReallyWantToDeletThisRecord  = '@Resources.Global.doYouReallyWantToDeleteThisRecord';
+    var doYouReallyWantToDeletThisRecord = '@Resources.Global.doYouReallyWantToDeleteThisRecord';
+    var lblAllowedFormatsArePngJpgOnly = '@Resources.Global.lblAllowedFormatsArePngJpgOnly';
+    var lblAllowedFormatsArePngJpgPdf = '@Resources.Global.lblAllowedFormatsArePngJpgPdf';
+
+
+    var lblStatusValid              = '@Resources.Global.lblStatusValid';
+    var lblStatusExpired            = '@Resources.Global.lblStatusExpired';
+
+    var lblCompanyDocument = '@Resources.Global.lblCompanyDocument';
+    var lblCompanyNameEng  = '@Resources.Global.lblCompanyNameEng';
+    var lblCompanyNameArb  = '@Resources.Global.lblCompanyNameArb';
+    var lblCompanyNameArb  = '@Resources.Global.lblCompanyNameArb';
+    var lblCompanyDescriptionEng    = '@Resources.Global.lblCompanyDescriptionEng';
+    var lblCompanyDescriptionArb = '@Resources.Global.lblCompanyDescriptionArb';
+    var lblStartDate = '@Resources.Global.lblStartDate';
+    var lblEndDate = '@Resources.Global.lblEndDate';
+    var lblStartTime = '@Resources.Global.lblStartTime';
+    var lblEndTime= '@Resources.Global.lblEndTime';
+    var lblStatus = '@Resources.Global.lblStatus';
+    var lblDelete = '@Resources.Global.lblDelete';
+    var lblEdit = '@Resources.Global.lblEdit';
+    var lblClose = '@Resources.Global.lblClose';
+
+
+    var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+     var employeeNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+    var documentType = '@HRModuleUI.HumanResourceUI.lblEducationalDocument';
+    var expiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
+    var section = '@HRModuleUI.HumanResourceUI.lblDepartment';
+    var lblExpiresIn = '@HRModuleUI.HumanResourceUI.lblExpiresIn';
+    var lblDays = '@HRModuleUI.HumanResourceUI.lblDays';
+    @*var lblExpiryDateCannotBeLessThanIssue = '@HRModuleUI.HumanResourceUI.lblExpiryDateCannotBeLessThanIssue';
+    var select = '@HRModuleUI.HumanResourceUI.lblSelect';
+
+
+
+
+
 
        var empNumber = '@HRModuleUI.HumanResourceUI.lblEmployeeNumber';
     var lblName = '@HRModuleUI.HumanResourceUI.lblName';
@@ -361,8 +390,6 @@
      var lblTo  = '@HRModuleUI.HumanResourceUI.lblTo';
      var lblSend  = '@HRModuleUI.HumanResourceUI.lblSend';
     var lblForward = '@HRModuleUI.HumanResourceUI.lblForward';
-    var lblAllowedFormatsArePngJpgOnly = '@Resources.Global.lblAllowedFormatsArePngJpgOnly';
-    var lblAllowedFormatsArePngJpgPdf = '@Resources.Global.lblAllowedFormatsArePngJpgPdf';
     var lblEmployees = '@HRModuleUI.HumanResourceUI.lblEmployees';
     var lblEmployeeDocument = '@HRModuleUI.HumanResourceUI.lblEmployeeDocument';
     var lblDocument = '@HRModuleUI.HumanResourceUI.lblDocument';
@@ -385,18 +412,14 @@
     var lblPresent  = '@HRModuleUI.HumanResourceUI.lblPresent';
     var lblAbsent  = '@HRModuleUI.HumanResourceUI.lblAbsent';
     var lblCompany  = '@HRModuleUI.HumanResourceUI.lblCompany';
-    var lblCompanyDocument  = '@Resources.Global.lblCompanyDocument';
-    var lblCompanyNameEng  = '@Resources.Global.lblCompanyNameEng';
-    var lblCompanyNameArb  = '@Resources.Global.lblCompanyNameArb';
-    var lblCompanyNameArb  = '@Resources.Global.lblCompanyNameArb';
-    var lblCompanyDescriptionEng    = '@Resources.Global.lblCompanyDescriptionEng';
-    var lblCompanyDescriptionArb    = '@Resources.Global.lblCompanyDescriptionArb';
+
+
     var lblPassword                 = '@HRModuleUI.HumanResourceUI.lblPassword';
     var lblStatus                   = '@HRModuleUI.HumanResourceUI.lblStatus';
-    var lblStatusValid              = '@Resources.Global.lblStatusValid';
-    var lblStatusExpired            = '@Resources.Global.lblStatusExpired';
-     var lblExpiresIn = '@HRModuleUI.HumanResourceUI.lblExpiresIn';
-     var lblDays = '@HRModuleUI.HumanResourceUI.lblDays';
+
+        *@
+
+
     //------------------ PROJECT LABELS -----------------------
 
      var lblProject  = '@ProjectUI.ProjectUI.lblProject';
@@ -404,16 +427,54 @@
     var lblProjectDesignSection  = '@ProjectUI.ProjectUI.lblProjectDesignSection';
     var lblProjectTechnicalSection  = '@ProjectUI.ProjectUI.lblProjectTechnicalSection';
     var lblProjectSupervisionSection = '@ProjectUI.ProjectUI.lblProjectSupervisionSection';
+    var lblProjectDetails = '@ProjectUI.ProjectUI.lblProjectDetails';
+    var lblProjectNo = '@ProjectUI.ProjectUI.lblProjectNo';
+    var lblEmail = '@ProjectUI.ProjectUI.lblEmail';
+    var lblUrgent = '@ProjectUI.ProjectUI.lblUrgent';
+    var lblVIP = '@ProjectUI.ProjectUI.lblVIP';
+    var lblProjectStatus = '@ProjectUI.ProjectUI.lblProjectStatus';
+    var lblImage = '@ProjectUI.ProjectUI.lblImage';
+    var lblCreatedBy = '@ProjectUI.ProjectUI.lblCreatedBy';
+     var lblPrice = '@ProjectUI.ProjectUI.lblPrice';
+    var lblCompletionDate = '@ProjectUI.ProjectUI.lblCompletionDate';
+    var lblProgress = '@ProjectUI.ProjectUI.lblProgress';
+    var lblProjectCategory = '@ProjectUI.ProjectUI.lblProjectCategory';
+    var lblProjectArea = '@ProjectUI.ProjectUI.lblProjectArea';
+    var lblVIP = '@ProjectUI.ProjectUI.lblVIP';
+    var lblUrgent = '@ProjectUI.ProjectUI.lblUrgent';
+    var lblMulkNo = '@ProjectUI.ProjectUI.lblMulkNo';
+    var lblTransferTo = '@ProjectUI.ProjectUI.lblTransferTo';
+    var lblTransfer = '@ProjectUI.ProjectUI.lblTransfer';
+    var lblAssignTo = '@ProjectUI.ProjectUI.lblAssignTo';
+    var lblAssign = '@ProjectUI.ProjectUI.lblAssign';
+    var lblAssignedSubSection = '@ProjectUI.ProjectUI.lblAssignedSubSection';
+    var lblProfessionName = '@ProjectUI.ProjectUI.lblProfessionName';
+    var lblNoAttachment = '@ProjectUI.ProjectUI.lblNoAttachment';
+    var lblConstructionMonths            ='@ProjectUI.ProjectUI.lblConstructionMonths';
+    var lblExtendedConstructionStartDate ='@ProjectUI.ProjectUI.lblExtendedConstructionStartDate';
+    var lblExtendedConstructionMonths    ='@ProjectUI.ProjectUI.lblExtendedConstructionMonths';
+    var lblExtendedConstructionEndDate   ='@ProjectUI.ProjectUI.lblExtendedConstructionEndDate';
+    var lblFinance = '@ProjectUI.ProjectUI.lblFinance';
 
-    var lblProjectDetails  = '@ProjectUI.ProjectUI.lblProjectDetails';
     var lblClient  = '@ProjectUI.ProjectUI.lblClient';
     var lblClients  = '@ProjectUI.ProjectUI.lblClients';
-    var lblClientDetails  = '@ProjectUI.ProjectUI.lblClientDetails';
-    var lblBranch  = '@ProjectUI.ProjectUI.lblBranch';
-    var lblDetails  = '@ProjectUI.ProjectUI.lblDetails';
+    var lblClientDetails = '@ProjectUI.ProjectUI.lblClientDetails';
     var lblClientInformation  = '@ProjectUI.ProjectUI.lblClientInformation';
+    var lblClientName  = '@ProjectUI.ProjectUI.lblClientName';
+    var lblPhone  = '@ProjectUI.ProjectUI.lblPhone';
+
+    var lblBranch  = '@ProjectUI.ProjectUI.lblBranch';
+    var lblDetails = '@ProjectUI.ProjectUI.lblDetails';
+
     var lblCity  = '@ProjectUI.ProjectUI.lblCity';
     var lblLocation  = '@ProjectUI.ProjectUI.lblLocation';
+
+    var lblChangeStatus  = '@ProjectUI.ProjectUI.lblChangeStatus';
+    var lblMeetingDate  = '@ProjectUI.ProjectUI.lblMeetingDate';
+
+    var lblContractor = '@ProjectUI.ProjectUI.lblContractor';
+
+
 
 
 

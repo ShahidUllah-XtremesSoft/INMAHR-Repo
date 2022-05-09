@@ -171,6 +171,9 @@
   <data name="lblAreYouSure" xml:space="preserve">
     <value>هل انت متاكد ؟</value>
   </data>
+  <data name="lblClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="lblCompanyDescription" xml:space="preserve">
     <value>تفاصيل الوثيقة</value>
   </data>
@@ -211,11 +214,20 @@
   <data name="lblEndDate" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>
   </data>
+  <data name="lblEndTime" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="lblExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hour(s)</value>
   </data>
   <data name="lblInma" xml:space="preserve">
     <value>إنماء العالمية ذ.م.م</value>
+  </data>
+  <data name="lblIssueDate" xml:space="preserve">
+    <value>Issue Date</value>
   </data>
   <data name="lblLoading" xml:space="preserve">
     <value>...تحميل</value>
@@ -237,6 +249,9 @@
   </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>
+  </data>
+  <data name="lblStartTime" xml:space="preserve">
+    <value>Start Time</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>الحالة</value>

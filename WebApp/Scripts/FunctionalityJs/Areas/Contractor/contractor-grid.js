@@ -38,7 +38,7 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
             field: "currentFileName",
-            title: ".Photo",
+            title: lblImage,
             hidden: false,
             width: 20,
             filterable: false,
@@ -49,11 +49,11 @@ var bindGrid = function (inputDataJSON) {
                 
         },
         {
-            field: "contractorName", title: ".Name", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "contractorName", title: lblContractor, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //, template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailContractor(this)  title='Contractor Name'>#=contractorName#</a> ",
         },
-        { field: "email", title: ".email", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "phoneNumber", title: ".Phone No", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "email", title: lblEmail, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "phoneNumber", title: lblPhone, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             field: "",
             width: 10,
@@ -61,8 +61,8 @@ var bindGrid = function (inputDataJSON) {
            
             template:
                 //"<a style='cursor:pointer; font-size:20px;' onClick= detailContractor(this) title='View Contractor Detail' ><span class='fa fa-eye'></span></a>" +
-                " <a style='font-size:20px;cursor:pointer;' onClick= editContractor(this) title='Edit Contractor' ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= deleteContractorById(this)  title='Delete Contractor'><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= editContractor(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= deleteContractorById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
         },
 
 

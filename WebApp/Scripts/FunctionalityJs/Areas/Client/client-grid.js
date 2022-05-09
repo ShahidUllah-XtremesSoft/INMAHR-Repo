@@ -40,11 +40,11 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
         {
-            field: "clientName", title: "ClientName", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "clientName", title: lblClientName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailClient(this)  title='Client Name'>#=clientName#</a> ",
         },
-        { field: "clientEmails", title: "ClientEmails", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "clientPhoneNumbers", title: "ClientPhoneNumbers", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "clientEmails", title: lblEmail, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "clientPhoneNumbers", title: lblPhone, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             field: "",
             width: 10,
@@ -52,8 +52,8 @@ var bindGrid = function (inputDataJSON) {
            
             template:
                 //"<a style='cursor:pointer; font-size:20px;' onClick= detailClient(this) title='View Client Detail' ><span class='fa fa-eye'></span></a>" +
-                " <a style='font-size:20px;cursor:pointer;' onClick= editClient(this) title='Edit Client' ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= deleteClientById(this)  title='Delete Client'><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= editClient(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= deleteClientById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
         },
 
 

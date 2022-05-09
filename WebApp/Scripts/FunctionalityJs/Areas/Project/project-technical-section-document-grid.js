@@ -56,12 +56,12 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
             field: "currentFileName",
-            title: "currentFileName",
+            title: lblDocumentAttachment,
             hidden: false,
             width: 20,
             filterable: false,
             template: " #  if (currentFileName == null )" +
-                " { # <label class='pcoded-badge label label-danger'>No Attachment</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
+                " { # <label class='pcoded-badge label label-danger'>"+lblNoAttachment+"</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:30%;'/> </a># } else" +
@@ -70,19 +70,19 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
 
         },
         { field: "documentType", title: "documentType", hidden: true},
-        { field: "combineDocumentType", title: "combineDocumentType", hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
-            field: "releaseDate", title: "issueDate", hidden: false, width: 20, filterable: false ,
+            field: "releaseDate", title: lblIssueDate, hidden: false, width: 20, filterable: false ,
             template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
         },
         {
-            field: "expiryDate", title: "expiryDate", hidden: false, width: 20, filterable: false,
+            field: "expiryDate", title: lblEndDate, hidden: false, width: 20, filterable: false,
             template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
         },
 
         {
-            field: "expiryIn", title: "expiryIn", hidden: false, width: 15, filterable: false,
+            field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
            // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
             template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
                 "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +

@@ -1239,9 +1239,7 @@
     <Content Include="Areas\Project\Views\Issue\List.cshtml" />
     <Content Include="Areas\Project\Views\Issue\Save.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Issue\_IssueSave.cshtml" />
-    <Content Include="Areas\Project\Views\Notification\Details.cshtml" />
     <Content Include="Areas\Project\Views\Notification\List.cshtml" />
-    <Content Include="Areas\Project\Views\Notification\Save.cshtml" />
     <Content Include="Areas\Project\Views\Notification\EmployeesNotification.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_All_Employees.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_TechnicalSectionSave.cshtml" />

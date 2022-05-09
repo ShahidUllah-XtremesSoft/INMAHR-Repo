@@ -40,20 +40,20 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
         {
-            field: "projectNumber", title: "ProjectNumber", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectNumber", title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a> ",
         },
-        { field: "employeeName", title: "Employee", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "startedTimeFormated", title: "StartedTime", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "endedTimeFormated", title: "EndedTime", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "startedTime", title: "StartedTime", width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "endedTime", title: "EndedTime", width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "employeeName", title: employeeName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "startedTimeFormated", title: lblStartTime, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "endedTimeFormated", title: lblEndTime, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "startedTime", title: lblStartTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "endedTime", title: lblEndTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             field: "",width: 10,title: ' ',
             template:
                 //"<a style='cursor:pointer; font-size:20px;' onClick= detailClient(this) title='View Client Detail' ><span class='fa fa-eye'></span></a>" +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title='Edit' ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title='Delete'><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
         },
 
 

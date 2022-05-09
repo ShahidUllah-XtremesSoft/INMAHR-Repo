@@ -174,6 +174,9 @@
   <data name="lblAreYouSure" xml:space="preserve">
     <value>Are You Sure ?</value>
   </data>
+  <data name="lblClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="lblCompanyDescription" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -210,14 +213,26 @@
   <data name="lblDocumentAttachment" xml:space="preserve">
     <value>Document/Attachment </value>
   </data>
+  <data name="lblEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="lblEndDate" xml:space="preserve">
     <value>End Date</value>
+  </data>
+  <data name="lblEndTime" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="lblExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hour(s)</value>
   </data>
   <data name="lblInma" xml:space="preserve">
     <value>INMA INT.LLC</value>
+  </data>
+  <data name="lblIssueDate" xml:space="preserve">
+    <value>Issue Date</value>
   </data>
   <data name="lblLoading" xml:space="preserve">
     <value>Loading...</value>
@@ -239,6 +254,9 @@
   </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="lblStartTime" xml:space="preserve">
+    <value>Start Time</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>

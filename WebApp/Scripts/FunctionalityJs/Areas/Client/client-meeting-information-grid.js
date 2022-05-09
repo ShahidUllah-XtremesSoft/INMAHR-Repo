@@ -31,24 +31,24 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 10, },
 
         {
-            field: "projectNumber", hidden:true,title: "ProjectNumber", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" }  }
+            field: "projectNumber", hidden:true,title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" }  }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectNumber#</a> ",
         },
         {
-            field: "projectName", title: "project", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectName", title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectName#</a> ",
         },
         //{
         //    field: "projectName", title: "projectName", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
         //    //, template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title='Project Name'>#=projectName#</a> ",
         //},
-        { field: "employeeName", title: "Employee", width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
 
-        { field: "dayName", title: "day", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
-        { field: "startedTimeFormated", title: "startedTimeFormated", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
-        { field: "endedTimeFormated", title: "endedTimeFormated", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>" },
-        { field: "meetingDate", title: "MeetingDate", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
-        { field: "status", title: "status", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>"},
+        { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
+        { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
+        { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
+        { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>" },
+        { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>"},
         
         //{
         //    field: "",

@@ -27,7 +27,7 @@ function loadProjectSectiondownList(callingArea) {
     var checkResult = localStorage.getItem('isEmployeeExist');
     if (checkResult == 'Yes') {
         employee_Id: JSON.parse(localStorage.getItem('User')).employeeId
-    } 
+    }
     ajaxRequest({ commandName: 'STEPPER_SUB_SECTION_MENU', values: { ParentType: 'DesignSection', Project_Id: project_Id, Language: _currentLanguage }, CallBack: fnloadloadProjectSectiondownListCallBack });
 
     localStorage.setItem('DesignSection_Menu_Area', callingArea);
@@ -177,12 +177,12 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
             { title: "#", template: "<b>#= ++record #</b>", width: 10, },
             {
                 field: "currentFileName",
-                title: ".File",
+                title: lblDocumentAttachment,
                 hidden: false,
-                width: 20,
+                width: 30,
                 filterable: false,
                 template: " #  if (currentFileName == null )" +
-                    " { # <label class='pcoded-badge label label-danger'>No Attachment</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
+                    " { # <label class='pcoded-badge label label-danger'>" + lblNoAttachment + "</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
                     " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
                     " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
                     " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:100%;cursor: pointer;'/> </a># } else" +
@@ -190,20 +190,20 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
 
             },
-            { field: "documentType", title: "documentType", hidden: true },
-            { field: "combineDocumentType", title: ".DocumentType", hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "documentType", title: documentType, hidden: true },
+            { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             {
-                field: "releaseDate", title: "issueDate", hidden: false, width: 40, filterable: false,
+                field: "releaseDate", title: lblIssueDate, hidden: false, width: 40, filterable: false,
                 template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
             },
             {
-                field: "expiryDate", title: "expiryDate", hidden: false, width: 40, filterable: false,
+                field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
                 template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
             },
 
             {
-                field: "expiryIn", title: "expiryIn", hidden: false, width: 40, filterable: false,
+                field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
                 // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
                 template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
                     "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
@@ -233,10 +233,10 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
             {
                 field: "", title: "", width: 60 //, template: gridTemplate,
                 , template: "#if(statusForCondition =='Transfered'){ #" +
-                    "<button type='button' onclick='fn_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;'>Assign</button> " +
-                    " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>Transfer</button> # }" +
+                    "<button type='button' onclick='fn_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;'>" + lblAssign + "</button> " +
+                    " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> # }" +
                     "else {# " +
-                    " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>Transfer</button> #}#"
+                    " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> #}#"
             },
             //{
             //    field: "", title: "", width: 20,
@@ -438,14 +438,14 @@ var fnloadAssignedEmployees_DesignSectionCallBack = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 15 },
         { field: "id", title: "id", width: 10, hidden: true },
         {
-            field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
         },
-        { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "setup_type_detail_name", title: ".Assigned Sub Section", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "setup_type_detail_name", title: lblAssignedSubSection, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             field: "", width: 15, title: ' ',
-            template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById_DesignSection(this)  title='Delete '><span class='fa fa-trash'></span></a>  "
+            template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById_DesignSection(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
         },
     ];
 
@@ -629,11 +629,11 @@ var loadloadAllEmployees_DesignSectionCallBack = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 15 },
         { field: "id", title: "id", width: 10, hidden: true },
         {
-            field: "employeeNumber", title: ".employee #", width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
         },
-        { field: "empName", title: ".empName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "professionName", title: ".professionName", width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "professionName", title: lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
             headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
             template: function (dataItem) {

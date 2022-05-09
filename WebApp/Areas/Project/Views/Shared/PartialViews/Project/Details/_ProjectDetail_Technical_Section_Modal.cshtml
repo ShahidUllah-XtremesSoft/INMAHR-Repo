@@ -10,7 +10,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" id="">.Transfer to</h5>
+                <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblTransferTo</h5>
             </div>
             <div class="modal-body" style="height:170px;">
                 <form id="frm_TechnicalSection_TransferDataModal">
@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="col-form-label">Remarks</label>
+                                <label class="col-form-label">@Resources.Global.lblRemarks</label>
                                 <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks" required></textarea>
                             </div>
                         </div>
@@ -57,8 +57,8 @@
 
                         <div id="">
 
-                            <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
-                            <button type="button" id="btn-TechnicalSection-transfer" class="btn   btn-success  pull-right" value="Save"> Transfer</button>
+                            <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">@Resources.Global.lblClose</button>
+                            <button type="button" id="btn-TechnicalSection-transfer" class="btn   btn-success  pull-right" value="Save"> @ProjectUI.ProjectUI.lblTransfer</button>
 
                         </div>
                     </div>
@@ -84,7 +84,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" id="">.Assign to</h5>
+                <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblAssignTo</h5>
             </div>
             <div class="modal-body">
                 <input type="hidden" class="form-control pname" id="technicalSection_assignedModal_setup_type_Id" value="0">
@@ -93,10 +93,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             @*<button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
-                            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue_TechnicalSection" value="Available Employee"><i class=""></i> Available Employee(s) </button>
+                            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue_TechnicalSection" value="Available Employee"><i class=""></i>@ProjectUI.ProjectUI.lblAvailableEmployees </button>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue_TechnicalSection" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+                            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue_TechnicalSection" value="Assigned Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAssignedEmployees</button>
                         </div>
                     </div>
                     <div id="div-technical-section-employees-area">
@@ -127,8 +127,8 @@
                                         <div class="row">
                                             <div class="col-md-12">
 
-                                                <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">Close</button>
-                                                <button type="button" id="projectDetail_btnSave_TechnicalSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Assigned</button>
+                                                <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">@Resources.Global.lblClose</button>
+                                                <button type="button" id="projectDetail_btnSave_TechnicalSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @ProjectUI.ProjectUI.lblAssigned </button>
                                             </div>
                                         </div>
                                     </div>

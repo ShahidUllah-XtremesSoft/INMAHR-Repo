@@ -37,13 +37,13 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
         {
-            field: "projectNumber", title: "ProjectNumber", width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectNumber", title: lblProjectNo, width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a> ",
         },
-        { field: "employeeName", title: "Employee", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "issueDate", title: 'issueDate', hidden: false, width: 20, template: "<span class='badge badge-success'>#:issueDate#</span>", filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "employeeName", title: employeeName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "issueDate", title: lblStartDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:issueDate#</span>", filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
-            field: "status", title: 'status', width: 10, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "status", title: lblStatus, width: 10, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "#if (status == 'Pending') { # <span class='badge badge-danger'>#:status#</span> # } else if(status == 'Completed') {# <span class='badge badge-success'>#:status#</span> # } else {# <span class='badge badge-primary'>#:status#</span> # }#"
 
         },
@@ -51,8 +51,8 @@ var bindGrid = function (inputDataJSON) {
             field: "", width: 10, title: ' ',
             template:
                 //"<a style='cursor:pointer; font-size:20px;' onClick= detailClient(this) title='View Client Detail' ><span class='fa fa-eye'></span></a>" +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title='Edit' ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title='Delete'><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit+" ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete+"><span class='fa fa-trash'></span></a>  "
         },
 
 

@@ -86,7 +86,7 @@ var loadPersonalDocumentsKendoGridResponse = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
             field: "currentFileName",
-            title: "currentFileName",
+            title: lblDocumentAttachment,
             hidden: false,
             width: 20,
             filterable: false,
@@ -103,26 +103,26 @@ var loadPersonalDocumentsKendoGridResponse = function (inputDataJSON) {
             //     " { # <label class='pcoded-badge label label-danger'>No Attachment</label># }else " +
             //     " {# <a  target='_blank' href='/UploadFile/#= " + fileImage +" #'> <img class='' src='/UploadFile/#= " + fileImage+" #' style='width:30%' /></a> #} #"
         },
-        { field: "documentType", title: "documentType", hidden: false, width: 20, filterable: false, },
+        { field: "documentType", title: documentType, hidden: false, width: 20, filterable: false, },
         {
-            field: "releaseDate", title: "releaseDate", hidden: false, width: 20, filterable: false,
+            field: "releaseDate", title: lblIssueDate, hidden: false, width: 20, filterable: false,
             template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
         },
         {
-            field: "expiryDate", title: "expiryDate", hidden: false, width: 20, filterable: false,
+            field: "expiryDate", title: lblExpiryDate, hidden: false, width: 20, filterable: false,
             template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
         },
 
         {
-            field: "expiryIn", title: "expiryIn", hidden: false, width: 15, filterable: false,
+            field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
             template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
 
         },
 
         {
             title: status,
-            field: 'status',
+            field: lblStatus,
             width: 35,
             hidden: false,
             filterable: false,

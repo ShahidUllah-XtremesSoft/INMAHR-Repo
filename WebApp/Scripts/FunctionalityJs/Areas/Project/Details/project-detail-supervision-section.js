@@ -100,7 +100,7 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
             { title: "#", template: "<b>#= ++record #</b>", width: 10, },
             {
                 field: "currentFileName",
-                title: ".File",
+                title: lblDocumentAttachment,
                 hidden: false,
                 width: 20,
                 filterable: false,
@@ -113,20 +113,20 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
 
 
             },
-            { field: "documentType", title: "documentType", hidden: true },
-            { field: "combineDocumentType", title: ".DocumentType", hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "documentType", title: documentType, hidden: true },
+            { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             {
-                field: "releaseDate", title: "issueDate", hidden: false, width: 40, filterable: false,
+                field: "releaseDate", title: lblIssueDate, hidden: false, width: 40, filterable: false,
                 template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
             },
             {
-                field: "expiryDate", title: "expiryDate", hidden: false, width: 40, filterable: false,
+                field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
                 template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
             },
 
             {
-                field: "expiryIn", title: "expiryIn", hidden: false, width: 40, filterable: false,
+                field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
                 template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
                     "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
                     "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
@@ -145,7 +145,7 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
 
             }, {
                 field: "attachmentRemarks",
-                title: '.attachmentRemarks',
+                title: lblRemarks,
                 width: 50,
                 hidden: true,
                 filterable: false,

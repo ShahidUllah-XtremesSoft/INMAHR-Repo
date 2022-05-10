@@ -223,7 +223,7 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
             }, {
                 field: "attachmentRemarks",
-                title: '.attachmentRemarks',
+                title: lblRemarks,
                 width: 50,
                 hidden: true,
                 filterable: false,

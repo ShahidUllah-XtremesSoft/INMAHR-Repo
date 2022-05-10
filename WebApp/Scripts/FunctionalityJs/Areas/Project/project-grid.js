@@ -5,7 +5,12 @@ $(function () {
     // requestFrom = (new URL(location.href)).searchParams.get('from');
     $('#Language').val(_currentLanguage);
     loadProjectGrid();
+    if (JSON.parse(localStorage.getItem('User')).roleName != "User") {
+        $('#btnAddNewProject').show();
+    } else {
+        $('#btnAddNewProject').hide();
 
+    }
 
 });
 
@@ -46,21 +51,25 @@ var bindGrid = function (inputDataJSON) {
         {
             field: "", title: "", width: 30
             , template: "#if(isEmployeeExist =='Yes'){ #" +
-                
-             //   " <a style='font-size:20px;cursor:pointer;' onClick= detailProject(this)  ><span class='fa fa-eye'></span></a> # }" +
+
+                //   " <a style='font-size:20px;cursor:pointer;' onClick= detailProject(this)  ><span class='fa fa-eye'></span></a> # }" +
                 " #} " +
                 "else {# " +
-              
-                " <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>   #}#"
+
+                " <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   #}#"
         },
 
 
 
 
     ];
-    localStorage.setItem('isEmployeeExist', inputDataJSON[0].isEmployeeExist); // Used in child js for menu stepper retrieving ... by /\/\ati
+
+    if (inputDataJSON.length > 0) {
+        localStorage.setItem('isEmployeeExist', inputDataJSON[0].isEmployeeExist); // Used in child js for menu stepper retrieving ... by /\/\ati
+    }
     bindKendoGrid($grid, 100, gridColumns, inputDataJSON, true, 750);
+
 };
 
 function editProject(e) {

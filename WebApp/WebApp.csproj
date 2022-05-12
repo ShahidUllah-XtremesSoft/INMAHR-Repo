@@ -277,6 +277,7 @@
     <Compile Include="Areas\Project\Controllers\ClientController.cs" />
     <Compile Include="Areas\Project\Controllers\IssueController.cs" />
     <Compile Include="Areas\Project\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Project\Controllers\SMSController.cs" />
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LetterController.cs" />
@@ -461,6 +462,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-unit-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesAttendanceLinking\employees-attendance-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Common\clear-application-cache.js" />
@@ -507,6 +509,7 @@
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Technical_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Design_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Supervision_Section_Modal.cshtml" />
+    <Content Include="Areas\Project\Views\SMS\List.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

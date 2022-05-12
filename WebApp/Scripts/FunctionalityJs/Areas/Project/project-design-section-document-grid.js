@@ -99,8 +99,7 @@ function fnedit_DesignSection_GovernmentDocumentById(e) {
 
 
 
-var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJSON) {
-
+var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJSON) {        
     var gridColumns = [
         { field: "attachmentId", title: "attachmentId", hidden: true, width: 20 },
         { field: "DesignSection_Document_Id", title: "DesignSection_Document_Id", hidden: true },
@@ -200,12 +199,11 @@ function fn_delete_DesignSection_GovernmentDocumentById(event) {
             }
         }
     }).then(function (restult) {
-        if (restult.value) {
-
+        if (restult.value) {            
             ajaxRequest({
                 commandName: 'Project_DesignSection_Document_Delete',
                 values: {
-                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage
+                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage, Document: dataItem.combineDocumentType, ProjectId: $('#Id').val()
                 }, CallBack: fn_delete_DesignSection_GovernmentDocumentCallBack
             });
         }

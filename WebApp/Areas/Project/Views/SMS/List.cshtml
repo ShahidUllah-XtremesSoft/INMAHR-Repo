@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "SMS List";
+
+
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+
+            <div class="col-md-12">
+                @*<a href="@Url.Action("Save","SMS")" class="btn btn-success @Resources.Common.PullRight" id=""><i class="fa fa-plus">  </i> @ProjectUI.ProjectUI.lblAddNew</a>*@
+            </div>
+        </div>
+
+
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="sms-grid"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {    
+    <script src="~/Scripts/FunctionalityJs/Areas/SMS/sms-grid.js?+971502324409"></script>
+}
+

@@ -147,6 +147,47 @@ $(function () {
     }
 
 
+    $('#btnSendSMS').click(function () {
+        alert('');
+        if (customValidateForm('frmSendSMS')) {
+
+            buttonAddPleaseWait('btnSendSMS');
+
+            $("#frmSendSMS").ajaxForm();
+            var options = {
+                success: function (response, statusText, jqXHR) {
+                    buttonRemovePleaseWait('btnSendSMS', save, 'save');
+
+                    swal(response);
+                    var messageResponseParse = JSON.parse(response);
+                    if (messageResponseParse.type == undefined) {
+                        messageResponseParse = JSON.parse(messageResponseParse);
+                    } if (messageResponseParse.type == undefined) {
+                        messageResponseParse = JSON.parse(messageResponseParse);
+                    }
+
+                    //  $('#EmployeeId').val(messageResponseParse.insertedId);
+                    //fnEditProjectById(messageResponseParse.insertedId);
+
+                    //   window.location.href = '/Project/Project/List';
+
+                },
+                error: function (xhr, status, error) {
+                    var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                    buttonRemovePleaseWait('btnSendSMS', save, 'save');
+                    alert(errmsg);
+                },
+                complete: function () {
+                    buttonRemovePleaseWait('btnSendSMS', save, 'save');
+                }
+            };
+            $("#frmSendSMS").ajaxSubmit(options);
+        }
+        else {
+            buttonRemovePleaseWait('btnSendSMS', save, 'save');
+            return false;
+        }
+    });
 });
 
 

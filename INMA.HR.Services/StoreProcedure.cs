@@ -295,7 +295,7 @@ public enum ProjectStoreProcedure
     Project_Delete,
     Project_HR_Employee,
     Project_Linked_Employees_By_SectionId,
-    
+    Project_Linked_Employees_By_ProjectId,
 
     // PROJECT UNIT
     Project_Unit_Save,
@@ -415,5 +415,10 @@ public enum ProjectStoreProcedure
     DDL_SUPERVISION_SECTION_Project_Finance,
     DDL_TECHNICAL_SECTION_Project_MainType,
     DDL_TECHNICAL_SECTION_Project_Setup_TypeDetail_Deleted_Get,
+    #endregion
+
+    #region SMS
+    SMS_Save,
+    SMS_GetAll,
     #endregion
 }

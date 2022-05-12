@@ -331,6 +331,7 @@ public enum ProjectStoreProcedure
     Project_Unit_Supervision_Section_Edit_By_Id,
     Project_SupervisionSection_Document_GetById,
     Project_SupervisionSection_Document_Transfer_ById,
+    Project_SupervisionSection_Document_Delete,
 
     #endregion
     #region Client
@@ -347,6 +348,7 @@ public enum ProjectStoreProcedure
     Client_Project_Get,
     // CLIENT MEETING INFORMATION
     Client_Project_Meeting_Get,
+    Client_Detail_By_ProjectId,
 
     #endregion
 

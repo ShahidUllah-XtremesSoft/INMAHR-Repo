@@ -28,7 +28,8 @@ namespace INMA.Projects.Services.Commands
 
                 string html = string.Empty;
                 //string url = @"http://api.m4sms.com/api/sendsms?id=xtremessoft&pass=123456789&mobile=" + receiverNumber + "&brandname=XtremesSoft&msg=" + messageBody + "&language=English";
-                string url = @"http://www.smartsmsgateway.com/api/api_http.php?username=xxxx&password=xxxxx&senderid=SMS%20Title&to=971522324409&text=SMS%20Description&type=text&datetime=2022-05-10";
+                //string url = @"http://www.smartsmsgateway.com/api/api_http.php?username=xxxx&password=xxxxx&senderid=SMS%20Title&to=971522324409&text=SMS%20Description&type=text&datetime=2022-05-10";
+                string url = @"https://www.smartsmsgateway.com/api/api_http.php?username=Sharjaheng&password=shj90&senderid=Sharjah%20Eng&to="+receiverNumber+" &text="+messageBody+"&type=text&datetime="+DateTime.Now+"";
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.AutomaticDecompression = DecompressionMethods.GZip;
 

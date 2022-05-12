@@ -308,12 +308,14 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
 //}
 //***************** FN TRANSFER FILE AREA BY /\/\ATI
+
+var selectedRecordDocumentType = null;
 function fn_transfer_file(event) {
 
     var row = $(event).closest("tr");
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
-    var dataItem = grid.dataItem(row);
-
+    var dataItem = grid.dataItem(row);    
+    selectedRecordDocumentType = dataItem.combineDocumentType;
 
     $('#load-model').click();
     loadProjectSectiondownLists();
@@ -373,6 +375,11 @@ function fn_transfer_file_save() {
     }).then(function (restult) {
 
         if (restult.value) {
+            //alert(selectedRecordDocumentType);
+            //alert($('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").text());
+            //alert($('#Project_DesignSection_SetupDetailTypeDDL').data("kendoDropDownList").text());
+            
+
             ajaxRequest({
                 commandName: 'Project_DesignSection_Document_Transfer_ById', values: {
                     Project_Id: project_Id,
@@ -383,12 +390,15 @@ function fn_transfer_file_save() {
                     EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#DesignSection_Remarks').val(),
+                    FromDocumentType: selectedRecordDocumentType,
+                    ToDocumentType: $('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").text() + ' | ' + $('#Project_DesignSection_SetupDetailTypeDDL').data("kendoDropDownList").text(),
                     Language: $('#Language').val()
                 }, CallBack: fn_transfer_file_saveCallBack
             });
         }
     });
     var fn_transfer_file_saveCallBack = function (response) {
+        selectedRecordDocumentType = null;
         swal(response.Value);
 
         fnLoadDesignSection_Document(project_Id, $('#From_SetupType_Id').val(), $('#Grid-Name').val());

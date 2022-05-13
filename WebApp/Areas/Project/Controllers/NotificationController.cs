@@ -27,6 +27,15 @@ namespace WebApp.Areas.Project.Controllers
         {
             return View();
         }
+
+        public ActionResult Personal()
+        {
+            return View();
+        }
+        public ActionResult Employees()
+        {
+            return View();
+        }
         #endregion
 
 

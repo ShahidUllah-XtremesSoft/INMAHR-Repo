@@ -385,14 +385,16 @@ public enum ProjectStoreProcedure
 
     #region NOTIFICATION
     Notification_Save,
-    Notification_Get,
+    Notification_GetAll,
     Notification_Delete,
     Notification_Details_By_Id,
 
-    #endregion   
-    
-    
-    
+    Notification_Personal_GetAll,
+    Notification_Employee_GetAll,
+    #endregion
+
+
+
     #region COMMENT
     Comment_Save,
     Comment_Get_ByAreaID,

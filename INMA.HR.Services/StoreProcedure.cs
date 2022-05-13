@@ -6,6 +6,7 @@
     Setup_Type_DropdownByTypeName_New,
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
+    Notification_Save,
     #endregion
     DashboardCounter_Select,
     UserLogin_Select,

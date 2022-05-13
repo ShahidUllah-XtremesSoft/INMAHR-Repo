@@ -2,6 +2,7 @@
 using CastleWindsor.Factory.Repository;
 using INMA.HR.Services;
 using INMA.HR.Services.Common;
+using INMA.Projects.Services.Services;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -215,10 +216,11 @@ namespace INMA.Projects.Services.Project
 
                     }
                 }
+                var clientDetailInfo = GetClientDetailByProjectId(model.Client_Id, _response.InsertedId);
                 if (_response.Type.ToString().ToLower() == "success" && model.Id == 0)
                 {
                     //var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)_response.InsertedId);
-                    var clientDetailInfo = GetClientDetailByProjectId(model.Client_Id,_response.InsertedId);
+                    
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
                     //foreach (var employee in projectLinkedEmployees)
@@ -230,6 +232,18 @@ namespace INMA.Projects.Services.Project
                     //messageBody = "Project Info has been " + (model.Id == 0 ? "created" : "updated") + System.Environment.NewLine + "Project # - " + clientDetailInfo.ProjectNumber + System.Environment.NewLine + "Name - " + clientDetailInfo.NameEng + System.Environment.NewLine + "Location - " + clientDetailInfo.Location;
                     messageBody = "Project Info has been " + (model.Id == 0 ? "created" : "updated") + ". " + " Project # - " + clientDetailInfo.ProjectNumber + ". " + " Name - " + clientDetailInfo.NameEng + "" + " Location - " + clientDetailInfo.Location;
                     int _smsResponse = smsService.SendSMS(clientDetailInfo.PhoneNumber1, messageBody, "Project Info", _response.InsertedId, model.Client_Id, 0,0);
+
+                    
+                }
+                //Send Notification
+                var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)_response.InsertedId);
+                NotificationService notificationService = new NotificationService();
+                foreach (var employee in projectLinkedEmployees)
+                {
+                    //messageBody = "Project Info "+(model.Id == 0 ? "created" : "updated") + System.Environment.NewLine+"Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody,"Project Info",_response.InsertedId,model.Client_Id,employee.EmployeeId);
+                    var res = notificationService.Save("Project Info", "Project Info", "Project info "+(model.Id == 0 ? "created" : "updated")+" for project# " + clientDetailInfo.ProjectNumber + " ", "Project info created for project# " + clientDetailInfo.ProjectNumber + " ", "", _response.InsertedId, model.CreatedBy, employee.EmployeeId, model.Language);
+
                 }
                 return _response;
 

@@ -463,7 +463,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-info-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-document-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-unit-save.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Reports\sketch-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
@@ -516,7 +517,8 @@
     <Content Include="Areas\Project\Views\SMS\List.cshtml" />
     <Content Include="Areas\Project\Views\Notification\Personal.cshtml" />
     <Content Include="Areas\Project\Views\Notification\Employees.cshtml" />
-    <Content Include="Areas\Project\Views\Reports\Sketch.cshtml" />
+    <Content Include="Areas\Project\Views\Reports\DesignSection.cshtml" />
+    <Content Include="Areas\Project\Views\Reports\TechnicalSection.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

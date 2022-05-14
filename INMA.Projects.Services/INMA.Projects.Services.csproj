@@ -110,6 +110,7 @@
     <Compile Include="Commands\Client\ClientCommand.cs" />
     <Compile Include="Commands\Comment\CommentCommand.cs" />
     <Compile Include="Commands\Project\ProjectCommand.cs" />
+    <Compile Include="Commands\Reports\ReportsCommand.cs" />
     <Compile Include="Commands\SMS\SMSCommand.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Models\RoleMappingDataModel.cs" />

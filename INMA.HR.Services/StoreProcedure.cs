@@ -426,4 +426,9 @@ public enum ProjectStoreProcedure
     SMS_Save,
     SMS_GetAll,
     #endregion
+
+    #region REPORTS
+    Reports_DesignSection_GetBySectionId,
+    Reports_TechnicalSection_GetBySectionId,
+    #endregion
 }

@@ -9,7 +9,11 @@ namespace WebApp.Areas.Project.Controllers
     public class ReportsController : Controller
     {
         // GET: Project/Reports
-        public ActionResult Sketch()
+        public ActionResult TechnicalSection()
+        {
+            return View();
+        }
+        public ActionResult DesignSection()
         {
             return View();
         }

@@ -829,8 +829,6 @@ namespace INMA.Projects.Services.Project
             {
 
                 object result = new { status = false, returnUrl = "#" };
-
-
                 var model = base.MappedModel(new
                 {
 

@@ -547,6 +547,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meeting End.
+        /// </summary>
+        public static string lblMeetingEnd {
+            get {
+                return ResourceManager.GetString("lblMeetingEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meeting End Time.
         /// </summary>
         public static string lblMeetingEndTime {
@@ -858,6 +867,15 @@ namespace ProjectUI {
         public static string lblSmsList {
             get {
                 return ResourceManager.GetString("lblSmsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Meeting.
+        /// </summary>
+        public static string lblStartMeeting {
+            get {
+                return ResourceManager.GetString("lblStartMeeting", resourceCulture);
             }
         }
         

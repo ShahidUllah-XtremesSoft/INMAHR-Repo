@@ -4,7 +4,11 @@ $(function () {
 
     $('#Language').val(_currentLanguage);
     loadGrid();
-
+    if (JSON.parse(localStorage.getItem('User')).roleName == 'User') {
+        $('.btn-add-new').hide();
+    } else {
+        $('.btn-add-new').show();
+    }
 
 });
 
@@ -28,7 +32,7 @@ var loadGridCallBack = function (inputDataJSON) {
 }
 var bindGrid = function (inputDataJSON) {
     var record = 0;
-
+     
 
 
     var gridColumns = [
@@ -48,20 +52,34 @@ var bindGrid = function (inputDataJSON) {
         { field: "endedTimeFormated", title: lblEndTime, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "startedTime", title: lblStartTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "endedTime", title: lblEndTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+      
         {
-            field: "",width: 10,title: ' ',
-            template:
-                //"<a style='cursor:pointer; font-size:20px;' onClick= detailClient(this) title='View Client Detail' ><span class='fa fa-eye'></span></a>" +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
+            field: "", title: "", width: 20
+            , template: "#if(isEmployeeExist =='Yes'){ #" +
+
+             //   " <button type='button' id='start' onclick='fn_StartMeeting(this);' class='btn-sm btn btn-danger waves-effect'style='font-size: smaller;'>" + lblStartMeeting + "</button>" +
+                "  " +
+                " #} " +
+                "else {# " +
+
+                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>     #}#"
         },
 
-
-
+         
     ];
-
+    
     bindKendoGrid($grid, 100, gridColumns, inputDataJSON, true, 750);
 };
+//function fn_StartMeeting(e) {
+    
+//    var row = $(e).closest("tr");
+//    var grid = $("#" + $grid).data("kendoGrid");
+//    var dataItem = grid.dataItem(row);
+    
+//    $('#load-modal').click();
+//    $('.projectNo').text(dataItem.projectNumber);
+//}
 
 function fneditById(e) {
     var row = $(e).closest("tr");

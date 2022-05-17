@@ -76,6 +76,7 @@ function editProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+
     window.location.href = '/Project/Project/Save?id=' + dataItem.id + '';
 }
 
@@ -83,7 +84,15 @@ function detailProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
+    var check_isEmployeeExist = localStorage.getItem('isEmployeeExist');
+    if (check_isEmployeeExist == "No") {
+
+        window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
+    } else {
+      
+        window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
+
+    }
 }
 
 

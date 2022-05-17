@@ -123,6 +123,9 @@
   <data name="btnProcess" xml:space="preserve">
     <value>Process</value>
   </data>
+  <data name="btnReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
   <data name="btnSave" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -251,6 +254,9 @@
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>Reset</value>
+  </data>
+  <data name="lblSeconds" xml:space="preserve">
+    <value>Second(s)</value>
   </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>Start Date</value>

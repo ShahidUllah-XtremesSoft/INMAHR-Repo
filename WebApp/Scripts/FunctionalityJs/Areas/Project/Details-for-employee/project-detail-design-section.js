@@ -1,28 +1,7 @@
-﻿/*
-$(function () {
-    $("#design_section_progressBar").kendoProgressBar({
-        min: 0, max: 0,
-        type: "percent",
-        animation: {
-            duration: 10
-        }
-        //  change: onChange,
-        // complete: onComplete
-    });
-});
-
-
-*/
+﻿
 var project_Id = (new URL(location.href)).searchParams.get('id');
-/*
 
-************LOAD DESING SECTION SUB STEPPER ********************* By /\/\ATI
-
-*/
-
-
-//function loadProjectSectiondownList() { ajaxRequest({ commandName: 'DDL_DESIGN_SECTION_Project_MainType', values: { Language: _currentLanguage }, CallBack: fnloadloadProjectSectiondownListCallBack }); }
-function loadProjectSectiondownList(callingArea) {
+ function loadProjectSectiondownList(callingArea) {
     var employee_Id = 0;
     var checkResult = localStorage.getItem('isEmployeeExist');
     if (checkResult == 'Yes') {
@@ -35,49 +14,7 @@ function loadProjectSectiondownList(callingArea) {
 }
 function fnloadloadProjectSectiondownListCallBack(response) { stepper_DESIGN_SECTION(response) }
 
-function stepper_DESIGN_SECTION(response) {
-    /*
-    var designSection_Stepper_Validation_data = JSON.parse(localStorage.getItem('DesignSection_Stepper_Validation_data'));
-
-    var step_Columns = []
-
-
-    for (var i = 1; i < JSON.parse(response.Value).length; i++) {
-        for (var j = 0; j < designSection_Stepper_Validation_data.length; j++) {
-
-            if (JSON.parse(response.Value)[i].name == designSection_Stepper_Validation_data[j].setup_typeName) {
-                if (parseInt(designSection_Stepper_Validation_data[j].totalDays) <= 0) {
-
-
-                    error_PROJECT_MAIN_SECTION_Design_Stepper = true;
-                    error_DESIGN_SECTION_Stepper = true;
-                    selected_DESIGN_SECTION_Stepper = false;
-
-                    step_Columns.push({
-                        Id: JSON.parse(response.Value)[i].id,
-                        label: JSON.parse(response.Value)[i].name,
-                        error: error_DESIGN_SECTION_Stepper,
-                        selected: selected_DESIGN_SECTION_Stepper,
-                    });
-
-
-                } else {
-                    error_PROJECT_MAIN_SECTION_Design_Stepper = false;
-                    error_DESIGN_SECTION_Stepper = false;
-                    selected_DESIGN_SECTION_Stepper = false;
-                }
-
-            }
-
-
-        }
-
-    }
-   
-   */
-
-
-
+function stepper_DESIGN_SECTION(response) { 
     var step_Columns = []
 
     for (var i = 0; i < JSON.parse(response.Value).length; i++) {
@@ -113,8 +50,7 @@ function stepper_DESIGN_SECTION(response) {
     }
     setTimeout(function () {
 
-        if (localStorage.getItem('DesignSection_Menu_Area') != '') {
-
+        if (localStorage.getItem('DesignSection_Menu_Area') != '') { 
             progressbar_subSection(JSON.parse(response.Value), localStorage.getItem('DesignSection_Menu_Area'));
         }
     }, 100);
@@ -153,17 +89,13 @@ function fnLoadDesignSection_Document(project_Id, Setup_Type_Id, grid_Id) {
 
 var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
     var pass_GridName = localStorage.getItem('grid_id');
-    //console.log(JSON.parse(inputDataJSON.Value))
 
     if (pass_GridName != "") {
 
         var gridTemplate = '';
-        //  if (pass_GridName == 'grid-project-initial-sketch-document') {
+
         gridTemplate = "<button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: small;'>Transfer</button>";
 
-        // } else {
-        //      gridTemplate = ''//"<span class='badge badge-success'>Not found</span>";
-        // }
 
 
         var gridColumns = [
@@ -232,30 +164,10 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
             },
             {
                 field: "", title: "", width: 60 //, template: gridTemplate,
-                , template: "#if(statusForCondition =='Transfered'){ #" +
-                    "<button type='button' onclick='fn_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;'>" + lblAssign + "</button> " +
-                    " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> # }" +
-                    "else {# " +
-                    " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> #}#"
+
+                , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_GovernmentDocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
             },
-            //{
-            //    field: "", title: "", width: 20,
-            //    template: "#if ('pass_GridName' == 'grid-project-initial-sketch-document') { # <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: small;'>Transfer</button> # }" +
-            //        "else " +
-            //        "{# <span class='badge badge-success'>Not found</span> # }#"
 
-            //},
-
-            //{
-            //    field: "",
-            //    width: 50,
-            //    title: "Action",
-            //    template: "" +
-            //        "<button type='button' onclick='LoadRecordByIDAwaitingSupplier(this);' class='btn btn-sm btn-success  waves-effect  f-w-600 d-inline-block' title='View Detail'><i class='fas fa-eye'></i></button> | " +
-            //        "<button type='button' onclick='fn_transfer_file(this);' class='btn-sm btn btn-success text-white   waves-effect  f-w-600 d-inline-block save_btn'>Approve</button> | " +
-            //        "<button type='button' onclick='fnCancelPayment(this);' class='btn-sm btn btn-danger text-white   waves-effect  f-w-600 d-inline-block'>Cancel</button>"
-
-            //}
 
 
         ];
@@ -264,51 +176,72 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
     }
 };
 
+function fn_delete_DesignSection_GovernmentDocumentById(event) {
+     
+    var row = $(event).closest("tr");
+    var gridId = $(event).closest("div").parent()[0].id;
+    var grid = $("#" + gridId).data("kendoGrid");
+    localStorage.setItem('grid__id', gridId);
+    var dataItem = grid.dataItem(row); 
+    Swal.fire({
 
-//function fn_transfer_file(event) {
-//    debugger
-//    var row = $(event).closest("tr");
-//    var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
-//    var dataItem = grid.dataItem(row);
-//    Swal.fire({
+        title: areYouSureTitle,
+        text: doYouReallyWantToDeletThisRecord,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
+        }
+    }).then(function (restult) {
+        if (restult.value) {
 
-//        title: areYouSureTitle,
-//        text: doYouReallyWantToDeletThisRecord,
-//        icon: 'question',
-//        showCancelButton: true,
-//        confirmButtonColor: '#5cb85c',
-//        cancelButtonColor: '#d9534f',
-//        confirmButtonText: btnYesText,
-//        cancelButtonText: btnNoText,
-//        buttons: {
-//            cancel: {
-//                text: "No",
-//                value: null,
-//                visible: true,
-//                className: "btn btn-danger",
-//                closeModal: true
-//            },
-//            confirm: {
-//                text: "Yes",
-//                value: true,
-//                visible: true,
-//                className: "btn btn-warning",
-//                closeModal: true
-//            }
-//        }
-//    }).then(function (restult) {
-//        if (restult.value) {
-//            ajaxRequest({ commandName: 'Csslient_Delete', values: { Id: dataItem.id, UserId: JSON.parse(localStorage.getItem('User')).id, Language: $('#Language').val() }, CallBack: deleteByIdCallBack });
-//        }
-//    });
-//    var deleteByIdCallBack = function (response) {
-//        swal(response.Value);
-//        loadClientGrid();
-//    }
+            ajaxRequest({
+                commandName: 'Project_DesignSection_Document_Delete',
+                values: {
+                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage
+                }, CallBack: fn_delete_DesignSection_GovernmentDocumentCallBack
+            });
+        }
+    });
+    var fn_delete_DesignSection_GovernmentDocumentCallBack = function (response) {
+         
+        $('#DesignSection_Document_Id').val(0);
+        swal(response.Value);
+         
+        fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, localStorage.getItem('grid__id'));
+        $('#frmAddUpdate_DesignSection_Document')[0].reset();
+        
+         
+        localStorage.grid__id = '';
+        
+    }
 
-//}
-//***************** FN TRANSFER FILE AREA BY /\/\ATI
-function fn_transfer_file(event) {
+}
+
+$('#btn-load-upload-document').click(function () {
+    $('#load-model').click();
+    loadProjectSectiondownLists();
+    loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
+});
+/*
+ function fn_transfer_file(event) {
 
     var row = $(event).closest("tr");
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
@@ -326,20 +259,68 @@ function fn_transfer_file(event) {
     $('#Grid-Name').val(event.getAttribute('data-grid-name'));
 
 }
+*/
 $('.clearField').click(function () {
     $('#Attachment_Id').val(0);
     $('#From_SetupType_Id').val(0);
     $('#Grid-Name').val(0);
 });
-$('#btn-transfer').click(function () {
+//$('#btn-design-section-upload-document').click(function () {
 
-    if (customValidateForm('frmTransferDataModal')) {
-        fn_transfer_file_save();
+//    if (customValidateForm('frmAddUpdate_DesignSection_Document')) {
+//        fn_transfer_file_save();
+//        return false;
+//    }
+//});
+//|Click Event
+$('#btn-design-section-upload-document').click(function () {
+
+    $('#DesignSection_Document_ProjectId').val(project_Id);
+    $('#DesignSection_Document_Language').val(_currentLanguage);
+    $('#DesignSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    if (customValidateForm('frmAddUpdate_DesignSection_Document')) {
+        if (!firstDateShouldBeGreaterThanSecondDate($('#DesignSection_Document_StartDate').val(), $('#DesignSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+            return false;
+        }
+        buttonAddPleaseWait('btn-design-section-upload-document');
+
+        $("#frmAddUpdate_DesignSection_Document").ajaxForm();
+        var options = {
+            success: function (response, statusText, jqXHR) {
+                buttonRemovePleaseWait('btn-design-section-upload-document', save, 'save');
+
+                document.getElementById("frmAddUpdate_DesignSection_Document").reset();
+                swal(response);
+
+                var messageResponseParse = JSON.parse(response);
+                if (messageResponseParse.type == undefined) {
+                    messageResponseParse = JSON.parse(messageResponseParse);
+                } if (messageResponseParse.type == undefined) {
+                    messageResponseParse = JSON.parse(messageResponseParse);
+                } 
+               // fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, localStorage.getItem('grid__id'));
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                buttonRemovePleaseWait('btn-design-section-upload-document', save, 'save');
+                alert(errmsg);
+            },
+            complete: function () {
+                buttonRemovePleaseWait('btn-design-section-upload-document', save, 'save');
+            }
+        };
+        $("#frmAddUpdate_DesignSection_Document").ajaxSubmit(options);
+    }
+    else {
+        buttonRemovePleaseWait('btn-design-section-upload-document', save, 'save');
         return false;
     }
 });
 
+//|End Click Event
 
+/*
 function fn_transfer_file_save() {
 
 
@@ -397,12 +378,13 @@ function fn_transfer_file_save() {
     }
 
 }
-
+*/
 //***************** FN TRANSFER FILE AREA END------------------------BY /\/\ati
 
 
 
 //***************** FN ASSIGN   AREA START---------------------------BY /\/\ati
+ /*
 function fn_open_assign_modal(event) {
 
     var row = $(event).closest("tr");
@@ -418,6 +400,8 @@ function fn_open_assign_modal(event) {
     //$('#Grid-Name').val(event.getAttribute('data-grid-name'));
 
 }
+*/
+/*
 function fnloadAssignedEmployees_DesignSection(setup_TypeDetail_Id) {
 
 
@@ -497,7 +481,7 @@ function deleteAssignedEmployeeById_DesignSection(event) {
     }
 
 }
-
+*/
 
 //***************** FN ASSIGN   AREA END---------------------------BY /\/\ati
 
@@ -551,21 +535,16 @@ var loadProject_DesignSection_SubSection_DDLCallBackk = function (loadjQueryDrop
 }
 function onSelect_DesignSection(e) {
     var selected_Id = e.dataItem.id;
+     
+    $('#Project_DesignSection_Entity_Id').val(selected_Id); 
 
-    $('#Project_DesignSection_Entity_Id').val(selected_Id);
 
-    /*
-    var selected_Text = e.dataItem.name;
-    
-    if (selected_Text == 'Architecture Engineer' || selected_Text == 'Engineer') { 
-        fnLoadDesignSectionArea($('.checkbtnValue_DesignSection.active')[0]);
-    }
-    */
+  
 };
-
+/*
 function fnLoadDesignSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
-     
-     
+
+
     var areaname = e.value;
     $('.checkbtnValue_DesignSection').removeClass('active')
     $(e).addClass('active')
@@ -607,8 +586,9 @@ function fnLoadDesignSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
 
     }
 }
-
+*/
 // --------------------- LOAD ALL EMPLOYEES START----------------------BY /\/\ati
+/*
 function loadloadAllEmployees_DesignSection(setup_TypeDetail_Id, setup_Type_Id) {
 
     ajaxRequest({
@@ -630,8 +610,7 @@ var loadloadAllEmployees_DesignSectionCallBack = function (inputDataJSON) {
         { field: "id", title: "id", width: 10, hidden: true },
         {
             field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-            //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
-        },
+         },
         { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "professionName", title: lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
@@ -717,6 +696,8 @@ var fn_project_save_Multiple_employee_callback = function (response) {
     loadloadAllEmployees_DesignSection($('#assignedModal_setup_type_detail_Id').val(), $('#assignedModal_setup_type_Id').val());
 
 }
+ */
+
 // --------------------- LOAD ALL EMPLOYEES END----------------------BY /\/\ati
 
 

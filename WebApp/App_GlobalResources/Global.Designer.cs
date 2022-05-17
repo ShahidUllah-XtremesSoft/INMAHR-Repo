@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string btnReset {
+            get {
+                return ResourceManager.GetString("btnReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string btnSave {
@@ -462,6 +471,15 @@ namespace Resources {
         internal static string lblReset {
             get {
                 return ResourceManager.GetString("lblReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second(s).
+        /// </summary>
+        internal static string lblSeconds {
+            get {
+                return ResourceManager.GetString("lblSeconds", resourceCulture);
             }
         }
         

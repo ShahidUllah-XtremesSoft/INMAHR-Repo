@@ -123,6 +123,9 @@
   <data name="btnProcess" xml:space="preserve">
     <value>قيد الاجراء</value>
   </data>
+  <data name="btnReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
   <data name="btnSave" xml:space="preserve">
     <value>حفظ</value>
   </data>
@@ -246,6 +249,9 @@
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>إعادة ضبط</value>
+  </data>
+  <data name="lblSeconds" xml:space="preserve">
+    <value>Second(s)</value>
   </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>

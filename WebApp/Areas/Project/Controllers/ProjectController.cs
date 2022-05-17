@@ -22,6 +22,12 @@ namespace WebApp.Areas.Project.Controllers
         public ActionResult Details()
         {
             return View();
+        }  
+        //Below Detail is used for employees ..
+        public ActionResult Detail()
+        {
+            return View("~/Areas/Project/Views/Project/Details-for-employee.cshtml");
+
         }
         public ActionResult LoadAllEmployees()
         {

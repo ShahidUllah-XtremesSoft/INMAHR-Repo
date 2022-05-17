@@ -59,6 +59,15 @@ function getAssignedMenusForRoleCallBack(roleMenus) {
     localStorage.setItem('Menus', (roleMenus.Value));
     window.location.href = "/HumanResource/Employee/Profile";
 
+    /*
+    if ($('#MainApplicationModule_Id').val() == "1") { // 1 is HR module id in DB
+
+    window.location.href = "/HumanResource/Employee/Profile";
+    } else if ($('#MainApplicationModule_Id').val() == "2") { // 1 is Project module id in DB
+        window.location.href = "/Project/Employee/Profile";
+
+    }
+    */
 }
 
 

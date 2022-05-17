@@ -248,47 +248,50 @@
 
                     <div class="card-block">
                         <div class="row">
-                           @* <h5>  .MeetingInfo<span></span></h5>*@
+                            @* <h5>  .MeetingInfo<span></span></h5>*@
                             @*<div class="card-footer">
-                                <div class="col-sm-2">
+                                    <div class="col-sm-2">
 
-                                    <span class="badge    ">.Meeting Date:</span>
-                                    <span class="badge badge-warning    meeting-date">  </span>
-
-
-                                </div>
-                                <div class="col-sm-2">
+                                        <span class="badge    ">.Meeting Date:</span>
+                                        <span class="badge badge-warning    meeting-date">  </span>
 
 
-
-                                    <span class="badge    ">.Meeting Start Time:</span>
-                                    <span class="badge badge-warning    meeting-start-timing">  </span>
+                                    </div>
+                                    <div class="col-sm-2">
 
 
 
-                                </div>
-                                <div class="col-sm-2">
-
-                                    <span class="badge">.Meeting End Time:</span>
-                                    <span class="badge badge-warning    meeting-end-timing">  </span>
+                                        <span class="badge    ">.Meeting Start Time:</span>
+                                        <span class="badge badge-warning    meeting-start-timing">  </span>
 
 
-                                </div>
-                                <div class="col-sm-4"> </div>
-                                <div class="col-sm-2  " style="text-align: end;">
 
-                                    <span class="badge">.Status:</span>
-                                    <span class="badge badge-success    meeting-statsus"> Active  </span>
+                                    </div>
+                                    <div class="col-sm-2">
+
+                                        <span class="badge">.Meeting End Time:</span>
+                                        <span class="badge badge-warning    meeting-end-timing">  </span>
 
 
-                                </div>
-                            </div>*@
+                                    </div>
+                                    <div class="col-sm-4"> </div>
+                                    <div class="col-sm-2  " style="text-align: end;">
+
+                                        <span class="badge">.Status:</span>
+                                        <span class="badge badge-success    meeting-statsus"> Active  </span>
+
+
+                                    </div>
+                                </div>*@
 
                         </div><br />
 
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <p>  <b id="txt-subject">@ProjectUI.ProjectUI.lblOverview</b></p><hr />
+                                <p>
+                                    <b id="txt-subject">@ProjectUI.ProjectUI.lblOverview</b>
+                                    <button type='button'  onclick='fn_StartMeeting(this);' class='btn-sm btn btn-danger waves-effect pull-right' style='font-size: smaller;'>@ProjectUI.ProjectUI.lblStartMeeting</button>
+                                </p><hr />
                             </div>
                         </div>
                         <br />
@@ -337,7 +340,7 @@
                                 <div class="col-sm-2  " style="text-align: end;">
 
                                     <span class="badge">.@Resources.Global.lblStatus:</span>
-                                    <span class="badge badge-danger    meeting-statsus">   </span>
+                                    <span class="badge badge-danger    meeting-status">   </span>
 
 
                                 </div>
@@ -355,6 +358,9 @@
     </div>
 </div>
 
+@{
+    Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Meeting/_MeetingStartEnd.cshtml");
+}
 
 
 

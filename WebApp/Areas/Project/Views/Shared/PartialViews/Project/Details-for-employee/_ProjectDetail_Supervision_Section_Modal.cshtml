@@ -1,0 +1,115 @@
+﻿@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD Supervision SECTION MODEL FOR UPLOADING DOCUMENT ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY /\/\ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-supervision-section-model" data-toggle="modal" data-target="#modal-supervision-section-transfer-to-section"></button>
+<div class="modal fade" id="modal-supervision-section-transfer-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblUploadDocument</h5>
+            </div>
+            <div class="modal-body"  >
+                <form id="frmAddUpdate_SupervisionSection_Document" name="frmAddUpdate_SupervisionSection_Document" action="/services/Xtreme/multipart" method="post">
+
+
+                    <input type="hidden" name="SupervisionSection_Document_Id" id="SupervisionSection_Document_Id" value="0">
+                    <input type="hidden" name="SupervisionSection_Document_CreatedBy" id="SupervisionSection_Document_CreatedBy" value="0">
+                    <input type="hidden" name="SupervisionSection_Document_ProjectId" id="SupervisionSection_Document_ProjectId" value="0">
+                    <input type="hidden" name="type" id="type" value="Project_SupervisionSection_Document_Save">
+                    <input type="hidden" name="SupervisionSection_Document_Language" id="SupervisionSection_Document_Language" class="Language" value="en-US">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                <div id="SupervisionSection_ParentSection_container">
+                                    <input class="form-control pname" id="Project_SupervisionSection_Parent_Type_DDL" required>
+                                </div>
+                                <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Setup_SetupType_Id" id="Project_SupervisionSection_Setup_SetupType_Id" value="0">
+                                <input type="hidden" class="form-control pname" id="SupervisionSection_From_SetupType_Id" value="0">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <div id="SupervisionSection_SubSection_container">
+                                    <input type="text" class="form-control pname" name="Project_SupervisionSection_SetupDetailTypeDDL" id="Project_SupervisionSection_SetupDetailTypeDDL" required>
+                                    <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Entity_Id" id="Project_SupervisionSection_Entity_Id" value="0">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="col-form-label">Document/Attachment  </label><br>
+                                    <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required="" id="SupervisionSectionGovernmentDocumentFile" onchange="validatePersonalDocument('SupervisionSectionGovernmentDocumentFile');">
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+
+                                    <input class="form-control" type="date" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" required />
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                                    <input class="form-control" type="date" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" required />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                    <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                       
+
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div id="">
+
+                            <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">@Resources.Global.lblClose</button>
+                            <button type="button" id="btn-supervision-section-upload-document" class="btn   btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+
+@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+

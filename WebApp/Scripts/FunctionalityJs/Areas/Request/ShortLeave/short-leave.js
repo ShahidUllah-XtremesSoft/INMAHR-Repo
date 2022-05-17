@@ -325,7 +325,11 @@ var fnLoadShortLeaveDropdownListCallBack = function (response) {
         //    $("#LeaveTypeName").data("kendoDropDownList").text(this.text());
         //}
     });
+    //var ddl = $("#LeaveTypeId").data("kendoDropDownList"); 
+    //var oldData = ddl.dataSource.data(); 
+    //ddl.dataSource.remove(oldData[0]); //remove first item
 
+  //  ddl.dataSource.remove(oldData[oldData.length - 1]); //remove last item
 }
 
 //$("#LeaveTypeId").data("kendoDropDownList").text();

@@ -279,6 +279,9 @@
   <data name="lblMeetingDetails" xml:space="preserve">
     <value>Meeting Details</value>
   </data>
+  <data name="lblMeetingEnd" xml:space="preserve">
+    <value>Meeting End</value>
+  </data>
   <data name="lblMeetingEndTime" xml:space="preserve">
     <value>Meeting End Time</value>
   </data>
@@ -383,6 +386,9 @@
   </data>
   <data name="lblSmsList" xml:space="preserve">
     <value>SMS List</value>
+  </data>
+  <data name="lblStartMeeting" xml:space="preserve">
+    <value>Start Meeting</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>

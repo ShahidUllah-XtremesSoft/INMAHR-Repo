@@ -6,6 +6,7 @@
     Setup_Type_DropdownByTypeName_New,
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
+    Notification_Save,
     #endregion
     DashboardCounter_Select,
     UserLogin_Select,
@@ -295,7 +296,7 @@ public enum ProjectStoreProcedure
     Project_Delete,
     Project_HR_Employee,
     Project_Linked_Employees_By_SectionId,
-    
+    Project_Linked_Employees_By_ProjectId,
 
     // PROJECT UNIT
     Project_Unit_Save,
@@ -331,6 +332,7 @@ public enum ProjectStoreProcedure
     Project_Unit_Supervision_Section_Edit_By_Id,
     Project_SupervisionSection_Document_GetById,
     Project_SupervisionSection_Document_Transfer_ById,
+    Project_SupervisionSection_Document_Delete,
 
     #endregion
     #region Client
@@ -347,6 +349,7 @@ public enum ProjectStoreProcedure
     Client_Project_Get,
     // CLIENT MEETING INFORMATION
     Client_Project_Meeting_Get,
+    Client_Detail_By_ProjectId,
 
     #endregion
 
@@ -382,14 +385,16 @@ public enum ProjectStoreProcedure
 
     #region NOTIFICATION
     Notification_Save,
-    Notification_Get,
+    Notification_GetAll,
     Notification_Delete,
     Notification_Details_By_Id,
 
-    #endregion   
-    
-    
-    
+    Notification_Personal_GetAll,
+    Notification_Employee_GetAll,
+    #endregion
+
+
+
     #region COMMENT
     Comment_Save,
     Comment_Get_ByAreaID,
@@ -415,5 +420,15 @@ public enum ProjectStoreProcedure
     DDL_SUPERVISION_SECTION_Project_Finance,
     DDL_TECHNICAL_SECTION_Project_MainType,
     DDL_TECHNICAL_SECTION_Project_Setup_TypeDetail_Deleted_Get,
+    #endregion
+
+    #region SMS
+    SMS_Save,
+    SMS_GetAll,
+    #endregion
+
+    #region REPORTS
+    Reports_DesignSection_GetBySectionId,
+    Reports_TechnicalSection_GetBySectionId,
     #endregion
 }

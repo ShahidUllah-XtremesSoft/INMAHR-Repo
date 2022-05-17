@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Design Section Report";
+
+
+}
+
+
+<div class="card">
+    <div class="card-block">
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="col-form-label">Type</label>
+                    <input type="text" class="form-control" id="DesignSection" name="DesignSection" value="" />
+                </div>
+
+            </div>
+            @*<div class="col-md-2">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblStartDate</label>
+                        <input type="text" class="form-control" id="StartDate" name="StartDate" value="" />
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblEndDate</label>
+                        <input type="text" class="form-control" id="EndDate" name="EndDate" value="" />
+                    </div>
+
+                </div>*@
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="grid"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Reports/design-section-report.js?+971502324409"></script>
+}
+

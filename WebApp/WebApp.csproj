@@ -277,6 +277,8 @@
     <Compile Include="Areas\Project\Controllers\ClientController.cs" />
     <Compile Include="Areas\Project\Controllers\IssueController.cs" />
     <Compile Include="Areas\Project\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Project\Controllers\ReportsController.cs" />
+    <Compile Include="Areas\Project\Controllers\SMSController.cs" />
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LetterController.cs" />
@@ -433,7 +435,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmpoyeeLeaveBalancePartialViews.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-test.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Notification\employees-notification.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Notification\notification-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Notification\employees-notification-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Notification\notification-grid.js" />
@@ -448,6 +450,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-supervision-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-technical-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Notification\personal-notification.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-supervision-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-technical-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-design-section.js" />
@@ -464,8 +467,11 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-info-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-document-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-unit-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesAttendanceLinking\employees-attendance-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Common\clear-application-cache.js" />
@@ -512,6 +518,11 @@
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Technical_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Design_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details\_ProjectDetail_Supervision_Section_Modal.cshtml" />
+    <Content Include="Areas\Project\Views\SMS\List.cshtml" />
+    <Content Include="Areas\Project\Views\Notification\Personal.cshtml" />
+    <Content Include="Areas\Project\Views\Notification\Employees.cshtml" />
+    <Content Include="Areas\Project\Views\Reports\DesignSection.cshtml" />
+    <Content Include="Areas\Project\Views\Reports\TechnicalSection.cshtml" />
     <Content Include="Areas\Project\Views\Project\Details-for-employee.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details-for-employee\_ProjectDetail_Design_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details-for-employee\_ProjectDetail_Supervision_Section_Modal.cshtml" />

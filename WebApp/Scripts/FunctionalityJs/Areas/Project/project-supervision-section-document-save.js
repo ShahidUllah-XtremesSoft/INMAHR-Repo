@@ -17,13 +17,17 @@ $(function () {
     renderKendoDatePickerWithNewFormat('ExtendedConstructionStartDate');
     renderKendoDatePickerWithNewFormat('ExtendedConstructionEndDate');
     //|End Date Picker
+    $('#SupervisionSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    $('#SupervisionSection_Update_Area_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);    
+
 });
 function fnLoadSupervisionSectionReady() {
 
     $('#SupervisionSection_Document_Language').val(_currentLanguage);
     $('#SupervisionSection_Update_Area_Language').val(_currentLanguage);
     $('#SupervisionSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-
+    $('#SupervisionSection_Update_Area_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    
 
     loadProject_Supervision_Section_dropdownList();
     loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
@@ -92,8 +96,7 @@ $('#btn-save-supervision-section-government-documents').click(function () {
     }
 });
 //btn-save-supervision-update-section-area
-$('#btn-save-supervision-update-section-area').click(function () {
-
+$('#btn-save-supervision-update-section-area').click(function () {    
     if (customValidateForm('frmAddUpdate_SupervisionSection_Update_area')) {
         if (!firstDateShouldBeGreaterThanSecondDate($('#ConstructionStartDate').val(), $('#ConstructionEndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
             return false;

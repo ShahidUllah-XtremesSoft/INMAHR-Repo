@@ -11,8 +11,8 @@ namespace INMA.Projects.Services.Project
 
     #region Notification GET
 
-    [Command(Name = "Notification_Get")]
-    public class Notification_GetCommand : CamelCommandBase
+    [Command(Name = "Notification_Personal_GetAll")]
+    public class Notification_Personal_GetAllCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
@@ -25,6 +25,8 @@ namespace INMA.Projects.Services.Project
                 LoggedInUser = 0,
                 RoleId = 0,
                 LoggedInEmployeeId = 0,
+                StartDate = string.Empty,
+                EndDate = string.Empty,
                 Language = string.Empty
             }, viewInput);
 
@@ -34,7 +36,36 @@ namespace INMA.Projects.Services.Project
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Notification_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Notification_Personal_GetAll.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    [Command(Name = "Notification_Employee_GetAll")]
+    public class Notification_Employee_GetAllCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0,
+                StartDate = string.Empty,
+                EndDate = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Notification_Employee_GetAll.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
         }
     }

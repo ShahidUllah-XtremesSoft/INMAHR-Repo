@@ -113,6 +113,7 @@
 <form id="frmAddUpdate_SupervisionSection_Update_area" name="frmAddUpdate_SupervisionSection_Update_area" action="/services/Xtreme/multipart" method="post">
     <input type="hidden" name="type" id="type" value="Project_SupervisionSection_Area_Save">
     <input type="hidden" name="SupervisionSection_Update_Area_Language" id="SupervisionSection_Update_Area_Language" value="">
+    <input type="hidden" name="SupervisionSection_Update_Area_CreatedBy" id="SupervisionSection_Update_Area_CreatedBy" value="0" />
     <input type="hidden" name="SupervisionSection_Update_Area_ProjectId" id="SupervisionSection_Update_Area_ProjectId" value="0">
     <div class="div-Supervision-section-update-supervision-area form-control" style="display:none;">
 
@@ -162,7 +163,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="col-form-label lbl-ExtendedConstructionStartDate-startDate">@ProjectUI.ProjectUI.lblExtendedConstructionStartDate</label> <span style="color:red">*</span> <br />
-                            <input class="form-control" type="datetime" id="ExtendedConstructionStartDate" name="ExtendedConstructionStartDate"   />
+                            <input class="form-control" type="datetime" id="ExtendedConstructionStartDate" name="ExtendedConstructionStartDate" />
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -176,7 +177,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="col-form-label lbl-ExtendedConstructionEndDate-endDate">@ProjectUI.ProjectUI.lblExtendedConstructionEndDate</label> <span style="color:red">*</span> <br />
-                            <input class="form-control" type="datetime" id="ExtendedConstructionEndDate" name="ExtendedConstructionEndDate"  />
+                            <input class="form-control" type="datetime" id="ExtendedConstructionEndDate" name="ExtendedConstructionEndDate" />
                         </div>
                     </div>
                 </div>
@@ -187,10 +188,10 @@
                 <div class="form-group">
                     <label class="col-form-label">@ProjectUI.ProjectUI.lblFinance</label><span style="color:red"> *</span><br />
                     @*<select class="form-control" multiple="multiple" name="Project_SupervisionSection_Finance_DDL" id="Project_SupervisionSection_Finance_DDL" required></select>*@
-                <div id="avoidMultipleDDLappends">
-                    <input type="text" class="form-control pname" name="Project_SupervisionSection_Finance_DDL[]" id="Project_SupervisionSection_Finance_DDL" multiple>
-                    <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Finance_Id" id="Project_SupervisionSection_Finance_Id" value="0">
-                </div>
+                    <div id="avoidMultipleDDLappends">
+                        <input type="text" class="form-control pname" name="Project_SupervisionSection_Finance_DDL[]" id="Project_SupervisionSection_Finance_DDL" multiple>
+                        <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Finance_Id" id="Project_SupervisionSection_Finance_Id" value="0">
+                    </div>
                 </div>
             </div>
             <div class="col-md-6"> </div>

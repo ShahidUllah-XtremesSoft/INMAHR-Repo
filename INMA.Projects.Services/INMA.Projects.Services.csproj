@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Common\SMSService.cs" />
     <Compile Include="Commands\Contractor\ClientCommand.cs" />
     <Compile Include="Commands\Notification\NotificationCommand.cs" />
     <Compile Include="Commands\Issue\IssueCommand.cs" />
@@ -109,9 +110,12 @@
     <Compile Include="Commands\Client\ClientCommand.cs" />
     <Compile Include="Commands\Comment\CommentCommand.cs" />
     <Compile Include="Commands\Project\ProjectCommand.cs" />
+    <Compile Include="Commands\Reports\ReportsCommand.cs" />
+    <Compile Include="Commands\SMS\SMSCommand.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Models\RoleMappingDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\NotificationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INMA.HR.Services\INMA.HR.Services.csproj">
@@ -119,6 +123,5 @@
       <Name>INMA.HR.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

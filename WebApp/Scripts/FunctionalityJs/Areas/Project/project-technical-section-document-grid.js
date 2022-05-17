@@ -153,7 +153,7 @@ function fn_delete_TechnicalSection_DocumentById(event) {
             ajaxRequest({
                 commandName: 'Project_TechnicalSection_Document_Delete',
                 values: {
-                    Id: dataItem.attachmentId,CreatedBy: JSON.parse(localStorage.getItem('User')).id,Language: _currentLanguage
+                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage, Document: dataItem.combineDocumentType, ProjectId: $('#Id').val()
                 }, CallBack: fn_delete_TechnicalSection_DocumentCallBack
             });        }
     });

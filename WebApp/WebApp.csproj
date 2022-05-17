@@ -415,6 +415,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-personal.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\attendance-today.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Attendance\EmployeeAttendancePartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\EmployeesProject\load-project-by-employee-id.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-reply.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-forward.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\ReceivedLetters\internal-letter-received-letter-load-data.js" />

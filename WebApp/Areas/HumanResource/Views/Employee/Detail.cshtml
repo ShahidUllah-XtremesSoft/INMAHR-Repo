@@ -153,7 +153,7 @@
     </div>
 
 </div>
-<div class="row">
+<div class="row hide_HR_project_tabs">
 
     <div class="col-md-6" id="divPersonalDocument">
         <div class="card">
@@ -191,6 +191,24 @@
                             Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeEducationalDocumentGridPartialView.cshtml");
                         }
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12" id="divEmployeeProject">
+        <div class="card">
+            <div class="card-header">
+                <strong>@Resources.ProjectUI.lblProject </strong>
+            </div>
+            <div class="card-block">
+                <div class="grid-main-div">
+                    <div id="load-project-grid-employee-by-id">
+
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -347,6 +365,10 @@
 
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeeEducationalDocumentGridPartialView.js?+971502324409"></script>
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeePersonalDocumentGridPartialView.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/EmployeesProject/load-project-by-employee-id.js?+971502324409"></script>
+
+
+
     <script>
         //Grid Columns
         var leaveName = '@HRModuleUI.HumanResourceUI.lblLeaveType';

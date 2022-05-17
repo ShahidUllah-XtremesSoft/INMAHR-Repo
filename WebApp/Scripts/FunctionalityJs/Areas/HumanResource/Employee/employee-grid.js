@@ -255,6 +255,11 @@ function redirectToEmployeeDetailView(e) {
         localStorage.setItem('EmployeeNumberForAttendance', dataItem.employeeNumber);
         window.location.href = '/Employees/Attendance/Detail';//?employeeId=' + dataItem.id + '';
     }
+    //else if (requestFrom == 'Project') {
+    //    localStorage.setItem('EmployeeIdForAttendance', dataItem.id);
+    //    localStorage.setItem('EmployeeNumberForAttendance', dataItem.employeeNumber);
+    //    window.location.href = '/Employees/Attendance/Detail';//?employeeId=' + dataItem.id + '';
+    //}
 
 
 }

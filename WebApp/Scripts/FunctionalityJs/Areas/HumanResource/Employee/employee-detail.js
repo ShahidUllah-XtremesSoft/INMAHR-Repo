@@ -4,10 +4,11 @@ var RequestGrid = 'RequestGrid';
 var LoginUserID = '';
 var CreatedBy = '';
 $(function () {
+
     $('#Language').val(_currentLanguage);
 
     //Hide leave balance area if other than HR is logged in    
- 
+
     if (JSON.parse(localStorage.getItem('User')).isHR) {
         $('#internalDivPersonalDocument').css('height', '353');
         $('#divLeaveBalance').css('display', 'block');
@@ -16,7 +17,7 @@ $(function () {
     }
     else {
         $('#divLeaveBalance').css('display', 'block');
-       // $('#divPersonalDocument').removeClass('col-md-6').addClass('col-md-12')
+        // $('#divPersonalDocument').removeClass('col-md-6').addClass('col-md-12')
         $('#internalDivPersonalDocument').css('height', '353');
         //height: 496px; max-height: 496px;
 
@@ -116,7 +117,10 @@ function loadEmployeeProfile() {
 }
 function loadEmployeeProfileCallBack(response) {
     $('#CreatedBy').val(JSON.parse(response.Value).id);
+  //  $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
     $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
+    
+     
     $.each(JSON.parse(response.Value), function (key, value) {
         $('#' + capitalizeFirstLetter(key)).text(value);
     });
@@ -847,5 +851,3 @@ var declineCashInLeaveRequestCallBack = function (response) {
 
 }
 //|Load Cash In Leave Request Grid Ends
-
-

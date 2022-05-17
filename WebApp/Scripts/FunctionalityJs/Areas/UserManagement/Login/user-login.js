@@ -55,8 +55,9 @@ function getAssignedMenusForRole(roleId, isHR, loggedInUserId) {
     ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: $('#MainApplicationModule_Id').val() }, CallBack: getAssignedMenusForRoleCallBack });
 }
 function getAssignedMenusForRoleCallBack(roleMenus) {
-
+     
     localStorage.setItem('Menus', (roleMenus.Value));
+    localStorage.setItem('MainApplicationModule_Id', $('#MainApplicationModule_Id').val());
     window.location.href = "/HumanResource/Employee/Profile";
 
     /*

@@ -200,102 +200,59 @@ namespace INMA.Projects.Services.Project
     }
     #endregion
 
-    //#region Meeting PERSONAL DOCUMENT SAVE
+    #region Meeting MULTIPLE SAVE
 
-    //[Command(Name = "Meeting_PersonalDocument_Save")]
-    //public class Meeting_PersonalDocument_SaveCommand : CamelCommandBase
-    //{
-    //    public IFileService Service;
+    [Command(Name = "Meeting_Multiple_Save")]
+    public class Meeting_Multiple_SaveCommand : CamelCommandBase
+    {
+        public IFileService Service;
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                Meeting_Id = 0,
+                CreatedBy = 0,               
+                StartedTime = string.Empty,
+                EndedTime = string.Empty,
+                Remarks = string.Empty,
+               
+                Language = string.Empty,
+                UploadedFiles = new List<FileUploadModel>()
+            }, v);
+            #region ==========  PARAMETERS
 
-    //    protected override object DoAction(object viewInput)
-    //    {
-    //        var model = base.MappedModel(new
-    //        {
-    //            PersonalDocumentId = 0,
-    //            PersonalDocumentSetupDetailTypeId = 0,
-    //            PersonalDocumentReleaseDate = string.Empty,
-    //            PersonalDocumentExpiryDate = string.Empty,
-    //            PersonalDocumentMeetingId = 0,
-    //            PersonalDocumentCreatedBy = 0,
-    //            GenericFkId = 0,
-    //            PersonalDocumentLanguage = string.Empty,
-    //            UploadedFiles = new List<FileUploadModel>()
+            object result = new { status = false, returnUrl = "#" };
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            #endregion
 
-    //        }, viewInput);
+            values = _params.Get(model);
 
-
-    //        var repository = Ioc.Resolve<IRepository>();
-    //        IDictionary<string, object> values = new Dictionary<string, object>();
-    //        CommandParameters _params = new CommandParameters();
-    //        values = _params.Get(model);
-    //        var _response = repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_PersonalDocument_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-
-
-    //        if (model.UploadedFiles.Count > 0 && _response.Type == "success")
-    //        {
-    //            Service = new FileUploadService();
-    //            foreach (var file in model.UploadedFiles)
-    //            {
-    //                Service.UploadFile(
-    //                    file.CurrentFilePath,
-    //                    file.OriginalFileName,
-    //                    file.CurrentFileName, (int)EntityType.Meeting, (int)_response.InsertedId, (int)DocumentType.MeetingPersonalDocument, XtremeFactory._factory, XtremeFactory.connectionString);
-
-    //            }
-    //        }
-    //        return _response;
-
-    //    }
-
-    //}
-    //#endregion
-    //#region  Meeting PERSONAL DOCUMENT LIST
-    //[Command(Name = "Meeting_PersonalDocument_Get")]
-    //public class Meeting_PersonalDocument_GetCommand : CamelCommandBase
-    //{
-    //    protected override object DoAction(object viewInput)
-    //    {
-    //        var model = base.MappedModel(new
-    //        {
-    //            //   PersonalDocumentId = 0,
-    //            //   PersonalDocumentEmployeeId = 0,
-    //            PersonalMeeting_Id = 0,
-    //            PersonalDocumentLanguage = string.Empty,
-
-    //        }, viewInput);
+            var _response = Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Multiple_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
-    //        var repository = Ioc.Resolve<IRepository>();
-    //        IDictionary<string, object> values = new Dictionary<string, object>();
-    //        CommandParameters _params = new CommandParameters();
-    //        values = _params.Get(model);
-    //        return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Meeting_PersonalDocument_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            if (model.UploadedFiles.Count > 0)
+            {
+                Service = new FileUploadService();
+                foreach (var file in model.UploadedFiles)
+                {
+                    Service.UploadFile(
+                        file.CurrentFilePath,
+                        file.OriginalFileName,
+                        file.CurrentFileName,
+                        (int)EntityType.Meetings,
+                        (int)_response.InsertedId,
+                        (int)DocumentType.Meetings,
+                        XtremeFactory._factory, XtremeFactory.connectionString);
 
-    //    }
-    //}
-    //#endregion
-    //#region  Meeting PERSONAL DOCUMENT DELETE BY ID
-    //[Command(Name = "Meeting_PersonalDocument_Delete")]
-    //public class Meeting_PersonalDocument_DeleteCommand : CamelCommandBase
-    //{
-    //    protected override object DoAction(object viewInput)
-    //    {
-    //        var model = base.MappedModel(new
-    //        {
-    //            Id = 0,
-    //            CreatedBy = 0,
-    //            Language = string.Empty
-    //        }, viewInput);
+                }
+            }
+            return _response;
 
+        }
+    }
+    #endregion
 
-    //        var repository = Ioc.Resolve<IRepository>();
-    //        IDictionary<string, object> values = new Dictionary<string, object>();
-    //        CommandParameters _params = new CommandParameters();
-    //        values = _params.Get(model);
-    //        return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_PersonalDocument_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-
-    //    }
-    //}
-    //#endregion
 
 }

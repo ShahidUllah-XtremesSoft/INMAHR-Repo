@@ -71,7 +71,7 @@
                                     <label class="col-xs-5  ">
                                         @HRModuleUI.HumanResourceUI.lblDepartment
                                     </label>
-                                    <div class="col-xs-7 controls pull-right" id="Department">                                       
+                                    <div class="col-xs-7 controls pull-right" id="Department">
                                     </div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -82,7 +82,7 @@
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
                                     <label class="col-xs-5  ">
-                                       @HRModuleUI.HumanResourceUI.lblLineManager
+                                        @HRModuleUI.HumanResourceUI.lblLineManager
                                     </label>
                                     <div class="col-xs-7 controls pull-right" id="DirectResponsible">
 
@@ -101,7 +101,7 @@
                                 <div class="row mgbt-xs-0">
                                     <label class="col-xs-5  ">  @HRModuleUI.HumanResourceUI.lblOccupation</label>
                                     <div class="col-xs-7 controls pull-right" id="Profession">
-                                        
+
                                     </div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -112,7 +112,7 @@
                                 <div class="row mgbt-xs-0">
                                     <label class="col-xs-5">@HRModuleUI.HumanResourceUI.lblEmploymentStatus</label>
                                     <div class="col-xs-7 controls pull-right" id="ContractType">
-                                        
+
                                     </div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -124,7 +124,7 @@
                                 <div class="row mgbt-xs-0">
                                     <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblNationality</label>
                                     <div class="col-xs-7 controls pull-right" id="Nationality">
-                                        
+
                                     </div>
                                     <!-- col-sm-10 -->
                                 </div>
@@ -135,7 +135,7 @@
 
             </div>
             <div class="col-sm-3 text-right">
-                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage"  />
+                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
             </div>
         </div>
 
@@ -143,13 +143,13 @@
     </div>
 
 </div>
-<div class="row">
+<div class="row hide_HR_project_tabs">
     <div class="col-md-4">
         <!--<div class="card">
             <div class="card-header">
                 <strong>Preparation</strong>-->
-                @*<small>Form</small>*@
-            <!--</div>
+        @*<small>Form</small>*@
+        <!--</div>
             <div class="card-block">
                 <div class="row">
                     <div class="col-md-12">
@@ -198,7 +198,7 @@
                                     <th>@HRModuleUI.HumanResourceUI.lblLeaveType</th>
                                     <th>@HRModuleUI.HumanResourceUI.lblDeductionDate</th>
                                     <th>@HRModuleUI.HumanResourceUI.lblDays</th>
-                                    
+
 
                                 </tr>
                             </thead>
@@ -211,29 +211,29 @@
         </div>
         <div class="card">
             <!--<div class="card-header">
-        <strong>@HRModuleUI.HumanResourceUI.lblLeavebalance</strong>-->
+            <strong>@HRModuleUI.HumanResourceUI.lblLeavebalance</strong>-->
             @*<small>Form</small>*@
             <!--</div>
-    <div class="card-block">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table" id="employeeVacationLeaveBalanceGrid">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>@HRModuleUI.HumanResourceUI.lblLeaveType</th>
-                            <th>@HRModuleUI.HumanResourceUI.lblBalance</th>
-                            <th>@HRModuleUI.HumanResourceUI.lblTakenLeave</th>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table" id="employeeVacationLeaveBalanceGrid">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblLeaveType</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblBalance</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblTakenLeave</th>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>-->
             @{
                 Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmpoyeeLeaveBalancePartialViews.cshtml");
             }
@@ -281,16 +281,16 @@
                                 <tr>
                                     <th>#</th>
                                     @*<th>Degree Name Eng</th>
-                                    <th>Degree Name Arb</th>*@
-                                <th>@HRModuleUI.HumanResourceUI.lblCertificateName</th>
+                                        <th>Degree Name Arb</th>*@
+                                    <th>@HRModuleUI.HumanResourceUI.lblCertificateName</th>
                                     @*<th>Institute Name Eng</th>
-                                    <th>Institute Name Arb</th>*@
-                                <th>@HRModuleUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</th>
-                                <th>@HRModuleUI.HumanResourceUI.lblIssueDate</th>
-                                <th>@HRModuleUI.HumanResourceUI.lblMarksPercentage</th>
-                                <th>@HRModuleUI.HumanResourceUI.lblCountry</th>
-                                <th>@HRModuleUI.HumanResourceUI.lblFile</th>
-                                    
+                                        <th>Institute Name Arb</th>*@
+                                    <th>@HRModuleUI.HumanResourceUI.lblEducationalDocumentInstituteNameEng</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblIssueDate</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblMarksPercentage</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblCountry</th>
+                                    <th>@HRModuleUI.HumanResourceUI.lblFile</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -376,12 +376,29 @@
     </div>*@
 
 
+<div class="row">
+    <div class="col-md-12" id="divEmployeeProject">
+        <div class="card">
+            <div class="card-header">
+                <strong>@Resources.ProjectUI.lblProject </strong>
+            </div>
+            <div class="card-block">
+                <div class="grid-main-div">
+                    <div id="load-project-grid-employee-by-id">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 @section scripts {
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-profile.js?+971502324409"></script>
-
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/EmployeesProject/load-project-by-employee-id.js?+971502324409"></script>
 }
 
 

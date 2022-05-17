@@ -289,6 +289,7 @@ public enum ProjectStoreProcedure
 
     #region PROJECT  
     Project_Get,
+    Project_Get_By_Employee_Id,
     Project_save,
     Project_Edit_By_Id,
     Project_Details_By_Id,
@@ -366,6 +367,7 @@ public enum ProjectStoreProcedure
 
     #region MEETING
     Meeting_Save,
+    Meeting_Multiple_Save,
     Meeting_Get,
     Meeting_Delete,
     Meeting_Details_By_Id,

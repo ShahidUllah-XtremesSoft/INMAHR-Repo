@@ -779,7 +779,8 @@ function loadKendoDropdownList(controlId, columns, tableName, conditions = null,
 }
 
 var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, controlId) {
-
+     
+    var select=  'Select';
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
     var selectText = '-- ' + select + ' --'

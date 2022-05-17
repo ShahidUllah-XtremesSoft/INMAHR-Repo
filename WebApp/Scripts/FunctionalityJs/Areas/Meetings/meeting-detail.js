@@ -1,9 +1,11 @@
-﻿var personalClient_Id = (new URL(location.href)).searchParams.get('id');
+﻿var meeting_Id = (new URL(location.href)).searchParams.get('id');
 
 $(function () {
     $('#Language').val(_currentLanguage);
     $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
 
+    $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    $('#Meeting_Id').val(meeting_Id);
 
     loadProfile();
 
@@ -13,7 +15,7 @@ function loadProfile() {
     ajaxRequest({
         commandName: 'Meeting_Details_By_Id',
         values: {
-            Id: personalClient_Id,
+            Id: meeting_Id,
             LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
             RoleId: JSON.parse(localStorage.getItem('User')).roleId,
             Language: $('#Language').val()
@@ -26,8 +28,12 @@ function loadProfileCallBack(response) {
 
     //------ Meeting Info
     $(".meeting-days").text(responseDetails.dayName)
-    $(".meeting-hours").text(responseDetails.meetingHour)
-    $(".meeting-minutes").text(responseDetails.meetingMinutes)
+    //$(".meeting-hours").text(responseDetails.meetingHour)
+    //$(".meeting-minutes").text(responseDetails.meetingMinutes)
+
+    $(".meeting-hours").text(responseDetails.subtracted_Hour)
+    $(".meeting-minutes").text(responseDetails.subtracted_Min)
+
     $(".meeting-date").text(responseDetails.meetingDate)
     $(".meeting-start-timing").text(responseDetails.startedTimeFormated)
     $(".meeting-end-timing").text(responseDetails.endedTimeFormated)
@@ -124,17 +130,76 @@ function fn_StartMeeting(e) {
 
 //--------------------------- MEETING START WORK END  ----------------------------------------
 //---------------------------       By /\/\ati      ----------------------------------------
-var meetingHours = 0, meetingMinutes = 0, meetingSeconds = 0, countDownTarget=0,x=0;
+var meetingHours = 0, meetingMinutes = 0, meetingSeconds = 0, countDownTarget = 0, x = 0;
 
-$("#stop").click(function () {
-    clearInterval(x);
+$('#btn-multiple-meeting-save').click(function () {
+   
+    if (customValidateForm('frmAddUpdate_Multiple_Meeting')) {
+
+        buttonAddPleaseWait('btn-multiple-meeting-save');
+
+        $("#frmAddUpdate_Multiple_Meeting").ajaxForm();
+        var options = {
+            success: function (response, statusText, jqXHR) {
+                buttonRemovePleaseWait('btn-multiple-meeting-save', save, 'save');
+
+                swal(response);
+                var messageResponseParse = JSON.parse(response);
+                if (messageResponseParse.type == undefined) {
+                    messageResponseParse = JSON.parse(messageResponseParse);
+                } if (messageResponseParse.type == undefined) {
+                    messageResponseParse = JSON.parse(messageResponseParse);
+                }
+                //  $('#EmployeeId').val(messageResponseParse.insertedId);
+                
+                setTimeout(function () {
+                    location.reload();
+                },2000)
+               // window.location.href = '/Project/Issue/List';
+
+            },
+            error: function (xhr, status, error) {
+                var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                buttonRemovePleaseWait('btn-multiple-meeting-save', save, 'save');
+                alert(errmsg);
+            },
+            complete: function () {
+                buttonRemovePleaseWait('btn-multiple-meeting-save', save, 'save');
+            }
+        };
+        $("#frmAddUpdate_Multiple_Meeting").ajaxSubmit(options);
+    }
+    else {
+        buttonRemovePleaseWait('btn-multiple-meeting-save', save, 'save');
+        return false;
+    }
 });
 
+ 
 $("#start").click(function () {
 
     meetingHours = parseFloat($('#hours').text());
     meetingMinutes = parseFloat($('#minutes').text());
     meetingSeconds = parseFloat($('#secondss').text());
+
+
+
+
+    if ($('#start').val() == "Start") {
+        $('#start').val("End").text(lblMeetingEnd);
+        $('#StartedTime').val(fnReturnDateTime());
+
+    } else if ($('#start').val() == "End") {
+        $('#start').val("Save").text(save);
+
+        $('#EndedTime').val(fnReturnDateTime());
+
+
+    } else if ($('#start').val() == "Save") {
+        $('#btn-multiple-meeting-save').click();
+
+    }
+
     /*
     var customDbDate = JSON.parse(localStorage.getItem('meetingDetails')).meetingStartDateTime  
     var countDownDate = new Date(customDbDate).getTime();
@@ -146,7 +211,7 @@ $("#start").click(function () {
     */
 
     if (meetingHours > 0 && meetingMinutes <= 0) {
-         
+
         var newHour = meetingHours - 1;
         document.getElementById("hours").innerHTML = '0' + newHour;
 
@@ -156,18 +221,24 @@ $("#start").click(function () {
         meetingMinutes = 60;
 
     }
-      countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
+    countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
 
 
 
     showClock(countDownTarget);
 
     // Update the count down every 1 second
-      x = setInterval(function () {
-        showClock(countDownTarget);
+    x = setInterval(function () {
+        if ($('#start').val() != "Save") {
+            showClock(countDownTarget);
+        } else {
+            clearInterval(x);
+        }
+
+
         if (countDownTarget - new Date().getTime() < 0) {
-             
-            if (meetingHours > 0  ) {
+
+            if (meetingHours > 0) {
                 var newHour = meetingHours - 1;
                 document.getElementById("hours").innerHTML = '0' + newHour;
                 document.getElementById("minutes").innerHTML = 60;
@@ -176,7 +247,7 @@ $("#start").click(function () {
                 meetingMinutes = 60;
                 countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
                 showClock(countDownTarget);
-            } else { 
+            } else {
                 clearInterval(x);
             }
         }
@@ -184,7 +255,7 @@ $("#start").click(function () {
 
 });
 function showClock(target) {
-     
+
 
     const distance = target - new Date().getTime();
     //  const hour = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -200,3 +271,14 @@ $("#btn-modal-close").click(function () {
     alert('If you leave before saving, your changes will be lost. ');
     //$('#modal-meeting-start-end').hide();
 });
+
+
+function fnReturnDateTime() {
+
+    var today = new Date();
+    var cHour = today.getHours();
+    var cMin = today.getMinutes();
+    var cSec = today.getSeconds();
+    //alert(cHour + ":" + cMin + ":" + cSec);
+    return cHour + ":" + cMin + ":" + cSec;
+}

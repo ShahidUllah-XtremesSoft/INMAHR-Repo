@@ -10,22 +10,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 @*<button type="button" class="close clearField " id="btn-modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>*@
-                <button type="button" class="close clearField " id="btn-modal-close"   aria-hidden="true">&times;</button>
+                <button type="button" class="close clearField " id="btn-modal-close" data-dismiss="modal"   aria-hidden="true">&times;</button>
                 @*<h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblStartMeeting</h5>*@
                 @*<h5 class="modal-title  "> @ProjectUI.ProjectUI.lblProjectNo #:<span class="modal-title projectNo"></span></h5>*@
                 <h5 class="modal-title  projectNo"> </h5>
             </div>
             <div class="modal-body">
-                <form id="frmAddUpdate_DesignSection_Document" name="frmAddUpdate_DesignSection_Document" action="/services/Xtreme/multipart" method="post">
+                <form id="frmAddUpdate_Multiple_Meeting" name="frmAddUpdate_Multiple_Meeting" action="/services/Xtreme/multipart" method="post">
 
-                    <input type="hidden" name="type" id="type" value="Project_DesignSection_GovernmentDocument_Save">
-                    <input type="hidden" name="DesignSection_Document_Language" id="DesignSection_Document_Language" class="Language" value="en-US">
+                    <input type="hidden" name="type" id="type" value="Meeting_Multiple_Save">
+                    <input type="hidden" name="Language" id="Language" class="Language" value="en-US">
+                    <input type="hidden" name="CreatedBy" id="CreatedBy" value="" />
+                    <input type="hidden" name="Id" id="Id" class="Language" value="0">
+                    <input type="hidden" name="Meeting_Id" id="Meeting_Id" class="Language" value="0">
 
 
                     <div class=" " style="text-align: center; border-bottom: 1px solid #ccc; margin-top: 10px; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
                         <div class="row">
 
-                            <div class="col-sm-3"></div> 
+                            <div class="col-sm-3"></div>
 
                             <div class="col-sm-2">
                                 <div class="card">
@@ -73,44 +76,59 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-3"></div> 
+                            <div class="col-sm-3"></div>
                         </div>
                     </div>
 
 
 
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingStartTime </label><br />
+                                <input type="text" readonly class="form-control" name="StartedTime" id="StartedTime" value="0" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingEndTime </label><br />
+                                <input type="text" readonly class="form-control" name="EndedTime" id="EndedTime" value="0" />
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                                <input type="file" class="form-control" name="DesignSectionGovernmentDocumentFile" required id="DesignSectionGovernmentDocumentFile" onchange="validatePersonalDocument('DesignSectionGovernmentDocumentFile');" />
+                                <input type="file" class="form-control" name="MeetingFile" id="MeetingFile" onchange="validatePersonalDocument('MeetingFile');" />
                             </div>
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                                <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
-                            </div>
-                        </div>
+                    @*<div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                </div>
+            </div>
 
 
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                                <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
-                            </div>
-                        </div>
-                    </div>
+                    <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                </div>
+            </div>
+        </div>*@
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                                <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks"></textarea>
+                                <textarea class="form-control" id="Remarks" name="Remarks" required></textarea>
                             </div>
                         </div>
 
@@ -128,8 +146,10 @@
 
                             @*<button type="button" class="btn btn-danger   pull-right btnClose  " data-dismiss="modal">@Resources.Global.lblClose</button>*@
                             @*<button type="button" id="clear2" class="btn   btn-danger  pull-right" value="Reset"> @Resources.Global.btnReset</button>*@
-                            <button type="button" id="stop" class="btn   btn-danger  pull-right" value="End"> @ProjectUI.ProjectUI.lblMeetingEnd</button>
+
+                            @*<button type="button" id="stop" class="btn   btn-danger  pull-right" value="End"> @ProjectUI.ProjectUI.lblMeetingEnd</button>*@
                             <button type="button" id="start" class="btn   btn-success  pull-right" value="Start"> @ProjectUI.ProjectUI.lblStartMeeting</button>
+                            <button type="button" id="btn-multiple-meeting-save" class="btn   btn-success  pull-right" style="display:none;" value="Save"></button>
 
                         </div>
                     </div>

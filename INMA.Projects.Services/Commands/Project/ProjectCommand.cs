@@ -1055,6 +1055,7 @@ namespace INMA.Projects.Services.Project
                 {
                     ProjectModel = new List<ProjectModel>(),
                     CreatedBy = 0,
+                    CompletionDate = string.Empty,
                     Language = ""
                 }, viewInput);
 
@@ -2007,7 +2008,33 @@ namespace INMA.Projects.Services.Project
 
 
 
+        #region  PROJECT  DESIGN SECTION DOCUMENT START DATE UPDATE BY PARAMETERS
+        [Command(Name = "Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters")]
+        public class Project_Linked_Multiple_Employees_Update_StartedDate_By_ParamtersCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    Project_Id = 0,
+                    UserId = 0,
+                    Employee_Id = 0,
+                    Selected_Document_Step_Id = 0,
+                    Language = string.Empty
+                }, viewInput);
 
+                 
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return  repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+ 
+
+            }
+        }
+        #endregion
 
     }
 }

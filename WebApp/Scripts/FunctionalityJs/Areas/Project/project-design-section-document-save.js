@@ -201,12 +201,15 @@ function fnLoadDesignSectionArea(e) {
         $('.div-design-section-document-upload-area').show();
         $('#div-design-section-employees-area').hide();
         $('.div-design-section-assigned-employees-area').hide();
+
+        $('.div-show-only-for-design-section-employee-available-area').hide();
         //$('.show-sub-section-name').empty();
 
 
     } else if (areaname == 'Available Employee') {
 
         $('#div-design-section-employees-area').show();
+        $('.div-show-only-for-design-section-employee-available-area').show();
 
         $("#div-design-section-employees-area").load("/Project/Project/LoadAllEmployeess");
         $('.div-design-section-document-upload-area').hide();
@@ -218,11 +221,12 @@ function fnLoadDesignSectionArea(e) {
             swalMessage('info', 'Please select section and sub section', 2500);
         } else {
 
-            fnloadAssignedEmployees($('#Project_DesignSection_Entity_Id').val());
+            fnloadAssignedEmployees($('#Project_DesignSection_Entity_Id').val());   
 
             $('.div-design-section-assigned-employees-area').show();
             $('#div-design-section-employees-area').hide();
             $('.div-design-section-document-upload-area').hide();
+            $('.div-show-only-for-design-section-employee-available-area').hide();
         }
     }
 }

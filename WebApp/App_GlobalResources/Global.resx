@@ -150,6 +150,9 @@
   <data name="doYouReallyWantToDeleteThisRecord" xml:space="preserve">
     <value>Do you really want to delete this record ?</value>
   </data>
+  <data name="doYouReallyWantToStartWorkingOnIt" xml:space="preserve">
+    <value>Do you really want to start working on it ?</value>
+  </data>
   <data name="doYouReallyWantToTransferThisFile" xml:space="preserve">
     <value>Do you really want to transfer this file ?</value>
   </data>
@@ -245,6 +248,9 @@
   </data>
   <data name="lblNo" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="lblNotStartedYet" xml:space="preserve">
+    <value>Not started yet</value>
   </data>
   <data name="lblPoweredBy" xml:space="preserve">
     <value>Powered By</value>

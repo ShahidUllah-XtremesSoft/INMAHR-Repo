@@ -39,6 +39,16 @@ var bindfnloadAssignedEmployees = function (inputDataJSON) {
         { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "setup_type_detail_name", title: lblAssignedSubSection, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
+            field: "startDate", title: lblStartDate, hidden: false, width: 40, filterable: false,
+            template: "#if (startDate ==null) { # <span class='badge badge-danger'>" + lblNotStartedYet+"</span> # } else {# <span class='badge badge-success'>#:startDate#</span> # }#"
+        },
+        {
+            field: "endDate", title: lblCompletionDate, hidden: false, width: 40, filterable: false,
+            template: "#if (endDate ==null) { # <span class='badge'>-</span> # } else {# <span class='badge badge-danger'>#:endDate#</span> # }#"
+
+
+        },
+        {
             field: "", width: 10, title: ' ',
             template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
         },

@@ -1,7 +1,7 @@
 ﻿
 var project_Id = (new URL(location.href)).searchParams.get('id');
 
- function loadProjectSectiondownList(callingArea) {
+function loadProjectSectiondownList(callingArea) {
     var employee_Id = 0;
     var checkResult = localStorage.getItem('isEmployeeExist');
     if (checkResult == 'Yes') {
@@ -14,7 +14,7 @@ var project_Id = (new URL(location.href)).searchParams.get('id');
 }
 function fnloadloadProjectSectiondownListCallBack(response) { stepper_DESIGN_SECTION(response) }
 
-function stepper_DESIGN_SECTION(response) { 
+function stepper_DESIGN_SECTION(response) {
     var step_Columns = []
 
     for (var i = 0; i < JSON.parse(response.Value).length; i++) {
@@ -50,7 +50,7 @@ function stepper_DESIGN_SECTION(response) {
     }
     setTimeout(function () {
 
-        if (localStorage.getItem('DesignSection_Menu_Area') != '') { 
+        if (localStorage.getItem('DesignSection_Menu_Area') != '') {
             progressbar_subSection(JSON.parse(response.Value), localStorage.getItem('DesignSection_Menu_Area'));
         }
     }, 100);
@@ -177,12 +177,12 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 };
 
 function fn_delete_DesignSection_GovernmentDocumentById(event) {
-     
+
     var row = $(event).closest("tr");
     var gridId = $(event).closest("div").parent()[0].id;
     var grid = $("#" + gridId).data("kendoGrid");
     localStorage.setItem('grid__id', gridId);
-    var dataItem = grid.dataItem(row); 
+    var dataItem = grid.dataItem(row);
     Swal.fire({
 
         title: areYouSureTitle,
@@ -221,24 +221,69 @@ function fn_delete_DesignSection_GovernmentDocumentById(event) {
         }
     });
     var fn_delete_DesignSection_GovernmentDocumentCallBack = function (response) {
-         
+
         $('#DesignSection_Document_Id').val(0);
         swal(response.Value);
-         
+
         fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, localStorage.getItem('grid__id'));
         $('#frmAddUpdate_DesignSection_Document')[0].reset();
-        
-         
+
+
         localStorage.grid__id = '';
-        
+
     }
 
 }
 
 $('#btn-load-upload-document').click(function () {
-    $('#load-model').click();
-    loadProjectSectiondownLists();
-    loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
+    Swal.fire({
+
+        //  title: areYouSureTitle,
+        text: doYouReallyWantToStartWorkingOnIt,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
+        }
+    }).then(function (restult) {
+        if (restult.value) {
+
+            ajaxRequest({
+                commandName: 'Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters', values: {
+
+                    Project_Id: project_Id,
+                    UserId: JSON.parse(localStorage.getItem('User')).id,
+                    Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+                    Selected_Document_Step_Id: $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id,
+                    Language: _currentLanguage
+                }, CallBack: ''
+            });
+            //After ajax call .
+            $('#load-model').click();
+            loadProjectSectiondownLists();
+            loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
+
+        }
+    });
+
+
 });
 /*
  function fn_transfer_file(event) {
@@ -297,8 +342,8 @@ $('#btn-design-section-upload-document').click(function () {
                     messageResponseParse = JSON.parse(messageResponseParse);
                 } if (messageResponseParse.type == undefined) {
                     messageResponseParse = JSON.parse(messageResponseParse);
-                } 
-               // fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, localStorage.getItem('grid__id'));
+                }
+                // fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, localStorage.getItem('grid__id'));
                 location.reload();
             },
             error: function (xhr, status, error) {
@@ -384,20 +429,20 @@ function fn_transfer_file_save() {
 
 
 //***************** FN ASSIGN   AREA START---------------------------BY /\/\ati
- /*
+/*
 function fn_open_assign_modal(event) {
 
-    var row = $(event).closest("tr");
-    var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
-    var dataItem = grid.dataItem(row);
+   var row = $(event).closest("tr");
+   var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
+   var dataItem = grid.dataItem(row);
 
 
-    $('#load-assign-model').click();
-    fnLoadDesignSectionArea($('.checkbtnValue_DesignSection.active')[0], dataItem.setup_TypeDetail_Id, dataItem.setup_Type_Id);
-    $('#assignedModal_setup_type_Id').val(dataItem.setup_Type_Id);
-    $('#assignedModal_setup_type_detail_Id').val(dataItem.setup_TypeDetail_Id);
+   $('#load-assign-model').click();
+   fnLoadDesignSectionArea($('.checkbtnValue_DesignSection.active')[0], dataItem.setup_TypeDetail_Id, dataItem.setup_Type_Id);
+   $('#assignedModal_setup_type_Id').val(dataItem.setup_Type_Id);
+   $('#assignedModal_setup_type_detail_Id').val(dataItem.setup_TypeDetail_Id);
 
-    //$('#Grid-Name').val(event.getAttribute('data-grid-name'));
+   //$('#Grid-Name').val(event.getAttribute('data-grid-name'));
 
 }
 */
@@ -535,11 +580,11 @@ var loadProject_DesignSection_SubSection_DDLCallBackk = function (loadjQueryDrop
 }
 function onSelect_DesignSection(e) {
     var selected_Id = e.dataItem.id;
-     
-    $('#Project_DesignSection_Entity_Id').val(selected_Id); 
+
+    $('#Project_DesignSection_Entity_Id').val(selected_Id);
 
 
-  
+
 };
 /*
 function fnLoadDesignSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {

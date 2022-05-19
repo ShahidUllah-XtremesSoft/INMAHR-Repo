@@ -160,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to start working on it ?.
+        /// </summary>
+        internal static string doYouReallyWantToStartWorkingOnIt {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToStartWorkingOnIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to transfer this file ?.
         /// </summary>
         internal static string doYouReallyWantToTransferThisFile {
@@ -444,6 +453,15 @@ namespace Resources {
         internal static string lblNo {
             get {
                 return ResourceManager.GetString("lblNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not started yet.
+        /// </summary>
+        internal static string lblNotStartedYet {
+            get {
+                return ResourceManager.GetString("lblNotStartedYet", resourceCulture);
             }
         }
         

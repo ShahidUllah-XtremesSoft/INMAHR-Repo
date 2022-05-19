@@ -19,13 +19,13 @@
             </div>
         </div>
         <div class="col-sm-6">
-           
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
-                    <input type="text" class="form-control pname" name="Project_DesignSection_SetupDetailTypeDDL" id="Project_DesignSection_SetupDetailTypeDDL" required>
-                    <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id" id="Project_DesignSection_Entity_Id" value="0">
-                    <input type="hidden" class="form-control pname" name="Project_Section_Parent_Type_DDL_Text" id="Project_Section_Parent_Type_DDL_Text" value=" ">
-                
+
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
+                <input type="text" class="form-control pname" name="Project_DesignSection_SetupDetailTypeDDL" id="Project_DesignSection_SetupDetailTypeDDL" required>
+                <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id" id="Project_DesignSection_Entity_Id" value="0">
+                <input type="hidden" class="form-control pname" name="Project_Section_Parent_Type_DDL_Text" id="Project_Section_Parent_Type_DDL_Text" value=" ">
+
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
 
         </div>
     </div>
-  
+
 
     <div class="div-design-section-document-upload-area form-control">
         <div class="row">
@@ -94,6 +94,25 @@
             </div>
         </div>
     </div>
+    <div class="div-show-only-for-design-section-employee-available-area form-control" style="display:none">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="date"  id="DesignSection_AssignedDocument_StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")"  />
+                </div>
+            </div> 
+
+            <div class="col-sm-6">
+                @*<div class="form-group">
+                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                </div>*@
+            </div>
+        </div>
+    </div>
+
 </form>
 
 <div class="div-design-section-assigned-employees-area" style="display:none;">

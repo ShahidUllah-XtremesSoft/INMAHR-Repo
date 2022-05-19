@@ -125,7 +125,9 @@
 
 
 
-
+    @*<footer class="footer">
+        <button id="btn-logout" class="btn btn-danger" style="display: inline-grid;"><i class="fa fa-lock"></i> Logout </button>
+    </footer>*@
 
 
 
@@ -150,7 +152,7 @@
     function getAssignedMenusForRole_new(mainApplicationModule_Id) {
         MainApplicationModule_Id = mainApplicationModule_Id
         var isHR = JSON.parse(localStorage.getItem('isHR'));
-
+         
         var loggedInUserId = localStorage.getItem('LoggedInUserId')
         var roleId = JSON.parse(localStorage.getItem('roleId'));
         ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: mainApplicationModule_Id }, CallBack: getAssignedMenusForRoleCallBack });
@@ -175,6 +177,10 @@
 
 
     }
+    //$('#btn-logout').click(function () {
+    //     window.close();
+    //    window.open('/User/Login', '_blank');
+    //});
 
 
 

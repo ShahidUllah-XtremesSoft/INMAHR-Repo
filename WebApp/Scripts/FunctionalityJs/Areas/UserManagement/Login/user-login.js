@@ -33,7 +33,7 @@
 
 });
 function userLoginCallBack(userLoginResponse) {
-
+    
     if (JSON.parse(userLoginResponse.Value).message == 'Detail are not verified' || JSON.parse(userLoginResponse.Value).message == "لم يتم التحقق من التفاصيل"
         //if (userLoginResponse.Value == 'null'  || JSON.parse(userLoginResponse.Value).message == 'Detail are not verified'
         //|| JSON.parse(userLoginResponse.Value).message != null    

@@ -468,6 +468,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-info-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-document-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-unit-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Reports\summary-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
@@ -529,6 +530,7 @@
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details-for-employee\_ProjectDetail_Supervision_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details-for-employee\_ProjectDetail_Technical_Section_Modal.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Meeting\_MeetingStartEnd.cshtml" />
+    <Content Include="Areas\Project\Views\Reports\Summary.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
@@ -536,6 +538,7 @@
     <Compile Include="token\AuthenticationFailureResult.cs" />
     <Compile Include="token\HttpAuthenticationChallengeContextExtensions.cs" />
     <Compile Include="token\XtremeAuthenticationAttribute.cs" />
+    <Content Include="Views\Home\Application.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

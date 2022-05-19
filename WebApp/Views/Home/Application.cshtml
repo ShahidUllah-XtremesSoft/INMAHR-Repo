@@ -1,0 +1,182 @@
+﻿@{
+
+    Layout = null;
+}
+
+<html>
+<head>
+    @*<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">*@
+    <title>INMA Application(s)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+
+    <link href="~/Content/Themes/CoreUI/css/style.min.css" rel="stylesheet" />
+    <!-- Icons -->
+    <link href="~/Content/Themes/CoreUI/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Themes/CoreUI/css/simple-line-icons.css" rel="stylesheet">
+
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+        }
+    </style>
+</head>
+
+
+
+<body style="overflow:hidden;">
+
+
+
+    @*<div class="row">
+
+            <div class="col-sm-12 login-bg">
+                <div class="auth-wrapper d-flex  justify-content-center align-items-center">
+                    <div class="auth-box    border-secondary">
+                        <div class="row">
+                            <div class="col-sm-4 ">
+                                <button type="button" class="btn btn-danger form-control" style="font-weight:normal;" onclick="deleteInternalLetter(this)"> <i class="fa fa-trash"></i> Delete</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>*@
+
+    <br />
+    @*<div class="row">
+            <div class="col-sm-3 ">
+                <a href="#" target="_blank">
+                    <div class="card">
+                        <div class=" btn-lg form-control btn btn-outline-danger">
+                            <h4>HR</h4>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 ">
+                <a href="#" target="_blank">
+                    <div class="card">
+                        <div class=" btn-lg form-control btn btn-outline-success">
+                            <h4>Project</h4>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+
+        </div>*@
+    <br />
+    <br />
+    <div class="center">
+        <div class="text-center p-t-20 p-b-20">
+            <span class="db"><img src="/Content/Login/img/logo1.png" alt="logo" style="height: 200px;width:auto;"></span>
+
+            @*<h1>  @Resources.Global.lblInma</h1>*@
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="row " style="text-align: -webkit-center;">
+        <div class="col-sm-12 ">
+            <table style="width:50%;">
+                <tbody style="">
+                    <tr>
+                        <td>
+                            <a onclick="getAssignedMenusForRole_new('1')">
+                                <div class="card">
+                                    <div class=" btn-lg form-control btn btn-outline-danger center">
+                                        <h5 data-mainModuleId="1">HR</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick="getAssignedMenusForRole_new('2')">
+                                <div class="card">
+                                    <div class=" btn-lg form-control btn btn-outline-success center">
+                                        <h5 data-mainModuleId="2">PROJECT</h5>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+
+    <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
+
+    <!--Sweet Alert 2-->
+</body>
+</html>
+<script>
+    var _currentLanguage = '@Resources.Common.CurrentLang';
+    $(function () {
+        $('#Language').val(_currentLanguage);
+    })
+
+    var MainApplicationModule_Id = 0;
+    function getAssignedMenusForRole_new(mainApplicationModule_Id) {
+        MainApplicationModule_Id = mainApplicationModule_Id
+        var isHR = JSON.parse(localStorage.getItem('isHR'));
+
+        var loggedInUserId = localStorage.getItem('LoggedInUserId')
+        var roleId = JSON.parse(localStorage.getItem('roleId'));
+        ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: mainApplicationModule_Id }, CallBack: getAssignedMenusForRoleCallBack });
+    }
+    function getAssignedMenusForRoleCallBack(roleMenus) {
+
+        localStorage.setItem('Menus', (roleMenus.Value));
+        localStorage.setItem('MainApplicationModule_Id', MainApplicationModule_Id);
+
+        if (JSON.parse(roleMenus.Value).length > 0) {
+
+        window.location.href = "/HumanResource/Employee/Profile";
+        } else {
+            //swalMessage('error', "You dont have permission to access this application", 2500);
+            Swal.fire({
+                icon: 'error',
+               title: 'Oops...',
+                text: 'You dont have permission to access this application..!',
+               /// footer: 'In case of any issue '
+            })
+        }
+
+
+    }
+
+
+
+</script>
+

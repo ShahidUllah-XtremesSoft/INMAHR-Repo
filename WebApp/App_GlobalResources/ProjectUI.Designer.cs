@@ -331,6 +331,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Design Section Report.
+        /// </summary>
+        public static string lblDesignSectionReport {
+            get {
+                return ResourceManager.GetString("lblDesignSectionReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string lblDetails {
@@ -844,6 +853,24 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report.
+        /// </summary>
+        public static string lblReport {
+            get {
+                return ResourceManager.GetString("lblReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        public static string lblReports {
+            get {
+                return ResourceManager.GetString("lblReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Room.
         /// </summary>
         public static string lblRoom {
@@ -894,6 +921,33 @@ namespace ProjectUI {
         public static string lblSubSection {
             get {
                 return ResourceManager.GetString("lblSubSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string lblSummary {
+            get {
+                return ResourceManager.GetString("lblSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary Report.
+        /// </summary>
+        public static string lblSummaryReport {
+            get {
+                return ResourceManager.GetString("lblSummaryReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical Section Report.
+        /// </summary>
+        public static string lblTechnicalSectionReport {
+            get {
+                return ResourceManager.GetString("lblTechnicalSectionReport", resourceCulture);
             }
         }
         

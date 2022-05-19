@@ -207,6 +207,9 @@
   <data name="lblCreatedBy" xml:space="preserve">
     <value>Created By</value>
   </data>
+  <data name="lblDesignSectionReport" xml:space="preserve">
+    <value>Design Section Report</value>
+  </data>
   <data name="lblDetails" xml:space="preserve">
     <value>Details</value>
   </data>
@@ -378,6 +381,12 @@
   <data name="lblProjectType" xml:space="preserve">
     <value>Project Type</value>
   </data>
+  <data name="lblReport" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="lblReports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
   <data name="lblRoom" xml:space="preserve">
     <value>Room</value>
   </data>
@@ -395,6 +404,15 @@
   </data>
   <data name="lblSubSection" xml:space="preserve">
     <value>Sub Section</value>
+  </data>
+  <data name="lblSummary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="lblSummaryReport" xml:space="preserve">
+    <value>Summary Report</value>
+  </data>
+  <data name="lblTechnicalSectionReport" xml:space="preserve">
+    <value>Technical Section Report</value>
   </data>
   <data name="lblTransfer" xml:space="preserve">
     <value>Transfer</value>

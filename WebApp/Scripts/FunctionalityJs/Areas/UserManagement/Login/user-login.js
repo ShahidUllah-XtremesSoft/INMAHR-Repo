@@ -1,5 +1,5 @@
 ﻿$(function () {
-    loadMainApplicationModule();
+   //loadMainApplicationModule();
     localStorage.setItem('Menus', ({}));
     localStorage.setItem('User', ({}));
     $('#Email').keyup(function (e) {
@@ -44,17 +44,25 @@ function userLoginCallBack(userLoginResponse) {
     }
     else {
 
-        getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId, JSON.parse(userLoginResponse.Value).isHR, JSON.parse(userLoginResponse.Value).id);
+     //   getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId, JSON.parse(userLoginResponse.Value).isHR, JSON.parse(userLoginResponse.Value).id);
+          
+        localStorage.setItem('LoggedInUserId', JSON.parse(userLoginResponse.Value).id);
+        localStorage.setItem('isHR', JSON.parse(userLoginResponse.Value).isHR);
+        localStorage.setItem('roleId', JSON.parse(userLoginResponse.Value).roleId);
+
+
         localStorage.setItem('User', userLoginResponse.Value);
         localStorage.setItem('EmployeeNumber', JSON.parse(userLoginResponse.Value).employeeNumber);
+        window.location.href = "/Home/Application/";
         swal('success', 'You`re logged in successfully');
-
     }
 }
-function getAssignedMenusForRole(roleId, isHR, loggedInUserId) {
-    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: $('#MainApplicationModule_Id').val() }, CallBack: getAssignedMenusForRoleCallBack });
-}
-function getAssignedMenusForRoleCallBack(roleMenus) {
+// FN is working but commented due to using another function .
+//function getAssignedMenusForRole(roleId, isHR, loggedInUserId) {
+//    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: $('#MainApplicationModule_Id').val() }, CallBack: getAssignedMenusForRoleCallBack });
+//}
+
+ function getAssignedMenusForRoleCallBack(roleMenus) {
      
     localStorage.setItem('Menus', (roleMenus.Value));
     localStorage.setItem('MainApplicationModule_Id', $('#MainApplicationModule_Id').val());
@@ -72,7 +80,7 @@ function getAssignedMenusForRoleCallBack(roleMenus) {
 }
 
 
-
+/*
 //Load Lists 
 function loadMainApplicationModule() {
     ajaxRequest({ commandName: 'UserManagement_MainApplicationModules_Load', values: { Language: $('#Language').val() }, CallBack: fnLoadMainApplicationModuleCallBack });
@@ -87,3 +95,4 @@ function fnLoadMainApplicationModuleCallBack(response) {
 
 
 }
+*/

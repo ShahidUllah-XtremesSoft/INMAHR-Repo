@@ -6,7 +6,7 @@
 }
 
 
- 
+
 <input type="hidden" id="Id" name="Id" value="0" />
 <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
 <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
@@ -240,128 +240,144 @@
     <div class="col-sm-3"></div>
 </div>
 
-<div class="card">
-    <div class="card-block">
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <div class="card shadow-none mt-3 border border-light">
-
-                    <div class="card-block">
-                        <div class="row">
-                            @* <h5>  .MeetingInfo<span></span></h5>*@
-                            @*<div class="card-footer">
-                                    <div class="col-sm-2">
-
-                                        <span class="badge    ">.Meeting Date:</span>
-                                        <span class="badge badge-warning    meeting-date">  </span>
-
-
-                                    </div>
-                                    <div class="col-sm-2">
-
-
-
-                                        <span class="badge    ">.Meeting Start Time:</span>
-                                        <span class="badge badge-warning    meeting-start-timing">  </span>
-
-
-
-                                    </div>
-                                    <div class="col-sm-2">
-
-                                        <span class="badge">.Meeting End Time:</span>
-                                        <span class="badge badge-warning    meeting-end-timing">  </span>
-
-
-                                    </div>
-                                    <div class="col-sm-4"> </div>
-                                    <div class="col-sm-2  " style="text-align: end;">
-
-                                        <span class="badge">.Status:</span>
-                                        <span class="badge badge-success    meeting-statsus"> Active  </span>
-
-
-                                    </div>
-                                </div>*@
-
-                        </div><br />
-
-                        <div class="row">
-                            <div class="col-md-12 text-right">
-                                <p>
-                                    <b id="txt-subject">@ProjectUI.ProjectUI.lblOverview</b>
-                                    <button type='button'  onclick='fn_StartMeeting(this);' class='btn-sm btn btn-danger waves-effect pull-right' style='font-size: smaller;'>@ProjectUI.ProjectUI.lblStartMeeting</button>
-                                </p><hr />
-                            </div>
-                        </div>
-                        <br />
-
-                        <p id="txt-body"></p>
-                        <hr>
-                        <div class="row attachmentRow" style="display:none;">
-                            <h5><i class="fa fa-paperclip mr-2"></i> @HRModuleUI.HumanResourceUI.lblAttachment<span></span></h5>
-                            <div class="col-sm-4 col-md-3">
-                                <a target="_blank" id="attachment-open" href="">
-                                    <img id="letter-attachment" src="" alt="attachment" class="img-thumbnail" style="width: 30%;">
-                                </a>
-                            </div>
-
-                        </div>
-                        <hr class="bg-primary" />
-
-                        <div class="row">
-                            @*<h5>  .MeetingInfo<span></span></h5>*@
-                            <div class="card-footer">
-                                <div class="col-sm-2">
-
-                                    <span class="badge    ">@ProjectUI.ProjectUI.lblMeetingDate:</span>
-                                    <span class="badge badge-danger    meeting-date">  </span>
-
-
-                                </div>
-                                <div class="col-sm-2">
-
-
-
-                                    <span class="badge    ">@ProjectUI.ProjectUI.lblMeetingStartTime:</span>
-                                    <span class="badge badge-danger    meeting-start-timing">  </span>
-
-
-
-                                </div>
-                                <div class="col-sm-2">
-
-                                    <span class="badge">@ProjectUI.ProjectUI.lblMeetingEndTime:</span>
-                                    <span class="badge badge-danger    meeting-end-timing">  </span>
-
-
-                                </div>
-                                <div class="col-sm-4"> </div>
-                                <div class="col-sm-2  " style="text-align: end;">
-
-                                    <span class="badge">.@Resources.Global.lblStatus:</span>
-                                    <span class="badge badge-danger    meeting-status">   </span>
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
+ 
 @{
     Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Meeting/_MeetingStartEnd.cshtml");
 }
 
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#MeetingBasicInformation" role="tab">1.@ProjectUI.ProjectUI.lblOverview</a>
+
+                </li>
+                <li class="nav-item" onclick="fnCheckTab('MeetingsInformation');">
+                    <a class="nav-link" data-toggle="tab" href="#MeetingsInformation" role="tab" id="PersonalDocumentTabLi">2.@ProjectUI.ProjectUI.lblMeetingInformation</a>
+                </li>
+
+
+            </ul>
+
+
+
+            <!-- Tab panes -->
+            <div class="tab-content tabs">
+                <div class="tab-pane active" id="MeetingBasicInformation" role="tabpanel">
+
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <div class="card shadow-none mt-3 border border-light">
+
+                                <div class="card-block">
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <p>
+                                                <b id="txt-subject">@ProjectUI.ProjectUI.lblOverview</b>
+                                                <button type='button' onclick='fn_StartMeeting(this);' class='btn-sm btn btn-danger waves-effect pull-right' style='font-size: smaller;'>@ProjectUI.ProjectUI.lblStartMeeting</button>
+                                            </p><hr />
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <p id="txt-body"></p>
+                                    <hr>
+                                    <div class="row attachmentRow" style="display:none;">
+                                        <h5><i class="fa fa-paperclip mr-2"></i> @HRModuleUI.HumanResourceUI.lblAttachment<span></span></h5>
+                                        <div class="col-sm-4 col-md-3">
+                                            <a target="_blank" id="attachment-open" href="">
+                                                <img id="letter-attachment" src="" alt="attachment" class="img-thumbnail" style="width: 30%;">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <hr class="bg-primary" />
+
+                                    <div class="row">
+
+                                        <div class="card-footer">
+                                            <div class="col-sm-2">
+
+                                                <span class="badge    ">@ProjectUI.ProjectUI.lblMeetingDate:</span>
+                                                <span class="badge badge-danger    meeting-date">  </span>
+
+
+                                            </div>
+                                            <div class="col-sm-2">
+
+
+
+                                                <span class="badge    ">@ProjectUI.ProjectUI.lblMeetingStartTime:</span>
+                                                <span class="badge badge-danger    meeting-start-timing">  </span>
+
+
+
+                                            </div>
+                                            <div class="col-sm-2">
+
+                                                <span class="badge">@ProjectUI.ProjectUI.lblMeetingEndTime:</span>
+                                                <span class="badge badge-danger    meeting-end-timing">  </span>
+
+
+                                            </div>
+                                            <div class="col-sm-4"> </div>
+                                            <div class="col-sm-2  " style="text-align: end; display:none;">
+
+                                                <span class="badge">.@Resources.Global.lblStatus:</span>
+                                                <span class="badge badge-danger    meeting-status">   </span>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="MeetingsInformation" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <div class="card shadow-none mt-3 border border-light">
+
+                                <div class="card-block">
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <p>
+                                                <b id="txt-subject">@ProjectUI.ProjectUI.lblMeetingInformation</b>
+                                            </p><hr />
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="grid-main-div">
+                                        @*<h4 class="card-title">@ProjectUI.ProjectUI.lblDocumentInformation<hr /></h4>*@
+
+                                        <div id="grid-multiple-meeting-information"></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
 
 
 @section scripts {

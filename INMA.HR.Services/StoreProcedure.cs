@@ -370,6 +370,7 @@ public enum ProjectStoreProcedure
     Meeting_Save,
     Meeting_Multiple_Save,
     Meeting_Get,
+    Meeting_Multiple_Get_By_Id,
     Meeting_Delete,
     Meeting_Details_By_Id,
     Meeting_Edit_By_Id,

@@ -220,7 +220,7 @@ namespace INMA.Projects.Services.Project
                 if (_response.Type.ToString().ToLower() == "success" && model.Id == 0)
                 {
                     //var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)_response.InsertedId);
-                    
+
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
                     //foreach (var employee in projectLinkedEmployees)
@@ -231,9 +231,9 @@ namespace INMA.Projects.Services.Project
                     //}
                     //messageBody = "Project Info has been " + (model.Id == 0 ? "created" : "updated") + System.Environment.NewLine + "Project # - " + clientDetailInfo.ProjectNumber + System.Environment.NewLine + "Name - " + clientDetailInfo.NameEng + System.Environment.NewLine + "Location - " + clientDetailInfo.Location;
                     messageBody = "Project Info has been " + (model.Id == 0 ? "created" : "updated") + ". " + " Project # - " + clientDetailInfo.ProjectNumber + ". " + " Name - " + clientDetailInfo.NameEng + "" + " Location - " + clientDetailInfo.Location;
-                    int _smsResponse = smsService.SendSMS(clientDetailInfo.PhoneNumber1, messageBody, "Project Info", _response.InsertedId, model.Client_Id, 0,0);
+                    int _smsResponse = smsService.SendSMS(clientDetailInfo.PhoneNumber1, messageBody, "Project Info", _response.InsertedId, model.Client_Id, 0, 0);
 
-                    
+
                 }
                 //Send Notification
                 var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)_response.InsertedId);
@@ -243,7 +243,7 @@ namespace INMA.Projects.Services.Project
                     //messageBody = "Project Info "+(model.Id == 0 ? "created" : "updated") + System.Environment.NewLine+"Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
                     //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody,"Project Info",_response.InsertedId,model.Client_Id,employee.EmployeeId);
 
-                    var res = notificationService.Save("Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info "+(model.Id == 0 ? "created" : "updated")+" for project# " + clientDetailInfo.ProjectNumber + " ", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", _response.InsertedId, model.CreatedBy, employee.EmployeeId, model.Language);
+                    var res = notificationService.Save("Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", _response.InsertedId, model.CreatedBy, employee.EmployeeId, model.Language);
 
                 }
                 return _response;
@@ -251,7 +251,7 @@ namespace INMA.Projects.Services.Project
             }
         }
         #endregion
-        
+
 
         #region PROJECT EDIT BY ID 
 
@@ -760,11 +760,11 @@ namespace INMA.Projects.Services.Project
                 var model = base.MappedModel(new
                 {
                     Id = 0,
-                    CreatedBy = 0,                    
+                    CreatedBy = 0,
                     Language = string.Empty
                 }, viewInput);
 
-                
+
 
 
                 var repository = Ioc.Resolve<IRepository>();
@@ -838,7 +838,8 @@ namespace INMA.Projects.Services.Project
                     To_SetupType_Id = 0,
                     EmployeeId = 0,
                     UserId = 0,
-                    AttachmentRemarks = string.Empty,                    
+                    AttachmentRemarks = string.Empty,
+                    ApprovedOrReturned = string.Empty,
                     Language = string.Empty
                 }, viewInput);
 
@@ -893,7 +894,7 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "Document transferred";
-                        description = "Document transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType+"  project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "Document transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", smsModel.Project_Id, smsModel.UserId, employee.EmployeeId, smsModel.Language);
@@ -974,7 +975,7 @@ namespace INMA.Projects.Services.Project
                 var modelEmp = base.MappedModel(new
                 {
 
-                    Id = 0,                    
+                    Id = 0,
                 }, viewInput);
 
                 var repositoryEmp = Ioc.Resolve<IRepository>();
@@ -988,7 +989,7 @@ namespace INMA.Projects.Services.Project
 
                 //Project_Linked_Multiple_Employees_Get_By_Id
 
-                
+
 
                 var model = base.MappedModel(new
                 {
@@ -1005,34 +1006,43 @@ namespace INMA.Projects.Services.Project
 
                 values = _params.Get(model);
                 var _response = repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Employees_Delete_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                
 
-                /*SMS Sending Code
+
+                /*SMS Sending Code*/
                 if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)_responseEmp.Project_Id);
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
-                    foreach (var employee in projectLinkedEmployees)
-                    {
-                        messageBody = "Employee("+ _responseEmp.NameEng+ ") has been removed from "+_responseEmp.SetupType + " - "+_responseEmp.SetupTypeDetail+ "" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
-                        //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
-                        int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, ""+_responseEmp.SetupType + " - "+_responseEmp.SetupTypeDetail+ "", _responseEmp.Project_Id, 0, employee.EmployeeId);
+                    //Added below logic to send SMS only to now added employee(s)
 
-                    }
+                    messageBody = "Employee(" + _responseEmp.NameEng.ToString().Trim() + ") has been removed from " + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "" + "." + " Project # - " + projectLinkedEmployees[0].ProjectNumber + "." + "Name - " + projectLinkedEmployees[0].NameEng + "." + " Location - " + projectLinkedEmployees[0].Location;
+                    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                    int _smsResponse = smsService.SendSMS(_responseEmp.PhoneNumber, messageBody, "" + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "", _responseEmp.Project_Id, 0, _responseEmp.Id,model.UserId);
+                    
+                    //Below commented code will send SMS to all asigned employees now and previous
+                    //foreach (var employee in projectLinkedEmployees)
+                    //{
+                    //    messageBody = "Employee(" + _responseEmp.NameEng + ") has been removed from " + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                    //    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                    //    int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, "" + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "", _responseEmp.Project_Id, 0, employee.EmployeeId);
+                    //
+                    //}
                 }
-                */
+
                 //Send Notification
                 if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)_responseEmp.Project_Id);
                     var clientDetailInfo = GetClientDetailByProjectId(0, _responseEmp.Project_Id);
-                    
+
                     if (projectLinkedEmployees.Count > 0 && clientDetailInfo != null)
                     {
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "1 employee removed";
-                        description = "1 employee("+ _responseEmp.NameEng+ ") removed from project# " + clientDetailInfo.ProjectNumber + ", section: " + _responseEmp.SetupType + "";
+                        description = "1 employee(" + _responseEmp.NameEng + ") removed from project# " + clientDetailInfo.ProjectNumber + ", section: " + _responseEmp.SetupType + "";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", _responseEmp.Project_Id, model.UserId, employee.EmployeeId, model.Language);
@@ -1072,27 +1082,41 @@ namespace INMA.Projects.Services.Project
                 ProductList.Add("@UD_Project_Save_Multiple_Employees", table);
                 var response = repository.GetMultipleWithTableValuParam<dynamic>(ProjectStoreProcedure.Project_Save_Multiple_Employees.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
-                /*SMS Sending Code
+                //SMS Sending Code
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
                 {
                     IDictionary<string, object> valuesGetTypeAndDetail = new Dictionary<string, object>();
                     valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
                     valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.ProjectModel[0].Sub_Section_Entity_Id);
                     valuesGetTypeAndDetail.Add("@Language", "en-US");
-                    var responseSetupTypeAndDetail =  repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
+                    var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.ProjectModel[0].Project_Id);
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
-                    foreach (var employee in projectLinkedEmployees)
+                    //Added below logic to send SMS only to now added employee(s)
+                    foreach (var asignedEmployee in model.ProjectModel)
                     {
-                        //messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to Design Section" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
-                        messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to "+ responseSetupTypeAndDetail.SetupType + " - "+responseSetupTypeAndDetail.SetupTypeDetail + "" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
-                        //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
-                        int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, ""+ responseSetupTypeAndDetail.SetupType + " - "+responseSetupTypeAndDetail.SetupTypeDetail + "", model.ProjectModel[0].Project_Id, 0, employee.EmployeeId);
+                        var employee = projectLinkedEmployees.Where(filter => filter.EmployeeId == asignedEmployee.HR_Employee_Id).FirstOrDefault();
+                        if (employee != null)
+                        {
+                            //messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to Design Section" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                            messageBody = employee.EmpNameEng.ToString().Trim() + " has been added to " + responseSetupTypeAndDetail.SetupType + " - " + responseSetupTypeAndDetail.SetupTypeDetail + "" + "." + "Project # - " + employee.ProjectNumber + "." + "Name - " + employee.NameEng + "." + "Location - " + employee.Location;
+                            //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                            int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, "" + responseSetupTypeAndDetail.SetupType + " - " + responseSetupTypeAndDetail.SetupTypeDetail + "", model.ProjectModel[0].Project_Id, 0, employee.EmployeeId);
 
+                        }
                     }
+                    //Below commented code will send SMS to all asigned employees now and previous
+                    //foreach (var employee in projectLinkedEmployees)
+                    //{
+                    //    //messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to Design Section" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                    //    messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to "+ responseSetupTypeAndDetail.SetupType + " - "+responseSetupTypeAndDetail.SetupTypeDetail + "" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                    //    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                    //    int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, ""+ responseSetupTypeAndDetail.SetupType + " - "+responseSetupTypeAndDetail.SetupTypeDetail + "", model.ProjectModel[0].Project_Id, 0, employee.EmployeeId);
+                    //
+                    //}
                 }
-                */
+                //Ends SMS Sending Code
 
                 //Send Notification
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
@@ -1347,7 +1371,7 @@ namespace INMA.Projects.Services.Project
                 }, viewInput);
 
 
-               
+
 
 
                 var repository = Ioc.Resolve<IRepository>();
@@ -1714,7 +1738,7 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "Supervison info updated";
-                        description = "Supervison info updated for project# " + clientDetailInfo.ProjectNumber +"";
+                        description = "Supervison info updated for project# " + clientDetailInfo.ProjectNumber + "";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.SupervisionSection_Update_Area_ProjectId, model.SupervisionSection_Update_Area_CreatedBy, employee.EmployeeId, model.SupervisionSection_Update_Area_Language);
@@ -2023,14 +2047,14 @@ namespace INMA.Projects.Services.Project
                     Language = string.Empty
                 }, viewInput);
 
-                 
+
 
                 var repository = Ioc.Resolve<IRepository>();
                 IDictionary<string, object> values = new Dictionary<string, object>();
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
-                return  repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
- 
+                return repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
 
             }
         }

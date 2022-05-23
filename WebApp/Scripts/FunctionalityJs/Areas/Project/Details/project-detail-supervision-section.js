@@ -82,7 +82,7 @@ function fnLoadSupervisionSection_Document(project_Id, Setup_Type_Id, grid_Id) {
 var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
     var pass_GridName = localStorage.getItem('grid_id');
 
-
+    
     if (pass_GridName != "") {
 
         var gridTemplate = '';
@@ -540,6 +540,7 @@ function loopThroughGrid_SupervisionSection(btnValue, btnId, btnIcon) {
             {
                 ProjectModel: postingArray,
                 CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                CompletionDate: "",
                 Language: _currentLanguage == null ? '' : _currentLanguage
             }, CallBack: fn_project_save_Multiple_employee_SupervisionSection_callback
         });

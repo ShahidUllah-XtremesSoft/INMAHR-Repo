@@ -314,7 +314,7 @@ function fn_transfer_file(event) {
 
     var row = $(event).closest("tr");
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
-    var dataItem = grid.dataItem(row);    
+    var dataItem = grid.dataItem(row);
     selectedRecordDocumentType = dataItem.combineDocumentType;
 
     $('#load-model').click();
@@ -378,7 +378,7 @@ function fn_transfer_file_save() {
             //alert(selectedRecordDocumentType);
             //alert($('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").text());
             //alert($('#Project_DesignSection_SetupDetailTypeDDL').data("kendoDropDownList").text());
-            
+
 
             ajaxRequest({
                 commandName: 'Project_DesignSection_Document_Transfer_ById', values: {
@@ -575,8 +575,8 @@ function onSelect_DesignSection(e) {
 };
 
 function fnLoadDesignSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
-     
-     
+
+
     var areaname = e.value;
     $('.checkbtnValue_DesignSection').removeClass('active')
     $(e).addClass('active')
@@ -598,6 +598,8 @@ function fnLoadDesignSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
 
         $('.div-design-section-document-upload-area').hide();
         $('.div-design-section-assigned-employees-area').hide();
+        $('.div-show-only-for-design-section-employee-available-area').show();
+
         setTimeout(function () {
 
             loadloadAllEmployees_DesignSection($('#assignedModal_setup_type_detail_Id').val(), $('#assignedModal_setup_type_Id').val());
@@ -608,13 +610,14 @@ function fnLoadDesignSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
     } else if (areaname == 'Assigned Employee') {
 
 
-
         setTimeout(function () {
             fnloadAssignedEmployees_DesignSection($('#assignedModal_setup_type_detail_Id').val());
         }, 150);
         $('.div-design-section-assigned-employees-area').show();
         $('#div-design-section-employees-area').hide();
         $('.div-design-section-document-upload-area').hide();
+         
+        $('.div-show-only-for-design-section-employee-available-area').hide();
 
     }
 }
@@ -714,7 +717,8 @@ function loopThroughGrid_DesingSection(btnValue, btnId, btnIcon) {
             values:
             {
                 ProjectModel: postingArray,
-                CreatedBy: JSON.parse(localStorage.getItem('User')).id,                
+                CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                CompletionDate: $('#DesignSection_AssignedDocument_StartDate').val(),
                 Language: _currentLanguage == null ? '' : _currentLanguage
             }, CallBack: fn_project_save_Multiple_employee_callback
         });

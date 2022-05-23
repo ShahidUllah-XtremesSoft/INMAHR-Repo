@@ -108,15 +108,7 @@ function loadProfileCallBack(response) {
 }
 
 
-
-function fnCheckTab(selectedTab) {
-
-    if (selectedTab == "ClientDocumentInformation") {
-
-        loadPersonalDocumentsKendoGrid();
-    }
-
-}
+ 
 
 //--------------------------- MEETING START WORK  ----------------------------------------
 function fn_StartMeeting(e) {
@@ -154,7 +146,7 @@ $('#btn-multiple-meeting-save').click(function () {
                 
                 setTimeout(function () {
                     location.reload();
-                },2000)
+                },1500)
                // window.location.href = '/Project/Issue/List';
 
             },
@@ -281,4 +273,75 @@ function fnReturnDateTime() {
     var cSec = today.getSeconds();
     //alert(cHour + ":" + cMin + ":" + cSec);
     return cHour + ":" + cMin + ":" + cSec;
+}
+
+
+
+
+
+
+function fnCheckTab(selectedTab) {
+
+    if (selectedTab == "MeetingsInformation") {
+
+        loadClientMeetingInformationKendoGrid();
+    }  
+
+}
+function loadClientMeetingInformationKendoGrid() {
+    ajaxRequest({
+        commandName: 'Meeting_Multiple_Get_By_Id',
+        values: {
+            Meeting_Id: meeting_Id,
+            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            Language: _currentLanguage
+        }, CallBack: loadClientMeetingInformationKendoGridCallBack
+    });
+}
+var loadClientMeetingInformationKendoGridCallBack = function (inputDataJSON) {
+
+    loadClientMeetingInformationKendoGridResponse(JSON.parse(inputDataJSON.Value));
+}
+
+
+var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
+    
+    var gridColumns = [
+
+        { field: "meetingMultiple_Id", title: "meetingMultiple_Id", hidden: true },
+        { field: "meetingId", title: "meetingId", hidden: true },
+        { field: "projectId", title: "projectId", hidden: true },
+        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+
+        {
+            field: "projectNumber", hidden: false, title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectNumber#</a> ",
+        },
+        {
+            field: "projectName", hidden: true, title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectName#</a> ",
+        },
+        
+      //  { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+
+        { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
+      //  { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
+        { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable:false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
+        { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>" },
+        { field: "totaltime", title: ".totaltime", width: 30, filterable: false, template: "<span class='badge badge-danger'>#:totaltime#</span>" },
+     //   { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>" },
+        { field: "remarks", title: lblRemarks, width: 30, filterable: false, template: "<span class='badge badge-info'>#:remarks#</span>" },
+ 
+    ];
+    bindKendoGrid('grid-multiple-meeting-information', 50, gridColumns, inputDataJSON, true, 400);
+
+};
+function meetingDetailsById(e) {
+    var row = $(e).closest("tr");
+    var grid = $("#grid-multiple-meeting-information").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+ 
+    window.location.href = '/Project/Project/Details?id=' + dataItem.projectId + '';
 }

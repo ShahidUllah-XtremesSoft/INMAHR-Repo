@@ -338,6 +338,7 @@ public enum ProjectStoreProcedure
     Project_SupervisionSection_Document_Transfer_ById,
     Project_SupervisionSection_Document_Delete,
 
+    Prject_CreatorInfo_GetByProjectId,
     #endregion
     #region Client
     Client_Save,

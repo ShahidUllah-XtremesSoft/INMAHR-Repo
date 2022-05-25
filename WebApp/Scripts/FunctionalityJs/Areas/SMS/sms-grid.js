@@ -29,8 +29,8 @@ var bindGrid = function (inputDataJSON) {
         { field: "client_Id", title: "ClientId", hidden: true },
         
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
-        { field: "empName", title: "Receiver Name", hidden: true, width: 70 },
-        { field: "clientName", title: "Receiver Name", hidden: false, width: 70 },
+        { field: "empName", title: "Receiver Name", hidden: false, width: 70 },
+        { field: "clientName", title: "Receiver Name", hidden: true, width: 70 },
         { field: "title", title: "Title", hidden: false,width:50 },        
         { field: "description", title: "Description", hidden: false,width:100 },
         { field: "sendDate", title: "Date", hidden: false,width:25 },

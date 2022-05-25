@@ -392,6 +392,7 @@ function fn_transfer_file_save() {
                     AttachmentRemarks: $('#DesignSection_Remarks').val(),
                     FromDocumentType: selectedRecordDocumentType,
                     ToDocumentType: $('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").text() + ' | ' + $('#Project_DesignSection_SetupDetailTypeDDL').data("kendoDropDownList").text(),
+                    ApprovedOrReturned: $('#ApprovedOrReturned').val(),
                     Language: $('#Language').val()
                 }, CallBack: fn_transfer_file_saveCallBack
             });
@@ -677,12 +678,13 @@ $(document).on("click", "#checkAll", function () {
 });
 
 $('#projectDetail_btnSave_DesingSection').click(function (e) {
+    
     loopThroughGrid_DesingSection(this.value, 'projectDetail_btnSave_DesingSection', 'save');
 
 });
 
 function loopThroughGrid_DesingSection(btnValue, btnId, btnIcon) {
-
+       
     var grid = $("#grid-load-all-employees").data("kendoGrid");
 
     var gridd = grid.dataSource._data;
@@ -709,7 +711,7 @@ function loopThroughGrid_DesingSection(btnValue, btnId, btnIcon) {
 
     }
     if (postingArray.length > 0) {
-        console.log(postingArray)
+        
         ajaxRequest({
             commandName: 'Project_Save_Multiple_Employees',
             values:

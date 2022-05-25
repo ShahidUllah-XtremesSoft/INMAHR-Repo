@@ -41,6 +41,17 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                @*<label class="col-form-label">.Transfer to </label><span style="color:red"> *</span><br />*@
+                                <div id="container">
+                                    <input class="form-control pname" id="ApprovedOrReturned" name="ApprovedOrReturned" required>
+                                </div>                               
+                            </div>
+
+                        </div>                      
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblRemarks</label>
@@ -49,30 +60,30 @@
                         </div>
                     </div>
                     <!--<div class="row">
-                    <div class="col-md-6">-->
+    <div class="col-md-6">-->
                     @*<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
                     <!--<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue" value="Available Employee"><i class=""></i> Available Employee(s) </button>
-                        </div>
-                        <div class="col-md-6">
-                            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
-                        </div>
+        </div>
+        <div class="col-md-6">
+            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+        </div>
+    </div>
+    <div id="div-design-section-employees-area"></div>
+
+    <div class="div-design-section-assigned-employees-area" style="display:none;">
+        <br />
+        <br />
+        <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="grid-load-all-assigned-employees">
+
                     </div>
-                    <div id="div-design-section-employees-area"></div>
-
-                    <div class="div-design-section-assigned-employees-area" style="display:none;">
-                        <br />
-                        <br />
-                        <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
-                        <div class="grid-main-div">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="grid-load-all-assigned-employees">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>-->
                 </form>
             </div>
 

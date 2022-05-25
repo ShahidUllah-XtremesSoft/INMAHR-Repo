@@ -99,6 +99,24 @@
                             <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue_TechnicalSection" value="Assigned Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAssignedEmployees</button>
                         </div>
                     </div>
+                    <div class="div-show-only-for-design-section-employee-available-area form-control">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">@Resources.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                                    <input class="form-control" type="date" id="TechnicalSection_CompletionDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                @*<div class="form-group">
+                        <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                        <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                    </div>*@
+                            </div>
+                        </div>
+                    </div>
                     <div id="div-technical-section-employees-area">
 
                         <div class="row">

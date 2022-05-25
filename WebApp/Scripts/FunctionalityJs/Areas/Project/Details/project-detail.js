@@ -32,6 +32,18 @@ $(function () {
 
     fnLoadProjectDetailsById();
 
+
+    $("#ApprovedOrReturned").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        dataSource: {
+            data: [
+                {value:'Approved', text:'Approved'},
+                { value: 'Returned', text:'Returned'}
+            ]
+        }
+    });
+
 });
 //|Load Project Details Start
 function fnLoadProjectDetailsById() {
@@ -430,7 +442,8 @@ function progressbar_subSection(differentSectionMenuResponse, CallingArea) {
     subSection_PB.options.max = differentSectionMenuResponse.length;//- 1;
      
 
-    for (var loopCount = 0; loopCount < differentSectionMenuResponse.length + 1; loopCount++) {
+    //for (var loopCount = 0; loopCount < differentSectionMenuResponse.length + 1; loopCount++) {
+    for (var loopCount = 0; loopCount < differentSectionMenuResponse.length ; loopCount++) {
 
         subSection_PB.value(loopCount);
         //   if (differentSectionMenuResponse[loopCount].project_sub_stepper_menu_error != undefined) {

@@ -44,7 +44,14 @@ var loadTechnicalSectionDropdownListCallBack = function (responseJSON) {
     //$('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").options.enabled
 }
 function loadTechnicalSectionReportGrid(sectionId) {
-    ajaxRequest({ commandName: 'Reports_TechnicalSection_GetBySectionId', values: { SectionId: sectionId, Language: _currentLanguage }, CallBack: loadTechnicalSectionReportGridCallBack });
+    ajaxRequest({
+        commandName: 'Reports_TechnicalSection_GetBySectionId', values: {
+            SectionId: sectionId,
+            StartDate: $("#StartDate").val(),
+            EndDate: $("#EndDate").val(),
+            Language: _currentLanguage
+        }, CallBack: loadTechnicalSectionReportGridCallBack
+    });
 }
 var loadTechnicalSectionReportGridCallBack = function (responseJSON) {
     bindloadTechnicalSectionReportGrid(responseJSON);

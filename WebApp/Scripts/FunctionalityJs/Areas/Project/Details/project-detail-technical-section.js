@@ -555,7 +555,7 @@ function loopThroughGrid_TechnicalSection(btnValue, btnId, btnIcon) {
             {
                 ProjectModel: postingArray,
                 CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                CompletionDate: "",
+                CompletionDate: $('#TechnicalSection_CompletionDate').val(),
                 Language: _currentLanguage == null ? '' : _currentLanguage
             }, CallBack: fn_project_save_Multiple_employee_TechnicalSection_callback
         });

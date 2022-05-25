@@ -1,6 +1,23 @@
 ﻿
 
+<div class="div-show-only-for-design-section-employee-available-area form-control" style="display:block">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@Resources.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                <input class="form-control" type="date" id="TechnicalSection_CompletionDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")" />
+            </div>
+        </div>
 
+        <div class="col-sm-6">
+            @*<div class="form-group">
+                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                </div>*@
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
@@ -10,6 +27,7 @@
     </div>
 </div>
 <hr />
+
 <div class="">
     <div class="row ">
         <div class="col-md-12">
@@ -113,7 +131,7 @@
                 //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
             },
             { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-            { field: "professionName", title:lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "professionName", title: lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             {
                 headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
                 template: function (dataItem) {
@@ -233,7 +251,7 @@
                 {
                     ProjectModel: postingArray,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                    CompletionDate: "",
+                    CompletionDate: $('#TechnicalSection_CompletionDate').val(),
                     Language: _currentLanguage
                 }, CallBack: fn_project_save_Multiple_employee_callback
             });
@@ -248,7 +266,7 @@
     var fn_project_save_Multiple_employee_callback = function (response) {
         swal(response.Value);
         loadTechnicalSectionAllEmployees();
-         
+
         fnloadAssignedEmployees_TechnicalSection($('#Project_Technical_Section_Parent_Type_DDL').val(), $('#Setup_SetupType_Id_for_Technical_Section').val());
 
     }

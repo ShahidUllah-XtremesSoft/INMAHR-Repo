@@ -18,7 +18,9 @@ namespace INMA.Projects.Services.Commands.Reports
             {
                 var model = base.MappedModel(new
                 {
-                    SectionId = 0,                    
+                    SectionId = 0,
+                    StartDate = string.Empty,
+                    EndDate = string.Empty,
                     Language = string.Empty
 
                 }, viewInput);
@@ -40,6 +42,8 @@ namespace INMA.Projects.Services.Commands.Reports
                 var model = base.MappedModel(new
                 {
                     SectionId = 0,
+                    StartDate = string.Empty,
+                    EndDate = string.Empty,
                     Language = string.Empty
 
                 }, viewInput);

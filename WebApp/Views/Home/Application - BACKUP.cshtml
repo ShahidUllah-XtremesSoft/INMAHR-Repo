@@ -1,0 +1,223 @@
+﻿@{
+
+    Layout = null;
+}
+
+<html>
+<head>
+    @*<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">*@
+    <title>@Resources.Global.lblInma</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+
+    <link href="~/Content/Themes/CoreUI/css/style.min.css" rel="stylesheet" />
+    <!-- Icons -->
+    <link href="~/Content/Themes/CoreUI/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Themes/CoreUI/css/simple-line-icons.css" rel="stylesheet">
+
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+        }
+    </style>
+</head>
+
+
+
+<body style="overflow:hidden;">
+    <input type="hidden" id="main-module-id" value="0" />
+
+
+    @*<div class="row">
+
+            <div class="col-sm-12 login-bg">
+                <div class="auth-wrapper d-flex  justify-content-center align-items-center">
+                    <div class="auth-box    border-secondary">
+                        <div class="row">
+                            <div class="col-sm-4 ">
+                                <button type="button" class="btn btn-danger form-control" style="font-weight:normal;" onclick="deleteInternalLetter(this)"> <i class="fa fa-trash"></i> Delete</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>*@
+
+    <br />
+    @*<div class="row">
+            <div class="col-sm-3 ">
+                <a href="#" target="_blank">
+                    <div class="card">
+                        <div class=" btn-lg form-control btn btn-outline-danger">
+                            <h4>HR</h4>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 ">
+                <a href="#" target="_blank">
+                    <div class="card">
+                        <div class=" btn-lg form-control btn btn-outline-success">
+                            <h4>Project</h4>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+
+        </div>*@
+    <br />
+    <br />
+    <div class="center">
+        <div class="text-center p-t-20 p-b-20">
+            <span class="db"><img src="/Content/Login/img/logo1.png" alt="logo" style="height: 200px;width:auto;"></span>
+
+            @*<h1>  @Resources.Global.lblInma</h1>*@
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="row " style="text-align: -webkit-center;">
+        <div class="col-sm-12 ">
+            <table style="width:50%;">
+                <tbody style="">
+                    <tr>
+                        <td>
+                            <a onclick="getAssignedMenusForRole_new('1')">
+                                <div class="card">
+                                    <div class=" btn-lg form-control btn btn-outline-danger center">
+                                        <h5 data-mainModuleId="1">HR</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a onclick="getAssignedMenusForRole_new('2')">
+                                <div class="card">
+                                    <div class=" btn-lg form-control btn btn-outline-success center">
+                                        <h5 data-mainModuleId="2"> PROJECT</h5>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+
+    @*<footer class="footer">
+            <button id="btn-logout" class="btn btn-danger" style="display: inline-grid;"><i class="fa fa-lock"></i> Logout </button>
+        </footer>*@
+
+
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+
+    <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
+
+    <!--Sweet Alert 2-->
+</body>
+</html>
+<script>
+ 
+    var lblOops = '@Resources.Global.lblOops';
+    var lblPleaseContactToSystemEngineerThankyou = '@Resources.Global.lblPleaseContactToSystemEngineerThankyou';
+    var lblYouDontHavePermissionToAccessThisApplication = '@Resources.Global.lblYouDontHavePermissionToAccessThisApplication';
+
+    var _currentLanguage = '@Resources.Common.CurrentLang';
+    $(function () {
+        $('#Language').val(_currentLanguage);
+    })
+
+
+
+
+    function getAssignedMenusForRole_new(mainApplicationModule_Id) {
+        $('#main-module-id').val('');
+        $('#main-module-id').val(mainApplicationModule_Id);
+
+        ajaxRequest({ commandName: 'UserManagement_ValidateCredenial_New', values: { RoleId: 0, LoggedInUserId: localStorage.getItem('LoggedInUserId'), Language: _currentLanguage, MainApplicationModule_Id: $('#main-module-id').val() }, CallBack: loggedInUserDetails_CallBack });
+
+    }
+
+
+    function loggedInUserDetails_CallBack(loggedInDetails) {
+
+         
+
+        if (JSON.parse(loggedInDetails.Value) != null) {
+
+        localStorage.setItem('User', loggedInDetails.Value);
+        localStorage.setItem('EmployeeNumber', JSON.parse(loggedInDetails.Value).employeeNumber);
+
+            ajaxRequest({
+                commandName: 'UserManagement_RoleMenu_GetByRole_New',
+                values: {
+                    RoleId: JSON.parse(loggedInDetails.Value).roleId,
+                    IsHR: JSON.parse(loggedInDetails.Value).isHR,
+                    LoggedInUserId: JSON.parse(loggedInDetails.Value).id,
+                    Language: _currentLanguage,
+                    MainApplicationModule_Id: $('#main-module-id').val()
+                }, CallBack: getAssignedMenusForRoleCallBack
+            });
+
+
+
+        } else {
+
+            Swal.fire({
+                icon: 'error',
+                title: lblOops,
+                text: lblYouDontHavePermissionToAccessThisApplication,//'You dont have permission to access this application..!',
+                /// footer: 'In case of any issue '
+            })
+        }
+
+    }
+
+    function getAssignedMenusForRoleCallBack(roleMenus) {
+         
+        if (roleMenus.Value != '[]') {
+
+        localStorage.setItem('Menus', (roleMenus.Value));
+        localStorage.setItem('MainApplicationModule_Id', $('#main-module-id').val());
+
+        window.location.href = "/HumanResource/Employee/Profile";
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: lblOops ,
+                text: lblPleaseContactToSystemEngineerThankyou,
+                /// footer: 'In case of any issue '
+            });
+        }
+    }
+
+
+
+</script>
+

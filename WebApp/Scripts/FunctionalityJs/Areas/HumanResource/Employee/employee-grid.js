@@ -25,6 +25,8 @@ $(function () {
 
     loadEmiratesStatesDropdownListForLSEng();
     loadEmiratesStatesDropdownListForLSArb();
+
+  
     /*
     //----------- FOR DDL SEARCH
     loadParentDepartmentTreeDropdownList();
@@ -190,7 +192,7 @@ var bindEmployeeGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 20, },
         //{ field: "employeeNumber", title: "Employee Number", width: 130, filterable: true },
         {
-            field: "employeeNumber", title: employeeNumber, width: 40, filterable: true,
+            field: "employeeNumber", title: employeeNumber, width: 40, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
             template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick= redirectToEmployeeDetailView(this)  title='Employee Number'>#=employeeNumber#</a> ",
             //attributes: { "class": "table-cell", style: "text-align: center; font-weight: bold;" }
 
@@ -218,12 +220,12 @@ var bindEmployeeGrid = function (inputDataJSON) {
         //{ field: "releaseDate", title: "ReleaseDate", width: 100, filterable: true },
         //{ field: "expiryDate", title: "ExpiryDate", width: 100, filterable: true },
         {
-            field: "isLoginAssigned", width: 65,
+            field: "isLoginAssigned", width: 60,
             title: login,
             hidden: isHR,
             //template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
             template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#} " +
-                " if(isLoginAssigned == 1) { #<div class= 'btn btn-success btn-sm' onClick= UpdateLogin(this) > <i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
+                " if(isLoginAssigned == 1) { #<div class= 'btn btn-success btn-sm' onClick= UpdateLogin(this) > <i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div> #}#",
 
 
         },
@@ -266,7 +268,10 @@ function redirectToEmployeeDetailView(e) {
 function createLogin(e) {
 
     loadDepartmentTreeDropdownList();
-    loadRoleDropdown();
+    loadRoleDropdown(1);
+    
+    loadMainApplicationModule();
+
     $('#modal-adduserlogin').modal('show');
 
     var row = $(e).closest("tr");
@@ -283,7 +288,8 @@ function createLogin(e) {
 function UpdateLogin(e) {
      
     loadDepartmentTreeDropdownList();
-    loadRoleDropdown();
+    loadRoleDropdown(1);
+    loadMainApplicationModule();
     $('#divDepartmentDropdownList').hide();
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
@@ -297,20 +303,13 @@ function UpdateLogin(e) {
         $('#RoleId').val(dataItem.roleId);
         $('#DepartmentId').val(dataItem.departmentId);
 
-    }, 100);
-
-
-
-
-
-
-
-
+    }, 100); 
 
 }
 
-
+ 
 $('#btnsave').click(function () {
+    $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id)
     if (customValidateForm('frmUserLoginDetail')) {
         $("#frmUserLoginDetail").ajaxForm();
         buttonAddPleaseWait('btnsave');
@@ -370,13 +369,13 @@ function loadRoleDropdownList(isBindChangeEvent = false) {
 //    var dataItem = e.sender.dataItem();
 //    $('#ParentId').val(dataItem.value);
 //}
-function loadRoleDropdown() {
-
+function loadRoleDropdown(mainModule_Id=1) {
+     
     if ($('#Language').val() == 'en-US') {
-        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameEng [Text]', TableName: 'UserManagement_Role', Conditions: 'NameEng IS NOT NULL and UserManagement_MainApplicationModules_Id=1', SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
+        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameEng [Text]', TableName: 'UserManagement_Role', Conditions: 'NameEng IS NOT NULL and UserManagement_MainApplicationModules_Id=' + mainModule_Id, SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
     }
     else {
-        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameArb [Text]', TableName: 'UserManagement_Role', Conditions: 'NameArb IS NOT NULL and UserManagement_MainApplicationModules_Id=1', SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
+        ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameArb [Text]', TableName: 'UserManagement_Role', Conditions: 'NameArb IS NOT NULL and UserManagement_MainApplicationModules_Id=' + mainModule_Id, SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
     }
 }
 var loadRoleDropdownListCallBack = function (loadjQueryDropdownListResponse) {
@@ -561,3 +560,35 @@ function loadAllEmployeesAsPerDepartmentId() {
 
 var getloadAllEmployeesAsPerDepartmentId = function (inputDataJSON) { bindGridData(JSON.parse(inputDataJSON.Value)); }
 */
+
+
+//Load MAIN MODULE List
+function loadMainApplicationModule() {
+    ajaxRequest({ commandName: 'UserManagement_MainApplicationModules_Load', values: { Language: $('#Language').val() }, CallBack: fnLoadMainApplicationModuleCallBack });
+}
+
+function fnLoadMainApplicationModuleCallBack(response) {
+    $("#MainApplicationModules_Id").empty();
+    $("#MainApplicationModules_Id").kendoDropDownList({
+        dataTextField: "name",
+        dataValueField: "id",
+        filter: "contains",
+        //  value: -1,
+        dataSource: JSON.parse(response.Value),
+        popup: { appendTo: $("#MainApplicationModules_container") },
+    
+        select: fnMainMenuApplication_DDL_Callback,
+    });
+
+}
+function fnMainMenuApplication_DDL_Callback(e) {
+
+    var selected_Id = e.dataItem.id;
+    var selected_Text = e.dataItem.name;
+
+    //|Functions Calling 
+    loadRoleDropdown(selected_Id);
+
+}
+ 
+// END

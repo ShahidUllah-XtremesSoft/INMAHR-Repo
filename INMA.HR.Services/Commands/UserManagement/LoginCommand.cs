@@ -36,6 +36,35 @@ namespace INMA.HR.Services.Commands.UserManagement
         }
 
     }
+      [Command(Name = "UserManagement_ValidateCredenial_New")]
+    public class UserManagement_ValidateCredenial_NewCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        { 
+            var model = base.MappedModel(new
+            {
+                RoleId = 0,
+                LoggedInUserId = 0,
+                Language = string.Empty,
+                MainApplicationModule_Id = 0
+
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            IDictionary<string, object> ImageValues = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            string procedure = StoreProcedure.UserManagement_ValidateCredenial_New.ToString();
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(procedure, values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+
+    }
 
 
 
@@ -54,6 +83,7 @@ namespace INMA.HR.Services.Commands.UserManagement
                 RoleId  = 0,
                 DepartmentId    = 0,
                 CreatedBy   = 0,
+                MainApplicationModules_Id = 0,
                 Language  = string.Empty
             }, viewInput);
 

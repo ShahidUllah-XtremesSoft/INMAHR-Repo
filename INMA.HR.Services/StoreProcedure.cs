@@ -147,7 +147,9 @@
     UserManagement_Menu_GetAll,
     UserManagement_Menu_Delete,
     UserManagement_ValidateCredenial,
+    UserManagement_ValidateCredenial_New,
     UserManagement_RoleMenu_GetByRole,
+    UserManagement_RoleMenu_GetByRole_New,
 
     UserManagement_RoleMenu_GetForAdmin,
     #endregion

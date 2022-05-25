@@ -336,6 +336,9 @@
     <Content Include="Content\en-US.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\Images\1.jpg" />
+    <Content Include="Content\Images\2.jpg" />
+    <Content Include="Content\Images\3.jpg" />
     <Content Include="Content\Images\attachment-icon.png" />
     <Content Include="Content\Images\attachment.png" />
     <Content Include="Content\Images\calander.png" />

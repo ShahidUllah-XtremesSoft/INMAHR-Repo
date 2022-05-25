@@ -214,6 +214,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application.
+        /// </summary>
+        internal static string lblApplication {
+            get {
+                return ResourceManager.GetString("lblApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1.
         /// </summary>
         internal static string lblApplicationVersionNo {
@@ -466,6 +475,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oops....
+        /// </summary>
+        internal static string lblOops {
+            get {
+                return ResourceManager.GetString("lblOops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please contact to system engineer, Thank you...!.
+        /// </summary>
+        internal static string lblPleaseContactToSystemEngineerThankyou {
+            get {
+                return ResourceManager.GetString("lblPleaseContactToSystemEngineerThankyou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Powered By.
         /// </summary>
         internal static string lblPoweredBy {
@@ -570,6 +597,15 @@ namespace Resources {
         internal static string lblYes {
             get {
                 return ResourceManager.GetString("lblYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You dont have permission to access this application..!.
+        /// </summary>
+        internal static string lblYouDontHavePermissionToAccessThisApplication {
+            get {
+                return ResourceManager.GetString("lblYouDontHavePermissionToAccessThisApplication", resourceCulture);
             }
         }
         

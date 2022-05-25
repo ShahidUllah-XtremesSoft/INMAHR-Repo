@@ -1,18 +1,12 @@
 ﻿@{
 
-    Layout = null;
+    Layout = null;//"~/Views/Shared/_WebsiteLayout.cshtml";
 }
 
 <html>
 <head>
-    @*<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">*@
     <title>@Resources.Global.lblInma</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
+
 
     <link href="~/Content/Themes/CoreUI/css/style.min.css" rel="stylesheet" />
     <!-- Icons -->
@@ -24,72 +18,128 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 120px;
+            height: 100px;
         }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .lorem-ipsum {
+            padding: 1em;
+            margin: 1em;
+        }
+
+        /** carousel **/
+        .simple-carousel {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto 0 auto;
+            border-radius: 4px;
+            height: 80vh !important; /* Carousel Heigth [now is full screen]*/
+        }
+
+            .simple-carousel ul {
+                position: relative;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                .simple-carousel ul li.slide {
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    height: 80vh;
+                    background: #ccc;
+                    text-align: center;
+                    line-height: 300px;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                    .simple-carousel ul li.slide.active {
+                        opacity: 1;
+                    }
+
+            .simple-carousel a.control_prev,
+            a.control_next {
+                position: absolute;
+                top: 40%;
+                z-index: 999;
+                display: block;
+                padding: 5em 2em;
+                color: #fff;
+                text-decoration: none;
+                opacity: 0.6;
+                cursor: pointer;
+            }
+
+                .simple-carousel a.control_prev:hover,
+                a.control_next:hover {
+                    opacity: 1;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                }
+
+            .simple-carousel a.control_prev {
+                left: 0;
+                border-radius: 0 2px 2px 0;
+            }
+
+            .simple-carousel a.control_next {
+                right: 0;
+                border-radius: 2px 0 0 2px;
+            }
     </style>
 </head>
 
 
 
-<body style="overflow:hidden;">
+<body style="overflow-y:inherit; overflow-x:hidden;">
+    <input type="hidden" id="main-module-id" value="0" />
 
-
-
-    @*<div class="row">
-
-            <div class="col-sm-12 login-bg">
-                <div class="auth-wrapper d-flex  justify-content-center align-items-center">
-                    <div class="auth-box    border-secondary">
-                        <div class="row">
-                            <div class="col-sm-4 ">
-                                <button type="button" class="btn btn-danger form-control" style="font-weight:normal;" onclick="deleteInternalLetter(this)"> <i class="fa fa-trash"></i> Delete</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>*@
-
-    <br />
-    @*<div class="row">
-            <div class="col-sm-3 ">
-                <a href="#" target="_blank">
-                    <div class="card">
-                        <div class=" btn-lg form-control btn btn-outline-danger">
-                            <h4>HR</h4>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-3 ">
-                <a href="#" target="_blank">
-                    <div class="card">
-                        <div class=" btn-lg form-control btn btn-outline-success">
-                            <h4>Project</h4>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-
-
-        </div>*@
-    <br />
-    <br />
-    <div class="center">
+    <!--<div class="center">
         <div class="text-center p-t-20 p-b-20">
-            <span class="db"><img src="/Content/Login/img/logo1.png" alt="logo" style="height: 200px;width:auto;"></span>
-
-            @*<h1>  @Resources.Global.lblInma</h1>*@
+            <span class="db"><img src="/Content/Login/img/logo1.png" alt="logo" style="height: 150px;width:auto;"></span>-->
+    @*<h1>  @Resources.Global.lblInma</h1>*@
+    <!--</div>
+    </div>-->
+    <!--<div class="row">
+        <div class="col-md-12">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="1000">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="~/Content/Images/1.jpg">
+                    </div>-->
+    @*<div class="carousel-item active carousel-item-left">
+            <img class="d-block w-100" src="~/Content/Images/2.jpg">
         </div>
-    </div>
-    <br />
-    <br />
+        <div class="carousel-item carousel-item-next carousel-item-left">
+            <img class="d-block w-100" src="~/Content/Images/3.jpg">
+        </div>*@
+    <!--</div>
+            </div>
+        </div>
+    </div>-->
 
+    <div class="simple-carousel">
+        <a href="#" class="control_next"><i class="fa fa-chevron-right"></i></a>
+        <a href="#" class="control_prev"><i class="fa fa-chevron-left"></i></a>
+        <ul>
+            <li class="slide" style="background-image: url('/../../Content/Images/1.jpg');"><img src="/Content/Login/img/logo1.png" alt="logo" style="float:left; height:150px;width:auto;"></li>
+            <li class="slide" style="background-image: url('/../../Content/Images/2.jpg');"><img src="/Content/Login/img/logo1.png" alt="logo" style="float:left;height: 150px;width:auto;"></li>
+            <li class="slide" style="background-image: url('/../../Content/Images/3.jpg');"><img src="/Content/Login/img/logo1.png" alt="logo" style="float:left;height: 150px;width:auto;"></li>
+        </ul>
+    </div>
+
+    <br />
     <div class="row " style="text-align: -webkit-center;">
         <div class="col-sm-12 ">
             <table style="width:50%;">
@@ -98,8 +148,8 @@
                         <td>
                             <a onclick="getAssignedMenusForRole_new('1')">
                                 <div class="card">
-                                    <div class=" btn-lg form-control btn btn-outline-danger center">
-                                        <h5 data-mainModuleId="1">HR</h5>
+                                    <div class="form-control   ">
+                                        <button type="button" class="btn btn-outline-danger  form-control" value="" ><h3><i class="fa fa-users"></i></h3>   <h5 data-mainModuleId="1">HR</h5></button>
                                     </div>
                                 </div>
                             </a>
@@ -107,27 +157,204 @@
                         <td>
                             <a onclick="getAssignedMenusForRole_new('2')">
                                 <div class="card">
-                                    <div class=" btn-lg form-control btn btn-outline-success center">
-                                        <h5 data-mainModuleId="2"> PROJECT</h5>
+                                    <div class="form-control   ">
+                                        <button type="button"  class="btn btn-outline-success  form-control" value=""><h3><i class="fa fa-cubes"></i></h3>   <h5 data-mainModuleId="2">PROJECT</h5></button>
                                     </div>
-
                                 </div>
                             </a>
                         </td>
+                        @*<td>
+                                <a onclick="getAssignedMenusForRole_new('1')">
+                                    <div class="card">
+                                        <div class=" btn-lg form-control btn btn-outline-danger center">
+                                            <h5 data-mainModuleId="1">HR</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a onclick="getAssignedMenusForRole_new('2')">
+                                    <div class="card">
+                                        <div class=" btn-lg form-control btn btn-outline-success center">
+                                            <h5 data-mainModuleId="2"> PROJECT</h5>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </td>*@
 
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
 
+    <div class="row ">
+
+        <div class="col-sm-12 ">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <strong>.About</strong>
+
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table" id="about-application">
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            We are now considered one of the best leading engineering consultancy
+                                            companies in the United Arab Emirates,
+                                            and since our starting point, we have taken quick and deliberate steps towards contributing to the construction of the real estate market, including towers, commercial buildings, villas, houses, factories and schools
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Inma International Group is based on a vision and an enlightened forward-looking management within a
+                                            fruitful cooperation between three of the most prominent businessmen in the Arab world;
+                                            who have contributed to the development of the architecture and construction market in the United Arab Emirates on a well-studied plan
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Sharjah Engineering Consultancy Company was established in 2004 and is one of the companies of the International Inma Group</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Sharjah Engineering Consultancy is one of the companies of the International Inma Group</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            We are now considered one of the best leading engineering consultancy
+                                            companies in the United Arab Emirates,
+                                            and since our starting point, we have taken quick and deliberate steps towards contributing to the construction of the real estate market, including towers, commercial buildings, villas, houses, factories and schools
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Inma International Group is based on a vision and an enlightened forward-looking management within a
+                                            fruitful cooperation between three of the most prominent businessmen in the Arab world;
+                                            who have contributed to the development of the architecture and construction market in the United Arab Emirates on a well-studied plan
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div class="col-sm-4 ">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <strong class="">.Our Vision</strong>
+
+                </div>
+                <div class="card-block" style=" height: 274px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table" id="about-application">
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Assisting to provide a better social
+                                            environment for our society and
+                                            expanding in terms of providing our
+                                            services at the local and global levels...
+
+                                        </td>
+
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 ">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <strong>.Our Objective</strong>
+
+                </div>
+                <div class="card-block" style=" height: 274px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table" id="about-application">
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Providing professional and comprehensive services through an integrated system of a group of companies under one structure and one umbrella to meet and fulfill the satisfaction of our customers including individuals, Private and Public Institutions and Bodies.
+
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 ">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <strong>.Our Services</strong>
+
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table" id="about-application">
+
+                                <tbody>
+                                    <tr>
+                                        <td>Since the beginning of our launch, we have been working to provide professional services to exceed the expectations of our customers and gain their appreciation and admiration, through the integrated team with extensive experience..</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Praise be to God, INMA International Group has achieved wide progress and has become one of the most prominent groups in the United Arab Emirates in providing services that contribute to the development of the social environment.
+
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
 
 
+
+
+
+
     @*<footer class="footer">
-        <button id="btn-logout" class="btn btn-danger" style="display: inline-grid;"><i class="fa fa-lock"></i> Logout </button>
-    </footer>*@
+            <button id="btn-logout" class="btn btn-danger" style="display: inline-grid;"><i class="fa fa-lock"></i> Logout </button>
+        </footer>*@
 
 
 
@@ -140,49 +367,137 @@
     <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
 
     <!--Sweet Alert 2-->
+
 </body>
 </html>
 <script>
+
+    var lblOops = '@Resources.Global.lblOops';
+    var lblPleaseContactToSystemEngineerThankyou = '@Resources.Global.lblPleaseContactToSystemEngineerThankyou';
+    var lblYouDontHavePermissionToAccessThisApplication = '@Resources.Global.lblYouDontHavePermissionToAccessThisApplication';
+
     var _currentLanguage = '@Resources.Common.CurrentLang';
     $(function () {
         $('#Language').val(_currentLanguage);
     })
 
-    var MainApplicationModule_Id = 0;
+
+
+
     function getAssignedMenusForRole_new(mainApplicationModule_Id) {
-        MainApplicationModule_Id = mainApplicationModule_Id
-        var isHR = JSON.parse(localStorage.getItem('isHR'));
-         
-        var loggedInUserId = localStorage.getItem('LoggedInUserId')
-        var roleId = JSON.parse(localStorage.getItem('roleId'));
-        ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: mainApplicationModule_Id }, CallBack: getAssignedMenusForRoleCallBack });
+        $('#main-module-id').val('');
+        $('#main-module-id').val(mainApplicationModule_Id);
+
+        ajaxRequest({ commandName: 'UserManagement_ValidateCredenial_New', values: { RoleId: 0, LoggedInUserId: localStorage.getItem('LoggedInUserId'), Language: _currentLanguage, MainApplicationModule_Id: $('#main-module-id').val() }, CallBack: loggedInUserDetails_CallBack });
+
     }
-    function getAssignedMenusForRoleCallBack(roleMenus) {
 
-        localStorage.setItem('Menus', (roleMenus.Value));
-        localStorage.setItem('MainApplicationModule_Id', MainApplicationModule_Id);
 
-        if (JSON.parse(roleMenus.Value).length > 0) {
+    function loggedInUserDetails_CallBack(loggedInDetails) {
 
-        window.location.href = "/HumanResource/Employee/Profile";
+
+
+        if (JSON.parse(loggedInDetails.Value) != null) {
+
+        localStorage.setItem('User', loggedInDetails.Value);
+        localStorage.setItem('EmployeeNumber', JSON.parse(loggedInDetails.Value).employeeNumber);
+
+            ajaxRequest({
+                commandName: 'UserManagement_RoleMenu_GetByRole_New',
+                values: {
+                    RoleId: JSON.parse(loggedInDetails.Value).roleId,
+                    IsHR: JSON.parse(loggedInDetails.Value).isHR,
+                    LoggedInUserId: JSON.parse(loggedInDetails.Value).id,
+                    Language: _currentLanguage,
+                    MainApplicationModule_Id: $('#main-module-id').val()
+                }, CallBack: getAssignedMenusForRoleCallBack
+            });
+
+
+
         } else {
-            //swalMessage('error', "You dont have permission to access this application", 2500);
+
             Swal.fire({
                 icon: 'error',
-               title: 'Oops...',
-                text: 'You dont have permission to access this application..!',
-               /// footer: 'In case of any issue '
+                title: lblOops,
+                text: lblYouDontHavePermissionToAccessThisApplication,//'You dont have permission to access this application..!',
+                /// footer: 'In case of any issue '
             })
         }
 
-
     }
-    //$('#btn-logout').click(function () {
-    //     window.close();
-    //    window.open('/User/Login', '_blank');
-    //});
+
+    function getAssignedMenusForRoleCallBack(roleMenus) {
+
+        if (roleMenus.Value != '[]') {
+
+        localStorage.setItem('Menus', (roleMenus.Value));
+        localStorage.setItem('MainApplicationModule_Id', $('#main-module-id').val());
+
+        window.location.href = "/HumanResource/Employee/Profile";
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: lblOops ,
+                text: lblPleaseContactToSystemEngineerThankyou,
+                /// footer: 'In case of any issue '
+            });
+        }
+    }
 
 
+    $(document).ready(function () {
+        simpleCarousel($(".simple-carousel"), 5000);
+    });
+
+    function simpleCarousel(carousel, intervalTime = 5000) {
+        var slideCount = $(carousel).find("ul li.slide").length;
+        var activeSlide = 0;
+
+        function showSlide() {
+            $(carousel)
+                .find("ul li.slide")
+                .each(function (index) {
+                    if (index == activeSlide) {
+                        $(this).fadeIn();
+                    } else {
+                        $(this).fadeOut();
+                    }
+                });
+        }
+
+        setInterval(function () {
+            moveRight();
+        }, intervalTime);
+
+        function moveLeft() {
+            activeSlide -= 1;
+            if (activeSlide < 0) {
+                activeSlide = slideCount - 1;
+            }
+            showSlide();
+        }
+
+        function moveRight() {
+            activeSlide += 1;
+            if (activeSlide >= slideCount) {
+                activeSlide = 0;
+            }
+            showSlide();
+        }
+
+        $(carousel)
+            .find("a.control_prev")
+            .click(function () {
+                moveLeft();
+            });
+
+        $(carousel)
+            .find("a.control_next")
+            .click(function () {
+                moveRight();
+            });
+    }
 
 </script>
 

@@ -45,14 +45,14 @@ function userLoginCallBack(userLoginResponse) {
     else {
 
      //   getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId, JSON.parse(userLoginResponse.Value).isHR, JSON.parse(userLoginResponse.Value).id);
-          
+           
         localStorage.setItem('LoggedInUserId', JSON.parse(userLoginResponse.Value).id);
         localStorage.setItem('isHR', JSON.parse(userLoginResponse.Value).isHR);
         localStorage.setItem('roleId', JSON.parse(userLoginResponse.Value).roleId);
 
 
-        localStorage.setItem('User', userLoginResponse.Value);
-        localStorage.setItem('EmployeeNumber', JSON.parse(userLoginResponse.Value).employeeNumber);
+       // localStorage.setItem('User', userLoginResponse.Value);
+       // localStorage.setItem('EmployeeNumber', JSON.parse(userLoginResponse.Value).employeeNumber);
         window.location.href = "/Home/Application/";
         swal('success', 'You`re logged in successfully');
     }

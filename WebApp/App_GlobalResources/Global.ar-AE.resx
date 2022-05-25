@@ -165,6 +165,9 @@
   <data name="lblAllowedFormatsArePngJpgPdf" xml:space="preserve">
     <value>الصيغة المسموح بها (png, jpg,pdf)</value>
   </data>
+  <data name="lblApplication" xml:space="preserve">
+    <value>Application</value>
+  </data>
   <data name="lblApplicationVersionNo" xml:space="preserve">
     <value>1</value>
   </data>
@@ -247,6 +250,12 @@
   <data name="lblNotStartedYet" xml:space="preserve">
     <value>Not started yet</value>
   </data>
+  <data name="lblOops" xml:space="preserve">
+    <value>Oops...</value>
+  </data>
+  <data name="lblPleaseContactToSystemEngineerThankyou" xml:space="preserve">
+    <value>Please contact to system engineer, Thank you...!</value>
+  </data>
   <data name="lblPoweredBy" xml:space="preserve">
     <value>انجز بواسطة</value>
   </data>
@@ -282,6 +291,9 @@
   </data>
   <data name="lblYes" xml:space="preserve">
     <value>نعم</value>
+  </data>
+  <data name="lblYouDontHavePermissionToAccessThisApplication" xml:space="preserve">
+    <value>You dont have permission to access this application..!</value>
   </data>
   <data name="textAlign" xml:space="preserve">
     <value>right</value>

@@ -90,6 +90,33 @@ namespace INMA.HR.Services.Commands.UserManagement
             return _response;
         }
     }
+    [Command(Name = "UserManagement_RoleMenu_GetByRole_New")]
+    public class UserManagement_RoleMenu_GetByRole_NewCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new
+            {
+                RoleId = 0,
+                IsHR = false,
+                LoggedInUserId = 0,
+                Language = string.Empty,
+                MainApplicationModule_Id = 0
+            }, v);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            IDictionary<string, object> ImageValues = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            string procedure = StoreProcedure.UserManagement_RoleMenu_GetByRole_New.ToString();
+            values = _params.Get(model);
+            var _response = repository.GetMultiple<dynamic>(procedure, values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
     [Command(Name = "UserManagement_RoleMenu_GetForAdmin")]
     public class UserManagement_RoleMenu_GetForAdminCommand : CamelCommandBase
     {

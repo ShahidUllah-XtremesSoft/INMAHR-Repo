@@ -6,10 +6,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(parseInt(JSON.parse(localStorage.getItem('User')).id));
 
-    loadProjectDropdownListEng();
-    loadEmployeeDropdownList();
-    loadProjectSectiondownList()
-    loadProjectSubSectiondownList();
+   
     setTimeout(function () {
         $("#Project_SubSections_DDL").data("kendoDropDownList").enable(false);
     // LOAD KENDO DATE PICKERS
@@ -19,7 +16,10 @@ $(function () {
     }
 
     }, 100);
-
+    loadProjectDropdownListEng();
+    loadEmployeeDropdownList();
+    loadProjectSectiondownList()
+    loadProjectSubSectiondownList();
 
 
 

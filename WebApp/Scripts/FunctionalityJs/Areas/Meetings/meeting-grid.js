@@ -55,15 +55,17 @@ var bindGrid = function (inputDataJSON) {
       
         {
             field: "", title: "", width: 20
-            , template: "#if(isEmployeeExist =='Yes'){ #" +
+            //, template: "#if(isEmployeeExist =='Yes'){ #" +
 
-             //   " <button type='button' id='start' onclick='fn_StartMeeting(this);' class='btn-sm btn btn-danger waves-effect'style='font-size: smaller;'>" + lblStartMeeting + "</button>" +
-                "  " +
-                " #} " +
-                "else {# " +
+            // //   " <button type='button' id='start' onclick='fn_StartMeeting(this);' class='btn-sm btn btn-danger waves-effect'style='font-size: smaller;'>" + lblStartMeeting + "</button>" +
+            //    "  " +
+            //    " #} " +
+            //    "else {# " +
 
-                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>     #}#"
+            //    " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
+            //    " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>     #}#"
+            ,template: " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>"
         },
 
          

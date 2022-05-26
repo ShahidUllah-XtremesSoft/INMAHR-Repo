@@ -14,39 +14,56 @@ $(function () {
 
 
     $('#btn-save-contractor').click(function () {
-         
+        var isEmailValid = true;
         if (customValidateForm('frmAddUpdateContractor')) {
+            var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'Email is invalid' : 'Email is invalid';
+            if (!isValidEmail($('#Email').val())) {
+                $('#Email').addClass('invalid');
+                $('#Email').removeClass("invalid");
+                $('#Email').next("span").remove();
+                $('#Email').attr('title', thisFieldIsRequired);
+                $('#Email').after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
+                isEmailValid = false;
+            } else {
+                $('#Email').removeClass("invalid");
+                $('#Email').next("span").remove();
+            }
+            
+            if (isEmailValid) {
+                buttonAddPleaseWait('btn-save-contractor');
+                $("#frmAddUpdateContractor").ajaxForm();
+                var options = {
+                    success: function (response, statusText, jqXHR) {
+                        buttonRemovePleaseWait('btn-save-contractor', save, 'save');
 
-            buttonAddPleaseWait('btn-save-contractor');
+                        swal(response);
+                        var messageResponseParse = JSON.parse(response);
+                        if (messageResponseParse.type == undefined) {
+                            messageResponseParse = JSON.parse(messageResponseParse);
+                        } if (messageResponseParse.type == undefined) {
+                            messageResponseParse = JSON.parse(messageResponseParse);
+                        }
 
-            $("#frmAddUpdateContractor").ajaxForm();
-            var options = {
-                success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btn-save-contractor', save, 'save');
+                        // fnEditContractorById(messageResponseParse.insertedId);
 
-                    swal(response);
-                    var messageResponseParse = JSON.parse(response);
-                    if (messageResponseParse.type == undefined) {
-                        messageResponseParse = JSON.parse(messageResponseParse);
-                    } if (messageResponseParse.type == undefined) {
-                        messageResponseParse = JSON.parse(messageResponseParse);
+                        window.location.href = '/Project/Contractor/List';
+
+                    },
+                    error: function (xhr, status, error) {
+                        var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                        buttonRemovePleaseWait('btn-save-contractor', save, 'save');
+                        alert(errmsg);
+                    },
+                    complete: function () {
+                        buttonRemovePleaseWait('btn-save-contractor', save, 'save');
                     }
-
-                    // fnEditContractorById(messageResponseParse.insertedId);
-
-                    window.location.href = '/Project/Contractor/List';
-
-                },
-                error: function (xhr, status, error) {
-                    var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
-                    buttonRemovePleaseWait('btn-save-contractor', save, 'save');
-                    alert(errmsg);
-                },
-                complete: function () {
-                    buttonRemovePleaseWait('btn-save-contractor', save, 'save');
-                }
-            };
-            $("#frmAddUpdateContractor").ajaxSubmit(options);
+                };
+                $("#frmAddUpdateContractor").ajaxSubmit(options);
+            }
+            else {
+                buttonRemovePleaseWait('btn-save-contractor', save, 'save');
+                return false;
+            }
         }
         else {
             buttonRemovePleaseWait('btn-save-contractor', save, 'save');

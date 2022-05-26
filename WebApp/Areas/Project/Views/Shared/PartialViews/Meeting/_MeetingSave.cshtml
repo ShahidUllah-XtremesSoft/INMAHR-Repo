@@ -15,8 +15,8 @@
 
                 <input type="hidden" class="" id="TotalMinute" name="TotalMinute" value="0" />
                 <input type="hidden" class="" id="TotalVisit" name="TotalVisit" value="0" />
-                <input type="hidden" class="" id="Project_Id" name="Project_Id" value="0" />
-                <input type="hidden" class="" id="HR_Employee_Id" name="HR_Employee_Id" value="0" />
+                @*<input type="hidden" class="" id="Project_Id" name="Project_Id" value="0" />
+                <input type="hidden" class="" id="HR_Employee_Id" name="HR_Employee_Id" value="0" />*@
                 <input type="hidden" class="" id="Client_Id" name="Client_Id" value="0" />
 
                  
@@ -24,7 +24,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblProject #</label><span style="color:red"> *</span><br />
-                            <input class="form-control" id="ProjectDDL" name="ProjectDDL" required />
+                            <input class="form-control" id="Project_Id" name="Project_Id" required />
                         </div>
                     </div>
                     <div class="col-md-8">  </div>
@@ -34,7 +34,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingWithEngineer</label><span style="color:red"> *</span><br />
-                            <input class="form-control" id="EmployeeDDL" name="EmployeeDDL" required />
+                            <input class="form-control" id="HR_Employee_Id" name="HR_Employee_Id" required />
                         </div>
                     </div>
                     <div class="col-md-8">  </div>

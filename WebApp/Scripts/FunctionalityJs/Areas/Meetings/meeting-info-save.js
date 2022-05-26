@@ -1,10 +1,9 @@
-﻿var parameterId = (new URL(location.href)).searchParams.get('id');
+﻿var parameterId = (new URL(location.href)).searchParams.get('id'); var selectedProjectId= null, selectedEmployeeId = null
 $(function () {
 
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(parseInt(JSON.parse(localStorage.getItem('User')).id));
-    loadProjectDropdownListEng();
-    loadEmployeeDropdownList();
+   
     // LOAD KENDO DATE PICKERS
     renderKendoDatePickerWithNewFormat('MeetingDate');
   //  renderKendoTimePicker('StartedTime');
@@ -15,13 +14,17 @@ $(function () {
     if (parameterId > 0 == true) {
         fnEditById(parameterId);
     }
+    else {
+        loadProjectDropdownListEng();
+        loadEmployeeDropdownList();
+    }
 
 
 
 
     $('#btn-save').click(function () {
 
-
+        
 
         $("#DescriptionEng").val(tinymce.get("DescriptionEng").getContent({ format: "html" }));
 
@@ -66,49 +69,7 @@ $(function () {
 
 
 
-    //------------- DDL LOAD -------------------------------
-
-    //Load Lists to Local Storage
-    function loadProjectDropdownListEng() { ajaxRequest({ commandName: 'Project_DDL', values: { Language: _currentLanguage }, CallBack: fnloadProjectDropdownListEngCallBack }); }
-    function fnloadProjectDropdownListEngCallBack(response) {
-
-        // window.localStorage.setItem('CityListEng', response.Value);
-
-
-        $("#ProjectDDL").kendoDropDownList({
-            dataTextField: "name",
-            dataValueField: "id",
-            filter: "contains",
-            value: -1,
-            dataSource: JSON.parse(response.Value),
-            change: function (e) {
-                var selected_Id = this.value();
-                $('#Project_Id').val(selected_Id);
-
-            },
-        });
-    }
-
-    function loadEmployeeDropdownList() { ajaxRequest({ commandName: 'HR_Employee_DDL', values: { Language: _currentLanguage }, CallBack: fnloadEmployeeDropdownListEngCallBack }); }
-    function fnloadEmployeeDropdownListEngCallBack(response) {
-
-        // window.localStorage.setItem('CityListEng', response.Value);
-
-
-        $("#EmployeeDDL").kendoDropDownList({
-            dataTextField: "name",
-            dataValueField: "id",
-            filter: "contains",
-            value: -1,
-            dataSource: JSON.parse(response.Value),
-            change: function (e) {
-                var selected_Id = this.value();
-
-                $('#HR_Employee_Id').val(selected_Id);
-            },
-        });
-    }
-
+    
 
 
 
@@ -145,11 +106,56 @@ function editByIdCallBack(response) {
     $('#EndedTime').val(response.endedTime);
 
     $("#MeetingDate").kendoDatePicker({ value: response.meetingDate, format: "dd/MM/yyyy" });
-    $("#ProjectDDL").data('kendoDropDownList').value(response.projectId);
-    $("#EmployeeDDL").data('kendoDropDownList').value(response.employeeId);
- 
+
+    //$("#ProjectDDL").data('kendoDropDownList').value(response.projectId);    
+    //$("#EmployeeDDL").data('kendoDropDownList').value(response.employeeId);
+    selectedProjectId = response.projectId;
+    selectedEmployeeId= response.employeeId;
+    loadProjectDropdownListEng();
+    loadEmployeeDropdownList();
 }
 
 
 
-  
+//------------- DDL LOAD -------------------------------
+
+//Load Lists to Local Storage
+function loadProjectDropdownListEng() { ajaxRequest({ commandName: 'Project_DDL', values: { Language: _currentLanguage }, CallBack: fnloadProjectDropdownListEngCallBack }); }
+function fnloadProjectDropdownListEngCallBack(response) {
+
+    // window.localStorage.setItem('CityListEng', response.Value);
+
+    bindKendoDropdownList(JSON.parse(response.Value), 'Project_Id','name','id', 'Select', selectedProjectId);
+    //$("#ProjectDDL").kendoDropDownList({
+    //    dataTextField: "name",
+    //    dataValueField: "id",
+    //    filter: "contains",
+    //    value: -1,
+    //    dataSource: JSON.parse(response.Value),
+    //    change: function (e) {
+    //        var selected_Id = this.value();
+    //        $('#Project_Id').val(selected_Id);
+
+    //    },
+    //});
+}
+
+function loadEmployeeDropdownList() { ajaxRequest({ commandName: 'HR_Employee_DDL', values: { Language: _currentLanguage }, CallBack: fnloadEmployeeDropdownListEngCallBack }); }
+function fnloadEmployeeDropdownListEngCallBack(response) {
+
+    // window.localStorage.setItem('CityListEng', response.Value);
+
+    bindKendoDropdownList(JSON.parse(response.Value), 'HR_Employee_Id', 'name', 'id', 'Select', selectedEmployeeId);
+    //$("#EmployeeDDL").kendoDropDownList({
+    //    dataTextField: "name",
+    //    dataValueField: "id",
+    //    filter: "contains",
+    //    value: -1,
+    //    dataSource: JSON.parse(response.Value),
+    //    change: function (e) {
+    //        var selected_Id = this.value();
+
+    //        $('#HR_Employee_Id').val(selected_Id);
+    //    },
+    //});
+}

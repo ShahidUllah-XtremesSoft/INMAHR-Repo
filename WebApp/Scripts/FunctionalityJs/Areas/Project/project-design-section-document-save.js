@@ -1,7 +1,11 @@
-﻿var Parameter_Project_Id = (new URL(location.href)).searchParams.get('id');
+﻿var Parameter_Project_Id = 0;
 
 $(function () {
 
+    Parameter_Project_Id = (new URL(location.href)).searchParams.get('id');
+    if (Parameter_Project_Id > 0) {
+        $('#DesignSection_Document_ProjectId').val(Parameter_Project_Id);
+    }
     // ------ CALL DDL'S  FN
     // loadProjectSectiondownList();
 

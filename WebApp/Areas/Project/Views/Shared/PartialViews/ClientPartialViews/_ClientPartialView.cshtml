@@ -29,14 +29,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblNameEng</label><span style="color:red"> *</span><br />
-                            <input type="text" class="form-control pname" name="NameEng" id="NameEng" value="" placeholder="Enter Name" required>
+                            <input type="text" class="form-control pname" name="NameEng" id="NameEng" value="" placeholder="Enter Name" maxlength="100" required>
                         </div>
                     </div>
 
                     <div class="col-sm-6">
                         <div class="form-group" style="display:none;">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblNameArb</label><span style="color:red"> *</span><br />
-                            <input type="text" class="form-control pname" name="NameArb" id="NameArb" value="" placeholder="Enter Name">
+                            <input type="text" class="form-control pname" name="NameArb" id="NameArb" value="" placeholder="Enter Name" maxlength="100">
                         </div>
                     </div>
                 </div>
@@ -45,13 +45,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 1</label> <span style="color: red">*</span><br />
-                            <input type="number" class="form-control " id="PhoneNumber1" name="PhoneNumber1" placeholder="Enter Phone Number" required />
+                            <input type="text" class="form-control " id="PhoneNumber1" name="PhoneNumber1" placeholder="Enter Phone Number" maxlength="20" required onkeypress="return only0To9Allowed(event);"/>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 2</label> <span style="color: red">*</span><br />
-                            <input type="number" class="form-control " id="PhoneNumber2" name="PhoneNumber2" placeholder="Enter Phone Number" required />
+                            <input type="text" class="form-control " id="PhoneNumber2" name="PhoneNumber2" placeholder="Enter Phone Number" maxlength="20" required onkeypress="return only0To9Allowed(event);"/>
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label> <span style="color: red">*</span><br />
-                            <input class="form-control" id="Location" name="Location" required style="height: 10rem;">
+                            <input class="form-control" id="Location" name="Location" maxlength="500" required style="height: 10rem;">
 
                         </div>
                     </div>

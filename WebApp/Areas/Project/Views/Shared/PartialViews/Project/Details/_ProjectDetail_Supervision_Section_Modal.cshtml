@@ -12,8 +12,41 @@
                 <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblTransferTo</h5>
             </div>
-            <div class="modal-body" style="height:170px;">
+            <div class="modal-body" style="height:auto;">
                 <form id="frm_SupervisionSection_TransferDataModal">
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <label class="col-form-label">@Resources.Global.lblDoYouWantToTransferToOtherMainSection :</label><br />
+                        </div>
+                        <div class="col-sm-2 pull-right">
+
+                            <div class="form-group">
+                                <div class="container">
+                                    <select class="form-control main_Section_In_Sub_section_transfer_modal" onchange="fnLoadOtherMainSection_SupervisionArea(this.value);">
+                                        <option selected value="No">@Resources.Global.lblNo</option>
+                                        <option value="Yes">@Resources.Global.lblYes</option>
+
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"> </div>
+                    </div>
+                    <div class="row div_showHide_Main_stepper">
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                <div id="Project_load_other_main_section_stepper_in_SupervisionSection" style="background: oldlace;">  </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group  typeddlRow">
@@ -46,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </form>
             </div>
 

@@ -12,8 +12,40 @@
                 <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblTransferTo</h5>
             </div>
-            <div class="modal-body" style="height:170px;">
+            <div class="modal-body" style="height:auto;">
                 <form id="frmTransferDataModal">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <label class="col-form-label">@Resources.Global.lblDoYouWantToTransferToOtherMainSection :</label><br />
+                        </div>
+                        <div class="col-sm-2 pull-right">
+
+                            <div class="form-group"  >
+                                <div class="container">
+                                    <select class="form-control main_Section_In_Sub_section_transfer_modal"  onchange="fnLoadOtherMainSection(this.value);">
+                                        <option selected value="No">@Resources.Global.lblNo</option>
+                                        <option value="Yes">@Resources.Global.lblYes</option>
+
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"> </div>
+                    </div>
+
+
+                    <div class="row div_showHide_Main_stepper">
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                <div id="Project_load_other_main_section_stepper_in_DesignSection" style="background: oldlace;">  </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group  typeddlRow">
@@ -46,10 +78,10 @@
                                 @*<label class="col-form-label">.Transfer to </label><span style="color:red"> *</span><br />*@
                                 <div id="container">
                                     <input class="form-control pname" id="ApprovedOrReturned" name="ApprovedOrReturned" required>
-                                </div>                               
+                                </div>
                             </div>
 
-                        </div>                      
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -60,30 +92,30 @@
                         </div>
                     </div>
                     <!--<div class="row">
-    <div class="col-md-6">-->
+                    <div class="col-md-6">-->
                     @*<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
                     <!--<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary active pull-left form-control checkbtnValue" value="Available Employee"><i class=""></i> Available Employee(s) </button>
-        </div>
-        <div class="col-md-6">
-            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
-        </div>
-    </div>
-    <div id="div-design-section-employees-area"></div>
-
-    <div class="div-design-section-assigned-employees-area" style="display:none;">
-        <br />
-        <br />
-        <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
-        <div class="grid-main-div">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="grid-load-all-assigned-employees">
-
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left form-control checkbtnValue" value="Assigned Employee"><i class=""></i> Assigned Employee(s) </button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
+                    <div id="div-design-section-employees-area"></div>
+
+                    <div class="div-design-section-assigned-employees-area" style="display:none;">
+                        <br />
+                        <br />
+                        <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="grid-load-all-assigned-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
                 </form>
             </div>
 
@@ -147,10 +179,10 @@
 
                             <div class="col-sm-6">
                                 @*<div class="form-group">
-                        <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                        <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
-                    </div>*@
+                                        <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                                    </div>*@
                             </div>
                         </div>
                     </div>
@@ -232,4 +264,3 @@
 
 @* ********************* ********************* END **************************************** *@
 @* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
-

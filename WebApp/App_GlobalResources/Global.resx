@@ -222,6 +222,9 @@
   <data name="lblDocumentAttachment" xml:space="preserve">
     <value>Document/Attachment </value>
   </data>
+  <data name="lblDoYouWantToTransferToOtherMainSection" xml:space="preserve">
+    <value>Do you want to transfer to other main section</value>
+  </data>
   <data name="lblEdit" xml:space="preserve">
     <value>Edit</value>
   </data>

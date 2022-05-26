@@ -272,6 +272,26 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+     #region ==========   PROJECT  PARENT Section LOAD FROM SETUP_TYPE TABLE 
+
+    [Command(Name = "DDL_Load_SetupType_By_ParentName")]
+    public class DDL_Load_SetupType_By_ParentNameCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new { ParentType = string.Empty ,Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Load_SetupType_By_ParentName.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
 
 
 

@@ -259,6 +259,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete.
+        /// </summary>
+        public static string lblComplete {
+            get {
+                return ResourceManager.GetString("lblComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Completion Date.
         /// </summary>
         public static string lblCompletionDate {
@@ -318,6 +327,15 @@ namespace ProjectUI {
         public static string lblContractorList {
             get {
                 return ResourceManager.GetString("lblContractorList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cost.
+        /// </summary>
+        public static string lblCost {
+            get {
+                return ResourceManager.GetString("lblCost", resourceCulture);
             }
         }
         

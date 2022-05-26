@@ -376,6 +376,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to transfer to other main section.
+        /// </summary>
+        internal static string lblDoYouWantToTransferToOtherMainSection {
+            get {
+                return ResourceManager.GetString("lblDoYouWantToTransferToOtherMainSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string lblEdit {

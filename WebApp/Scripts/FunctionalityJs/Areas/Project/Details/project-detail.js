@@ -24,7 +24,7 @@ $(function () {
     loadProjectSectiondownList('');
     loadProject_TechnicalSectiondownList('');
     loadProject_SupervisionSectiondownList();
-    
+
     setTimeout(function () {
 
         stepper_PROJECT_MAIN_SECTIONS();
@@ -38,8 +38,8 @@ $(function () {
         dataValueField: "value",
         dataSource: {
             data: [
-                {value:'Approved', text:'Approved'},
-                { value: 'Returned', text:'Returned'}
+                { value: 'Approved', text: 'Approved' },
+                { value: 'Returned', text: 'Returned' }
             ]
         }
     });
@@ -61,6 +61,7 @@ function loadProjectDetailsByIdCallBack(response) {
     var response = JSON.parse(response.Value);
 
     if (response != null) {
+
         $(".txt-project-title").text(response.projectTitle)
         $(".project-number").text(response.projectNumber)
         $(".txt-description").html(response.descriptionEng)
@@ -87,6 +88,10 @@ function loadProjectDetailsByIdCallBack(response) {
         $(".Kitchen").text(response.kitchen)
         $(".Hall").text(response.hall)
         $(".Garage").text(response.garage)
+
+        // Contractor Data
+        $(".text-contractor").text(response.contractorName);
+        $("#client-id-get-by-project").val(response.client_Id);
 
 
         fnLoadAttachmentDetailsById();
@@ -143,7 +148,7 @@ function fnLoadAttachmentDetailsByIdCallBack(response) {
                     '<td><a target="_blank" href="/UploadFile/' + responseJSON[i].currentFileName + '" class="m-b-5 d-block">' + responseJSON[i].orignalFileName + '</a></td>' +
                     '</tr>')
 
-                //$('.load-attachmentss').append('<a target="_blank" href="/UploadFile/' + responseJSON[i].currentFileName + '" class=""> <div class="col-md-3  " style="border: 1px solid #00000030;"><div class="uploaded-box"><div class="uploaded-img"><img src="' + fileExtension + '" width="60" height="60" class="img-fluid" alt=""></div><div class="uploaded-img-name"><hr/>' + responseJSON[i].orignalFileName +'</div></div></div></a>')
+                //$('.load-attachmentss').append('<a target="_blank" href="/UploadFile/' + responseJSON[i].currentFileName + '" class=""> <div class="col-md-2  " style="height: 130px;"><div class="uploaded-box"><div class="uploaded-img"><img src="' + fileExtension + '" width="50" height="50" class="img-fluid" alt="" style="margin-right:auto;margin-left:auto;"></div><div class="uploaded-img-name" style="text-align: center;"><hr/>' + responseJSON[i].orignalFileName +'</div></div></div></a>')
 
 
                 //--------------------------- ATTACHMENT  WORK END ----------------------------------------
@@ -422,7 +427,7 @@ function fnCheckProject_SubSection_Tab(selectedTab, current_Step_Id) {
 
 $(function () {
     $(".sub_section_progressBar").kendoProgressBar({
-        min: 0, max: 0, 
+        min: 0, max: 0,
         type: "percent",
         type: "percent",
         animation: {
@@ -437,19 +442,19 @@ $(function () {
 function progressbar_subSection(differentSectionMenuResponse, CallingArea) {
 
     var subSection_PB = $(".sub_section_progressBar").data("kendoProgressBar");
+
     subSection_PB.value(0);
-     
     subSection_PB.options.max = differentSectionMenuResponse.length;//- 1;
-     
+
 
     //for (var loopCount = 0; loopCount < differentSectionMenuResponse.length + 1; loopCount++) {
-    for (var loopCount = 0; loopCount < differentSectionMenuResponse.length ; loopCount++) {
+    for (var loopCount = 0; loopCount < differentSectionMenuResponse.length; loopCount++) {
 
-        subSection_PB.value(loopCount);
+        subSection_PB.value(loopCount + 1);
         //   if (differentSectionMenuResponse[loopCount].project_sub_stepper_menu_error != undefined) {
 
         if (differentSectionMenuResponse[loopCount].project_sub_stepper_menu_error == true) {
-           
+            subSection_PB.value(loopCount);
             return true;
 
         }
@@ -459,3 +464,126 @@ function progressbar_subSection(differentSectionMenuResponse, CallingArea) {
     setTimeout(console.clear(), 200);
 }
 // --------------------- LOAD PROGRESS BAR END----------------------BY /\/\ati
+
+// --------------------- LOAD ALL ASSIGNED EMPLOYESS RELATED TO PROJECT START----------------------BY /\/\ati
+$('.AssignedEmployees').click(function () {
+    fnLoadAssignedEmployeeByProjectId();
+});
+//|Load Project Details Start
+function fnLoadAssignedEmployeeByProjectId() {
+    ajaxRequest({
+        commandName: 'Project_Linked_Employees_By_Project_Id_Get',
+        values: {
+            Project_Id: project_Id,
+            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            Language: $('#Language').val()
+        }, CallBack: fnLoadAssignedEmployeeByProjectIdCallBack
+    });
+}
+function fnLoadAssignedEmployeeByProjectIdCallBack(response) {
+
+    var responseJSON = JSON.parse(response.Value);
+
+    if (responseJSON != null) {
+        $('.load-all-assigned-employees').empty();
+
+        var fileCount = 1;
+        for (var i = 0; i < responseJSON.length; i++) {
+            var startDate_ClassColor = '',endDate_ClassColor = '', startDate = '', endDate = '';
+            if (responseJSON[i].startDate != null) { startDate_ClassColor = 'badge badge-success'; } else { startDate_ClassColor = 'badge badge-danger'; }
+            if (responseJSON[i].endDate != null) { endDate_ClassColor = 'badge badge-danger'; } else { endDate_ClassColor = 'badge badge-primary'; }
+
+            startDate = responseJSON[i].startDate == null ? lblNotStartedYet : responseJSON[i].startDate
+            endDate = responseJSON[i].endDate == null ? '-' : responseJSON[i].endDate
+
+            $('.load-all-assigned-employees').append('' +
+
+                '<tr>' +
+
+                //'<td><a target="_blank" href="/UploadFile/' + responseJSON[i].employeeNumber + '" class="m-b-5 d-block">' + responseJSON[i].employeeNumber + '</a></td>' +
+                '<td>' + fileCount + '</td>' +
+                '<td>' + responseJSON[i].employeeNumber + '</td>' +
+                '<td>' + responseJSON[i].empName + '</td>' +
+                '<td class="expiryDate"><span class="' + startDate_ClassColor + '">' + startDate + '</span></td>' +
+                '<td class="expiryDate"><span class="' + endDate_ClassColor + '">' + endDate + '</span></td>' +
+                '</tr>')
+
+
+            fileCount += 1;
+
+        }
+    }
+}
+ 
+
+// --------------------- LOAD ALL ASSIGNED EMPLOYESS RELATED TO PROJECT END----------------------BY /\/\ati
+
+// --------------------- LOAD ALL CLIENT DOCUMENT INFORMATION RELATED TO PROJECT START----------------------BY /\/\ati
+$('.ClientInformation_inProject').click(function () {
+    fnLoadClientInformationByProjectId();
+});
+//|Load Project Details Start
+function fnLoadClientInformationByProjectId() {
+    ajaxRequest({                                   // THIS AJAX IS USED IN CLIENT INFORMATION AREA AS WELL,AFTER ANY CHANGE PLEASE VERIFY IT IN CLIEN DETAIL -> DOCUMENT INFORMATION AREA ....... /\/\ati
+        commandName: 'Client_PersonalDocument_Get',
+        values: {
+
+            PersonalClient_Id: $('#client-id-get-by-project').val(),
+            PersonalDocumentLanguage: _currentLanguage
+        }, CallBack: fnLoadClientInformationByProjectIdCallBack
+    });
+}
+function fnLoadClientInformationByProjectIdCallBack(response) {
+    var count = 1;
+    $('.load-client-iformation-by-project').html('');
+
+    if (JSON.parse(response.Value).length>0) {
+        JSON.parse(response.Value).forEach(function (item) {
+            var statusClass = ''
+            if (item.status == 'Valid') {
+                statusClass = 'badge  badge-success '
+            } else if (item.status == 'Expired') {
+                statusClass = 'badge  badge-danger'
+            } else {
+                statusClass = 'badge  badge-warning'
+            }
+
+
+            var extension = item.currentFileName.split('.').pop().toLowerCase();
+            if (extension == 'pdf') {
+                var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+            }
+            else {
+                var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
+            }
+            $('.load-client-iformation-by-project').append(
+                '<tr>' +
+                '<td hidden class="PersonalDocumentId">' + item.id + '</td>' +
+                '<td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
+                '<td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td>' +
+                '<td class="PersonalDocumentType"><b>' + count++ + '</b></td> ' +
+                '<td class="PersonalDocumentType">' + item.documentType + '</td> ' +
+                '<td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> ' +
+                '<td class="PersonalDocumentExpiryDate">' + item.expiryDate + '</td>' +
+                '<td class="PersonalDocumentExpiryIn"><span class="' + statusClass + '">' + item.expiryIn + '</span></td>' +
+                '<td class="PersonalDocumentStatus "><span class="' + statusClass + '">' + item.status + '</span></td>' +
+                '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
+                //'<td style="padding-top:20px;">' +
+                //'<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editPersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>  ' +
+                //'<a class="" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deletePersonalDocument(this)"></i></a>' +
+                //'</td>' +
+                '</tr > '
+            );
+        });
+    }
+   
+}
+ 
+
+// --------------------- LOAD ALL CLIENT DOCUMENT INFORMATION RELATED TO PROJECT END----------------------BY /\/\ati
+function fnLoadAllClientInformation() {
+    window.open('/Project/Client/Details?id='+$('#client-id-get-by-project').val(), '_blank');
+}
+ 

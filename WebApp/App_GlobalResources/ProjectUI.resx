@@ -183,6 +183,9 @@
   <data name="lblComingSoon" xml:space="preserve">
     <value>Coming Soon...!</value>
   </data>
+  <data name="lblComplete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
   <data name="lblCompletionDate" xml:space="preserve">
     <value>Completion Date</value>
   </data>
@@ -203,6 +206,9 @@
   </data>
   <data name="lblContractorList" xml:space="preserve">
     <value>Contractor List</value>
+  </data>
+  <data name="lblCost" xml:space="preserve">
+    <value>Cost</value>
   </data>
   <data name="lblCreatedBy" xml:space="preserve">
     <value>Created By</value>

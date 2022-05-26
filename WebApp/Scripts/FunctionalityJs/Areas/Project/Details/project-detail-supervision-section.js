@@ -109,7 +109,7 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
                     " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
                     " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
                     " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:100%;cursor: pointer;'/> </a># } else" +
-                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/UploadFile/#=currentFileName#' style='width:100%';cursor: pointer; /></a> #} #"
+                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:70%';cursor: pointer; /></a> #} #"
 
 
             },
@@ -178,6 +178,12 @@ function fn_supervision_section_transfer_file(event) {
 
 
     $('#load-supervision-section-model').click();
+
+
+    $('.div_showHide_Main_stepper').hide();
+    $(".main_Section_In_Sub_section_transfer_modal").prop('selectedIndex', 0);
+
+
     loadProject_SupervisionSectiondownLists();
     loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
 
@@ -557,3 +563,56 @@ var fn_project_save_Multiple_employee_SupervisionSection_callback = function (re
 // --------------------- LOAD ALL EMPLOYEES END----------------------BY /\/\ati
 
 
+
+function fnLoadOtherMainSection_SupervisionArea(selectedValue) {
+
+    if (selectedValue == 'Yes') {
+        $('.div_showHide_Main_stepper').show();
+        var step_Columnss = [
+
+            {
+                label: lblSelect,
+                icon: " ",
+            },
+           
+            {
+                label: "Design Section",
+                icon: " ",
+
+            },
+            {
+                label: "Technical Section",
+                icon: " ",
+            },
+        ];
+
+        bindkendoStepper('Project_load_other_main_section_stepper_in_SupervisionSection', false, step_Columnss, '', stepper_Fn_otherMainSection_Onselect, 800, "horizontal");
+
+
+        function stepper_Fn_otherMainSection_Onselect(e) {
+            var stepper_data = e.step.options;
+            if (stepper_data.label != 'Select') {
+                ajaxRequest({ commandName: 'DDL_Load_SetupType_By_ParentName', values: { ParentType: stepper_data.label.replace(/ /g, ""), Language: _currentLanguage }, CallBack: fnLoadOtherMainSection_TechnicalArea_Callback });
+            } else {
+                loadProject_SupervisionSectiondownLists();
+                $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").dataSource.data([]);
+
+            }
+
+        }
+
+
+    } else {
+
+        $('.div_showHide_Main_stepper').hide();
+        loadProject_SupervisionSectiondownLists();
+        $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").dataSource.data([]);
+
+    }
+
+    function fnLoadOtherMainSection_TechnicalArea_Callback(response) {
+        $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").dataSource.data([]);
+        fnloadProject_SupervisionSectiondownListsCallBack(response);
+    }
+
+}

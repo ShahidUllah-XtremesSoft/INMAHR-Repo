@@ -157,7 +157,7 @@
         <div class="container-fluid">
             <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
             <a class="navbar-brand" href="#"></a>
-            <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullLeft" style="padding-left:61px;">
+            <ul class="languageUL nav navbar-nav hidden-md-down @Resources.Common.PullLeft" style="padding-left:61px;">
                 <li class="nav-item p-x-1">
 
                     <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
@@ -317,7 +317,7 @@
 </html>
 <script>
     var _currentLanguage = '@Resources.Common.CurrentLang';
-    
+
 
     //Global Resources
     var save = '@Resources.Global.btnSave';
@@ -402,7 +402,7 @@
     var lblRequestWaiting = '@HRModuleUI.HumanResourceUI.lblRequestWaiting';
     var lblRequestRunning = '@HRModuleUI.HumanResourceUI.lblRequestRunning';
     var lblRequestExpired = '@HRModuleUI.HumanResourceUI.lblRequestExpired';
-     
+
     //------------------ PROJECT LABELS -----------------------
 
      var lblProject  = '@ProjectUI.ProjectUI.lblProject';
@@ -435,6 +435,7 @@
           /*  $('body').find('.grid-main-div').find('.k-i-arrow-60-down').hide();*/
 
         }
+        localStorage.MainApplicationModule_Id == 1 ? $('.languageUL').show() : $('.languageUL').hide();
 
 
         $(':input').removeAttr('placeholder');
@@ -604,6 +605,6 @@
 
 
     }
-
+    
 
 </script>

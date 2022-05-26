@@ -14,6 +14,7 @@ $(function () {
 
 */
 var project_Id = (new URL(location.href)).searchParams.get('id');
+
 /*
 
 ************LOAD DESING SECTION SUB STEPPER ********************* By /\/\ATI
@@ -32,6 +33,7 @@ function loadProjectSectiondownList(callingArea) {
 
     localStorage.setItem('DesignSection_Menu_Area', callingArea);
 
+    
 }
 function fnloadloadProjectSectiondownListCallBack(response) { stepper_DESIGN_SECTION(response) }
 
@@ -122,6 +124,8 @@ function stepper_DESIGN_SECTION(response) {
 
     //bindkendoStepper('design-section-stepper', false, step_Columns, '', stepper_Fn_DesignSection_Onselect, 243, "vertical");
     bindkendoStepper('design-section-stepper', false, step_Columns, '', stepper_Fn_DesignSection_Onselect, 'auto', "vertical");
+
+    fnApprovedOrReturn_DDL('ApprovedOrReturned'); // Load approved or Return ddl
 }
 //function onActivate(e) {
 

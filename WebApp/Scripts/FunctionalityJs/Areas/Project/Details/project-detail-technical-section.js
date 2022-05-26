@@ -68,6 +68,9 @@ function stepper_TECHNICAL_SECTION(response) {
     }, 100)
 
     bindkendoStepper('technical-section-stepper', false, step_Columns, '', stepper_Fn_TechnicalSection_Onselect, 'auto', "vertical");
+
+    fnApprovedOrReturn_DDL('ApprovedOrReturned_TechnicalSection'); // Load approved or Return ddl for technical section
+
 }
 function stepper_Fn_TechnicalSection_Onselect(e) {
 
@@ -264,6 +267,8 @@ function fn_technical_section_transfer_file_save() {
                     EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#TechnicalSection_Remarks').val(),
+                    ApprovedOrReturned: $('#ApprovedOrReturned_TechnicalSection').val(),
+
                     Language: $('#Language').val()
                 }, CallBack: fn_technical_section_transfer_file_saveCallBack
             });

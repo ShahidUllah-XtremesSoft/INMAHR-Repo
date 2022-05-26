@@ -32,18 +32,8 @@ $(function () {
 
     fnLoadProjectDetailsById();
 
-
-    $("#ApprovedOrReturned").kendoDropDownList({
-        dataTextField: "text",
-        dataValueField: "value",
-        dataSource: {
-            data: [
-                { value: 'Approved', text: 'Approved' },
-                { value: 'Returned', text: 'Returned' }
-            ]
-        }
-    });
-
+  
+   
 });
 //|Load Project Details Start
 function fnLoadProjectDetailsById() {
@@ -586,4 +576,20 @@ function fnLoadClientInformationByProjectIdCallBack(response) {
 function fnLoadAllClientInformation() {
     window.open('/Project/Client/Details?id='+$('#client-id-get-by-project').val(), '_blank');
 }
- 
+
+
+function fnApprovedOrReturn_DDL(ddlName) {
+
+
+    $("#" + ddlName).kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        dataSource: {
+            data: [
+                { value: 'Approved', text: 'Approved' },
+                { value: 'Returned', text: 'Returned' }
+            ]
+        }
+    });
+
+}

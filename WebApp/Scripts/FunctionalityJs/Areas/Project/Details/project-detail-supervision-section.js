@@ -54,6 +54,11 @@ function stepper_SUPERVISION_SECTION(response) {
         }
     }, 100);
     bindkendoStepper('supervision-section-stepper', false, step_Columns, '', stepper_Fn_SupervisionSection_Onselect, 'auto', "vertical");
+
+    fnApprovedOrReturn_DDL('ApprovedOrReturned_SupervisionSection'); // Load approved or Return ddl for Supervision section
+
+
+
 }
 function stepper_Fn_SupervisionSection_Onselect(e) {
 
@@ -251,6 +256,7 @@ function fn_supervision_section_transfer_file_save() {
                     EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#SupervisionSection_Remarks').val(),
+                    ApprovedOrReturned: $('#ApprovedOrReturned_SupervisionSection').val(),
                     Language: $('#Language').val()
                 }, CallBack: fn_supervision_section_transfer_file_saveCallBack
             });

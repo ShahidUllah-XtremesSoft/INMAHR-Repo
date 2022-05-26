@@ -1545,6 +1545,7 @@ namespace INMA.Projects.Services.Project
                     EmployeeId = 0,
                     UserId = 0,
                     AttachmentRemarks = string.Empty,
+                    ApprovedOrReturned = string.Empty,
                     Language = string.Empty
                 }, viewInput);
 
@@ -1981,6 +1982,7 @@ namespace INMA.Projects.Services.Project
                     EmployeeId = 0,
                     UserId = 0,
                     AttachmentRemarks = string.Empty,
+                    ApprovedOrReturned = string.Empty,
                     Language = string.Empty
                 }, viewInput);
 

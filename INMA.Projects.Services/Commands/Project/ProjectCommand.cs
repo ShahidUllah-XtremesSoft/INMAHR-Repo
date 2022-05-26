@@ -1145,16 +1145,18 @@ namespace INMA.Projects.Services.Project
                 var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
                 ProductList.Add("@UD_Project_Save_Multiple_Employees", table);
                 var response = repository.GetMultipleWithTableValuParam<dynamic>(ProjectStoreProcedure.Project_Save_Multiple_Employees.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-
+                
+                var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.ProjectModel[0].Project_Id);
+                IDictionary<string, object> valuesGetTypeAndDetail = new Dictionary<string, object>();
+                valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
+                valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.ProjectModel[0].Sub_Section_Entity_Id);
+                valuesGetTypeAndDetail.Add("@Language", "en-US");
+                var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
+                var clientDetailInfo = GetClientDetailByProjectId(0, model.ProjectModel[0].Project_Id);
                 //SMS Sending Code
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
                 {
-                    IDictionary<string, object> valuesGetTypeAndDetail = new Dictionary<string, object>();
-                    valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
-                    valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.ProjectModel[0].Sub_Section_Entity_Id);
-                    valuesGetTypeAndDetail.Add("@Language", "en-US");
-                    var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
-                    var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.ProjectModel[0].Project_Id);
+                    
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
                     //Added below logic to send SMS only to now added employee(s)
@@ -1184,23 +1186,25 @@ namespace INMA.Projects.Services.Project
 
                 //Send Notification
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
-                {
-                    var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.ProjectModel[0].Project_Id);
-                    var clientDetailInfo = GetClientDetailByProjectId(0, model.ProjectModel[0].Project_Id);
-                    IDictionary<string, object> valuesGetTypeAndDetail = new Dictionary<string, object>();
-                    valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
-                    valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.ProjectModel[0].Sub_Section_Entity_Id);
-                    valuesGetTypeAndDetail.Add("@Language", "en-US");
-                    var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
+                {                    
+                    
+                    
                     if (projectLinkedEmployees.Count > 0 && clientDetailInfo != null)
                     {
                         NotificationService notificationService = new NotificationService();
+                        //string subject = string.Empty, description = string.Empty;
                         string subject = string.Empty, description = string.Empty;
-                        subject = model.ProjectModel.Count().ToString() + " employee(s) added";
-                        description = model.ProjectModel.Count().ToString() + " employee(s) added for project# " + clientDetailInfo.ProjectNumber + ", section: " + responseSetupTypeAndDetail.SetupType + "";
+                        subject = "Employee added";
+                        //description = model.ProjectModel.Count().ToString() + " employee(s) added for project# " + clientDetailInfo.ProjectNumber + ", section: " + responseSetupTypeAndDetail.SetupType + "";
+                        //foreach (var asignedEmployee in model.ProjectModel)                        
                         foreach (var employee in projectLinkedEmployees)
                         {
-                            var res = notificationService.Save(subject, subject, description, description, "", model.ProjectModel[0].Project_Id, model.ProjectModel[0].CreatedBy, employee.EmployeeId, model.ProjectModel[0].Language);
+                            foreach (var asignedEmployee in model.ProjectModel)
+                            {
+                                var employeeAdded = projectLinkedEmployees.Where(filter => filter.EmployeeId == asignedEmployee.HR_Employee_Id).FirstOrDefault();
+                                description = "Employee(" + employeeAdded.EmpNameEng.ToString().Trim() + ") has been added for project# " + clientDetailInfo.ProjectNumber + ", section: " + responseSetupTypeAndDetail.SetupType + "";
+                                var res = notificationService.Save(subject, subject, description, description, "", model.ProjectModel[0].Project_Id, model.ProjectModel[0].CreatedBy, employee.EmployeeId, model.ProjectModel[0].Language);
+                            }
                         }
                         var projectCreator = GetProjectCreatorInfoByProjectId((int)model.ProjectModel[0].Project_Id);
                         if (projectCreator != null && projectCreator.UserId != model.ProjectModel[0].CreatedBy)

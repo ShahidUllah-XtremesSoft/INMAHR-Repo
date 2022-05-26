@@ -6,7 +6,7 @@ $(function () {
 
     if (parameterId > 0 == true) {
 
-      
+
         fnEditClientById(parameterId);
     }
 
@@ -29,7 +29,7 @@ $(function () {
                 loadCityDropdownListEng();
                 loadCityDropdownListArb();
             }, 50);
-           
+
 
             /*   fnLoadCityByNationalityId(selected_Id);*/
             // $("#CityId").data('kendoDropDownList').value(selected_Id);
@@ -41,42 +41,71 @@ $(function () {
 
 
     $('#btn-save-client').click(function () {
-         
+
         $('#CreatedBy').val(parseInt(JSON.parse(localStorage.getItem('User')).id));
 
         if (customValidateForm('frmAddUpdateClient')) {
+            var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'Email is invalid' : 'Email is invalid';
+            var isEmailValid = true;
+            if (!isValidEmail($('#Email2').val())) {
+                $('#Email2').addClass('invalid');
+                $('#Email2').removeClass("invalid");
+                $('#Email2').next("span").remove();
+                $('#Email2').attr('title', thisFieldIsRequired);
+                $('#Email2').after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
+                isEmailValid = false;
+            } else {
+                $('#Email2').removeClass("invalid");
+                $('#Email2').next("span").remove();
+            }
+            if (!isValidEmail($('#Email1').val())) {
+                $('#Email1').addClass('invalid');
+                $('#Email1').removeClass("invalid");
+                $('#Email1').next("span").remove();
+                $('#Email1').attr('title', thisFieldIsRequired);
+                $('#Email1').after("<span style='color:red;'>" + thisFieldIsRequired + "</span>");
+                isEmailValid = false;
+            } else {
+                $('#Email1').removeClass("invalid");
+                $('#Email1').next("span").remove();
+            }
+            if (isEmailValid) {
+                buttonAddPleaseWait('btn-save-client');
 
-            buttonAddPleaseWait('btn-save-client');
+                $("#frmAddUpdateClient").ajaxForm();
+                var options = {
+                    success: function (response, statusText, jqXHR) {
+                        buttonRemovePleaseWait('btn-save-client', save, 'save');
 
-            $("#frmAddUpdateClient").ajaxForm();
-            var options = {
-                success: function (response, statusText, jqXHR) {
-                    buttonRemovePleaseWait('btn-save-client', save, 'save');
+                        swal(response);
+                        var messageResponseParse = JSON.parse(response);
+                        if (messageResponseParse.type == undefined) {
+                            messageResponseParse = JSON.parse(messageResponseParse);
+                        } if (messageResponseParse.type == undefined) {
+                            messageResponseParse = JSON.parse(messageResponseParse);
+                        }
 
-                    swal(response);
-                    var messageResponseParse = JSON.parse(response);
-                    if (messageResponseParse.type == undefined) {
-                        messageResponseParse = JSON.parse(messageResponseParse);
-                    } if (messageResponseParse.type == undefined) {
-                        messageResponseParse = JSON.parse(messageResponseParse);
+                        //  $('#EmployeeId').val(messageResponseParse.insertedId);
+                        fnEditClientById(messageResponseParse.insertedId);
+
+                        //   window.location.href = '/Project/Client/List';
+
+                    },
+                    error: function (xhr, status, error) {
+                        var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                        buttonRemovePleaseWait('btn-save-client', save, 'save');
+                        alert(errmsg);
+                    },
+                    complete: function () {
+                        buttonRemovePleaseWait('btn-save-client', save, 'save');
                     }
-                     
-                  //  $('#EmployeeId').val(messageResponseParse.insertedId);
-                    fnEditClientById(messageResponseParse.insertedId);
-
-                 //   window.location.href = '/Project/Client/List';
-
-                },
-                error: function (xhr, status, error) {
-                    var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
-                    buttonRemovePleaseWait('btn-save-client', save, 'save');
-                    alert(errmsg);
-                },
-                complete: function () {
-                    buttonRemovePleaseWait('btn-save-client', save, 'save');
-                }
-            };
-            $("#frmAddUpdateClient").ajaxSubmit(options);
+                };
+                $("#frmAddUpdateClient").ajaxSubmit(options);
+            }
+            else {
+                buttonRemovePleaseWait('btn-save-client', save, 'save');
+                return false;
+            }
         }
         else {
             buttonRemovePleaseWait('btn-save-client', save, 'save');
@@ -95,9 +124,9 @@ $(function () {
     function fnloadCityDropdownListEngCallBack(response) {
 
         window.localStorage.setItem('CityListEng', response.Value);
-       
-            fnLoadCityByNationalityId();
-        
+
+        fnLoadCityByNationalityId();
+
     }
     function loadCityDropdownListArb() {
         ajaxRequest({ commandName: 'Setup_City_Get', values: { HR_Nationality_Id: $('#NationalityDDL').val(), Language: 'ar-AE' }, CallBack: loadCityDropdownListArbCallBack });
@@ -105,12 +134,12 @@ $(function () {
     function loadCityDropdownListArbCallBack(response) {
 
         window.localStorage.setItem('CityListArb', response.Value);
-      //  fnLoadCityByNationalityId();
+        //  fnLoadCityByNationalityId();
     }
 
 
     function fnLoadCityByNationalityId() {
-          
+
         $("#CityDDL").kendoDropDownList({
             dataTextField: "name",
             dataValueField: "id",
@@ -121,7 +150,7 @@ $(function () {
             change: function (e) {
                 var selected_Id = this.value();
                 $('#City_Id').val(selected_Id);
-               
+
             },
         });
     }
@@ -147,7 +176,7 @@ function editClientByIdCallBack(response) {
     var response = JSON.parse(response.Value);
     /*console.log(response)*/
     $('#Id').val(response.id);
-    
+
     $('#NameEng').val(response.clientName);
     $('#PhoneNumber1').val(response.phoneNumber1);
     $('#PhoneNumber2').val(response.phoneNumber2);
@@ -156,10 +185,10 @@ function editClientByIdCallBack(response) {
     $('#Location').val(response.location);
     $('#Nationality_Id').val(response.nationality_Id);
     $('#City_Id').val(response.city_Id);
-     
+
     $("#NationalityDDL").data('kendoDropDownList').value(response.nationality_Id);
     $("#CityDDL").data('kendoDropDownList').value(response.city_Id);
     $('#ClientDocumentInformationLI').show();
-    
+
     $('#PersonalDocumentClientId').val(response.id);
 }

@@ -436,7 +436,7 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
 
     var stepper = $("#" + $stepperId).width($width);
     stepper.resize();
-    
+
     stepper.find('.k-step-error').css("background-color", "mistyrose");
     // stepper.find('.k-step-done').css("background-color", "greenyellow");
 
@@ -779,8 +779,8 @@ function loadKendoDropdownList(controlId, columns, tableName, conditions = null,
 }
 
 var loadjQueryDropdownListCallBack = function (loadjQueryDropdownListResponse, controlId) {
-     
-    var select=  'Select';
+
+    var select = 'Select';
     //console.log('loadjQueryDropdownList - Response : ' + JSON.stringify(loadjQueryDropdownListResponse));
     //console.log('loadjQueryDropdownList - ControlId : '+controlId);
     var selectText = '-- ' + select + ' --'
@@ -1202,8 +1202,37 @@ function only1To9Allowed(evt) {
         false;
     }
 }
+function only0To9Allowed(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    //debugger;
+    if (charCode != 46 && charCode > 31
+        && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    //else if (charCode == 48 || charCode == 46) {
+    else if (charCode == 46) {
+        return false;
+    }
+    else if (charCode >= 48 && charCode <= 57) {
 
+        return true
+    }
+    else {
 
+        false;
+    }
+}
+function isValidEmail(inputValue) {
+
+    var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+
+    if (!pattern.test(inputValue)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 //---- Check Validation between Issue and Expiry Dates .....
 
 function fnCheckDateValidation(dateOne, dateTwo,) {
@@ -1232,4 +1261,50 @@ function validatePersonalDocument(inputId) {
         $('#' + inputId).val('');
     }
 
+}
+var bindKendoDropdownList = function (responseJSON, controlId, dataTextFieldName = null, dataValueFieldName = null, defaultOption = null, selectedValue = null) {
+
+    
+    //var selectText = _currentLanguage == 'en-US' ? '-- ' + defaultOption + ' --' : '--- منتخب ---';
+
+    var optionList = [];
+    //optionList.push({ text: selectText, value: '00000000-0000-0000-0000-000000000000' });
+    var selectedIndex = -1;
+    for (var i = 0; i < responseJSON.length; i++) {
+
+        var option = dataValueFieldName == null ? { text: responseJSON[i].text, value: responseJSON[i].value } : { text: responseJSON[i].name, value: responseJSON[i].id };
+        //if (JSON.parse(responseJSON.Value)[i].isSelected == '1' && selectedIndex == -1) {
+        if (dataValueFieldName == null) {
+            if (responseJSON[i].value == selectedValue) {
+                selectedIndex = i + 1;
+            }
+        }
+        else {
+            if (responseJSON[i].id == selectedValue) {
+                selectedIndex = i + 1;
+
+            }
+        }
+        optionList.push(option);
+
+    }
+    if (selectedIndex < 0) {
+        selectedIndex = 0;
+    }
+    var combobox = $("#" + controlId).data("kendoDropDownList");
+    if (combobox != undefined) {
+
+        combobox.destroy();
+    }
+    $("#" + controlId).kendoDropDownList({
+        dataTextField:  "text",
+        dataValueField:  'value' ,
+        filter: "contains",
+        dataSource: optionList,
+        index: selectedIndex,
+        autoBind: true,
+        //popup: {
+        //    appendTo: $("#" + controlId)
+        //}
+    });
 }

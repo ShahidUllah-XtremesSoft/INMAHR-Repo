@@ -9,8 +9,20 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblUploadDocument</h5>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblUploadDocument</h5>
+
+                    </div>
+                    <div class="col-md-4 @Resources.Common.PullRight show-hide-employee-start-datetime">
+                        <span class="show-hide-employee-start-datetime" style="display:none;">    @Resources.Global.lblStartDate</span>
+                        <b class="show-hide-employee-start-datetime" style="display:none;">
+                            <span class="employee-work-date" id=""></span>
+                            <span class="employee-work-time" id="" style="display:none;"></span>
+                        </b>
+
+                    </div>
+                </div>
             </div>
             <div class="modal-body"  >
                 <form id="frmAddUpdate_SupervisionSection_Document" name="frmAddUpdate_SupervisionSection_Document" action="/services/Xtreme/multipart" method="post">
@@ -25,7 +37,7 @@
                         <div class="col-sm-6">
                             <div class="form-group  typeddlRow">
                                 <div id="SupervisionSection_ParentSection_container">
-                                    <input class="form-control pname" id="Project_SupervisionSection_Parent_Type_DDL" required>
+                                    <input class="form-control pname" id="Project_SupervisionSection_Parent_Type_DDL" required readonly>
                                 </div>
                                 <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Setup_SetupType_Id" id="Project_SupervisionSection_Setup_SetupType_Id" value="0">
                                 <input type="hidden" class="form-control pname" id="SupervisionSection_From_SetupType_Id" value="0">

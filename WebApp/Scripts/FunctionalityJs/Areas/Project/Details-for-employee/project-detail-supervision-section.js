@@ -239,7 +239,13 @@ function fnloadProject_SupervisionSectiondownListsCallBack(response) {
         select: fn_SupervisionSection_OnSelect_Section_DDL,
 
     });
-    $('#Project_SupervisionSection_Parent_Type_DDL').data("kendoDropDownList").options.enabled
+    
+    setTimeout(function () {
+        $("#Project_SupervisionSection_Parent_Type_DDL").data("kendoDropDownList").value($("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id);
+        loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', $("#supervision-section-stepper").data('kendoStepper').selectedStep.options.label.trim());
+
+    }, 100);
+
 }
 
 function fn_SupervisionSection_OnSelect_Section_DDL(e) {
@@ -327,8 +333,97 @@ $('#btn-supervision-section-upload-document').click(function () {
 
 
 $('#btn-supervision-section-load-upload-document-modal').click(function () {
-    $('#load-supervision-section-model').click();
     document.getElementById("frmAddUpdate_SupervisionSection_Document").reset();
-    loadProject_SupervisionSectiondownLists();
-    loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
+    fn_IsWorkStarted_SupervisionSection();
+
 });
+function fn_IsWorkStarted_SupervisionSection() {
+    ajaxRequest({
+        commandName: 'Project_Employees_Started_Work', values: {
+
+            Project_Id: project_Id,
+            UserId: JSON.parse(localStorage.getItem('User')).id,
+            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+            Selected_Document_Step_Id: $("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id,
+            Language: _currentLanguage
+        }, CallBack: fn_IsWorkStarted_SupervisionSection_Callback
+    });
+    function fn_IsWorkStarted_SupervisionSection_Callback(response) {
+
+
+
+        $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
+        $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+
+        if (JSON.parse(response.Value).isEmployeeWorkStarted == 'No') { // No mean loggedin employee is envoled in this project and it's exist in Project Multple table .
+
+            Swal.fire({
+
+                //  title: areYouSureTitle,
+                text: doYouReallyWantToStartWorkingOnIt,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#5cb85c',
+                cancelButtonColor: '#d9534f',
+                confirmButtonText: btnYesText,
+                cancelButtonText: btnNoText,
+                buttons: {
+                    cancel: {
+                        text: "No",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true
+                    },
+                    confirm: {
+                        text: "Yes",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-warning",
+                        closeModal: true
+                    }
+                }
+            }).then(function (restult) {
+                if (restult.value) {
+
+                    ajaxRequest({
+                        commandName: 'Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters', values: {
+
+                            Project_Id: project_Id,
+                            UserId: JSON.parse(localStorage.getItem('User')).id,
+                            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+                            Selected_Document_Step_Id: $("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id,
+                            Language: _currentLanguage
+                        }, CallBack: ''
+                    });
+
+                    //After ajax call .
+                    $('#load-supervision-section-model').click();
+                    if (JSON.parse(response.Value).employeeTaskDate != null) {
+                        $('.show-hide-employee-start-datetime').show();
+                        $('.show-hide-employee-start-datetime').addClass('btn-success')
+                    }
+                     
+                    loadProject_SupervisionSectiondownLists();
+                    loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
+
+                }
+            });
+        } else {
+
+            //After ajax call .  
+
+            $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
+            $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+            $('#load-supervision-section-model').click();
+            if (JSON.parse(response.Value).employeeTaskDate != null) {
+                $('.show-hide-employee-start-datetime').show();
+                $('.show-hide-employee-start-datetime').addClass('btn-success')
+            } 
+            loadProject_SupervisionSectiondownLists();
+            loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
+        }
+    }
+
+}
+

@@ -234,57 +234,105 @@ function fn_delete_DesignSection_GovernmentDocumentById(event) {
     }
 
 }
-
+var isEmployeeWorkStarted = 0;
 $('#btn-load-upload-document').click(function () {
-    Swal.fire({
-
-        //  title: areYouSureTitle,
-        text: doYouReallyWantToStartWorkingOnIt,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#5cb85c',
-        cancelButtonColor: '#d9534f',
-        confirmButtonText: btnYesText,
-        cancelButtonText: btnNoText,
-        buttons: {
-            cancel: {
-                text: "No",
-                value: null,
-                visible: true,
-                className: "btn btn-danger",
-                closeModal: true
-            },
-            confirm: {
-                text: "Yes",
-                value: true,
-                visible: true,
-                className: "btn btn-warning",
-                closeModal: true
-            }
-        }
-    }).then(function (restult) {
-        if (restult.value) {
-
-            ajaxRequest({
-                commandName: 'Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters', values: {
-
-                    Project_Id: project_Id,
-                    UserId: JSON.parse(localStorage.getItem('User')).id,
-                    Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
-                    Selected_Document_Step_Id: $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id,
-                    Language: _currentLanguage
-                }, CallBack: ''
-            });
-            //After ajax call .
-            $('#load-model').click();
-            loadProjectSectiondownLists();
-            loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
-
-        }
-    });
+    fn_IsWorkStarted();
 
 
 });
+
+function fn_IsWorkStarted() {
+    ajaxRequest({
+        commandName: 'Project_Employees_Started_Work', values: {
+
+            Project_Id: project_Id,
+            UserId: JSON.parse(localStorage.getItem('User')).id,
+            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+            Selected_Document_Step_Id: $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id,
+            Language: _currentLanguage
+        }, CallBack: fn_IsWorkStarted_Callback
+    });
+    function fn_IsWorkStarted_Callback(response) {
+
+        
+      
+        $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
+        $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+         
+        if (JSON.parse(response.Value).isEmployeeWorkStarted == 'No') { // No mean loggedin employee is envoled in this project and it's exist in Project Multple table .
+         
+            Swal.fire({
+
+                //  title: areYouSureTitle,
+                text: doYouReallyWantToStartWorkingOnIt,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#5cb85c',
+                cancelButtonColor: '#d9534f',
+                confirmButtonText: btnYesText,
+                cancelButtonText: btnNoText,
+                buttons: {
+                    cancel: {
+                        text: "No",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true
+                    },
+                    confirm: {
+                        text: "Yes",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-warning",
+                        closeModal: true
+                    }
+                }
+            }).then(function (restult) {
+                if (restult.value) {
+
+                    ajaxRequest({
+                        commandName: 'Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters', values: {
+
+                            Project_Id: project_Id,
+                            UserId: JSON.parse(localStorage.getItem('User')).id,
+                            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+                            Selected_Document_Step_Id: $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id,
+                            Language: _currentLanguage
+                        }, CallBack: ''
+                    });
+                   
+                        //After ajax call .
+                    $('#load-model').click();
+                    if (JSON.parse(response.Value).employeeTaskDate != null) {
+                        $('.show-hide-employee-start-datetime').show();
+                        $('.show-hide-employee-start-datetime').addClass('btn-success')
+                    }
+                        loadProjectSectiondownLists();
+                        loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
+
+                    
+                }
+            });
+        } else {
+             
+            //After ajax call .  
+           
+            $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
+            $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+            $('#load-model').click();
+            if (JSON.parse(response.Value).employeeTaskDate != null) {
+                $('.show-hide-employee-start-datetime').show();
+                $('.show-hide-employee-start-datetime').addClass('btn-success')
+            }
+            loadProjectSectiondownLists();
+            loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
+        }
+    }
+
+}
+
+
+
 /*
  function fn_transfer_file(event) {
 
@@ -543,12 +591,20 @@ function fnloadloadProjectSectiondownListsCallBack(response) {
         select: fn_DesignSection_OnSelect_Section_DDL,
 
     });
-    $('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").options.enabled
+    setTimeout(function () {
+
+
+        // $('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").options.enabled(false);
+        $("#Project_Section_Parent_Type_DDL").data("kendoDropDownList").value($("#design-section-stepper").data('kendoStepper').selectedStep.options.Id);
+        //    $('#Project_Section_Parent_Type_DDL').val($("#design-section-stepper").data('kendoStepper').selectedStep.options.Id);
+        loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', $("#design-section-stepper").data('kendoStepper').selectedStep.options.label.trim());
+
+    }, 100);
 }
 
 function fn_DesignSection_OnSelect_Section_DDL(e) {
 
-
+    alert('');
     var selected_Id = e.dataItem.id;
     $('#Setup_SetupType_Id').val(selected_Id);
     var selected_Text = e.dataItem.name;

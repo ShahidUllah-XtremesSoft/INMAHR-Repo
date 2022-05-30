@@ -2167,5 +2167,33 @@ namespace INMA.Projects.Services.Project
             var _response = Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Prject_CreatorInfo_GetByProjectId.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
             return _response;
         }       
+     #region  PROJECT  IS EMPLOYEE START WORKING ON PROJECT ?
+        [Command(Name = "Project_Employees_Started_Work")]
+        public class Project_Employees_Started_WorkCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    Project_Id = 0,
+                    UserId = 0,
+                    Employee_Id = 0,
+                    Selected_Document_Step_Id = 0,
+                    Selected_Document_Sub_Step_Id = 0,
+                    Language = string.Empty
+                }, viewInput);
+
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Employees_Started_Work.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+
+            }
+        }
+        #endregion
     }
 }

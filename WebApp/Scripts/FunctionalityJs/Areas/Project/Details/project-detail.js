@@ -496,8 +496,9 @@ function fnLoadAssignedEmployeeByProjectIdCallBack(response) {
                 '<td>' + fileCount + '</td>' +
                 '<td>' + responseJSON[i].employeeNumber + '</td>' +
                 '<td>' + responseJSON[i].empName + '</td>' +
-                '<td class="expiryDate"><span class="' + startDate_ClassColor + '">' + startDate + '</span></td>' +
-                '<td class="expiryDate"><span class="' + endDate_ClassColor + '">' + endDate + '</span></td>' +
+                '<td>' + responseJSON[i].professionName + '</td>' +
+                //'<td class="expiryDate"><span class="' + startDate_ClassColor + '">' + startDate + '</span></td>' +
+                //'<td class="expiryDate"><span class="' + endDate_ClassColor + '">' + endDate + '</span></td>' +
                 '</tr>')
 
 

@@ -5,13 +5,14 @@ $(function () {
     // requestFrom = (new URL(location.href)).searchParams.get('from');
     $('#Language').val(_currentLanguage);
     loadProjectGrid();
+    /*
     if (JSON.parse(localStorage.getItem('User')).roleName != "User") {
         $('#btnAddNewProject').show();
     } else {
         $('#btnAddNewProject').hide();
 
     }
-
+    */
 });
 
 

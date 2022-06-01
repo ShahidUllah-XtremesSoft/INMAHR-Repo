@@ -214,6 +214,9 @@
   <data name="lblDeclineQuestion" xml:space="preserve">
     <value>رفض؟</value>
   </data>
+  <data name="lblDelay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
   <data name="lblDelete" xml:space="preserve">
     <value>حذف</value>
   </data>
@@ -252,6 +255,9 @@
   </data>
   <data name="lblNotStartedYet" xml:space="preserve">
     <value>Not started yet</value>
+  </data>
+  <data name="lblOnTime" xml:space="preserve">
+    <value>On Time</value>
   </data>
   <data name="lblOops" xml:space="preserve">
     <value>Oops...</value>

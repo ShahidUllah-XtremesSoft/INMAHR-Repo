@@ -50,7 +50,7 @@ var bindGrid = function (inputDataJSON) {
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
-        //{ field: "projectId", title: "ProjectId", hidden: true },
+        { field: "projectID", title: "ProjectId", hidden: true },
         //{ field: "employeeId", title: "EmployeeId", hidden: true },
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
@@ -80,5 +80,6 @@ function detailProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
+   
+    window.location.href = '/Project/Project/Details?id=' + dataItem.projectID + '';
 }

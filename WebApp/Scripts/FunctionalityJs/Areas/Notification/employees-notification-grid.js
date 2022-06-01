@@ -31,7 +31,7 @@ var bindGrid = function (inputDataJSON) {
     var gridColumns = [
 
         { field: "notificationId", title: "notificationId", hidden: true },
-        { field: "projectId", title: "ProjectId", hidden: true },
+        { field: "projectID", title: "ProjectId", hidden: true },
         { field: "employeeId", title: "EmployeeId", hidden: true }, 
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 

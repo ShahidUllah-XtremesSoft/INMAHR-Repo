@@ -60,7 +60,7 @@ var bindfnloadAssignedEmployees = function (inputDataJSON) {
 
 
 function deleteAssignedEmployeeById(event) {
-
+     
     var row = $(event).closest("tr");
     var grid = $("#grid-load-all-assigned-employees").data("kendoGrid");
     var dataItem = grid.dataItem(row);
@@ -92,10 +92,14 @@ function deleteAssignedEmployeeById(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-            ajaxRequest({ commandName: 'Project_Linked_Multiple_Employees_Delete_By_Id', values: { Id: dataItem.id, UserId: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage }, CallBack: deleteAssignedEmployeeByIdCallBack });
+            ajaxRequest({
+                commandName: 'Project_Linked_Multiple_Employees_Delete_By_Id',
+                values: { Id: dataItem.id, UserId: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage }, CallBack: deleteAssignedEmployeeByIdCallBack
+            });
         }
     });
     var deleteAssignedEmployeeByIdCallBack = function (response) {
+         
         swal(response.Value);
         fnloadAssignedEmployees($('#Project_DesignSection_Entity_Id').val());
 

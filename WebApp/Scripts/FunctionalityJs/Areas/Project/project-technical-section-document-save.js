@@ -195,6 +195,7 @@ function fnLoadTechnicalSectionArea(e) {
         $('#div-technical-section-employees-area').show();
 
         $("#div-technical-section-employees-area").load("/Project/Project/Load_Technical_Section_Employees");
+        
         $('.div-technical-section-document-upload-area').hide();
         $('.div-technical-section-assigned-employees-area').hide();
 
@@ -211,9 +212,9 @@ function fnLoadTechnicalSectionArea(e) {
             $('.div-technical-section-document-upload-area').hide();
             setTimeout(function () {
                 fnloadAssignedEmployees_TechnicalSection($('#Project_Technical_Section_Parent_Type_DDL').val(), $('#Setup_SetupType_Id_for_Technical_Section').val());
-                 
+
             }, 550);
-            
+
         }
     }
 }

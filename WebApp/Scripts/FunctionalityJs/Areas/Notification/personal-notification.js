@@ -45,12 +45,13 @@ var loadGridCallBack = function (inputDataJSON) {
 var bindGrid = function (inputDataJSON) {
     var record = 0;
 
+    //                template: "#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
 
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
-        //{ field: "projectId", title: "ProjectId", hidden: true },
+        { field: "projectID", title: "ProjectId", hidden: true },
         //{ field: "employeeId", title: "EmployeeId", hidden: true },
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
@@ -58,19 +59,27 @@ var bindGrid = function (inputDataJSON) {
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> ",
         },
         {
-            field: "sender", title: 'From', width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }            
+            field: "sender", title: 'From', width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=sender#</div> #} else {#<div  class='viewbutton'>#=sender#</div>#}#",
         },
         {
             field: "notificationFor", title: 'To', width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=notificationFor#</div> #} else {#<div  class='viewbutton'>#=notificationFor#</div>#}#",
         },
         {
             field: "subject", title: 'Subject', width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=subject#</div> #} else {#<div  class='viewbutton'>#=subject#</div>#}#",
         },
         {
             field: "description", title: 'Description', width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=description#</div> #} else {#<div  class='viewbutton'>#=description#</div>#}#",
         },
         {
             field: "date", title: 'Date', width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=date#</div> #} else {#<div  class='viewbutton'>#=date#</div>#}#",
+
+        }, {
+            field: "isRead", title: '', hidden: true, width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
         },
     ];
 
@@ -80,5 +89,18 @@ function detailProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
+
+
+    ajaxRequest({
+        commandName: 'Notification_Change_Status', values: {
+            Notification_Id: dataItem.id,
+            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+        }, CallBack: ''
+    });
+
+    $('#btnSearch').click();// After updating Notification status.Grid must be refresh .
+    window.location.href = '/Project/Project/Details?id=' + dataItem.projectID + '';
+
 }

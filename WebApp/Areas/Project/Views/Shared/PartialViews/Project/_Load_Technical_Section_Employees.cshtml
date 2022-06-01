@@ -106,13 +106,14 @@
     });
 
     function loadTechnicalSectionAllEmployees() {
-
+         
         ajaxRequest({
             commandName: 'Project_HR_Employee', values: {
                 Project_Id: parameterId,
                 Main_Section_Id: $('#Project_Technical_Section_Parent_Type_DDL').val(), //$('.sectionAndSubSectionId').attr('technical-section-data-main-section-id'),
                 Sub_Section_Id: $('#Project_TechnicalSection_SetupDetailTypeDDL').val(),  //$('.sectionAndSubSectionId').attr('technical-section-data-sub-section-id'),
-                Language: _currentLanguage
+                Language: _currentLanguage,
+                callingArea: 'TechnicalSection'
             }, CallBack: loadTechnicalSectionAllEmployeesCallBack
         });
     }
@@ -120,7 +121,7 @@
         bindloadTechnicalSectionAllEmployees(JSON.parse(inputDataJSON.Value));
     }
     var bindloadTechnicalSectionAllEmployees = function (inputDataJSON) {
-
+       
 
         var gridColumnss = [
 

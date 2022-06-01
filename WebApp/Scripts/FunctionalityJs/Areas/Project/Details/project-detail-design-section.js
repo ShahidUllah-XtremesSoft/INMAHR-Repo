@@ -639,7 +639,8 @@ function loadloadAllEmployees_DesignSection(setup_TypeDetail_Id, setup_Type_Id) 
             Project_Id: project_Id,
             Main_Section_Id: setup_Type_Id,
             Sub_Section_Id: setup_TypeDetail_Id,
-            Language: _currentLanguage
+            Language: _currentLanguage,
+            callingArea: 'DesignSection'
         }, CallBack: loadloadAllEmployees_DesignSectionCallBack
     });
 }

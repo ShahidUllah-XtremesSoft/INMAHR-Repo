@@ -56,6 +56,34 @@ namespace INMA.Projects.Services.Commands.Reports
                 return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Reports_TechnicalSection_GetBySectionId.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
             }
-        }//Reports_TechnicalSection_GetBySectionId
+        }//  Reports_TechnicalSection_GetBySectionId
+
+        [Command(Name = "Report_Summary_GetByParamters")]
+        public class Report_Summary_GetByParamtersCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    ProjectCategoryDDL = 0,
+                    ProjectDDL = 0,
+                    StartDate = string.Empty,
+                    EndDate = string.Empty,
+                    LoggedInUser = 0,
+                    LoggedInEmployeeId = 0,
+                    RoleId = 0,
+                    Language = string.Empty
+
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                object repo= repository.GetDataSet<dynamic>(ProjectStoreProcedure.Report_Summary_GetByParamters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                return repo;
+            }
+        }
     }
 }

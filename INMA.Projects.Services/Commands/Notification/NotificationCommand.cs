@@ -197,6 +197,38 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+    #region Notification CHANGE STATUS  
+
+
+    [Command(Name = "Notification_Change_Status")]
+    public class Notification_Change_StatusCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+
+                Notification_Id = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Notification_Change_Status.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
      
 
 

@@ -248,7 +248,7 @@ namespace INMA.Projects.Services.Project
 
                 }
                 var projectCreator = GetProjectCreatorInfoByProjectId((int)_response.InsertedId);
-                if(projectCreator != null && projectCreator.UserId != model.CreatedBy)
+                if (projectCreator != null && projectCreator.UserId != model.CreatedBy)
                 {
                     var res = notificationService.Save("Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", _response.InsertedId, model.CreatedBy, projectCreator.EmployeeId, model.Language);
                 }
@@ -507,7 +507,7 @@ namespace INMA.Projects.Services.Project
                 {
                     //messageBody = "Project Info "+(model.Id == 0 ? "created" : "updated") + System.Environment.NewLine+"Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
                     //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody,"Project Info",_response.InsertedId,model.Client_Id,employee.EmployeeId);
-                    var res = notificationService.Save("Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "",model.UnitProject_Id, model.UnitCreatedBy, employee.EmployeeId, model.UnitLanguage);
+                    var res = notificationService.Save("Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", model.UnitProject_Id, model.UnitCreatedBy, employee.EmployeeId, model.UnitLanguage);
 
                 }
                 var projectCreator = GetProjectCreatorInfoByProjectId((int)model.UnitProject_Id);
@@ -979,7 +979,8 @@ namespace INMA.Projects.Services.Project
                     Project_Id = 0,
                     Main_Section_Id = 0,
                     Sub_Section_Id = 0,
-                    Language = string.Empty
+                    Language = string.Empty,
+                    callingArea = string.Empty
 
                 }, viewInput);
 
@@ -1075,9 +1076,12 @@ namespace INMA.Projects.Services.Project
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
                     //Added below logic to send SMS only to now added employee(s)
+                    if (projectLinkedEmployees.Count > 0)
+                    {
 
-                    messageBody = "Employee(" + _responseEmp.NameEng.ToString().Trim() + ") has been removed from " + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "" + "." + " Project # - " + projectLinkedEmployees[0].ProjectNumber + "." + "Name - " + projectLinkedEmployees[0].NameEng + "." + " Location - " + projectLinkedEmployees[0].Location;
-                    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                        messageBody = "Employee(" + _responseEmp.NameEng.ToString().Trim() + ") has been removed from " + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "" + "." + " Project # - " + projectLinkedEmployees[0].ProjectNumber + "." + "Name - " + projectLinkedEmployees[0].NameEng + "." + " Location - " + projectLinkedEmployees[0].Location;
+                        //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                    }
                     int _smsResponse = smsService.SendSMS(_responseEmp.PhoneNumber, messageBody, "" + _responseEmp.SetupType + " - " + _responseEmp.SetupTypeDetail + "", _responseEmp.Project_Id, 0, _responseEmp.HR_Employee_Id, model.UserId);
 
                     //Below commented code will send SMS to all asigned employees now and previous
@@ -1145,7 +1149,7 @@ namespace INMA.Projects.Services.Project
                 var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
                 ProductList.Add("@UD_Project_Save_Multiple_Employees", table);
                 var response = repository.GetMultipleWithTableValuParam<dynamic>(ProjectStoreProcedure.Project_Save_Multiple_Employees.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-                
+
                 var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.ProjectModel[0].Project_Id);
                 IDictionary<string, object> valuesGetTypeAndDetail = new Dictionary<string, object>();
                 valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
@@ -1156,7 +1160,7 @@ namespace INMA.Projects.Services.Project
                 //SMS Sending Code
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
                 {
-                    
+
                     string messageBody = string.Empty;
                     Commands.SMSService smsService = new Commands.SMSService();
                     //Added below logic to send SMS only to now added employee(s)
@@ -1186,9 +1190,9 @@ namespace INMA.Projects.Services.Project
 
                 //Send Notification
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
-                {                    
-                    
-                    
+                {
+
+
                     if (projectLinkedEmployees.Count > 0 && clientDetailInfo != null)
                     {
                         NotificationService notificationService = new NotificationService();
@@ -2166,8 +2170,8 @@ namespace INMA.Projects.Services.Project
             values.Add("@ProjectId", projectId);
             var _response = Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Prject_CreatorInfo_GetByProjectId.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
             return _response;
-        }       
-     #region  PROJECT  IS EMPLOYEE START WORKING ON PROJECT ?
+        }
+        #region  PROJECT  IS EMPLOYEE START WORKING ON PROJECT ?
         [Command(Name = "Project_Employees_Started_Work")]
         public class Project_Employees_Started_WorkCommand : CamelCommandBase
         {

@@ -56,7 +56,7 @@ namespace WebApp.Controllers
         }
         public ActionResult Application()
         {
-            HttpContext.Request.Cookies["Lang"].Value = "en-US";
+            //HttpContext.Request.Cookies["Lang"].Value = "en-US";
             ViewBag.Message = "Your application description page.";
 
             return View();

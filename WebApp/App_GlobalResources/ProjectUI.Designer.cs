@@ -70,6 +70,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approval.
+        /// </summary>
+        public static string lblApproval {
+            get {
+                return ResourceManager.GetString("lblApproval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assign.
         /// </summary>
         public static string lblAssign {
@@ -930,6 +939,15 @@ namespace ProjectUI {
         public static string lblStatus {
             get {
                 return ResourceManager.GetString("lblStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submission.
+        /// </summary>
+        public static string lblSubmission {
+            get {
+                return ResourceManager.GetString("lblSubmission", resourceCulture);
             }
         }
         

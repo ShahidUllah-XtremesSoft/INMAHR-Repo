@@ -55,13 +55,13 @@
 
 
             </div>
-            <div class="card-block" style="min-height: 49rem;">
+            <div class="card-block" style="min-height: 20rem;">
 
                 <div class="">
                     <div class="m-b-20">
                         <h6 class="sub-title m-b-15">@ProjectUI.ProjectUI.lblOverview</h6>
                         <hr />
-                        <p class="txt-description" style="overflow-x: auto;height: 43rem;">
+                        <p class="txt-description" style="overflow-x: auto;height: 20rem;">
                     </div>
 
 
@@ -111,7 +111,7 @@
                     <a class="nav-link active" data-toggle="tab" href="#ProjectDetails" role="tab">@ProjectUI.ProjectUI.lblProjectDetails</a>
                 </li>
                 <li class="nav-item  ">
-                    <a class="nav-link ClientInformation_inProject" data-toggle="tab" href="#ClientInformation" role="tab" id=""> @Resources.ProjectUI.lblClientDocumentInformation</a>
+                    <a class="nav-link ClientInformation_inProject" data-toggle="tab" href="#ClientInformation" role="tab" id="">@ProjectUI.ProjectUI.lblClientDocumentInformation </a>
                 </li>
             </ul>
             <!-- Tab panes -->
@@ -178,13 +178,13 @@
 
                                 <tr>
                                     <th>#</th>
-                                    
-                                    <th>@Resources.ProjectUI.lblType</th>
-                                    <th style="width: 360px;">@Resources.ProjectUI.lblIssueDate</th>
-                                    <th style="width: 350px;">@Resources.ProjectUI.lblExpiryDate</th>
-                                    <th style="width: 140px;">@Resources.ProjectUI.lblExpiresIn</th>
-                                    <th style="width: 140px;">@Resources.ProjectUI.lblStatus</th>
-                                    <th style="width: 140px;">@Resources.HumanResourceUI.lblAttachment</th>
+
+                                    <th>@ProjectUI.ProjectUI.lblType</th>
+                                    <th style="width: 360px;">@ProjectUI.ProjectUI.lblIssueDate</th>
+                                    <th style="width: 350px;">@ProjectUI.ProjectUI.lblExpiryDate</th>
+                                    <th style="width: 140px;">@ProjectUI.ProjectUI.lblExpiresIn</th>
+                                    <th style="width: 140px;">@ProjectUI.ProjectUI.lblStatus</th>
+                                    <th style="width: 140px;">@HRModuleUI.HumanResourceUI.lblAttachment</th>
                                 </tr>
                             </thead>
                             <tbody class="load-client-iformation-by-project" style="height:100px; font-size: smaller;">
@@ -209,7 +209,7 @@
                     <a class="nav-link active" data-toggle="tab" href="#DocumentAttachment" role="tab">@Resources.Global.lblDocumentAttachment</a>
                 </li>
                 <li class="nav-item  " id="ProjectUnitInformationLI">
-                    <a class="nav-link AssignedEmployees" data-toggle="tab" href="#AssignedEmployees" role="tab" id=""> @Resources.ProjectUI.lblAssignedEmployees</a>
+                    <a class="nav-link AssignedEmployees" data-toggle="tab" href="#AssignedEmployees" role="tab" id=""> @ProjectUI.ProjectUI.lblAssignedEmployees</a>
                 </li>
 
 
@@ -236,10 +236,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th></th>
-                                    <th>@Resources.HumanResourceUI.lblEmployeeName</th>
-                                    <th  style="width: 35%;">@Resources.HumanResourceUI.lblProfession</th>
-                                    @*<th style="width: 92px;">@Resources.HumanResourceUI.lblStartDate</th>
-                                    <th style="width: 140px;">@Resources.ProjectUI.lblCompletionDate</th>*@
+                                    <th>@HRModuleUI.HumanResourceUI.lblEmployeeName</th>
+                                    <th style="width: 35%;">@HRModuleUI.HumanResourceUI.lblProfession</th>
+                                    @*<th style="width: 92px;">@HRModuleUI.HumanResourceUI.lblStartDate</th>
+                                        <th style="width: 140px;">@Resources.ProjectUI.lblCompletionDate</th>*@
                                 </tr>
                             </thead>
                             <tbody class="load-all-assigned-employees" style=" font-size: smaller;">

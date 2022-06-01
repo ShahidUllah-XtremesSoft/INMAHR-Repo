@@ -78,7 +78,8 @@
                 Project_Id: parameterId,
                 Main_Section_Id: $('#Project_Supervision_Section_Parent_Type_DDL').val(),
                 Sub_Section_Id: $('#Project_SupervisionSection_SetupDetailTypeDDL').val(),
-                Language: _currentLanguage
+                Language: _currentLanguage,
+                callingArea: 'SupervisionSection'
             }, CallBack: loadSupervisionSectionAllEmployeesCallBack
         });
     }

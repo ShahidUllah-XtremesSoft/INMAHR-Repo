@@ -70,7 +70,8 @@
                 Project_Id: parameterId,
                 Main_Section_Id: $('#Project_Section_Parent_Type_DDL').val(), //$('.sectionAndSubSectionId').attr('data-main-section-id'),
                 Sub_Section_Id:  $('#Project_DesignSection_SetupDetailTypeDDL').val(), //$('.sectionAndSubSectionId').attr('data-sub-section-id'),
-                Language: _currentLanguage
+                Language: _currentLanguage,
+                callingArea:'DesignSection'
             }, CallBack: loadloadAllEmployeesCallBack
         });
     }
@@ -123,9 +124,9 @@
 
     //---------------- BUTTON EVENTS
     $('#btnSave_DesingSection').click(function (e) {
-        
+
         var valid = true;
-       
+
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         if ($('#Project_Section_Parent_Type_DDL').val() == '-1') {
 
@@ -178,7 +179,7 @@
                         Project_Id: parameterId,
                         HR_Employee_Id: parseInt(gridRow.id),
                         Section_Entity_Id: $('#Setup_SetupType_Id').val(),
-                        Sub_Section_Entity_Id: $('#Project_DesignSection_Entity_Id').val(),                        
+                        Sub_Section_Entity_Id: $('#Project_DesignSection_Entity_Id').val(),
                         CreatedBy: parseInt(JSON.parse(localStorage.getItem('User')).id),
                         LoggedIn_EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
 
@@ -194,7 +195,7 @@
                 {
                     ProjectModel: postingArray,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                    CompletionDate: $('#DesignSection_AssignedDocument_StartDate').val(),                    
+                    CompletionDate: $('#DesignSection_AssignedDocument_StartDate').val(),
                     Language: _currentLanguage == null ? '' : _currentLanguage
                 }, CallBack: fn_project_save_Multiple_employee_callback
             });

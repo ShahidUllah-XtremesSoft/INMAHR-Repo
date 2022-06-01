@@ -120,6 +120,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
   </data>
+  <data name="lblApproval" xml:space="preserve">
+    <value>Approval</value>
+  </data>
   <data name="lblAssign" xml:space="preserve">
     <value>Assign</value>
   </data>
@@ -407,6 +410,9 @@
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="lblSubmission" xml:space="preserve">
+    <value>Submission</value>
   </data>
   <data name="lblSubSection" xml:space="preserve">
     <value>Sub Section</value>

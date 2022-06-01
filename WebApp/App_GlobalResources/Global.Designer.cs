@@ -358,6 +358,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay.
+        /// </summary>
+        internal static string lblDelay {
+            get {
+                return ResourceManager.GetString("lblDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string lblDelete {
@@ -480,6 +489,15 @@ namespace Resources {
         internal static string lblNotStartedYet {
             get {
                 return ResourceManager.GetString("lblNotStartedYet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On Time.
+        /// </summary>
+        internal static string lblOnTime {
+            get {
+                return ResourceManager.GetString("lblOnTime", resourceCulture);
             }
         }
         

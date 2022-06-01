@@ -161,14 +161,14 @@
             </ul>
 
             <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
-                <li class="nav-item dropdown">
+                @*<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
                         <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('CompanyDocument');" id="liNewToExpireCompanyDocument"><i class="fa fa-file-o"></i> @Resources.Global.lblCompanyDocument <span class="badge badge-danger" id="companyDocumentCount">0</span></a>
 
                     </div>
-                </li>
+                </li>*@
 
                 <li class="nav-item p-x-10"></li>
                 <li class="nav-item p-x-1" id="LoggedInEmployeeName">
@@ -302,10 +302,10 @@
     <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <script src="~/Scripts/tinymce.min.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>*@
     <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
     @*<script src="~/Scripts/FunctionalityJs/Common/common-drop-downs.js"></script>*@
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>*@
 
     <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js"></script>
     <script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js"></script>
@@ -313,6 +313,7 @@
 
 </html>
 <script>
+
     var _currentLanguage = '@Resources.Common.CurrentLang';
 
     //Global Resources
@@ -365,7 +366,10 @@
     var lblEdit = '@Resources.Global.lblEdit';
     var lblClose = '@Resources.Global.lblClose';
     var lblNotStartedYet = '@Resources.Global.lblNotStartedYet';
+    var lblDelay = '@Resources.Global.lblDelay';
+    var lblOnTime = '@Resources.Global.lblOnTime';
     var doYouReallyWantToStartWorkingOnIt = '@Resources.Global.doYouReallyWantToStartWorkingOnIt';
+    
 
 
     var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
@@ -378,6 +382,7 @@
    var lblFristSelectRecordFromGrid  = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid';
    var lblExpiryDateCannotBeLessThanIssue = '@HRModuleUI.HumanResourceUI.lblExpiryDateCannotBeLessThanIssue';
     var lblSelect = '@HRModuleUI.HumanResourceUI.lblSelect';
+    var lblName = '@HRModuleUI.HumanResourceUI.lblName';
    @*  var select = '@HRModuleUI.HumanResourceUI.lblSelect';
 
 
@@ -386,7 +391,6 @@
 
 
        var empNumber = '@HRModuleUI.HumanResourceUI.lblEmployeeNumber';
-    var lblName = '@HRModuleUI.HumanResourceUI.lblName';
 
     var lblRole = '@HRModuleUI.HumanResourceUI.lblRole';
 
@@ -480,6 +484,8 @@
     var lblMeetingEnd  = '@ProjectUI.ProjectUI.lblMeetingEnd';
 
     var lblContractor = '@ProjectUI.ProjectUI.lblContractor';
+    var lblApproval = '@ProjectUI.ProjectUI.lblApproval';
+    var lblSubmission = '@ProjectUI.ProjectUI.lblSubmission';
 
 
 

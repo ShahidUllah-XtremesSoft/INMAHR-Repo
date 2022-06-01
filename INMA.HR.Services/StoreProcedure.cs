@@ -396,6 +396,7 @@ public enum ProjectStoreProcedure
     Notification_Save,
     Notification_GetAll,
     Notification_Delete,
+    Notification_Change_Status,
     Notification_Details_By_Id,
 
     Notification_Personal_GetAll,
@@ -440,5 +441,6 @@ public enum ProjectStoreProcedure
     #region REPORTS
     Reports_DesignSection_GetBySectionId,
     Reports_TechnicalSection_GetBySectionId,
+    Report_Summary_GetByParamters,
     #endregion
 }

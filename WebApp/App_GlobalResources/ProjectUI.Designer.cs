@@ -61,11 +61,47 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string lblAbout {
+            get {
+                return ResourceManager.GetString("lblAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        public static string lblAboutUs {
+            get {
+                return ResourceManager.GetString("lblAboutUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New.
         /// </summary>
         public static string lblAddNew {
             get {
                 return ResourceManager.GetString("lblAddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string lblAddress {
+            get {
+                return ResourceManager.GetString("lblAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Air Conditioning and Ventilation Contracting.
+        /// </summary>
+        public static string lblAirConditionAndVentilationContacting {
+            get {
+                return ResourceManager.GetString("lblAirConditionAndVentilationContacting", resourceCulture);
             }
         }
         
@@ -304,6 +340,24 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string lblContact {
+            get {
+                return ResourceManager.GetString("lblContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Us.
+        /// </summary>
+        public static string lblContactUs {
+            get {
+                return ResourceManager.GetString("lblContactUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contractor.
         /// </summary>
         public static string lblContractor {
@@ -403,6 +457,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Engineering Consultancy.
+        /// </summary>
+        public static string lblEngineeringConsultancy {
+            get {
+                return ResourceManager.GetString("lblEngineeringConsultancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expire In.
         /// </summary>
         public static string lblExpiresIn {
@@ -466,6 +529,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financial and Tax Consultancy.
+        /// </summary>
+        public static string lblFinancialAndTaxConsultancy {
+            get {
+                return ResourceManager.GetString("lblFinancialAndTaxConsultancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Floor.
         /// </summary>
         public static string lblFloor {
@@ -484,6 +556,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GROUP BOARD OF DIRECTORS.
+        /// </summary>
+        public static string lblGroupOfBoardDirectors {
+            get {
+                return ResourceManager.GetString("lblGroupOfBoardDirectors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hall.
         /// </summary>
         public static string lblHall {
@@ -493,11 +574,56 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string lblHome {
+            get {
+                return ResourceManager.GetString("lblHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Human Resource(HR).
+        /// </summary>
+        public static string lblHumanResource {
+            get {
+                return ResourceManager.GetString("lblHumanResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string lblImage {
             get {
                 return ResourceManager.GetString("lblImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information Technology.
+        /// </summary>
+        public static string lblInformationTechnology {
+            get {
+                return ResourceManager.GetString("lblInformationTechnology", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INMA.
+        /// </summary>
+        public static string lblINMA {
+            get {
+                return ResourceManager.GetString("lblINMA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interior Design and Decoration.
+        /// </summary>
+        public static string lblInteriorDesignAndDecoration {
+            get {
+                return ResourceManager.GetString("lblInteriorDesignAndDecoration", resourceCulture);
             }
         }
         
@@ -628,6 +754,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Module.
+        /// </summary>
+        public static string lblModule {
+            get {
+                return ResourceManager.GetString("lblModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mulk No.
         /// </summary>
         public static string lblMulkNo {
@@ -691,6 +826,33 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Our Mission.
+        /// </summary>
+        public static string lblOurMission {
+            get {
+                return ResourceManager.GetString("lblOurMission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Plan.
+        /// </summary>
+        public static string lblOurPlan {
+            get {
+                return ResourceManager.GetString("lblOurPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Vision.
+        /// </summary>
+        public static string lblOurVision {
+            get {
+                return ResourceManager.GetString("lblOurVision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overview.
         /// </summary>
         public static string lblOverview {
@@ -732,6 +894,15 @@ namespace ProjectUI {
         public static string lblPhone {
             get {
                 return ResourceManager.GetString("lblPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone Number.
+        /// </summary>
+        public static string lblPhoneNumber {
+            get {
+                return ResourceManager.GetString("lblPhoneNumber", resourceCulture);
             }
         }
         
@@ -916,6 +1087,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        public static string lblServices {
+            get {
+                return ResourceManager.GetString("lblServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SMS List.
         /// </summary>
         public static string lblSmsList {
@@ -979,6 +1159,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team.
+        /// </summary>
+        public static string lblTeam {
+            get {
+                return ResourceManager.GetString("lblTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Technical Section Report.
         /// </summary>
         public static string lblTechnicalSectionReport {
@@ -1038,6 +1227,15 @@ namespace ProjectUI {
         public static string lblUrgent {
             get {
                 return ResourceManager.GetString("lblUrgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USEFUL LINKS.
+        /// </summary>
+        public static string lblUsefulLinks {
+            get {
+                return ResourceManager.GetString("lblUsefulLinks", resourceCulture);
             }
         }
         

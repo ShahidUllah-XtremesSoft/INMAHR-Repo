@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="lblAboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
+  </data>
+  <data name="lblAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="lblAirConditionAndVentilationContacting" xml:space="preserve">
+    <value>Air Conditioning and Ventilation Contracting</value>
   </data>
   <data name="lblApproval" xml:space="preserve">
     <value>Approval</value>
@@ -198,6 +210,12 @@
   <data name="lblConstructionMonths" xml:space="preserve">
     <value>Construction Months</value>
   </data>
+  <data name="lblContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="lblContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
   <data name="lblContractor" xml:space="preserve">
     <value>Contractor</value>
   </data>
@@ -231,6 +249,9 @@
   <data name="lblEmployeeName" xml:space="preserve">
     <value>Employee</value>
   </data>
+  <data name="lblEngineeringConsultancy" xml:space="preserve">
+    <value>Engineering Consultancy</value>
+  </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>Expire In</value>
   </data>
@@ -252,17 +273,38 @@
   <data name="lblFinance" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="lblFinancialAndTaxConsultancy" xml:space="preserve">
+    <value>Financial and Tax Consultancy</value>
+  </data>
   <data name="lblFloor" xml:space="preserve">
     <value>Floor</value>
   </data>
   <data name="lblGarageParking" xml:space="preserve">
     <value>Garage / Parking</value>
   </data>
+  <data name="lblGroupOfBoardDirectors" xml:space="preserve">
+    <value>GROUP BOARD OF DIRECTORS</value>
+  </data>
   <data name="lblHall" xml:space="preserve">
     <value>Hall</value>
   </data>
+  <data name="lblHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="lblHumanResource" xml:space="preserve">
+    <value>Human Resource(HR)</value>
+  </data>
   <data name="lblImage" xml:space="preserve">
     <value>Image</value>
+  </data>
+  <data name="lblInformationTechnology" xml:space="preserve">
+    <value>Information Technology</value>
+  </data>
+  <data name="lblINMA" xml:space="preserve">
+    <value>INMA</value>
+  </data>
+  <data name="lblInteriorDesignAndDecoration" xml:space="preserve">
+    <value>Interior Design and Decoration</value>
   </data>
   <data name="lblIssueDate" xml:space="preserve">
     <value>Issue Date</value>
@@ -306,6 +348,9 @@
   <data name="lblMeetingWithEngineer" xml:space="preserve">
     <value>Meeting With Engineer</value>
   </data>
+  <data name="lblModule" xml:space="preserve">
+    <value>Module</value>
+  </data>
   <data name="lblMulkNo" xml:space="preserve">
     <value>Mulk No</value>
   </data>
@@ -327,6 +372,15 @@
   <data name="lblNotificationList" xml:space="preserve">
     <value>Notification List</value>
   </data>
+  <data name="lblOurMission" xml:space="preserve">
+    <value>Our Mission</value>
+  </data>
+  <data name="lblOurPlan" xml:space="preserve">
+    <value>Our Plan</value>
+  </data>
+  <data name="lblOurVision" xml:space="preserve">
+    <value>Our Vision</value>
+  </data>
   <data name="lblOverview" xml:space="preserve">
     <value>Overview</value>
   </data>
@@ -341,6 +395,9 @@
   </data>
   <data name="lblPhone" xml:space="preserve">
     <value>Phone No</value>
+  </data>
+  <data name="lblPhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
   </data>
   <data name="lblPlotNo" xml:space="preserve">
     <value>Plot No</value>
@@ -402,6 +459,9 @@
   <data name="lblSection" xml:space="preserve">
     <value>Section</value>
   </data>
+  <data name="lblServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
   <data name="lblSmsList" xml:space="preserve">
     <value>SMS List</value>
   </data>
@@ -423,6 +483,9 @@
   <data name="lblSummaryReport" xml:space="preserve">
     <value>Summary Report</value>
   </data>
+  <data name="lblTeam" xml:space="preserve">
+    <value>Team</value>
+  </data>
   <data name="lblTechnicalSectionReport" xml:space="preserve">
     <value>Technical Section Report</value>
   </data>
@@ -443,6 +506,9 @@
   </data>
   <data name="lblUrgent" xml:space="preserve">
     <value>Urgent</value>
+  </data>
+  <data name="lblUsefulLinks" xml:space="preserve">
+    <value>USEFUL LINKS</value>
   </data>
   <data name="lblVIP" xml:space="preserve">
     <value>VIP</value>

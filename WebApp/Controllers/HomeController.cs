@@ -92,6 +92,6 @@ namespace WebApp.Controllers
 
 
             return PartialView("~/Views/Shared/PartialViews/_LeftMenuPartialView.cshtml");
-        }
+        }        
     }
 }

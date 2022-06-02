@@ -178,6 +178,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to Update this status?.
+        /// </summary>
+        internal static string doYouReallyWantToUpdateThisStatus {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToUpdateThisStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        internal static string lblAboutUs {
+            get {
+                return ResourceManager.GetString("lblAboutUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accept.
         /// </summary>
         internal static string lblAccept {
@@ -331,6 +349,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string lblContact {
+            get {
+                return ResourceManager.GetString("lblContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Us.
+        /// </summary>
+        internal static string lblContactUs {
+            get {
+                return ResourceManager.GetString("lblContactUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Day.
         /// </summary>
         internal static string lblDay {
@@ -430,6 +466,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group Board Of Directors.
+        /// </summary>
+        internal static string lblGroupBoardOfDirectors {
+            get {
+                return ResourceManager.GetString("lblGroupBoardOfDirectors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string lblHome {
+            get {
+                return ResourceManager.GetString("lblHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hour(s).
         /// </summary>
         internal static string lblHours {
@@ -475,6 +529,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Module.
+        /// </summary>
+        internal static string lblModule {
+            get {
+                return ResourceManager.GetString("lblModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string lblNo {
@@ -507,6 +570,42 @@ namespace Resources {
         internal static string lblOops {
             get {
                 return ResourceManager.GetString("lblOops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Mission.
+        /// </summary>
+        internal static string lblOurMission {
+            get {
+                return ResourceManager.GetString("lblOurMission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Plan.
+        /// </summary>
+        internal static string lblOurPlan {
+            get {
+                return ResourceManager.GetString("lblOurPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Vision.
+        /// </summary>
+        internal static string lblOurVision {
+            get {
+                return ResourceManager.GetString("lblOurVision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partners.
+        /// </summary>
+        internal static string lblPartners {
+            get {
+                return ResourceManager.GetString("lblPartners", resourceCulture);
             }
         }
         
@@ -556,6 +655,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        internal static string lblServices {
+            get {
+                return ResourceManager.GetString("lblServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Date.
         /// </summary>
         internal static string lblStartDate {
@@ -597,6 +705,15 @@ namespace Resources {
         internal static string lblStatusValid {
             get {
                 return ResourceManager.GetString("lblStatusValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Useful Links.
+        /// </summary>
+        internal static string lblUsefulLinks {
+            get {
+                return ResourceManager.GetString("lblUsefulLinks", resourceCulture);
             }
         }
         

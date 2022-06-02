@@ -280,6 +280,8 @@ function fn_technical_section_transfer_file_save() {
         fnLoadTechnicalSection_Document(project_Id, $('#TechnicalSection_From_SetupType_Id').val(), $('#TechnicalSection_Grid-Name').val());
         $('.btnClose').click();
         loadProject_TechnicalSectiondownList('TechnicalSection');
+        fnLoadMain_Progress_DetailsById(); //Load Main Progress
+
     }
 
 }

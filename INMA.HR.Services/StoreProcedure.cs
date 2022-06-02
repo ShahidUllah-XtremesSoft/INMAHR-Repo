@@ -7,6 +7,9 @@
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
     Notification_Save,
+    //------------ WEBSITE
+    Website_Configuration_Get,
+    Website_Services_Get,
     #endregion
     DashboardCounter_Select,
     UserLogin_Select,
@@ -320,6 +323,8 @@ public enum ProjectStoreProcedure
     STEPPER_SUB_SECTION_MENU,
     Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters,
     Project_Employees_Started_Work,
+    Project_UpdateStatus,
+    Project_Main_Progress_Get_By_Id,
 
 
     Project_Role_Mapping_For_Employees_Delete,

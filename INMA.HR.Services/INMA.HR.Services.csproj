@@ -136,6 +136,7 @@
     <Compile Include="Commands\UserManagement\ModuleCommand.cs" />
     <Compile Include="Commands\UserManagement\RoleCommand.cs" />
     <Compile Include="Commands\UserManagement\RoleMenusCommand.cs" />
+    <Compile Include="Commands\Website\WebsiteConfigurationCommand.cs" />
     <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="GlobalEnums.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />

@@ -414,6 +414,7 @@ function fn_transfer_file_save() {
         fnLoadDesignSection_Document(project_Id, $('#From_SetupType_Id').val(), $('#Grid-Name').val());
         $('.btnClose').click();
         loadProjectSectiondownList('DesignSection');
+        fnLoadMain_Progress_DetailsById(); //Load Main Progress
     }
 
 }

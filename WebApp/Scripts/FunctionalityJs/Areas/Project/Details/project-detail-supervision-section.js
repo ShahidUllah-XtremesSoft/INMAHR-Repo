@@ -267,6 +267,8 @@ function fn_supervision_section_transfer_file_save() {
 
         fnLoadSupervisionSection_Document(project_Id, $('#SupervisionSection_From_SetupType_Id').val(), $('#SupervisionSection_Grid-Name').val());
         $('.btnClose').click();
+        fnLoadMain_Progress_DetailsById(); //Load Main Progress
+
     }
 
 }

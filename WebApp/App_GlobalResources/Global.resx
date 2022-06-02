@@ -156,6 +156,12 @@
   <data name="doYouReallyWantToTransferThisFile" xml:space="preserve">
     <value>Do you really want to transfer this file ?</value>
   </data>
+  <data name="doYouReallyWantToUpdateThisStatus" xml:space="preserve">
+    <value>Do you really want to Update this status?</value>
+  </data>
+  <data name="lblAboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
   <data name="lblAccept" xml:space="preserve">
     <value>Accept</value>
   </data>
@@ -207,6 +213,12 @@
   <data name="lblCompanyNameEng" xml:space="preserve">
     <value>Name (English)</value>
   </data>
+  <data name="lblContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="lblContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
   <data name="lblDay" xml:space="preserve">
     <value>Day</value>
   </data>
@@ -240,6 +252,12 @@
   <data name="lblExpiryDate" xml:space="preserve">
     <value>Expiry Date</value>
   </data>
+  <data name="lblGroupBoardOfDirectors" xml:space="preserve">
+    <value>Group Board Of Directors</value>
+  </data>
+  <data name="lblHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hour(s)</value>
   </data>
@@ -255,6 +273,9 @@
   <data name="lblMinutes" xml:space="preserve">
     <value>Minute(s)</value>
   </data>
+  <data name="lblModule" xml:space="preserve">
+    <value>Module</value>
+  </data>
   <data name="lblNo" xml:space="preserve">
     <value>No</value>
   </data>
@@ -266,6 +287,18 @@
   </data>
   <data name="lblOops" xml:space="preserve">
     <value>Oops...</value>
+  </data>
+  <data name="lblOurMission" xml:space="preserve">
+    <value>Our Mission</value>
+  </data>
+  <data name="lblOurPlan" xml:space="preserve">
+    <value>Our Plan</value>
+  </data>
+  <data name="lblOurVision" xml:space="preserve">
+    <value>Our Vision</value>
+  </data>
+  <data name="lblPartners" xml:space="preserve">
+    <value>Partners</value>
   </data>
   <data name="lblPleaseContactToSystemEngineerThankyou" xml:space="preserve">
     <value>Please contact to system engineer, Thank you...!</value>
@@ -282,6 +315,9 @@
   <data name="lblSeconds" xml:space="preserve">
     <value>Second(s)</value>
   </data>
+  <data name="lblServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>Start Date</value>
   </data>
@@ -296,6 +332,9 @@
   </data>
   <data name="lblStatusValid" xml:space="preserve">
     <value>Valid</value>
+  </data>
+  <data name="lblUsefulLinks" xml:space="preserve">
+    <value>Useful Links</value>
   </data>
   <data name="lblXtremeSoft" xml:space="preserve">
     <value>XtremeSoft</value>

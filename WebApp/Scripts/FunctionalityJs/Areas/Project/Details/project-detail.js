@@ -19,6 +19,15 @@ var selected_PROJECT_MAIN_SECTION_Supervision_Stepper = false;
 var project_Id = (new URL(location.href)).searchParams.get('id');
 
 $(function () {
+
+    //var pb = $("#Main_ProgressBar").kendoProgressBar({
+    //    type: "chunk",
+    //    chunkCount: 3,
+    //    min: 0,
+    //    max: 3,
+    //    value: 0
+    //}).data("kendoProgressBar");
+
     $('#Language').val(_currentLanguage);
     $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
     loadProjectSectiondownList('');
@@ -32,8 +41,8 @@ $(function () {
 
     fnLoadProjectDetailsById();
 
-  
-   
+
+
 });
 //|Load Project Details Start
 function fnLoadProjectDetailsById() {
@@ -85,9 +94,8 @@ function loadProjectDetailsByIdCallBack(response) {
 
 
         fnLoadAttachmentDetailsById();
-        //if (JSON.parse(response.Value).currentFileName != null) {
-        //    var profileImage = '/UploadFile/' + JSON.parse(response.Value).currentFileName;
-        //    $('#ProfileImage').attr('src', profileImage);
+        fnLoadMain_Progress_DetailsById();
+
     }
 }
 
@@ -147,6 +155,42 @@ function fnLoadAttachmentDetailsByIdCallBack(response) {
             }
         }
     }
+}
+
+
+//|Load Project Details Start
+function fnLoadMain_Progress_DetailsById() {
+    ajaxRequest({
+        commandName: 'Project_Main_Progress_Get_By_Id',
+        values: {
+            Id: project_Id,
+            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            Language: $('#Language').val()
+        }, CallBack: fnLoadMain_Progress_DetailsByIdCallBack
+    });
+}
+function fnLoadMain_Progress_DetailsByIdCallBack(response) {
+
+    var responseJSON = JSON.parse(response.Value);
+     
+    if (responseJSON != null) {
+        
+        $("#Main_ProgressBar").kendoProgressBar({
+            type: "chunk",
+            chunkCount: 3,
+            min: 0,
+            max: 3,
+            value: responseJSON.finalProgress
+        }).data("kendoProgressBar");
+
+        $('.text-progress-status').text(Math.round(responseJSON.finalProgress * 33.33) + ' %');
+        $('.Main_ProgressBar_Percentage').text(Math.round(responseJSON.finalProgress * 33.33) + ' %');
+        
+
+    }
+
 }
 
 
@@ -452,6 +496,7 @@ function progressbar_subSection(differentSectionMenuResponse, CallingArea) {
 
     }
     setTimeout(console.clear(), 200);
+     
 }
 // --------------------- LOAD PROGRESS BAR END----------------------BY /\/\ati
 
@@ -481,7 +526,7 @@ function fnLoadAssignedEmployeeByProjectIdCallBack(response) {
 
         var fileCount = 1;
         for (var i = 0; i < responseJSON.length; i++) {
-            var startDate_ClassColor = '',endDate_ClassColor = '', startDate = '', endDate = '';
+            var startDate_ClassColor = '', endDate_ClassColor = '', startDate = '', endDate = '';
             if (responseJSON[i].startDate != null) { startDate_ClassColor = 'badge badge-success'; } else { startDate_ClassColor = 'badge badge-danger'; }
             if (responseJSON[i].endDate != null) { endDate_ClassColor = 'badge badge-danger'; } else { endDate_ClassColor = 'badge badge-primary'; }
 
@@ -507,7 +552,7 @@ function fnLoadAssignedEmployeeByProjectIdCallBack(response) {
         }
     }
 }
- 
+
 
 // --------------------- LOAD ALL ASSIGNED EMPLOYESS RELATED TO PROJECT END----------------------BY /\/\ati
 
@@ -530,7 +575,7 @@ function fnLoadClientInformationByProjectIdCallBack(response) {
     var count = 1;
     $('.load-client-iformation-by-project').html('');
 
-    if (JSON.parse(response.Value).length>0) {
+    if (JSON.parse(response.Value).length > 0) {
         JSON.parse(response.Value).forEach(function (item) {
             var statusClass = ''
             if (item.status == 'Valid') {
@@ -569,13 +614,13 @@ function fnLoadClientInformationByProjectIdCallBack(response) {
             );
         });
     }
-   
+
 }
- 
+
 
 // --------------------- LOAD ALL CLIENT DOCUMENT INFORMATION RELATED TO PROJECT END----------------------BY /\/\ati
 function fnLoadAllClientInformation() {
-    window.open('/Project/Client/Details?id='+$('#client-id-get-by-project').val(), '_blank');
+    window.open('/Project/Client/Details?id=' + $('#client-id-get-by-project').val(), '_blank');
 }
 
 
@@ -594,3 +639,57 @@ function fnApprovedOrReturn_DDL(ddlName) {
     });
 
 }
+
+// --------------------- CHANGE PROJECT STATUS ---------------------
+
+function fnChangeProject_MainStatus(ddl) {
+    Swal.fire({
+
+        title: areYouSureTitle,
+        text: doYouReallyWantToUpdateThisStatus,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#5cb85c',
+        cancelButtonColor: '#d9534f',
+        confirmButtonText: btnYesText,
+        cancelButtonText: btnNoText,
+        buttons: {
+            cancel: {
+                text: "No",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true
+            },
+            confirm: {
+                text: "Yes",
+                value: true,
+                visible: true,
+                className: "btn btn-warning",
+                closeModal: true
+            }
+        }
+    }).then(function (restult) {
+
+        if (restult.value) {
+            ajaxRequest({
+                commandName: 'Project_UpdateStatus',
+                values: {
+
+                    Project_Id: project_Id,
+                    Project_Status: ddl.value,
+                    LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+                    RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+                    LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+                    Language: _currentLanguage
+                }, CallBack: fnChangeProject_MainStatusCallBack
+            });
+
+        }
+    });
+
+}
+function fnChangeProject_MainStatusCallBack(response) {
+    swal(response.Value);
+}
+// --------------------- CHANGE PROJECT STATUS END ----------------------BY /\/\ati

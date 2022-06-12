@@ -108,16 +108,28 @@ function loadProfileCallBack(response) {
 }
 
 
- 
+
 
 //--------------------------- MEETING START WORK  ----------------------------------------
 function fn_StartMeeting(e) {
     var meetingDetails = localStorage.getItem('meetingDetails');
 
-    console.log(JSON.parse(meetingDetails))
+    //console.log(JSON.parse(meetingDetails))
+
+
     $('#load-modal').click();
     $('.projectNo').text(JSON.parse(meetingDetails).projectNumber);
     $('.projectName').text(JSON.parse(meetingDetails).projectName);
+
+
+    if ($('#hours').text() == 0 && $('#minutes').text() == 0) {
+        $('#start').attr('disabled', true)
+    } else {
+
+        $('#start').attr('disabled', false)
+    }
+
+
 }
 
 //--------------------------- MEETING START WORK END  ----------------------------------------
@@ -125,7 +137,7 @@ function fn_StartMeeting(e) {
 var meetingHours = 0, meetingMinutes = 0, meetingSeconds = 0, countDownTarget = 0, x = 0;
 
 $('#btn-multiple-meeting-save').click(function () {
-   
+
     if (customValidateForm('frmAddUpdate_Multiple_Meeting')) {
 
         buttonAddPleaseWait('btn-multiple-meeting-save');
@@ -143,11 +155,11 @@ $('#btn-multiple-meeting-save').click(function () {
                     messageResponseParse = JSON.parse(messageResponseParse);
                 }
                 //  $('#EmployeeId').val(messageResponseParse.insertedId);
-                
+
                 setTimeout(function () {
                     location.reload();
-                },1500)
-               // window.location.href = '/Project/Issue/List';
+                }, 1500)
+                // window.location.href = '/Project/Issue/List';
 
             },
             error: function (xhr, status, error) {
@@ -167,7 +179,7 @@ $('#btn-multiple-meeting-save').click(function () {
     }
 });
 
- 
+
 $("#start").click(function () {
 
     meetingHours = parseFloat($('#hours').text());
@@ -175,76 +187,112 @@ $("#start").click(function () {
     meetingSeconds = parseFloat($('#secondss').text());
 
 
-
-
-    if ($('#start').val() == "Start") {
-        $('#start').val("End").text(lblMeetingEnd);
-        $('#StartedTime').val(fnReturnDateTime());
-
-    } else if ($('#start').val() == "End") {
+    if (meetingMinutes == 0 && meetingHours == 0 && meetingSeconds == 0) {
         $('#start').val("Save").text(save);
-
         $('#EndedTime').val(fnReturnDateTime());
-
-
-    } else if ($('#start').val() == "Save") {
         $('#btn-multiple-meeting-save').click();
+        Swal.fire({
+            //title: 'Are you sure?',
+            text: lblMeetingTimeCompleted,
+            icon: 'info',
+            confirmButtonColor: 'btn btn-success',
+        }).then((result) => {
 
-    }
+            $('#btn-modal-close').click();
 
-    /*
-    var customDbDate = JSON.parse(localStorage.getItem('meetingDetails')).meetingStartDateTime  
-    var countDownDate = new Date(customDbDate).getTime();
+        })
 
-     
-    var dateforSubtraction = JSON.parse(localStorage.getItem('meetingDetails')).meetingEndDateTime
-    var endDate = new Date(dateforSubtraction).getTime();
-    let diffTime = Math.abs(countDownDate - endDate); 
-    */
-
-    if (meetingHours > 0 && meetingMinutes <= 0) {
-
-        var newHour = meetingHours - 1;
-        document.getElementById("hours").innerHTML = '0' + newHour;
-
-        document.getElementById("minutes").innerHTML = 60;
-        document.getElementById("secondss").innerHTML = 60;
-
-        meetingMinutes = 60;
-
-    }
-    countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
+    } else {
 
 
+        if ($('#start').val() == "Start") {
+            $('#start').val("End").text(lblMeetingEnd);
+            $('#StartedTime').val(fnReturnDateTime());
 
-    showClock(countDownTarget);
+        } else if ($('#start').val() == "End") {
+            $('#start').val("Save").text(save);
 
-    // Update the count down every 1 second
-    x = setInterval(function () {
-        if ($('#start').val() != "Save") {
-            showClock(countDownTarget);
-        } else {
-            clearInterval(x);
+            $('#EndedTime').val(fnReturnDateTime());
+
+
+        } else if ($('#start').val() == "Save") {
+            $('#btn-multiple-meeting-save').click();
+
         }
 
+        /*
+        var customDbDate = JSON.parse(localStorage.getItem('meetingDetails')).meetingStartDateTime  
+        var countDownDate = new Date(customDbDate).getTime();
+    
+         
+        var dateforSubtraction = JSON.parse(localStorage.getItem('meetingDetails')).meetingEndDateTime
+        var endDate = new Date(dateforSubtraction).getTime();
+        let diffTime = Math.abs(countDownDate - endDate); 
+        */
 
-        if (countDownTarget - new Date().getTime() < 0) {
+        if (meetingHours > 0 && meetingMinutes <= 0) {
 
-            if (meetingHours > 0) {
-                var newHour = meetingHours - 1;
-                document.getElementById("hours").innerHTML = '0' + newHour;
-                document.getElementById("minutes").innerHTML = 60;
-                document.getElementById("secondss").innerHTML = 60;
+            var newHour = meetingHours - 1;
+            document.getElementById("hours").innerHTML = '0' + newHour;
 
-                meetingMinutes = 60;
-                countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
+            document.getElementById("minutes").innerHTML = 60;
+            document.getElementById("secondss").innerHTML = 60;
+
+            meetingMinutes = 60;
+
+        }
+        countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
+
+
+
+        showClock(countDownTarget);
+
+        // Update the count down every 1 second
+        x = setInterval(function () {
+             
+            if ($('#start').val() != "Save") {
+                if (parseFloat($('#hours').text()) == 0 && parseFloat($('#minutes').text()) == 0 && parseFloat($('#secondss').text()) == 0) {
+                    $('#start').val("Save").text(save);
+                    $('#EndedTime').val(fnReturnDateTime());
+                    Swal.fire({
+                        text: lblMeetingTimeCompleted,
+                        icon: 'info',
+                        confirmButtonColor: 'btn btn-success',
+                    }).then((result) => {
+
+                        //  $('#btn-multiple-meeting-save').click();
+                        //  $('#btn-modal-close').click();
+                    });
+                    clearInterval(x);
+                }
+
+
+
                 showClock(countDownTarget);
-            } else {
-                clearInterval(x);
-            }
-        }
-    }, 1000);
+            } else if (countDownTarget - new Date().getTime() < 0) {
 
+                if (meetingHours > 0) {
+                    var newHour = meetingHours - 1;
+                    document.getElementById("hours").innerHTML = '0' + newHour;
+                    document.getElementById("minutes").innerHTML = 60;
+                    document.getElementById("secondss").innerHTML = 60;
+
+                    meetingMinutes = 60;
+                    countDownTarget = new Date().getTime() + meetingMinutes * 60 * 1000;
+                    showClock(countDownTarget);
+                } else {
+                    clearInterval(x);
+
+                }
+            }
+            else {
+                clearInterval(x);
+
+            }
+
+
+        }, 1000);
+    }
 });
 function showClock(target) {
 
@@ -254,14 +302,37 @@ function showClock(target) {
     const mins = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const secs = distance < 0 ? 0 : Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Output the results
+    //    // Output the results
     //  document.getElementById("hours").innerHTML = hour;
     document.getElementById("minutes").innerHTML = mins;
     document.getElementById("secondss").innerHTML = secs;
+
+
+
+    /*
+  if (parseFloat($('#hours').text()) == 0 && parseFloat($('#minutes').text()) == 0 && parseFloat($('#secondss').text()) == 0) {
+    alert('');
+    $('#start').val("Save").text(save);
+    $('#EndedTime').val(fnReturnDateTime());
+  
+    Swal.fire({
+        //title: 'Are you sure?',
+        text: lblMeetingTimeCompleted,
+        icon: 'info',
+        confirmButtonColor: 'btn btn-success',
+    }).then((result) => {
+
+        $('#btn-multiple-meeting-save').click();
+       $('#btn-modal-close').click();
+    });
+
+}
+*/
 }
 $("#btn-modal-close").click(function () {
     alert('If you leave before saving, your changes will be lost. ');
     //$('#modal-meeting-start-end').hide();
+    location.reload();
 });
 
 
@@ -285,7 +356,7 @@ function fnCheckTab(selectedTab) {
     if (selectedTab == "MeetingsInformation") {
 
         loadClientMeetingInformationKendoGrid();
-    }  
+    }
 
 }
 function loadClientMeetingInformationKendoGrid() {
@@ -307,7 +378,7 @@ var loadClientMeetingInformationKendoGridCallBack = function (inputDataJSON) {
 
 
 var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
-    
+
     var gridColumns = [
 
         { field: "meetingMultiple_Id", title: "meetingMultiple_Id", hidden: true },
@@ -323,17 +394,17 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
             field: "projectName", hidden: true, title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectName#</a> ",
         },
-        
-      //  { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+
+        //  { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
 
         { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
-      //  { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
-        { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable:false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
+        //  { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
+        { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
         { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>" },
         { field: "totaltime", title: ".totaltime", width: 30, filterable: false, template: "<span class='badge badge-danger'>#:totaltime#</span>" },
-     //   { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>" },
+        //   { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>" },
         { field: "remarks", title: lblRemarks, width: 30, filterable: false, template: "<span class='badge badge-info'>#:remarks#</span>" },
- 
+
     ];
     bindKendoGrid('grid-multiple-meeting-information', 50, gridColumns, inputDataJSON, true, 400);
 
@@ -342,6 +413,6 @@ function meetingDetailsById(e) {
     var row = $(e).closest("tr");
     var grid = $("#grid-multiple-meeting-information").data("kendoGrid");
     var dataItem = grid.dataItem(row);
- 
+
     window.location.href = '/Project/Project/Details?id=' + dataItem.projectId + '';
 }

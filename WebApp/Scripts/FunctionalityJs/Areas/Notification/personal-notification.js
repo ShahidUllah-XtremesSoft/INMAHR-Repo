@@ -101,6 +101,6 @@ function detailProject(e) {
     });
 
     $('#btnSearch').click();// After updating Notification status.Grid must be refresh .
-    window.location.href = '/Project/Project/Details?id=' + dataItem.projectID + '';
+    window.location.href = '/Project/Project/Detail?id=' + dataItem.projectID + '';
 
 }

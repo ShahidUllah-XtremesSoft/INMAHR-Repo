@@ -144,8 +144,8 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:status#</span> # } else" +
+                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                    "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
                     "{# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {

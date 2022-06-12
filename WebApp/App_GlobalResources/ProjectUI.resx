@@ -345,6 +345,9 @@
   <data name="lblMeetingStartTime" xml:space="preserve">
     <value>Meeting Start Time</value>
   </data>
+  <data name="lblMeetingTimeCompleted" xml:space="preserve">
+    <value>Meeting time completed</value>
+  </data>
   <data name="lblMeetingWithEngineer" xml:space="preserve">
     <value>Meeting With Engineer</value>
   </data>

@@ -2,13 +2,22 @@
 var emp_ID = 0;
 $(function () {
 
-    if (localStorage.getItem('MainApplicationModule_Id') == 2) {
-        setTimeout(function () {
-            loadProjectGridByEmployeeId();
-        }, 50);
+    if (localStorage.getItem('MainApplicationModule_Id') == 2) {  
+
+        if (JSON.parse(localStorage.getItem('Menus'))[0].staticComment != 'Lock') { // Lock - mean to upload document first then employee will be able to see project
+
+            setTimeout(function () {
+                loadProjectGridByEmployeeId();
+            }, 50);
+        } else {
+
+            $('.hide_HR_project_tabs').hide();
+           
+        }
         $('.hide_HR_project_tabs').hide();
     } else {
         $('#divEmployeeProject').hide();
+
     }
 });
 
@@ -21,8 +30,8 @@ $(function () {
 //*****************************BY /\/\ati ***********
 
 function loadProjectGridByEmployeeId() {
-     
-      emp_ID = 0;
+
+    emp_ID = 0;
     if ($('#EmployeeId').val() == JSON.parse(localStorage.getItem('User')).employeeId) {
         emp_ID = JSON.parse(localStorage.getItem('User')).employeeId
     } else {
@@ -81,16 +90,16 @@ function detailProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#load-project-grid-employee-by-id").data("kendoGrid");
     var dataItem = grid.dataItem(row);
-     
-  //  var check_isEmployeeExist = dataItem.isEmployeeExist;
- //   if (check_isEmployeeExist == "No") {
 
-      //  window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
-  //  } else {
+    //  var check_isEmployeeExist = dataItem.isEmployeeExist;
+    //   if (check_isEmployeeExist == "No") {
+
+    //  window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
+    //  } else {
 
     //    window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
-//
-  //  }
+    //
+    //  }
     if ($('#EmployeeId').val() == JSON.parse(localStorage.getItem('User')).employeeId) {
         window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
     } else {

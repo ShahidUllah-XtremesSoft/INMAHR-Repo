@@ -33,7 +33,7 @@ function loadProjectSectiondownList(callingArea) {
 
     localStorage.setItem('DesignSection_Menu_Area', callingArea);
 
-    
+
 }
 function fnloadloadProjectSectiondownListCallBack(response) { stepper_DESIGN_SECTION(response) }
 
@@ -221,9 +221,9 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:status#</span> # } else" +
-                    "{# <span class='badge badge-success'>#:status#</span> # }#"
+                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                    "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # }" +
+                    " else {# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {
                 field: "attachmentRemarks",
@@ -805,11 +805,11 @@ function fnLoadOtherMainSection(selectedValue) {
 
         bindkendoStepper('Project_load_other_main_section_stepper_in_DesignSection', false, step_Columnss, '', stepper_Fn_otherMainSection_Onselect, 800, "horizontal");
 
-       
-        function stepper_Fn_otherMainSection_Onselect(e) { 
-            var stepper_data = e.step.options;  
-            if (stepper_data.label != 'Select' ) { 
-                ajaxRequest({ commandName: 'DDL_Load_SetupType_By_ParentName', values: { ParentType: stepper_data.label.replace(/ /g, ""),  Language: _currentLanguage }, CallBack: fnLoadOtherMainSection_Callback }); 
+
+        function stepper_Fn_otherMainSection_Onselect(e) {
+            var stepper_data = e.step.options;
+            if (stepper_data.label != 'Select') {
+                ajaxRequest({ commandName: 'DDL_Load_SetupType_By_ParentName', values: { ParentType: stepper_data.label.replace(/ /g, ""), Language: _currentLanguage }, CallBack: fnLoadOtherMainSection_Callback });
             } else {
                 loadProjectSectiondownLists();
                 $("#Project_DesignSection_SetupDetailTypeDDL").data("kendoDropDownList").dataSource.data([]);
@@ -820,7 +820,7 @@ function fnLoadOtherMainSection(selectedValue) {
 
 
     } else {
-         
+
         $('.div_showHide_Main_stepper').hide();
         loadProjectSectiondownLists();
         $("#Project_DesignSection_SetupDetailTypeDDL").data("kendoDropDownList").dataSource.data([]);

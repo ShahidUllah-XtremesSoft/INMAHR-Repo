@@ -17,7 +17,12 @@ $(function () {
 
     //|Functions Calling
     loadKendoDropdownByTypeName('PersonalDocumentSetupDetailTypeId', 'Client Personal Document');
-    loadPersonalDocumentsGrid();
+    //var personalClient_Id == null ? $('#PersonalDocumentClientId').val() : personalClient_Id
+    
+    if (personalClient_Id != null ||  $('#PersonalDocumentClientId').val() != '') {
+
+        loadPersonalDocumentsGrid();
+    }
 
     //|End Function Calling
 
@@ -39,6 +44,7 @@ $(function () {
                     loadPersonalDocumentsGrid();
                     swal(response);
                     var response = JSON.parse(response);
+                    loadKendoDropdownByTypeName('PersonalDocumentSetupDetailTypeId', 'Client Personal Document');
                     //  setTimeout(function () {
                     //
                     //      window.location.href = '/User/Login';
@@ -184,7 +190,7 @@ function deletePersonalDocument(e) {
         $('#PersonalDocumentId').val(0);
         swal(response.Value);
         loadPersonalDocumentsGrid();
-
+        loadKendoDropdownByTypeName('PersonalDocumentSetupDetailTypeId', 'Client Personal Document');
     }
 
 }

@@ -391,6 +391,7 @@ public enum ProjectStoreProcedure
     Issue_Save,
     Issue_Get,
     Issue_Delete,
+    Issue_isRead_Change_Status,
     Issue_Details_By_Id,
     Issue_Edit_By_Id,
     Issue_Change_Status,

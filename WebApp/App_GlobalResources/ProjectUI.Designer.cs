@@ -745,6 +745,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meeting time completed.
+        /// </summary>
+        public static string lblMeetingTimeCompleted {
+            get {
+                return ResourceManager.GetString("lblMeetingTimeCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meeting With Engineer.
         /// </summary>
         public static string lblMeetingWithEngineer {

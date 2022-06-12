@@ -362,6 +362,7 @@
     <Content Include="Content\Login\img\pdf.png" />
     <Content Include="Content\Login\img\placeholder-thumb.jpg" />
     <Content Include="Content\Login\img\placeholder.jpg" />
+    <Content Include="Content\Login\img\shjengconLogo.png" />
     <Content Include="Content\Login\img\user-02.jpg" />
     <Content Include="Content\Login\img\user-03.jpg" />
     <Content Include="Content\Login\img\user-04.jpg" />
@@ -418,8 +419,12 @@
     <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\2.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\3-INMA.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\3.jpg" />
+    <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\4-INMA.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\4.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\5.jpg" />
+    <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\shj-new-slider-1.jpg" />
+    <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\shj-new-slider-2.jpg" />
+    <Content Include="Content\Themes\BizPage\assets\img\hero-carousel\shj-new-slider-3.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\Mr. Abdullah Deaifis.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\Mr. Mohamed Fouad.jpg" />
     <Content Include="Content\Themes\BizPage\assets\img\Mr. Omar Al Harmoudi.jpg" />

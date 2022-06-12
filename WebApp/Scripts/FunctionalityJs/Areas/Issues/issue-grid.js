@@ -34,25 +34,42 @@ var bindGrid = function (inputDataJSON) {
         { field: "projectId", title: "ProjectId", hidden: true },
         { field: "employeeId", title: "EmployeeId", hidden: true },
         { field: "clientId", title: "ClientId", hidden: true },
-        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+        { field: "isRead", title: "isRead", hidden: true },
+        {
+            title: "#", template: "<b>#= ++record #</b>", width: 5,
+
+        },
 
         {
             field: "projectNumber", title: lblProjectNo, width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a> ",
+            , template: "#if(isRead == false){#  <a style='cursor:pointer;text-decoration:underline;color:blue;font-weight:bold;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a>  #} " +
+                " else {# <a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a> #}#",
         },
-        { field: "employeeName", title: employeeName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "issueDate", title: lblStartDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:issueDate#</span>", filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        {
+            field: "employeeName", title: employeeName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=employeeName#</div> #} else {#<div  class='viewbutton'>#=employeeName#</div>#}#",
+        },
+        {
+            field: "issueDate", title: lblStartDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:issueDate#</span>", filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=issueDate#</div> #} else {#<div  class='viewbutton'>#=issueDate#</div>#}#",
+        },
         {
             field: "status", title: lblStatus, width: 10, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-            , template: "#if (status == 'Pending') { # <span class='badge badge-danger'>#:status#</span> # } else if(status == 'Completed') {# <span class='badge badge-success'>#:status#</span> # } else {# <span class='badge badge-primary'>#:status#</span> # }#"
+            , template: "#if (status == 'Pending')" +
+                " { # <span class='badge badge-danger'>#:status#</span> # }" +
+                " else if(status == 'Completed') " +
+                "{# <span class='badge badge-success'>#:status#</span> # } else " +
+                "{# <span class='badge badge-primary'>#:status#</span> # }#"
 
         },
         {
             field: "", width: 10, title: ' ',
-            template:
+            template: "" +
+                "#if(createdBy == " + JSON.parse(localStorage.getItem('User')).id+"){#" +
                 //"<a style='cursor:pointer; font-size:20px;' onClick= detailClient(this) title='View Client Detail' ><span class='fa fa-eye'></span></a>" +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit+" ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete+"><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= fneditById(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
+                " <a style='font-size:20px;cursor:pointer;' onClick= fndeleteById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
+                + "#}#"
         },
 
 
@@ -73,7 +90,22 @@ function fnDetailById(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+
+    if (dataItem.isRead == null || dataItem.isRead == false) {
+
+        ajaxRequest({
+            commandName: 'Issue_isRead_Change_Status', values: {
+                Id: dataItem.issueId,
+                LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+                RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+                LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            }, CallBack: ''
+        });
+
+    }
+
     window.location.href = '/Project/Issue/Details?id=' + dataItem.issueId + '';
+
 }
 
 

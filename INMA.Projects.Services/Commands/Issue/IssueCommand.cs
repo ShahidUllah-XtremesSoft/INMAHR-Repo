@@ -228,6 +228,38 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+    #region Issue CHANGE STATUS  
+
+
+    [Command(Name = "Issue_isRead_Change_Status")]
+    public class Issue_isRead_Change_StatusCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+
+                Id = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Issue_isRead_Change_Status.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
 
 
 }

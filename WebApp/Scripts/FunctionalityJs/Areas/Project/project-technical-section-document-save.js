@@ -76,6 +76,9 @@ $('#btn-save-technical-section-government-documents').click(function () {
     }
     else {
         buttonRemovePleaseWait('btn-save-technical-section-government-documents', save, 'save');
+        //----------- Reload DateTime Picker 
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
         return false;
     }
 });

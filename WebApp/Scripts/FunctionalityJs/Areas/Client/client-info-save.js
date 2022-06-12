@@ -13,7 +13,7 @@ $(function () {
 
 
     fnLoadCityByNationalityId(0)
-
+   
     $("#NationalityDDL").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
@@ -36,8 +36,9 @@ $(function () {
 
         },
     });
-
-
+     
+    $("#NationalityDDL").data("kendoDropDownList").value(234) 
+    $("#NationalityDDL").data("kendoDropDownList").enable(false);
 
 
     $('#btn-save-client').click(function () {

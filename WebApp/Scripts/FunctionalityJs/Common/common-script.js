@@ -57,6 +57,7 @@ var ajaxRequest = function (options) {
     $('#RequestLoader').show();
     $.ajax({
         type: 'POST',
+        /*async:false,*/
         url: '/services/Xtreme/process',
         data: JSON.stringify({ type: options.commandName, value: options.values }),
         contentType: "application/json; charset=utf-8",
@@ -1174,6 +1175,7 @@ function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDate
     return true;
 }
 function only0To9WithDecimalAllowed(evt) {
+     
     var charCode = (evt.which) ? evt.which : event.keyCode;
 
     if (charCode != 46 && charCode > 31
@@ -1184,6 +1186,7 @@ function only0To9WithDecimalAllowed(evt) {
 
 }
 function only1To9Allowed(evt) {
+    
     var charCode = (evt.which) ? evt.which : event.keyCode;
 
     if (charCode != 46 && charCode > 31
@@ -1307,4 +1310,24 @@ var bindKendoDropdownList = function (responseJSON, controlId, dataTextFieldName
         //    appendTo: $("#" + controlId)
         //}
     });
+}
+
+//------------------ accept decimal,float values  ..... In HTML pass like this in input field onkeypress="return validate_DecimalFloat_Number(this, event);"
+
+function validate_DecimalFloat_Number(txt, evt) {
+     
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+        //Check if the text already contains the . character
+        if (txt.value.indexOf('.') === -1) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if (charCode > 31 &&
+            (charCode < 48 || charCode > 57))
+            return false;
+    }
+    return true;
 }

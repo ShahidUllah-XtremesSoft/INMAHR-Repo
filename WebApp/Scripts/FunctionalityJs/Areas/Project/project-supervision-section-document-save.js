@@ -92,6 +92,9 @@ $('#btn-save-supervision-section-government-documents').click(function () {
     }
     else {
         buttonRemovePleaseWait('btn-save-supervision-section-government-documents', save, 'save');
+        //----------- Reload DateTime Picker 
+        renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_Document_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_Document_EndDate');
         return false;
     }
 });

@@ -1,7 +1,28 @@
 ﻿
 var $LeaveGrid = "LeaveGrid";
+var createdBy = 0, roleId = 0, departmentId = 0, isIgnoreLeaveAvailableBalanceForHR = false;
+
 $(function () {
-    $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    employeeIdQueryString = (new URL(location.href)).searchParams.get('employeeId');
+    userIdQueryString = (new URL(location.href)).searchParams.get('userId');
+    departmentIdQueryString = (new URL(location.href)).searchParams.get('departmentId');
+    roleIdQueryString = (new URL(location.href)).searchParams.get('roleId');
+    
+    if (employeeIdQueryString == null) {        
+        createdBy = JSON.parse(localStorage.getItem('User')).id;;
+        roleId = JSON.parse(localStorage.getItem('User')).roleId;
+        departmentId = JSON.parse(localStorage.getItem('User')).departmentId;
+        isIgnoreLeaveAvailableBalanceForHR = false;
+
+    }
+    else {
+        createdBy = userIdQueryString;
+        roleId = roleIdQueryString;
+        departmentId = departmentIdQueryString;
+        isIgnoreLeaveAvailableBalanceForHR = true;
+    }
+
+    $('#CreatedBy').val(createdBy);
     loadLeaveTypeDropdownList(true);
     //$("#StartDate").kendoDatePicker({
     //    format: "yyyy-MM-dd",
@@ -40,8 +61,9 @@ $(function () {
 
 
     $('#btnSave').on('click', function (e) {
-        if (compareStartEndDate($("#StartDate").val(), $("#EndDate").val())) {
+        if (compareStartEndDate($("#StartDate").val(), $("#EndDate").val())) {            
             if (requestedDaysShouldBeLessOrEqualToAvailable()) {
+                
                 saveLeaveRequest();
             }
 
@@ -87,14 +109,21 @@ function requestedDaysShouldBeLessOrEqualToAvailable() {
     if ($('#Id').val() == '0') {
         if (parseInt($("#TotalDays").val()) > parseInt($('#AvailableLeave').val())) {
           //  swalMessage('info', 'Requested day(s) should be less than or equal to available balance', 2500);
-            swalMessage('info', requesteddaysshouldbelessthanorequaltoavailablebalance, 2500);
-            return false;
+
+            //If logged in user is HR and want to add leave for absent employees should be allowed
+            if (!isIgnoreLeaveAvailableBalanceForHR) {
+                swalMessage('info', requesteddaysshouldbelessthanorequaltoavailablebalance, 2500);
+                return false;
+            }
         }
     }
     else {
         if ($('#AvailableLeave').val() == '0' && $('#TotalDays').val() > $('#EditLeavDays').val()) {
-            swalMessage('info', requesteddaysshouldbelessthanorequaltoavailablebalance, 2500);
-            return false;
+            //If logged in user is HR and want to add leave for absent employees should be allowed
+            if (!isIgnoreLeaveAvailableBalanceForHR) {
+                swalMessage('info', requesteddaysshouldbelessthanorequaltoavailablebalance, 2500);
+                return false;
+            }
         }
     }
     return true;
@@ -130,7 +159,7 @@ function leaveTypeDropdownListOnChange(e) {
 
 }
 function loadAvailableLeaveBalance(setupTypeDetailId = 0) {
-    ajaxRequest({ commandName: 'Request_Leave_GetEmployeeAvailableBalance', values: { CreatedBy: JSON.parse(localStorage.getItem('User')).id, SetupTypeDetailId: setupTypeDetailId, Language: _currentLanguage }, CallBack: loadAvailableLeaveBalanceCallBack });
+    ajaxRequest({ commandName: 'Request_Leave_GetEmployeeAvailableBalance', values: { CreatedBy: createdBy, SetupTypeDetailId: setupTypeDetailId, Language: _currentLanguage }, CallBack: loadAvailableLeaveBalanceCallBack });
 
 }
 function loadAvailableLeaveBalanceCallBack(response) {
@@ -142,13 +171,14 @@ function loadAvailableLeaveBalanceCallBack(response) {
 function loadLeaveGrid() {
 
     //ajaxRequest({ commandName: 'Request_Leave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: 0, Language: _currentLanguage }, CallBack: loadLeaveGridCallBack });
-    ajaxRequest({ commandName: 'Request_Leave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: JSON.parse(localStorage.getItem('User')).id, LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId, Language: _currentLanguage }, CallBack: loadLeaveGridCallBack });
+    ajaxRequest({ commandName: 'Request_Leave_Get', values: { Id: $('#Id').val(), CreatedBy: $('#CreatedBy').val(), LoggedInUserId: createdBy, LoggedInUserRoleId: roleId, LoggedInUserDepartementId: departmentId, Language: _currentLanguage }, CallBack: loadLeaveGridCallBack });
 
 }
 var loadLeaveGridCallBack = function (inputDataJSON) {
     bindLeaveGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindLeaveGrid = function (inputDataJSON) {
+    console.log(inputDataJSON);
     var record = 0;
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },

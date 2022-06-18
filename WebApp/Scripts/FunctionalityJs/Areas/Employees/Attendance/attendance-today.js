@@ -8,8 +8,11 @@ $(function () {
         $('#btnProcess').css('margin-top', '33px');
     }
     // Encrypt
-
-
+    //var employeeIdQueryString = (new URL(location.href)).searchParams.get('employeeId');
+    //var userIdQueryString = (new URL(location.href)).searchParams.get('userId');
+    //var departmentIdQueryString = (new URL(location.href)).searchParams.get('departmentId');
+    //var roleIdQueryString = (new URL(location.href)).searchParams.get('roleId');
+    //alert(employeeIdQueryString);
 
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
@@ -197,25 +200,35 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
         processButtonToggling(inputDataJSON);
     }
+    var isHR = !inputDataJSON[0].isHR;
+    
     var record = 0;
     var gridColumns = [
-        { title: "#", template: "<b>#= ++record #</b>", width: 10, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 15, },
         { field: "id", title: "id", hidden: true },
-        { field: "employeeNumber", title: empNum, width: 30, filterable: true },
+        { field: "employeeNumber", title: empNum, width: 40, filterable: true },
         { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },
         { field: "employeeName", title: employeeName, width: 100, filterable: true },
         { field: "departmentId", title: 'DepartmentId', width: 100, filterable: true, hidden: true },
         { field: "departmentName", title: department, width: 100, filterable: true },
-        { field: "checkInDate", title: checkinDate, width: 30, filterable: true },
+        { field: "checkInDate", title: checkinDate, width: 40, filterable: true },
         { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
         {
-            field: "lateInTime", title: lateTimeIn, width: 30, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
+            field: "lateInTime", title: lateTimeIn, width: 35, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
             , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
 
-            , footerTemplate: "<span class='badge badge-danger'>" + lateTimeIn + ": <span   class='footerLateTimeInPlaceholder'>0</span></span>"
+            //, footerTemplate: "<span class='badge badge-danger'> " + lateTimeIn + ":<span   class='footerLateTimeInPlaceholder'>0</span></span>"
+            , footerTemplate: "<span class='badge badge-danger'> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
         },
-        { field: "earlyOutTime", title: earlyTimeOut, width: 30, filterable: true, hidden: true },
+        {
+            field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
+            , template: "#if (earlyOutTime !='') { # <span class='badge  badge-danger'>#:earlyOutTime#</span> #}#"
+             ,format: "{0:HH:mm}"
+            //, footerTemplate: "<span class='badge badge-danger'>" + earlyTimeOut + ": <span   class='footerLateTimeOutPlaceholder'>0</span></span>"
+            , footerTemplate: "<span class='badge badge-danger'><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
+        },
+        //{ field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false },
         //{ field: "status", title: status, width: 100, filterable: true }
         {
             title: status,
@@ -231,7 +244,20 @@ var bindAttendanceGrid = function (inputDataJSON) {
             , footerTemplate: "<span class='badge badge-success'>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class='badge badge-danger'>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
 
         },
-        { field: "remarks", title: 'Remarks', width: 50, filterable: true, hidden: true },
+        { field: "remarks", title: 'Remarks', width: 40, filterable: true, hidden: false },
+        {
+            field: "", width: 40,
+            title: '',
+            hidden: isHR,
+            ////template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
+            //template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#} " +
+            //    " if(isLoginAssigned == 1) { #<div class= 'btn btn-success btn-sm' onClick= UpdateLogin(this) > <i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div> #}#",
+
+            template: "#if (status == 'Absent')" +
+                " { # <div><button class='btn btn-success btn-sm'  onClick= redirecToLeaveRequest(this) style='font-weight: normal;'><span class='fa fa-plus'></span> " + 'Add Leave' + "</button</div> # } else {#  #} #"
+
+
+        },
 
         //{
         //    title: processed,
@@ -249,6 +275,9 @@ var bindAttendanceGrid = function (inputDataJSON) {
         var gridData = grid.dataSource.view();
         var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
 
+        var t1 = "00:00:00";
+        var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
+        
         for (var i = 0; i < gridData.length; i++) {
 
             //if (gridData[i].changeColor == 'Yes') {
@@ -283,10 +312,34 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
             //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-primary");
             //}
+            if (gridData[i].lateInTime != '') {                
+                var t2 = gridData[i].lateInTime.split(':');                
+                lateTimeInSeconds = lateTimeInSeconds + parseInt(Number(t2[2]));
+                lateTimeInMinutes = lateTimeInMinutes + parseInt(Number(t2[1]));
+                lateTimeInHours = lateTimeInHours + parseInt(Number(t2[0]));
+                                             
+            }
+            if (gridData[i].earlyOutTime != '') {
+                var earlyOutTime = gridData[i].earlyOutTime.split(':');
+                earlyTimeOutSeconds = earlyTimeOutSeconds + parseInt(Number(earlyOutTime[2]));
+                earlyTimeOutMinutes = earlyTimeOutMinutes + parseInt(Number(earlyOutTime[1]));
+                earlyTimeOutHours = earlyTimeOutHours + parseInt(Number(earlyOutTime[0]));
 
+            }
         }
+        lateTimeInSeconds = lateTimeInSeconds + (lateTimeInMinutes * 60) + (lateTimeInHours * 3600);        
+        var grandTotalLateInTime = ('0' +(parseInt(lateTimeInSeconds / (60 * 60)))).slice(-2) + ":" +
+        ('0' +(parseInt(lateTimeInSeconds / 60 % 60))).slice(-2) + ":" +
+        ('0' +(lateTimeInSeconds % 60)).slice(-2);
 
-        $(".footerLateTimeInPlaceholder").text(totallateInTime);
+        earlyTimeOutSeconds = earlyTimeOutSeconds + (earlyTimeOutMinutes * 60) + (earlyTimeOutHours * 3600);
+        var grandTotalEarlyTimeOut = ('0'+(parseInt(earlyTimeOutSeconds / (60 * 60)))).slice(-2) + ":" +
+            ('0' +(parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
+            ('0' +(earlyTimeOutSeconds % 60)).slice(-2);
+
+        //$(".footerLateTimeInPlaceholder").text(totallateInTime);
+        $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);
+        $(".footerLateTimeOutPlaceholder").text(grandTotalEarlyTimeOut);
         $(".footerPresentPlaceholder").text(totalPresent);
         $(".footerAbsentPlaceholder").text(totalAbsent);
 
@@ -295,6 +348,14 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
 
 };
+function redirecToLeaveRequest(e) {
+    //window.location.href = '/Employees/Attendance/Today?empNum=' + dataItem.id + '';
+    var row = $(e).closest("tr");
+    var grid = $("#AttendanceGrid").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+    window.location.href = '/Request/Leave?employeeId=' + dataItem.employeeId + '&userId=' + dataItem.userId + '&departmentId=' + dataItem.departmentId + '&roleId=' + dataItem.roleId;
+
+}
 var processButtonToggling = function (inputJSON) {
 
     var unProcessedExists = false;

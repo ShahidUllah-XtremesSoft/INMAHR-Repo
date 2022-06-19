@@ -53,9 +53,11 @@ function fnLoadSupervisionSectionReady() {
 $('#btn-save-supervision-section-government-documents').click(function () {
 
     if (customValidateForm('frmAddUpdate_SupervisionSection_Document')) {
+        /*
         if (!firstDateShouldBeGreaterThanSecondDate($('#SupervisionSection_Document_StartDate').val(), $('#SupervisionSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
             return false;
         }
+        */
         buttonAddPleaseWait('btn-save-supervision-section-government-documents');
 
         $("#frmAddUpdate_SupervisionSection_Document").ajaxForm();

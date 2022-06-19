@@ -133,15 +133,8 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
             },
-
-            {
-                field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
-                // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
-                    "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
-
-            },
+           
+           
 
             {
                 title: status,
@@ -161,12 +154,19 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 filterable: false,
                 template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
 
-            },
+            } ,
+            //, {
+            //    field: "employee_uploading_document_time_status", title: " ", hidden: false, width: 40, filterable: false,
+            //    template: "   <label class='badge   badge-info'>#=employee_uploading_document_time_status #</label>",
+
+            //},
             {
                 field: "", title: "", width: 60 //, template: gridTemplate,
 
                 , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_GovernmentDocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
             },
+            
+
 
 
 
@@ -215,7 +215,11 @@ function fn_delete_DesignSection_GovernmentDocumentById(event) {
             ajaxRequest({
                 commandName: 'Project_DesignSection_Document_Delete',
                 values: {
-                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage
+                    Id: dataItem.attachmentId,
+                    CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                    ProjectId: project_Id,
+                    Document: dataItem.combineDocumentType,
+                    Language: _currentLanguage
                 }, CallBack: fn_delete_DesignSection_GovernmentDocumentCallBack
             });
         }
@@ -254,13 +258,11 @@ function fn_IsWorkStarted() {
     });
     function fn_IsWorkStarted_Callback(response) {
 
-        
-      
-        $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
-        $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
          
+
+
         if (JSON.parse(response.Value).isEmployeeWorkStarted == 'No') { // No mean loggedin employee is envoled in this project and it's exist in Project Multple table .
-         
+
             Swal.fire({
 
                 //  title: areYouSureTitle,
@@ -300,29 +302,78 @@ function fn_IsWorkStarted() {
                             Language: _currentLanguage
                         }, CallBack: ''
                     });
-                   
-                        //After ajax call .
+
+                    //After ajax call .
                     $('#load-model').click();
-                    if (JSON.parse(response.Value).employeeTaskDate != null) {
+
+
+                    if (JSON.parse(response.Value).assign_employee_StartDate != null) {
+                        setTimeout(function () {
                         $('.show-hide-employee-start-datetime').show();
                         $('.show-hide-employee-start-datetime').addClass('btn-success')
-                    }
-                        loadProjectSectiondownLists();
-                        loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
 
-                    
+                        $('.show-hide-assign-start-datetime').show();
+                        $('.show-hide-assign-start-datetime').addClass('btn-info')
+
+                        $('.show-hide-completion-start-datetime').show();
+                        $('.show-hide-completion-start-datetime').addClass('btn-danger')
+
+
+                        $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+                        $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+
+                        $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+                        $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+                        $('.show-hide-employee-task-area').show();
+                        }, 100);
+                    } else {
+
+                        $('.show-hide-employee-task-area').hide();
+                    }
+                    loadProjectSectiondownLists();
+                    loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
+
+
                 }
             });
         } else {
-             
+
             //After ajax call .  
-           
-            $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
-            $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+
             $('#load-model').click();
-            if (JSON.parse(response.Value).employeeTaskDate != null) {
+            /*
+            $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+            $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+
+            $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+            $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+            */
+
+            if (JSON.parse(response.Value).assign_employee_StartDate != null) {
+                setTimeout(function () {
                 $('.show-hide-employee-start-datetime').show();
                 $('.show-hide-employee-start-datetime').addClass('btn-success')
+
+                $('.show-hide-assign-start-datetime').show();
+                $('.show-hide-assign-start-datetime').addClass('btn-info')
+
+                $('.show-hide-completion-start-datetime').show();
+                $('.show-hide-completion-start-datetime').addClass('btn-danger')
+
+
+
+
+                $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+                $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+
+                $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+                $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+
+                $('.show-hide-employee-task-area').show();
+            }, 100);
+            } else {
+
+                $('.show-hide-employee-task-area').hide();
             }
             loadProjectSectiondownLists();
             loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
@@ -392,7 +443,8 @@ $('#btn-design-section-upload-document').click(function () {
                     messageResponseParse = JSON.parse(messageResponseParse);
                 }
                 // fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, localStorage.getItem('grid__id'));
-                location.reload();
+                fnUpdateDesignSection_Employee_document_CompletionDate();
+
             },
             error: function (xhr, status, error) {
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
@@ -412,7 +464,20 @@ $('#btn-design-section-upload-document').click(function () {
 });
 
 //|End Click Event
+function fnUpdateDesignSection_Employee_document_CompletionDate() {
+    ajaxRequest({
+        commandName: 'Project_Linked_Multiple_Update_Employees_Work_EndDate_By_Paramters', values: {
 
+            Project_Id: project_Id,
+            UserId: JSON.parse(localStorage.getItem('User')).id,
+            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+            Selected_Document_Step_Id: $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id,
+            Language: _currentLanguage
+        }, CallBack: ''
+
+    });
+    location.reload();
+}
 /*
 function fn_transfer_file_save() {
 

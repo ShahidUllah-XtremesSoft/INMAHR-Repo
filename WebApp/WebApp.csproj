@@ -347,6 +347,8 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\pdf.png" />
     <Content Include="Content\Images\ppt.png" />
+    <Content Include="Content\Images\shjcBlue_logo.png" />
+    <Content Include="Content\Images\shjengconLogo.png" />
     <Content Include="Content\Images\user.jpg" />
     <Content Include="Content\Images\xls.png" />
     <Content Include="Content\kendo\kendo.material-nova.min.css" />

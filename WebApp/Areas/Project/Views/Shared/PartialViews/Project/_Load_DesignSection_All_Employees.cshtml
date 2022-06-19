@@ -53,8 +53,12 @@
 
 <script>
     $(function () {
+        //| Date Picker
+        renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_CompletionDate');
+      //|End Date Picker
         setTimeout(function () {
-
+          
             if (parameterId == null || parameterId == 0 || parameterId == '') {
                 parameterId = $('#DesignSection_Document_ProjectId').val()
             }
@@ -124,7 +128,7 @@
 
     //---------------- BUTTON EVENTS
     $('#btnSave_DesingSection').click(function (e) {
-
+       
         var valid = true;
 
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
@@ -188,14 +192,15 @@
 
         }
         if (postingArray.length > 0) {
-            console.log(postingArray)
+          
             ajaxRequest({
                 commandName: 'Project_Save_Multiple_Employees',
                 values:
                 {
                     ProjectModel: postingArray,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                    CompletionDate: $('#DesignSection_AssignedDocument_StartDate').val(),
+                    Assign_StartDate: $('#DesignSection_AssignedDocument_StartDate').val(),
+                    Assign_CompletionDate: $('#DesignSection_AssignedDocument_CompletionDate').val(),
                     Language: _currentLanguage == null ? '' : _currentLanguage
                 }, CallBack: fn_project_save_Multiple_employee_callback
             });
@@ -210,6 +215,10 @@
     var fn_project_save_Multiple_employee_callback = function (response) {
         swal(response.Value);
         loadloadAllEmployees();
+        //| Date Picker
+        renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_CompletionDate');
+      //|End Date Picker
     }
 
 

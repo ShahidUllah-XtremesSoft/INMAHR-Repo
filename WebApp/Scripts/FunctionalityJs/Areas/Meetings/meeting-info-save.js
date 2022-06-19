@@ -120,7 +120,7 @@ function editByIdCallBack(response) {
 //------------- DDL LOAD -------------------------------
 
 //Load Lists to Local Storage
-function loadProjectDropdownListEng() { ajaxRequest({ commandName: 'Project_DDL', values: { Language: _currentLanguage }, CallBack: fnloadProjectDropdownListEngCallBack }); }
+function loadProjectDropdownListEng() { ajaxRequest({ commandName: 'Project_DDL_By_Role', values: { Language: _currentLanguage, LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId}, CallBack: fnloadProjectDropdownListEngCallBack }); }
 function fnloadProjectDropdownListEngCallBack(response) {
 
     // window.localStorage.setItem('CityListEng', response.Value);

@@ -1,4 +1,23 @@
-﻿@*<div class="row">
+﻿<div class="div-show-only-for-supervision-section-employee-available-area form-control" style="display:block">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
+                <input class="form-control" type="datetime" id="SupervisionSection_AssignedDocument_StartDate" value="" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                <input class="form-control" type="text" id="SupervisionSection_CompletionDate" value="" />
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+@*<div class="row">
         <div class="col-sm-12">
             <div class="form-group">
                 <label class="col-form-label supervision-section-show-sub-section-name" style="font-size:x-large; text-decoration:underline"> </label> <br>
@@ -50,6 +69,10 @@
     $(function () {
 
 
+        //| Date Picker
+        renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
+      //|End Date Picker
 
         setTimeout(function () {
             if (parameterId == null || parameterId == 0 || parameterId == '') {
@@ -221,7 +244,8 @@
                 {
                     ProjectModel: postingArray,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                    CompletionDate: "",
+                    Assign_StartDate: $('#SupervisionSection_AssignedDocument_StartDate').val(),
+                    Assign_CompletionDate: $('#SupervisionSection_CompletionDate').val(),
                     Language: _currentLanguage
                 }, CallBack: fn_project_save_Multiple_employee_callback
             });
@@ -238,6 +262,10 @@
         loadSupervisionSectionAllEmployees();
         fnloadAssignedEmployees_SupervisionSection($('#Project_Supervision_Section_Parent_Type_DDL').val(), $('#Project_SupervisionSection_SetupDetailTypeDDL').val());
 
+        //| Date Picker
+        renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
+      //|End Date Picker
 
     }
 

@@ -1,16 +1,12 @@
-﻿/*
+﻿
 $(function () {
-    $("#technical_section_progressBar").kendoProgressBar({
-        min: 0, max: 0,
-        type: "percent",
-        animation: {
-            duration: 10 
-        }
-        //  change: onChange,
-        // complete: onComplete
-    });
+    //| Date Picker
+    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_AssignedDocument_StartDate');
+    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_CompletionDate');
+    //|End Date Picker
+
 });
-*/
+
 
 var project_Id = (new URL(location.href)).searchParams.get('id');
 /*
@@ -58,7 +54,7 @@ function stepper_TECHNICAL_SECTION(response) {
             step_Columns.push({ label: "Completed", enabled: false, selected: true, successIcon: "k-icon k-i-check", iconTemplate: function (e) { return '<strong> </strong>'; } });
         }
     }
-     
+
     setTimeout(function () {
 
         if (localStorage.getItem('TechnicalSection_Menu_Area') != '') {
@@ -456,6 +452,7 @@ function fnLoadTechnicalSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
 
         $('.div-technical-section-document-upload-area').hide();
         $('.div-technical-section-assigned-employees-area').hide();
+        $('.div-show-only-for-technical-section-employee-available-area').show();
         setTimeout(function () {
             load_TechnicalSection_AllEmployees($('#technicalSection_assignedModal_setup_type_detail_Id').val(), $('#technicalSection_assignedModal_setup_type_Id').val());
         }, 150);
@@ -468,6 +465,7 @@ function fnLoadTechnicalSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
         }, 150);
         $('.div-technical-section-assigned-employees-area').show();
         $('#div-technical-section-employees-area').hide();
+        $('.div-show-only-for-technical-section-employee-available-area').hide();
         $('.div-technical-section-document-upload-area').hide();
 
     }
@@ -568,7 +566,9 @@ function loopThroughGrid_TechnicalSection(btnValue, btnId, btnIcon) {
             {
                 ProjectModel: postingArray,
                 CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                CompletionDate: $('#TechnicalSection_CompletionDate').val(),
+                Assign_StartDate: $('#TechnicalSection_AssignedDocument_StartDate').val(),
+                Assign_CompletionDate: $('#TechnicalSection_CompletionDate').val(),
+
                 Language: _currentLanguage == null ? '' : _currentLanguage
             }, CallBack: fn_project_save_Multiple_employee_TechnicalSection_callback
         });
@@ -581,6 +581,11 @@ function loopThroughGrid_TechnicalSection(btnValue, btnId, btnIcon) {
 var fn_project_save_Multiple_employee_TechnicalSection_callback = function (response) {
     swal(response.Value);
     load_TechnicalSection_AllEmployees($('#technicalSection_assignedModal_setup_type_detail_Id').val(), $('#technicalSection_assignedModal_setup_type_Id').val());
+    //| Date Picker
+    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_AssignedDocument_StartDate');
+    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_CompletionDate');
+    //|End Date Picker
+
 }
 // --------------------- LOAD ALL EMPLOYEES END----------------------BY /\/\ati
 
@@ -631,7 +636,7 @@ function fnLoadOtherMainSection_TechnicalArea(selectedValue) {
                 label: "Design Section",
                 icon: " ",
 
-            }, 
+            },
             {
                 label: "Supervision Section",
                 icon: " ",

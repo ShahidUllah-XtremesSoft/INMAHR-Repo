@@ -48,7 +48,7 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
         { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
         { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
         { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>" },
-        { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>"},
+        { field: "status", title: lblStatus, width: 30,hidden:true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>"},
         
         //{
         //    field: "",

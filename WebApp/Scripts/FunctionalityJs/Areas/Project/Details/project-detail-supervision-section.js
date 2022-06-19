@@ -1,4 +1,10 @@
-﻿
+﻿$(function () {
+
+//| Date Picker
+renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
+renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
+    //|End Date Picker
+});
 
 
 var project_Id = (new URL(location.href)).searchParams.get('id');
@@ -443,6 +449,9 @@ function fnLoadSupervisionSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
 
         $('.div-supervision-section-document-upload-area').hide();
         $('.div-supervision-section-assigned-employees-area').hide();
+        $('.div-show-only-for-supervision-section-employee-available-area').show();
+
+
         setTimeout(function () {
             load_SupervisionSection_AllEmployees($('#supervisionSection_assignedModal_setup_type_detail_Id').val(), $('#supervisionSection_assignedModal_setup_type_Id').val());
         }, 150);
@@ -453,6 +462,7 @@ function fnLoadSupervisionSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
         setTimeout(function () {
             fnloadAssignedEmployees_SupervisionSection($('#supervisionSection_assignedModal_setup_type_detail_Id').val());
         }, 150);
+        $('.div-show-only-for-supervision-section-employee-available-area').hide();
         $('.div-supervision-section-assigned-employees-area').show();
         $('#div-supervision-section-employees-area').hide();
         $('.div-supervision-section-document-upload-area').hide();
@@ -555,7 +565,8 @@ function loopThroughGrid_SupervisionSection(btnValue, btnId, btnIcon) {
             {
                 ProjectModel: postingArray,
                 CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                CompletionDate: "",
+                Assign_StartDate: $('#SupervisionSection_AssignedDocument_StartDate').val(),
+                Assign_CompletionDate: $('#SupervisionSection_CompletionDate').val(),
                 Language: _currentLanguage == null ? '' : _currentLanguage
             }, CallBack: fn_project_save_Multiple_employee_SupervisionSection_callback
         });
@@ -568,6 +579,11 @@ function loopThroughGrid_SupervisionSection(btnValue, btnId, btnIcon) {
 var fn_project_save_Multiple_employee_SupervisionSection_callback = function (response) {
     swal(response.Value);
     load_SupervisionSection_AllEmployees($('#supervisionSection_assignedModal_setup_type_detail_Id').val(), $('#supervisionSection_assignedModal_setup_type_Id').val());
+    //| Date Picker
+    renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
+    renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
+    //|End Date Picker
+
 }
 // --------------------- LOAD ALL EMPLOYEES END----------------------BY /\/\ati
 

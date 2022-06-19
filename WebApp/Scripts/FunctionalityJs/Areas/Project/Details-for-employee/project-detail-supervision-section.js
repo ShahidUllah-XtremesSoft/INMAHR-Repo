@@ -208,7 +208,11 @@ function fn_delete_SupervisionSection_DocumentById(event) {
             ajaxRequest({
                 commandName: 'Project_TechnicalSection_Document_Delete',
                 values: {
-                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage
+                    Id: dataItem.attachmentId,
+                    ProjectId: project_Id,
+                    CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                    Document: dataItem.combineDocumentType,
+                    Language: _currentLanguage
                 }, CallBack: fn_delete_SupervisionSection_DocumentCallBack
             });
         }
@@ -309,7 +313,8 @@ $('#btn-supervision-section-upload-document').click(function () {
                 } if (messageResponseParse.type == undefined) {
                     messageResponseParse = JSON.parse(messageResponseParse);
                 }
-                location.reload();
+                fnUpdateSupervisionSection_Employee_document_CompletionDate();
+
             },
             error: function (xhr, status, error) {
                 var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
@@ -329,6 +334,21 @@ $('#btn-supervision-section-upload-document').click(function () {
 });
 
 //|End Click Event
+function fnUpdateSupervisionSection_Employee_document_CompletionDate() {
+    ajaxRequest({
+        commandName: 'Project_Linked_Multiple_Update_Employees_Work_EndDate_By_Paramters', values: {
+
+            Project_Id: project_Id,
+            UserId: JSON.parse(localStorage.getItem('User')).id,
+            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+            Selected_Document_Step_Id: $("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id,
+            Language: _currentLanguage
+        }, CallBack: ''
+
+    });
+    location.reload();
+}
+
 
 
 
@@ -352,8 +372,8 @@ function fn_IsWorkStarted_SupervisionSection() {
 
 
 
-        $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
-        $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+        //$('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
+        //$('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
 
         if (JSON.parse(response.Value).isEmployeeWorkStarted == 'No') { // No mean loggedin employee is envoled in this project and it's exist in Project Multple table .
 
@@ -399,9 +419,31 @@ function fn_IsWorkStarted_SupervisionSection() {
 
                     //After ajax call .
                     $('#load-supervision-section-model').click();
-                    if (JSON.parse(response.Value).employeeTaskDate != null) {
+                 
+                    if (JSON.parse(response.Value).assign_employee_StartDate != null) {
+                        setTimeout(function () {
+
+                      
                         $('.show-hide-employee-start-datetime').show();
                         $('.show-hide-employee-start-datetime').addClass('btn-success')
+
+                        $('.show-hide-assign-start-datetime').show();
+                        $('.show-hide-assign-start-datetime').addClass('btn-info')
+
+                        $('.show-hide-completion-start-datetime').show();
+                        $('.show-hide-completion-start-datetime').addClass('btn-danger')
+
+
+                        $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+                        $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+
+                        $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+                        $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+                        $('.show-hide-employee-task-area').show();
+                        }, 100);
+                    } else {
+
+                        $('.show-hide-employee-task-area').hide();
                     }
                      
                     loadProject_SupervisionSectiondownLists();
@@ -413,13 +455,31 @@ function fn_IsWorkStarted_SupervisionSection() {
 
             //After ajax call .  
 
-            $('.employee-work-date').text(JSON.parse(response.Value).employeeTaskDate);
-            $('.employee-work-time').text(JSON.parse(response.Value).employeeTaskTime);
+           
             $('#load-supervision-section-model').click();
-            if (JSON.parse(response.Value).employeeTaskDate != null) {
+            if (JSON.parse(response.Value).assign_employee_StartDate != null) {
+                setTimeout(function () {
                 $('.show-hide-employee-start-datetime').show();
                 $('.show-hide-employee-start-datetime').addClass('btn-success')
-            } 
+
+                $('.show-hide-assign-start-datetime').show();
+                $('.show-hide-assign-start-datetime').addClass('btn-info')
+
+                $('.show-hide-completion-start-datetime').show();
+                $('.show-hide-completion-start-datetime').addClass('btn-danger')
+
+
+                $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+                $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+
+                $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+                $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+                $('.show-hide-employee-task-area').show();
+                }, 100);
+            } else {
+
+                $('.show-hide-employee-task-area').hide();
+            }
             loadProject_SupervisionSectiondownLists();
             loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
         }

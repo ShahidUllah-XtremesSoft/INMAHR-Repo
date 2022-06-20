@@ -138,6 +138,9 @@
   <data name="lblAssign" xml:space="preserve">
     <value>Assign</value>
   </data>
+  <data name="lblAssignDate" xml:space="preserve">
+    <value>Assign Date</value>
+  </data>
   <data name="lblAssigned" xml:space="preserve">
     <value>Assigned</value>
   </data>

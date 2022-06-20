@@ -37,8 +37,9 @@ $(function () {
         },
     });
      
-    $("#NationalityDDL").data("kendoDropDownList").value(234) 
-    $("#NationalityDDL").data("kendoDropDownList").enable(false);
+    $("#NationalityDDL").data("kendoDropDownList").value(234)
+    $('#Nationality_Id').val(234);
+    //$("#NationalityDDL").data("kendoDropDownList").enable(false);
 
 
     $('#btn-save-client').click(function () {

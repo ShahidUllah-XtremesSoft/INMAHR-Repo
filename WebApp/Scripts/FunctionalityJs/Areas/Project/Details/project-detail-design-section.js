@@ -1,18 +1,13 @@
-﻿/*
+﻿
 $(function () {
-    $("#design_section_progressBar").kendoProgressBar({
-        min: 0, max: 0,
-        type: "percent",
-        animation: {
-            duration: 10
-        }
-        //  change: onChange,
-        // complete: onComplete
-    });
+    //| Date Picker
+    renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_StartDate');
+    renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_CompletionDate');
+    //|End Date Picker
+
 });
 
 
-*/
 var project_Id = (new URL(location.href)).searchParams.get('id');
 
 /*
@@ -729,7 +724,8 @@ function loopThroughGrid_DesingSection(btnValue, btnId, btnIcon) {
             {
                 ProjectModel: postingArray,
                 CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                CompletionDate: $('#DesignSection_AssignedDocument_StartDate').val(),
+                Assign_StartDate: $('#DesignSection_AssignedDocument_StartDate').val(),
+                Assign_CompletionDate: $('#DesignSection_AssignedDocument_CompletionDate').val(),
                 Language: _currentLanguage == null ? '' : _currentLanguage
             }, CallBack: fn_project_save_Multiple_employee_callback
         });
@@ -742,7 +738,10 @@ function loopThroughGrid_DesingSection(btnValue, btnId, btnIcon) {
 var fn_project_save_Multiple_employee_callback = function (response) {
     swal(response.Value);
     loadloadAllEmployees_DesignSection($('#assignedModal_setup_type_detail_Id').val(), $('#assignedModal_setup_type_Id').val());
-
+    //| Date Picker
+    renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_StartDate');
+    renderKendoDateAndTimePickerWithNewFormat('DesignSection_AssignedDocument_CompletionDate');
+    //|End Date Picker
 }
 // --------------------- LOAD ALL EMPLOYEES END----------------------BY /\/\ati
 

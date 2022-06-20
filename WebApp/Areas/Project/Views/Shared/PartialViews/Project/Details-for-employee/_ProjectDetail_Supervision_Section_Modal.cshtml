@@ -10,21 +10,54 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblUploadDocument</h5>
 
                     </div>
-                    <div class="col-md-4 @Resources.Common.PullRight show-hide-employee-start-datetime">
-                        <span class="show-hide-employee-start-datetime" style="display:none;">    @Resources.Global.lblStartDate</span>
-                        <b class="show-hide-employee-start-datetime" style="display:none;">
-                            <span class="employee-work-date" id=""></span>
-                            <span class="employee-work-time" id="" ></span>
-                        </b>
+                    <div class="col-md-6">
+                        <div class="show-hide-employee-task-area" style="display:none;">
+                            <div class="row">
 
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
+                                    <span class="">    @ProjectUI.ProjectUI.lblAssignDate </span>
+                                    <b class=""><span class="assign-employee-start-date" id=""></span> </b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-completion-start-datetime">
+                                    <span class="">    @ProjectUI.ProjectUI.lblCompletionDate</span>
+                                    <b class=" "><span class="assign-employee-end-date" id=""></span> </b>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-employee-start-datetime">
+
+                                    <span class="">    @Resources.Global.lblStartDate</span>
+                                    <b class="">
+                                        <span class="employee-work-date" id=""></span>
+                                        <span class="employee-work-time" id=""></span>
+                                    </b>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
                     </div>
+
+                    @*<div class="col-md-4 @Resources.Common.PullRight show-hide-employee-start-datetime">
+                            <span class="show-hide-employee-start-datetime" style="display:none;">    @Resources.Global.lblStartDate</span>
+                            <b class="show-hide-employee-start-datetime" style="display:none;">
+                                <span class="employee-work-date" id=""></span>
+                                <span class="employee-work-time" id="" ></span>
+                            </b>
+
+                        </div>*@
                 </div>
             </div>
-            <div class="modal-body"  >
+            <div class="modal-body">
                 <form id="frmAddUpdate_SupervisionSection_Document" name="frmAddUpdate_SupervisionSection_Document" action="/services/Xtreme/multipart" method="post">
 
 
@@ -57,46 +90,46 @@
                     </div>
 
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label class="col-form-label">Document/Attachment  </label><br>
-                                    <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required="" id="SupervisionSectionGovernmentDocumentFile"  >
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-
-                                    <input class="form-control" type="date" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" required />
-
-                                </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="col-form-label">Document/Attachment  </label><br>
+                                <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required="" id="SupervisionSectionGovernmentDocumentFile">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
 
+                                <input class="form-control" type="date" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" required />
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
-
-                                    <input class="form-control" type="date" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" required />
-
-                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                                    <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
-                                </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                                <input class="form-control" type="date" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" required />
+
                             </div>
-                            <div class="col-md-6"></div>
                         </div>
-                       
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+
 
 
                 </form>

@@ -855,7 +855,8 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "Document removed";
-                        description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
+                    //    description = "Document( " + smsModel.Document.Split('|')[1] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[1] + "";
+                        description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + "";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", smsModel.ProjectId, smsModel.CreatedBy, employee.EmployeeId, smsModel.Language);
@@ -949,6 +950,7 @@ namespace INMA.Projects.Services.Project
                         string subject = string.Empty, description = string.Empty;
                         subject = "Document transferred";
                         description = "Document transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", smsModel.Project_Id, smsModel.UserId, employee.EmployeeId, smsModel.Language);
@@ -1133,7 +1135,9 @@ namespace INMA.Projects.Services.Project
                 {
                     ProjectModel = new List<ProjectModel>(),
                     CreatedBy = 0,
-                    CompletionDate = string.Empty,
+                    Assign_StartDate = string.Empty,
+                    Assign_CompletionDate = string.Empty,
+                    //CompletionDate = string.Empty,
                     Language = ""
                 }, viewInput);
 
@@ -1484,9 +1488,12 @@ namespace INMA.Projects.Services.Project
                     if (projectLinkedEmployees.Count > 0 && clientDetailInfo != null)
                     {
                         NotificationService notificationService = new NotificationService();
-                        string subject = string.Empty, description = string.Empty;
+                        string  subject = string.Empty, 
+                                description = string.Empty;
                         subject = "Document removed";
-                        description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
+                        //description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
+                        description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + "";
+
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", smsModel.ProjectId, smsModel.CreatedBy, employee.EmployeeId, smsModel.Language);
@@ -1901,7 +1908,9 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "Document removed";
-                        description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
+                        //description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
+                        description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + "";
+
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", smsModel.ProjectId, smsModel.CreatedBy, employee.EmployeeId, smsModel.Language);
@@ -2158,6 +2167,33 @@ namespace INMA.Projects.Services.Project
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
                 return repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+
+            }
+        }
+        #endregion
+        #region  PROJECT  DESIGN SECTION DOCUMENT COMPLETION DATE UPDATE BY PARAMETERS
+        [Command(Name = "Project_Linked_Multiple_Update_Employees_Work_EndDate_By_Paramters")]
+        public class Project_Linked_Multiple_Update_Employees_Work_EndDate_By_ParamtersCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    Project_Id = 0,
+                    UserId = 0,
+                    Employee_Id = 0,
+                    Selected_Document_Step_Id = 0,
+                    Language = string.Empty
+                }, viewInput);
+
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Update_Employees_Work_EndDate_By_Paramters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
             }

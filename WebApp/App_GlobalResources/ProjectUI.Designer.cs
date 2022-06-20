@@ -124,6 +124,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assign Date.
+        /// </summary>
+        public static string lblAssignDate {
+            get {
+                return ResourceManager.GetString("lblAssignDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assigned.
         /// </summary>
         public static string lblAssigned {

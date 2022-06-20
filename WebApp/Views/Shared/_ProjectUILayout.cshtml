@@ -496,7 +496,11 @@
 
     $(function () {
        // var versionNumber = Date.now();
+        if (localStorage.MainApplicationModule_Id == 2) {
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundSize = "contain"
 
+        }
         if (_currentLanguage == 'en-US') {
 
           //  $('.mainBodyClass').removeClass('k-rtl');

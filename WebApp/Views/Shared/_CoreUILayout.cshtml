@@ -156,7 +156,9 @@
     <header class="navbar">
         <div class="container-fluid">
             <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
-            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#">
+                @*<img src="~/Content/Images/shjcBlue_logo.png" width="155px" height="49px"  />*@
+            </a>
             <ul class="languageUL nav navbar-nav hidden-md-down @Resources.Common.PullLeft" style="padding-left:61px;">
                 <li class="nav-item p-x-1">
 
@@ -437,6 +439,13 @@
         }
         localStorage.MainApplicationModule_Id == 1 ? $('.languageUL').show() : $('.languageUL').hide();
 
+        /*localStorage.MainApplicationModule_Id == 1 ? document.body.style.backgroundImage = "url('../../../Images/logo.png')" : document.body.style.backgroundImage = "url('../../../Images/shjengconLogo.png')";*/
+
+        if (localStorage.MainApplicationModule_Id == 2) {
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundSize  ="contain"
+            
+        } 
 
         $(':input').removeAttr('placeholder');
         $('#LayoutCurrentLanguage').val(_currentLanguage);
@@ -605,6 +614,6 @@
 
 
     }
-    
+
 
 </script>

@@ -1,22 +1,24 @@
 ﻿
 
-<div class="div-show-only-for-design-section-employee-available-area form-control" style="display:block">
+<div class="div-show-only-for-technical-section-employee-available-area form-control" style="display:block">
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
+                <input class="form-control" type="datetime" id="TechnicalSection_AssignedDocument_StartDate" value="" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
-                <input class="form-control" type="date" id="TechnicalSection_CompletionDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")" />
+                @*<input class="form-control" type="date"  id="DesignSection_AssignedDocument_StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")"  />*@
+                <input class="form-control" type="text" id="TechnicalSection_CompletionDate" value="" />
             </div>
         </div>
 
-        <div class="col-sm-6">
-            @*<div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
-
-                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
-                </div>*@
-        </div>
-    </div>
+        
+    </div> 
+     
 </div>
 <div class="row">
     <div class="col-sm-12">
@@ -82,7 +84,10 @@
 
 <script>
     $(function () {
-
+        //| Date Picker
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_AssignedDocument_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_CompletionDate');
+      //|End Date Picker
         //  $('#modal-load-all-technical-section-employees').modal();
 
         setTimeout(function () {
@@ -252,7 +257,9 @@
                 {
                     ProjectModel: postingArray,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                    CompletionDate: $('#TechnicalSection_CompletionDate').val(),
+                    Assign_StartDate: $('#TechnicalSection_AssignedDocument_StartDate').val(),
+                    Assign_CompletionDate: $('#TechnicalSection_CompletionDate').val(),
+
                     Language: _currentLanguage
                 }, CallBack: fn_project_save_Multiple_employee_callback
             });
@@ -269,7 +276,10 @@
         loadTechnicalSectionAllEmployees();
 
         fnloadAssignedEmployees_TechnicalSection($('#Project_Technical_Section_Parent_Type_DDL').val(), $('#Setup_SetupType_Id_for_Technical_Section').val());
-
+        //| Date Picker
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_AssignedDocument_StartDate');
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_CompletionDate');
+      //|End Date Picker
     }
 
 

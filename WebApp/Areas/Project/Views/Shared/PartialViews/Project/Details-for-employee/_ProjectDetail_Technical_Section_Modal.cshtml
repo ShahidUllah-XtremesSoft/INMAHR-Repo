@@ -10,22 +10,64 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblUploadDocument</h5>
 
                     </div>
-                    <div class="col-md-4 @Resources.Common.PullRight show-hide-employee-start-datetime">
-                        <span class="show-hide-employee-start-datetime" style="display:none;">    @Resources.Global.lblStartDate</span>
-                        <b class="show-hide-employee-start-datetime" style="display:none;">
-                            <span class="employee-work-date" id=""></span>
-                            <span class="employee-work-time" id=""  ></span>
-                        </b>
-                        @*<button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>*@
 
+
+                    <div class="col-md-6">
+                        <div class="show-hide-employee-task-area" style="display:none;">
+                            <div class="row">
+
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
+                                    <span class="">    @ProjectUI.ProjectUI.lblAssignDate </span>
+                                    <b class=""><span class="assign-employee-start-date" id=""></span> </b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-completion-start-datetime">
+                                    <span class="">    @ProjectUI.ProjectUI.lblCompletionDate</span>
+                                    <b class=" "><span class="assign-employee-end-date" id=""></span> </b>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-employee-start-datetime">
+
+                                    <span class="">    @Resources.Global.lblStartDate</span>
+                                    <b class="">
+                                        <span class="employee-work-date" id=""></span>
+                                        <span class="employee-work-time" id=""></span>
+                                    </b>
+                                    @*<button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>*@
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
                     </div>
+
+
+                    @*<div class="col-md-4 @Resources.Common.PullRight show-hide-employee-start-datetime">
+                            <span class="show-hide-employee-start-datetime" style="display:none;">    @Resources.Global.lblStartDate</span>
+                            <b class="show-hide-employee-start-datetime" style="display:none;">
+                                <span class="employee-work-date" id=""></span>
+                                <span class="employee-work-time" id=""  ></span>
+                            </b>
+
+
+                        </div>*@
+
+
+
+
+
                 </div>
             </div>
-            <div class="modal-body"  >
+            <div class="modal-body">
                 <form id="frmAddUpdate_TechnicalSection_Document" name="frmAddUpdate_TechnicalSection_Document" action="/services/Xtreme/multipart" method="post">
 
                     <input type="hidden" name="TechnicalSection_Document_Id" id="TechnicalSection_Document_Id" value="0">
@@ -63,7 +105,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                                    <input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile"  />
+                                    <input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile" />
                                 </div>
                             </div>
                             <div class="col-sm-6">  </div>
@@ -92,7 +134,7 @@
                                     <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks"></textarea>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 

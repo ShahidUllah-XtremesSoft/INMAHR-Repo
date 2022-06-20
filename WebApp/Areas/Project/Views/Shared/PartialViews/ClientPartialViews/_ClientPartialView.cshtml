@@ -61,16 +61,23 @@
                 <div class="row">
 
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 1</label> <span style="color: red">*</span><br />
                             <input type="text" class="form-control" id="Email1" name="Email1" placeholder="Enter Email" required />
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 2</label> <span style="color: red">*</span><br />
                             <input type="text" class="form-control" id="Email2" name="Email2" placeholder="Enter Email" required />
+                        </div>
+                    </div> 
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature </label> <br />
+                            <input type="file" class="form-control" name="ClientSignature" id="ClientSignature" onchange="validateFileType('ClientSignature',['png', 'jpg']);" /> 
+                   
                         </div>
                     </div>
 

@@ -384,6 +384,7 @@ public enum ProjectStoreProcedure
     Meeting_Multiple_Get_By_Id,
     Meeting_Delete,
     Meeting_Details_By_Id,
+    Meeting_Multiple_Details_By_Id,
     Meeting_Edit_By_Id,
 
     #endregion

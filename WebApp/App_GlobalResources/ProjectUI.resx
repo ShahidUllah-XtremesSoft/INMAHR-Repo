@@ -135,6 +135,9 @@
   <data name="lblApproval" xml:space="preserve">
     <value>Approval</value>
   </data>
+  <data name="lblApprovedBy" xml:space="preserve">
+    <value>Approved By</value>
+  </data>
   <data name="lblAssign" xml:space="preserve">
     <value>Assign</value>
   </data>
@@ -345,6 +348,9 @@
   <data name="lblMeetingInformation" xml:space="preserve">
     <value>Meeting Information</value>
   </data>
+  <data name="lblMeetingNo" xml:space="preserve">
+    <value>Meeting No</value>
+  </data>
   <data name="lblMeetingStartTime" xml:space="preserve">
     <value>Meeting Start Time</value>
   </data>
@@ -494,6 +500,9 @@
   </data>
   <data name="lblTechnicalSectionReport" xml:space="preserve">
     <value>Technical Section Report</value>
+  </data>
+  <data name="lblTotalTime" xml:space="preserve">
+    <value>Total Time</value>
   </data>
   <data name="lblTransfer" xml:space="preserve">
     <value>Transfer</value>

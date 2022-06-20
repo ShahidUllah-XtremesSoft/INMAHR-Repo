@@ -557,6 +557,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmployeePersonalInfoPartialView.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\PartialViews\EmpoyeeLeaveBalancePartialViews.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Shared\PartialViews\_EmployeeNearToExpireDocumentPartialView.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-short-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Notification\employees-notification.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Notification\notification-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Notification\employees-notification-grid.js" />
@@ -677,6 +678,7 @@
     <Content Include="Content\Themes\BizPage\assets\vendor\bootstrap\js\bootstrap.esm.min.js.map" />
     <Content Include="Content\Themes\BizPage\assets\vendor\bootstrap\js\bootstrap.js.map" />
     <Content Include="Content\Themes\BizPage\assets\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Areas\Project\Views\Meeting\ShortDetails.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

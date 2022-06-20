@@ -104,10 +104,35 @@ function loadProfileCallBack(response) {
         var attachments = '/UploadFile/' + responseDetails.currentFileName;
         $('#letter-attachment').attr('src', fileExtension).attr('alt', responseDetails.orignalFileName);
         $('#attachment-open').attr('href', attachments);
+
+         
+         
+        if (responseDetails.client_Signature != null) {
+            var clientSignature = '/UploadFile/' + responseDetails.client_Signature;
+            $('#loadClientSignature').attr('src', clientSignature);
+        //    $('#Signature').val(responseDetails.client_Signature);
+            localStorage.setItem("ClientSignature", responseDetails.client_Signature);
+        } else {
+            localStorage.ClientSignature = '';
+        }
+
+
     }
 }
 
+function fnShowSignature() {
+       
+    if (localStorage.getItem("ClientSignature") != "") {
+        $('#loadSignature').show();
+        $('#noSignature').hide();
+        $('#Signature').val(localStorage.getItem("ClientSignature"));
 
+    } else {
+
+        $('#noSignature').show();
+        $('#loadSignature').hide();
+    }
+}
 
 
 //--------------------------- MEETING START WORK  ----------------------------------------
@@ -181,7 +206,7 @@ $('#btn-multiple-meeting-save').click(function () {
 
 
 $("#start").click(function () {
-
+    $('#btn-signature').attr('disabled', false);
     meetingHours = parseFloat($('#hours').text());
     meetingMinutes = parseFloat($('#minutes').text());
     meetingSeconds = parseFloat($('#secondss').text());
@@ -249,7 +274,7 @@ $("#start").click(function () {
 
         // Update the count down every 1 second
         x = setInterval(function () {
-             
+
             if ($('#start').val() != "Save") {
                 if (parseFloat($('#hours').text()) == 0 && parseFloat($('#minutes').text()) == 0 && parseFloat($('#secondss').text()) == 0) {
                     $('#start').val("Save").text(save);
@@ -387,32 +412,43 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
         {
-            field: "projectNumber", hidden: false, title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectNumber#</a> ",
+            field: "meetingNumber", hidden: false, title: "#", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=meetingNumber#</a> ",
         },
         {
-            field: "projectName", hidden: true, title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= meetingDetailsById(this)  title=''>#=projectName#</a> ",
+            field: "projectNumber", hidden: true, title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= project_DetailsById(this)  title=''>#=projectNumber#</a> ",
+        },
+        {
+            field: "projectName", hidden: false, title: lblProject, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+          //  , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= project_DetailsById(this)  title=''>#=projectName#</a> ",
         },
 
         //  { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
 
         { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
         //  { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
-        { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>" },
-        { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>" },
-        { field: "totaltime", title: ".totaltime", width: 30, filterable: false, template: "<span class='badge badge-danger'>#:totaltime#</span>" },
+        { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>", hidden: true },
+        { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>", hidden: true  },
+        { field: "totaltime", title: lblTotalTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:totaltime#</span>", hidden: true  },
         //   { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>" },
-        { field: "remarks", title: lblRemarks, width: 30, filterable: false, template: "<span class='badge badge-info'>#:remarks#</span>" },
+        { field: "remarks", title: lblRemarks, width: 30, filterable: false, template: "<span class='badge badge-info'>#:remarks#</span>", hidden: true  },
 
     ];
     bindKendoGrid('grid-multiple-meeting-information', 50, gridColumns, inputDataJSON, true, 400);
 
 };
-function meetingDetailsById(e) {
+function project_DetailsById(e) {
     var row = $(e).closest("tr");
     var grid = $("#grid-multiple-meeting-information").data("kendoGrid");
     var dataItem = grid.dataItem(row);
 
     window.location.href = '/Project/Project/Details?id=' + dataItem.projectId + '';
+}
+function meetingDetailsById(e) {
+    var row = $(e).closest("tr");
+    var grid = $("#grid-multiple-meeting-information").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+    window.location.href = '/Project/Meeting/ShortDetails?id=' + dataItem.meetingMultiple_Id + '';
 }

@@ -41,6 +41,14 @@ function loadProfileCallBack(response) {
         var profileImage = '/UploadFile/' + JSON.parse(response.Value).currentFileName;
         $('#ProfileImage').attr('src', profileImage);
     }
+     
+
+    if (JSON.parse(response.Value).client_Signature != null) {
+        var clientSignature= '/UploadFile/' + JSON.parse(response.Value).client_Signature;
+        $('#ClientSignature').attr('src', clientSignature);
+    } else {
+        $('.hideClient_signature').hide();
+    }
 
 
 

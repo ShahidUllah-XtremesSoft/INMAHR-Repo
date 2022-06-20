@@ -115,6 +115,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved By.
+        /// </summary>
+        public static string lblApprovedBy {
+            get {
+                return ResourceManager.GetString("lblApprovedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assign.
         /// </summary>
         public static string lblAssign {
@@ -745,6 +754,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meeting No.
+        /// </summary>
+        public static string lblMeetingNo {
+            get {
+                return ResourceManager.GetString("lblMeetingNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meeting Start Time.
         /// </summary>
         public static string lblMeetingStartTime {
@@ -1191,6 +1209,15 @@ namespace ProjectUI {
         public static string lblTechnicalSectionReport {
             get {
                 return ResourceManager.GetString("lblTechnicalSectionReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Time.
+        /// </summary>
+        public static string lblTotalTime {
+            get {
+                return ResourceManager.GetString("lblTotalTime", resourceCulture);
             }
         }
         

@@ -247,7 +247,8 @@ namespace INMA.Projects.Services.Project
                 StartedTime = string.Empty,
                 EndedTime = string.Empty,
                 Remarks = string.Empty,
-               
+
+                Signature = string.Empty,
                 Language = string.Empty,
                 UploadedFiles = new List<FileUploadModel>()
             }, v);
@@ -274,7 +275,7 @@ namespace INMA.Projects.Services.Project
                         file.CurrentFileName,
                         (int)EntityType.Meetings,
                         (int)_response.InsertedId,
-                        (int)DocumentType.Meetings,
+                        (int)DocumentType.Meeting_Multiple,
                         XtremeFactory._factory, XtremeFactory.connectionString);
 
                 }
@@ -285,5 +286,34 @@ namespace INMA.Projects.Services.Project
     }
     #endregion
 
+    #region Meeting Multiple   DETAILS BY ID 
+
+
+    [Command(Name = "Meeting_Multiple_Details_By_Id")]
+    public class Meeting_Multiple_Details_By_IdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        { 
+            var model = base.MappedModel(new
+            {
+
+                Id = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Meeting_Multiple_Details_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
 
 }

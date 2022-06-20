@@ -23,7 +23,7 @@
                     <input type="hidden" name="CreatedBy" id="CreatedBy" value="" />
                     <input type="hidden" name="Id" id="Id" class="Language" value="0">
                     <input type="hidden" name="Meeting_Id" id="Meeting_Id" class="Language" value="0">
-
+                    <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />
 
                     <div class=" " style="text-align: center; border-bottom: 1px solid #ccc; margin-top: 10px; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
                         <div class="row">
@@ -101,40 +101,53 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                                <input type="file" class="form-control" name="MeetingFile" id="MeetingFile" onchange="validatePersonalDocument('MeetingFile');" />
+                                <input type="file" class="form-control" name="MeetingFile" id="MeetingFile"  />
                             </div>
                         </div>
 
                     </div>
                     @*<div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                    <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                        <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                    <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                        <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                                <textarea class="form-control" id="Remarks" name="Remarks"  ></textarea>
+                                <textarea class="form-control" id="Remarks" name="Remarks"></textarea>
                             </div>
                         </div>
 
                     </div>
 
                 </form>
+                <div class="row">
+                    <div class="col-sm-12">
+                       
+                            <div id="noSignature" style="display:none;">
+                                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: larger;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                            </div>
+                            <div id="loadSignature" style="display:none;">
+                                <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadClientSignature"  style="border-radius:4%;width:150px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                            </div>
+                         
+                    </div>
+
+                </div>
             </div>
 
             <div class="modal-footer">
@@ -150,7 +163,8 @@
                             @*<button type="button" id="stop" class="btn   btn-danger  pull-right" value="End"> @ProjectUI.ProjectUI.lblMeetingEnd</button>*@
                             <button type="button" id="start" class="btn   btn-success  pull-right" value="Start"> @ProjectUI.ProjectUI.lblStartMeeting</button>
                             <button type="button" id="btn-multiple-meeting-save" class="btn   btn-success  pull-right" style="display:none;" value="Save"></button>
-
+                            <button type="button"  disabled id="btn-signature" class="btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnShowSignature();"><i class=""></i>@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature</button>
+                            @*<button type="button" disabled id="btn-signature" class="btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnShowSignature();"><i class=""></i>@ProjectUI.ProjectUI.lblApprovedBy @ProjectUI.ProjectUI.lblClient </button>*@
                         </div>
                     </div>
                 </div>

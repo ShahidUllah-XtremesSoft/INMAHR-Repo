@@ -73,7 +73,9 @@ var loadAttendanceGridCallBack = function (inputDataJSON) {
     bindAttendanceGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAttendanceGrid = function (inputDataJSON) {
+    
     var record = 0;
+    /* Commented below code on 20 June 2022
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 10 },
         { field: "id", title: "id", hidden: true },
@@ -108,7 +110,44 @@ var bindAttendanceGrid = function (inputDataJSON) {
         //     //, template: " <span class='badge badge-danger'>#:remarks#</span>"
         // },
     ];
+    */
+    var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 15, },
+        { field: "id", title: "id", hidden: true },
+        { field: "employeeNumber", title: empNum, width: 40, filterable: true },
+        { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },
+        { field: "employeeName", title: employeeName, width: 100, filterable: true },
+        { field: "departmentId", title: 'DepartmentId', width: 100, filterable: true, hidden: true },
+        { field: "departmentName", title: department, width: 100, filterable: true },
+        { field: "checkInDate", title: checkinDate, width: 40, filterable: true },
+        { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
+        { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
+        {
+            field: "lateInTime", title: lateTimeIn, width: 35, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
+            , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
+            , footerTemplate: "<span class='badge badge-danger'> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
+        },
+        {
+            field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
+            , template: "#if (earlyOutTime !='') { # <span class='badge  badge-danger'>#:earlyOutTime#</span> #}#"
+            , format: "{0:HH:mm}"
+            , footerTemplate: "<span class='badge badge-danger'><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
+        },
+        {
+            title: status,
+            field: 'status',
+            width: 50,
+            hidden: false,
+            template: "#if (status == 'Present')" +
+                " { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent')" +
+                " { if(status == 'Absent' && departmentId==11) {# <span class='badge badge-danger'>" + lblSite + "</span> # } else { # <span class='badge badge-danger'>" + lblAbsent + "</span> # }}   else " +
+                " {# <span class='badge badge-primary'>#:status#</span> #}#"
+            , footerTemplate: "<span class='badge badge-success'>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class='badge badge-danger'>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
 
+        },
+        { field: "remarks", title: 'Remarks', width: 40, filterable: true, hidden: false },
+        
+    ];
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
     setTimeout(function () {
         var grid = $("#AttendanceGrid").data("kendoGrid");
@@ -116,7 +155,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
         var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
         var totallateInTimeCount = "";
-
+        var t1 = "00:00:00";
+        var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
 
 
 
@@ -148,15 +188,44 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
             //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-primary");
             //}
+            if (gridData[i].lateInTime != '') {
+                var t2 = gridData[i].lateInTime.split(':');
+                lateTimeInSeconds = lateTimeInSeconds + parseInt(Number(t2[2]));
+                lateTimeInMinutes = lateTimeInMinutes + parseInt(Number(t2[1]));
+                lateTimeInHours = lateTimeInHours + parseInt(Number(t2[0]));
 
+            }
+            if (gridData[i].earlyOutTime != '') {
+                var earlyOutTime = gridData[i].earlyOutTime.split(':');
+                earlyTimeOutSeconds = earlyTimeOutSeconds + parseInt(Number(earlyOutTime[2]));
+                earlyTimeOutMinutes = earlyTimeOutMinutes + parseInt(Number(earlyOutTime[1]));
+                earlyTimeOutHours = earlyTimeOutHours + parseInt(Number(earlyOutTime[0]));
+
+            }
 
 
         }
+        lateTimeInSeconds = lateTimeInSeconds + (lateTimeInMinutes * 60) + (lateTimeInHours * 3600);
+        var grandTotalLateInTime = ('0' + (parseInt(lateTimeInSeconds / (60 * 60)))).slice(-2) + ":" +
+            ('0' + (parseInt(lateTimeInSeconds / 60 % 60))).slice(-2) + ":" +
+            ('0' + (lateTimeInSeconds % 60)).slice(-2);
 
-        $(".footerLateTimeInPlaceholder").text(totallateInTime);
-        $(".footerLateTimeInCalculated").text(totallateInTimeCount);
+        earlyTimeOutSeconds = earlyTimeOutSeconds + (earlyTimeOutMinutes * 60) + (earlyTimeOutHours * 3600);
+        var grandTotalEarlyTimeOut = ('0' + (parseInt(earlyTimeOutSeconds / (60 * 60)))).slice(-2) + ":" +
+            ('0' + (parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
+            ('0' + (earlyTimeOutSeconds % 60)).slice(-2);
+
+        //$(".footerLateTimeInPlaceholder").text(totallateInTime);
+        $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);
+        $(".footerLateTimeOutPlaceholder").text(grandTotalEarlyTimeOut);
         $(".footerPresentPlaceholder").text(totalPresent);
         $(".footerAbsentPlaceholder").text(totalAbsent);
+
+
+        //$(".footerLateTimeInPlaceholder").text(totallateInTime);
+        //$(".footerLateTimeInCalculated").text(totallateInTimeCount);
+        //$(".footerPresentPlaceholder").text(totalPresent);
+        //$(".footerAbsentPlaceholder").text(totalAbsent);
 
 
     }, 100);

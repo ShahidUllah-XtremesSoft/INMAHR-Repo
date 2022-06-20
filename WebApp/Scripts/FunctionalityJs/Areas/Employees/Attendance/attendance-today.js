@@ -216,27 +216,20 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
         {
             field: "lateInTime", title: lateTimeIn, width: 35, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
-
-            //, footerTemplate: "<span class='badge badge-danger'> " + lateTimeIn + ":<span   class='footerLateTimeInPlaceholder'>0</span></span>"
+            , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"            
             , footerTemplate: "<span class='badge badge-danger'> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
         },
         {
             field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
             , template: "#if (earlyOutTime !='') { # <span class='badge  badge-danger'>#:earlyOutTime#</span> #}#"
-             ,format: "{0:HH:mm}"
-            //, footerTemplate: "<span class='badge badge-danger'>" + earlyTimeOut + ": <span   class='footerLateTimeOutPlaceholder'>0</span></span>"
+             ,format: "{0:HH:mm}"            
             , footerTemplate: "<span class='badge badge-danger'><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
         },
-        //{ field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false },
-        //{ field: "status", title: status, width: 100, filterable: true }
         {
             title: status,
             field: 'status',
             width: 50,
-            hidden: false,
-
-            //   template: "#if (status == 'Present') { # <span class='badge badge-success'>#:status#</span> # } else if(status == 'Absent'){# <span class='badge badge-danger'>#:status#</span> # } else{# <span class='badge badge-primary'>#:status#</span> #}#"
+            hidden: false,            
             template: "#if (status == 'Present')" +
                 " { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent')" +
                 " { if(status == 'Absent' && departmentId==11) {# <span class='badge badge-danger'>" + lblSite + "</span> # } else { # <span class='badge badge-danger'>" + lblAbsent + "</span> # }}   else " +
@@ -248,24 +241,12 @@ var bindAttendanceGrid = function (inputDataJSON) {
         {
             field: "", width: 40,
             title: '',
-            hidden: isHR,
-            ////template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
-            //template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#} " +
-            //    " if(isLoginAssigned == 1) { #<div class= 'btn btn-success btn-sm' onClick= UpdateLogin(this) > <i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div> #}#",
-
+            hidden: isHR,            
             template: "#if (status == 'Absent')" +
                 " { # <div><button class='btn btn-success btn-sm'  onClick= redirecToLeaveRequest(this) style='font-weight: normal;'><span class='fa fa-plus'></span> " + 'Add Leave' + "</button</div> # } else {#  #} #"
 
 
         },
-
-        //{
-        //    title: processed,
-        //    field: 'ProcessedStatus',
-        //    width: 100,
-        //    hidden: true,
-        //    template: "#if (processedStatus == 'No') { # <span class='badge badge-success'>#:processedStatus#</span> # } else {# <span class='badge badge-primary'>#:processedStatus#</span> # }#"
-        //},
     ];
 
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);

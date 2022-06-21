@@ -16,7 +16,10 @@ $(function () {
         //, value: new Date()
     });
     employeeIdForAttendance = localStorage.getItem('EmployeeIdForAttendance');
-    if (employeeIdForAttendance == null || employeeIdForAttendance == 'null') {
+    //if (employeeIdForAttendance == null || employeeIdForAttendance == 'null') {
+    var splitUrl = window.location.href.split('/');
+    if (splitUrl[splitUrl.length - 1] == 'Personal') {
+
         employeeIdForAttendance = JSON.parse(localStorage.getItem('User')).employeeId;
     }
     else {
@@ -68,8 +71,8 @@ function loadAttendanceGrid(inputJSON) {
     }
     ajaxRequest({ commandName: 'Employee_Attendance_GetByEmployee', values: inputJSON, CallBack: loadAttendanceGridCallBack });
 }
-var loadAttendanceGridCallBack = function (inputDataJSON) {
-    localStorage.removeItem('EmployeeIdForAttendance');
+var loadAttendanceGridCallBack = function (inputDataJSON) {        
+    //localStorage.removeItem('EmployeeIdForAttendance');
     bindAttendanceGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAttendanceGrid = function (inputDataJSON) {

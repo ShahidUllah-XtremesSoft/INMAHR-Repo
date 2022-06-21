@@ -1,6 +1,7 @@
 ﻿var attendanceGrid = "AttendanceGrid";
 var isLoggedInUserHR = JSON.parse(localStorage.getItem('User')).isHR;
 $(function () {
+    
     if (!isLoggedInUserHR) {
         $('#divSearchControls').css('display', 'none');
     }

@@ -6,7 +6,9 @@ $(function () {
 
     
     employeeNumberForAttendance = localStorage.getItem('EmployeeNumberForAttendance');
-    if (employeeNumberForAttendance == null || employeeNumberForAttendance == 'null') {
+    //if (employeeNumberForAttendance == null || employeeNumberForAttendance == 'null') {
+    var splitUrl = window.location.href.split('/');
+    if (splitUrl[splitUrl.length - 1] == 'Personal') {
         employeeNumberForAttendance = JSON.parse(localStorage.getItem('User')).employeeNumber;//localStorage.getItem('EmployeeNumber');
     }
     else {
@@ -21,7 +23,7 @@ function loadEmployeeProfile() {
     ajaxRequest({ commandName: 'HR_Employee_GetByNumber', values: { Language: _currentLanguage, EmployeeNumber: employeeNumberForAttendance }, CallBack: loadEmployeeProfileCallBack });
 }
 function loadEmployeeProfileCallBack(response) {
-    localStorage.removeItem('EmployeeNumberForAttendance');
+    //localStorage.removeItem('EmployeeNumberForAttendance');
     $('#CreatedBy').val(JSON.parse(response.Value).id);
     $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
     $.each(JSON.parse(response.Value), function (key, value) {

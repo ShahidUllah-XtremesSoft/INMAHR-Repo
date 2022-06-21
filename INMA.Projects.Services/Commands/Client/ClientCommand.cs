@@ -83,7 +83,14 @@ namespace INMA.Projects.Services.Project
                 Service = new FileUploadService();
                 foreach (var file in model.UploadedFiles)
                 {
-                    Service.UploadFile(
+                    if (file.AttachmentType == "ClientSignature")
+                    {
+                        Service.UploadFile(file.CurrentFilePath, file.OriginalFileName, file.CurrentFileName, (int)EntityType.Client, (int)_response.InsertedId, (int)DocumentType.ClientSignature, XtremeFactory._factory, XtremeFactory.connectionString);
+
+                    }
+                    else
+                    {
+                        Service.UploadFile(
                         file.CurrentFilePath,
                         file.OriginalFileName,
                         file.CurrentFileName,
@@ -92,6 +99,7 @@ namespace INMA.Projects.Services.Project
                         (int)DocumentType.ClientProfileImage,
                         XtremeFactory._factory, XtremeFactory.connectionString);
 
+                    }
                 }
             }
             return _response;
@@ -317,7 +325,7 @@ namespace INMA.Projects.Services.Project
             IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
             values = _params.Get(model);
-            var checkData=repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            var checkData = repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
             return checkData;
 
         }
@@ -345,7 +353,7 @@ namespace INMA.Projects.Services.Project
             IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
             values = _params.Get(model);
-            var checkData=repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Meeting_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            var checkData = repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Meeting_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
             return checkData;
 
         }

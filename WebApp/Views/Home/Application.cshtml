@@ -107,6 +107,9 @@
                                 @*<h2 class="animate__animated animate__fadeInDown">We are professional</h2>
                                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                     <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
+
                             </div>
                         </div>
                     </div>
@@ -117,6 +120,8 @@
                                 @*<h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
                                     <p class="animate__animated animate__fadeInUp">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
                                     <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
                             </div>
                         </div>
                     </div>
@@ -127,6 +132,8 @@
                                 @*<h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
                                     <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
                                     <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
                             </div>
                         </div>
                     </div>
@@ -137,6 +144,8 @@
                                 @*<h2 class="animate__animated animate__fadeInDown">Nam libero tempore</h2>
                                     <p class="animate__animated animate__fadeInUp">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
                                     <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
                             </div>
                         </div>
                     </div>
@@ -147,6 +156,8 @@
                                 @*<h2 class="animate__animated animate__fadeInDown">Magnam aliquam quaerat</h2>
                                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                     <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
+                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
                             </div>
                         </div>
                     </div>
@@ -930,7 +941,7 @@
 
 
     function getAssignedMenusForRole_new(mainApplicationModule_Id) {
-         
+
         $('#main-module-id').val('');
         $('#main-module-id').val(mainApplicationModule_Id);
 
@@ -941,7 +952,7 @@
 
     function loggedInUserDetails_CallBack(loggedInDetails) {
 
-         
+
 
         if (JSON.parse(loggedInDetails.Value) != null) {
 
@@ -974,12 +985,12 @@
     }
 
     function getAssignedMenusForRoleCallBack(roleMenus) {
-         
+
         if (roleMenus.Value != '[]') {
 
         localStorage.setItem('Menus', (roleMenus.Value));
         localStorage.setItem('MainApplicationModule_Id', $('#main-module-id').val());
-        
+
       window.location.href = "/HumanResource/Employee/Profile";
         } else {
             Swal.fire({
@@ -1101,7 +1112,7 @@
         console.log(JSON.parse(response.Value))
         var newResponse = JSON.parse(response.Value);
         if (newResponse != null) {
-            
+
 
             $('.p-our-services').text(newResponse[0].main_Description);
 
@@ -1120,7 +1131,7 @@
             $('.sub-title-heading-5').text(newResponse[4].sub_title);
             $('.sub-title-description-5').text(newResponse[4].sub_Description);
 
-            
+
 
         }
     }

@@ -47,7 +47,7 @@ var bindGrid = function (inputDataJSON) {
 
     //                template: "#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
-
+    //console.log(JSON.parse(inputDataJSON))
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },

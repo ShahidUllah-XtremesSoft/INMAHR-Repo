@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblMeetingDetails;
+
+
+}
+
+
+
+<input type="hidden" id="Id" name="Id" value="0" />
+<input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+<input type="hidden" id="CreatedBy" name="CreatedBy" value="0" />
+<input type="hidden" id="Meeting_Id" name="Meeting_Id" value="0" />
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card ">
+
+            <div class="card-header" style="background: #eceff1;">
+                <div class="row">
+
+                    <div class="col-sm-9">
+                        <h6>
+                            <span class=" txt-project-title" style="font-weight: bold;margin-right: 15px !important;"></span>
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-3 " style="text-align: end;">
+
+                        <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
+                        <span class="badge badge-info    project-number">   </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-block">
+
+                <div class="">
+                    <div class="m-b-20">
+                        <h6 class="sub-title m-b-15">@ProjectUI.ProjectUI.lblOverview</h6>
+                        <hr />
+                        <p class="txt-description" style="overflow-x: auto;height: 21rem;">
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="card-footer" style="display:none;">
+
+                <div class="row">
+
+                    <div class="">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <span class="badge ">@ProjectUI.ProjectUI.lblStatus:</span>
+                            <select class="project_status_ddl" disabled id="" style="background-color: #49626a; color: white; font: bold;">
+
+                                <option value="Active">Active</option>
+                                <option value="Closed">Closed</option>
+                                <option value="Hold">Hold</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+
+
+
+                        </div>
+                        <div class="col-sm-2"> </div>
+
+
+                        <div class="col-sm-6 " style="text-align: end;display:none;">
+
+                            <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
+                            <span class="badge badge-danger    text-project-created-by">   </span>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-8 text-right">
+        <div class="card shadow-none mt-3 border border-light">
+
+            <div class="card-block">
+               
+
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <p>
+                            <b id="txt-subject">@HRModuleUI.HumanResourceUI.lblremarks</b>
+                        </p><hr />
+                    </div>
+                </div>
+                <br />
+
+                <p class="txt-meeting-remarks" style="height: 117px;color:red;"></p>
+                    <hr class="bg-primary" />
+
+                    <div class="row">
+
+                        <div class="card-footer" style="height: 110px">
+                            <div class="col-sm-6">
+
+                                <span class="badge    " style=" margin: 26px;">@ProjectUI.ProjectUI.lblMeetingDate:</span>
+                                <span class="badge badge-danger    meeting-date"style=" margin: 26px;">  </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="badge    "style=" margin: 26px;">@ProjectUI.ProjectUI.lblTotalTime:</span>
+                                <span class="badge badge-danger    meeting-total-timing"style=" margin: 26px;">  </span>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+</div>
+        </div>
+
+    </div>
+    <div class="col-md-4 text-right">
+        <div class="card shadow-none mt-3 border border-light">
+
+            <div class="card-block">
+                
+
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <p>
+                            <b id="">@Resources.Global.lblDocumentAttachment</b>
+                        </p> <hr />
+                    </div>
+                </div>
+               
+                
+                <p  >
+                    <div class="row attachmentRow" style="display:none;">
+                        @*<h5><i class="fa fa-paperclip mr-2"></i> @HRModuleUI.HumanResourceUI.lblAttachment<span></span></h5>*@
+                        <div class="col-sm-4 col-md-3">
+                            <a target="_blank" id="attachment-meeting-multiple-open" href="">
+                                <img id="meeting-multiple-attachment" src="" alt="attachment" class="img-thumbnail" >
+                            </a>
+                        </div>
+
+                    </div>
+                </p>
+                <hr class="bg-primary" />
+
+                <div class="row">
+
+                    <div class="card-footer">
+                        
+                        <div class="col-sm-12 ">
+                            <div id="noSignature" style="display:none;">
+                                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: larger; margin: 26px;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                            </div>
+                            <div id="loadSignature" style="display:none;">
+                                <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadClientSignature" style="border-radius:4%;width:150px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                            </div>
+                            <span class="badge   pull-right " style="margin: 36px; ">@ProjectUI.ProjectUI.lblApprovedBy @ProjectUI.ProjectUI.lblClient :</span>
+
+
+
+                        </div>
+                        
+                       
+                     
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Meetings/meeting-short-details.js"></script>
+}
+
+

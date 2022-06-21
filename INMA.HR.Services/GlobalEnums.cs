@@ -78,6 +78,7 @@ namespace INMA.HR.Services
         #region CLIENT MEETINGS ENUM
 
         Meetings = 10,
+      
         #endregion
 
         #region PROJECT ENUM
@@ -133,6 +134,7 @@ namespace INMA.HR.Services
         #region COMMENT ENUM
         CommentAttachment = 38,  // STARTING FROM 42 ....
         #endregion
+        Meeting_Multiple = 39,
 
     }
 }

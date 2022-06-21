@@ -22,6 +22,9 @@ namespace WebApp.Areas.Project.Controllers
         public ActionResult Details()
         {
             return View();
+        }  public ActionResult ShortDetails()
+        {
+            return View();
         }
         #endregion
 

@@ -201,7 +201,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
         processButtonToggling(inputDataJSON);
     }
     var isHR = !inputDataJSON[0].isHR;
-    
+
     var record = 0;
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 15, },
@@ -241,7 +241,11 @@ var bindAttendanceGrid = function (inputDataJSON) {
         {
             field: "", width: 40,
             title: '',
-            hidden: isHR,            
+            hidden: isHR,
+            ////template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
+            //template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#} " +
+            //    " if(isLoginAssigned == 1) { #<div class= 'btn btn-success btn-sm' onClick= UpdateLogin(this) > <i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div> #}#",
+
             template: "#if (status == 'Absent')" +
                 " { # <div><button class='btn btn-success btn-sm'  onClick= redirecToLeaveRequest(this) style='font-weight: normal;'><span class='fa fa-plus'></span> " + 'Add Leave' + "</button</div> # } else {#  #} #"
 
@@ -258,7 +262,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
         var t1 = "00:00:00";
         var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
-        
+
         for (var i = 0; i < gridData.length; i++) {
 
             //if (gridData[i].changeColor == 'Yes') {
@@ -293,12 +297,12 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
             //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-primary");
             //}
-            if (gridData[i].lateInTime != '') {                
-                var t2 = gridData[i].lateInTime.split(':');                
+            if (gridData[i].lateInTime != '') {
+                var t2 = gridData[i].lateInTime.split(':');
                 lateTimeInSeconds = lateTimeInSeconds + parseInt(Number(t2[2]));
                 lateTimeInMinutes = lateTimeInMinutes + parseInt(Number(t2[1]));
                 lateTimeInHours = lateTimeInHours + parseInt(Number(t2[0]));
-                                             
+
             }
             if (gridData[i].earlyOutTime != '') {
                 var earlyOutTime = gridData[i].earlyOutTime.split(':');
@@ -308,15 +312,15 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
             }
         }
-        lateTimeInSeconds = lateTimeInSeconds + (lateTimeInMinutes * 60) + (lateTimeInHours * 3600);        
-        var grandTotalLateInTime = ('0' +(parseInt(lateTimeInSeconds / (60 * 60)))).slice(-2) + ":" +
-        ('0' +(parseInt(lateTimeInSeconds / 60 % 60))).slice(-2) + ":" +
-        ('0' +(lateTimeInSeconds % 60)).slice(-2);
+        lateTimeInSeconds = lateTimeInSeconds + (lateTimeInMinutes * 60) + (lateTimeInHours * 3600);
+        var grandTotalLateInTime = ('0' + (parseInt(lateTimeInSeconds / (60 * 60)))).slice(-2) + ":" +
+            ('0' + (parseInt(lateTimeInSeconds / 60 % 60))).slice(-2) + ":" +
+            ('0' + (lateTimeInSeconds % 60)).slice(-2);
 
         earlyTimeOutSeconds = earlyTimeOutSeconds + (earlyTimeOutMinutes * 60) + (earlyTimeOutHours * 3600);
-        var grandTotalEarlyTimeOut = ('0'+(parseInt(earlyTimeOutSeconds / (60 * 60)))).slice(-2) + ":" +
-            ('0' +(parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
-            ('0' +(earlyTimeOutSeconds % 60)).slice(-2);
+        var grandTotalEarlyTimeOut = ('0' + (parseInt(earlyTimeOutSeconds / (60 * 60)))).slice(-2) + ":" +
+            ('0' + (parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
+            ('0' + (earlyTimeOutSeconds % 60)).slice(-2);
 
         //$(".footerLateTimeInPlaceholder").text(totallateInTime);
         $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);

@@ -1,6 +1,8 @@
 ﻿var $grid = "contractor-grid", requestFrom = '';
 
 $(function () {
+     
+
 
    // requestFrom = (new URL(location.href)).searchParams.get('from');
     $('#Language').val(_currentLanguage);
@@ -9,9 +11,7 @@ $(function () {
 
 });
  
-
-
-
+ 
 
 function loadContractorGrid() {
     ajaxRequest({

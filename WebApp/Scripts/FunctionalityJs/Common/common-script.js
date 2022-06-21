@@ -437,7 +437,8 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
 
     var stepper = $("#" + $stepperId).width($width);
     stepper.resize();
-
+         
+    //stepper.find('.k-step-done').css("background-color", "lawngreen");
     stepper.find('.k-step-error').css("background-color", "mistyrose");
     // stepper.find('.k-step-done').css("background-color", "greenyellow");
 

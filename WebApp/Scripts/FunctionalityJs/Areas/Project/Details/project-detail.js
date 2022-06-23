@@ -37,7 +37,7 @@ $(function () {
     setTimeout(function () {
 
         stepper_PROJECT_MAIN_SECTIONS();
-    }, 50);
+    }, 150);
 
     fnLoadProjectDetailsById();
 

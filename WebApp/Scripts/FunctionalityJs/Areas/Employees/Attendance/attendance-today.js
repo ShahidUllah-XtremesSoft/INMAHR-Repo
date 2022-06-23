@@ -228,7 +228,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
         {
             title: status,
             field: 'status',
-            width: 50,
+            width: 70,
             hidden: false,            
             template: "#if (status == 'Present')" +
                 " { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent')" +

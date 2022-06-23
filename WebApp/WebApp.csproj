@@ -631,7 +631,6 @@
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\MenuLinking\menu-linking-index.js" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_TechnicalSection_Document_Grid.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_SupervisionSectionSave.cshtml" />
-    <Content Include="Areas\Project\Views\Contractor\Details.cshtml" />
     <Content Include="Areas\Project\Views\Contractor\List.cshtml" />
     <Content Include="Areas\Project\Views\Contractor\Save.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Contractor\_ContractorPartialView.cshtml" />

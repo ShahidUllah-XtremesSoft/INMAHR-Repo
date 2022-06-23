@@ -272,6 +272,7 @@
       <DependentUpon>HumanResourceUI.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Project\Controllers\ContractorController.cs" />
+    <Compile Include="Areas\Project\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Project\Controllers\NotificationController.cs" />
     <Compile Include="Areas\Project\Controllers\MeetingController.cs" />
     <Compile Include="Areas\Project\Controllers\ClientController.cs" />
@@ -519,6 +520,9 @@
     <Content Include="Content\Themes\Dashable\files\assets\js\vertical\menu\menu-ltr.js" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
+    <Content Include="Scripts\Charts\Chart.js" />
+    <Content Include="Scripts\Charts\morris.js" />
+    <Content Include="Scripts\Charts\raphael.min.js" />
     <Content Include="Scripts\crypto-script.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Comment\comment-area.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Contractor\contractor-grid.js" />
@@ -569,6 +573,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-info-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\project-dashboard.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-design-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-supervision-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-technical-section.js" />
@@ -678,6 +683,7 @@
     <Content Include="Content\Themes\BizPage\assets\vendor\bootstrap\js\bootstrap.js.map" />
     <Content Include="Content\Themes\BizPage\assets\vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Areas\Project\Views\Meeting\ShortDetails.cshtml" />
+    <Content Include="Areas\Project\Views\Dashboard\Index.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

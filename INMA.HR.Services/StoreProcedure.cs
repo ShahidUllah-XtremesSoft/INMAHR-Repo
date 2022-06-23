@@ -452,4 +452,11 @@ public enum ProjectStoreProcedure
     Reports_TechnicalSection_GetBySectionId,
     Report_Summary_GetByParamters,
     #endregion
+    #region Project Dashbaord
+    Project_Dashboard_CountByStatus_Get,
+    Project_Dashboard_CountByCategory_Get,
+    Project_Dashboard_ClientMeetingContractorCount_Get,
+    Project_Dashboard_IssueCountByStatus_Get,
+    Project_Dashboard_ProjectCountByStatus_Get,
+    #endregion
 }

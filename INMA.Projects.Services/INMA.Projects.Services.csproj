@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Commands\Common\SMSService.cs" />
     <Compile Include="Commands\Contractor\ClientCommand.cs" />
+    <Compile Include="Commands\Dashboard\DashboardCommand.cs" />
     <Compile Include="Commands\Notification\NotificationCommand.cs" />
     <Compile Include="Commands\Issue\IssueCommand.cs" />
     <Compile Include="Commands\Meeting\MeetingCommand.cs" />

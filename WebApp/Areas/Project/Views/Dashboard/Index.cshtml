@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblProject;
+
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-project-count-by-vip-urgent"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-project-count-by-category"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-issue-count-by-status"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-project-count-by-status"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-total-client-meeting-contractor"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <!--<div class="col-sm-6 col-lg-3">
+        <div class="card card-inverse" style="background-color: #0B939E">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalDeals">0</div>
+                <div class="p-b-1">Total Deals</div>-->
+    @*<a href="/Deal/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+    <!--</div>
+        </div>
+    </div>-->
+
+</div>
+<div class="row">
+    <div class="col-sm-6 col-lg-4">
+        <div class="card card-inverse card-primary" style="cursor:pointer;">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalClient">0</div>
+                <div class="p-b-1">Total Clients</div>
+                @*<progress class="progress progress-xs progress-success" value="25" max="100">25%</progress>*@
+                @*<a href="/Property/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card card-inverse card-success">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalMeeting">0</div>
+                <div class="p-b-1">Total Meetings</div>
+                @*<a href="/Vendor/Expense/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card card-inverse" style="background-color: #225A8B">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalContractor">0</div>
+                <div class="p-b-1">Total Contractors</div>
+                @*<a href="/Reports/Sale/Detail"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/project-dashboard.js?+971502324409"></script>
+}
+

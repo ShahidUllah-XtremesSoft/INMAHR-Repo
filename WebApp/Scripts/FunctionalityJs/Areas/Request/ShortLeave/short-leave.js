@@ -50,9 +50,9 @@ $(function () {
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
         $("#LeaveTypeName").val($("#LeaveTypeId").data("kendoDropDownList").text());
-        if ($("#LeaveTypeName").val() == "Work P.Leave"){
+        if ($("#LeaveTypeName").val() == "Work P.Leave") {
             saveShortLeaveRequest();
-        } else { 
+        } else {
 
             if ($('#NumberOfHours').val() == "0") {
                 // swalMessage('info', 'Number of hours cannot be zero', 2000);
@@ -294,8 +294,8 @@ function loadAvailableShortLeaveBalance() {
 
 }
 function get_EmployeeShortLeavesAvailableBalanceCallBack(response) {
-     
-   // console.log(response);
+
+    // console.log(response);
     $('#AvailableShortLeave').val(JSON.parse(response.Value).remainingBalance);
 }
 
@@ -320,16 +320,21 @@ var fnLoadShortLeaveDropdownListCallBack = function (response) {
         filter: "contains",
         dataSource: JSON.parse(JSON.parse(checkresult)),
         //  index: selectedIndex,
-        //change: function (e) {
-        //    debugger
-        //    $("#LeaveTypeName").data("kendoDropDownList").text(this.text());
-        //}
+        change: function (e) {
+             
+            //$("#LeaveTypeName").data("kendoDropDownList").text(this.text());
+            if (this.text() != 'Short Leave' && this.text() != 'إجازة قصيرة') {
+                $('.show-hide-available-balance-on-condition-base').hide();
+            } else {
+                $('.show-hide-available-balance-on-condition-base').show();
+            }
+        }
     });
     //var ddl = $("#LeaveTypeId").data("kendoDropDownList"); 
     //var oldData = ddl.dataSource.data(); 
     //ddl.dataSource.remove(oldData[0]); //remove first item
 
-  //  ddl.dataSource.remove(oldData[oldData.length - 1]); //remove last item
+    //  ddl.dataSource.remove(oldData[oldData.length - 1]); //remove last item
 }
 
 //$("#LeaveTypeId").data("kendoDropDownList").text();

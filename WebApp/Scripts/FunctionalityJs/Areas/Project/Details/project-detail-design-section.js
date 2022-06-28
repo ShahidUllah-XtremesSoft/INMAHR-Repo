@@ -74,7 +74,7 @@ function stepper_DESIGN_SECTION(response) {
    */
 
 
-
+    
     var step_Columns = []
 
     for (var i = 0; i < JSON.parse(response.Value).length; i++) {
@@ -127,12 +127,16 @@ function stepper_DESIGN_SECTION(response) {
 //    var stepper_data = e.step.options;
 //    //console.log("Activated: " + e.step.options.label);
 //}
+ 
 function stepper_Fn_DesignSection_Onselect(e) {
-
+     
     var stepper_data = e.step.options;
     //e.step.element 
-    fnCheckProject_SubSection_Tab(stepper_data.label, stepper_data.Id);
+    
 
+    fnCheckProject_SubSection_Tab(stepper_data.label, stepper_data.Id);
+      
+     
 
 
 }

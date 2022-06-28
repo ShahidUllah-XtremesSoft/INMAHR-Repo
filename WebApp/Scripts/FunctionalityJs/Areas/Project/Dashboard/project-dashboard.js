@@ -18,13 +18,15 @@ var getProjectCountByVIPUrgentCallBack = function (responseJSON) {
     prepareChartDataFor_ProjectCountByVIPUrgent(JSON.parse(responseJSON.Value));
 }
 function prepareChartDataFor_ProjectCountByVIPUrgent(inputJSON){
-    var lables = ["All", "Urgent", "Non-Urgent", "VIP", "Non-VIP"];
+     
+//    var lables = ["All", "Urgent", "Non-Urgent", "VIP", "Non-VIP"];
+    var lables = ["Urgent", "VIP"];
     var data = [];
-    data.push(inputJSON.all);
-    data.push(inputJSON.ugent);
-    data.push(inputJSON.noUrgent);
+   // data.push(inputJSON.all);
+    data.push(inputJSON.urgent);
+    //data.push(inputJSON.noUrgent);
     data.push(inputJSON.vip);
-    data.push(inputJSON.nonVIP);
+   // data.push(inputJSON.nonVIP);
     renderBarChart('chart-project-count-by-vip-urgent', 'Project By VIP/Urgent', lables, data);
 }
 function getProejctCountByCategory() {    

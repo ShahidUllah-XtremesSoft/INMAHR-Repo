@@ -105,12 +105,12 @@ function loadProfileCallBack(response) {
         $('#letter-attachment').attr('src', fileExtension).attr('alt', responseDetails.orignalFileName);
         $('#attachment-open').attr('href', attachments);
 
-         
-         
+
+
         if (responseDetails.client_Signature != null) {
             var clientSignature = '/UploadFile/' + responseDetails.client_Signature;
             $('#loadClientSignature').attr('src', clientSignature);
-        //    $('#Signature').val(responseDetails.client_Signature);
+            //    $('#Signature').val(responseDetails.client_Signature);
             localStorage.setItem("ClientSignature", responseDetails.client_Signature);
         } else {
             localStorage.ClientSignature = '';
@@ -120,18 +120,28 @@ function loadProfileCallBack(response) {
     }
 }
 
-function fnShowSignature() {
-       
-    if (localStorage.getItem("ClientSignature") != "") {
-        $('#loadSignature').show();
-        $('#noSignature').hide();
-        $('#Signature').val(localStorage.getItem("ClientSignature"));
+function fnShowSignature(e) {
 
+
+
+
+    var checkValue = $("#chk-signature").is(':checked')
+    if (checkValue == true) {
+        if (localStorage.getItem("ClientSignature") != "") {
+            $('#loadSignature').show();
+            $('#noSignature').hide();
+            $('#Signature').val(localStorage.getItem("ClientSignature"));
+
+        } else {
+
+            $('#noSignature').show();
+            $('#loadSignature').hide();
+        }
     } else {
-
-        $('#noSignature').show();
         $('#loadSignature').hide();
+        $('#noSignature').hide();
     }
+
 }
 
 
@@ -206,7 +216,7 @@ $('#btn-multiple-meeting-save').click(function () {
 
 
 $("#start").click(function () {
-    $('#btn-signature').attr('disabled', false);
+    $('#chk-signature').attr('disabled', false);
     meetingHours = parseFloat($('#hours').text());
     meetingMinutes = parseFloat($('#minutes').text());
     meetingSeconds = parseFloat($('#secondss').text());
@@ -421,7 +431,7 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
         },
         {
             field: "projectName", hidden: false, title: lblProject, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-          //  , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= project_DetailsById(this)  title=''>#=projectName#</a> ",
+            //  , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= project_DetailsById(this)  title=''>#=projectName#</a> ",
         },
 
         //  { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
@@ -429,10 +439,10 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
         { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
         //  { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
         { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>", hidden: true },
-        { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>", hidden: true  },
-        { field: "totaltime", title: lblTotalTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:totaltime#</span>", hidden: true  },
+        { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>", hidden: true },
+        { field: "totaltime", title: lblTotalTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:totaltime#</span>", hidden: true },
         //   { field: "status", title: lblStatus, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:status#</span>" },
-        { field: "remarks", title: lblRemarks, width: 30, filterable: false, template: "<span class='badge badge-info'>#:remarks#</span>", hidden: true  },
+        { field: "remarks", title: lblRemarks, width: 30, filterable: false, template: "<span class='badge badge-info'>#:remarks#</span>", hidden: true },
 
     ];
     bindKendoGrid('grid-multiple-meeting-information', 50, gridColumns, inputDataJSON, true, 400);

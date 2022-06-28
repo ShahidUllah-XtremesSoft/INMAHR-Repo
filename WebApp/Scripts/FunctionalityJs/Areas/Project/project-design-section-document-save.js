@@ -59,7 +59,7 @@ $('#btn-save-design-section-government-documents').click(function () {
                 } if (messageResponseParse.type == undefined) {
                     messageResponseParse = JSON.parse(messageResponseParse);
                 }
-                fnLoadDesignSection_GovernmentDocument_(Parameter_Project_Id == 0 ? $('#DesignSection_Document_ProjectId').val() : Parameter_Project_Id);
+                fnLoadDesignSection_GovernmentDocument_(Parameter_Project_Id == 0 || Parameter_Project_Id == null ? $('#DesignSection_Document_ProjectId').val() : Parameter_Project_Id);
                 //----------- Reload DateTime Picker 
                 renderKendoDateAndTimePickerWithNewFormat('DesignSection_Document_StartDate');
                 renderKendoDateAndTimePickerWithNewFormat('DesignSection_Document_EndDate');

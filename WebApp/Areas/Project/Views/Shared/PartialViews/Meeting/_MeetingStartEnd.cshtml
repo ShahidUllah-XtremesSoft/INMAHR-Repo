@@ -10,7 +10,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 @*<button type="button" class="close clearField " id="btn-modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>*@
-                <button type="button" class="close clearField " id="btn-modal-close" data-dismiss="modal"   aria-hidden="true">&times;</button>
+                <button type="button" class="close clearField " id="btn-modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 @*<h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblStartMeeting</h5>*@
                 @*<h5 class="modal-title  "> @ProjectUI.ProjectUI.lblProjectNo #:<span class="modal-title projectNo"></span></h5>*@
                 <h5 class="modal-title  projectNo"> </h5>
@@ -34,7 +34,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class=" " style="text-align: center;">
-                                            <button type="button" class="btn btn-danger "><h3 class="meeting-hours" id="hours">-</h3> </button>
+                                            <button type="button" class="btn btn-danger ">
+                                                <h3 class="meeting-hours" id="hours">-</h3>
+                                            </button>
                                             <div class="card-body">
                                                 <p class="card-text" style="text-align: center;">@Resources.Global.lblHours</p>
                                             </div>
@@ -49,7 +51,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class=" " style="text-align: center;">
-                                            <button type="button" class="btn btn-danger "><h3 class="meeting-minutes" id="minutes">-</h3> </button>
+                                            <button type="button" class="btn btn-danger ">
+                                                <h3 class="meeting-minutes" id="minutes">-</h3>
+                                            </button>
                                             <div class="card-body">
                                                 <p class="card-text" style="text-align: center;">@Resources.Global.lblMinutes</p>
                                             </div>
@@ -64,7 +68,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class=" " style="text-align: center;">
-                                            <button type="button" class="btn btn-danger "><h3 class="meeting-seconds" id="secondss">-</h3> </button>
+                                            <button type="button" class="btn btn-danger ">
+                                                <h3 class="meeting-seconds" id="secondss">-</h3>
+                                            </button>
                                             <div class="card-body">
                                                 <p class="card-text" style="text-align: center;">@Resources.Global.lblSeconds</p>
                                             </div>
@@ -85,13 +91,15 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingStartTime </label><br />
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingStartTime </label>
+                                <br />
                                 <input type="text" readonly class="form-control" name="StartedTime" id="StartedTime" value="0" />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingEndTime </label><br />
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblMeetingEndTime </label>
+                                <br />
                                 <input type="text" readonly class="form-control" name="EndedTime" id="EndedTime" value="0" />
                             </div>
                         </div>
@@ -100,29 +108,30 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                                <input type="file" class="form-control" name="MeetingFile" id="MeetingFile"  />
+                                <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label>
+                                <br />
+                                <input type="file" class="form-control" name="MeetingFile" id="MeetingFile" />
                             </div>
                         </div>
 
                     </div>
                     @*<div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                        <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
-                    </div>
-                </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                                    <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                                </div>
+                            </div>
 
 
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                        <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
-                    </div>
-                </div>
-            </div>*@
+                                    <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                                </div>
+                            </div>
+                        </div>*@
 
                     <div class="row">
                         <div class="col-md-12">
@@ -137,14 +146,28 @@
                 </form>
                 <div class="row">
                     <div class="col-sm-12">
-                       
-                            <div id="noSignature" style="display:none;">
-                                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: larger;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
-                            </div>
-                            <div id="loadSignature" style="display:none;">
-                                <img src="" class="img-avatar  @Resources.Common.PullRight" id="loadClientSignature"  style="border-radius:4%;width:150px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
-                            </div>
-                         
+
+                        <div id="noSignature" style="display:none;">
+                            <button type="button" disabled class="btn btn-danger @Resources.Common.PullLeft m-r-10" style=" font-size: larger;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                        </div>
+                        <div id="loadSignature" style="display:none;">
+                            <img src="" class="img-avatar  @Resources.Common.PullLeft" id="loadClientSignature" style="border-radius:4%;width:150px;" alt="@HRModuleUI.HumanResourceUI.lblSignature">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        @*<label class="btn btn-success  " for="chk-signature" style="margin-bottom: 0px;width:100%;">
+                            <input disabled type="checkbox" onchange="fnShowSignature();" class="btn-signature chk-signature">
+                            <font style="vertical-align: inherit;font-weight:normal;">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature</font>
+                        </label>*@
+                        <label class="btn btn-success m-t-25   text-white" for="chk-signature" style="margin-bottom: 0px;width:100%;">
+                            <input type="checkbox" class=""  onchange="fnShowSignature(this);" name="chk-signature" id="chk-signature">
+                            <font style="vertical-align: inherit;font-weight:normal;">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature</font>
+                        </label>
+
                     </div>
 
                 </div>
@@ -163,7 +186,7 @@
                             @*<button type="button" id="stop" class="btn   btn-danger  pull-right" value="End"> @ProjectUI.ProjectUI.lblMeetingEnd</button>*@
                             <button type="button" id="start" class="btn   btn-success  pull-right" value="Start"> @ProjectUI.ProjectUI.lblStartMeeting</button>
                             <button type="button" id="btn-multiple-meeting-save" class="btn   btn-success  pull-right" style="display:none;" value="Save"></button>
-                            <button type="button"  disabled id="btn-signature" class="btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnShowSignature();"><i class=""></i>@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature</button>
+                            @*<button type="button" disabled id="btn-signature" class="btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnShowSignature();"><i class=""></i>@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature</button>*@
                             @*<button type="button" disabled id="btn-signature" class="btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnShowSignature();"><i class=""></i>@ProjectUI.ProjectUI.lblApprovedBy @ProjectUI.ProjectUI.lblClient </button>*@
                         </div>
                     </div>

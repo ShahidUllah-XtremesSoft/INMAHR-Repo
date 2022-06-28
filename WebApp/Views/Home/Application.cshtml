@@ -43,32 +43,41 @@
 <body>
     <input type="hidden" id="main-module-id" value="0" />
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-        <div class="container-fluid">
+    <div class="row">
 
-            <div class="row justify-content-center align-items-center">
-                <div class="col-xl-11 d-flex align-items-center justify-content-between">
-                    @*<h1 class="logo"><a href="index.html">BizPage</a></h1>*@
-                    @*<h1 class="logo" style="max-height:50px;"><img src="/Content/Login/img/logo1.png" alt="logo" style="float:left;height: 150px;width:auto;"></h1>*@
-                    <h1 class="logo" style="max-height:50px;"><img src="~/Content/Login/img/shjengconLogo.png" alt="logo" style="float:left;height: 150px;width:auto;"></h1>
-                    @*<h1 class="logo" style="max-height:50px;"><img src="https://www.shjengcon.com/wp-content/uploads/2020/10/SEC-Logo-2.svg" alt="logo" style="float:left;height: 150px;width:auto;"></h1>*@
-                    <!-- Uncomment below if you prefer to use an image logo -->
-                    <!-- <a href="index.html" class="logo"><img src="~/Content/Themes/BizPage/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                    <nav id="navbar" class="navbar">
-                        <ul>
-                            <li><a class="nav-link scrollto active" href="#hero">@Resources.Global.lblHome</a></li>
-                            <li><a class="nav-link scrollto" href="#about">@Resources.Global.lblAboutUs</a></li>
-                            <li><a class="nav-link scrollto" href="#services">@Resources.Global.lblServices</a></li>
-                            @*<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>*@
-                            <li><a class="nav-link scrollto" href="#team">@Resources.Global.lblPartners</a></li>
-                            @*<li><a class="nav-link  " href="blog.html">Blog</a></li>*@
-                            <li><a class="nav-link scrollto" href="#contact">@Resources.Global.lblContact</a></li>
-                            <li class="dropdown">
-                                <a href="#"><span>Module</span> <i class="bi bi-chevron-down"></i></a>
+
+        <header id="header" class="fixed-top d-flex align-items-center header-transparent" style="background-color:black">
+            <div class="col-md-4 ">
+                <img src="~/Content/Login/img/shjengconLogo.png" alt="logo" style="float:left;width:250px;">
+                @*<h1 class="logo" style="max-height:50px;"><img src="~/Content/Login/img/shjengconLogo.png" alt="logo" style="float:left;height: 150px;width:auto;"></h1>*@
+            </div>
+            <div class="col-md-8">
+                <div class="container-fluid">
+
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-xl-1 d-flex align-items-center justify-content-between">
+                            @*<h1 class="logo"><a href="index.html">BizPage</a></h1>*@
+                            @*<h1 class="logo" style="max-height:50px;"><img src="/Content/Login/img/logo1.png" alt="logo" style="float:left;height: 150px;width:auto;"></h1>*@
+
+                            @*<h1 class="logo" style="max-height:50px;"><img src="https://www.shjengcon.com/wp-content/uploads/2020/10/SEC-Logo-2.svg" alt="logo" style="float:left;height: 150px;width:auto;"></h1>*@
+                            <!-- Uncomment below if you prefer to use an image logo -->
+                            <!-- <a href="index.html" class="logo"><img src="~/Content/Themes/BizPage/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                            <nav id="navbar" class="navbar">
                                 <ul>
-                                    <li><a onclick="getAssignedMenusForRole_new('1')">Human Resource(HR)</a></li>
-                                    <li><a onclick="getAssignedMenusForRole_new('2')">Project</a></li>
+                                    <li><a class="nav-link scrollto active" href="#hero">@Resources.Global.lblHome</a></li>
+                                    <li><a class="nav-link scrollto" href="#about">@Resources.Global.lblAboutUs</a></li>
+                                    <li><a class="nav-link scrollto" href="#services">@Resources.Global.lblServices</a></li>
+                                    @*<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>*@
+                                    <li><a class="nav-link scrollto" href="#team">@Resources.Global.lblPartners</a></li>
+                                    @*<li><a class="nav-link  " href="blog.html">Blog</a></li>*@
+                                    <li><a class="nav-link scrollto" href="#contact">@Resources.Global.lblContact</a></li>
+                                    <!--<li class="dropdown">
+                                    <a href="#"><span>Module</span> <i class="bi bi-chevron-down"></i></a>
+                                    <ul>
+                                        <li><a onclick="getAssignedMenusForRole_new('1')">Human Resource(HR)</a></li>
+                                        <li><a onclick="getAssignedMenusForRole_new('2')">Project</a></li>-->
                                     @*<li class="dropdown">
                                             <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                                             <ul>
@@ -82,19 +91,41 @@
                                         <li><a href="#">Drop Down 2</a></li>
                                         <li><a href="#">Drop Down 3</a></li>
                                         <li><a href="#">Drop Down 4</a></li>*@
+                                    <!--</ul>
+                                    </li>-->
                                 </ul>
-                            </li>
-                        </ul>
-                        <i class="bi bi-list mobile-nav-toggle"></i>
-                    </nav><!-- .navbar -->
+                                <i class="bi bi-list mobile-nav-toggle"></i>
+                            </nav><!-- .navbar -->
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+        </header><!-- End Header -->
+    </div>
+    <!-- ======= hero Section ======= -->
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row ">
+
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="50">
+            <button class="btn btn-success   form-control scrollto animate__animated animate__fadeInUp" onclick="getAssignedMenusForRole_new('1')"> <h3> <i class="bi bi-award"></i></h3> Human Resource(HR)</button>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="50">
+            <button class="btn btn-warning   form-control scrollto animate__animated animate__fadeInUp" onclick="getAssignedMenusForRole_new('2')"> <h3> <i class="bi bi-award"></i></h3> Project</button>
 
         </div>
-    </header><!-- End Header -->
-    <!-- ======= hero Section ======= -->
+    </div>
+    <br />
     <section id="hero">
+
+
         <div class="hero-container">
+
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
                 <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
@@ -107,8 +138,8 @@
                                 @*<h2 class="animate__animated animate__fadeInDown">We are professional</h2>
                                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                     <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
+                                @*<a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
+                                    <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>*@
 
                             </div>
                         </div>
@@ -117,11 +148,7 @@
                     <div class="carousel-item" style="background-image: url(../../Content/Themes/BizPage/assets/img/hero-carousel/shj-new-slider-2.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                @*<h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
-                                    <p class="animate__animated animate__fadeInUp">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-                                    <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
+
                             </div>
                         </div>
                     </div>
@@ -129,11 +156,7 @@
                     <div class="carousel-item" style="background-image: url(../../Content/Themes/BizPage/assets/img/hero-carousel/shj-new-slider-3.jpg) ">
                         <div class="carousel-container">
                             <div class="container">
-                                @*<h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
-                                    <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-                                    <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
+
                             </div>
                         </div>
                     </div>
@@ -141,11 +164,7 @@
                     <div class="carousel-item" style="background-image: url(../../Content/Themes/BizPage/assets/img/hero-carousel/1-INMA.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                @*<h2 class="animate__animated animate__fadeInDown">Nam libero tempore</h2>
-                                    <p class="animate__animated animate__fadeInUp">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
-                                    <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
+
                             </div>
                         </div>
                     </div>
@@ -153,11 +172,7 @@
                     <div class="carousel-item" style="background-image: url(../../Content/Themes/BizPage/assets/img/hero-carousel/4-INMA.jpg)">
                         <div class="carousel-container">
                             <div class="container">
-                                @*<h2 class="animate__animated animate__fadeInDown">Magnam aliquam quaerat</h2>
-                                    <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>*@
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('1')" class="btn-get-started scrollto animate__animated animate__fadeInUp">Human Resource(HR)</a>
-                                <a style="cursor:pointer;" onclick="getAssignedMenusForRole_new('2')" class="btn-get-started  scrollto animate__animated animate__fadeInUp">Project</a>
+
                             </div>
                         </div>
                     </div>

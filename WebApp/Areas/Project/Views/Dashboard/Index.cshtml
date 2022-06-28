@@ -4,8 +4,9 @@
 
 
 }
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.2.621/styles/kendo.default-ocean-blue.min.css" />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" hidden>
         <div class="card">
             <div class="card-block">
                 <div class="chart-wrapper">
@@ -18,6 +19,15 @@
         <div class="card">
             <div class="card-block">
                 <div class="chart-wrapper">
+                    <div id="chart-project-count-by-vip-urgent-kendo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" hidden>
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
                     <canvas id="chart-project-count-by-category"></canvas>
                 </div>
             </div>
@@ -27,7 +37,25 @@
         <div class="card">
             <div class="card-block">
                 <div class="chart-wrapper">
+                    <div id="chart-project-count-by-category-kendo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" hidden>
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
                     <canvas id="chart-issue-count-by-status"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <div id="chart-issue-count-by-status-kendo"></div>
                 </div>
             </div>
         </div>
@@ -35,7 +63,7 @@
 </div>
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-4" hidden>
         <div class="card">
             <div class="card-block">
                 <div class="chart-wrapper">
@@ -48,12 +76,29 @@
         <div class="card">
             <div class="card-block">
                 <div class="chart-wrapper">
+                    <div id="chart-project-count-by-status-kendo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" hidden>
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
                     <canvas id="chart-total-client-meeting-contractor"></canvas>
                 </div>
             </div>
         </div>
     </div>
-    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <div id="chart-total-client-meeting-contractor-kendo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -73,7 +118,7 @@
         <div class="card card-inverse card-primary" style="cursor:pointer;">
             <div class="card-block">
                 <div class="h4 m-a-0" id="TotalClient">0</div>
-                <div class="p-b-1">Total Clients</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblTotalClients</div>
                 @*<progress class="progress progress-xs progress-success" value="25" max="100">25%</progress>*@
                 @*<a href="/Property/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
             </div>
@@ -84,7 +129,7 @@
         <div class="card card-inverse card-success">
             <div class="card-block">
                 <div class="h4 m-a-0" id="TotalMeeting">0</div>
-                <div class="p-b-1">Total Meetings</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblTotalMeetings</div>
                 @*<a href="/Vendor/Expense/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
             </div>
         </div>
@@ -94,7 +139,7 @@
         <div class="card card-inverse" style="background-color: #225A8B">
             <div class="card-block">
                 <div class="h4 m-a-0" id="TotalContractor">0</div>
-                <div class="p-b-1">Total Contractors</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblTotalContractors</div>
                 @*<a href="/Reports/Sale/Detail"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
             </div>
         </div>
@@ -103,6 +148,13 @@
 
 
 
+<script>
+    var lblProjectByVIPUrgent = '@ProjectUI.ProjectUI.lblProjectByVIPUrgent';
+    var lblProjectByCategory = '@ProjectUI.ProjectUI.lblProjectByCategory';
+    var lblClientMeetingAndContractor = '@ProjectUI.ProjectUI.lblClientMeetingAndContractors';
+    var lblIssueByStatus = '@ProjectUI.ProjectUI.lblIssueByStatus';
+    var lblProjectByStatus = '@ProjectUI.ProjectUI.lblProjectByStatus';
+</script>
 @section scripts {
 
 

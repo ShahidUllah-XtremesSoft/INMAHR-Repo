@@ -12,6 +12,7 @@ $(function () {
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
     loadShortLeaveGrid('Pending');
+    localStorage.setItem('Active_GridArea', 'Pending'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
 
 
 })
@@ -53,9 +54,16 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             },
             width: 8
         },
+        { field: "requested_EmployeeId", title: "Requested_EmployeeId", hidden: true },
+
         { title: "#", template: "<b>#= ++record #</b>", width: 5 },
+        { field: "isUpperLevel", title: "isUpperLevel", hidden: true },
         { field: "id", title: "id", hidden: true },
-        { field: "email", title: empNumber, hidden: false, width: 20 },
+        {
+            field: "email", title: empNumber, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
+            template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick= redirectToEmployeeDetailView(this)>#=email#</a> ",
+
+        },
         { field: "name", title: lblname, hidden: false, width: 50 },
         { field: "requestDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:requestDate#</span>" },
         { field: "startTime", title: startTime, hidden: false, width: 30, template: "<span class='badge badge-info'>#:startTime#</span>" },
@@ -78,7 +86,12 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             //    " {# <span class='badge badge-success'> " + lblRequestRunning + "</span> # }#"
 
         },
-        {  field: "leaveType", title: " ", filterable: false, width: 20 , template: "<span class='badge badge-info'>#:leaveType#</span>" },
+        {
+            field: "leaveType", title: " ", filterable: false, width: 20,
+         //   template: "<span class='badge badge-info'>#:leaveType#</span>",
+            template: "#if (leaveType =='Short Leave' )" +
+                " { # <span class='badge badge-info'>Personal Leave</span> # } else {# <span class='badge badge-info'> #:leaveType#</span> # }#"
+        },
         
         { field: "comment", title: comment, hidden: true, width: 40 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
@@ -230,6 +243,8 @@ function fnLoadGridByStatus(btnValue) {
     if (btnValue == 'Pending') {
 
         setTimeout(function () {
+            localStorage.setItem('Active_GridArea', 'Pending'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
             $('#btnAreaShowHideOnConditionBase').show();
             //$(".k-checkbox").show();
             $('.header-checkbox').show();
@@ -237,9 +252,36 @@ function fnLoadGridByStatus(btnValue) {
         }, 50);
     } else {
         setTimeout(function () {
+            localStorage.setItem('Active_GridArea', 'Approved');//This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
             $('#btnAreaShowHideOnConditionBase').hide();
             $('.header-checkbox').hide();
             $('.k-checkbox.row-checkbox').hide();
         }, 50);
     }
+}
+function redirectToEmployeeDetailView(e) {
+
+    var row = $(e).closest("tr");
+    var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+ //   console.log(dataItem)
+     
+    if (dataItem.isUpperLevel == 0) {
+        localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+
+        window.location.href = '/Employees/Request/Detail/';
+
+    } else {
+
+        localStorage.setItem('EmployeeNumber', dataItem.email);
+        localStorage.setItem('LoggedInEmployeeId', dataItem.requested_EmployeeId);
+        localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.requested_EmployeeId);
+        localStorage.setItem('Employees_Request_Area', window.location.href.split('/').pop());
+        window.location.href = '/HumanResource/Employee/Detail/';
+
+
+
+    }
+
 }

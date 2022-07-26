@@ -30,6 +30,31 @@ $(function () {
     //var LeaveRequestGrid = "LeaveRequestGrid";
     loadEmployeeProfile();
 
+      
+    if (localStorage.getItem('Employees_Request_Area') == 'Leaves') {
+        $('#btnLeaveRequestTab').show();
+        $('#div_Employees_Request').show();
+        $('#btnLeaveRequestTab').click();
+        $('#btnShortLeaveRequestTab').hide();
+        localStorage.removeItem('Employees_Request_Area');
+
+    } else if (localStorage.getItem('Employees_Request_Area') == 'ShortLeaves') {
+        $('#div_Employees_Request').show();
+        $('#btnShortLeaveRequestTab').show();
+        $('#btnLeaveRequestTab').hide();
+        setTimeout(function () {
+
+        $('#btnShortLeaveRequestTab').click();
+        }, 100);
+
+        localStorage.removeItem('Employees_Request_Area');
+       
+    } else {
+        $('#btnLeaveRequestTab').hide();
+        $('#btnShortLeaveRequestTab').hide();
+        $('#btnLeaveRequestTab').hide();
+    }
+
     //| Buttons Click Events
     var gridColumns = [];
     $('#btnLeaveRequestTab').click(function () {
@@ -48,6 +73,7 @@ $(function () {
         $('#btnLetterRequestTab').removeClass('btn-primary').addClass('btn-dark');
         $('#btnLeaveCancelRequestTab').removeClass('btn-primary').addClass('btn-dark');
         $('#btnCashInLeaveTab').removeClass('btn-primary').addClass('btn-dark');
+         
         loadShortLeaveGrid();
     });
     $('#btnLetterRequestTab').click(function () {
@@ -117,10 +143,10 @@ function loadEmployeeProfile() {
 }
 function loadEmployeeProfileCallBack(response) {
     $('#CreatedBy').val(JSON.parse(response.Value).id);
-  //  $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
+    //  $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
     $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
-    
-     
+
+
     $.each(JSON.parse(response.Value), function (key, value) {
         $('#' + capitalizeFirstLetter(key)).text(value);
     });
@@ -151,10 +177,13 @@ var loadLeaveRequestGridCallBack = function (inputDataJSON) {
     bindLeaveRequestGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindLeaveRequestGrid = function (inputDataJSON) {
-
+   // console.log(inputDataJSON)
     var isHidden = inputDataJSON.length > 0 ? !inputDataJSON[0].isApproverExist : 0;
     var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 4 },
         { field: "id", title: "id", hidden: true },
+        { field: "isHR", title: "isHR", hidden: true },
+        { field: "isUpperLevel", title: "isUpperLevel", hidden: true },
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20 },
         { field: "endDate", title: endDate, hidden: false, width: 20 },
@@ -164,18 +193,21 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
         {
             title: status,
             field: 'status',
-            width: 35,
+            width: 15,
             hidden: false,
+            filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
-            template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
+            template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>" + lblApproved + "</span> # }#"
         },
         {
             'title': ' ',
             'field': 'isApproverExist',
-            'width': 35,
+            'width': 5,
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
-            'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
+            filterable: false,
+            //  template: '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
+            template: "<a style='cursor:pointer; font-size:20px;' onClick= redirectToEmployeeDetailView(this) title=" + lblDetails + " ><span class='fa fa-eye'></span></a> "
         },
 
     ];
@@ -292,15 +324,17 @@ var loadShortLeaveGridCallBack = function (inputDataJSON) {
     bindShortLeaveGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindShortLeaveGrid = function (inputDataJSON) {
+    console.log(inputDataJSON)
     var isHidden = inputDataJSON.length > 0 ? !inputDataJSON[0].isApproverExist : 0;
     var gridColumns = [
         { field: "id", title: "id", hidden: true },
         { field: "requestDate", title: requestDate, hidden: false, width: 20 },
+
         { field: "startTime", title: startTime, hidden: false, width: 20 },
         { field: "endTime", title: endTime, hidden: false, width: 20 },
         { field: "numberOfHours", title: hours, hidden: false, width: 15 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
-        {
+/*        {
             title: status,
             field: 'status',
             width: 35,
@@ -315,6 +349,27 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
             hidden: isHidden,
             'template': '<button class="btn btn-success btn-sm" value="Accept" onClick= approveShortLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineShortLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
+        },
+        */
+        {
+            title: status,
+            field: 'status',
+            width: 15,
+            hidden: false,
+            filterable: false,
+            //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
+        //    template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>" + lblApproved + "</span> # }#"
+            template: "#if (status.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(status == 'Pending' || statusForCondition=='Short Leave') {# <span class='badge badge-primary'>#:status#</span> # }else if(status.substring(0,4) == 'Work') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>" + lblApproved + "</span> # }#"
+        },
+        {
+            'title': ' ',
+            'field': 'isApproverExist',
+            'width': 5,
+            //'hidden': false,//'#if(1 == 1) {# false # }  else {# false #}#',
+            hidden: isHidden,
+            filterable: false,
+            //  template: '<button class="btn btn-success btn-sm" value="Accept" onClick= approveLeave(this);><i class="fa fa-check"></i>' + btnApproveText + '</button><button class="btn btn-danger btn-sm" value="Reject" onClick= declineLeave(this);><i class="fa fa-ban"></i>' + btnDeclineText + '</button>'
+            template: "<a style='cursor:pointer; font-size:20px;' onClick= redirectToEmployeeDetailView_ForShortLeave(this) title=" + lblDetails + " ><span class='fa fa-eye'></span></a> "
         },
 
 
@@ -722,6 +777,8 @@ var bindCashInLeaveRequestGridCallBack = function (inputDataJSON) {
     var isHidden = inputDataJSON.length > 0 ? !inputDataJSON[0].isApproverExist : 0;
     var gridColumns = [
         { field: "id", title: "id", hidden: true },
+        { field: "isHR", title: "isHR", hidden: true },
+        { field: "isUpperLevel", title: "isUpperLevel", hidden: true },
         { field: "days", title: days, hidden: false, width: 30 },
         { field: "date", title: requestDate, hidden: false, width: 30 },
         { field: "statusId", title: "StatusId", hidden: true, width: 30 },
@@ -851,3 +908,47 @@ var declineCashInLeaveRequestCallBack = function (response) {
 
 }
 //|Load Cash In Leave Request Grid Ends
+
+
+
+
+function redirectToEmployeeDetailView(e) {
+
+    var row = $(e).closest("tr");
+    var grid = $("#" + RequestGrid).data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+    if (dataItem.statusForCondition == 'Pending' || dataItem.statusForCondition.substring(0, 7) == 'Decline' || dataItem.statusForCondition == '"Work P.Leave"') {
+        localStorage.setItem('Active_GridArea', 'Pending'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
+    } else {
+        localStorage.setItem('Active_GridArea', 'Approved'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
+    }
+
+    localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+  //  window.open('/Employees/Request/Details', '_blank');
+    window.location.href='/Employees/Request/Details';
+
+
+}
+
+function redirectToEmployeeDetailView_ForShortLeave(e) {
+       
+    var row = $(e).closest("tr");
+    var grid = $("#RequestGrid").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+    if (dataItem.statusForCondition == 'Pending' || dataItem.statusForCondition.substring(0, 7) == 'Decline' || dataItem.statusForCondition.substring(0, 4) == 'Work' || dataItem.statusForCondition == 'Short Leave') {
+        localStorage.setItem('Active_GridArea', 'Pending'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
+    } else {
+        localStorage.setItem('Active_GridArea', 'Approved'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
+    }
+
+    localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+    //window.open('/Employees/Request/Detail', '_blank');
+    window.location.href = '/Employees/Request/Detail';
+
+}

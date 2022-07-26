@@ -183,6 +183,9 @@
   <data name="lblApprove" xml:space="preserve">
     <value>Approve</value>
   </data>
+  <data name="lblApproved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
   <data name="lblApproveQuestion" xml:space="preserve">
     <value>Approve ?</value>
   </data>

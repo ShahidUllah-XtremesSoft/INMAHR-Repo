@@ -171,6 +171,9 @@
   <data name="lblApprove" xml:space="preserve">
     <value>Approve</value>
   </data>
+  <data name="lblApprovedBy" xml:space="preserve">
+    <value>Approved By</value>
+  </data>
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>Approved Requests</value>
   </data>
@@ -185,6 +188,12 @@
   </data>
   <data name="lblBody" xml:space="preserve">
     <value>Body</value>
+  </data>
+  <data name="lblBreakIn" xml:space="preserve">
+    <value>Break In</value>
+  </data>
+  <data name="lblBreakOut" xml:space="preserve">
+    <value>Break Out</value>
   </data>
   <data name="lblCancelLeaveRequest" xml:space="preserve">
     <value>Leave Cancellation</value>
@@ -407,6 +416,9 @@
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>Joining Date</value>
+  </data>
+  <data name="lblLate" xml:space="preserve">
+    <value>Late</value>
   </data>
   <data name="lblLateInTime" xml:space="preserve">
     <value>Late In Time</value>

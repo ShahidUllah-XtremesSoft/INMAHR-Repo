@@ -232,6 +232,8 @@ $('#btn-technical-section-upload-document').click(function () {
     $('#TechnicalSection_Document_ProjectId').val(project_Id);
     $('#TechnicalSection_Document_Language').val(_currentLanguage);
     $('#TechnicalSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+
+
     if (customValidateForm('frmAddUpdate_TechnicalSection_Document')) {
         if (!firstDateShouldBeGreaterThanSecondDate($('#TechnicalSection_Document_StartDate').val(), $('#TechnicalSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
             return false;

@@ -2,13 +2,21 @@
 @{
     ViewBag.Title = @HRModuleUI.HumanResourceUI.lbldailyAttendance;
 }
-
+ 
 
 <div class="card">
     <div class="card-block">
         <input type="hidden" name="Language" id="Language" />
         <input type="hidden" name="CreatedBy" id="CreatedBy" />
+
         <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSearch</label>
+                    <input type="text" class="form-control" value="" id="ddl-search" />
+
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="divSearchControls">
                     <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDepartment</label>
@@ -24,6 +32,8 @@
                 </div>
 
             </div>
+
+
             <div class="col-md-1">
                 <div class="form-group divSearchControls">
                     <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i>@HRModuleUI.HumanResourceUI.lblSearch</button>
@@ -34,16 +44,18 @@
                     <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnShowAll"><i class="fa fa-eye"></i> @HRModuleUI.HumanResourceUI.lblShowAll</button>
                 </div>
             </div>
-            <div class="col-md-4"></div>
+
             <div class="col-md-2">
                 <button type="button" id="btnProcess" class="btn btn-success @Resources.Common.PullRight" style="margin-top:0px;" hidden="hidden"><i class="fa fa-refresh"></i> @Resources.Global.btnProcess</button>
             </div>
         </div>
+        
         <div class="grid-main-div">
             <div class="row">
                 <div class="col-md-12">
 
                     <div id="AttendanceGrid"></div>
+                     
                 </div>
             </div>
         </div>
@@ -51,7 +63,7 @@
     </div>
 @section scripts {
     @*<script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-grid.js"></script>*@
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-today.js?+971506374785"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-today.js?+971502324409"></script>
 
     <script>
         //Grid columns

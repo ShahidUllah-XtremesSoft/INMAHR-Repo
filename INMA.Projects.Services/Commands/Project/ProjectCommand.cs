@@ -690,7 +690,8 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "New document attachment";
-                        description = "New document( " + model.Project_Section_Parent_Type_DDL_Text + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Section_Parent_Type_DDL_Text + "";
+                     //   description = "New document( " + model.Project_Section_Parent_Type_DDL_Text + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Section_Parent_Type_DDL_Text + "";
+                        description = "New document( " + model.Project_Section_Parent_Type_DDL_Text + " ) attached for  project# " + clientDetailInfo.ProjectNumber + "";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.DesignSection_Document_ProjectId, model.DesignSection_Document_CreatedBy, employee.EmployeeId, model.DesignSection_Document_Language);

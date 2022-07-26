@@ -4,6 +4,8 @@ $(function () {
     //if (!isLoggedInUserHR) {
     //    $('#divSearchControls').css('display', 'none');
     //}
+    loadAttendance_LeaveDropdownList();
+
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
@@ -71,12 +73,12 @@ function loadAttendanceGrid(inputJSON) {
     }
     ajaxRequest({ commandName: 'Employee_Attendance_GetByEmployee', values: inputJSON, CallBack: loadAttendanceGridCallBack });
 }
-var loadAttendanceGridCallBack = function (inputDataJSON) {        
+var loadAttendanceGridCallBack = function (inputDataJSON) {
     //localStorage.removeItem('EmployeeIdForAttendance');
     bindAttendanceGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAttendanceGrid = function (inputDataJSON) {
-    
+
     var record = 0;
     /* Commented below code on 20 June 2022
     var gridColumns = [
@@ -119,7 +121,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "id", title: "id", hidden: true },
         { field: "employeeNumber", title: empNum, width: 40, filterable: true },
         { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },
-        { field: "employeeName", title: employeeName, width: 100, filterable: true },
+        { field: "employeeName", title: employeeName, width: 100, filterable: false },
         { field: "departmentId", title: 'DepartmentId', width: 100, filterable: true, hidden: true },
         { field: "departmentName", title: department, width: 100, filterable: true },
         { field: "checkInDate", title: checkinDate, width: 40, filterable: true },
@@ -127,29 +129,32 @@ var bindAttendanceGrid = function (inputDataJSON) {
         { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
         {
             field: "lateInTime", title: lateTimeIn, width: 35, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
-            , footerTemplate: "<span class='badge badge-danger'> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
+            , template: "#if (lateInTime !='') { # <span class=''>#:lateInTime#</span> #}#"
+            , footerTemplate: "<span class=''> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
         },
         {
             field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            , template: "#if (earlyOutTime !='') { # <span class='badge  badge-danger'>#:earlyOutTime#</span> #}#"
+            , template: "#if (earlyOutTime !='') { # <span class=''>#:earlyOutTime#</span> #}#"
             , format: "{0:HH:mm}"
-            , footerTemplate: "<span class='badge badge-danger'><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
+            , footerTemplate: "<span class=''><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
         },
+        { field: "breakIn", title: lblBreakIn, width: 40, filterable: false, hidden: false },
+        { field: "breakOut", title: lblBreakOut, width: 40, filterable: false, hidden: false },
         {
             title: status,
             field: 'status',
-            width: 50,
+            width: 70,
             hidden: false,
+            filterable: false,
             template: "#if (status == 'Present')" +
-                " { # <span class='badge badge-success'>" + lblPresent + "</span> # } else if(status == 'Absent')" +
-                " { if(status == 'Absent' && departmentId==11) {# <span class='badge badge-danger'>" + lblSite + "</span> # } else { # <span class='badge badge-danger'>" + lblAbsent + "</span> # }}   else " +
+                " { # <span class=''>" + lblPresent + "</span> # } else if(status == 'Absent')" +
+                " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}   else " +
                 " {# <span class='badge badge-primary'>#:status#</span> #}#"
-            , footerTemplate: "<span class='badge badge-success'>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class='badge badge-danger'>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
+            , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
 
         },
-        { field: "remarks", title: 'Remarks', width: 40, filterable: true, hidden: false },
-        
+        { field: "remarks", title: 'Remarks', width: 40, filterable: false, hidden: false },
+
     ];
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
     setTimeout(function () {
@@ -179,11 +184,11 @@ var bindAttendanceGrid = function (inputDataJSON) {
             }
 
             if (gridData[i].lateInTime != "" && gridData[i].lateInTime != null) {
-                
+
                 totallateInTime++;
                 totallateInTimeCount = parseFloat(gridData[i].lateInTime);
-         
-               
+
+
                 // grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-success");
             }
 
@@ -229,8 +234,45 @@ var bindAttendanceGrid = function (inputDataJSON) {
         //$(".footerLateTimeInCalculated").text(totallateInTimeCount);
         //$(".footerPresentPlaceholder").text(totalPresent);
         //$(".footerAbsentPlaceholder").text(totalAbsent);
+        /*
+        var arrayForDropdown = [];
 
+        for (var x = 0; x < gridData.length; x++) {
 
+            if (gridData[x].status != 'Present' && gridData[x].status != 'Absent') {
+
+                arrayForDropdown.push(gridData[x].employeeName);
+            } else {
+
+                arrayForDropdown.push(gridData[x].status);
+            }
+        }
+        let arrayForDropdownn = [...new Set(arrayForDropdown)];
+        $("#ddl-search").kendoDropDownList({
+            dataSource: arrayForDropdownn
+            , change: function () {
+
+                var value = this.value();
+                if (value) {
+                     
+
+                    var grid = $("#AttendanceGrid").data("kendoGrid");
+
+                    //  grid.dataSource.filter(value);
+                    if (value == 'Present' || value == 'Absent') {
+                        grid.dataSource.filter({ field: "status", operator: "eq", value: value });
+                    } else if (value != 'Present' || value != 'Absent') {
+
+                        grid.dataSource.filter({ field: "employeeName", operator: "eq", value: value });
+
+                    }
+                } else {
+                    grid.dataSource.filter({});
+                }
+                calculateFooterData();
+            }
+        });
+        */
     }, 100);
 };
 
@@ -247,6 +289,125 @@ function departmentTreeViewCheck(e) {
     $('#DepartmentIds').val(concatenatedDepartments);
     //alert($('#DepartmentIds').val());
 }
- 
- 
- 
+
+
+function calculateFooterData() {
+    var grid = $("#AttendanceGrid").data("kendoGrid");
+    var gridData = grid.dataSource.view();
+
+    var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
+    var totallateInTimeCount = "";
+    var t1 = "00:00:00";
+    var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
+
+
+
+    for (var i = 0; i < gridData.length; i++) {
+
+        if (gridData[i].changeColor == 'Yes') {
+            grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
+
+        }
+        if (gridData[i].status == 'Absent') {
+            grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-danger");
+            totalAbsent++;
+        }
+        else if (gridData[i].status == 'Present') {
+            totalPresent++;
+        }
+
+        if (gridData[i].lateInTime != "" && gridData[i].lateInTime != null) {
+
+            totallateInTime++;
+            totallateInTimeCount = parseFloat(gridData[i].lateInTime);
+
+
+
+        }
+
+
+        if (gridData[i].lateInTime != '') {
+            var t2 = gridData[i].lateInTime.split(':');
+            lateTimeInSeconds = lateTimeInSeconds + parseInt(Number(t2[2]));
+            lateTimeInMinutes = lateTimeInMinutes + parseInt(Number(t2[1]));
+            lateTimeInHours = lateTimeInHours + parseInt(Number(t2[0]));
+
+        }
+        if (gridData[i].earlyOutTime != '') {
+            var earlyOutTime = gridData[i].earlyOutTime.split(':');
+            earlyTimeOutSeconds = earlyTimeOutSeconds + parseInt(Number(earlyOutTime[2]));
+            earlyTimeOutMinutes = earlyTimeOutMinutes + parseInt(Number(earlyOutTime[1]));
+            earlyTimeOutHours = earlyTimeOutHours + parseInt(Number(earlyOutTime[0]));
+
+        }
+
+
+    }
+    lateTimeInSeconds = lateTimeInSeconds + (lateTimeInMinutes * 60) + (lateTimeInHours * 3600);
+    var grandTotalLateInTime = ('0' + (parseInt(lateTimeInSeconds / (60 * 60)))).slice(-2) + ":" +
+        ('0' + (parseInt(lateTimeInSeconds / 60 % 60))).slice(-2) + ":" +
+        ('0' + (lateTimeInSeconds % 60)).slice(-2);
+
+    earlyTimeOutSeconds = earlyTimeOutSeconds + (earlyTimeOutMinutes * 60) + (earlyTimeOutHours * 3600);
+    var grandTotalEarlyTimeOut = ('0' + (parseInt(earlyTimeOutSeconds / (60 * 60)))).slice(-2) + ":" +
+        ('0' + (parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
+        ('0' + (earlyTimeOutSeconds % 60)).slice(-2);
+
+    //$(".footerLateTimeInPlaceholder").text(totallateInTime);
+    $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);
+    $(".footerLateTimeOutPlaceholder").text(grandTotalEarlyTimeOut);
+    $(".footerPresentPlaceholder").text(totalPresent);
+    $(".footerAbsentPlaceholder").text(totalAbsent);
+
+}
+
+
+
+function loadAttendance_LeaveDropdownList() {
+    ajaxRequest({
+        commandName: 'DDL_Attendance_Leave',
+        values: { Language: _currentLanguage }, CallBack: loadAttendance_LeaveDropdownListCallBack
+    });
+
+}
+var loadAttendance_LeaveDropdownListCallBack = function (response) {
+
+
+    $("#ddl-search").kendoDropDownList({
+        dataTextField: "value",
+        dataValueField: "id",
+        index: -1,
+        dataSource: JSON.parse(response.Value)
+        , change: function () {
+            calculateFooterData();
+            // var value = this.value();
+            var value = this.text();
+            if (value) {
+
+                var grid = $("#AttendanceGrid").data("kendoGrid");
+
+
+                if (value == lblPresent) {
+                    grid.dataSource.filter({ field: "status", operator: "contains", value: 'Present' });
+
+                } else if (value == lblAbsent) {
+                    grid.dataSource.filter({ field: "status", operator: "contains", value: 'Absent' });
+                } else if (value == lblLate) {
+                    grid.dataSource.filter({ field: "status", operator: "contains", value: 'Late' });
+                } else if (value != lblPresent || value != lblAbsent) {
+
+                    grid.dataSource.filter({ field: "employeeName", operator: "contains", value: value });
+
+                } else {
+                    grid.dataSource.filter({ logic: "or", filters: [{ field: "status", operator: "contains", value: value }, { field: "remarks", operator: "contains", value: value }] })
+
+
+                }
+            } else {
+                grid.dataSource.filter({});
+            }
+
+        }
+    });
+
+}

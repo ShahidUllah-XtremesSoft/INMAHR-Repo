@@ -547,6 +547,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\SendLetters\internal-letter-send-letter-load-data.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\short-leaves-request-details.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\request-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\letters.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\short-leaves.js" />
@@ -684,6 +686,8 @@
     <Content Include="Content\Themes\BizPage\assets\vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Areas\Project\Views\Meeting\ShortDetails.cshtml" />
     <Content Include="Areas\Project\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\RequestDetails.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\ShorLeave_RequestDetails.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

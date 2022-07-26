@@ -259,6 +259,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved.
+        /// </summary>
+        internal static string lblApproved {
+            get {
+                return ResourceManager.GetString("lblApproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Approve ?.
         /// </summary>
         internal static string lblApproveQuestion {

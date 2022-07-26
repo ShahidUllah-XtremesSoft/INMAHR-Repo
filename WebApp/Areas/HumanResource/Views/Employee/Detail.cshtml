@@ -198,7 +198,7 @@
 
 </div>
 <div class="row">
-    <div class="col-md-12" id="divEmployeeProject">
+    <div class="col-md-12" id="divEmployeeProjects" style="display:none;">
         <div class="card">
             <div class="card-header">
                 <strong>@ProjectUI.ProjectUI.lblProject </strong>
@@ -216,7 +216,7 @@
 </div>
 
 
-<div class="card" style="display:none;">
+<div class="card" style="display:none;"  id="div_Employees_Request">
     <div class="card-header">
         <h5>@HRModuleUI.HumanResourceUI.lblRequest</h5>
         <div class="card-header-right">
@@ -228,12 +228,12 @@
         <div class="row form-group">
             <div class="col-md-12">
 
-                <div class="btn-group" role="group" aria-label="Requests">
-                    <button type="button" class="btn btn-sm btn-primary" id="btnLeaveRequestTab">@HRModuleUI.HumanResourceUI.lblLeave </button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnShortLeaveRequestTab">@HRModuleUI.HumanResourceUI.lblShortLeave</button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnLetterRequestTab">@HRModuleUI.HumanResourceUI.lblOfficialLetter</button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnLeaveCancelRequestTab">@HRModuleUI.HumanResourceUI.lblLeaveCancellation</button>
-                    <button type="button" class="btn btn-sm btn-dark" id="btnCashInLeaveTab">@HRModuleUI.HumanResourceUI.lblCashInLieu</button>
+                <div class="btn-group" role="group" aria-label="Requests" >
+                    <button   type="button" class="btn btn-sm btn-primary" id="btnLeaveRequestTab">@HRModuleUI.HumanResourceUI.lblLeave </button>
+                    <button   type="button" class="btn btn-sm btn-dark" id="btnShortLeaveRequestTab">@HRModuleUI.HumanResourceUI.lblShortLeave</button>
+                    @*<button type="button" class="btn btn-sm btn-dark" id="btnLetterRequestTab">@HRModuleUI.HumanResourceUI.lblOfficialLetter</button>*@
+                    @*<button type="button" class="btn btn-sm btn-dark" id="btnLeaveCancelRequestTab">@HRModuleUI.HumanResourceUI.lblLeaveCancellation</button>*@
+                    @*<button type="button" class="btn btn-sm btn-dark" id="btnCashInLeaveTab">@HRModuleUI.HumanResourceUI.lblCashInLieu</button>*@
                 </div>
             </div>
         </div>
@@ -361,11 +361,11 @@
 
 
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-detail.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-detail.js?+971522324409"></script>
 
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeeEducationalDocumentGridPartialView.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeePersonalDocumentGridPartialView.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/EmployeesProject/load-project-by-employee-id.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeeEducationalDocumentGridPartialView.js?+971522324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/PartialViews/EmployeePersonalDocumentGridPartialView.js?+971522324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/EmployeesProject/load-project-by-employee-id.js?+971522324409"></script>
 
 
 

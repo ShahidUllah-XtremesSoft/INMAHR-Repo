@@ -171,6 +171,9 @@
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
   </data>
+  <data name="lblApprovedBy" xml:space="preserve">
+    <value>معتمد من</value>
+  </data>
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>الطلبات المعتمدة</value>
   </data>
@@ -185,6 +188,12 @@
   </data>
   <data name="lblBody" xml:space="preserve">
     <value>الجسم</value>
+  </data>
+  <data name="lblBreakIn" xml:space="preserve">
+    <value>خروج للاستراحة</value>
+  </data>
+  <data name="lblBreakOut" xml:space="preserve">
+    <value>عودة من الاستراحة</value>
   </data>
   <data name="lblCancelLeaveRequest" xml:space="preserve">
     <value>الغاء الاجازة</value>
@@ -403,11 +412,14 @@
   <data name="lblJoinDate" xml:space="preserve">
     <value>تاريخ التوظيف</value>
   </data>
+  <data name="lblLate" xml:space="preserve">
+    <value>تاخير</value>
+  </data>
   <data name="lblLateInTime" xml:space="preserve">
     <value>التاخيرات</value>
   </data>
   <data name="lblLeave" xml:space="preserve">
-    <value>رسالة رسمية</value>
+    <value>طلب اجازة</value>
   </data>
   <data name="lblLeavebalance" xml:space="preserve">
     <value>الرصيد المتوفر</value>
@@ -416,7 +428,8 @@
     <value>Leave balance deduction details</value>
   </data>
   <data name="lblLeaveCancellation" xml:space="preserve">
-    <value>العودة الي العمل/الغاء إجازة</value>
+    <value>الغاء الاجازة</value>
+    <comment>العودة الي العمل/الغاء إجازة</comment>
   </data>
   <data name="lblLeaveName" xml:space="preserve">
     <value>Leave Name</value>
@@ -637,7 +650,7 @@
     <value>ارسل</value>
   </data>
   <data name="lblShortLeave" xml:space="preserve">
-    <value>إجازة قصيرة</value>
+    <value>إذن خروج</value>
   </data>
   <data name="lblShortLeaveRequest" xml:space="preserve">
     <value>إذن خروج</value>

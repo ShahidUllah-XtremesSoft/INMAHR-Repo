@@ -136,5 +136,11 @@ namespace INMA.HR.Services
         #endregion
         Meeting_Multiple = 39,
 
+
+        Requests =10001,
+        ShorLeave_Requests =10002,
+
+
+
     }
 }

@@ -15,63 +15,81 @@
             <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
             <input type="hidden" name="Language" id="Language" value="" />
             <input type="hidden" name="EditLeavDays" id="EditLeavDays" value="0" />
-
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLeaveType</label>
-                        <input class="form-control" id="LeaveTypeId" name="LeaveTypeId" required />
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLeaveType</label>
+                                <input class="form-control" id="LeaveTypeId" name="LeaveTypeId" required />
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAvailableBalance </label>
+                                <input class="form-control" id="AvailableLeave" name="AvailableLeave" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblStartDate </label>
+                                <input class="form-control" id="StartDate" name="StartDate" required />
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblEndDate</label>
+                                <input class="form-control" id="EndDate" name="EndDate" required />
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNumberOfDays</label>
+                                <input class="form-control" id="TotalDays" name="TotalDays" value="0" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
                     </div>
                 </div>
-                <div class="col-md-8"></div>
 
-            </div>
-            <div class="row">
-
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAvailableBalance </label>
-                        <input class="form-control" id="AvailableLeave" name="AvailableLeave" readonly />
-                    </div>
-                </div>
-                <div class="col-md-8"></div>
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblremarks</label><span  style="color:red">*</span> <br />
+                        <textarea type="text" required class="form-control editor" name="Leave_Remarks" id="Leave_Remarks" value="" style="height:50%"></textarea>
 
+                    </div>
+                    
+                        <div class="form-group div-attachment" style="width:50%">
+                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span id="asteric_span" style="color:red;display:none;">*</span> <br />
+                            <input type="file" class="form-control" name="Attachment" id="Attachment">
+                        </div>
+                    
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@Resources.Global.lblStartDate </label>
-                        <input class="form-control" id="StartDate" name="StartDate" required />
-                    </div>
-                </div>
-                <div class="col-md-8"></div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@Resources.Global.lblEndDate</label>
-                        <input class="form-control" id="EndDate" name="EndDate" required />
-                    </div>
-                </div>
-                <div class="col-md-8"></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNumberOfDays</label>
-                        <input class="form-control" id="TotalDays" name="TotalDays" value="0" readonly />
-                    </div>
-                </div>
-                <div class="col-md-8"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-send"></i>  @HRModuleUI.HumanResourceUI.lblSend</button>
                 </div>
             </div>
+
 
         </form>
 

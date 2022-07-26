@@ -180,6 +180,9 @@
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
   </data>
+  <data name="lblApproved" xml:space="preserve">
+    <value>المعتمدة</value>
+  </data>
   <data name="lblApproveQuestion" xml:space="preserve">
     <value>اعتماد؟</value>
   </data>

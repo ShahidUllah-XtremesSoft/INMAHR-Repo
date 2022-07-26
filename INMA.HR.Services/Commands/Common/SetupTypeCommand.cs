@@ -72,4 +72,26 @@ namespace INMA.HR.Services.Commands.Common
 
         }
     }
+
+    [Command(Name = "DDL_Attendance_Leave")]
+    public class DDL_Attendance_LeaveCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.DDL_Attendance_Leave.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
 }

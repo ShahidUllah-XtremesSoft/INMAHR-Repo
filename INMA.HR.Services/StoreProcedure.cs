@@ -3,6 +3,7 @@
 
     #region Common
     Setup_Type_DropdownByTypeName,
+    DDL_Attendance_Leave,
     Setup_Type_DropdownByTypeName_New,
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
@@ -117,7 +118,10 @@
     HR_LeaveRequest_Update,
     HR_LeaveType_GetQuota,
     HR_LeaveRequest_GetAll,
-
+    Request_Signed_Leave,
+    Request_History_Signed_Get,
+    Request_ShortLeave_History_Signed_Get,
+    Request_ShortLeave_Request_Submitted_Count_Monthly,
     #endregion
 
 

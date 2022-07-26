@@ -111,13 +111,13 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 field: "currentFileName",
                 title: lblDocumentAttachment,
                 hidden: false,
-                width: 30,
+                width: 20,
                 filterable: false,
                 template: " #  if (currentFileName == null )" +
                     " { # <label class='pcoded-badge label label-danger'>" + lblNoAttachment + "</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:100%;cursor: pointer;'/> </a># } else" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:70%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:70%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:70%;cursor: pointer;'/> </a># } else" +
                     " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:50%';cursor: pointer; /></a> #} #"
 
 
@@ -133,8 +133,8 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
             },
-           
-           
+
+
 
             {
                 title: status,
@@ -154,7 +154,7 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 filterable: false,
                 template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
 
-            } ,
+            },
             //, {
             //    field: "employee_uploading_document_time_status", title: " ", hidden: false, width: 40, filterable: false,
             //    template: "   <label class='badge   badge-info'>#=employee_uploading_document_time_status #</label>",
@@ -165,7 +165,7 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
                 , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_GovernmentDocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
             },
-            
+
 
 
 
@@ -258,7 +258,7 @@ function fn_IsWorkStarted() {
     });
     function fn_IsWorkStarted_Callback(response) {
 
-         
+
 
 
         if (JSON.parse(response.Value).isEmployeeWorkStarted == 'No') { // No mean loggedin employee is envoled in this project and it's exist in Project Multple table .
@@ -291,7 +291,8 @@ function fn_IsWorkStarted() {
                 }
             }).then(function (restult) {
                 if (restult.value) {
-
+                     
+                   
                     ajaxRequest({
                         commandName: 'Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters', values: {
 
@@ -302,29 +303,30 @@ function fn_IsWorkStarted() {
                             Language: _currentLanguage
                         }, CallBack: ''
                     });
-
+                    
                     //After ajax call .
                     $('#load-model').click();
 
 
                     if (JSON.parse(response.Value).assign_employee_StartDate != null) {
                         setTimeout(function () {
-                        $('.show-hide-employee-start-datetime').show();
-                        $('.show-hide-employee-start-datetime').addClass('btn-success')
 
-                        $('.show-hide-assign-start-datetime').show();
-                        $('.show-hide-assign-start-datetime').addClass('btn-info')
+                            $('.show-hide-employee-start-datetime').show();
+                            $('.show-hide-employee-start-datetime').addClass('btn-success')
 
-                        $('.show-hide-completion-start-datetime').show();
-                        $('.show-hide-completion-start-datetime').addClass('btn-danger')
+                            $('.show-hide-assign-start-datetime').show();
+                            $('.show-hide-assign-start-datetime').addClass('btn-info')
 
+                            $('.show-hide-completion-start-datetime').show();
+                            $('.show-hide-completion-start-datetime').addClass('btn-danger')
+                            $('.show-hide-employee-task-area').show();
 
-                        $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
-                        $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+                            $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+                            $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
 
-                        $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
-                        $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
-                        $('.show-hide-employee-task-area').show();
+                            $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+                            $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+
                         }, 100);
                     } else {
 
@@ -351,26 +353,26 @@ function fn_IsWorkStarted() {
 
             if (JSON.parse(response.Value).assign_employee_StartDate != null) {
                 setTimeout(function () {
-                $('.show-hide-employee-start-datetime').show();
-                $('.show-hide-employee-start-datetime').addClass('btn-success')
+                    $('.show-hide-employee-start-datetime').show();
+                    $('.show-hide-employee-start-datetime').addClass('btn-success')
 
-                $('.show-hide-assign-start-datetime').show();
-                $('.show-hide-assign-start-datetime').addClass('btn-info')
+                    $('.show-hide-assign-start-datetime').show();
+                    $('.show-hide-assign-start-datetime').addClass('btn-info')
 
-                $('.show-hide-completion-start-datetime').show();
-                $('.show-hide-completion-start-datetime').addClass('btn-danger')
-
-
+                    $('.show-hide-completion-start-datetime').show();
+                    $('.show-hide-completion-start-datetime').addClass('btn-danger')
 
 
-                $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
-                $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
+                    $('.show-hide-employee-task-area').show();
 
-                $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
-                $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+                    $('.assign-employee-start-date').text(JSON.parse(response.Value).assign_employee_StartDate);
+                    $('.assign-employee-end-date').text(JSON.parse(response.Value).assign_employee_CompletionDate);
 
-                $('.show-hide-employee-task-area').show();
-            }, 100);
+                    $('.employee-work-date').text(JSON.parse(response.Value).employeeTask_StartDate);
+                    $('.employee-work-time').text(JSON.parse(response.Value).employeeTask_StartTime);
+
+
+                }, 100);
             } else {
 
                 $('.show-hide-employee-task-area').hide();
@@ -422,6 +424,9 @@ $('#btn-design-section-upload-document').click(function () {
     $('#DesignSection_Document_ProjectId').val(project_Id);
     $('#DesignSection_Document_Language').val(_currentLanguage);
     $('#DesignSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
+    $('#Project_Section_Parent_Type_DDL_Text').val($("#design-section-stepper").data('kendoStepper').selectedStep.options.label);
+
+
     if (customValidateForm('frmAddUpdate_DesignSection_Document')) {
         if (!firstDateShouldBeGreaterThanSecondDate($('#DesignSection_Document_StartDate').val(), $('#DesignSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
             return false;
@@ -669,10 +674,11 @@ function fnloadloadProjectSectiondownListsCallBack(response) {
 
 function fn_DesignSection_OnSelect_Section_DDL(e) {
 
-    alert('');
+
     var selected_Id = e.dataItem.id;
     $('#Setup_SetupType_Id').val(selected_Id);
     var selected_Text = e.dataItem.name;
+
     $('#Project_Section_Parent_Type_DDL_Text').val(selected_Text.trim());
     loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', selected_Text.trim());
 

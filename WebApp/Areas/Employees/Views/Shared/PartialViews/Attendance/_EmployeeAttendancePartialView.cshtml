@@ -13,20 +13,28 @@
         <input type="hidden" name="Language" id="Language" />
         <input type="hidden" name="CreatedBy" id="CreatedBy" />
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSearch</label>
+                    <input type="text" class="form-control" value="" id="ddl-search" />
+
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="form-group">
                     <label class="col-form-label">@Resources.Global.lblStartDate</label>
                     <input type="text" class="form-control" id="StartDate" name="StartDate" value="" />
                 </div>
 
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label class="col-form-label">@Resources.Global.lblEndDate</label>
                     <input type="date" class="form-control" id="EndDate" name="EndDate" value="" />
                 </div>
 
             </div>
+
             <div class="col-md-1">
                 <div class="form-group">
                     <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
@@ -45,6 +53,7 @@
                 <div class="col-md-12">
 
                     <div id="AttendanceGrid"></div>
+
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ namespace INMA.HR.Services.Commands.Request
     [Command(Name = "Request_Leave_Save")]
     public class Request_Leave_SaveCommand : CamelCommandBase
     {
+        public IFileService Service;
         protected override object DoAction(object v)
         {
             var model = base.MappedModel(new
@@ -21,8 +22,9 @@ namespace INMA.HR.Services.Commands.Request
                 TotalDays = 0,
                 LeaveTypeId = 0,
                 CreatedBy = 0,
+                Leave_Remarks = string.Empty,
                 Language = string.Empty,
-
+                UploadedFiles = new List<FileUploadModel>()
             }, v);
 
 
@@ -32,7 +34,26 @@ namespace INMA.HR.Services.Commands.Request
 
             values = _params.Get(model);
             var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Leave_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            if (model.UploadedFiles.Count > 0)
+            {
+                Service = new FileUploadService();
+                foreach (var file in model.UploadedFiles)
+                { 
+                        Service.UploadFile(
+                            file.CurrentFilePath, 
+                            file.OriginalFileName, 
+                            file.CurrentFileName, 
+                            (int)EntityType.Requests, 
+                            (int)_response.InsertedId, 
+                            (int)DocumentType.Requests, 
 
+
+                            XtremeFactory._factory, 
+                            XtremeFactory.connectionString);
+                    
+
+                }
+            }
             return _response;
         }
     }
@@ -47,10 +68,10 @@ namespace INMA.HR.Services.Commands.Request
                 CreatedBy = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
-                LoggedInUserDepartementId = 0,                
+                LoggedInUserDepartementId = 0,
                 Language = string.Empty,
 
-            }, v); 
+            }, v);
 
 
             var repository = Ioc.Resolve<IRepository>();
@@ -117,11 +138,11 @@ namespace INMA.HR.Services.Commands.Request
         {
             var model = base.MappedModel(new
             {
-                LoggedInUser = 0,               
-                LoggedInUserDepartmentId = 0,                
-                RoleId = 0,                
-                RequestId = 0,                
-                CreatedBy = 0,                
+                LoggedInUser = 0,
+                LoggedInUserDepartmentId = 0,
+                RoleId = 0,
+                RequestId = 0,
+                CreatedBy = 0,
                 Status = string.Empty,
                 Comment = string.Empty,
                 Language = string.Empty

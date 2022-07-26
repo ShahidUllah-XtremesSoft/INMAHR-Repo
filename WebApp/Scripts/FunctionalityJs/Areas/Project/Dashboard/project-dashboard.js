@@ -17,6 +17,7 @@ $(function () {
 var getProjectCountByVIPUrgentCallBack = function (responseJSON) {
     prepareChartDataFor_ProjectCountByVIPUrgent(JSON.parse(responseJSON.Value));
 }
+<<<<<<< Updated upstream
 function prepareChartDataFor_ProjectCountByVIPUrgent(inputJSON){
 <<<<<<< HEAD
      
@@ -25,17 +26,28 @@ function prepareChartDataFor_ProjectCountByVIPUrgent(inputJSON){
 =======
     var lables = ["All", "Urgent", "Non-Urgent", "VIP", "Non-VIP"];
 >>>>>>> parent of 094aae5 (Project Dashboard - Changes)
+=======
+function prepareChartDataFor_ProjectCountByVIPUrgent(inputJSON) {
+    var lables = [ "Urgent", "VIP"];
+  //  var lables = ["All", "Urgent", "Non-Urgent", "VIP", "Non-VIP"];
+>>>>>>> Stashed changes
     var data = [];
-   // data.push(inputJSON.all);
-    data.push(inputJSON.urgent);
+  //  data.push(inputJSON.all);
+    data.push(inputJSON.ugent);
     //data.push(inputJSON.noUrgent);
     data.push(inputJSON.vip);
+<<<<<<< Updated upstream
 <<<<<<< HEAD
    // data.push(inputJSON.nonVIP);
 =======
     data.push(inputJSON.nonVIP);
 >>>>>>> parent of 094aae5 (Project Dashboard - Changes)
+=======
+    //data.push(inputJSON.nonVIP);
+>>>>>>> Stashed changes
     renderBarChart('chart-project-count-by-vip-urgent', 'Project By VIP/Urgent', lables, data);
+    //renderBarChart('chart-project-count-by-vip-urgent', lblProjectByVIPUrgent, lables, data);
+    renderKendoChart('chart-project-count-by-vip-urgent-kendo', data, lables, lblProjectByVIPUrgent)
 }
 function getProejctCountByCategory() {    
     ajaxRequest({
@@ -214,4 +226,99 @@ function renderBarChart(divID, chartTitle, lables, data) {
             }
         }
     });
+<<<<<<< Updated upstream
 }
+=======
+}
+
+
+/* Set chart container height */
+//var data = [560, 630, 740, 910, 1170, 1380, 100, 150, 100, 100, 300];
+//var chartHeight = data.length * 50;
+//$("#chart").css("height", chartHeight);
+function renderKendoChart(divID, data, categories, chartTitle) {
+    $("#" + divID).kendoChart({
+        title: {
+            text: chartTitle
+        },
+        legend: {
+            visible: true
+        },
+        seriesDefaults: {
+            type: "column"
+        },
+        series: [{
+            data: data,
+            tooltip: {
+                position: "inside"
+            },
+            color: function (point) {
+
+                if (point.index == 0) {
+                    return "rgb(255, 99, 88)";
+                }
+                else if (point.index == 1) {
+                    return "rgb(255, 210, 70)";
+                }
+                else if (point.index == 2) {
+                    return "rgb(120, 210, 55)";
+                }
+                else if (point.index == 3) {
+                    return "rgb(40, 180, 200)";
+                }
+                else if (point.index == 4) {
+                    return "rgb(255, 99, 88)";
+                }
+                else if (point.index == 5) {
+                    return "rgb(255, 210, 70)";
+                }
+                else if (point.index == 6) {
+                    return "rgb(120, 210, 55)";
+                }
+                else if (point.index == 7) {
+                    return "rgb(40, 180, 200)";
+                }
+                else if (point.index == 8) {
+                    return "rgb(255, 99, 88)";
+                }
+                else if (point.index == 9) {
+                    return "rgb(255, 210, 70)";
+                }
+                else if (point.index == 10) {
+                    return "rgb(120, 210, 55)";
+                }
+                else if (point.index == 11) {
+                    return "rgb(40, 180, 200)";
+                }
+
+                // use the default series theme color
+            }
+        }],
+        valueAxis: {
+            //max: 400,
+            line: {
+                visible: false
+            },
+            minorGridLines: {
+                visible: true
+            },
+            labels: {
+                rotation: "auto"
+            }
+        },
+        categoryAxis: {
+            categories: categories, //["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            majorGridLines: {
+                visible: false
+            }
+        },
+        tooltip: {
+            visible: true,
+            template: "#= value #",
+        }
+    });
+}
+
+//$(document).ready(renderKendoChart);
+//$(document).bind("kendo:skinChange", renderKendoChart);
+>>>>>>> Stashed changes

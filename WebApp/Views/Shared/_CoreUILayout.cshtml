@@ -322,6 +322,7 @@
 
 
     //Global Resources
+    var lblApproved = '@Resources.Global.lblApproved';
     var save = '@Resources.Global.btnSave';
     var btnAcceptText = '@Resources.Global.lblAccept';
     var btnApproveText = '@Resources.Global.lblApprove';
@@ -345,6 +346,7 @@
     var documentType = '@HRModuleUI.HumanResourceUI.lblEducationalDocument';
     var expiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
     var section = '@HRModuleUI.HumanResourceUI.lblDepartment';
+
 
 
 
@@ -386,6 +388,7 @@
     var lblPublicHoliday  = '@HRModuleUI.HumanResourceUI.lblPublicHoliday';
     var lblPresent  = '@HRModuleUI.HumanResourceUI.lblPresent';
     var lblAbsent  = '@HRModuleUI.HumanResourceUI.lblAbsent';
+    var lblLate  = '@HRModuleUI.HumanResourceUI.lblLate';
     var lblCompany  = '@HRModuleUI.HumanResourceUI.lblCompany';
     var lblCompanyDocument  = '@Resources.Global.lblCompanyDocument';
     var lblCompanyNameEng  = '@Resources.Global.lblCompanyNameEng';
@@ -404,7 +407,11 @@
     var lblRequestWaiting = '@HRModuleUI.HumanResourceUI.lblRequestWaiting';
     var lblRequestRunning = '@HRModuleUI.HumanResourceUI.lblRequestRunning';
     var lblRequestExpired = '@HRModuleUI.HumanResourceUI.lblRequestExpired';
-
+    var lblRemarks = '@HRModuleUI.HumanResourceUI.lblremarks';
+    var lblBreakIn = '@HRModuleUI.HumanResourceUI.lblBreakIn';
+    var lblBreakOut = '@HRModuleUI.HumanResourceUI.lblBreakOut';
+    
+    
     //------------------ PROJECT LABELS -----------------------
 
      var lblProject  = '@ProjectUI.ProjectUI.lblProject';
@@ -437,15 +444,15 @@
           /*  $('body').find('.grid-main-div').find('.k-i-arrow-60-down').hide();*/
 
         }
-        localStorage.MainApplicationModule_Id == 1 ? $('.languageUL').show() : $('.languageUL').hide();
+      //  localStorage.MainApplicationModule_Id == 1 ? $('.languageUL').show() : $('.languageUL').hide();
 
         /*localStorage.MainApplicationModule_Id == 1 ? document.body.style.backgroundImage = "url('../../../Images/logo.png')" : document.body.style.backgroundImage = "url('../../../Images/shjengconLogo.png')";*/
 
         if (localStorage.MainApplicationModule_Id == 2) {
             document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
             document.getElementsByClassName("navbar-brand")[0].style.backgroundSize  ="contain"
-            
-        } 
+
+        }
 
         $(':input').removeAttr('placeholder');
         $('#LayoutCurrentLanguage').val(_currentLanguage);

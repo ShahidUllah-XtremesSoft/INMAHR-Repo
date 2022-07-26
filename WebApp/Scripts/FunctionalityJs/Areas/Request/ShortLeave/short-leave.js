@@ -2,6 +2,13 @@
 var $ShortLeaveGrid = "ShortLeaveGrid";
 
 $(function () {
+    fnCheck_Request_ShortLeave_Request_Submitted_Count_Monthly();
+
+    setTimeout(function () {
+
+        /*  $('.tox-tinymce').css('height', '387px');*/
+        $('.tox-notification--warning').css('display', 'none');
+    }, 1000);
     loadShortLeaveTypeDropdownList();
 
 
@@ -174,13 +181,35 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             filterable: false,
             //template: 1 == 1 ? "<span class='badge badge-success'>#:status#</span>" : "<span class='badge badge-danger'>#:status#</span>"
             template: "#if (statusForCondition.substring(0,7) == 'Decline') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
+        }, {
+            field: "request_Attachment",
+            title: " ",
+            hidden: false,
+            width: 20,
+            filterable: false,
+            template: " #  if (request_Attachment == null )" +
+                " { # <label class='pcoded-badge label label-danger'> </label># }" +
+                "else if(request_Attachment.split('.')[1]=='pdf')" +
+                " { #  <a  target='_blank' href='/UploadFile/#=request_Attachment #'> <img class='' src='/Content/Images/pdf.png'        style='width:30%;cursor: pointer;'/> </a># }else if(request_Attachment.split('.')[1]=='xlsx')" +
+                " { #  <a  target='_blank' href='/UploadFile/#=request_Attachment #'> <img class='' src='/Content/Images/xls.png'        style='width:30%;cursor: pointer;'/> </a># }else if(request_Attachment.split('.')[1]=='docs' || request_Attachment.split('.')[1]=='docx'|| request_Attachment.split('.')[1]=='doc')" +
+                " { #  <a  target='_blank' href='/UploadFile/#=request_Attachment #'> <img class='' src='/Content/Images/docx.png'       style='width:30%;cursor: pointer;'/> </a># } else" +
+                " { # <a  target='_blank' href='/UploadFile/#=request_Attachment #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:30%';cursor: pointer; /></a> #} #"
+
+
+        },
+        {
+            field: "leave_Remarks", title: lblRemarks, hidden: false, width: 15, filterable: false,
+            template: " <a style='font-size:20px;cursor:pointer;' onClick=show_Leave_Remarks(this)  ><span class='fa fa-eye'></span></a> "
+
+
+
         },
         //Below is action column
         {
             field: "", width: 10,
             title: ' ',
             filterable: false,
-            template: "#if(statusForCondition == 'Pending') { #<a style='font-size:20px;cursor:pointer;' onClick= editShortLeave(this) title='Edit ShortLeave' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteShortLeaveById(this)  title='Delete ShortLeave'><span class='fa fa-trash'></span></a>#}else{}#"
+            template: "#if(statusForCondition == 'Pending' || statusForCondition == 'Work P.Leave'){ #<a style='font-size:20px;cursor:pointer;' onClick= editShortLeave(this) title='Edit ShortLeave' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteShortLeaveById(this)  title='Delete ShortLeave'><span class='fa fa-trash'></span></a>#}else{}#"
 
         }
 
@@ -199,11 +228,14 @@ function editShortLeave(event) {
     $("#RequestDate").data("kendoDatePicker").value(dataItem.requestDate);
     $("#StartTime").data("kendoTimePicker").value(dataItem.startTime);
     $("#EndTime").data("kendoTimePicker").value(dataItem.endTime);
+    $("#Leave_Remarks").val(tinymce.get("Leave_Remarks").setContent(dataItem.leave_Remarks));
 
     calculateHourFromStartEndTime();
 
 }
 function saveShortLeaveRequest() {
+    $("#Leave_Remarks").val(tinymce.get("Leave_Remarks").getContent({ format: "html" }));
+
     if (customValidateForm('frmShortLeaveDetail')) {
         $("#frmShortLeaveDetail").ajaxForm();
         buttonAddPleaseWait('btnSave');
@@ -214,6 +246,7 @@ function saveShortLeaveRequest() {
                 $('#Id').val(0);
                 loadShortLeaveGrid();
                 loadAvailableShortLeaveBalance();
+                fnCheck_Request_ShortLeave_Request_Submitted_Count_Monthly();
                 clearFields();
 
             },
@@ -321,7 +354,7 @@ var fnLoadShortLeaveDropdownListCallBack = function (response) {
         dataSource: JSON.parse(JSON.parse(checkresult)),
         //  index: selectedIndex,
         change: function (e) {
-             
+
             //$("#LeaveTypeName").data("kendoDropDownList").text(this.text());
             if (this.text() != 'Short Leave' && this.text() != 'إجازة قصيرة') {
                 $('.show-hide-available-balance-on-condition-base').hide();
@@ -339,3 +372,44 @@ var fnLoadShortLeaveDropdownListCallBack = function (response) {
 
 //$("#LeaveTypeId").data("kendoDropDownList").text();
 //$("#LeaveTypeId").data("kendoDropDownList").value();
+
+
+function show_Leave_Remarks(event) {
+    var row = $(event).closest("tr");
+    var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+
+    Swal.fire({
+        title: lblRemarks,
+        html: dataItem.leave_Remarks,
+    });
+}
+
+
+
+
+//---------------- CHECK REQUEST SUBMITTED COUNT 
+
+function fnCheck_Request_ShortLeave_Request_Submitted_Count_Monthly() {
+
+    ajaxRequest({
+        commandName: 'Request_ShortLeave_Request_Submitted_Count_Monthly',
+        values: {
+            CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+            Language: _currentLanguage,
+        }, CallBack: fnCheck_Request_ShortLeave_Request_Submitted_Count_MonthlyCallBack
+    });
+
+}
+function fnCheck_Request_ShortLeave_Request_Submitted_Count_MonthlyCallBack(inputDataJSON) {
+     
+    var responseJSON = JSON.parse(inputDataJSON.Value);
+
+    if (responseJSON.request_Submitted_Count == 3) {
+        $('#btnSave').enable(false)
+    } else {
+        $('#btnSave').enable(true)
+
+    }
+}

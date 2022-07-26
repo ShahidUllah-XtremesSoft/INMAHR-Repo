@@ -15,70 +15,89 @@
             <input type="hidden" name="LeaveTypeName" id="LeaveTypeName" value="" />
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLeaveType</label>
-                        <input class="form-control" id="LeaveTypeId" name="LeaveTypeId" required />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLeaveType</label>
+                                <input class="form-control" id="LeaveTypeId" name="LeaveTypeId" required />
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblRequestDate</label>
+                                <input class="form-control" id="RequestDate" name="RequestDate" required />
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12 show-hide-available-balance-on-condition-base">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAvailableBalance</label>
+                                <input class="form-control" id="AvailableShortLeave" name="AvailableShortLeave" readonly />
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblStartTime </label>
+                                <input class="form-control" id="StartTime" name="StartTime" required />
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblReturnTime </label>
+                                <input class="form-control" id="EndTime" name="EndTime" required />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNumberOfHours </label>
+                                <input class="form-control" id="NumberOfHours" name="NumberOfHours" value="0" readonly />
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-8"></div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblRequestDate</label>
-                        <input class="form-control" id="RequestDate" name="RequestDate" required />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblremarks</label><span style="color:red">*</span> <br />
+                        <textarea type="text" required class="form-control editor" name="Leave_Remarks" id="Leave_Remarks" value="" style="height:20%"></textarea>
+
                     </div>
+
+                    <div class="form-group div-attachment" style="width:50%">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
+                        <input type="file" class="form-control" name="Attachment" id="Attachment" required>
+                    </div>
+
                 </div>
-                <div class="col-md-8">  </div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-4 show-hide-available-balance-on-condition-base">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAvailableBalance</label>
-                        <input class="form-control" id="AvailableShortLeave" name="AvailableShortLeave" readonly />
-                    </div>
-                </div>
-                <div class="col-md-8">  </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblStartTime </label>
-                        <input class="form-control" id="StartTime" name="StartTime" required />
-                    </div>
-                </div>
-                <div class="col-md-8">  </div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblReturnTime </label>
-                        <input class="form-control" id="EndTime" name="EndTime" required />
-                    </div>
-                </div>
-                <div class="col-md-8">  </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNumberOfHours </label>
-                        <input class="form-control" id="NumberOfHours" name="NumberOfHours" value="0" readonly />
-                    </div>
-                </div>  <div class="col-md-8">  </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" id="btnSave" class="btn btn-success pull-right" ><i class="fa fa-send"></i>  @HRModuleUI.HumanResourceUI.lblSend</button>
+                    <button type="button" id="btnSave" class="btn btn-success pull-right"><i class="fa fa-send"></i>  @HRModuleUI.HumanResourceUI.lblSend</button>
                 </div>
             </div>
+
 
         </form>
 

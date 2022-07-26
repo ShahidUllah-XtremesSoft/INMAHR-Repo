@@ -6,6 +6,7 @@ $(function () {
     $('#Language').val(_currentLanguage);
 
     loadLeaveRequestGrid('Pending');
+    localStorage.setItem('Active_GridArea', 'Pending'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
 });
 
 //|Load Leave Request Grid Starts
@@ -49,13 +50,21 @@ var bindLeaveRequestGrid = function (inputDataJSON) {
             width: 5
         },
         { title: "#", template: "<b>#= ++record #</b>", width: 4 },
+        { field: "requested_EmployeeId", title: "Requested_EmployeeId", hidden: true },
         { field: "id", title: "id", hidden: true },
-        { field: "email", title: empNumber, hidden: false, width: 20 },
+
+        {
+            field: "email", title: empNumber, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
+            template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick= redirectToEmployeeDetailView(this)>#=email#</a> ",
+
+        },
         { field: "name", title: name, hidden: false, width: 20 },
+        { field: "isUpperLevel", title: "isUpperLevel", hidden: true },
         { field: "leaveType", title: leaveType, hidden: false, width: 20 },
         { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
         { field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
         { field: "totalDays", title: numberOfDays, hidden: false, width: 15, template: "<span class='badge badge-dark'>#:totalDays#</span>" },
+        { field: "request_Attachment", title: "", hidden: true, width: 15 },
         {
             field: "totalRemainingDays", title: lblStatus, hidden: false, width: 15,
             // template: "<span class='badge badge-da'>#:totalRemainingDays#</span>"
@@ -247,11 +256,16 @@ $(document).on("click", "#checkAll", function () {
 
 //--------------------- FUNCTION AREA ----------------
 function fnLoadGridByStatus(btnValue) {
+
     loadLeaveRequestGrid(btnValue);
     _btnValue = btnValue;
     if (btnValue == 'Pending') {
 
         setTimeout(function () {
+
+            localStorage.setItem('Active_GridArea', 'Pending'); //This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
+
             $('#btnAreaShowHideOnConditionBase').show();
             //$(".k-checkbox").show();
             $('.header-checkbox').show();
@@ -259,9 +273,45 @@ function fnLoadGridByStatus(btnValue) {
         }, 50);
     } else {
         setTimeout(function () {
+            localStorage.setItem('Active_GridArea', 'Approved');//This is for Request Details Js to see it's pending grid   or approved grid data ...... written by /\/\ati
+
             $('#btnAreaShowHideOnConditionBase').hide();
             $('.header-checkbox').hide();
             $('.k-checkbox.row-checkbox').hide();
         }, 50);
     }
+}
+
+
+
+function redirectToEmployeeDetailView(e) {
+
+    var row = $(e).closest("tr");
+    var grid = $("#RequestGrid").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+     
+
+    var dataItem = grid.dataItem(row);
+    if (dataItem.isUpperLevel == 0) {
+        localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+        
+        window.location.href = '/Employees/Request/Details/';
+        
+    } else {
+
+        localStorage.setItem('EmployeeNumber', dataItem.email);
+        localStorage.setItem('LoggedInEmployeeId', dataItem.requested_EmployeeId);
+        localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.requested_EmployeeId);
+        localStorage.setItem('Employees_Request_Area', window.location.href.split('/').pop());
+        window.location.href = '/HumanResource/Employee/Detail/';
+
+
+
+    }
+
+    //  localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+    // window.open('/Employees/Request/Details', '_blank');
+
+
 }

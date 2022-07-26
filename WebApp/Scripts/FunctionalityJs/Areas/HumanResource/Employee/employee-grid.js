@@ -26,7 +26,7 @@ $(function () {
     loadEmiratesStatesDropdownListForLSEng();
     loadEmiratesStatesDropdownListForLSArb();
 
-  
+
     /*
     //----------- FOR DDL SEARCH
     loadParentDepartmentTreeDropdownList();
@@ -240,7 +240,33 @@ var bindEmployeeGrid = function (inputDataJSON) {
 
     ];
 
-    bindKendoGrid($grid, 50, gridColumns, inputDataJSON, true, 750);
+    bindKendoGrid($grid, 100, gridColumns, inputDataJSON, true, 750);
+    setTimeout(function () {
+        var grid = $("#" + $grid).data("kendoGrid");
+        var gridData = grid.dataSource.view();
+        console.log(gridData)
+        for (var i = 0; i < gridData.length; i++) {
+            if (gridData[i].companyName == 'INMA' || gridData[i].companyName == 'إنماء') { // 1 is INMA department id ,this color will be info as per Company CEO.
+                //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-info");
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", '#00859b1c');
+
+
+
+            }
+            if (gridData[i].parentId == 17) { // 17 is NSS department id ,this color will be info as per HR.
+                //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-info");
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", '#06009b1c');
+
+
+
+            }
+
+        }
+
+
+    }, 100);
+
+
 };
 function redirectToEmployeeDetailView(e) {
     var row = $(e).closest("tr");
@@ -269,7 +295,7 @@ function createLogin(e) {
 
     loadDepartmentTreeDropdownList();
     loadRoleDropdown(1);
-    
+
     loadMainApplicationModule();
 
     $('#modal-adduserlogin').modal('show');
@@ -286,7 +312,7 @@ function createLogin(e) {
 
 }
 function UpdateLogin(e) {
-     
+
     loadDepartmentTreeDropdownList();
     loadRoleDropdown(1);
     loadMainApplicationModule();
@@ -303,11 +329,11 @@ function UpdateLogin(e) {
         $('#RoleId').val(dataItem.roleId);
         $('#DepartmentId').val(dataItem.departmentId);
 
-    }, 100); 
+    }, 100);
 
 }
 
- 
+
 $('#btnsave').click(function () {
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id)
     if (customValidateForm('frmUserLoginDetail')) {
@@ -369,8 +395,8 @@ function loadRoleDropdownList(isBindChangeEvent = false) {
 //    var dataItem = e.sender.dataItem();
 //    $('#ParentId').val(dataItem.value);
 //}
-function loadRoleDropdown(mainModule_Id=1) {
-     
+function loadRoleDropdown(mainModule_Id = 1) {
+
     if ($('#Language').val() == 'en-US') {
         ajaxRequest({ commandName: 'Common_DropdownList', values: { Columns: 'Id [Value], NameEng [Text]', TableName: 'UserManagement_Role', Conditions: 'NameEng IS NOT NULL and UserManagement_MainApplicationModules_Id=' + mainModule_Id, SelectedValue: 0 }, CallBack: loadRoleDropdownListCallBack });
     }
@@ -535,7 +561,7 @@ $('#btnSearch').click(function () {
     });
 });
 function departmentParentTreeViewCheck(e) {
-
+ 
     var getLastValue = 0
     $('#DepartmentIdForSearch').val('');
     var selectedDepartments = e.sender._values;
@@ -545,7 +571,7 @@ function departmentParentTreeViewCheck(e) {
         getLastValue = item;
     });
     $('#DepartmentIdForSearch').val(concatenatedDepartments);
-
+ 
     loadAllEmployeesAsPerDepartmentId();
 }
 function loadAllEmployeesAsPerDepartmentId() {
@@ -557,7 +583,7 @@ function loadAllEmployeesAsPerDepartmentId() {
         }, CallBack: getloadAllEmployeesAsPerDepartmentId
     });
 }
-
+ 
 var getloadAllEmployeesAsPerDepartmentId = function (inputDataJSON) { bindGridData(JSON.parse(inputDataJSON.Value)); }
 */
 
@@ -576,7 +602,7 @@ function fnLoadMainApplicationModuleCallBack(response) {
         //  value: -1,
         dataSource: JSON.parse(response.Value),
         popup: { appendTo: $("#MainApplicationModules_container") },
-    
+
         select: fnMainMenuApplication_DDL_Callback,
     });
 
@@ -590,5 +616,5 @@ function fnMainMenuApplication_DDL_Callback(e) {
     loadRoleDropdown(selected_Id);
 
 }
- 
+
 // END

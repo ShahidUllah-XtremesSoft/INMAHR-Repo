@@ -11,6 +11,7 @@ namespace INMA.HR.Services.Commands.Request
     [Command(Name = "Request_ShortLeave_Save")]
     public class Request_ShortLeave_SaveCommand : CamelCommandBase
     {
+        public IFileService Service;
         protected override object DoAction(object v)
         {
             var model = base.MappedModel(new
@@ -24,6 +25,8 @@ namespace INMA.HR.Services.Commands.Request
                 LeaveTypeId = 0,
                 LeaveTypeName = string.Empty,
                 Language = string.Empty,
+                Leave_Remarks = string.Empty,
+                UploadedFiles = new List<FileUploadModel>()
 
             }, v);
 
@@ -35,7 +38,26 @@ namespace INMA.HR.Services.Commands.Request
             values = _params.Get(model);
            // var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_ShortLeave_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);   OLD SP IS WORKING BUT COMMENTED DUE TO CHANGES
             var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_ShortLeave_Save_New.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            if (model.UploadedFiles.Count > 0)
+            {
+                Service = new FileUploadService();
+                foreach (var file in model.UploadedFiles)
+                {
+                    Service.UploadFile(
+                        file.CurrentFilePath,
+                        file.OriginalFileName,
+                        file.CurrentFileName,
+                        (int)EntityType.Requests,
+                        (int)_response.InsertedId,
+                        (int)DocumentType.ShorLeave_Requests,
 
+
+                        XtremeFactory._factory,
+                        XtremeFactory.connectionString);
+
+
+                }
+            }
             return _response;
         }
     }

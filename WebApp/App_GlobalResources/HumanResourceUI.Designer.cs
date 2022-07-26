@@ -223,6 +223,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved By.
+        /// </summary>
+        public static string lblApprovedBy {
+            get {
+                return ResourceManager.GetString("lblApprovedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Approved Requests.
         /// </summary>
         public static string lblApprovedRequest {
@@ -264,6 +273,24 @@ namespace HRModuleUI {
         public static string lblBody {
             get {
                 return ResourceManager.GetString("lblBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Break In.
+        /// </summary>
+        public static string lblBreakIn {
+            get {
+                return ResourceManager.GetString("lblBreakIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Break Out.
+        /// </summary>
+        public static string lblBreakOut {
+            get {
+                return ResourceManager.GetString("lblBreakOut", resourceCulture);
             }
         }
         
@@ -930,6 +957,15 @@ namespace HRModuleUI {
         public static string lblJoinDate {
             get {
                 return ResourceManager.GetString("lblJoinDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Late.
+        /// </summary>
+        public static string lblLate {
+            get {
+                return ResourceManager.GetString("lblLate", resourceCulture);
             }
         }
         

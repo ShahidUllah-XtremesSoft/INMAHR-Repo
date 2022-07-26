@@ -33,6 +33,14 @@ namespace WebApp.Areas.Employees.Controllers
         {
             return View("~/Areas/Employees/Views/Request/CashInLeaves.cshtml");
         }
+           public ActionResult Details()
+        {
+            return View("~/Areas/Employees/Views/Request/RequestDetails.cshtml");
+        }
+           public ActionResult Detail()
+        {
+            return View("~/Areas/Employees/Views/Request/ShorLeave_RequestDetails.cshtml");
+        }
 
     }
 }

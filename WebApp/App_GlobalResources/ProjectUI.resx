@@ -189,9 +189,6 @@
   <data name="lblClientList" xml:space="preserve">
     <value>Client List</value>
   </data>
-  <data name="lblClientMeetingAndContractors" xml:space="preserve">
-    <value>Client, Meeting and Contractor</value>
-  </data>
   <data name="lblClientMeetingInformation" xml:space="preserve">
     <value>Client Meeting Information</value>
   </data>
@@ -315,9 +312,6 @@
   <data name="lblInteriorDesignAndDecoration" xml:space="preserve">
     <value>Interior Design and Decoration</value>
   </data>
-  <data name="lblIssueByStatus" xml:space="preserve">
-    <value>Issue By Status</value>
-  </data>
   <data name="lblIssueDate" xml:space="preserve">
     <value>Issue Date</value>
   </data>
@@ -435,15 +429,6 @@
   <data name="lblProjectArea" xml:space="preserve">
     <value>Project Area</value>
   </data>
-  <data name="lblProjectByCategory" xml:space="preserve">
-    <value>Project By Category</value>
-  </data>
-  <data name="lblProjectByStatus" xml:space="preserve">
-    <value>Project By Status</value>
-  </data>
-  <data name="lblProjectByVIPUrgent" xml:space="preserve">
-    <value>Project By VIP/Urgent</value>
-  </data>
   <data name="lblProjectCategory" xml:space="preserve">
     <value>Project Category</value>
   </data>
@@ -515,15 +500,6 @@
   </data>
   <data name="lblTechnicalSectionReport" xml:space="preserve">
     <value>Technical Section Report</value>
-  </data>
-  <data name="lblTotalClients" xml:space="preserve">
-    <value>Total Clients</value>
-  </data>
-  <data name="lblTotalContractors" xml:space="preserve">
-    <value>Total Contractors</value>
-  </data>
-  <data name="lblTotalMeetings" xml:space="preserve">
-    <value>Total Meetings</value>
   </data>
   <data name="lblTotalTime" xml:space="preserve">
     <value>Total Time</value>

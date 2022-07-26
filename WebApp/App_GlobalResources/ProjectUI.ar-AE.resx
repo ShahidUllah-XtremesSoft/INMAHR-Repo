@@ -117,31 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblClientMeetingAndContractors" xml:space="preserve">
-    <value>Client, Meeting &amp; Contractor</value>
-  </data>
-  <data name="lblClientMeetingAndContractors1" xml:space="preserve">
-    <value>Client, Meeting and Contractor</value>
-  </data>
-  <data name="lblIssueByStatus" xml:space="preserve">
-    <value>Issue By Status</value>
-  </data>
-  <data name="lblProjectByCategory" xml:space="preserve">
-    <value>Project By Category</value>
-  </data>
-  <data name="lblProjectByStatus" xml:space="preserve">
-    <value>Project By Status</value>
-  </data>
-  <data name="lblProjectByVIPUrgent" xml:space="preserve">
-    <value>Project By VIP/Urgent</value>
-  </data>
-  <data name="lblTotalClients" xml:space="preserve">
-    <value>Total Clients</value>
-  </data>
-  <data name="lblTotalContractors" xml:space="preserve">
-    <value>Total Contractors</value>
-  </data>
-  <data name="lblTotalMeetings" xml:space="preserve">
-    <value>Total Meetings</value>
-  </data>
 </root>

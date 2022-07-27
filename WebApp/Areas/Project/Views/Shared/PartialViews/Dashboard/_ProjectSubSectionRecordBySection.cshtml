@@ -1,0 +1,92 @@
+﻿<div class="modal fade" id="LoadProjectSubSectionRecordBySection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="max-width:1250px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">@ProjectUI.ProjectUI.lblSubSection</h4>
+            </div>
+            <div class="modal-body" style="height:570px;">
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div id="projectSubSectionRecordBySection">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+
+        $('#LoadProjectSubSectionRecordBySection').modal();
+
+        setTimeout(function () {
+             
+            loadprojectSubSectionRecordBySection();
+         }, 150);
+    });
+
+    function loadprojectSubSectionRecordBySection() {
+         
+        var sectionName = localStorage.getItem('ProjectSectionNameInDashboard');
+       
+        ajaxRequest({
+            commandName: 'Project_SubSectionRecordBySectionInDashboard_Get',
+            values:
+            {
+                EmployeeId: loggedInUser.employeeId,
+                UserId: loggedInUser.id,
+                Role: loggedInUser.roleId,
+                ProjectId: 0,
+                SectionName: sectionName
+                , Language: _currentLanguage
+            }, CallBack: fnLoadProjectSubSectionRecordBySectionCallBack
+        });
+        localStorage.removeItem('ProjectSectionNameInDashboard');
+    }
+    var fnLoadProjectSubSectionRecordBySectionCallBack = function (inputDataJSON) {
+        console.log(inputDataJSON)
+        bindLoadProjectSubSectionRecordBySection(JSON.parse(inputDataJSON.Value));
+    }
+    var bindLoadProjectSubSectionRecordBySection = function (inputDataJSON) {
+
+         
+        var gridColumns = [
+            { title: "#", template: "<b>#= ++record #</b>", width: 10, },
+            { field: "subSectionId", title: "subSectionId", width: 10, hidden: true },
+            { field: "projectId", title: "projectId", width: 10, hidden: true },
+            //{
+            //    field: "document", title: documentType, width: 100, filterable: false, hidden: false
+            //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
+            //},
+
+          
+            { field: "projectName", title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }   },
+            { field: "parentAndChildSectionName", title: lblName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }   },
+            { field: "status", title: lblStatus, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }   },
+            { field: "approvedOrReturned", title: "", width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }   },
+            { field: "attachmentRemarks", title: lblRemarks, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }   },
+        ];
+
+        bindKendoGrid('projectSubSectionRecordBySection', 1000, gridColumns, inputDataJSON, true, 550);
+    };
+
+    function fnLoadDetailScreen(e) {
+        //var row = $(e).closest("tr");
+        //var grid = $("#projectSubSectionRecordBySection").data("kendoGrid");
+        //var dataItem = grid.dataItem(row);
+         
+        window.location.href = '/HumanResource/CompanyDocument/';
+    }
+</script>

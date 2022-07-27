@@ -50,7 +50,7 @@ namespace WebApp.Areas.Project.Controllers
             return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_Supervision_Section_Employees.cshtml");
         }
         #endregion
-
+     
 
     }
 }

@@ -13,5 +13,9 @@ namespace WebApp.Areas.Project.Controllers
         {
             return View();
         }
+        public ActionResult LoadProjectSubSectionRecordBySection()
+        {
+            return PartialView("~/Areas/Project/Views/Shared/PartialViews/Dashboard/_ProjectSubSectionRecordBySection.cshtml");
+        }
     }
 }

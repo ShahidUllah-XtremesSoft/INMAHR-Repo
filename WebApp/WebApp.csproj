@@ -688,6 +688,7 @@
     <Content Include="Areas\Project\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Employees\Views\Request\RequestDetails.cshtml" />
     <Content Include="Areas\Employees\Views\Request\ShorLeave_RequestDetails.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Dashboard\_ProjectSubSectionRecordBySection.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

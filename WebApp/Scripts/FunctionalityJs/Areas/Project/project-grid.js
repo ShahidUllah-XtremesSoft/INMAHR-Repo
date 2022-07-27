@@ -40,7 +40,7 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
         {
-            field: "projectNumber", title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectNumber", title: lblProjectNo, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> ",
         },
         {
@@ -48,7 +48,10 @@ var bindGrid = function (inputDataJSON) {
             //, template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title='Project Name'>#=projectName#</a> ",
         },
         { field: "clientName", title: lblClientName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "projectCreatedDate", title: lblIssueDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "projectCreatedDate", title: lblIssueDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "urgentStatus", title: lblUrgent, width: 15, filterable: false},
+        { field: "vipStatus", title: lblVIP, width: 15, filterable: false},
+        { field: "progressStatus", title: lblProjectStatus, width: 20, filterable: false},
         {
             field: "", title: "", width: 30
             , template: "#if(isEmployeeExist =='Yes'){ #" +

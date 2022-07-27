@@ -462,5 +462,7 @@ public enum ProjectStoreProcedure
     Project_Dashboard_ClientMeetingContractorCount_Get,
     Project_Dashboard_IssueCountByStatus_Get,
     Project_Dashboard_ProjectCountByStatus_Get,
+    Project_Dashboard_ProjectAndSectionCount_Get,
+    Project_SubSectionRecordBySectionInDashboard_Get,
     #endregion
 }

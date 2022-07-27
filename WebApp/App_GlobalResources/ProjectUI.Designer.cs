@@ -277,6 +277,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client Meeting And Contractors.
+        /// </summary>
+        public static string lblClientMeetingAndContractors {
+            get {
+                return ResourceManager.GetString("lblClientMeetingAndContractors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client Meeting Information.
         /// </summary>
         public static string lblClientMeetingInformation {
@@ -646,6 +655,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Issue By Status.
+        /// </summary>
+        public static string lblIssueByStatus {
+            get {
+                return ResourceManager.GetString("lblIssueByStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issue Date.
         /// </summary>
         public static string lblIssueDate {
@@ -997,6 +1015,33 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project By Category.
+        /// </summary>
+        public static string lblProjectByCategory {
+            get {
+                return ResourceManager.GetString("lblProjectByCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project By Status.
+        /// </summary>
+        public static string lblProjectByStatus {
+            get {
+                return ResourceManager.GetString("lblProjectByStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project By VIP Urgent.
+        /// </summary>
+        public static string lblProjectByVIPUrgent {
+            get {
+                return ResourceManager.GetString("lblProjectByVIPUrgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Category.
         /// </summary>
         public static string lblProjectCategory {
@@ -1209,6 +1254,33 @@ namespace ProjectUI {
         public static string lblTechnicalSectionReport {
             get {
                 return ResourceManager.GetString("lblTechnicalSectionReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Clients.
+        /// </summary>
+        public static string lblTotalClients {
+            get {
+                return ResourceManager.GetString("lblTotalClients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Contractors.
+        /// </summary>
+        public static string lblTotalContractors {
+            get {
+                return ResourceManager.GetString("lblTotalContractors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Meetings.
+        /// </summary>
+        public static string lblTotalMeetings {
+            get {
+                return ResourceManager.GetString("lblTotalMeetings", resourceCulture);
             }
         }
         

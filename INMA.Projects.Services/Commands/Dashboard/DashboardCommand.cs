@@ -20,9 +20,9 @@ namespace INMA.Projects.Services.Commands.Dashboard
                 Commands.SMSService smsService = new Commands.SMSService();
                 var model = base.MappedModel(new
                 {
-                    EmployeeId=0,
-                    UserId=0,
-                    Role = 0,                    
+                    EmployeeId = 0,
+                    UserId = 0,
+                    Role = 0,
                     Language = string.Empty
                 }, viewInput);
 
@@ -31,8 +31,8 @@ namespace INMA.Projects.Services.Commands.Dashboard
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
                 var result = Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Project_Dashboard_CountByStatus_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-                
-                
+
+
 
                 return result;
 
@@ -139,6 +139,66 @@ namespace INMA.Projects.Services.Commands.Dashboard
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
                 var result = Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_Dashboard_ProjectCountByStatus_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+
+
+                return result;
+
+            }
+        }
+        [Command(Name = "Project_Dashboard_ProjectAndSectionCount_Get")]
+        public class Project_Dashboard_ProjectAndSectionCount_GetCommand : CamelCommandBase
+        {
+
+            protected override object DoAction(object viewInput)
+            {
+
+                var model = base.MappedModel(new
+                {
+                    EmployeeId = 0,
+                    UserId = 0,
+                    Role = 0,
+                    ProjectId = 0,
+                    DesignSectionId = 0,
+                    TechnicalSection = 0,
+                    SupervisionSection = 0,
+                    Language = string.Empty
+                }, viewInput);
+
+
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                var result = Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_Dashboard_ProjectAndSectionCount_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+
+
+                return result;
+
+            }
+        }
+        [Command(Name = "Project_SubSectionRecordBySectionInDashboard_Get")]
+        public class Project_SubSectionRecordBySectionInDashboard_GetCommand : CamelCommandBase
+        {
+
+            protected override object DoAction(object viewInput)
+            {
+
+                var model = base.MappedModel(new
+                {
+                    EmployeeId = 0,
+                    UserId = 0,
+                    Role = 0,
+                    ProjectId = 0,
+                    SectionName = string.Empty,
+                    Language = string.Empty
+                }, viewInput);
+
+
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                var result = Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_SubSectionRecordBySectionInDashboard_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
 

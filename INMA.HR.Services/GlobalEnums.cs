@@ -53,7 +53,8 @@ namespace INMA.HR.Services
         Notification = 36,
         Contractor = 37,
         CommentAttachment = 38,
-
+        Rule=39,
+        Penalty=40
     }
     public enum DocumentType
     {
@@ -139,6 +140,8 @@ namespace INMA.HR.Services
 
         Requests =10001,
         ShorLeave_Requests =10002,
+        Rule_Document = 10003,
+        Penalty_Document = 10004,
 
 
 

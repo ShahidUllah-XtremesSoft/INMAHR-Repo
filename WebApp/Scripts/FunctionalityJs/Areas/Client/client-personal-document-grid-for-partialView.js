@@ -106,17 +106,17 @@ var loadPersonalDocumentsKendoGridResponse = function (inputDataJSON) {
         { field: "documentType", title: documentType, hidden: false, width: 20, filterable: false, },
         {
             field: "releaseDate", title: lblIssueDate, hidden: false, width: 20, filterable: false,
-            template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
+          //  template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
         },
         {
             field: "expiryDate", title: lblExpiryDate, hidden: false, width: 20, filterable: false,
-            template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+           // template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
 
         },
 
         {
             field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
-            template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
+           // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
 
         },
 
@@ -127,8 +127,8 @@ var loadPersonalDocumentsKendoGridResponse = function (inputDataJSON) {
             hidden: false,
             filterable: false,
             template: " #  if (expiryIn < 0 )" +
-                " { #   <label class='badge   badge-danger'>#=status #</label> #} else" +
-                " { #  <label class='badge   badge-success'>#=status #</label>  #} #"
+                " { #   <label class='badge   badge-danger'>#=status #</label> #} #"//else" +
+              //  " { #  <label class='badge   badge-success'>#=status #</label>  #} #"
         },
 
 

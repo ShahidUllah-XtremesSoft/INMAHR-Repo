@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblCompanyDocument;
+}
+
+<form id="frmCompanyDocument" name="frmCompanyDocument" action="/services/Xtreme/multipart" method="post">
+    <div class="card">
+        <div class="card-block">
+
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="HR_CompanyDocument_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreateBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblCompanyDocument</label><br />
+                        <input type="file" class="form-control" name="CompanyDocument" id="CompanyDocument" onchange="validatePersonalDocument('CompanyDocument');" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblCompanyNameEng  <span style="color:red">*</span></label>
+                        <input class="form-control" id="NameEng" name="NameEng" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblCompanyNameArb  <span style="color:red">*</span></label>
+                        <input class="form-control" id="NameArb" name="NameArb" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblCompanyDescriptionEng  <span style="color:red">*</span></label>
+                        <textarea class="form-control" id="DescriptionEng" name="DescriptionEng" required></textarea>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@Resources.Global.lblCompanyDescriptionArb  <span style="color:red">*</span></label>
+                        <textarea class="form-control" id="DescriptionArb" name="DescriptionArb" required></textarea>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                        <input type="date" class="form-control" id="IssueDate" name="IssueDate" required />
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                        <input type="date" class="form-control" id="ExpiryDate" name="ExpiryDate" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btn-save-company-document" class="btn btn-success  pull-right"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                </div>
+            </div>
+            <div class="grid-main-div">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="company-document-grid"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    @*<script src="~/Scripts/FunctionalityJs/Areas/HumanResource/CompanyDocument/company-document-grid.js?+971502324409"></script>*@
+ 
+
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Rules/rules-save.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Rules/rules-grid.js"></script>
+    <script>
+        //Grid columns
+        var NameEng = '@Resources.Global.lblCompanyNameEng';
+        var NameArb = '@Resources.Global.lblCompanyNameArb';
+        var DescriptionEng = '@Resources.Global.lblCompanyDescriptionEng';
+        var DescriptionArb = '@Resources.Global.lblCompanyDescriptionArb';
+        var IssueDate = '@HRModuleUI.HumanResourceUI.lblIssueDate';
+        var ExpiryDate = '@HRModuleUI.HumanResourceUI.lblExpiryDate';
+        var Action = '@HRModuleUI.HumanResourceUI.lblAction';
+     var attachment = '@HRModuleUI.HumanResourceUI.lblAttachment';
+
+        var lblCompanyName = '@Resources.Global.lblCompanyName';
+        var lblCompanyDescription = '@Resources.Global.lblCompanyDescription';
+        var lblExpiresIn = '@HRModuleUI.HumanResourceUI.lblExpiresIn';
+        var lblDays = '@HRModuleUI.HumanResourceUI.lblDays';
+        
+    </script>
+}

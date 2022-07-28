@@ -196,6 +196,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acknowledged.
+        /// </summary>
+        public static string lblAcknowledged {
+            get {
+                return ResourceManager.GetString("lblAcknowledged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         public static string lblAction {
@@ -408,6 +417,15 @@ namespace HRModuleUI {
         public static string lblCompanyDocument {
             get {
                 return ResourceManager.GetString("lblCompanyDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Rules.
+        /// </summary>
+        public static string lblCompanyRules {
+            get {
+                return ResourceManager.GetString("lblCompanyRules", resourceCulture);
             }
         }
         
@@ -1609,11 +1627,29 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rules List.
+        /// </summary>
+        public static string lblRulesList {
+            get {
+                return ResourceManager.GetString("lblRulesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salary.
         /// </summary>
         public static string lblSalary {
             get {
                 return ResourceManager.GetString("lblSalary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sanctions/Penalties.
+        /// </summary>
+        public static string lblSanctionsPenalties {
+            get {
+                return ResourceManager.GetString("lblSanctionsPenalties", resourceCulture);
             }
         }
         

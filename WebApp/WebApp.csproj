@@ -253,6 +253,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeResourcesUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\HumanResource\Controllers\PenaltyController.cs" />
+    <Compile Include="Areas\HumanResource\Controllers\RulesController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\CompanyDocumentController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\ContractTypeController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\DepartmentController.cs" />
@@ -555,6 +557,10 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Rules\rules-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Rules\rules-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\CompanyDocument\company-document-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\CompanyDocument\company-document-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-view.js" />
@@ -689,6 +695,10 @@
     <Content Include="Areas\Employees\Views\Request\RequestDetails.cshtml" />
     <Content Include="Areas\Employees\Views\Request\ShorLeave_RequestDetails.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Dashboard\_ProjectSubSectionRecordBySection.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Rules\Add.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Rules\List.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Penalty\Add.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Penalty\List.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

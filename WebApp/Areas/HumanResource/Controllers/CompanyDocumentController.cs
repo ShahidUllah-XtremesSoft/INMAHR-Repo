@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApp.Areas.HumanResource.Controllers
 {
+    
     public class CompanyDocumentController : Controller
     {
         // GET: HumanResource/CompanyDocument
@@ -17,5 +18,6 @@ namespace WebApp.Areas.HumanResource.Controllers
         {
             return PartialView("~/Areas/HumanResource/Views/Shared/PartialViews/_CompanyNearToExpireDocument.cshtml");
         }
+
     }
 }

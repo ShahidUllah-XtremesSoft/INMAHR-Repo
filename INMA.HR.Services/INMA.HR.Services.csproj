@@ -116,6 +116,8 @@
     <Compile Include="Commands\HumanResource\EmployeeCommand.cs" />
     <Compile Include="Commands\HumanResource\Employee\EmployeeEducationalDocumentCommand.cs" />
     <Compile Include="Commands\HumanResource\Employee\EmployeePersonalDocumentCommand.cs" />
+    <Compile Include="Commands\HumanResource\HR_PenaltiesCommand.cs" />
+    <Compile Include="Commands\HumanResource\HR_RulesCommand.cs" />
     <Compile Include="Commands\HumanResource\HR_CompanyDocumentCommand .cs" />
     <Compile Include="Commands\HumanResource\HR_ContractType.cs" />
     <Compile Include="Commands\HumanResource\HR_Nationality.cs" />

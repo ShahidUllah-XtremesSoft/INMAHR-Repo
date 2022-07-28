@@ -246,7 +246,7 @@
 
     var bindLetterInboxGrid = function (inputDataJSON) {
         var record = 0;
-
+        console.log(inputDataJSON)
         var gridColumns = [
             { field: "id", title: "id", hidden: true },
             { title: "#", template: "<b>#= ++record #</b>", width: 5, },
@@ -254,11 +254,11 @@
                 field: "number", title: lblLetterNumber, width: 20, filterable: true,
                 template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
             },  {
-                field: "subject", title: subject, width: 40, hidden: true , filterable: true,
-                template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
+                field: "subject", title: subject, width: 40, hidden: false , filterable: true,
+              //  template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
             },
             {
-                field: "body", title: description, width: 70, filterable: true,
+                field: "body", title: description, width: 70, filterable: true, hidden: true,
                 template: "#if(isRead == false){#<div style='font-weight:bold;'>#=body#</div>#}else{#<div style='font-weight:normal;'>#=body#</div>#}# ",
             },
             //{ field: "body", title: description, width: 60, filterable: true },

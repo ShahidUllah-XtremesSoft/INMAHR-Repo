@@ -80,7 +80,19 @@
     HR_CompanyDocuments_GetNearToExpire,
     #endregion
 
-
+    #region Company Rules
+    HR_Rule_Save,
+    HR_Rule_List,
+    HR_Rule_Delete,
+    HR_Rule_UpdateStatus,
+    #endregion
+    
+    #region Company Rules
+    HR_Penalty_Save,
+    HR_Penalty_List,
+    HR_Penalty_Delete,
+    HR_Penalty_UpdateStatus,
+    #endregion
 
     #region Human Resource Nationality
 

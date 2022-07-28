@@ -162,6 +162,9 @@
   <data name="lblAccept" xml:space="preserve">
     <value>قبول</value>
   </data>
+  <data name="lblAcknowledged" xml:space="preserve">
+    <value>اطلعت</value>
+  </data>
   <data name="lblAction" xml:space="preserve">
     <value>عمل</value>
   </data>
@@ -233,6 +236,9 @@
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>وثائق الشركة</value>
+  </data>
+  <data name="lblCompanyRules" xml:space="preserve">
+    <value>النظام الداخلي للشركة</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>نوع العقد</value>
@@ -631,8 +637,14 @@
   <data name="lblRole" xml:space="preserve">
     <value>دور</value>
   </data>
+  <data name="lblRulesList" xml:space="preserve">
+    <value>قائمة  القواعد</value>
+  </data>
   <data name="lblSalary" xml:space="preserve">
     <value>الراتب</value>
+  </data>
+  <data name="lblSanctionsPenalties" xml:space="preserve">
+    <value>العقوبات</value>
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>بحث</value>

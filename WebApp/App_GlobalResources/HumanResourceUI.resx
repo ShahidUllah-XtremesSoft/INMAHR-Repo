@@ -162,6 +162,9 @@
   <data name="lblAccept" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="lblAcknowledged" xml:space="preserve">
+    <value>Acknowledged</value>
+  </data>
   <data name="lblAction" xml:space="preserve">
     <value>Action</value>
   </data>
@@ -233,6 +236,9 @@
   </data>
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>Company Document (English)</value>
+  </data>
+  <data name="lblCompanyRules" xml:space="preserve">
+    <value>Company Rules</value>
   </data>
   <data name="lblContractType" xml:space="preserve">
     <value>Contract Type</value>
@@ -633,8 +639,14 @@
   <data name="lblRole" xml:space="preserve">
     <value>Role</value>
   </data>
+  <data name="lblRulesList" xml:space="preserve">
+    <value>Rules List</value>
+  </data>
   <data name="lblSalary" xml:space="preserve">
     <value>Salary</value>
+  </data>
+  <data name="lblSanctionsPenalties" xml:space="preserve">
+    <value>Sanctions/Penalties</value>
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>Search</value>

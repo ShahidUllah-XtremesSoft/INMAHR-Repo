@@ -4,14 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebApp.Areas.EmployeesRequest.Controllers
+namespace WebApp.Areas.HumanResource.Controllers
 {
-    public class LetterController : Controller
+    public class RulesController : Controller
     {
-        // GET: Request/Letter
-        public ActionResult Index()
+        // GET:  
+        public ActionResult List()
         {
             return View();
         }
+       
     }
 }

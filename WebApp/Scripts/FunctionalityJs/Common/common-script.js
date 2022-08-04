@@ -228,6 +228,7 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
         //excel: {
         //    fileName: "Export To Exceel.xlsx"
         //},
+
         dataSource: {
             data: $data,
             pageSize: 500// $pageSize
@@ -247,6 +248,11 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
             record = (this.dataSource.page() - 1) * this.dataSource.pageSize();// this is use to add dynamic serial number in grid 
         }
     }).data("kendoGrid");
+
+
+    //    $("#" + $gridid).data("kendoGrid").wrapper.find(".k-grid-header-wrap").off("scroll.kendoGrid");
+
+
 
 }
 
@@ -437,7 +443,7 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
 
     var stepper = $("#" + $stepperId).width($width);
     stepper.resize();
-         
+
     //stepper.find('.k-step-done').css("background-color", "lawngreen");
     stepper.find('.k-step-error').css("background-color", "mistyrose");
     // stepper.find('.k-step-done').css("background-color", "greenyellow");
@@ -1176,7 +1182,7 @@ function firstDateShouldBeGreaterThanSecondDate(firstDate, secondDate, firstDate
     return true;
 }
 function only0To9WithDecimalAllowed(evt) {
-     
+
     var charCode = (evt.which) ? evt.which : event.keyCode;
 
     if (charCode != 46 && charCode > 31
@@ -1187,7 +1193,7 @@ function only0To9WithDecimalAllowed(evt) {
 
 }
 function only1To9Allowed(evt) {
-    
+
     var charCode = (evt.which) ? evt.which : event.keyCode;
 
     if (charCode != 46 && charCode > 31
@@ -1268,7 +1274,7 @@ function validatePersonalDocument(inputId) {
 }
 var bindKendoDropdownList = function (responseJSON, controlId, dataTextFieldName = null, dataValueFieldName = null, defaultOption = null, selectedValue = null) {
 
-    
+
     //var selectText = _currentLanguage == 'en-US' ? '-- ' + defaultOption + ' --' : '--- منتخب ---';
 
     var optionList = [];
@@ -1301,8 +1307,8 @@ var bindKendoDropdownList = function (responseJSON, controlId, dataTextFieldName
         combobox.destroy();
     }
     $("#" + controlId).kendoDropDownList({
-        dataTextField:  "text",
-        dataValueField:  'value' ,
+        dataTextField: "text",
+        dataValueField: 'value',
         filter: "contains",
         dataSource: optionList,
         index: selectedIndex,
@@ -1316,7 +1322,7 @@ var bindKendoDropdownList = function (responseJSON, controlId, dataTextFieldName
 //------------------ accept decimal,float values  ..... In HTML pass like this in input field onkeypress="return validate_DecimalFloat_Number(this, event);"
 
 function validate_DecimalFloat_Number(txt, evt) {
-     
+
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode == 46) {
         //Check if the text already contains the . character

@@ -65,14 +65,14 @@ var bindShortLeaveGrid = function (inputDataJSON) {
 
         },
         { field: "name", title: lblname, hidden: false, width: 50 },
-        { field: "requestDate", title: requestDate, hidden: false, width: 30, template: "<span class='badge badge-info'>#:requestDate#</span>" },
-        { field: "startTime", title: startTime, hidden: false, width: 30, template: "<span class='badge badge-info'>#:startTime#</span>" },
-        { field: "endTime", title: returnTime, hidden: false, width: 30, template: "<span class='badge badge-danger'>#:endTime#</span>" },
-        { field: "leaveType", title: leaveType, hidden: true, width: 30 },
-        { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 30 },
-        { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 30, template: "<span class='badge badge-dark'>#:numberOfHours#</span>" },
+        { field: "requestDate", title: requestDate, hidden: false, width: 20 },
+        { field: "startTime", title: startTime, hidden: false, width: 20 },
+        { field: "endTime", title: returnTime, hidden: false, width: 20  },
+        { field: "leaveType", title: leaveType, hidden: true, width: 20 },
+        { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 20 },
+        { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 20  },
         {
-            field: "totalRemainingDays", title: lblStatus, hidden: false, width: 15,
+            field: "totalRemainingDays", title: lblStatus, hidden: false, width: 15, filterable: false,
             template: "#if (totalRemainingDays >=0 && _btnValue=='Pending' )" +
                 " { # <span class='badge badge-warning'>" + lblRequestWaiting + "</span> # } else if (totalRemainingDays >=0  && startingDays >0   && _btnValue !='Pending' )" +
                 " { # <span class='badge badge-warning'>" + lblRequestWaiting + "</span> # } else if (  startingDays <0   && _btnValue !='Pending'  )" +
@@ -87,14 +87,14 @@ var bindShortLeaveGrid = function (inputDataJSON) {
 
         },
         {
-            field: "leaveType", title: " ", filterable: false, width: 20,
+            field: "leaveType", title: " ", filterable: false, width: 20, filterable: false,
          //   template: "<span class='badge badge-info'>#:leaveType#</span>",
             template: "#if (leaveType =='Short Leave' )" +
-                " { # <span class='badge badge-info'>Personal Leave</span> # } else {# <span class='badge badge-info'> #:leaveType#</span> # }#"
+                " { # <span class=' '>Personal Leave</span> # } else {# <span class=' '> #:leaveType#</span> # }#"
         },
         
-        { field: "comment", title: comment, hidden: true, width: 40 },
-        { field: "statusId", title: "StatusId", hidden: true, width: 30 },
+        { field: "comment", title: comment, hidden: true, width: 40, filterable: false,  },
+        { field: "statusId", title: "StatusId", hidden: true, width: 30 , filterable: false },
         {
             title: status,
             field: 'status',

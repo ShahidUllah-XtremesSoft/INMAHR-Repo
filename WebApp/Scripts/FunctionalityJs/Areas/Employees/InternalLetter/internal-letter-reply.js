@@ -102,7 +102,8 @@ var getInternalLetterByIdCallBack = function (inputDataJSON) {
     $('#Subject').val(responseJSON.subject);
     $('#DepartmentIds').val(responseJSON.senderDepartmentID);
     $('#Reciever_HR_Employee_Ids').val(responseJSON.senderEmployeeId);
-    $('#divFrom').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.createdBy + '</button>');
+ //   $('#divFrom').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.createdBy + '</button>');
+    $('#divFrom').append('<button type="button" class="btn btn btn-outline-dark waves-effect waves-light">' + responseJSON.createdBy + '</button>');
     //setTimeout(function () {
     //    $('#Body').html(responseJSON.body);
     //}, 100);

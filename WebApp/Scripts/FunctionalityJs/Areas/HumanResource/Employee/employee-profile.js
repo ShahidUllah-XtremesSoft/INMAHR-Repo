@@ -532,8 +532,10 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
             '<td>' + fileCount + '</td>' +
             '<td class="documentType">' + item.documentType + '</td> ' +
             '<td class="releaseDate">' + item.releaseDate + '</td> ' +
-            '<td class="expiryDate"><span class="' + classColor + '">' + item.expiryDate + '</span></td>' +
-            '<td class="expiryIn"><span class="' + classColor + '">' + item.totalDays + ' (' + lblDays + ')' + '</span></td>' +
+         //   '<td class="expiryDate"><span class="' + classColor + '">' + item.expiryDate + '</span></td>' +
+            '<td class="expiryDate"><span>' + item.expiryDate + '</span></td>' +
+          //  '<td class="expiryIn"><span class="' + classColor + '">' + item.totalDays + ' (' + lblDays + ')' + '</span></td>' +
+            '<td class="expiryIn"><span>' + item.totalDays + ' (' + lblDays + ')' + '</span></td>' +
             '<td class="Status"><span class="' + classColor + '">' + item.status + '</span></td>' +
             '<td style="text-align: left;font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + ' </td>  ' +
             '</tr > '

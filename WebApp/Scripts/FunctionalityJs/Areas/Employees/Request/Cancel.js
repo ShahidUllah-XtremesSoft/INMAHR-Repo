@@ -49,7 +49,7 @@ var bindLeaveCancelGrid = function (inputDataJSON) {
         { field: "name", title: lblName, hidden: false, width: 50 },
 
         { field: "leave", title: leaveName, hidden: true, width: 30 },
-        { field: "startDate", title: startDate, hidden: false, width: 20, template: "<span class='badge badge-info'>#:startDate#</span>" },
+        { field: "startDate", title: startDate, hidden: false, width: 20  },
         //{ field: "endDate", title: endDate, hidden: false, width: 20, template: "<span class='badge badge-danger'>#:endDate#</span>" },
         //{ field: "commentEng", title: commentEng, hidden: false, width: 30 },
         /*{ field: "commentArb", title: commentArb, hidden: false, width: 30 },*/

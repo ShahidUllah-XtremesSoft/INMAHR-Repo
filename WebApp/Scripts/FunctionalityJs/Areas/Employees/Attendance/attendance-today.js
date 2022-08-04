@@ -220,33 +220,18 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
     var record = 0;
     var gridColumns = [
-        { title: "#", template: "<b>#= ++record #</b>", width: 15, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 55, },
         { field: "id", title: "id", hidden: true },
-        { field: "employeeNumber", title: empNum, width: 40, filterable: true },
-        { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },
-        { field: "employeeName", title: employeeName, width: 100, filterable: true },
-        { field: "departmentId", title: 'DepartmentId', width: 100, filterable: true, hidden: true },
-        { field: "departmentName", title: department, width: 100, filterable: true },
-        { field: "checkInDate", title: checkinDate, width: 40, filterable: true },
-        { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
-        { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
-        {
-            field: "lateInTime", title: lateTimeIn, width: 35, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            //  , template: "#if (lateInTime !='') { # <span class='badge  badge-danger'>#:lateInTime#</span> #}#"
-            , footerTemplate: "<span class=''> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
-        },
-        {
-            field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            //  , template: "#if (earlyOutTime !='') { # <span class='badge  badge-danger'>#:earlyOutTime#</span> #}#"
-            , format: "{0:HH:mm}"
-            , footerTemplate: "<span class=''><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
-        },
-       { field: "breakIn", title: lblBreakIn, width: 40, filterable: false, hidden: false },
-       { field: "breakOut", title: lblBreakOut, width: 40, filterable: false, hidden: false },
+        { field: "employeeNumber", title: empNum, width: 100, filterable: true },
+        { field: "employeeId", title: 'EmployeeId', width: 10, filterable: true, hidden: true },
+        { field: "employeeName", title: employeeName, width: 300, filterable: true },
+        { field: "departmentId", title: 'DepartmentId', width: 300, filterable: true, hidden: true },
+        { field: "departmentName", title: department, width: 190, filterable: true },
+        { field: "checkInDate", title: checkinDate, width: 100, filterable: false },
         {
             title: status,
             field: 'status',
-            width: 80,
+            width: 100,
             hidden: false,
             filterable: false,
             template: "#if (status =='Late')" +
@@ -254,14 +239,59 @@ var bindAttendanceGrid = function (inputDataJSON) {
                 "else if (status == 'Present')" +
                 " { # <span class=''>" + lblPresent + "</span> # }" +
                 " else if(status == 'Absent')" +
-                " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}  " +
+                " { if(status == 'Absent' && departmentId==11 || departmentId==22) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}  " +
                 "else {# <span class='badge badge-primary'>#:status#</span> #}#"
-            , footerTemplate: "<span class=''>" + lblPresent + ":<span   class='footerPresentPlaceholder'>0</span></span> | <span class=''>" + lblAbsent + ":<span   class='footerAbsentPlaceholder'>0</span></span>"
+         //   , footerTemplate: "<span class=''>" + lblPresent + ":<span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ":<span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
 
         },
-        { field: "remarks", title: lblRemarks, width: 30, filterable: false, hidden: false },
         {
-            field: "", width: 40,
+            title: lblMorning + " / " + lblEvening, headerAttributes: { style: "text-align: center;" },
+            columns: [
+                //  { field: "checkInTime", title: checkinTime, width: 100, filterable: false },
+                { field: "checkInTime", title: lblIn, width: 100, filterable: false, headerAttributes: { style: "text-align: center;" }, template: "#if (lateInTime =='' && remarks =='') { # <span style='color:green;'>#:checkInTime#</span> #}else {# <span style='color:red;'>#:checkInTime#</span> #}#" },
+                { field: "checkOutTime", title: lblOut, width: 100, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }, template: "#if (earlyOutTime =='' && remarks =='') { # <span style='color:green;'>#:checkOutTime#</span> #}else {# <span style='color:red;'>#:checkOutTime#</span> #}#" },
+
+
+            ]
+        }, {
+            title: lblBreak, headerAttributes: { style: "text-align: center;" },
+            columns: [
+                { field: "breakIn", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "breakOut", title: lblIn, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+
+            field: "totalDelayTime", title: lblDelay, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { "class": "lateforAttedance " }
+            , template: "#if (totalDelayTime !='') { # <span class=' ' style='color:red;'>#:totalDelayTime#</span> #}#"
+        },
+
+        /*
+        {
+            title: "", headerAttributes: { style: "text-align: center;" },
+            columns: [
+                //   { field: "checkOutTime", title: checkoutTime, width: 100, filterable: false, hidden: false },
+                //{ field: "checkOutTime", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                {
+                    //    field: "lateInTime", title: lateTimeIn, width: 100, filterable: false, hidden: false//, attributes: { "class": "badge  badge-dark" }
+                    field: "totalDelayTime", title: lblDelay, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { "class": "lateforAttedance " }
+                    , template: "#if (totalDelayTime !='') { # <span class=' ' style='color:red;'>#:totalDelayTime#</span> #}#"
+                    //  , footerTemplate: "<span class=''> <span   class='footerLateTimeInPlaceholder' style='color:red;'>0</span></span>"
+                },
+                {
+                    field: "earlyOutTime", title: lblEarly, width: 100, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { "class": "lateforAttedance " }
+                    , template: "#if (earlyOutTime !='') { # <span class='lateforAttedance'>#:earlyOutTime#</span> #}#"
+                    , format: "{0:HH:mm}"
+                    , footerTemplate: "<span class=''><span   class='footerLateTimeOutPlaceholder' style='color:red;'>0</span></span>"
+                },
+            ]
+        },
+        */
+        //   { field: "breakIn", title: lblBreakIn, width: 100, filterable: false, hidden: false },
+        //   { field: "breakOut", title: lblBreakOut, width: 100, filterable: false, hidden: false },
+
+        { field: "remarks", title: lblRemarks, width: 300, filterable: false, hidden: false },
+        {
+            field: "", width: 115,
             title: '',
             hidden: isHR,
             ////template: "#if(isLoginAssigned === 0) {#<div><button class='btn btn-primary btn-sm'  onClick= createLogin(this)><span class='fa fa-user'></span> " + btnGridCreateLogin + "</button>#}if(isLoginAssigned == 1) {#<div class='btn btn-success btn-sm'><i class='fa fa-check' aria-hidden='true'></i> " + btnGridAlreadyCreated + "</div>#}#",
@@ -420,7 +450,7 @@ function calculateFooterData() {
             if (gridData[i].status == 'Absent') {
 
                 if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.  
-                                                                                                                          // 17 & 22 is NSS and technical section id's ,this color will be orange as per HR       
+                    // 17 & 22 is NSS and technical section id's ,this color will be orange as per HR       
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
 
 
@@ -433,7 +463,7 @@ function calculateFooterData() {
             }
             else if (gridData[i].status == 'Present') {
                 totalPresent++;
-                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-success");
+                // grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-success");
 
             }
             else if (gridData[i].status == 'Late') {

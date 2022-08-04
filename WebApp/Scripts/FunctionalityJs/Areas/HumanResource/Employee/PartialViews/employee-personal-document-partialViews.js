@@ -100,11 +100,14 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
         }
         var classColor = '';
         if (item.totalDays <= 0) {
-            classColor = 'badge badge-danger';
+          //  classColor = 'badge badge-danger';
+            classColor = ' ';
         } else if (item.totalDays <= 29) {
-            classColor = 'badge badge-warning';
+          //  classColor = 'badge badge-warning';
+            classColor = ' ';
         } else {
-            classColor = 'badge badge-success';
+           // classColor = 'badge badge-success';
+            classColor = ' ';
         }
         $('#employeePersonalDocumentGrid tbody').append(
             //~/Content/Images/pdf.png
@@ -119,7 +122,7 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
             '<td class="PersonalDocumentExpiryDate"><span class="' + classColor + '">' + item.expiryDate + '</span></td>' +
             '<td class="expiryIn"><span class="' + classColor + '">' + item.totalDays + ' (' + lblDays + ')' + '</span></td>' +
             '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
-            '<td style="padding-top:20px;"><a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeePersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>   <a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deleteEmployeePersonalDocument(this)"></i></a></td>      ' +
+            '<td style="padding-top:20px;"><a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editEmployeePersonalDocument(this)" style="cursor:pointer; font-size: 26px;"></i></a>   <a class="deleteEmployeeDocumentType" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px; cursor:pointer;" onclick="deleteEmployeePersonalDocument(this)"></i></a></td>      ' +
             '</tr > '
         );
     });

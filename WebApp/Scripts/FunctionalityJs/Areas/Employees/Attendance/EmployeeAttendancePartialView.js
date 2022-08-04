@@ -117,51 +117,118 @@ var bindAttendanceGrid = function (inputDataJSON) {
     ];
     */
     var gridColumns = [
-        { title: "#", template: "<b>#= ++record #</b>", width: 15, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 30, },
         { field: "id", title: "id", hidden: true },
-        { field: "employeeNumber", title: empNum, width: 40, filterable: true },
-        { field: "employeeId", title: 'EmployeeId', width: 100, filterable: true, hidden: true },
-        { field: "employeeName", title: employeeName, width: 100, filterable: false },
-        { field: "departmentId", title: 'DepartmentId', width: 100, filterable: true, hidden: true },
-        { field: "departmentName", title: department, width: 100, filterable: true },
-        { field: "checkInDate", title: checkinDate, width: 40, filterable: true },
-        { field: "checkInTime", title: checkinTime, width: 30, filterable: true },
-        { field: "checkOutTime", title: checkoutTime, width: 30, filterable: true, hidden: false },
+        { field: "employeeNumber", title: empNum, width: 200, filterable: true, hidden: true },
+        { field: "employeeId", title: 'EmployeeId', width: 200, filterable: true, hidden: true },
+        { field: "employeeName", title: employeeName, width: 200, filterable: false, hidden: true },
+        { field: "departmentId", title: 'DepartmentId', width: 200, filterable: true, hidden: true },
+        { field: "departmentName", title: department, width: 200, filterable: true, hidden: true },
         {
-            field: "lateInTime", title: lateTimeIn, width: 35, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            , template: "#if (lateInTime !='') { # <span class=''>#:lateInTime#</span> #}#"
-            , footerTemplate: "<span class=''> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
+            field: "checkInDate", title: checkinDate, width: 100, filterable: true
+            , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span>"
+
         },
-        {
-            field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: true, hidden: false//, attributes: { "class": "badge  badge-dark" }
-            , template: "#if (earlyOutTime !='') { # <span class=''>#:earlyOutTime#</span> #}#"
-            , format: "{0:HH:mm}"
-            , footerTemplate: "<span class=''><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
-        },
-        { field: "breakIn", title: lblBreakIn, width: 40, filterable: false, hidden: false },
-        { field: "breakOut", title: lblBreakOut, width: 40, filterable: false, hidden: false },
         {
             title: status,
             field: 'status',
-            width: 70,
+            width: 80,
             hidden: false,
             filterable: false,
             template: "#if (status == 'Present')" +
                 " { # <span class=''>" + lblPresent + "</span> # } else if(status == 'Absent')" +
                 " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}   else " +
-                " {# <span class='badge badge-primary'>#:status#</span> #}#"
-            , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'>0</span></span> | <span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder'>0</span></span>"
+                " {# <span class=''>#:status#</span> #}#"
+            // , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
+            , footerTemplate: "<span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
 
         },
-        { field: "remarks", title: 'Remarks', width: 40, filterable: false, hidden: false },
+
+
+        {
+            title: lblMorning + " / " + lblEvening, headerAttributes: { style: "text-align: center;" },
+            columns: [
+                { field: "checkInTime", title: lblIn, width: 70, filterable: false, headerAttributes: { style: "text-align: center;" }, template: "#if (lateInTime =='' && remarks =='') { # <span style='color:green;'>#:checkInTime#</span> #}else {# <span style='color:red;'>#:checkInTime#</span> #}#" },
+                { field: "checkOutTime", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }, template: "#if (earlyOutTime =='' && remarks =='') { # <span style='color:green;'>#:checkOutTime#</span> #}else {# <span style='color:red;'>#:checkOutTime#</span> #}#" },
+
+                /*
+                {
+                    field: "lateInTime", title: lblLate, width: 50, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { "class": "lateforAttedance " }
+                    , template: "#if (lateInTime !='') { # <span class='lateforAttedance'>#:lateInTime#</span> #}#"
+                    , footerTemplate: "<span class=''> <span   class='footerLateTimeInPlaceholder' style='color:red;'>0</span></span>"
+                },
+                */
+            ]
+        }, {
+            title: lblBreak, headerAttributes: { style: "text-align: center;" },
+            columns: [
+                { field: "breakIn", title: lblOut, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "breakOut", title: lblIn, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        },
+
+        {
+            title: "", headerAttributes: { style: "text-align: center;" },
+            columns: [
+                //   { field: "checkOutTime", title: checkoutTime, width: 100, filterable: false, hidden: false },
+                {
+                    //    field: "lateInTime", title: lateTimeIn, width: 100, filterable: false, hidden: false//, attributes: { "class": "badge  badge-dark" }
+                    field: "totalDelayTime", title: lblDelay, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { "class": "lateforAttedance " }
+                    , template: "#if (totalDelayTime !='') { # <span class=' ' style='color:red;'>#:totalDelayTime#</span> #}#"
+                    , footerTemplate: "<span class=''> <span   class='footerTotalDelayTimeInPlaceholder' style='color:red;'>0</span></span>"
+                },
+                {
+
+                    field: "totalOverTime", title: lblOverTime, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+                    , template: "#if (totalOverTime !=null) { # <span class=' ' style='color:green;'>#:totalOverTime#</span> #}#"
+                    , footerTemplate: "<span class=''> <span   class='footerTotalOverTimePlaceholder' style='color:green;'>0</span></span>"
+                },
+
+                /*
+                {
+                    field: "earlyOutTime", title: lblEarly, width: 50, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { "class": "lateforAttedance " }
+                    , template: "#if (earlyOutTime !='') { # <span class='lateforAttedance'>#:earlyOutTime#</span> #}#"
+                    , format: "{0:HH:mm}"
+                    , footerTemplate: "<span class=''><span   class='footerLateTimeOutPlaceholder' style='color:red;'>0</span></span>"
+                },
+
+                */
+            ]
+        },
+
+
+
+
+
+
+
+
+        //   { field: "checkInTime", title: checkinTime, width: 30, filterable: false },
+        //   { field: "checkOutTime", title: checkoutTime, width: 30, filterable: false, hidden: false },
+        //  {
+        //      field: "lateInTime", title: lateTimeIn, width: 35, filterable: false, hidden: false//, attributes: { "class": "badge  badge-dark" }
+        //      , template: "#if (lateInTime !='') { # <span class=''>#:lateInTime#</span> #}#"
+        //      , footerTemplate: "<span class=''> <span   class='footerLateTimeInPlaceholder'>0</span></span>"
+        //  },
+        //  {
+        //      field: "earlyOutTime", title: earlyTimeOut, width: 40, filterable: false, hidden: false//, attributes: { "class": "badge  badge-dark" }
+        //      , template: "#if (earlyOutTime !='') { # <span class=''>#:earlyOutTime#</span> #}#"
+        //      , format: "{0:HH:mm}"
+        //      , footerTemplate: "<span class=''><span   class='footerLateTimeOutPlaceholder'>0</span></span>"
+        //  },
+        //   { field: "breakIn", title: lblBreakIn, width: 40, filterable: false, hidden: false },
+        //   { field: "breakOut", title: lblBreakOut, width: 40, filterable: false, hidden: false },
+        { field: "remarks", title: lblRemarks, width: 300, filterable: false, hidden: false },
 
     ];
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
     setTimeout(function () {
+        calculateFooterData();
+        /*
         var grid = $("#AttendanceGrid").data("kendoGrid");
         var gridData = grid.dataSource.view();
 
-        var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
+        var totalPresent = 0, totalAbsent = 0, totallateInTime = 0, totalDelayTime = 0, totalDelayTimeHours = 0, totalDelayTimeMinutes = 0, totalDelayTimeSeconds = 0;
         var totallateInTimeCount = "";
         var t1 = "00:00:00";
         var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
@@ -210,6 +277,15 @@ var bindAttendanceGrid = function (inputDataJSON) {
                 earlyTimeOutHours = earlyTimeOutHours + parseInt(Number(earlyOutTime[0]));
 
             }
+             
+            if (gridData[i].totalDelayTime != '') {
+                var totalDelayTimes = gridData[i].totalDelayTime.split(':');
+                
+                totalDelayTimeSeconds = totalDelayTimeSeconds + parseInt(Number(totalDelayTimes[2]));
+                totalDelayTimeMinutes = totalDelayTimeMinutes + parseInt(Number(totalDelayTimes[1]));
+                totalDelayTimeHours = totalDelayTimeHours + parseInt(Number(totalDelayTimes[0]));
+
+            }
 
 
         }
@@ -223,55 +299,30 @@ var bindAttendanceGrid = function (inputDataJSON) {
             ('0' + (parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
             ('0' + (earlyTimeOutSeconds % 60)).slice(-2);
 
+         
+        //------------- Total Dealy Time Calculation
+        totalDelayTimeSeconds = totalDelayTimeSeconds + (totalDelayTimeMinutes * 60) + (totalDelayTimeHours * 3600);
+        var grandtotalDelayTime = ('0' + (parseInt(totalDelayTimeSeconds / (60 * 60)))).slice(-2) + ":" +
+            ('0' + (parseInt(totalDelayTimeSeconds / 60 % 60))).slice(-2) + ":" +
+            ('0' + (totalDelayTimeSeconds % 60)).slice(-2);
+
+
+
+
+
         //$(".footerLateTimeInPlaceholder").text(totallateInTime);
         $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);
         $(".footerLateTimeOutPlaceholder").text(grandTotalEarlyTimeOut);
         $(".footerPresentPlaceholder").text(totalPresent);
         $(".footerAbsentPlaceholder").text(totalAbsent);
+        $(".footerTotalDelayTimeInPlaceholder").text(grandtotalDelayTime);
 
 
         //$(".footerLateTimeInPlaceholder").text(totallateInTime);
         //$(".footerLateTimeInCalculated").text(totallateInTimeCount);
         //$(".footerPresentPlaceholder").text(totalPresent);
         //$(".footerAbsentPlaceholder").text(totalAbsent);
-        /*
-        var arrayForDropdown = [];
-
-        for (var x = 0; x < gridData.length; x++) {
-
-            if (gridData[x].status != 'Present' && gridData[x].status != 'Absent') {
-
-                arrayForDropdown.push(gridData[x].employeeName);
-            } else {
-
-                arrayForDropdown.push(gridData[x].status);
-            }
-        }
-        let arrayForDropdownn = [...new Set(arrayForDropdown)];
-        $("#ddl-search").kendoDropDownList({
-            dataSource: arrayForDropdownn
-            , change: function () {
-
-                var value = this.value();
-                if (value) {
-                     
-
-                    var grid = $("#AttendanceGrid").data("kendoGrid");
-
-                    //  grid.dataSource.filter(value);
-                    if (value == 'Present' || value == 'Absent') {
-                        grid.dataSource.filter({ field: "status", operator: "eq", value: value });
-                    } else if (value != 'Present' || value != 'Absent') {
-
-                        grid.dataSource.filter({ field: "employeeName", operator: "eq", value: value });
-
-                    }
-                } else {
-                    grid.dataSource.filter({});
-                }
-                calculateFooterData();
-            }
-        });
+       
         */
     }, 100);
 };
@@ -294,8 +345,12 @@ function departmentTreeViewCheck(e) {
 function calculateFooterData() {
     var grid = $("#AttendanceGrid").data("kendoGrid");
     var gridData = grid.dataSource.view();
+    var
+        totalPresent = 0, totalAbsent = 0,
+        totallateInTime = 0, totalDelayTime = 0,
+        totalDelayTimeHours = 0, totalDelayTimeMinutes = 0, totalDelayTimeSeconds = 0,
+        totalOvertimeHours = 0, totalOvertimeMinutes = 0, totalOvertimeSeconds = 0;
 
-    var totalPresent = 0, totalAbsent = 0, totallateInTime = 0;
     var totallateInTimeCount = "";
     var t1 = "00:00:00";
     var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
@@ -341,6 +396,26 @@ function calculateFooterData() {
 
         }
 
+        //------------- Total Dealy Time Calculation
+
+        if (gridData[i].totalDelayTime != '') {
+            var totalDelayTimes = gridData[i].totalDelayTime.split(':');
+
+            totalDelayTimeSeconds = totalDelayTimeSeconds + parseInt(Number(totalDelayTimes[2]));
+            totalDelayTimeMinutes = totalDelayTimeMinutes + parseInt(Number(totalDelayTimes[1]));
+            totalDelayTimeHours = totalDelayTimeHours + parseInt(Number(totalDelayTimes[0]));
+
+        }
+        //------------- Total Over Time Calculation
+
+        if (gridData[i].totalOverTime != null && gridData[i].totalOverTime != '') {
+            var totalOvertimes = gridData[i].totalOverTime.split(':');
+
+            totalOvertimeSeconds = totalOvertimeSeconds + parseInt(Number(totalOvertimes[2]));
+            totalOvertimeMinutes = totalOvertimeMinutes + parseInt(Number(totalOvertimes[1]));
+            totalOvertimeHours = totalOvertimeHours + parseInt(Number(totalOvertimes[0]));
+
+        }
 
     }
     lateTimeInSeconds = lateTimeInSeconds + (lateTimeInMinutes * 60) + (lateTimeInHours * 3600);
@@ -352,12 +427,29 @@ function calculateFooterData() {
     var grandTotalEarlyTimeOut = ('0' + (parseInt(earlyTimeOutSeconds / (60 * 60)))).slice(-2) + ":" +
         ('0' + (parseInt(earlyTimeOutSeconds / 60 % 60))).slice(-2) + ":" +
         ('0' + (earlyTimeOutSeconds % 60)).slice(-2);
+    //------------- Total Dealy Time Calculation
+    totalDelayTimeSeconds = totalDelayTimeSeconds + (totalDelayTimeMinutes * 60) + (totalDelayTimeHours * 3600);
+    var grandtotalDelayTime = ('0' + (parseInt(totalDelayTimeSeconds / (60 * 60)))).slice(-2) + ":" +
+        ('0' + (parseInt(totalDelayTimeSeconds / 60 % 60))).slice(-2) + ":" +
+        ('0' + (totalDelayTimeSeconds % 60)).slice(-2);
+
+    //------------- Total Dealy Time Calculation
+    totalOvertimeSeconds = totalOvertimeSeconds + (totalOvertimeMinutes * 60) + (totalOvertimeHours * 3600);
+    var grandtotalOverTime = ('0' + (parseInt(totalOvertimeSeconds / (60 * 60)))).slice(-2) + ":" +
+        ('0' + (parseInt(totalOvertimeSeconds / 60 % 60))).slice(-2) + ":" +
+        ('0' + (totalOvertimeSeconds % 60)).slice(-2);
+
+
+
+
 
     //$(".footerLateTimeInPlaceholder").text(totallateInTime);
     $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);
     $(".footerLateTimeOutPlaceholder").text(grandTotalEarlyTimeOut);
     $(".footerPresentPlaceholder").text(totalPresent);
     $(".footerAbsentPlaceholder").text(totalAbsent);
+    $(".footerTotalDelayTimeInPlaceholder").text(grandtotalDelayTime);
+    $(".footerTotalOverTimePlaceholder").text(grandtotalOverTime);
 
 }
 

@@ -192,6 +192,9 @@
   <data name="lblBody" xml:space="preserve">
     <value>الجسم</value>
   </data>
+  <data name="lblBreak" xml:space="preserve">
+    <value>الاستراحة</value>
+  </data>
   <data name="lblBreakIn" xml:space="preserve">
     <value>خروج للاستراحة</value>
   </data>
@@ -270,6 +273,9 @@
   <data name="lblDegressIssueDate" xml:space="preserve">
     <value>تاريخ الإصداراسم الشهادة </value>
   </data>
+  <data name="lblDelay" xml:space="preserve">
+    <value>التاخيرات</value>
+  </data>
   <data name="lblDepartementName" xml:space="preserve">
     <value>Department Name</value>
   </data>
@@ -291,6 +297,9 @@
   <data name="lblDocument" xml:space="preserve">
     <value>الوثائق</value>
     <comment>الوثيقة</comment>
+  </data>
+  <data name="lblEarly" xml:space="preserve">
+    <value>اظافي دقائق</value>
   </data>
   <data name="lblEarlyOutTime" xml:space="preserve">
     <value>اظافي دقائق</value>
@@ -385,6 +394,9 @@
   <data name="lblEmpNum" xml:space="preserve">
     <value>رقم الموظف</value>
   </data>
+  <data name="lblEvening" xml:space="preserve">
+    <value>الفترة المسائية</value>
+  </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>تنتهي في أيام</value>
   </data>
@@ -408,6 +420,9 @@
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
+  </data>
+  <data name="lblIn" xml:space="preserve">
+    <value>دخول</value>
   </data>
   <data name="lblInternalLetter" xml:space="preserve">
     <value>المراسلات الداخلية</value>
@@ -474,6 +489,9 @@
   <data name="lblMarksPercentage" xml:space="preserve">
     <value>نسبة العلامات</value>
   </data>
+  <data name="lblMorning" xml:space="preserve">
+    <value>الفترة الصباحية</value>
+  </data>
   <data name="lblMunicipalityCardExpiryDate" xml:space="preserve">
     <value>تاريخ الانتهاء بطاقة البلدية</value>
   </data>
@@ -537,6 +555,12 @@
   <data name="lblOtherStatusEng" xml:space="preserve">
     <value>(بالغات الانجليزية)وضعيات أخرى</value>
   </data>
+  <data name="lblOut" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="lblOverTime" xml:space="preserve">
+    <value>الساعات الاضافية</value>
+  </data>
   <data name="lblParentDepartment" xml:space="preserve">
     <value>القسم الرئيس</value>
   </data>
@@ -583,7 +607,8 @@
     <value>رقم الهاتف</value>
   </data>
   <data name="lblPresent" xml:space="preserve">
-    <value>حاضر</value>
+    <value>حضور</value>
+    <comment>حاضر</comment>
   </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>معالجتها</value>

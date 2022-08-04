@@ -57,7 +57,8 @@ $(function () {
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
         $("#LeaveTypeName").val($("#LeaveTypeId").data("kendoDropDownList").text());
-        if ($("#LeaveTypeName").val() == "Work P.Leave") {
+        //  if ($("#LeaveTypeName").val() == "Work P.Leave") {
+        if ($("#LeaveTypeId").val() == 67) {
             saveShortLeaveRequest();
         } else {
 
@@ -403,7 +404,7 @@ function fnCheck_Request_ShortLeave_Request_Submitted_Count_Monthly() {
 
 }
 function fnCheck_Request_ShortLeave_Request_Submitted_Count_MonthlyCallBack(inputDataJSON) {
-     
+
     var responseJSON = JSON.parse(inputDataJSON.Value);
 
     if (responseJSON.request_Submitted_Count == 3) {

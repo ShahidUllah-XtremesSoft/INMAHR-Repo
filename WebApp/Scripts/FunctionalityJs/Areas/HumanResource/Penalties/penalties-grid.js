@@ -13,7 +13,7 @@ $(function () {
 
 });
 function loadPenaltyGrid() {
-    ajaxRequest({ commandName: 'HR_Penalty_List', values: { EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,Language: $('#Language').val() }, CallBack: loadPenaltysCallBack });
+    ajaxRequest({ commandName: 'HR_Penalty_List', values: { EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId, Language: $('#Language').val() }, CallBack: loadPenaltysCallBack });
 }
 var loadPenaltysCallBack = function (inputDataJSON) {
     console.log(inputDataJSON);
@@ -23,16 +23,24 @@ var bindPenaltysGrid = function (inputDataJSON) {
     var record = 0;
     var gridColumns = [
 
-        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+        {
+            title: "#", template: "<b>#= ++record #</b>", width: 5, template: "<a style='cursor:pointer;' onClick= viewAttachment('#=currentFileName#',this)><b>#= ++record #</b></a>"
+        },
         { field: "id", title: "id", hidden: true },
-        { field: "name", title: lblName, width: 50, filterable: true },
+        {
+            field: "name", title: lblName, width: 50, filterable: true,
+            template: "<a style='cursor:pointer;' onClick= viewAttachment('#=currentFileName#',this)>#=name#</a>"
+        },
         {
             field: "",
             width: 20,
             title: attachment,
             template: "<a style='font-size:20px;cursor:pointer;' onClick= viewAttachment('#=currentFileName#',this)  title=''>#if(currentFileName == null){}else{ if(currentFileName.split('.').pop().toLowerCase() == 'pdf'){#<img src='/Content/Images/pdf.png' style='width:30px;cursor:pointer;'/></a>#} else {#<img src='/Content/Images/ImageIcon.png' style='width:33px;height:34px;cursor:pointer;'/></a>#} }#"
         },
-        { field: "penaltyStatus", title: lblStatus, width: 10, filterable: false },
+        {
+            field: "penaltyStatus", title: lblStatus, width: 10, filterable: false
+            , template: "<a style='cursor:pointer;' onClick= viewAttachment('#=currentFileName#',this)>#=penaltyStatus#</a>"
+        },
         {
             field: "", width: 5,
             title: ' ',
@@ -49,14 +57,14 @@ function viewAttachment(currentFileName, event) {
     var row = $(event).closest("tr");
     var grid = $("#" + PenaltysGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-     
+
     if (currentFileName == "null") {
         swalMessage('info', '@HRModuleUI.HumanResourceUI.MsgAttachmentNotFound', 2000);
         return false;
     }
     ajaxRequest({
         commandName: 'HR_Penalty_UpdateStatus',
-        values: {            
+        values: {
             HR_Penalty_Id: dataItem.id,
             EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
             LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,

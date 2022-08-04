@@ -192,6 +192,9 @@
   <data name="lblBody" xml:space="preserve">
     <value>Body</value>
   </data>
+  <data name="lblBreak" xml:space="preserve">
+    <value>Break</value>
+  </data>
   <data name="lblBreakIn" xml:space="preserve">
     <value>Break In</value>
   </data>
@@ -273,6 +276,9 @@
   <data name="lblDegressIssueDate" xml:space="preserve">
     <value>Certificate Issue Date</value>
   </data>
+  <data name="lblDelay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
   <data name="lblDepartementName" xml:space="preserve">
     <value>Department Name</value>
   </data>
@@ -293,6 +299,9 @@
   </data>
   <data name="lblDocument" xml:space="preserve">
     <value>Document</value>
+  </data>
+  <data name="lblEarly" xml:space="preserve">
+    <value>Early</value>
   </data>
   <data name="lblEarlyOutTime" xml:space="preserve">
     <value>Early Out Time</value>
@@ -384,6 +393,9 @@
   <data name="lblEmpNum" xml:space="preserve">
     <value>Emp #</value>
   </data>
+  <data name="lblEvening" xml:space="preserve">
+    <value>Evening</value>
+  </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>Expires In days</value>
   </data>
@@ -410,6 +422,9 @@
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hours</value>
+  </data>
+  <data name="lblIn" xml:space="preserve">
+    <value>IN</value>
   </data>
   <data name="lblInternalLetter" xml:space="preserve">
     <value>Internal Letter</value>
@@ -480,6 +495,9 @@
   <data name="lblMarksPercentage" xml:space="preserve">
     <value>Marks%</value>
   </data>
+  <data name="lblMorning" xml:space="preserve">
+    <value>Morning</value>
+  </data>
   <data name="lblMunicipalityCardExpiryDate" xml:space="preserve">
     <value>Municipality Card Expiry Date</value>
   </data>
@@ -539,6 +557,12 @@
   </data>
   <data name="lblOtherStatusEng" xml:space="preserve">
     <value>Other Status (English)</value>
+  </data>
+  <data name="lblOut" xml:space="preserve">
+    <value>OUT</value>
+  </data>
+  <data name="lblOverTime" xml:space="preserve">
+    <value>Overtime</value>
   </data>
   <data name="lblParentDepartment" xml:space="preserve">
     <value>Parent Section</value>

@@ -97,7 +97,7 @@ function fnLoadRequest_Signed_SignaturesCallBack(inputDataJSON) {
                 attachments = '<img style="width:65%" src=' + signature_data + ' alt="signature" class="" >';
             } else {
 
-                attachments = '<button type="button" disabled="" class="btn btn-danger  " style=" font-size: x-large;"> ' + lblNoSignature + '</button>';
+                attachments = '<button type="button" disabled="" class="btn    " style="background: transparent; font-size: x-large;"> ' + lblNoSignature + '</button>';
             }
             $('.signed-employee-signatures').append('<div class="row"> ' +
 

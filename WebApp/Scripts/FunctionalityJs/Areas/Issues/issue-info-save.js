@@ -6,14 +6,14 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(parseInt(JSON.parse(localStorage.getItem('User')).id));
 
-   
+
     setTimeout(function () {
         $("#Project_SubSections_DDL").data("kendoDropDownList").enable(false);
-    // LOAD KENDO DATE PICKERS
+        // LOAD KENDO DATE PICKERS
 
-    if (parameterId > 0 == true) { 
-        fnEditById(parameterId);
-    }
+        if (parameterId > 0 == true) {
+            fnEditById(parameterId);
+        }
 
     }, 100);
     loadProjectDropdownListEng();
@@ -119,9 +119,10 @@ $(function () {
                 $("#Project_SubSections_DDL").data("kendoDropDownList").enable(true);
 
                 // ---- SEARCH RECORD IN Sub Section DDL
-               
-                    loadProjectSubSectiondownList();
-                
+
+                loadProjectSubSectiondownList();
+                loadDepartmentIdFromHRApplication(this.text().substring(0, 6)); // Load department id on the basis of project section name ,Purpose:- issue will be saved as per departmnet 
+
             },
         });
     }
@@ -142,6 +143,23 @@ $(function () {
 
             },
         });
+
+
+    }
+    function loadDepartmentIdFromHRApplication(sectionName) {
+        ajaxRequest({
+            commandName: 'DDL_Department_GetBy_ProjectSection_Name', values: {
+                SectionName: sectionName,
+                Language: _currentLanguage
+            }, CallBack: fnloadDepartmentIdFromHRApplicationCallBack
+        });
+    }
+    function fnloadDepartmentIdFromHRApplicationCallBack(response) {
+
+        $('#Department_Id').val(JSON.parse(response.Value)[0].id);
+
+
+
 
 
     }
@@ -168,34 +186,39 @@ function fnEditById(parameterId) {
 }
 function editByIdCallBack(response) {
     var response = JSON.parse(response.Value);
-    
-    $('#Id').val(response.issueId);
+    if (response != null) {
+        
+      console.log(response)
+        $('#Id').val(response.issueId);
 
-    $('#Client_Id').val(response.clientId);
-    $('#DescriptionEng').html(response.descriptionEng);
+        $('#Client_Id').val(response.clientId);
+        $('#DescriptionEng').html(response.descriptionEng);
 
-    $("#EmployeeDDL").data('kendoDropDownList').value(response.employeeId);
-    $('#HR_Employee_Id').val(response.employeeId);
+        $("#EmployeeDDL").data('kendoDropDownList').value(response.employeeId);
+      //  $('#HR_Employee_Id').val(response.employeeId);
 
-    $("#ProjectDDL").data('kendoDropDownList').value(response.projectId);
-    $('#Project_Id').val(response.projectId);
+        $("#ProjectDDL").data('kendoDropDownList').value(response.projectId);
+        $('#Project_Id').val(response.projectId);
 
-    $("#Project_Section_Parent_Type_DDL").data('kendoDropDownList').value(response.setup_SetupType_Id);
-    $('#Setup_SetupType_Id').val(response.setup_SetupType_Id);
-     
-    //------ change event 
-    var ddl_Project_Section_Parent_Type_DDL = $("#Project_Section_Parent_Type_DDL").data("kendoDropDownList");
-    ddl_Project_Section_Parent_Type_DDL.trigger("change");
+        $("#Project_Section_Parent_Type_DDL").data('kendoDropDownList').value(response.setup_SetupType_Id);
+        $('#Setup_SetupType_Id').val(response.setup_SetupType_Id);
+        $('#Department_Id').val(response.department_Id);
+  
+       
+        //------ change event 
+        var ddl_Project_Section_Parent_Type_DDL = $("#Project_Section_Parent_Type_DDL").data("kendoDropDownList");
+        ddl_Project_Section_Parent_Type_DDL.trigger("change");
 
-     
-    setTimeout(function () {
 
-        $("#Project_SubSections_DDL").data('kendoDropDownList').value(response.setup_SetupTypeDetail_Id);
-        $('#Setup_SetupTypeDetail_Id').val(response.setup_SetupTypeDetail_Id);
+        setTimeout(function () {
 
-        $("#Project_SubSections_DDL").data("kendoDropDownList").enable(true);
-    }, 110);
+            $("#Project_SubSections_DDL").data('kendoDropDownList').value(response.setup_SetupTypeDetail_Id);
+            $('#Setup_SetupTypeDetail_Id').val(response.setup_SetupTypeDetail_Id);
 
+            $("#Project_SubSections_DDL").data("kendoDropDownList").enable(true);
+        }, 110);
+
+    }
 }
 
 

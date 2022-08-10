@@ -590,6 +590,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-supervision-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-technical-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-design-section.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-delay-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-supervision-section-assigned-employees-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-technical-section-assigned-employees-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-assigned-employees-grid.js" />
@@ -699,6 +700,8 @@
     <Content Include="Areas\HumanResource\Views\Rules\List.cshtml" />
     <Content Include="Areas\HumanResource\Views\Penalty\Add.cshtml" />
     <Content Include="Areas\HumanResource\Views\Penalty\List.cshtml" />
+    <Content Include="Areas\Project\Views\Project\Delay.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\EmailTemplate\_EmailTemplate.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

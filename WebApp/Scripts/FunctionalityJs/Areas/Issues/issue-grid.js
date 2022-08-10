@@ -11,10 +11,11 @@ $(function () {
 
 function loadGrid() {
     ajaxRequest({
-        commandName: 'Issue_Get', values: {
+        commandName: 'Issue_Get_New', values: {
             LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
             RoleId: JSON.parse(localStorage.getItem('User')).roleId,
             LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            LoggedInDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId,
             Language: $('#Language').val()
         }, CallBack: loadGridCallBack
     });
@@ -25,7 +26,7 @@ var loadGridCallBack = function (inputDataJSON) {
 }
 var bindGrid = function (inputDataJSON) {
     var record = 0;
-
+    console.log(inputDataJSON)
 
 
     var gridColumns = [
@@ -41,13 +42,13 @@ var bindGrid = function (inputDataJSON) {
         },
 
         {
-            field: "projectNumber", title: lblProjectNo, width: 15, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectNumber", title: lblProjectNo, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             , template: "#if(isRead == false){#  <a style='cursor:pointer;text-decoration:underline;color:blue;font-weight:bold;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a>  #} " +
                 " else {# <a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a> #}#",
         },
         {
-            field: "employeeName", title: employeeName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=employeeName#</div> #} else {#<div  class='viewbutton'>#=employeeName#</div>#}#",
+            field: "departmentName", title: lblSection, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            , template: "#if(isRead == false){#<div style='font-weight:bold;' >#=departmentName#</div> #} else {#<div  class='viewbutton'>#=departmentName#</div>#}#",
         },
         {
             field: "issueDate", title: lblStartDate, hidden: false, width: 20, template: "<span class='badge badge-success'>#:issueDate#</span>", filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }

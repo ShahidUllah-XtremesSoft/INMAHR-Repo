@@ -12,6 +12,7 @@
                 <input type="hidden" name="Project_Id" id="Project_Id" value="0" />
                 <input type="hidden" name="type" id="type" value="Issue_Save">
                 <input type="hidden" name="Language" id="Language" value="">
+                <input type="hidden" name="Department_Id" id="Department_Id" value="0" />
 
 
                 <div class="row">
@@ -24,11 +25,11 @@
                     <div class="col-md-8">  </div>
 
                 </div>
-                <div class="row">
+                <div class="row" hidden>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblConcernPerson</label><span style="color:red"> *</span><br />
-                            <input class="form-control" id="EmployeeDDL" name="EmployeeDDL" required />
+                            <input class="form-control" id="EmployeeDDL" name="EmployeeDDL"   />
                         </div>
                     </div>
                     <div class="col-md-8">  </div>
@@ -49,7 +50,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
-                            <input class="form-control" id="Project_SubSections_DDL" name="Project_SubSections_DDL"  />
+                            <input class="form-control" id="Project_SubSections_DDL" name="Project_SubSections_DDL" />
                             <input type="hidden" class="form-control" id="Setup_SetupTypeDetail_Id" name="Setup_SetupTypeDetail_Id" value="0" />
 
                         </div>
@@ -59,7 +60,7 @@
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblImage</label><br />
                             @*<input type="file" class="form-control" name="IssueImage" id="IssueImage" onchange="validateFileType('IssueImage',['png', 'jpg']);" />*@
-                            <input type="file" class="form-control" id="IssueImage"  name="IssueImage" onchange="validatePersonalDocument('IssueImage');">
+                            <input type="file" class="form-control" id="IssueImage" name="IssueImage" onchange="validatePersonalDocument('IssueImage');">
 
                         </div>
 
@@ -82,7 +83,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-8">
                     <div class="form-group">
                         <textarea type="text" class="form-control editor" name="DescriptionEng" id="DescriptionEng" value=""></textarea>
                         <input type="hidden" class="form-control" name="DescriptionArb" id="DescriptionArb" value=" "> </input>

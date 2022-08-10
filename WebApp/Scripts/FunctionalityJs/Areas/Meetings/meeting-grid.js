@@ -48,8 +48,9 @@ var bindGrid = function (inputDataJSON) {
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnDetailById(this)  title=''>#=projectNumber#</a> ",
         },
         { field: "employeeName", title: employeeName, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "startedTimeFormated", title: lblStartTime, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "endedTimeFormated", title: lblEndTime, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "meetingDate", title: lblMeetingDate, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "startedTimeFormated", title: lblStartTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "endedTimeFormated", title: lblEndTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "startedTime", title: lblStartTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "endedTime", title: lblEndTime, width: 50, hidden: true, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
       

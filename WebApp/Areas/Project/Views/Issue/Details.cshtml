@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = ProjectUI.ProjectUI.lblIssueDetails;  
+    ViewBag.Title = ProjectUI.ProjectUI.lblIssueDetails;
 }
 
 
@@ -20,23 +20,23 @@
                 <div class="card shadow-none mt-3 border border-light">
 
                     <div class="card-block">
-                       <br />
+                        <br />
 
                         <div class="row">
                             <div class="col-md-6 text-right">
                                 <p>  <b id="txt-subject">@ProjectUI.ProjectUI.lblOverview</b></p><hr />
                             </div>
-                            <div class="col-md-6" style="text-align:end" id="div-change-status"> 
-                                    <span class="badge  ">@ProjectUI.ProjectUI.lblChangeStatus:</span>
-                                    <select class="issue_status_ddl" id="" style="background-color: #49626a; color: white; font: bold;" onchange="fnChangeStatus(this.value)">
+                            <div class="col-md-6" style="text-align:end" id="div-change-status">
+                                <span class="badge  ">@ProjectUI.ProjectUI.lblChangeStatus:</span>
+                                <select class="issue_status_ddl" id="" style="background-color: #49626a; color: white; font: bold;" onchange="fnChangeStatus(this.value)">
 
-                                        <option value="Re-Open">Re-Open</option>
-                                        <option value="Closed">Closed</option>
-                                        <option value="Under Progress">Under Progress</option>
-                                        <option value="Pending">Pending</option>
-                                        <option value="Completed">Completed</option>
-                                    </select>
-                                 <hr />
+                                    <option value="Re-Open">Re-Open</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="Under Progress">Under Progress</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                                <hr />
                             </div>
                         </div>
                         <br />
@@ -55,29 +55,46 @@
                         <hr class="bg-primary" />
 
                         <div class="row">
+                            <div class="col-md-12 text-right">
+                                <p>  <b id="txt-subject">@Resources.Global.lblRemarks</b></p>  <p id="txt-remarks" style="color: #db4240;"> </p>
+                            </div>
+                             
+                        </div>
+
+                        <div class="row">
                             <div class="card-footer">
-                                <div class="col-sm-4">
-                                    <span class="badge    ">@ProjectUI.ProjectUI.lblConcernPerson:</span>
-                                    <span class="badge badge-info    concern-person">  </span>
 
 
-                                </div><div class="col-sm-2"> </div>
-                                <div class="col-sm-2" style="text-align: end;">
-                                    <span class="badge    ">@ProjectUI.ProjectUI.lblIssueDate:</span>
-                                    <span class="badge badge-danger    issue-date">  </span>
+                                <div class="col-sm-5" style="display: inline-flex;">
+
+                                    <span class="     ">@ProjectUI.ProjectUI.lblConcernPerson:</span>
+                                    <b> <span class="       concern-person">  </span></b>
+                                    <div class="div-assign-issue-to-employee" hidden>
+                                        <button type="button" id="btn-assign" style="margin-left:5px;" onclick="fnLoadModal('Assign');" class="btn btn-sm   btn-success  pull-right" value="Assign"> @ProjectUI.ProjectUI.lblAssign</button>
+                                        @*   <a style="margin-left:5px; display: inline-flex;font-size:19px; cursor: pointer;" onclick="fnLoadModal('Assign');" title="Edit"><span class="fa fa-pencil"></span></a>*@
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="col-sm-3" style="text-align: end;">
+                                    <span class="     ">@ProjectUI.ProjectUI.lblIssueDate:</span>
+                                    <b> <span class="     issue-date">  </span></b>
 
 
                                 </div>
                                 <div class="col-sm-2" style="text-align: end;">
-                                    <span class="badge    ">@Resources.Global.lblDay:</span>
-                                    <span class="badge badge-danger    issue-days">  </span>
+                                    <span class="     ">@Resources.Global.lblDay:</span>
+                                    <b>    <span class="       issue-days">  </span></b>
                                 </div>
 
 
                                 <div class="col-sm-2" style="text-align: end;">
 
-                                    <span class="badge">.@Resources.Global.lblStatus:</span>
-                                    <span class="badge badge-danger    issue-status">   </span>
+                                    <span class=" ">@Resources.Global.lblStatus:</span>
+                                    <b>  <span class="       issue-status">   </span></b>
 
 
                                 </div>
@@ -95,11 +112,67 @@
     </div>
 </div>
 
+@* ********************* ************** ******* ******************** *@
+@* *********************                                            ********************* *@
+@* *********************           LOAD TRANSFER MODAL              ********************* *@
+@* *********************                                            ********************* *@
+@* ********************* **************** BY /\/\ati ************************************ *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-model" data-toggle="modal" data-target="#modal-transfer-to"></button>
+<div class="modal fade" id="modal-transfer-to" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class=" " id="modal-title">@ProjectUI.ProjectUI.lblIssueInformation</h5>
+            </div>
+            <div class="modal-body" style="height:auto;">
+                <form id="frmAssignTransferDataModal">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblConcernPerson:</label><br />
+
+                                <div id="container"><input required class=" " style="width:500px" id="EmployeeDDL" name="EmployeeDDL" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                <textarea class="form-control" id="Remarks" name="Remarks" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <button type="button" class="btn btn-danger   pull-right btnClose clearField" data-dismiss="modal">@Resources.Global.lblClose</button>
+                        <button type="button" id="btn-transfer" hidden class="btn   btn-success  pull-right" value="Transfer"> @ProjectUI.ProjectUI.lblTransfer</button>
+                        <button type="button" id="btn-assigned" hidden class="btn   btn-success  pull-right" value="Assign"> @ProjectUI.ProjectUI.lblAssign</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+
 
 
 
 @section scripts {
-    
+
     <script src="~/Scripts/FunctionalityJs/Areas/Issues/issue-detail.js?+971502324409"></script>
 
 }

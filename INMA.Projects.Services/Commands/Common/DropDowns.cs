@@ -105,6 +105,31 @@ namespace INMA.Projects.Services.Project
 
         }
     }
+    #endregion 
+    #region ==========   LOAD EMPLOYEE BY DEPARTMENT ID DDL 
+
+    [Command(Name = "DDL_HR_Employee_By_Department")]
+    public class DDL_HR_Employee_By_DepartmentCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new {
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0,
+                LoggedInDepartmentId = 0, 
+                Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_HR_Employee_By_Department.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
     #endregion
     #region ==========   CLIENT DDL
 
@@ -313,6 +338,26 @@ namespace INMA.Projects.Services.Project
     }
     #endregion
 
+    #region ==========   PROJECT   DDL DEPARTMENT GET BY PROJECT SECTION_NAME 
+
+    [Command(Name = "DDL_Department_GetBy_ProjectSection_Name")]
+    public class DDL_Department_GetBy_ProjectSection_NameCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new { SectionName= string.Empty, Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Department_GetBy_ProjectSection_Name.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
 
 
 }

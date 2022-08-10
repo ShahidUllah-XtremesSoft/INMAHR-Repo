@@ -24,8 +24,8 @@ $(function () {
 
     $('#btn-save').click(function () {
 
-        
-
+        sumTimeusingJsDateTime();
+      
         $("#DescriptionEng").val(tinymce.get("DescriptionEng").getContent({ format: "html" }));
 
         if (customValidateForm('frmAddUpdateMeeting')) {
@@ -65,6 +65,10 @@ $(function () {
             buttonRemovePleaseWait('btn-save', save, 'save');
             return false;
         }
+      
+
+
+
     });
 
 
@@ -102,8 +106,8 @@ function editByIdCallBack(response) {
     //$("#StartedTime").data("kendoTimePicker").value(response.startedTime); 
     //$("#EndedTime").data("kendoTimePicker").value(response.endedTime);
 
-    $('#StartedTime').val(response.startedTime);
-    $('#EndedTime').val(response.endedTime);
+  //  $('#StartedTime').val(response.startedTime);
+  //  $('#EndedTime').val(response.endedTime);
 
     $("#MeetingDate").kendoDatePicker({ value: response.meetingDate, format: "dd/MM/yyyy" });
 
@@ -158,4 +162,21 @@ function fnloadEmployeeDropdownListEngCallBack(response) {
     //        $('#HR_Employee_Id').val(selected_Id);
     //    },
     //});
+}
+
+
+function sumTimeusingJsDateTime() {
+     
+     
+        var oldDateObj = new Date();
+        var newDateObj = new Date();
+       newDateObj.setTime(oldDateObj.getTime() + (600 * 60 * 1000));   //adding 12 hours by default 
+
+
+    var custom_startTime = oldDateObj.toLocaleTimeString('it-IT');
+    var custom_endTime = newDateObj.toLocaleTimeString('it-IT');
+
+
+    $('#StartedTime').val(custom_startTime);
+    $('#EndedTime').val(custom_endTime);
 }

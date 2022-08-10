@@ -11,8 +11,8 @@ namespace INMA.Projects.Services.Project
 
     #region Issue GET
 
-    [Command(Name = "Issue_Get")]
-    public class Issue_GetCommand : CamelCommandBase
+    [Command(Name = "Issue_Get_New")]
+    public class Issue_Get_NewCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
@@ -25,6 +25,7 @@ namespace INMA.Projects.Services.Project
                 LoggedInUser = 0,
                 RoleId = 0,
                 LoggedInEmployeeId = 0,
+                LoggedInDepartmentId = 0,
                 Language = string.Empty
             }, viewInput);
 
@@ -34,7 +35,8 @@ namespace INMA.Projects.Services.Project
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Issue_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            var checkResult= repository.GetMultiple<dynamic>(ProjectStoreProcedure.Issue_Get_New.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            return checkResult;
 
         }
     }
@@ -62,6 +64,7 @@ namespace INMA.Projects.Services.Project
                 Status = string.Empty,
                 Setup_SetupType_Id = 0,
                 Setup_SetupTypeDetail_Id = 0,
+                Department_Id = 0,
 
 
                 Language = string.Empty,
@@ -153,6 +156,7 @@ namespace INMA.Projects.Services.Project
                 LoggedInUser = 0,
                 RoleId = 0,
                 LoggedInEmployeeId = 0,
+                LoggedInDepartmentId=0,
                 Language = string.Empty
             }, viewInput);
 
@@ -198,7 +202,69 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
-    #region Issue DELETE 
+    #region Issue Assign To
+
+    [Command(Name = "Issue_Assign")]
+    public class Issue_AssignCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        { 
+            object result = new { status = false, returnUrl = "#" }; 
+            var model = base.MappedModel(new
+            {
+
+                Id = 0,
+                UserId = 0,
+                LoggedInEmployeeId = 0,
+                AssignTo_EmployeeId = 0,
+                Remarks = string.Empty,
+                Language = string.Empty,
+                AssignORTransfer = string.Empty,
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Issue_Assign.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
+    #region Issue Transfer To
+
+    [Command(Name = "Issue_Transfer")]
+    public class Issue_TransferCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        { 
+            object result = new { status = false, returnUrl = "#" }; 
+            var model = base.MappedModel(new
+            {
+
+                Id = 0,
+                UserId = 0,
+                LoggedInEmployeeId = 0,
+                TransferTo_EmployeeId = 0,
+                Remarks = string.Empty,
+                Language = string.Empty,
+                AssignORTransfer = string.Empty,
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Issue_Transfer.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
+    #region Issue Change Status 
 
 
     [Command(Name = "Issue_Change_Status")]
@@ -228,7 +294,7 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
-    #region Issue CHANGE STATUS  
+    #region Issue CHANGE STATUS  isRead
 
 
     [Command(Name = "Issue_isRead_Change_Status")]

@@ -310,6 +310,7 @@ public enum ProjectStoreProcedure
 
     #region PROJECT  
     Project_Get,
+    Project_Delay_Get,
     Project_Get_By_Employee_Id,
     Project_save,
     Project_Edit_By_Id,
@@ -408,12 +409,14 @@ public enum ProjectStoreProcedure
     #region ISSUE
     Issue_Save,
     Issue_Get,
+    Issue_Get_New,
     Issue_Delete,
     Issue_isRead_Change_Status,
     Issue_Details_By_Id,
     Issue_Edit_By_Id,
     Issue_Change_Status,
-
+    Issue_Assign,
+    Issue_Transfer,
     #endregion
 
     #region NOTIFICATION
@@ -446,6 +449,7 @@ public enum ProjectStoreProcedure
     DDL_Project,
     Project_DDL_By_Role,
     DDL_HR_Employee,
+    DDL_HR_Employee_By_Department,
     DDL_Project_MainType_In_Setup_Type,
     DDL_Project_SubSection_In_Setup_TypeDetail,
     DDL_Client,
@@ -456,6 +460,7 @@ public enum ProjectStoreProcedure
     DDL_TECHNICAL_SECTION_Project_MainType,
     DDL_TECHNICAL_SECTION_Project_Setup_TypeDetail_Deleted_Get,
     DDL_Load_SetupType_By_ParentName,
+    DDL_Department_GetBy_ProjectSection_Name,
     #endregion
 
     #region SMS

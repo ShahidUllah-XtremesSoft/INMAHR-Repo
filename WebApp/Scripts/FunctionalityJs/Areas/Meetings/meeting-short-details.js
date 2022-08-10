@@ -36,7 +36,7 @@ function loadMeetingShortDetialCallBack(response) {
     $('.meeting-date').text(responseDetails.meetingDate);
     $('.meeting-total-timing').text(responseDetails.totaltime);
 
- 
+
 
     if (responseDetails.client_Signature != null && responseDetails.client_Signature != "") {
         var clientSignature = '/UploadFile/' + responseDetails.client_Signature;
@@ -49,8 +49,8 @@ function loadMeetingShortDetialCallBack(response) {
         $('#loadSignature').hide();
     }
 
-    
-     
+
+
     if (responseDetails.currentFileName != null) {
 
         var fileExtension = "";
@@ -73,12 +73,115 @@ function loadMeetingShortDetialCallBack(response) {
         } else {
             fileExtension = "/Content/Images/attachment.png";
         }
-         
+
         $('.attachmentRow').show();
         var attachments = '/UploadFile/' + responseDetails.currentFileName;
         $('#meeting-multiple-attachment').attr('src', fileExtension);
         $('#attachment-meeting-multiple-open').attr('href', attachments);
         //--------------------------- ATTACHMENT FIX ICON WORK END ----------------------------------------
     }
+    $('.client-signed-area').text($('#loadClientSignature').attr('src') == null || '' ? "Not Approved" : "Yes Aprroved");
 }
 
+
+
+//--------------------------  --------------------- ------------------------------------------------------
+//-------------------------- PRINT AND SHARING CODE START ------------------------------------------------------
+//--------------------------        By /\/\ati         ------------------------------------------------------
+
+function fnAfterPrint() {
+
+    $('.showhideButtonsUsingPrint').show();
+    $('.nav-item').show();
+
+}
+/*
+$(document).ready(function () {
+
+    $("#btn-print-pdf").click(function () {
+        debugger
+        // Convert the DOM element to a drawing using kendo.drawing.drawDOM
+        kendo.drawing.drawDOM($(".div-print"))
+            .then(function (group) {
+                // Render the result as a PDF file
+                return kendo.drawing.exportPDF(group, {
+                    paperSize: "auto",
+                    margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+                });
+            })
+            .done(function (data) {
+                // Save the PDF file
+                kendo.saveAs({
+                    dataURI: data,
+                    fileName: "Direct-Cheque.pdf",
+                    proxyURL: "https://demos.telerik.com/kendo-ui/service/export"
+                });
+                // setTimeout(window.close(), 200, '');
+
+            });
+    });
+});
+*/
+
+
+$('#btn-print').click(function () {
+
+    $('.showhideButtonsUsingPrint').hide();
+    $('.nav-item').hide();
+    setTimeout(function () {
+        window.print();
+    }, 100);
+});
+$(document).bind("keyup keydown", function (e) {
+    if (e.ctrlKey && e.keyCode == 80) {
+        $('#btn-print').hide();
+
+    }
+
+});
+$('#btn-email').click(function () {
+    
+    ajaxRequest({
+        commandName: 'MeetingDetails_SendByEmail',
+        values: {
+            Title: $('.txt-project-title').text(),
+            MeetingEmail: $('.div-email-template').html(),   // Pass all partial view which is included in ShortDetails.cshtml
+            ClientEmail: sessionStorage.getItem('clientEmail') 
+            
+        }, CallBack: fnSendEmailCallBack
+       
+    });
+    
+   
+});
+
+var fnSendEmailCallBack = function (response) {
+   // swal(response.Value);
+    Swal.fire({
+        icon: 'success',
+        title: 'Email sent...!',
+
+    });
+
+}
+
+/*
+
+
+$('#btn-email').click(function () {
+
+    document.documentElement.innerHTML
+//    window.open('mailto:test@example.com?subject=subject&body=' + escape($('.container').text()));
+    mailpage();
+});
+
+function mailpage() {
+    debugger
+    var mail_str = '';
+    mail_str = "mailto:test@example.com?subject=Check out the " + document.title;
+    mail_str += "&body=This is body area " + document.title;
+    mail_str += ". You can view it at, " + location.href;
+    window.open(mail_str ,'_blank');
+    //location.href = mail_str;
+}
+*/

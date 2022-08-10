@@ -15,6 +15,10 @@ namespace WebApp.Areas.Project.Controllers
         {
             return View();
         }
+        public ActionResult Delay()
+        {
+            return View();
+        }
         public ActionResult Save()
         {
             return View();

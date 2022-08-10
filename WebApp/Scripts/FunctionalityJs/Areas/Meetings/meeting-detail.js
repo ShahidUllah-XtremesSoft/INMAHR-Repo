@@ -460,5 +460,6 @@ function meetingDetailsById(e) {
     var grid = $("#grid-multiple-meeting-information").data("kendoGrid");
     var dataItem = grid.dataItem(row);
 
+    sessionStorage.setItem('clientEmail', $('.Email1').text().trim());
     window.location.href = '/Project/Meeting/ShortDetails?id=' + dataItem.meetingMultiple_Id + '';
 }

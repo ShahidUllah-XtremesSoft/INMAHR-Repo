@@ -16,6 +16,7 @@ function loadIssueDetails() {
             Id: parameter_Issue_Id,
             LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
             RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId,
             Language: $('#Language').val()
         }, CallBack: loadIssueDetailsCallBack
     });

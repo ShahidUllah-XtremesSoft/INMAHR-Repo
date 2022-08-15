@@ -410,6 +410,7 @@ public enum ProjectStoreProcedure
     Issue_Save,
     Issue_Get,
     Issue_Get_New,
+    Project_Dashboard_Issue_Get,
     Issue_Delete,
     Issue_isRead_Change_Status,
     Issue_Details_By_Id,
@@ -472,6 +473,7 @@ public enum ProjectStoreProcedure
     Reports_DesignSection_GetBySectionId,
     Reports_TechnicalSection_GetBySectionId,
     Report_Summary_GetByParamters,
+    Report_Summary_for_Grid,
     #endregion
     #region Project Dashbaord
     Project_Dashboard_CountByStatus_Get,

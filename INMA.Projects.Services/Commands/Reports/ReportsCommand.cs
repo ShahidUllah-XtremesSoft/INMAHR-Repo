@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace INMA.Projects.Services.Commands.Reports
-{    
+{
     public class ReportsCommand
     {
         [Command(Name = "Reports_DesignSection_GetBySectionId")]
@@ -81,7 +81,35 @@ namespace INMA.Projects.Services.Commands.Reports
                 IDictionary<string, object> values = new Dictionary<string, object>();
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
-                object repo= repository.GetDataSet<dynamic>(ProjectStoreProcedure.Report_Summary_GetByParamters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                object repo = repository.GetDataSet<dynamic>(ProjectStoreProcedure.Report_Summary_GetByParamters.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                return repo;
+            }
+        }
+
+        [Command(Name = "Report_Summary_for_Grid")]
+        public class Report_Summary_for_GridCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    ProjectCategoryDDL = 0,
+                    ProjectDDL = 0,
+                    LoggedInUser = 0,
+                    RoleId = 0,
+                    LoggedInEmployeeId = 0,
+                    LoggedInDepartmentId = 0,
+                  
+                    Language = string.Empty
+
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                object repo = repository.GetMultiple<dynamic>(ProjectStoreProcedure.Report_Summary_for_Grid.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
                 return repo;
             }
         }

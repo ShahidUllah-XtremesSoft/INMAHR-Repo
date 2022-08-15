@@ -64,9 +64,9 @@ namespace INMA.HR.Services
             {
                 try
                 {
-                    var senderEmail = new MailAddress("oraksoft@gmail.com", "Sharjah Engineering Consultants".ToString());
+                    var senderEmail = new MailAddress("shjeng.crm@gmail.com", "Sharjah Engineering Consultants".ToString());
                     var receiverEmail = new MailAddress(receiver, receiver);
-                    var password = "sdxhiudvgkmgfoxb";
+                    var password = "qiazrhcxauznjcqu";  //shjeng1122 is real password
                     var sub = subject;
                     var body = message;
                     var smtp = new SmtpClient
@@ -87,7 +87,7 @@ namespace INMA.HR.Services
                     })
                     {
                         //smtp.Send(mess);
-                        await smtp.SendMailAsync(mess);
+                      await smtp.SendMailAsync(mess);
                     }
                 }
                 catch (SmtpFailedRecipientsException ex)

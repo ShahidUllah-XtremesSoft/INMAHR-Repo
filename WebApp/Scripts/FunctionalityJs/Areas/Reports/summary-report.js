@@ -1,4 +1,4 @@
-﻿var $grid = "grid", requestFrom = '';
+﻿var $grid = "project-summary-grid", requestFrom = '';
 
 $(function () {
     $('#Language').val(_currentLanguage);
@@ -120,8 +120,7 @@ function fnLoadProject_SummaryDataByParamter() {
 
 function fnLoadProject_SummaryDataByParamterCallBack(response) {
     var response = JSON.parse(response.Value);
-     
-
+    // console.log(response);
     if (response[0].length > 0) {
 
         $('.txt-project-title').text(response[0][0].projectName);
@@ -178,7 +177,7 @@ function fnLoadProject_SummaryDataByParamterCallBack(response) {
                     '</tr>' +
                     '<tr>' +
                     '<td style="background:beige;">' + lblStatus + ' :</td>' +
-                    '<td style="background:beige;"><span class="btn btn-sm ' + status_td_Color+'">' + pass_Status + '</span></td>' +
+                    '<td style="background:beige;"><span class="btn btn-sm ' + status_td_Color + '">' + pass_Status + '</span></td>' +
 
                     '</tr>' +
                     '</tbody>' +
@@ -230,10 +229,157 @@ function fnLoadProject_SummaryDataByParamterCallBack(response) {
 
         $('.txt-project-title').empty();
         $('.project-number').empty();
-        $('.txt-description').empty();        
+        $('.txt-description').empty();
         $('.div-append-multiple-summary-record').empty();
 
     }
 
+    loadProjectSummaryGrid();
+
+}
+
+// -------------------------- PROJECT SUMMARY GRID BY /\/\ati
+
+
+function loadProjectSummaryGrid() {
+    ajaxRequest({
+        commandName: 'Report_Summary_for_Grid', values: {
+            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            LoggedInDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId,
+            ProjectCategoryDDL: $('#ProjectCategoryDDL').val(),
+            ProjectDDL: $('#ProjectDDL').val(),
+            Language: $('#Language').val()
+        }, CallBack: loadProjectSummaryGridCallBack
+    });
+
+}
+var loadProjectSummaryGridCallBack = function (inputDataJSON) {
+    bindProjectSummaryGrid(JSON.parse(inputDataJSON.Value));
+
+}
+var bindProjectSummaryGrid = function (inputDataJSOns) {
+    var record = 0;
+    //console.log(inputDataJSOns)
+
+
+    var gridColumnss = [
+
+
+        /*
+         , {
+            title: lblBreak, headerAttributes: { style: "text-align: center;" },
+            columns: 
+            [
+                { field: "breakIn", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "breakOut", title: lblIn, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        },
+         
+         
+         */
+        { field: "sT_Id", title: "ST_Id", hidden: true },
+        { field: "stD_Id", title: "STD_Id", hidden: true },
+        { field: "project_Id", title: "Project_Id", hidden: true },
+        { field: "clientId", title: "clientId", hidden: true },
+        { field: "emP_Id", title: "EMP_Id", hidden: true },
+        { title: "#", template: "<b>#= ++record #</b>", width: 50 },
+
+
+        { field: "clientName", title: lblClient, width: 400, filterable: false },
+        { field: "projectName", title: lblProject, width: 200, filterable: false, hidden: true },
+
+        {
+            title: "Town Planning", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "plmE_CompletionDate", title: "Submission(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Electricity", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Water", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Gas", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Etisalat", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Civil Defense", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Drainage", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        }, {
+            title: "Structure", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+            columns: [
+                { field: "", title: "Submission(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                { field: "", title: "Approval(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+            ]
+        },
+        {
+            field: "", title: "Building Permission", width: 150, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+        },
+        {
+            field: "", title: "Completion Date", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+        },
+           {
+               field: "emP_Name", title: "Arc Name", width: 300, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+        },
+
+
+    ];
+
+    bindKendoGrid("project-summary-grid", 100, gridColumnss, inputDataJSOns, true, 350);
+};
+
+function fneditById(e) {
+    var row = $(e).closest("tr");
+    var grid = $("#project-summary-grid").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+    window.location.href = '/Project/Issue/Save?id=' + dataItem.issueId + '';
+}
+
+function fnDetailById(e) {
+    var row = $(e).closest("tr");
+    var grid = $("#project-summary-grid").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+    if (dataItem.isRead == null || dataItem.isRead == false) {
+
+        ajaxRequest({
+            commandName: 'Issue_isRead_Change_Status', values: {
+                Id: dataItem.issueId,
+                LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+                RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+                LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            }, CallBack: ''
+        });
+
+    }
+
+    window.location.href = '/Project/Issue/Details?id=' + dataItem.issueId + '';
 
 }

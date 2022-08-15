@@ -10,9 +10,7 @@ using System.Linq;
 namespace INMA.Projects.Services.Project
 {
     public class ProjectCommand
-    {
-
-
+    { 
 
         [Command(Name = "Project_Role_Mapping_For_Employees_Save")]
         public class Project_Role_Mapping_For_Employees_SaveCommand : CamelCommandBase
@@ -256,7 +254,7 @@ namespace INMA.Projects.Services.Project
                     //messageBody = "Project Info has been " + (model.Id == 0 ? "created" : "updated") + System.Environment.NewLine + "Project # - " + clientDetailInfo.ProjectNumber + System.Environment.NewLine + "Name - " + clientDetailInfo.NameEng + System.Environment.NewLine + "Location - " + clientDetailInfo.Location;
                     messageBody = "Project Info has been " + (model.Id == 0 ? "created" : "updated") + ". " + " Project # - " + clientDetailInfo.ProjectNumber + ". " + " Name - " + clientDetailInfo.NameEng + "" + " Location - " + clientDetailInfo.Location;
                     //Below commented code will send SMS to the added Client
-                    //int _smsResponse = smsService.SendSMS(clientDetailInfo.PhoneNumber1, messageBody, "Project Info", _response.InsertedId, model.Client_Id, 0, 0);
+                     int _smsResponse = smsService.SendSMS(clientDetailInfo.PhoneNumber1, messageBody, "Project Info", _response.InsertedId, model.Client_Id, 0, 0);
 
 
                 }

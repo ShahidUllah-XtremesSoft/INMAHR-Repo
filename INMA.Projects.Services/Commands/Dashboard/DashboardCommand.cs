@@ -206,5 +206,38 @@ namespace INMA.Projects.Services.Commands.Dashboard
 
             }
         }
+        #region Issue GET
+
+        [Command(Name = "Project_Dashboard_Issue_Get")]
+        public class Project_Dashboard_Issue_GetCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+
+                object result = new { status = false, returnUrl = "#" };
+
+
+                var model = base.MappedModel(new
+                {
+                    LoggedInUser = 0,
+                    RoleId = 0,
+                    LoggedInEmployeeId = 0,
+                    LoggedInDepartmentId = 0,
+                    Language = string.Empty
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+
+                values = _params.Get(model);
+                var checkResult = repository.GetMultiple<dynamic>(ProjectStoreProcedure.Project_Dashboard_Issue_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                return checkResult;
+
+            }
+        }
+        #endregion
+
     }
 }

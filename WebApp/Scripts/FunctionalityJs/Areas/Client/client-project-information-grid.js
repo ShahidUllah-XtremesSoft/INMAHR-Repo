@@ -31,18 +31,18 @@ var loadClientProjectInformationKendoGridResponse = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 10, },
 
         {
-            field: "projectNumber", title: lblProjectNo, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectNumber", title: lblProjectNo, width: 50, filterable: false
             , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> ",
         },
         {
-            field: "projectName", title: lblProject, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "projectName", title: lblProject, width: 100, filterable: false
             //, template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title='Project Name'>#=projectName#</a> ",
         },
-        { field: "projectStartDate", title: lblStartDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-success'>#:projectStartDate#</span>" },
-        { field: "projectEndDate", title: lblEndDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:projectEndDate#</span>" },
-        { field: "urgentStatus", title: lblUrgent, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:urgentStatus#</span>"},
-        { field: "vipStatus", title: lblVIP, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:vipStatus#</span>" },
-        { field: "projectStatus", title: lblProjectStatus, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:projectStatus#</span>" },
+        { field: "projectStartDate", title: lblStartDate, width: 50, filterable: false, template: "<span class=''>#:projectStartDate#</span>" },
+        { field: "projectEndDate", title: lblEndDate, width: 50, filterable: false, template: "<span class=''>#:projectEndDate#</span>" },
+        { field: "urgentStatus", title: lblUrgent, width: 50, filterable: false, template: "<span class=''>#:urgentStatus#</span>"},
+        { field: "vipStatus", title: lblVIP, width: 50, filterable: false, template: "<span class=''>#:vipStatus#</span>" },
+        { field: "projectStatus", title: lblProjectStatus, width: 50, filterable: false, template: "<span class=''>#:projectStatus#</span>" },
         //{
         //    field: "",
         //    width: 10,

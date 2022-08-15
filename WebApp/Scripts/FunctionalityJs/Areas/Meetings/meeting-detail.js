@@ -436,7 +436,7 @@ var loadClientMeetingInformationKendoGridResponse = function (inputDataJSON) {
 
         //  { field: "employeeName", title: employeeName, width: 80, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
 
-        { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-danger'>#:meetingDate#</span>" },
+        { field: "meetingDate", title: lblMeetingDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class=''>#:meetingDate#</span>" },
         //  { field: "dayName", title: lblDay, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, template: "<span class='badge badge-info'>#:dayName#</span>" },
         { field: "startedTimeFormated", title: lblStartTime, width: 30, filterable: false, template: "<span class='badge badge-success'>#:startedTimeFormated#</span>", hidden: true },
         { field: "endedTimeFormated", title: lblEndTime, width: 30, filterable: false, template: "<span class='badge badge-danger'>#:endedTimeFormated#</span>", hidden: true },

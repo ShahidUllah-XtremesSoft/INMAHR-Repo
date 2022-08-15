@@ -148,23 +148,19 @@ $('#btn-email').click(function () {
             MeetingEmail: $('.div-email-template').html(),   // Pass all partial view which is included in ShortDetails.cshtml
             ClientEmail: sessionStorage.getItem('clientEmail') 
             
-        }, CallBack: fnSendEmailCallBack
+        }, CallBack: ''
        
     });
-    
-   
-});
-
-var fnSendEmailCallBack = function (response) {
-   // swal(response.Value);
     Swal.fire({
         icon: 'success',
         title: 'Email sent...!',
 
     });
 
-}
+   
+});
 
+ 
 /*
 
 

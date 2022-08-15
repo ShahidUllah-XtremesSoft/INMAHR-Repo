@@ -18,8 +18,8 @@ $(function () {
     //|Functions Calling
     loadKendoDropdownByTypeName('PersonalDocumentSetupDetailTypeId', 'Client Personal Document');
     //var personalClient_Id == null ? $('#PersonalDocumentClientId').val() : personalClient_Id
-    
-    if (personalClient_Id != null ||  $('#PersonalDocumentClientId').val() != '') {
+
+    if (personalClient_Id != null || $('#PersonalDocumentClientId').val() != '') {
 
         loadPersonalDocumentsGrid();
     }
@@ -111,33 +111,38 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
             statusClass = 'badge  badge-warning'
         }
 
+         
+        if (item.currentFileName != null) {
 
-        var extension = item.currentFileName.split('.').pop().toLowerCase();
-        if (extension == 'pdf') {
-            var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+
+            var extension = item.currentFileName.split('.').pop().toLowerCase();
+            if (extension == 'pdf') {
+                var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+            }
+            else {
+                var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
+            }
+            $('#PersonalDocumentGrid tbody').append(
+                '<tr>' +
+                '<td hidden class="PersonalDocumentId">' + item.id + '</td>' +
+                '<td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
+                '<td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td>' +
+                '<td class="PersonalDocumentType"><b>' + count++ + '</b></td> ' +
+                '<td class="PersonalDocumentType">' + item.documentType + '</td> ' +
+                '<td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> ' +
+                '<td class="PersonalDocumentExpiryDate">' + item.expiryDate + '</td>' +
+                '<td class="PersonalDocumentExpiryIn"><span class="' + statusClass + '">' + item.expiryIn + '</span></td>' +
+                '<td class="PersonalDocumentStatus "><span class="' + statusClass + '">' + item.status + '</span></td>' +
+                '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
+                '<td style="padding-top:20px;">' +
+                //'<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editPersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>  ' +
+                '<a class="" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deletePersonalDocument(this)"></i></a>' +
+                '</td>' +
+                '</tr > '
+            );
         }
-        else {
-            var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
-        }
-        $('#PersonalDocumentGrid tbody').append(
-            '<tr>' +
-            '<td hidden class="PersonalDocumentId">' + item.id + '</td>' +
-            '<td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
-            '<td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td>' +
-            '<td class="PersonalDocumentType"><b>' + count++ + '</b></td> ' +
-            '<td class="PersonalDocumentType">' + item.documentType + '</td> ' +
-            '<td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> ' +
-            '<td class="PersonalDocumentExpiryDate">' + item.expiryDate + '</td>' +
-            '<td class="PersonalDocumentExpiryIn"><span class="' + statusClass + '">' + item.expiryIn + '</span></td>' +
-            '<td class="PersonalDocumentStatus "><span class="' + statusClass + '">' + item.status + '</span></td>' +
-            '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
-            '<td style="padding-top:20px;">' +
-            //'<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editPersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>  ' +
-            '<a class="" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deletePersonalDocument(this)"></i></a>' +
-            '</td>' +
-            '</tr > '
-        );
     });
+
 }
 
 function editPersonalDocument(e) {

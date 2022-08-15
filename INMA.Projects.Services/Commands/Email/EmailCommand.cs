@@ -29,8 +29,8 @@ namespace INMA.Projects.Services.Commands.Email
 
 
                 //  new EmailService().SendEmail("", model.Title, model.ClientEmail, model.Description + model.Remarks);
-                new EmailService().SendEmail(model.ClientEmail, model.Title, model.MeetingEmail, true);
-                
+                System.Threading.Tasks.Task task = new EmailService().SendEmail(model.ClientEmail, model.Title, model.MeetingEmail, true);
+                var checkResult = task;
                 return 0;
             //    return repository.GetMultiple<dynamic>(ProjectStoreProcedure.SMS_GetAll.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 

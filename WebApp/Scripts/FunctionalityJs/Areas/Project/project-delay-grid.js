@@ -43,6 +43,7 @@ var bindGrid = function (inputDataJSON) {
         { field: "urgentStatus", title: lblUrgent, width: 15, filterable: false},
         { field: "vipStatus", title: lblVIP, width: 15, filterable: false},
         { field: "progressStatus", title: lblProjectStatus, width: 20, filterable: false},
+        { field: "projectProgressStatus", title: "Progress", width: 20, filterable: false},
 
      /*   {
             field: "", title: "", width: 30

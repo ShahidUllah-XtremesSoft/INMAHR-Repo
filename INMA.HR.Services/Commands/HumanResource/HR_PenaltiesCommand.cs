@@ -17,6 +17,7 @@ namespace INMA.HR.Services
             var model = base.MappedModel(new
             {
                 Id = 0,
+                DepartmentId = 0,
                 NameEng = string.Empty,
                 NameArb = string.Empty,
                 DescriptionEng = string.Empty,
@@ -58,7 +59,7 @@ namespace INMA.HR.Services
     {
         protected override object DoAction(object v)
         { 
-            var model = base.MappedModel(new {EmployeeId=0, Language = string.Empty }, v);
+            var model = base.MappedModel(new {EmployeeId=0, employee_Department_ParentId = 0, isHR = string.Empty, Language = string.Empty }, v);
             IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
             values = _params.Get(model);

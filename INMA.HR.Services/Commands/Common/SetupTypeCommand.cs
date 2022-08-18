@@ -93,5 +93,26 @@ namespace INMA.HR.Services.Commands.Common
             return repository.GetMultiple<dynamic>(StoreProcedure.DDL_Attendance_Leave.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
         }
+    } 
+    [Command(Name = "DDL_Department_Parent_Section")]
+    public class DDL_Department_Parent_SectionCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.DDL_Department_Parent_Section.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
     }
 }

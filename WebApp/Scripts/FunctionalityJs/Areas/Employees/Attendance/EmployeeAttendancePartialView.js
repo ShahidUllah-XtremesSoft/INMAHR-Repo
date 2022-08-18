@@ -78,7 +78,7 @@ var loadAttendanceGridCallBack = function (inputDataJSON) {
     bindAttendanceGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAttendanceGrid = function (inputDataJSON) {
-
+    //  console.log(inputDataJSON);
     var record = 0;
     /* Commented below code on 20 June 2022
     var gridColumns = [
@@ -137,7 +137,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
             filterable: false,
             template: "#if (status == 'Present')" +
                 " { # <span class=''>" + lblPresent + "</span> # } else if(status == 'Absent')" +
-                " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}   else " +
+                " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }} " +
+                "else  if (status == 'Work P.Leave' || status == 'إذن عمل' ) { if(JSON.parse(localStorage.getItem('User')).isHR == '1' || JSON.parse(localStorage.getItem('User')).roleName =='Chairman' || JSON.parse(localStorage.getItem('User')).roleName =='Company Manager'  || JSON.parse(localStorage.getItem('User')).roleName =='Executive Board Member'  ){ # <span style='cursor:pointer;text-decoration:underline;'  onClick= fnShowLeaveDetailsInPopup(this)>#:status# </span> # }  else { # <span>#:status# </span> #  }}  else " +
                 " {# <span class=''>#:status#</span> #}#"
             // , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
             , footerTemplate: "<span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
@@ -475,6 +476,7 @@ var loadAttendance_LeaveDropdownListCallBack = function (response) {
             // var value = this.value();
             var value = this.text();
             if (value) {
+                 
 
                 var grid = $("#AttendanceGrid").data("kendoGrid");
 
@@ -489,6 +491,7 @@ var loadAttendance_LeaveDropdownListCallBack = function (response) {
                 } else if (value != lblPresent || value != lblAbsent) {
 
                     grid.dataSource.filter({ field: "employeeName", operator: "contains", value: value });
+                    grid.dataSource.filter({ field: "status", operator: "contains", value: value });
 
                 } else {
                     grid.dataSource.filter({ logic: "or", filters: [{ field: "status", operator: "contains", value: value }, { field: "remarks", operator: "contains", value: value }] })
@@ -503,3 +506,76 @@ var loadAttendance_LeaveDropdownListCallBack = function (response) {
     });
 
 }
+function fnShowLeaveDetailsInPopup(e) {
+    var row = $(e).closest("tr");
+    var grid = $("#AttendanceGrid").data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+    console.log(dataItem)
+    $('.leave-history-modal-title').text(dataItem.status);
+   
+
+    $('#btn-show-leave-details-modal').click();
+    var inputJSON = {
+        EmployeeId: dataItem.employeeId,
+        EmployeeUserId: dataItem.userId,
+        EmployeeNumber: dataItem.employeeNumber,
+        CheckInDate: dataItem.checkInDate,
+        Language: _currentLanguage
+    }
+    setTimeout(function () {
+
+        ajaxRequest({ commandName: 'Employee_Attendance_LeaveDetail_History', values: inputJSON, CallBack: loadAttendanceLeaveDetailsGridCallBack });
+
+    }, 150);
+
+
+}
+
+var loadAttendanceLeaveDetailsGridCallBack = function (inputDataJSON) {
+    loadAttendanceLeaveDetailsGridData(JSON.parse(inputDataJSON.Value));
+}
+
+var loadAttendanceLeaveDetailsGridData = function (inputDataJSON) {
+
+
+    var record = 0;
+
+    var gridColumns = [
+        { title: "#", template: "<b>#= ++record #</b>", width: 20, },
+        { field: "id", title: "id", hidden: true },
+        { field: "employeeNumber", title: empNum, width: 200, filterable: true, hidden: true },
+        { field: "employeeId", title: 'EmployeeId', width: 200, filterable: false, hidden: true },
+        {
+            field: "checkInDate", title: checkinDate, width: 50, filterable: false
+            //    , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span>"
+
+        },
+        { field: "startEndTime", title: lblStartEndTime, hidden: false, width: 70, filterable: false },
+        {
+            field: "inOutTime", title: lblOut + " / " + lblIn, width: 40, filterable: false,
+        },
+        
+        //{
+        //    title: lblIn + " / " + lblOut, headerAttributes: { style: "text-align: center;" },
+        //    columns: [
+        //        {
+        //            field: "inOutTime", title: lblIn + " / " + lblOut, width: 50, filterable: false, headerAttributes: { style: "text-align: center;" },
+        //            //template: "#if (lateInTime =='' && remarks =='') { # <span style='color:green;'>#:checkInTime#</span> #}else {# <span style='color:red;'>#:checkInTime#</span> #}#"
+        //        },
+
+        //    ]
+        //},
+        {
+            title: status,field: 'status',width: 30,hidden: false,filterable: false,
+        },
+        { field: "requested_Starttime", title: startTime, hidden: true, width: 60, filterable: false },
+        { field: "requested_Endtime", title: returnTime, hidden: true, width: 60, filterable: false },
+
+
+
+        { field: "leave_Remarks", title: lblRemarks, width: 200, filterable: false, hidden: false },
+
+    ];
+    bindKendoGrid("grid-show-leave-details", 50, gridColumns, inputDataJSON, true, 550);
+
+};

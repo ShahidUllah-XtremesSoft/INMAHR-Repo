@@ -4,6 +4,7 @@
     #region Common
     Setup_Type_DropdownByTypeName,
     DDL_Attendance_Leave,
+    DDL_Department_Parent_Section,
     Setup_Type_DropdownByTypeName_New,
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
@@ -267,6 +268,7 @@
     Employee_Attendance_Today_GetByDepartment,
     Employee_Attendance_UpdateTodayAttendanceAsProcessed,
     Employee_Attendance_GetByEmployee,
+    Employee_Attendance_LeaveDetail_History,
     Employee_Attendance_TodayAttendance_Get,
     Employee_Attendance_Linking,
     ZK_Employees_Get_By_DepartmentID,

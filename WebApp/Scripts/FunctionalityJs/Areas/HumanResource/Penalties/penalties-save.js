@@ -1,4 +1,6 @@
 ﻿$(function () {
+    loadDepartmentDropdownListForCircular();
+
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $('#btn-save-penalty').on('click', function (e) {
@@ -30,3 +32,27 @@
         }
     });
 })
+ 
+function loadDepartmentDropdownListForCircular() {
+    ajaxRequest({
+        commandName: 'DDL_Department_Parent_Section', values: { Language: _currentLanguage }, CallBack: loadDepartmentDropdownListForCircularListCallBack
+    });
+
+}
+var loadDepartmentDropdownListForCircularListCallBack = function (response) {
+
+
+    $("#DepartmentId").kendoDropDownList({
+        dataTextField: "value",
+        dataValueField: "id",
+        //index: -1,
+        dataSource: JSON.parse(response.Value)
+        , change: function () {
+            
+            var value = this.text();
+            
+
+        }
+    });
+
+}

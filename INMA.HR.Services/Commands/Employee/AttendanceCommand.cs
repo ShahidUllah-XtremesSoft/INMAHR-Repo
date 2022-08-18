@@ -152,6 +152,31 @@ namespace INMA.HR.Services.Commands.Employee
 
         }
     }
+    [Command(Name = "Employee_Attendance_LeaveDetail_History")]
+    public class Employee_Attendance_LeaveDetail_HistoryCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeId = 0,
+                EmployeeUserId = 0,
+                EmployeeNumber = string.Empty,
+                CheckInDate = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_Attendance_LeaveDetail_History.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
     #region ========== Load Employee Attendance Linking For Admin
     [Command(Name = "Employee_Attendance_Linking")]
     public class Employee_Attendance_LinkingCommand : CamelCommandBase

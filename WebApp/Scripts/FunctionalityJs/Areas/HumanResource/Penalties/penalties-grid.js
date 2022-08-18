@@ -13,7 +13,14 @@ $(function () {
 
 });
 function loadPenaltyGrid() {
-    ajaxRequest({ commandName: 'HR_Penalty_List', values: { EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId, Language: $('#Language').val() }, CallBack: loadPenaltysCallBack });
+    ajaxRequest({
+        commandName: 'HR_Penalty_List', values: {
+            EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            employee_Department_ParentId: JSON.parse(localStorage.getItem('User')).employee_Department_ParentId,
+            isHR: JSON.parse(localStorage.getItem('User')).isHR,
+            Language: $('#Language').val()
+        }, CallBack: loadPenaltysCallBack
+    });
 }
 var loadPenaltysCallBack = function (inputDataJSON) {
     console.log(inputDataJSON);

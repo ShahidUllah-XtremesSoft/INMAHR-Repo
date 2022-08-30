@@ -286,6 +286,7 @@
         var record = 0;
         var gridColumns = [
             { field: "id", title: "id", hidden: true },
+            { field: "letterMultipleTableId", title: "LetterMultipleTableId", width: 20, hidden: true },
 
             { title: "#", template: "<b>#= ++record #</b>", width: 5, },
             {
@@ -402,8 +403,9 @@
         }).then(function (restult) {
             if (restult.value) {
                 ajaxRequest({
-                    commandName: 'Employee_InternalLetter_Outbox_Delete', values: {
-                        Id: dataItem.id,
+                    commandName: 'Employee_InternalLetter_Outbox_Delete',
+                    values: {
+                        Id: dataItem.letterMultipleTableId,
                         LoggedInEmployeeDepartmentId: JSON.parse(localStorage.getItem('User')).employeeDepartmentId,
                         LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
                         Language: _currentLanguage

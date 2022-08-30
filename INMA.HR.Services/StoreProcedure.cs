@@ -254,6 +254,7 @@
     Employee_InternalLetter_Outbox_Get_New,
     Employee_InternalLetter_GetById,
     Employee_InternalLetter_GetById_New,
+    Employee_InternalLetter_Attachment_GetById,
     Employee_InternalLetter_GetById_New_For_Reply,
     Employee_InternalLetter_UpdateIsRead,
     Employee_InternalLetter_Delete,

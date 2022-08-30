@@ -31,6 +31,8 @@ function loadProfileCallBack(response) {
     $(".ClientCity").text(clientDetails.cityName)
     $(".ClientLocation").text(clientDetails.location)
     $(".ClientCreatedDate").text(clientDetails.clientCreatedDate)
+    $(".client-username").text(clientDetails.username);
+    $(".client-password").text(clientDetails.password);
 
 
 

@@ -258,6 +258,31 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
 
 
 
+var bindKendoGrid_Groupable = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
+    $("#" + $gridid).kendoGrid({
+        
+        dataSource: {
+            data: $data,
+            pageSize: $pageSize
+        },
+        height: height,
+        scrollable: true,
+        resizable: true,
+        sortable: true,
+        filterable: { mode: "row" },
+        selectable: selectable,
+        pageable: {
+            pageSizes: [50, 100, 250, 500, 1000],
+            width: 20,
+        },
+        groupable: true,
+        columns: $colModel,
+        dataBinding: function () {
+            record = (this.dataSource.page() - 1) * this.dataSource.pageSize();// this is use to add dynamic serial number in grid 
+        }
+    }).data("kendoGrid");
+     
+}
 
 
 var bindkendoGridForProperty = function ($gridid, $pageSize, $colModel, $data, onChange) {

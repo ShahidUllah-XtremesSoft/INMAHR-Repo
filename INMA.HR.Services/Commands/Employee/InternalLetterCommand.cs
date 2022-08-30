@@ -347,6 +347,28 @@ namespace INMA.HR.Services.Commands.Employee
             return response;
 
         }
+    } 
+    [Command(Name = "Employee_InternalLetter_Attachment_GetById")]
+    public class Employee_InternalLetter_Attachment_GetByIdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_InternalLetter_Attachment_GetById.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
     }
     [Command(Name = "Employee_InternalLetter_GetById_New_For_Reply")]
     public class Employee_InternalLetter_GetById_New_For_ReplyCommand : CamelCommandBase

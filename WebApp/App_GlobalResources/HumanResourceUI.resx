@@ -741,6 +741,9 @@
   <data name="lblTo" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="lblTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="lblUpdatePassword" xml:space="preserve">
     <value>Update Password</value>
   </data>

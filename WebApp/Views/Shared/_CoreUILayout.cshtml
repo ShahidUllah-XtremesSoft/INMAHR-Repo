@@ -48,7 +48,7 @@
             white-space: nowrap;
             vertical-align: baseline;
             border-radius: 0.25rem;
-            color:white
+            color: white
         }
     </style>
     <style>
@@ -437,10 +437,10 @@
     var lblEarly = '@HRModuleUI.HumanResourceUI.lblEarly';
     var lblDelay = '@HRModuleUI.HumanResourceUI.lblDelay';
     var lblOverTime = '@HRModuleUI.HumanResourceUI.lblOverTime';
-    
-    
-    
-    
+
+
+
+
     //------------------ PROJECT LABELS -----------------------
 
      var lblProject  = '@ProjectUI.ProjectUI.lblProject';
@@ -476,11 +476,26 @@
       //  localStorage.MainApplicationModule_Id == 1 ? $('.languageUL').show() : $('.languageUL').hide();
 
         /*localStorage.MainApplicationModule_Id == 1 ? document.body.style.backgroundImage = "url('../../../Images/logo.png')" : document.body.style.backgroundImage = "url('../../../Images/shjengconLogo.png')";*/
+          
+        if (localStorage.User != '[object Object]') {
 
         if (localStorage.MainApplicationModule_Id == 2) {
             document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
             document.getElementsByClassName("navbar-brand")[0].style.backgroundSize  ="contain"
 
+        }
+
+
+        else if (JSON.parse(localStorage.User).employee_Department_ParentId==8) { // Parent Id or Department id 8 is Sharjah Engineering Con
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundSize  ="contain"
+
+        }
+        else if (JSON.parse(localStorage.User).employeeDepartmentId == 8) {  // Parent Id or Department id 8 is Sharjah Engineering Con
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundSize  ="contain"
+
+        }
         }
 
         $(':input').removeAttr('placeholder');

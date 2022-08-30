@@ -285,6 +285,7 @@
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LetterController.cs" />
+    <Compile Include="Areas\Request\Controllers\EvaluationController.cs" />
     <Compile Include="Areas\Request\Controllers\ShortLeaveController.cs" />
     <Compile Include="Areas\Request\RequestAreaRegistration.cs" />
     <Compile Include="Areas\Request\Views\App_LocalResources\RequestResourceUI.ar-AE.Designer.cs">
@@ -608,6 +609,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
@@ -702,6 +704,7 @@
     <Content Include="Areas\HumanResource\Views\Penalty\List.cshtml" />
     <Content Include="Areas\Project\Views\Project\Delay.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\EmailTemplate\_EmailTemplate.cshtml" />
+    <Content Include="Areas\Request\Views\Evaluation\Index.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

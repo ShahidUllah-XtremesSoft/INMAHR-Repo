@@ -12,9 +12,10 @@ var loadEmployeeVacationLeaveBalanceGridCallBack = function (inputDataJSON) {
     JSON.parse(inputDataJSON.Value).forEach(function (item) {
         var tr = '<tr>' +
             '<td>' + fileCount + '</td>' +
-            '<td class="leaveType">' + item.leaveType + '</td>' +
-            '<td class="balance">' + item.balance + '</td>' +
-            '<td class="takenLeave">' + item.takenLeave + '</td>' +
+            '<td class="leaveType">   ' + item.leaveType + '</td>' +
+            '<td class="totalBalance">' + item.totalBalance + '</td>' +
+            '<td class="takenLeave">  ' + item.takenLeave + '</td>' +
+            '<td class="balance">     ' + item.balance + '</td>' +
 
             '</tr > '
         takenLeaveTotal += item.takenLeave;

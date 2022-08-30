@@ -1,0 +1,826 @@
+﻿
+@{
+    //  ViewBag.Title = HRModuleUI.HumanResourceUI.lblShortLeaveRequest;//"Evaluation Request";
+    ViewBag.Title = ":Evaluation Request";
+}
+
+<div class="card">
+    <div class="card-block">
+        <form id="frmShortLeaveDetail" name="frmShortLeaveDetail" action="/services/Xtreme/multipart" method="post">
+            <!--type is required should be same as command name-->
+            <input type="hidden" name="type" id="type" value="Request_Evaluation_Save" />
+            <input type="hidden" name="Id" id="Id" value="0" />
+            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+            <input type="hidden" name="Language" id="Language" value="" />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSearch</label>
+                        <input class="form-control" id="EmployeeId" name="EmployeeId" required />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card showHideemployeeDetails">
+                <div class="card-header">
+
+                    <h5> :Employee Performance Evaluation</h5>
+                    <div class="card-header-right"> </div>
+                </div>
+                <div class="card-block">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">  </div>
+                                <div class="col-md-5">
+                                    <div class="">
+                                        <label class="col-form-label"><b>@HRModuleUI.HumanResourceUI.lblEmployeeName:</b></label>
+                                        <label class="col-form-label" id="EmployeeName" name="">Mati Ullah Zahir</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="">
+                                        <label class="col-form-label"><b>@HRModuleUI.HumanResourceUI.lblProfession:</b></label>
+                                        <label class="col-form-label" id="EmployeeName" name="">Mati Ullah Zahir</label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">  </div>
+                                <div class="col-md-5">
+                                    <div class="">
+                                        <label class="col-form-label"><b>@HRModuleUI.HumanResourceUI.lblSection:</b></label>
+                                        <label class="col-form-label" id="Department" name="">Mati Ullah Zahir</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="">
+                                        <label class="col-form-label"><b>@HRModuleUI.HumanResourceUI.lblLineManager:</b></label>
+                                        <label class="col-form-label" id="LM-EmployeeId" name=""> </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-md-2">  </div>
+
+                                <div class="col-md-10">
+                                    <div class="">
+                                        <label class="col-form-label"><b>@HRModuleUI.HumanResourceUI.lblDate:</b></label>-->
+                            @*<label class="col-form-label"  id="ReportDate" name=""> </label>*@
+                            <!--<input type="date" id="ReportDate" name="" value="" />
+                                    </div>
+                                </div>
+
+
+
+                            </div>-->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+
+                                <div class="col-sm-3 text-right">
+                                    <img src="/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="Profile Image">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    @*<br />*@
+                    <div class="row">
+
+                        <div class="col-md-9">
+                            <h5>Ratings</h5>
+                            @*<hr />*@
+
+
+                            <table style="width: 100%;" id="employee-evaluation">
+                                <tbody>
+                                    <tr style="border: 1px solid; background: cyan;">
+                                        <td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong>Criterion</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;" class=" "><strong>Below Expectations</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;" class=" "><strong>Expected</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;" class=" "><strong>Expectations</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;" class=" "><strong>Exceed Expections</strong></td>
+
+                                    </tr>
+
+                                    <tr><td style="background: lightgray;"> <strong>:Performance and Achivment</strong> </td></tr>
+                                    <tr class="CareerAchievements" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">Career Achievements</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_CareerAchievements_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CareerAchievements_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_CareerAchievements_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CareerAchievements_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_CareerAchievements_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CareerAchievements_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_CareerAchievements_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CareerAchievements_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="QualityOfFunctionality" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">Quality Of Functionality</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_QualityOfFunctionality_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_QualityOfFunctionality_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_QualityOfFunctionality_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_QualityOfFunctionality_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_QualityOfFunctionality_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_QualityOfFunctionality_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_QualityOfFunctionality_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_QualityOfFunctionality_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="Flexibilityingettingthejobdone" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">Flexibility in Getting the Job Done</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_Flexibilityingettingthejobdone_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_Flexibilityingettingthejobdone_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_Flexibilityingettingthejobdone_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_Flexibilityingettingthejobdone_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_Flexibilityingettingthejobdone_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_Flexibilityingettingthejobdone_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_Flexibilityingettingthejobdone_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_Flexibilityingettingthejobdone_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="AchieveGoals" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">Achieve Goals</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_AchieveGoals_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_AchieveGoals_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_AchieveGoals_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_AchieveGoals_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AchieveGoals_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_AchieveGoals_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AchieveGoals_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_AchieveGoals_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="TimeandSpeedofWork" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">Time and Speed of Work</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_TimeandSpeedofWork_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_TimeandSpeedofWork_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_TimeandSpeedofWork_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_TimeandSpeedofWork_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_TimeandSpeedofWork_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_TimeandSpeedofWork_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_TimeandSpeedofWork_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="" id="chk_TimeandSpeedofWork_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    @*  <tr class="Remarks-1">
+                                            <td class=" ">@HRModuleUI.HumanResourceUI.lblremarks</td>
+                                            <td class=" " colspan="5">
+                                                <input id="" name="txt_Remarks_PerformanceAndAchievements" class="form-control" type="text" style="height: 50px;">
+                                            </td>
+
+                                        </tr>*@
+
+
+
+                                    <tr>
+
+                                        <td colspan="2" style="background: lightgray;"> <strong>:Collaboration, Job Commitment and Attendance</strong> </td>
+                                    </tr>
+
+                                    <tr class="CooperationwithCustomers" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Cooperation with Customers</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_CooperationwithCustomers_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CooperationwithCustomers_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_CooperationwithCustomers_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CooperationwithCustomers_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_CooperationwithCustomers_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CooperationwithCustomers_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_CooperationwithCustomers_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CooperationwithCustomers_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="BehavioralandCommitment" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Behavioral and Commitment</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_BehavioralandCommitment_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_BehavioralandCommitment_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_BehavioralandCommitment_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_BehavioralandCommitment_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_BehavioralandCommitment_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_BehavioralandCommitment_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_BehavioralandCommitment_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_BehavioralandCommitment_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="DisciplineinAttendance" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Discipline in Attendance</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_DisciplineinAttendance_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DisciplineinAttendance_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_DisciplineinAttendance_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DisciplineinAttendance_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_DisciplineinAttendance_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DisciplineinAttendance_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_DisciplineinAttendance_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DisciplineinAttendance_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="CompliancewithRulesofProcedure" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Compliance with Rules of Procedure</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_CompliancewithRulesofProcedure_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CompliancewithRulesofProcedure_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_CompliancewithRulesofProcedure_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CompliancewithRulesofProcedure_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_CompliancewithRulesofProcedure_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CompliancewithRulesofProcedure_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_CompliancewithRulesofProcedure_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_CompliancewithRulesofProcedure_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    @*<tr class="Remarks-2">
+                                            <td class=" ">@HRModuleUI.HumanResourceUI.lblremarks</td>
+                                            <td class=" " colspan="5">
+                                                <input id="" name="txt_Remarks_PerformanceAndAchievements" class="form-control" type="text" style="height: 50px;">
+                                            </td>
+
+                                        </tr>*@
+
+                                    <tr><td style="background: lightgray;"> <strong>:Initiative and Creativity</strong> </td></tr>
+
+                                    <tr class="InitiativeorMethodofWork" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Initiative or Method of Work</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_InitiativeorMethodofWork_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_InitiativeorMethodofWork_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_InitiativeorMethodofWork_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_InitiativeorMethodofWork_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_InitiativeorMethodofWork_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_InitiativeorMethodofWork_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_InitiativeorMethodofWork_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_InitiativeorMethodofWork_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="PerformanceProductivity" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Performance,Productivity</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_PerformanceProductivity_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_PerformanceProductivity_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_PerformanceProductivity_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_PerformanceProductivity_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_PerformanceProductivity_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_PerformanceProductivity_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_PerformanceProductivity_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_PerformanceProductivity_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="TheLevelofExcellenceandExclusivity" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:The Level of Excellence and Exclusivity</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_TheLevelofExcellenceandExclusivity_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_TheLevelofExcellenceandExclusivity_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_TheLevelofExcellenceandExclusivity_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_TheLevelofExcellenceandExclusivity_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_TheLevelofExcellenceandExclusivity_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_TheLevelofExcellenceandExclusivity_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_TheLevelofExcellenceandExclusivity_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_TheLevelofExcellenceandExclusivity_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="ServicesProvidedtoCustomers" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Services Provided to Customers</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_ServicesProvidedtoCustomers_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_ServicesProvidedtoCustomers_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_ServicesProvidedtoCustomers_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_ServicesProvidedtoCustomers_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_ServicesProvidedtoCustomers_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_ServicesProvidedtoCustomers_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_ServicesProvidedtoCustomers_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_ServicesProvidedtoCustomers_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    @*<tr class="Remarks-3">
+                                            <td class=" ">@HRModuleUI.HumanResourceUI.lblremarks</td>
+                                            <td class=" " colspan="5">
+                                                <input id="" name="txt_Remarks_InitiativeandCreativity" class="form-control" type="text" style="height: 50px;">
+                                            </td>
+
+                                        </tr>*@
+
+                                    <tr><td style="background: lightgray;"> <strong>:Sharing and Taking Responsibility</strong> </td></tr>
+                                    <tr class="JobResponsibilities" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Job Responsibilities</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_Job Responsibilities_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_Job Responsibilities_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_Job Responsibilities_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_Job Responsibilities_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_Job Responsibilities_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_Job Responsibilities_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_Job Responsibilities_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_Job Responsibilities_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr><td style="background: lightgray;"> <strong>:Supervisory skills</strong> </td></tr>
+
+                                    <tr class="AbilitytoPlanandOrganize" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Ability to Plan and Organize</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_AbilitytoPlanandOrganize_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoPlanandOrganize_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_AbilitytoPlanandOrganize_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoPlanandOrganize_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AbilitytoPlanandOrganize_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoPlanandOrganize_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AbilitytoPlanandOrganize_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoPlanandOrganize_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="AbilitytoCoachandTrain" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Ability to Coach and Train</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_AbilitytoCoachandTrain_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoCoachandTrain_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_AbilitytoCoachandTrain_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoCoachandTrain_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AbilitytoCoachandTrain_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoCoachandTrain_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AbilitytoCoachandTrain_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoCoachandTrain_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr><td style="background: lightgray;"> <strong>:Learning Ability</strong> </td></tr>
+                                    <tr class="AbilitytoLearnSkills" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Ability to Learn Skills</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_AbilitytoLearnSkills_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoLearnSkills_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_AbilitytoLearnSkills_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoLearnSkills_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AbilitytoLearnSkills_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoLearnSkills_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_AbilitytoLearnSkills_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_AbilitytoLearnSkills_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="HowtoBenefitfromtheExperiences" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:How to Benefit from the Experiences</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_HowtoBenefitfromtheExperiences_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_HowtoBenefitfromtheExperiences_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_HowtoBenefitfromtheExperiences_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_HowtoBenefitfromtheExperiences_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_HowtoBenefitfromtheExperiences_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_HowtoBenefitfromtheExperiences_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_HowtoBenefitfromtheExperiences_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_HowtoBenefitfromtheExperiences_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="DevelopmentofhisPerformance" style="border: 1px solid;">
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Development of his Performance</td>
+                                        <td class="" style="border-right: 1px solid;">
+
+
+                                            <label class="btn  " for="chk_DevelopmentofhisPerformance_4" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DevelopmentofhisPerformance_4" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">4</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+
+                                            <label class="btn     " for="chk_DevelopmentofhisPerformance_6" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DevelopmentofhisPerformance_6" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">6</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_DevelopmentofhisPerformance_8" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DevelopmentofhisPerformance_8" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">8</font>
+                                            </label>
+                                        </td>
+                                        <td class="" style="border-right: 1px solid;">
+                                            <label class="btn     " for="chk_DevelopmentofhisPerformance_10" style="margin-bottom: 0px;width:100%;">
+                                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" id="chk_DevelopmentofhisPerformance_10" style="width: 15px;height: 15px;">
+                                                <font style="font-size: large;">10</font>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr style="border: 1px solid; background: cyan;" class="PerformanceScores">
+                                        <td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong>Performance Scores</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong>4</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong>6</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong>8</strong></td>
+                                        <td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong>10</strong></td>
+
+                                    </tr>
+
+
+                                    <tr><td colspan="5"> &nbsp; </td></tr>
+                                    <tr><td colspan="5"> &nbsp; </td></tr>
+                                    <tr><td style="background: lightgray;"> <strong>:Procedures</strong> </td></tr>
+                                    <tr class="Procedures lm-data" style="border: 1px solid;">
+                                        @*------------------------------------- this is Line Manager (LM) data --------------------------------------*@
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">@HRModuleUI.HumanResourceUI.lblLineManager</td>
+                                        <td class="" style="border-right: 1px solid;"> <input style="margin-bottom: 0px;width:100%;" id="lm-date" type="date" value="@DateTime.Now" /></td>
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">@HRModuleUI.HumanResourceUI.lblSignature</td>
+                                        <td class="" colspan="2" style=" border-right: 1px solid;"> </td>
+
+                                    </tr>
+                                    <tr class="Procedures HR-data" style="border: 1px solid;">
+                                        @*------------------------------------- this is HR  data --------------------------------------*@
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:HR</td>
+                                        <td class="" style="border-right: 1px solid;"> <input style="margin-bottom: 0px;width:100%;" id="hr-date" type="date" value="@DateTime.Now" /></td>
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">@HRModuleUI.HumanResourceUI.lblSignature</td>
+                                        <td class="" colspan="2" style=" border-right: 1px solid;"> </td>
+
+                                    </tr>
+                                    <tr class="Procedures CM-data" style="border: 1px solid;">
+                                        @*------------------------------------- this is HR  data --------------------------------------*@
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">:Company Manager</td>
+                                        <td class="" style="border-right: 1px solid;"> <input style="margin-bottom: 0px;width:100%;" id="cm-date" type="date" value="@DateTime.Now" /></td>
+                                        <td class="" style="border-right: 1px solid;border-left: 1px solid;">@HRModuleUI.HumanResourceUI.lblSignature</td>
+                                        <td class="" colspan="2" style=" border-right: 1px solid;"> </td>
+
+                                    </tr>
+                                    
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-3"> </div>
+                    </div>
+
+                </div>
+
+
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="EvaluationGrid"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+
+
+
+
+</div>
+
+
+
+@section scripts {
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Evaluation/employee-evaluation.js?+"></script>
+
+
+}
+
+
+

@@ -19,41 +19,7 @@ $(function () {
     renderKendoDatePicker('RequestDate');
     renderKendoTimePicker('StartTime');
     renderKendoTimePicker('EndTime');
-    /*
-    $("#RequestDate").kendoDatePicker({
-        format: "yyyy-MM-dd"
-    });
-    $("#StartTime").kendoTimePicker({
-        timeFormat: "HH:mm",
-        min: '09:00 AM',
-        max:'06:00 PM',
-        animation: {
-            close: {
-                effects: "fadeOut zoom:out",
-                duration: 300
-            },
-            open: {
-                effects: "fadeIn zoom:in",
-                duration: 300
-            }
-        }
-    });
-    $("#EndTime").kendoTimePicker({
-        timeFormat: "HH:mm",
-        min: '09:00 AM',
-        max: '06:00 PM',
-        animation: {
-            close: {
-                effects: "fadeOut zoom:out",
-                duration: 300
-            },
-            open: {
-                effects: "fadeIn zoom:in",
-                duration: 300
-            }
-        }
-    });
-   */
+    
     loadShortLeaveGrid();
     $('#btnSave').on('click', function (e) {
         $("#LeaveTypeName").val($("#LeaveTypeId").data("kendoDropDownList").text());
@@ -424,3 +390,20 @@ function fnCheck_Request_ShortLeave_Request_Submitted_Count_MonthlyCallBack(inpu
 
     }
 }
+
+
+
+
+/*
+//----------------------------- DDLS AJAX FUNCTION END ---------------------------------------------------
+
+function fnCheckValue(e) {
+
+    if (e.id == "chkCredit") {
+        $('#chkDebit').prop('checked', false)
+    } else {
+        $('#chkCredit').prop('checked', false)
+    }
+}
+
+*/

@@ -298,6 +298,9 @@
   <data name="lblPartners" xml:space="preserve">
     <value>Partners</value>
   </data>
+  <data name="lblPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="lblPleaseContactToSystemEngineerThankyou" xml:space="preserve">
     <value>Please contact to system engineer, Thank you...!</value>
   </data>
@@ -333,6 +336,9 @@
   </data>
   <data name="lblUsefulLinks" xml:space="preserve">
     <value>Useful Links</value>
+  </data>
+  <data name="lblUsername" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="lblXtremeSoft" xml:space="preserve">
     <value>ایکسٹریم سافٹ</value>

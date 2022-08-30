@@ -449,7 +449,7 @@ function calculateFooterData() {
             //}
             if (gridData[i].status == 'Absent') {
 
-                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.  
+                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17 || gridData[i].employeeId==24) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
                     // 17 & 22 is NSS and technical section id's ,this color will be orange as per HR       
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
 

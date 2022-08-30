@@ -263,96 +263,147 @@ var bindProjectSummaryGrid = function (inputDataJSOns) {
     var record = 0;
     //console.log(inputDataJSOns)
 
+    console.log(inputDataJSOns) 
 
-    var gridColumnss = [
-
-
-        /*
-         , {
-            title: lblBreak, headerAttributes: { style: "text-align: center;" },
-            columns: 
-            [
-                { field: "breakIn", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "breakOut", title: lblIn, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        },
          
-         
-         */
-        { field: "sT_Id", title: "ST_Id", hidden: true },
-        { field: "stD_Id", title: "STD_Id", hidden: true },
-        { field: "project_Id", title: "Project_Id", hidden: true },
-        { field: "clientId", title: "clientId", hidden: true },
-        { field: "emP_Id", title: "EMP_Id", hidden: true },
-        { title: "#", template: "<b>#= ++record #</b>", width: 50 },
+        var gridColumnss = [
+
+            /*
+             , {
+                title: lblBreak, headerAttributes: { style: "text-align: center;" },
+                columns: 
+                [
+                    { field: "breakIn", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                    { field: "breakOut", title: lblIn, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                ]
+            },
+             
+             
+             */
+            { field: "sT_Id", title: "ST_Id", hidden: true },
+            { field: "stD_Id", title: "STD_Id", hidden: true },
+            { field: "project_Id", title: "Project_Id", hidden: true },
+            { field: "clientId", title: "clientId", hidden: true },
+            { field: "emP_Id", title: "EMP_Id", hidden: true },
+            { title: "#", template: "<b>#= ++record #</b>", width: 50 },
 
 
-        { field: "clientName", title: lblClient, width: 400, filterable: false },
-        { field: "projectName", title: lblProject, width: 200, filterable: false, hidden: true },
+            { field: "clientName", title: lblClient, width: 400, filterable: false },
+            { field: "projectName", title: lblProject, width: 200, filterable: false, hidden: true },
 
-        {
-            title: "Town Planning", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "plmE_CompletionDate", title: "Submission(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Electricity", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Water", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Gas", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Etisalat", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Civil Defense", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Drainage", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        }, {
-            title: "Structure", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-            columns: [
-                { field: "", title: "Submission(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "", title: "Approval(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-            ]
-        },
-        {
-            field: "", title: "Building Permission", width: 150, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
-        },
-        {
-            field: "", title: "Completion Date", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
-        },
-           {
-               field: "emP_Name", title: "Arc Name", width: 300, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
-        },
+            {
+                title: "Town Planning", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        //   , template: "<a style=''>#=projectNumber#</a> ",
+                        , template: " #  if (sT_Name == 'Town Planning' )  { # <label>#=submissionDate#</label># }# "
+
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'Town Planning' && stD_Name == 'Engineer'   )  { # <label >#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Electricity", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Electricity' )  { # <label class=''>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Electricity'  )  { # <label class=''>#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Water", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' &&  stD_Name == 'Water' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Water' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Gas", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Gas' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Gas' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Etisalat", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Etisalat' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Etisalat' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Civil Defense", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Civil Defense' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Civil Defense' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Drainage", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' &&  stD_Name == 'Drainage' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Drainage' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
+                    },
+                ]
+            }, {
+                title: "Structure", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
+                columns: [
+                    {
+                        field: "submissionDate", title: "Submission(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Structure' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
+                    },
+                    {
+                        field: "approvalDate", title: "Approval(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
+                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Structure' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
+                    },
+                ]
+            },
+            {
+                field: "", title: "Building Permission", width: 150, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+            },
+            {
+                field: "", title: "Completion Date", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+            },
+            {
+                field: "emP_Name", title: "Arc Name", width: 300, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+            },
 
 
-    ];
-
-    bindKendoGrid("project-summary-grid", 100, gridColumnss, inputDataJSOns, true, 350);
+        ];
+    
+    bindKendoGrid_Groupable("project-summary-grid", 100, gridColumnss, inputDataJSOns, true, 450);
 };
 
 function fneditById(e) {

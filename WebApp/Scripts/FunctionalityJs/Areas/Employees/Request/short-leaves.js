@@ -76,6 +76,7 @@ var bindShortLeaveGrid = function (inputDataJSON) {
             template: "#if (totalRemainingDays >=0 && _btnValue=='Pending' )" +
                 " { # <span class='badge badge-warning'>" + lblRequestWaiting + "</span> # } else if (totalRemainingDays >=0  && startingDays >0   && _btnValue !='Pending' )" +
                 " { # <span class='badge badge-warning'>" + lblRequestWaiting + "</span> # } else if (  startingDays <0   && _btnValue !='Pending'  )" +
+                " { # <span class='badge badge-danger'>" + lblRequestExpired + "</span> # } else if (  totalRemainingDays < 0 && _btnValue !='Pending'  )" +
                 " { # <span class='badge badge-danger'>" + lblRequestExpired + "</span> # } else if (  startingDays <0   && _btnValue =='Pending'  )" +
                 " {# <span class='badge badge-danger'>" + lblRequestExpired + "</span> # } else" +
                 " {# <span class='badge badge-success'> " + lblRequestRunning + "</span> # }#"

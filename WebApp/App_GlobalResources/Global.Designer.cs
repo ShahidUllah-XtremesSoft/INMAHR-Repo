@@ -619,6 +619,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string lblPassword {
+            get {
+                return ResourceManager.GetString("lblPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please contact to system engineer, Thank you...!.
         /// </summary>
         internal static string lblPleaseContactToSystemEngineerThankyou {
@@ -723,6 +732,15 @@ namespace Resources {
         internal static string lblUsefulLinks {
             get {
                 return ResourceManager.GetString("lblUsefulLinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string lblUsername {
+            get {
+                return ResourceManager.GetString("lblUsername", resourceCulture);
             }
         }
         

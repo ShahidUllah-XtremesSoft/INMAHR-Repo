@@ -741,6 +741,9 @@
   <data name="lblTo" xml:space="preserve">
     <value>إلى</value>
   </data>
+  <data name="lblTotal" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
   <data name="lblUpdatePassword" xml:space="preserve">
     <value>تحديث كلمة المرور</value>
   </data>

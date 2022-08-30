@@ -49,6 +49,10 @@ var bindPenaltysGrid = function (inputDataJSON) {
             , template: "<a style='cursor:pointer;' onClick= viewAttachment('#=currentFileName#',this)>#=penaltyStatus#</a>"
         },
         {
+            field: "departmentName", title: " ", width: 30, filterable: false
+
+        },
+        {
             field: "", width: 5,
             title: ' ',
             //    template: "<a style='font-size:20px;cursor:pointer;' onClick= editPenaltys(this) title='Edit Company Document' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deletePenaltysById(this)  title='Delete Company Document'><span class='fa fa-trash'></span></a>  "

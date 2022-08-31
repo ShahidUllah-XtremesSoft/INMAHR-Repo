@@ -127,7 +127,6 @@
     <Compile Include="Commands\HumanResource\LetterCommand.cs" />
     <Compile Include="Commands\LetterCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Commands\Request\EvaluationCommand.cs" />
     <Compile Include="Commands\Request\CashInLeaveCommand.cs" />
     <Compile Include="Commands\Request\LeaveCancelRequestCommand.cs" />
     <Compile Include="Commands\Request\LeaveRequestCommand.cs" />

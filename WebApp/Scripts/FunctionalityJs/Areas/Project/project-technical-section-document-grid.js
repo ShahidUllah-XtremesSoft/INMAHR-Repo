@@ -65,7 +65,7 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:30%;'/> </a># } else" +
-                " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/UploadFile/#=currentFileName#' style='width:30%' /></a> #} #"
+                " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>   <img class='' src='/Content/Images/attachment-icon.png' style='width:25%' /></a> #} #"
 
 
         },

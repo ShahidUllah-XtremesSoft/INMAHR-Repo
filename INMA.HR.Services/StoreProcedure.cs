@@ -305,6 +305,13 @@
     Image_Save,
     #endregion
     UserManagement_Login_Role_Update,
+    #region Evaluation
+    Evaluation_Get_AllEmployees_by_DepartmentWise,
+    Evaluation_Get_LineManager_by_DepartmentWise,
+    HR_Evaluation_Request_Grid,
+    HR_Evaluation_Request_Delete,
+    #endregion
+
 }
 
 public enum ProjectStoreProcedure
@@ -487,4 +494,5 @@ public enum ProjectStoreProcedure
     Project_Dashboard_ProjectAndSectionCount_Get,
     Project_SubSectionRecordBySectionInDashboard_Get,
     #endregion
+
 }

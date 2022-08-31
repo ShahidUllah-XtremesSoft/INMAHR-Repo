@@ -9,6 +9,10 @@ namespace WebApp.Areas.Request.Controllers
         public ActionResult Index()
         {
             return View();
+        } 
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }

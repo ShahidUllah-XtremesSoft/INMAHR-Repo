@@ -394,10 +394,12 @@ function fnCheck_Request_ShortLeave_Request_Submitted_Count_MonthlyCallBack(inpu
 
 
 
-/*
-//----------------------------- DDLS AJAX FUNCTION END ---------------------------------------------------
+
+//-----------------------------  FUNCTION END ---------------------------------------------------
 
 function fnCheckValue(e) {
+    console.log(e)
+    debugger
 
     if (e.id == "chkCredit") {
         $('#chkDebit').prop('checked', false)
@@ -406,4 +408,3 @@ function fnCheckValue(e) {
     }
 }
 
-*/

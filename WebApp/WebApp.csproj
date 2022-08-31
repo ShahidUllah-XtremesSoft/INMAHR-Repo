@@ -609,6 +609,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-request-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\evaluation-request-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
@@ -705,6 +707,7 @@
     <Content Include="Areas\Project\Views\Project\Delay.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\EmailTemplate\_EmailTemplate.cshtml" />
     <Content Include="Areas\Request\Views\Evaluation\Index.cshtml" />
+    <Content Include="Areas\Request\Views\Evaluation\Create.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

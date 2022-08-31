@@ -100,6 +100,8 @@ function fnedit_DesignSection_GovernmentDocumentById(e) {
 
 
 var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJSON) {        
+     
+
     var gridColumns = [
         { field: "attachmentId", title: "attachmentId", hidden: true, width: 20 },
         { field: "DesignSection_Document_Id", title: "DesignSection_Document_Id", hidden: true },
@@ -115,7 +117,7 @@ var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJS
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:30%;'/> </a># } else" +
-                " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/UploadFile/#=currentFileName#' style='width:30%' /></a> #} #"
+                " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:20%' /></a> #} #"
 
 
         },

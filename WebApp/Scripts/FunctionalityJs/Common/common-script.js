@@ -216,18 +216,18 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
 }
 var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
     $("#" + $gridid).kendoGrid({
-        //toolbar: ["excel", "pdf", "search"],
-        //pdf: {
-        //    allPages: true,
-        //    paperSize: "A4",
-        //    //  margin: { top: "3cm", right: "1cm", bottom: "1cm", left: "1cm" },
-        //    margin: { top: "3cm", right: "1cm", bottom: "1cm", left: "1cm" },
-        //    landscape: true,
-        //    template: $("#page-template").html()
-        //},
-        //excel: {
-        //    fileName: "Export To Exceel.xlsx"
-        //},
+        toolbar: ["excel", "pdf", "search"],
+        pdf: {
+            allPages: true,
+            paperSize: "A4",
+            //  margin: { top: "3cm", right: "1cm", bottom: "1cm", left: "1cm" },
+            margin: { top: "3cm", right: "1cm", bottom: "1cm", left: "1cm" },
+            landscape: true,
+            template: $("#page-template").html()
+        },
+        excel: {
+            fileName: "Export To Exceel.xlsx"
+        },
 
         dataSource: {
             data: $data,

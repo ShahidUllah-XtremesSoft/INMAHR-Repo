@@ -11,8 +11,8 @@ namespace INMA.HR.Services.Commands.Request
 
     #region ========== Load Evaluation All Requests 
 
-    [Command(Name = "HR_Evaluation_Request_Grid")]
-    public class HR_Evaluation_Request_GridCommand : CamelCommandBase
+    [Command(Name = "Evaluation_Request_Grid")]
+    public class Evaluation_Request_GridCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
@@ -27,7 +27,7 @@ namespace INMA.HR.Services.Commands.Request
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.HR_Evaluation_Request_Grid.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Evaluation_Request_Grid.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }
@@ -35,8 +35,8 @@ namespace INMA.HR.Services.Commands.Request
     #endregion
     #region ========== Delete Evaluation Requests By Id
 
-    [Command(Name = "HR_Evaluation_Request_Delete")]
-    public class HR_Evaluation_Request_DeleteCommand : CamelCommandBase
+    [Command(Name = "Evaluation_Request_Delete")]
+    public class Evaluation_Request_DeleteCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
         {
@@ -52,7 +52,7 @@ namespace INMA.HR.Services.Commands.Request
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.HR_Evaluation_Request_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Evaluation_Request_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }
@@ -112,5 +112,60 @@ namespace INMA.HR.Services.Commands.Request
     }
     #endregion
 
+    #region Evaulation Request Save
+    [Command(Name = "Evaluation_Request_Save")]
+    public class Evaluation_Request_SaveCommand : CamelCommandBase
+    { 
+        protected override object DoAction(object v)
+        {
+          
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                DepartmentId = 0,
+                LM_Employee_Id = 0,
+                Employee_Id = 0,                
+                CreatedBy = 0,
+                Language = string.Empty, 
+            }, v);
 
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>(); 
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Evaluation_Request_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+             
+            return _response;
+        }
+    }
+    #endregion
+    [Command(Name = "Employees_Request_Evaluation_Get")]
+    public class Employees_Request_Evaluation_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                Id = 0, 
+                LoggedInUserId = string.Empty,
+                LoggedInEmployeeId = string.Empty,
+                LoggedInUserRoleId = 0,
+                LoggedInUserRoleName = string.Empty,
+                LoggedInUserDepartementId = 0,
+                Language = string.Empty,
+                StatusWise = string.Empty,
+
+            }, viewInput);
+             
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = Ioc.Resolve<IRepository>().GetMultiple<dynamic>(StoreProcedure.Employees_Request_Evaluation_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
 }

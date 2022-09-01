@@ -296,6 +296,13 @@
     //Cash In Leave AREA
     Employees_Request_CashInLeave_Get,
     Employees_Request_CashInLeave_ApproveOrDecline,
+
+
+
+    // Employees Evaluation Request
+    Employees_Request_Evaluation_Get,
+
+
     #endregion
 
     #region Setup
@@ -308,8 +315,9 @@
     #region Evaluation
     Evaluation_Get_AllEmployees_by_DepartmentWise,
     Evaluation_Get_LineManager_by_DepartmentWise,
-    HR_Evaluation_Request_Grid,
-    HR_Evaluation_Request_Delete,
+    Evaluation_Request_Grid,
+    Evaluation_Request_Delete,
+    Evaluation_Request_Save,
     #endregion
 
 }

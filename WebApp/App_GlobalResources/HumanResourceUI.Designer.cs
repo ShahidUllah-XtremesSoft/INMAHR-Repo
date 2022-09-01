@@ -178,6 +178,33 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ability to Coach and Train.
+        /// </summary>
+        public static string lblAbilitytoCoachandTrain {
+            get {
+                return ResourceManager.GetString("lblAbilitytoCoachandTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ability to Learn Skills.
+        /// </summary>
+        public static string lblAbilitytoLearnSkills {
+            get {
+                return ResourceManager.GetString("lblAbilitytoLearnSkills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ability to Plan and Organize.
+        /// </summary>
+        public static string lblAbilitytoPlanandOrganize {
+            get {
+                return ResourceManager.GetString("lblAbilitytoPlanandOrganize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Absent.
         /// </summary>
         public static string lblAbsent {
@@ -192,6 +219,15 @@ namespace HRModuleUI {
         public static string lblAccept {
             get {
                 return ResourceManager.GetString("lblAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Achieve Goals.
+        /// </summary>
+        public static string lblAchieveGoals {
+            get {
+                return ResourceManager.GetString("lblAchieveGoals", resourceCulture);
             }
         }
         
@@ -277,6 +313,24 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Behavioral and Commitment.
+        /// </summary>
+        public static string lblBehavioralandCommitment {
+            get {
+                return ResourceManager.GetString("lblBehavioralandCommitment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Below Expectations.
+        /// </summary>
+        public static string lblBelowExpectations {
+            get {
+                return ResourceManager.GetString("lblBelowExpectations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Body.
         /// </summary>
         public static string lblBody {
@@ -318,6 +372,15 @@ namespace HRModuleUI {
         public static string lblCancelLeaveRequest {
             get {
                 return ResourceManager.GetString("lblCancelLeaveRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Career Achievements.
+        /// </summary>
+        public static string lblCareerAchievements {
+            get {
+                return ResourceManager.GetString("lblCareerAchievements", resourceCulture);
             }
         }
         
@@ -385,6 +448,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collaboration, Job Commitment and Attendance.
+        /// </summary>
+        public static string lblCollaborationJobCommitmentandAttendance {
+            get {
+                return ResourceManager.GetString("lblCollaborationJobCommitmentandAttendance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string lblComment {
@@ -430,6 +502,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Manager.
+        /// </summary>
+        public static string lblCompanyManager {
+            get {
+                return ResourceManager.GetString("lblCompanyManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Rules.
         /// </summary>
         public static string lblCompanyRules {
@@ -439,11 +520,29 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compliance with Rules of Procedure.
+        /// </summary>
+        public static string lblCompliancewithRulesofProcedure {
+            get {
+                return ResourceManager.GetString("lblCompliancewithRulesofProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract Type.
         /// </summary>
         public static string lblContractType {
             get {
                 return ResourceManager.GetString("lblContractType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cooperation with Customers.
+        /// </summary>
+        public static string lblCooperationwithCustomers {
+            get {
+                return ResourceManager.GetString("lblCooperationwithCustomers", resourceCulture);
             }
         }
         
@@ -462,6 +561,15 @@ namespace HRModuleUI {
         public static string lblCreateUserLogin {
             get {
                 return ResourceManager.GetString("lblCreateUserLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Criterion.
+        /// </summary>
+        public static string lblCriterion {
+            get {
+                return ResourceManager.GetString("lblCriterion", resourceCulture);
             }
         }
         
@@ -597,6 +705,24 @@ namespace HRModuleUI {
         public static string lblDescriptionEng {
             get {
                 return ResourceManager.GetString("lblDescriptionEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development of his Performance.
+        /// </summary>
+        public static string lblDevelopmentofhisPerformance {
+            get {
+                return ResourceManager.GetString("lblDevelopmentofhisPerformance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discipline in Attendance.
+        /// </summary>
+        public static string lblDisciplineinAttendance {
+            get {
+                return ResourceManager.GetString("lblDisciplineinAttendance", resourceCulture);
             }
         }
         
@@ -790,6 +916,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Employee Performance Evaluation.
+        /// </summary>
+        public static string lblEmployeePerformanceEvaluation {
+            get {
+                return ResourceManager.GetString("lblEmployeePerformanceEvaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employees.
         /// </summary>
         public static string lblEmployees {
@@ -889,11 +1024,65 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Evaluation.
+        /// </summary>
+        public static string lblEvaluation {
+            get {
+                return ResourceManager.GetString("lblEvaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation Request.
+        /// </summary>
+        public static string lblEvaluationRequest {
+            get {
+                return ResourceManager.GetString("lblEvaluationRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluations.
+        /// </summary>
+        public static string lblEvaluations {
+            get {
+                return ResourceManager.GetString("lblEvaluations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Evening.
         /// </summary>
         public static string lblEvening {
             get {
                 return ResourceManager.GetString("lblEvening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exceed Expections.
+        /// </summary>
+        public static string lblExceedExpections {
+            get {
+                return ResourceManager.GetString("lblExceedExpections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expectations.
+        /// </summary>
+        public static string lblExpectations {
+            get {
+                return ResourceManager.GetString("lblExpectations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected.
+        /// </summary>
+        public static string lblExpected {
+            get {
+                return ResourceManager.GetString("lblExpected", resourceCulture);
             }
         }
         
@@ -930,6 +1119,15 @@ namespace HRModuleUI {
         public static string lblFile {
             get {
                 return ResourceManager.GetString("lblFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flexibility in Getting the Job Done.
+        /// </summary>
+        public static string lblFlexibilityinGettingtheJobDone {
+            get {
+                return ResourceManager.GetString("lblFlexibilityinGettingtheJobDone", resourceCulture);
             }
         }
         
@@ -979,11 +1177,47 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How to Benefit from the Experiences.
+        /// </summary>
+        public static string lblHowtoBenefitfromtheExperiences {
+            get {
+                return ResourceManager.GetString("lblHowtoBenefitfromtheExperiences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HR.
+        /// </summary>
+        public static string lblHR {
+            get {
+                return ResourceManager.GetString("lblHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IN.
         /// </summary>
         public static string lblIn {
             get {
                 return ResourceManager.GetString("lblIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initiative and Creativity.
+        /// </summary>
+        public static string lblInitiativeandCreativity {
+            get {
+                return ResourceManager.GetString("lblInitiativeandCreativity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initiative or Method of Work.
+        /// </summary>
+        public static string lblInitiativeorMethodofWork {
+            get {
+                return ResourceManager.GetString("lblInitiativeorMethodofWork", resourceCulture);
             }
         }
         
@@ -1015,6 +1249,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job Responsibilities.
+        /// </summary>
+        public static string lblJobResponsibilities {
+            get {
+                return ResourceManager.GetString("lblJobResponsibilities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Joining Date.
         /// </summary>
         public static string lblJoinDate {
@@ -1038,6 +1281,15 @@ namespace HRModuleUI {
         public static string lblLateInTime {
             get {
                 return ResourceManager.GetString("lblLateInTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learning Ability.
+        /// </summary>
+        public static string lblLearningAbility {
+            get {
+                return ResourceManager.GetString("lblLearningAbility", resourceCulture);
             }
         }
         
@@ -1483,6 +1735,33 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performance and Achivment.
+        /// </summary>
+        public static string lblPerformanceandAchivment {
+            get {
+                return ResourceManager.GetString("lblPerformanceandAchivment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performance,Productivity.
+        /// </summary>
+        public static string lblPerformanceProductivity {
+            get {
+                return ResourceManager.GetString("lblPerformanceProductivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performance Scores.
+        /// </summary>
+        public static string lblPerformanceScores {
+            get {
+                return ResourceManager.GetString("lblPerformanceScores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal Attendance.
         /// </summary>
         public static string lblPersonalAttendance {
@@ -1546,6 +1825,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procedures.
+        /// </summary>
+        public static string lblProcedures {
+            get {
+                return ResourceManager.GetString("lblProcedures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processed.
         /// </summary>
         public static string lblProcessed {
@@ -1578,6 +1866,24 @@ namespace HRModuleUI {
         public static string lblPublicHoliday {
             get {
                 return ResourceManager.GetString("lblPublicHoliday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quality Of Functionality.
+        /// </summary>
+        public static string lblQualityOfFunctionality {
+            get {
+                return ResourceManager.GetString("lblQualityOfFunctionality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ratings.
+        /// </summary>
+        public static string lblRatings {
+            get {
+                return ResourceManager.GetString("lblRatings", resourceCulture);
             }
         }
         
@@ -1771,6 +2077,24 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Services Provided to Customers.
+        /// </summary>
+        public static string lblServicesProvidedtoCustomers {
+            get {
+                return ResourceManager.GetString("lblServicesProvidedtoCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sharing and Taking Responsibility.
+        /// </summary>
+        public static string lblSharingandTakingResponsibility {
+            get {
+                return ResourceManager.GetString("lblSharingandTakingResponsibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permission Leave.
         /// </summary>
         public static string lblShortLeave {
@@ -1897,6 +2221,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supervisory skills.
+        /// </summary>
+        public static string lblSupervisoryskills {
+            get {
+                return ResourceManager.GetString("lblSupervisoryskills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taken Leave.
         /// </summary>
         public static string lblTakenLeave {
@@ -1915,11 +2248,29 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Level of Excellence and Exclusivity.
+        /// </summary>
+        public static string lblTheLevelofExcellenceandExclusivity {
+            get {
+                return ResourceManager.GetString("lblTheLevelofExcellenceandExclusivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time.
         /// </summary>
         public static string lblTime {
             get {
                 return ResourceManager.GetString("lblTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time and Speed of Work.
+        /// </summary>
+        public static string lblTimeandSpeedofWork {
+            get {
+                return ResourceManager.GetString("lblTimeandSpeedofWork", resourceCulture);
             }
         }
         

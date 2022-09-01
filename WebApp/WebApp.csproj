@@ -550,6 +550,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\SendLetters\internal-letter-send-letter-load-data.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\request-evaulation.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\short-leaves-request-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\request-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
@@ -611,7 +612,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-request-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\evaluation-request-save.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-form.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
@@ -708,6 +709,7 @@
     <Content Include="Areas\Project\Views\Shared\PartialViews\EmailTemplate\_EmailTemplate.cshtml" />
     <Content Include="Areas\Request\Views\Evaluation\Index.cshtml" />
     <Content Include="Areas\Request\Views\Evaluation\Create.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Evaluation.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />

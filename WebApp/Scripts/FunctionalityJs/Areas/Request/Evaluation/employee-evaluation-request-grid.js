@@ -7,7 +7,7 @@ $(function () {
 });
 function loadEvaluationGrid() {
     ajaxRequest({
-        commandName: 'HR_Evaluation_Request_Grid',
+        commandName: 'Evaluation_Request_Grid',
         values: { Language: $('#Language').val() }, CallBack: load_EvaluationGridCallBack
     });
 }
@@ -16,17 +16,23 @@ var load_EvaluationGridCallBack = function (inputDataJSON) {
     bindEvaluationGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindEvaluationGrid = function (inputDataJSON) {
+    
     var record = 0;
     var gridColumns = [
-  
-        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
-        { field: "id", title: "id", hidden: true },
-        { field: "nameEng", title: NameEng, width: 100, filterable: true, hidden: true }, 
-        { field: "issueDate", title: IssueDate, width: 50, filterable: true }, 
+   
+        { title: "#", template: "<b>#= ++record #</b>", width: 10, },
+        { field: "evaluationId", title: "EvaluationId", hidden: true },
+        { field: "hr_Employee_Id", title: "HR_Employee_Id", hidden: true },
+        { field: "departmentId", title: "DepartmentId", hidden: true },
+        { field: "createrName", title: lblFrom, width: 100, filterable: false},
+        { field: "lM_Name", title: lblTo , width: 100, filterable: false},
+        { field: "employeeName", title: lblEmployeeName, width: 100, filterable: false},
+        { field: "departmentName", title: lblSection, width: 100, filterable: false },
+        { field: "issueDate", title: IssueDate, width: 50, filterable: false },
         {
-            field: "", width: 50,
+            field: "", width: 20,
             title: ' ',
-            template: "<a style='font-size:20px;cursor:pointer;' onClick= edit_EvaluationGrid(this) title='Edit Company Document' ><span class='fa fa-edit'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= delete_EvaluationGridById(this)  title='Delete Company Document'><span class='fa fa-trash'></span></a>  "
+            template: "  <a style='font-size:20px;cursor:pointer;' onClick= delete_EvaluationGridById(this)  title='Delete '><span class='fa fa-trash'></span></a>  "
 
         }
     ];
@@ -34,16 +40,9 @@ var bindEvaluationGrid = function (inputDataJSON) {
     bindKendoGrid(EvaluationGrid, 50, gridColumns, inputDataJSON);
 };
 
- 
-function edit_EvaluationGrid(event) {
-    var row = $(event).closest("tr");
-    var grid = $("#" + EvaluationGrid).data("kendoGrid");
-    var dataItem = grid.dataItem(row);
-
-    $('#Id').val(dataItem.id);
-    $('#NameEng').val(dataItem.nameEng); 
-}
+  
 function delete_EvaluationGridById(event) {
+     
     var row = $(event).closest("tr");
     var grid = $("#" + EvaluationGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
@@ -76,14 +75,12 @@ function delete_EvaluationGridById(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-            ajaxRequest({ commandName: 'HR_Evaluation_Request_Delete', values: { Id: dataItem.id, Language: $('#Language').val() }, CallBack: delete_EvaluationGridByIdCallBack });
+            ajaxRequest({ commandName: 'Evaluation_Request_Delete', values: { Id: dataItem.id, Language: $('#Language').val() }, CallBack: delete_EvaluationGridByIdCallBack });
         }
     });
-    var delete_EvaluationGridByIdCallBack = function (response) {
-        swal(response.Value);
-        ClearControls();
-        $('#Id').val(0);
-        loadEvaluationGrid();
+    var delete_EvaluationGridByIdCallBack = function ( response) {
+        location.reload();
+      
     }
 
 } 

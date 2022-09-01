@@ -156,11 +156,23 @@
   <data name="firstselectrecordsfromgrid" xml:space="preserve">
     <value>حدد السجلات من الشبكة أولاً</value>
   </data>
+  <data name="lblAbilitytoCoachandTrain" xml:space="preserve">
+    <value>القدرة على التوجيه والتدريب</value>
+  </data>
+  <data name="lblAbilitytoLearnSkills" xml:space="preserve">
+    <value>تعلم المهارات المتعلقة بمهام عمله</value>
+  </data>
+  <data name="lblAbilitytoPlanandOrganize" xml:space="preserve">
+    <value>القدرة على التخطيط والتنظيم</value>
+  </data>
   <data name="lblAbsent" xml:space="preserve">
     <value>غياب</value>
   </data>
   <data name="lblAccept" xml:space="preserve">
     <value>قبول</value>
+  </data>
+  <data name="lblAchieveGoals" xml:space="preserve">
+    <value>تحقيق الاهداف</value>
   </data>
   <data name="lblAcknowledged" xml:space="preserve">
     <value>اطلعت</value>
@@ -189,6 +201,12 @@
   <data name="lblBalance" xml:space="preserve">
     <value>الرصيد</value>
   </data>
+  <data name="lblBehavioralandCommitment" xml:space="preserve">
+    <value>درجة الالتزام السلوكي و الوظيفي</value>
+  </data>
+  <data name="lblBelowExpectations" xml:space="preserve">
+    <value>دون التوقعات</value>
+  </data>
   <data name="lblBody" xml:space="preserve">
     <value>الجسم</value>
   </data>
@@ -203,6 +221,9 @@
   </data>
   <data name="lblCancelLeaveRequest" xml:space="preserve">
     <value>الغاء الاجازة</value>
+  </data>
+  <data name="lblCareerAchievements" xml:space="preserve">
+    <value>الانجازات الوظيفية</value>
   </data>
   <data name="lblCashInLieu" xml:space="preserve">
     <value>بدل نقدن للاجازة</value>
@@ -225,6 +246,9 @@
   <data name="lblClose" xml:space="preserve">
     <value>أغلق</value>
   </data>
+  <data name="lblCollaborationJobCommitmentandAttendance" xml:space="preserve">
+    <value>التعاون والالتزام الوظيفي و المواظبة في الحضور</value>
+  </data>
   <data name="lblComment" xml:space="preserve">
     <value>تعليق</value>
   </data>
@@ -240,17 +264,29 @@
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>وثائق الشركة</value>
   </data>
+  <data name="lblCompanyManager" xml:space="preserve">
+    <value>مدير الشركة</value>
+  </data>
   <data name="lblCompanyRules" xml:space="preserve">
     <value>النظام الداخلي للشركة</value>
   </data>
+  <data name="lblCompliancewithRulesofProcedure" xml:space="preserve">
+    <value>الالتزامه بالنظام الداخلي</value>
+  </data>
   <data name="lblContractType" xml:space="preserve">
     <value>نوع العقد</value>
+  </data>
+  <data name="lblCooperationwithCustomers" xml:space="preserve">
+    <value>درجة التعاون  مع المتعاملين</value>
   </data>
   <data name="lblCountry" xml:space="preserve">
     <value>الدولة</value>
   </data>
   <data name="lblCreateUserLogin" xml:space="preserve">
     <value>إنشاء تسجيل دخول المستخدم</value>
+  </data>
+  <data name="lblCriterion" xml:space="preserve">
+    <value>المعيار</value>
   </data>
   <data name="lbldailyAttendance" xml:space="preserve">
     <value>التحضير يومية</value>
@@ -293,6 +329,12 @@
   </data>
   <data name="lblDescriptionEng" xml:space="preserve">
     <value>الوصف (بالغات الانجليزية)  </value>
+  </data>
+  <data name="lblDevelopmentofhisPerformance" xml:space="preserve">
+    <value>الاطلاع  على أية معارف حديثة</value>
+  </data>
+  <data name="lblDisciplineinAttendance" xml:space="preserve">
+    <value>الانظباط في الحضور  و الانصراف</value>
   </data>
   <data name="lblDocument" xml:space="preserve">
     <value>الوثائق</value>
@@ -358,6 +400,9 @@
   <data name="lblEmployeeNumber" xml:space="preserve">
     <value>رقم الموظف</value>
   </data>
+  <data name="lblEmployeePerformanceEvaluation" xml:space="preserve">
+    <value>تقييم أداء الموظف</value>
+  </data>
   <data name="lblEmployees" xml:space="preserve">
     <value>الموظفين</value>
   </data>
@@ -394,8 +439,26 @@
   <data name="lblEmpNum" xml:space="preserve">
     <value>رقم الموظف</value>
   </data>
+  <data name="lblEvaluation" xml:space="preserve">
+    <value>التقييم</value>
+  </data>
+  <data name="lblEvaluationRequest" xml:space="preserve">
+    <value>طلب تقييم</value>
+  </data>
+  <data name="lblEvaluations" xml:space="preserve">
+    <value>التقييمات</value>
+  </data>
   <data name="lblEvening" xml:space="preserve">
     <value>الفترة المسائية</value>
+  </data>
+  <data name="lblExceedExpections" xml:space="preserve">
+    <value>يفوق التوقعات بشكل كبي</value>
+  </data>
+  <data name="lblExpectations" xml:space="preserve">
+    <value>يفوق التوقعات</value>
+  </data>
+  <data name="lblExpected" xml:space="preserve">
+    <value>حسب التوقعات</value>
   </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>تنتهي في أيام</value>
@@ -409,6 +472,9 @@
   <data name="lblFile" xml:space="preserve">
     <value>الملف</value>
   </data>
+  <data name="lblFlexibilityinGettingtheJobDone" xml:space="preserve">
+    <value>المرونة في انجاز العمل</value>
+  </data>
   <data name="lblForward" xml:space="preserve">
     <value>تحويل</value>
   </data>
@@ -421,14 +487,29 @@
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
   </data>
+  <data name="lblHowtoBenefitfromtheExperiences" xml:space="preserve">
+    <value>الاستفادة من خبرات  الأكثر خبرة</value>
+  </data>
+  <data name="lblHR" xml:space="preserve">
+    <value>مدير الموارد البشرية</value>
+  </data>
   <data name="lblIn" xml:space="preserve">
     <value>دخول</value>
+  </data>
+  <data name="lblInitiativeandCreativity" xml:space="preserve">
+    <value>المبادرة والإبداع</value>
+  </data>
+  <data name="lblInitiativeorMethodofWork" xml:space="preserve">
+    <value>مبادرات أو أساليب عمل متميزة</value>
   </data>
   <data name="lblInternalLetter" xml:space="preserve">
     <value>المراسلات الداخلية</value>
   </data>
   <data name="lblIssueDate" xml:space="preserve">
     <value>تاريخ الاصدار</value>
+  </data>
+  <data name="lblJobResponsibilities" xml:space="preserve">
+    <value>درجة تحمل الموظف لمسؤولياته الوظيفية</value>
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>تاريخ التوظيف</value>
@@ -438,6 +519,9 @@
   </data>
   <data name="lblLateInTime" xml:space="preserve">
     <value>التاخيرات</value>
+  </data>
+  <data name="lblLearningAbility" xml:space="preserve">
+    <value>القدرة على التعلم</value>
   </data>
   <data name="lblLeave" xml:space="preserve">
     <value>طلب اجازة</value>
@@ -588,6 +672,15 @@
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>
   </data>
+  <data name="lblPerformanceandAchivment" xml:space="preserve">
+    <value>الأداء والإنجاز</value>
+  </data>
+  <data name="lblPerformanceProductivity" xml:space="preserve">
+    <value>الارتقاء بمستوى الخدمات</value>
+  </data>
+  <data name="lblPerformanceScores" xml:space="preserve">
+    <value>النتيجة</value>
+  </data>
   <data name="lblPersonalAttendance" xml:space="preserve">
     <value>تحضير الشخصي</value>
   </data>
@@ -610,6 +703,9 @@
     <value>حضور</value>
     <comment>حاضر</comment>
   </data>
+  <data name="lblProcedures" xml:space="preserve">
+    <value>توثيق الإجراءات</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>معالجتها</value>
   </data>
@@ -621,6 +717,12 @@
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>اجازة رسمية</value>
+  </data>
+  <data name="lblQualityOfFunctionality" xml:space="preserve">
+    <value>حجم ونوعية الأداء الوظيفي</value>
+  </data>
+  <data name="lblRatings" xml:space="preserve">
+    <value>المعايير</value>
   </data>
   <data name="lblReadLetter" xml:space="preserve">
     <value>اقرأ الرسالة</value>
@@ -686,6 +788,12 @@
   <data name="lblSend" xml:space="preserve">
     <value>ارسل</value>
   </data>
+  <data name="lblServicesProvidedtoCustomers" xml:space="preserve">
+    <value>مستوى الخدمات المقدمة للمتعاملين</value>
+  </data>
+  <data name="lblSharingandTakingResponsibility" xml:space="preserve">
+    <value>المشاركة وتحمل المسؤولية</value>
+  </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>إذن خروج</value>
   </data>
@@ -728,6 +836,9 @@
   <data name="lblSubject" xml:space="preserve">
     <value>الموضوع</value>
   </data>
+  <data name="lblSupervisoryskills" xml:space="preserve">
+    <value>المهارات الإشرافية</value>
+  </data>
   <data name="lblTakenLeave" xml:space="preserve">
     <value>الاجازات المعتمدة</value>
     <comment>الإجازات التي تم اخذو</comment>
@@ -735,8 +846,14 @@
   <data name="lblTheDescription" xml:space="preserve">
     <value>الوصف</value>
   </data>
+  <data name="lblTheLevelofExcellenceandExclusivity" xml:space="preserve">
+    <value>مستوى التميز و التفرد</value>
+  </data>
   <data name="lblTime" xml:space="preserve">
     <value>الوقت</value>
+  </data>
+  <data name="lblTimeandSpeedofWork" xml:space="preserve">
+    <value>وقت  وسرعة انجاز العمل</value>
   </data>
   <data name="lblTo" xml:space="preserve">
     <value>إلى</value>

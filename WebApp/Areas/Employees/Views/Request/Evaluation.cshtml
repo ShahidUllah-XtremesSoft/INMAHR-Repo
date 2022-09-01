@@ -1,0 +1,86 @@
+﻿
+
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblEvaluationRequest;
+    
+}
+
+<div class="card">
+
+
+    <input type="hidden" id="CreatedBy" name="CreatedBy" />
+    <input type="hidden" id="Id" name="Id" value="0" />
+    <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+    <input type="hidden" id="Language" name="Language" value="" />
+
+    <div class="card">
+        <div class="card-header">
+
+
+            <h5>@HRModuleUI.HumanResourceUI.lblEvaluations</h5>
+            <div class="card-header-right">
+
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblPendingRequest</button>
+                    <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
+                    <div id="btnAreaShowHideOnConditionBase">
+
+                        <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @HRModuleUI.HumanResourceUI.lblDecline</button>
+                        <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid-main-div">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="RequestEvaluations"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section scripts {
+    
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/request-evaulation.js?+971522324409"></script>
+    <script>
+        //Grid columns
+
+         var empNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+        var email = '@HRModuleUI.HumanResourceUI.lblEmail';
+        var requestDate = '@HRModuleUI.HumanResourceUI.lblRequestDate';
+        var comment = '@HRModuleUI.HumanResourceUI.lblComment';
+        var availableBalance = '@HRModuleUI.HumanResourceUI.lblAvailableBalance';
+        var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var startTime = '@HRModuleUI.HumanResourceUI.lblStartTime';
+        var returnTime = '@HRModuleUI.HumanResourceUI.lblReturnTime';
+        var numberOfHourse = '@HRModuleUI.HumanResourceUI.lblNumberOfHours';
+          var requestDenyComment = '@HRModuleUI.HumanResourceUI.lblRequestDenyComment';
+        var action = '@HRModuleUI.HumanResourceUI.lblAction';
+                var lblFristSelectRecordFromGrid  = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid ';
+        var lblname  = '@HRModuleUI.HumanResourceUI.lblName ';
+          var btnDecline= '@HRModuleUI.HumanResourceUI.lblDecline';
+        var btnAccept = '@HRModuleUI.HumanResourceUI.lblAccept';
+        var leaveType = '@HRModuleUI.HumanResourceUI.lblLeaveType';
+
+
+
+    </script>
+}
+
+
+

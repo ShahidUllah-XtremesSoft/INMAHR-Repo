@@ -156,11 +156,23 @@
   <data name="Human Resouce Module Below" xml:space="preserve">
     <value>Humran Resource</value>
   </data>
+  <data name="lblAbilitytoCoachandTrain" xml:space="preserve">
+    <value>Ability to Coach and Train</value>
+  </data>
+  <data name="lblAbilitytoLearnSkills" xml:space="preserve">
+    <value>Ability to Learn Skills</value>
+  </data>
+  <data name="lblAbilitytoPlanandOrganize" xml:space="preserve">
+    <value>Ability to Plan and Organize</value>
+  </data>
   <data name="lblAbsent" xml:space="preserve">
     <value>Absent</value>
   </data>
   <data name="lblAccept" xml:space="preserve">
     <value>Accept</value>
+  </data>
+  <data name="lblAchieveGoals" xml:space="preserve">
+    <value>Achieve Goals</value>
   </data>
   <data name="lblAcknowledged" xml:space="preserve">
     <value>Acknowledged</value>
@@ -189,6 +201,12 @@
   <data name="lblBalance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="lblBehavioralandCommitment" xml:space="preserve">
+    <value>Behavioral and Commitment</value>
+  </data>
+  <data name="lblBelowExpectations" xml:space="preserve">
+    <value>Below Expectations</value>
+  </data>
   <data name="lblBody" xml:space="preserve">
     <value>Body</value>
   </data>
@@ -203,6 +221,9 @@
   </data>
   <data name="lblCancelLeaveRequest" xml:space="preserve">
     <value>Leave Cancellation</value>
+  </data>
+  <data name="lblCareerAchievements" xml:space="preserve">
+    <value>Career Achievements</value>
   </data>
   <data name="lblCashInLieu" xml:space="preserve">
     <value>Cash In Leiu</value>
@@ -225,6 +246,9 @@
   <data name="lblClose" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="lblCollaborationJobCommitmentandAttendance" xml:space="preserve">
+    <value>Collaboration, Job Commitment and Attendance</value>
+  </data>
   <data name="lblComment" xml:space="preserve">
     <value>Comment</value>
   </data>
@@ -240,17 +264,29 @@
   <data name="lblCompanyDocument" xml:space="preserve">
     <value>Company Document (English)</value>
   </data>
+  <data name="lblCompanyManager" xml:space="preserve">
+    <value>Company Manager</value>
+  </data>
   <data name="lblCompanyRules" xml:space="preserve">
     <value>Company Rules</value>
   </data>
+  <data name="lblCompliancewithRulesofProcedure" xml:space="preserve">
+    <value>Compliance with Rules of Procedure</value>
+  </data>
   <data name="lblContractType" xml:space="preserve">
     <value>Contract Type</value>
+  </data>
+  <data name="lblCooperationwithCustomers" xml:space="preserve">
+    <value>Cooperation with Customers</value>
   </data>
   <data name="lblCountry" xml:space="preserve">
     <value>Country</value>
   </data>
   <data name="lblCreateUserLogin" xml:space="preserve">
     <value>Create User Login</value>
+  </data>
+  <data name="lblCriterion" xml:space="preserve">
+    <value>Criterion</value>
   </data>
   <data name="lbldailyAttendance" xml:space="preserve">
     <value>Daily Attendance</value>
@@ -296,6 +332,12 @@
   </data>
   <data name="lblDescriptionEng" xml:space="preserve">
     <value>Description (English)</value>
+  </data>
+  <data name="lblDevelopmentofhisPerformance" xml:space="preserve">
+    <value>Development of his Performance</value>
+  </data>
+  <data name="lblDisciplineinAttendance" xml:space="preserve">
+    <value>Discipline in Attendance</value>
   </data>
   <data name="lblDocument" xml:space="preserve">
     <value>Document</value>
@@ -360,6 +402,9 @@
   <data name="lblEmployeeNumber" xml:space="preserve">
     <value>Employee Number</value>
   </data>
+  <data name="lblEmployeePerformanceEvaluation" xml:space="preserve">
+    <value>Employee Performance Evaluation</value>
+  </data>
   <data name="lblEmployees" xml:space="preserve">
     <value>Employees</value>
   </data>
@@ -393,8 +438,26 @@
   <data name="lblEmpNum" xml:space="preserve">
     <value>Emp #</value>
   </data>
+  <data name="lblEvaluation" xml:space="preserve">
+    <value>Evaluation</value>
+  </data>
+  <data name="lblEvaluationRequest" xml:space="preserve">
+    <value>Evaluation Request</value>
+  </data>
+  <data name="lblEvaluations" xml:space="preserve">
+    <value>Evaluations</value>
+  </data>
   <data name="lblEvening" xml:space="preserve">
     <value>Evening</value>
+  </data>
+  <data name="lblExceedExpections" xml:space="preserve">
+    <value>Exceed Expections</value>
+  </data>
+  <data name="lblExpectations" xml:space="preserve">
+    <value>Expectations</value>
+  </data>
+  <data name="lblExpected" xml:space="preserve">
+    <value>Expected</value>
   </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>Expires In days</value>
@@ -407,6 +470,9 @@
   </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
+  </data>
+  <data name="lblFlexibilityinGettingtheJobDone" xml:space="preserve">
+    <value>Flexibility in Getting the Job Done</value>
   </data>
   <data name="lblForward" xml:space="preserve">
     <value>Forward</value>
@@ -423,8 +489,20 @@
   <data name="lblHours" xml:space="preserve">
     <value>Hours</value>
   </data>
+  <data name="lblHowtoBenefitfromtheExperiences" xml:space="preserve">
+    <value>How to Benefit from the Experiences</value>
+  </data>
+  <data name="lblHR" xml:space="preserve">
+    <value>HR</value>
+  </data>
   <data name="lblIn" xml:space="preserve">
     <value>IN</value>
+  </data>
+  <data name="lblInitiativeandCreativity" xml:space="preserve">
+    <value>Initiative and Creativity</value>
+  </data>
+  <data name="lblInitiativeorMethodofWork" xml:space="preserve">
+    <value>Initiative or Method of Work</value>
   </data>
   <data name="lblInternalLetter" xml:space="preserve">
     <value>Internal Letter</value>
@@ -435,6 +513,9 @@
   <data name="lblIssueDate" xml:space="preserve">
     <value>Issue Date</value>
   </data>
+  <data name="lblJobResponsibilities" xml:space="preserve">
+    <value>Job Responsibilities</value>
+  </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>Joining Date</value>
   </data>
@@ -443,6 +524,9 @@
   </data>
   <data name="lblLateInTime" xml:space="preserve">
     <value>Late In Time</value>
+  </data>
+  <data name="lblLearningAbility" xml:space="preserve">
+    <value>Learning Ability</value>
   </data>
   <data name="lblLeave" xml:space="preserve">
     <value>Leave</value>
@@ -591,6 +675,15 @@
   <data name="lblPendingRequest" xml:space="preserve">
     <value>Pending Requests</value>
   </data>
+  <data name="lblPerformanceandAchivment" xml:space="preserve">
+    <value>Performance and Achivment</value>
+  </data>
+  <data name="lblPerformanceProductivity" xml:space="preserve">
+    <value>Performance,Productivity</value>
+  </data>
+  <data name="lblPerformanceScores" xml:space="preserve">
+    <value>Performance Scores</value>
+  </data>
   <data name="lblPersonalAttendance" xml:space="preserve">
     <value>Personal Attendance</value>
   </data>
@@ -612,6 +705,9 @@
   <data name="lblPresent" xml:space="preserve">
     <value>Present</value>
   </data>
+  <data name="lblProcedures" xml:space="preserve">
+    <value>Procedures</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>Processed</value>
   </data>
@@ -623,6 +719,12 @@
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>Public Holiday</value>
+  </data>
+  <data name="lblQualityOfFunctionality" xml:space="preserve">
+    <value>Quality Of Functionality</value>
+  </data>
+  <data name="lblRatings" xml:space="preserve">
+    <value>Ratings</value>
   </data>
   <data name="lblReadLetter" xml:space="preserve">
     <value>Read Letter</value>
@@ -687,6 +789,12 @@
   <data name="lblSend" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="lblServicesProvidedtoCustomers" xml:space="preserve">
+    <value>Services Provided to Customers</value>
+  </data>
+  <data name="lblSharingandTakingResponsibility" xml:space="preserve">
+    <value>Sharing and Taking Responsibility</value>
+  </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>Permission Leave</value>
   </data>
@@ -729,14 +837,23 @@
   <data name="lblSubject" xml:space="preserve">
     <value>Subject</value>
   </data>
+  <data name="lblSupervisoryskills" xml:space="preserve">
+    <value>Supervisory skills</value>
+  </data>
   <data name="lblTakenLeave" xml:space="preserve">
     <value>Taken Leave</value>
   </data>
   <data name="lblTheDescription" xml:space="preserve">
     <value>The Description</value>
   </data>
+  <data name="lblTheLevelofExcellenceandExclusivity" xml:space="preserve">
+    <value>The Level of Excellence and Exclusivity</value>
+  </data>
   <data name="lblTime" xml:space="preserve">
     <value>Time</value>
+  </data>
+  <data name="lblTimeandSpeedofWork" xml:space="preserve">
+    <value>Time and Speed of Work</value>
   </data>
   <data name="lblTo" xml:space="preserve">
     <value>To</value>

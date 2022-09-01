@@ -1,13 +1,14 @@
 ﻿$(function () {
 
     loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox_New();
-
+    $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     //Events Starts
     $('#btnSave').on('click', function (e) {
+         
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         var valid = true;
 
-        if ($('#DepartmentIds').val() == null || $('#DepartmentIds').val() == '' || $('#DepartmentIds').val() == -1 || $('#DepartmentIds').val() == '0') {
+        if ($('#DepartmentId').val() == null || $('#DepartmentId').val() == '' || $('#DepartmentId').val() == -1 || $('#DepartmentId').val() == '0') {
             $('#DepartmentId').addClass('invalid');
             $('#DepartmentId').attr('title', thisFieldIsRequired);
             $('#DepartmentId').removeClass("invalid");
@@ -117,7 +118,7 @@ var getloadAll_LINE_Manager_AsPerDepartmentId = function (inputDataJSON) {
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains", 
-        index: -1,
+       // index: -1,
         dataSource: JSON.parse(inputDataJSON.Value),
         select: fn_OnSelect_Load_All_Employees_DDL,
     });
@@ -153,9 +154,8 @@ var loadAllEmployeesAsPer_LineManager_Department_CallBack = function (inputDataJ
     $("#Employee_Id").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
-        filter: "contains",
-
-        index: -1,
+        filter: "contains", 
+       
         dataSource: JSON.parse(inputDataJSON.Value),
         //   select: fn_Save,
     });

@@ -188,6 +188,42 @@ namespace INMA.HR.Services
         }
     }
 
+      [Command(Name = "HR_Department_GetAll_For_Evaluation")]
+    public class HR_Department_GetAll_For_EvaluationCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+            var model = base.MappedModel(new
+            {
+
+                LoggedInUserId = string.Empty,
+                LoggedInUserRoleId = 0,
+                LoggedInUserDepartementId = 0,
+                LoggedInEmployeeId = 0,
+                Language = string.Empty,
+
+
+            }, v);
+
+
+            try
+            {
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetMultiple<dynamic>(StoreProcedure.HR_Department_GetAll_For_Evaluation.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            }
+            catch (Exception ex)
+            {
+                result = new { status = false, message = ex.Message };
+            }
+            return result;
+        }
+    }
+
 
     [Command(Name = "HR_Department_Delete")]
     public class HR_Department_DeleteCommand : CamelCommandBase

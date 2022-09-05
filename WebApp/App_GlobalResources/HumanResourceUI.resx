@@ -165,6 +165,9 @@
   <data name="lblAbilitytoPlanandOrganize" xml:space="preserve">
     <value>Ability to Plan and Organize</value>
   </data>
+  <data name="lblAboveExpectations" xml:space="preserve">
+    <value>Above Expectations</value>
+  </data>
   <data name="lblAbsent" xml:space="preserve">
     <value>Absent</value>
   </data>
@@ -452,9 +455,6 @@
   </data>
   <data name="lblExceedExpections" xml:space="preserve">
     <value>Exceed Expections</value>
-  </data>
-  <data name="lblExpectations" xml:space="preserve">
-    <value>Expectations</value>
   </data>
   <data name="lblExpected" xml:space="preserve">
     <value>Expected</value>

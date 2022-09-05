@@ -205,6 +205,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Above Expectations.
+        /// </summary>
+        public static string lblAboveExpectations {
+            get {
+                return ResourceManager.GetString("lblAboveExpectations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Absent.
         /// </summary>
         public static string lblAbsent {
@@ -1065,15 +1074,6 @@ namespace HRModuleUI {
         public static string lblExceedExpections {
             get {
                 return ResourceManager.GetString("lblExceedExpections", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Expectations.
-        /// </summary>
-        public static string lblExpectations {
-            get {
-                return ResourceManager.GetString("lblExpectations", resourceCulture);
             }
         }
         

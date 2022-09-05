@@ -165,6 +165,9 @@
   <data name="lblAbilitytoPlanandOrganize" xml:space="preserve">
     <value>القدرة على التخطيط والتنظيم</value>
   </data>
+  <data name="lblAboveExpectations" xml:space="preserve">
+    <value>يفوق التوقعات</value>
+  </data>
   <data name="lblAbsent" xml:space="preserve">
     <value>غياب</value>
   </data>
@@ -453,9 +456,6 @@
   </data>
   <data name="lblExceedExpections" xml:space="preserve">
     <value>يفوق التوقعات بشكل كبي</value>
-  </data>
-  <data name="lblExpectations" xml:space="preserve">
-    <value>يفوق التوقعات</value>
   </data>
   <data name="lblExpected" xml:space="preserve">
     <value>حسب التوقعات</value>

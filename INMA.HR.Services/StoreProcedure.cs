@@ -55,6 +55,7 @@
     HR_Department_GetAll,
     HR_Department_GetAll_New_By_ID,
     HR_Department_GetAll_New_By_ID_New,
+    HR_Department_GetAll_For_Evaluation,
     HR_Department_GetAllWithParent,
     HR_Department_Save_Arb,
     HR_Department_Save,
@@ -301,6 +302,7 @@
 
     // Employees Evaluation Request
     Employees_Request_Evaluation_Get,
+    Employees_Request_Evaluation_History_Get,
 
 
     #endregion
@@ -318,6 +320,7 @@
     Evaluation_Request_Grid,
     Evaluation_Request_Delete,
     Evaluation_Request_Save,
+    Request_Evaluation_Employee_Form_Save,
     #endregion
 
 }

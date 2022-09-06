@@ -4,8 +4,151 @@ var EmployeeNumber = window.location.href.split('?')[2].split('=')[1];
 
 $(function () {
 
-    loadEmployeeProfile();
+    //   loadEmployeeProfile();
+
+    fn_Load_Evaluation_Form();
 });
+
+function fn_Load_Evaluation_Form() {
+
+    ajaxRequest({
+        commandName: 'Evaluation_Template_Get', values: { Language: _currentLanguage }, CallBack: fn_Load_Evaluation_FormCallBack
+    });
+}
+
+function fn_Load_Evaluation_FormCallBack(response) {
+
+    var header = JSON.parse(response.Value)[0];
+    var body = JSON.parse(response.Value)[1];
+
+    //------- SET TOTAL VALUE IT WILL BE USED IN TOTAL CALCULATION.
+    $('#TotalColumnOne').val(body[0].totalColumnOne);
+    $('#TotalColumnTwo').val(body[0].totalColumnTwo);
+    $('#TotalColumnThree').val(body[0].totalColumnThree);
+    $('#TotalColumnFour').val(body[0].totalColumnFour);
+
+
+
+    if (header.length > 0) {
+        $('#employee-evaluation-header').empty()
+        for (var headerCount = 0; headerCount < header.length; headerCount++) {
+
+            $('#employee-evaluation-header').append('<td style="text-align:center;border-right: 1px solid;" class=" "><strong>' + header[headerCount].title + '</strong></td>')
+        }
+    }
+
+    if (body.length > 0) {
+        $('#employee-evaluation>tbody').empty()
+        var groupCount_to_Avoid_Duplication = 0;
+        var previous_group_name = '';
+        for (var bodyCount = 0; bodyCount < body.length; bodyCount++) {
+
+            //----------- APPEND GROUP ROW
+            if (body[bodyCount].parent == body[bodyCount].groupsForCondition && groupCount_to_Avoid_Duplication == 0) {
+                previous_group_name = body[bodyCount].parent;
+                groupCount_to_Avoid_Duplication = 1;
+                $('#employee-evaluation>tbody').append(' <tr><td colspan="2"  style="background: lightgray;"> <strong> ' + body[bodyCount].groups + '</strong> </td></tr>')
+            } else {
+                if (body[bodyCount].parent != previous_group_name) {
+                    groupCount_to_Avoid_Duplication = 0;
+                }
+            }
+
+            //----------- APPEND CHILD ROWS
+            $('#employee-evaluation>tbody').append(' <tr class=' + body[bodyCount].name + ' style="border: 1px solid;">' +
+                // COLUMN ONE
+                '<td class="" style="border-right: 1px solid;border-left: 1px solid;">' + body[bodyCount].title + '</td>' +
+                '<td class="" style="border-right: 1px solid;">' +
+                '<label class="btn  " for=' + body[bodyCount].name + '_' + body[bodyCount].columnOne + 'columnOne' + '  style="margin-bottom: 0px;width:100%;">' +
+                '<input type="radio"   id=' + body[bodyCount].name + '_' + body[bodyCount].columnOne + 'columnOne' + '  style="width: 15px;height: 15px;" name=' + body[bodyCount].name + '>' +
+                '<font class="columnOne"  style="font-size: large;"> ' + body[bodyCount].columnOne + ' </font>' +
+                '</label>' +
+                '</td>' +
+                // COLUMN TWO
+                '<td class="" style="border-right: 1px solid;">' +
+                '<label class="btn  " for=' + body[bodyCount].name + '_' + body[bodyCount].columnTwo + 'columnTwo' + '  style="margin-bottom: 0px;width:100%;">' +
+                '<input type="radio"  id=' + body[bodyCount].name + '_' + body[bodyCount].columnTwo + 'columnTwo' + '  style="width: 15px;height: 15px;" name=' + body[bodyCount].name + '>' +
+                '<font class="columnTwo"  style="font-size: large;"> ' + body[bodyCount].columnTwo + ' </font>' +
+                '</label>' +
+                '</td>' +
+                // COLUMN THREE
+                '<td class="" style="border-right: 1px solid;">' +
+                '<label class="btn  " for=' + body[bodyCount].name + '_' + body[bodyCount].columnThree + 'columnThree' + '  style="margin-bottom: 0px;width:100%;">' +
+                '<input type="radio"   id=' + body[bodyCount].name + '_' + body[bodyCount].columnThree + 'columnThree' + '  style="width: 15px;height: 15px;" name=' + body[bodyCount].name + '>' +
+                '<font class="columnThree"  style="font-size: large;"> ' + body[bodyCount].columnThree + ' </font>' +
+                '</label>' +
+                '</td>' +
+                // COLUMN FOUR
+                '<td class="" style="border-right: 1px solid;">' +
+                '<label class="btn  " for=' + body[bodyCount].name + '_' + body[bodyCount].columnFour + 'columnFour' + '  style="margin-bottom: 0px;width:100%;">' +
+                '<input type="radio"  id=' + body[bodyCount].name + '_' + body[bodyCount].columnFour + 'columnFour' + '  style="width: 15px;height: 15px;" name=' + body[bodyCount].name + '>' +
+                '<font class="columnFour"  style="font-size: large;"> ' + body[bodyCount].columnFour + ' </font>' +
+                '</label>' +
+                '</td></tr>')
+
+        }
+        //---------- FOOTER 
+        $('#employee-evaluation>tbody').append('<tr style="border: 1px solid; background: cyan;" class="PerformanceScores">' +
+            '<td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong>' + lblPerformanceScores + '</strong></td>' +
+            '<td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="total_of_column_one">0</strong></td>                            ' +
+            '<td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="total_of_column_two">0</strong></td>                            ' +
+            '<td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="total_of_column_three">0</strong></td>                            ' +
+            '<td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="total_of_column_four">0</strong></td>                           ' +
+
+            '</tr>' +
+            '<tr style="border: 1px solid; background: #cde627;" class="TotalPercentageScores">' +
+            '<td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong> ' + lblTotal + '  %</strong></td>' +
+            '<td colspan="4" style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="totalPercentage_of_All_Columns">0</strong></td>' +
+
+            '</tr>' +
+            '<tr style="border: 1px solid; " class=" tr-btn-total ">' +
+            '<td> </td>' +
+            '<td colspan="4" style="text-align:end;border-right: 1px solid;font-size: x-large;" class=" ">' +
+            '<button class="btn form-control btn-primary" id="btn-calculate-total-result" onclick="fnCalculate_Total_Result()"><i class="fa fa-calculator"></i> ' + lblTotal + ' </button>' +
+            '</td>' +
+            '</tr>' +
+            ' <tr><td colspan="5"> &nbsp; </td></tr>'
+            + '<tr><td colspan="5"> &nbsp; </td></tr>'
+            + '<tr><td style="background: lightgray;"> <strong>' + lblProcedures + ' </strong> </td></tr>'
+            + '<tr class="Procedures lm-data" style="border: 1px solid;">'
+            //    @*------------------------------------- this is Line Manager (LM) data --------------------------------------*@
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblLineManager + ' </td>'
+            + '    <td  style="border-right: 1px solid;"> <input class="form-control" id="lm-date" type="date" value="@DateTime.Now" /></td>'
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
+            + '    <td  colspan="2" style=" border-right: 1px solid; width: 20%;">'
+            + '        <button type="button" id="btn-signature-lm" class="btn  form-control hideSignature_btn" onclick="fnUploadEmployeeSignature();"><i class=""></i> ' + lblSignature + '</button>'
+            + '        <div class=" ">'
+            + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
+            + '            <div id="noSignature" style="display:none;">'
+            + '                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '            </div>'
+            + '            <div id="loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            </div>'
+            + '        </div>'
+            + '    </td>'
+            + '</tr>'
+            + '<tr class="Procedures HR-data" style="border: 1px solid;">'
+            //    @*------------------------------------- this is HR  data --------------------------------------*@
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblHR + ' </td>'
+            + '    <td  style="border-right: 1px solid;"> <input class="form-control" id="hr-date" type="date" value="@DateTime.Now" /></td>'
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
+            + '    <td  colspan="2" style=" border-right: 1px solid;">'
+            + '        <button type="button" id="btn-signature-hr" class="btn  form-control" onclick="fnUploadEmployeeSignature();"><i class=""></i>' + lblSignature + '</button>'
+            + '    </td>'
+            + '</tr>'
+            + '<tr class="Procedures CM-data" style="border: 1px solid;">'
+            //    @*------------------------------------- this is HR  data --------------------------------------*@
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;"> ' + lblCompanyManager + '</td>'
+            + '    <td  style="border-right: 1px solid;"> <input class="form-control" id="cm-date" type="date" value="@DateTime.Now" /></td>'
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + '  </td>'
+            + '    <td  colspan="2" style=" border-right: 1px solid;">'
+            + '        <button type="button" id="btn-signature-cm" class="btn  form-control" onclick="fnUploadEmployeeSignature();"><i class=""></i>  ' + lblSignature + ' </button>'
+            + '    </td>'
+            + '</tr>')
+    }
+
+}
 
 function loadEmployeeProfile() {
 
@@ -69,160 +212,79 @@ function fnLoadEmployeeEvaluationForm() {
 
 
 //-----------------------------  FUNCTION END ---------------------------------------------------
-var total_Column_4 = 0, total_Column_6 = 0, total_Column_8 = 0, total_Column_10 = 0;
-function fnCheckValue(e) {
-
-
-    var isChecked = $('#' + e.id).prop('checked');
-    var groupName = e.parentElement.children[0].name;
-    var group_Font_No = parseInt(e.parentElement.children[1].innerText);
-
-
-    if (group_Font_No == "4" && groupName == "4_No_Group") {
-
-        if (isChecked == true) {
-
-            total_Column_4 = parseInt($("#total_of_Column_4").text()) + group_Font_No;
-            $("#total_of_Column_4").text(total_Column_4);
-
-
-        } else {
-
-
-            if (parseInt($("#total_of_Column_4").text()) <= 0) {
-                $("#total_of_Column_4").text(0)
-            } else {
-                total_Column_4 = parseInt($("#total_of_Column_4").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
-
-            $("#total_of_Column_4").text(total_Column_4);
-        }
-    } else if (e.parentElement.children[1].innerText == "6") {
-
-        if ($('#' + e.id).prop('checked') == true) {
-
-            total_Column_6 = parseInt($("#total_of_Column_6").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_6").text(total_Column_6);
-        } else {
-
-
-            if (parseInt($("#total_of_Column_6").text()) <= 0) {
-                $("#total_of_Column_6").text(0)
-            } else {
-                total_Column_6 = parseInt($("#total_of_Column_6").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
-
-            $("#total_of_Column_6").text(total_Column_6);
-        }
-    } else if (e.parentElement.children[1].innerText == "8") {
-
-        if ($('#' + e.id).prop('checked') == true) {
-
-            total_Column_8 = parseInt($("#total_of_Column_8").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_8").text(total_Column_8);
-        } else {
-
-
-            if (parseInt($("#total_of_Column_8").text()) <= 0) {
-                $("#total_of_Column_8").text(0)
-            } else {
-                total_Column_8 = parseInt($("#total_of_Column_8").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
-
-            $("#total_of_Column_8").text(total_Column_8);
-        }
-    } else if (e.parentElement.children[1].innerText == "10") {
-
-        if ($('#' + e.id).prop('checked') == true) {
-
-            total_Column_10 = parseInt($("#total_of_Column_10").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_10").text(total_Column_10);
-        } else {
-
-
-            if (parseInt($("#total_of_Column_10").text()) <= 0) {
-                $("#total_of_Column_10").text(0)
-            } else {
-                total_Column_10 = parseInt($("#total_of_Column_10").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
-
-            $("#total_of_Column_10").text(total_Column_10);
-        }
-    }
-}
 /*
 function fnCheckValue(e) {
 
-    var total_Column_4 = 0, total_Column_6 = 0, total_Column_8 = 0, total_Column_10 = 0;
-    if (e.parentElement.children[1].innerText == "4") {
+   var total_Column_4 = 0, total_Column_6 = 0, total_Column_8 = 0, total_Column_10 = 0;
+   if (e.parentElement.children[1].innerText == "4") {
 
-        if ($('#' + e.id).prop('checked') == true) {
+       if ($('#' + e.id).prop('checked') == true) {
 
-            total_Column_4 = parseInt($("#total_of_Column_4").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_4").text(total_Column_4);
-        } else {
-
-
-            if (parseInt($("#total_of_Column_4").text()) <= 0) {
-                $("#total_of_Column_4").text(0)
-            } else {
-                total_Column_4 = parseInt($("#total_of_Column_4").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
-
-            $("#total_of_Column_4").text(total_Column_4);
-        }
-    } else if (e.parentElement.children[1].innerText == "6") {
-
-        if ($('#' + e.id).prop('checked') == true) {
-
-            total_Column_6 = parseInt($("#total_of_Column_6").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_6").text(total_Column_6);
-        } else {
+           total_Column_4 = parseInt($("#total_of_Column_4").text()) + parseInt(e.parentElement.children[1].innerText);
+           $("#total_of_Column_4").text(total_Column_4);
+       } else {
 
 
-            if (parseInt($("#total_of_Column_6").text()) <= 0) {
-                $("#total_of_Column_6").text(0)
-            } else {
-                total_Column_6 = parseInt($("#total_of_Column_6").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
+           if (parseInt($("#total_of_Column_4").text()) <= 0) {
+               $("#total_of_Column_4").text(0)
+           } else {
+               total_Column_4 = parseInt($("#total_of_Column_4").text()) - parseInt(e.parentElement.children[1].innerText);
+           }
 
-            $("#total_of_Column_6").text(total_Column_6);
-        }
-    } else if (e.parentElement.children[1].innerText == "8") {
+           $("#total_of_Column_4").text(total_Column_4);
+       }
+   } else if (e.parentElement.children[1].innerText == "6") {
 
-        if ($('#' + e.id).prop('checked') == true) {
+       if ($('#' + e.id).prop('checked') == true) {
 
-            total_Column_8 = parseInt($("#total_of_Column_8").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_8").text(total_Column_8);
-        } else {
-
-
-            if (parseInt($("#total_of_Column_8").text()) <= 0) {
-                $("#total_of_Column_8").text(0)
-            } else {
-                total_Column_8 = parseInt($("#total_of_Column_8").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
-
-            $("#total_of_Column_8").text(total_Column_8);
-        }
-    } else if (e.parentElement.children[1].innerText == "10") {
-
-        if ($('#' + e.id).prop('checked') == true) {
-
-            total_Column_10 = parseInt($("#total_of_Column_10").text()) + parseInt(e.parentElement.children[1].innerText);
-            $("#total_of_Column_10").text(total_Column_10);
-        } else {
+           total_Column_6 = parseInt($("#total_of_Column_6").text()) + parseInt(e.parentElement.children[1].innerText);
+           $("#total_of_Column_6").text(total_Column_6);
+       } else {
 
 
-            if (parseInt($("#total_of_Column_10").text()) <= 0) {
-                $("#total_of_Column_10").text(0)
-            } else {
-                total_Column_10 = parseInt($("#total_of_Column_10").text()) - parseInt(e.parentElement.children[1].innerText);
-            }
+           if (parseInt($("#total_of_Column_6").text()) <= 0) {
+               $("#total_of_Column_6").text(0)
+           } else {
+               total_Column_6 = parseInt($("#total_of_Column_6").text()) - parseInt(e.parentElement.children[1].innerText);
+           }
 
-            $("#total_of_Column_10").text(total_Column_10);
-        }
-    }
+           $("#total_of_Column_6").text(total_Column_6);
+       }
+   } else if (e.parentElement.children[1].innerText == "8") {
+
+       if ($('#' + e.id).prop('checked') == true) {
+
+           total_Column_8 = parseInt($("#total_of_Column_8").text()) + parseInt(e.parentElement.children[1].innerText);
+           $("#total_of_Column_8").text(total_Column_8);
+       } else {
+
+
+           if (parseInt($("#total_of_Column_8").text()) <= 0) {
+               $("#total_of_Column_8").text(0)
+           } else {
+               total_Column_8 = parseInt($("#total_of_Column_8").text()) - parseInt(e.parentElement.children[1].innerText);
+           }
+
+           $("#total_of_Column_8").text(total_Column_8);
+       }
+   } else if (e.parentElement.children[1].innerText == "10") {
+
+       if ($('#' + e.id).prop('checked') == true) {
+
+           total_Column_10 = parseInt($("#total_of_Column_10").text()) + parseInt(e.parentElement.children[1].innerText);
+           $("#total_of_Column_10").text(total_Column_10);
+       } else {
+
+
+           if (parseInt($("#total_of_Column_10").text()) <= 0) {
+               $("#total_of_Column_10").text(0)
+           } else {
+               total_Column_10 = parseInt($("#total_of_Column_10").text()) - parseInt(e.parentElement.children[1].innerText);
+           }
+
+           $("#total_of_Column_10").text(total_Column_10);
+       }
+   }
 }
 */
 //---------------- LOAD EMPLOYEE SIGNATURE 
@@ -291,52 +353,51 @@ function fn_Request_Evaluation_Employee_Form_Save_CallBack(response) {
 }
 
 function fnCalculate_Total_Result() {
-var column_4_value = 0, column_6_value = 0, column_8_value = 0, column_10_value = 0;
-     
-    var table, column_4, column_6, column_8, column_10;
-    table = $('#employee-evaluation');
-    column_4 = $('#employee-evaluation tr td font.4');
-    column_6 = $('#employee-evaluation tr td font.6');
-    column_8 = $('#employee-evaluation tr td font.8');
-    column_10 = $('#employee-evaluation tr td font.10');
-     
+    var column_one_value = 0, column_two_value = 0, column_three_value = 0, column_four_value = 0;
+
+    var column_one, column_two, column_three, column_four;
+
+    column_one = $('#employee-evaluation tr td font.columnOne');
+    column_two = $('#employee-evaluation tr td font.columnTwo');
+    column_three = $('#employee-evaluation tr td font.columnThree');
+    column_four = $('#employee-evaluation tr td font.columnFour');
+
 
     //--------- LOOP ON EACH FIELD
-    for (var i_4 = 0; i_4 < column_4.length; i_4++)
-    {
-          
-        var input_isChecked = column_4[i_4].parentElement.children[0].checked
-        if (input_isChecked == true) { 
-            column_4_value = column_4_value + parseInt(column_4[i_4].outerText);
+    for (var i_4 = 0; i_4 < column_one.length; i_4++) {
+
+        var input_isChecked = column_one[i_4].parentElement.children[0].checked
+
+
+        if (input_isChecked == true) {
+            column_one_value = column_one_value + parseInt(column_one[i_4].outerText);
         }
 
     }
-        //--------- LOOP ON EACH FIELD
-    for (var i_6 = 0; i_6 < column_6.length; i_6++)
-    {
-           
-        var input_isChecked = column_6[i_6].parentElement.children[0].checked
-        if (input_isChecked == true) { 
-            column_6_value = column_6_value + parseInt(column_6[i_6].outerText);
+
+    //--------- LOOP ON EACH FIELD
+    for (var i_6 = 0; i_6 < column_two.length; i_6++) {
+
+        var input_isChecked = column_two[i_6].parentElement.children[0].checked
+        if (input_isChecked == true) {
+            column_two_value = column_two_value + parseInt(column_two[i_6].outerText);
         }
 
     }
-          //--------- LOOP ON EACH FIELD
-    for (var i_8 = 0; i_8 < column_8.length; i_8++)
-    {
-           
-        var input_isChecked = column_8[i_8].parentElement.children[0].checked
-        if (input_isChecked == true) { 
-            column_8_value = column_8_value + parseInt(column_8[i_8].outerText);
+    //--------- LOOP ON EACH FIELD
+    for (var i_8 = 0; i_8 < column_three.length; i_8++) {
+
+        var input_isChecked = column_three[i_8].parentElement.children[0].checked
+        if (input_isChecked == true) {
+            column_three_value = column_three_value + parseInt(column_three[i_8].outerText);
         }
 
     }     //--------- LOOP ON EACH FIELD
-    for (var i_10 = 0; i_10 < column_10.length; i_10++)
-    {
-           
-        var input_isChecked = column_10[i_10].parentElement.children[0].checked
-        if (input_isChecked == true) { 
-            column_10_value = column_10_value + parseInt(column_10[i_10].outerText);
+    for (var i_10 = 0; i_10 < column_four.length; i_10++) {
+
+        var input_isChecked = column_four[i_10].parentElement.children[0].checked
+        if (input_isChecked == true) {
+            column_four_value = column_four_value + parseInt(column_four[i_10].outerText);
         }
 
     }
@@ -344,14 +405,33 @@ var column_4_value = 0, column_6_value = 0, column_8_value = 0, column_10_value 
 
 
     //------ CLEAR FIELDS
-    $('#total_of_Column_4').text('0')
-    $('#total_of_Column_6').text('0')
-    $('#total_of_Column_8').text('0')
-    $('#total_of_Column_10').text('0')
+    $('#total_of_column_one').text('0')
+    $('#total_of_column_two').text('0')
+    $('#total_of_column_three').text('0')
+    $('#total_of_column_four').text('0')
     //------ SET VALUES
 
-    $('#total_of_Column_4').text(column_4_value)
-    $('#total_of_Column_6').text(column_6_value)
-    $('#total_of_Column_8').text(column_8_value)
-    $('#total_of_Column_10').text(column_10_value)
+    $('#total_of_column_one').text(column_one_value)
+    $('#total_of_column_two').text(column_two_value)
+    $('#total_of_column_three').text(column_three_value)
+    $('#total_of_column_four').text(column_four_value)
+
+    debugger
+    var total_Column_Sum = column_one_value + column_two_value + column_three_value + column_four_value;
+    //-------------- TOTAL PERCENTAGE 
+    /*
+    var column_one_percentage = parseInt($('#total_of_column_one').text()) > 0 ? parseInt($('#TotalColumnOne').val()) - parseInt($('#total_of_column_one').text()) : 0;
+    var column_two_percentage = parseInt($('#total_of_column_two').text()) > 0 ? parseInt($('#TotalColumnTwo').val()) - parseInt($('#total_of_column_two').text()) : 0;
+    var column_three_percentage = parseInt($('#total_of_column_three').text()) > 0 ? parseInt($('#TotalColumnThree').val()) - parseInt($('#total_of_column_three').text()) : 0;
+    var column_four_percentage = parseInt($('#total_of_column_four').text()) > 0 ? parseInt($('#TotalColumnFour').val()) - parseInt($('#total_of_column_four').text()) : 0;
+    */
+
+    var column_one_percentage = column_one_value > 0 ? total_Column_Sum / column_one_value : 0;
+    var column_two_percentage = column_two_value > 0 ? total_Column_Sum / column_two_value : 0;
+    var column_three_percentage = column_three_value > 0 ? total_Column_Sum / column_three_value : 0;
+    var column_four_percentage = column_four_value > 0 ? total_Column_Sum / column_four_value : 0;
+
+
+    var grandTotal_Percentage = column_one_percentage + column_two_percentage + column_three_percentage + column_four_percentage;
+    $('#totalPercentage_of_All_Columns').text(grandTotal_Percentage);
 }

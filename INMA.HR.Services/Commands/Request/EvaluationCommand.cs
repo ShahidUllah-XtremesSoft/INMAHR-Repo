@@ -9,6 +9,30 @@ using System.Threading.Tasks;
 namespace INMA.HR.Services.Commands.Request
 {
 
+    #region ========== Load Evaluation Tempalte Get 
+
+    [Command(Name = "Evaluation_Template_Get")]
+    public class Evaluation_Tempalte_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetDataSet<dynamic>(StoreProcedure.Evaluation_Template_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion  
     #region ========== Load Evaluation All Requests 
 
     [Command(Name = "Evaluation_Request_Grid")]

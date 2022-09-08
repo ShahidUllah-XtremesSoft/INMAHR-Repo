@@ -1,14 +1,36 @@
 ﻿var EvaluationId = window.location.href.split('?')[1].split('=')[1];
 var EmployeeNumber = window.location.href.split('?')[2].split('=')[1];
-//var Evaluation_History_Id = window.location.href.split('?')[3].split('=')[1];
+var Evaluation_History_Id = 0;
 
 $(function () {
 
-    //   loadEmployeeProfile();
+    if (window.location.href.split('?')[3] == undefined) { //Checking Evaulation History table Id
 
-    fn_Load_Evaluation_Form();
+        fn_Load_Evaluation_Form();
+    } else {
+        Evaluation_History_Id = window.location.href.split('?')[3].split('=')[1];
+        if (Evaluation_History_Id != 0) {
+
+            fn_Load_Evaluation_Form_data_from_db_using_Evaluation_Hisotry_Id();
+        } else {
+            fn_Load_Evaluation_Form();
+        }
+    }
+
+    loadEmployeeProfile();
 });
 
+function fn_Load_Evaluation_Form_data_from_db_using_Evaluation_Hisotry_Id() {
+
+    ajaxRequest({
+        commandName: 'Request_Evaluation_History_Get_By_Id', values: { Id: Evaluation_History_Id, Language: _currentLanguage }, CallBack: fn_Load_Evaluation_Form_data_from_db_using_Evaluation_Hisotry_IdCallBack
+    });
+}
+function fn_Load_Evaluation_Form_data_from_db_using_Evaluation_Hisotry_IdCallBack(response) {
+
+    $('#employee-evaluation').empty();
+    $('#employee-evaluation').html(JSON.parse(response.Value).evaluationForm);
+}
 function fn_Load_Evaluation_Form() {
 
     ajaxRequest({
@@ -113,17 +135,17 @@ function fn_Load_Evaluation_FormCallBack(response) {
             + '<tr class="Procedures lm-data" style="border: 1px solid;">'
             //    @*------------------------------------- this is Line Manager (LM) data --------------------------------------*@
             + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblLineManager + ' </td>'
-            + '    <td  style="border-right: 1px solid;"> <input class="form-control" id="lm-date" type="date" value="@DateTime.Now" /></td>'
+            + '    <td  style="border-right: 1px solid;"> <input class="form-control" onfocusout="fnSetDate(this)" id="lm-date" type="date" value="" /> <span  style="margin-left: 1rem;" id="lm-date-span"></span></td>'
             + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
             + '    <td  colspan="2" style=" border-right: 1px solid; width: 20%;">'
-            + '        <button type="button" id="btn-signature-lm" class="btn  form-control hideSignature_btn" onclick="fnUploadEmployeeSignature();"><i class=""></i> ' + lblSignature + '</button>'
+            + '        <button type="button" id="btn-signature-lm" class="btn  form-control hideSignature_btn_LM" areaName="LM" onclick="fnUploadEmployeeSignature(this);"><i class=""></i> ' + lblSignature + '</button>'
             + '        <div class=" ">'
             + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
-            + '            <div id="noSignature" style="display:none;">'
+            + '            <div id="lm_noSignature" style="display:none;">'
             + '                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
             + '            </div>'
-            + '            <div id="loadSignature" style="display:none;">'
-            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            <div id="lm_loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="lm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
             + '            </div>'
             + '        </div>'
             + '    </td>'
@@ -131,25 +153,45 @@ function fn_Load_Evaluation_FormCallBack(response) {
             + '<tr class="Procedures HR-data" style="border: 1px solid;">'
             //    @*------------------------------------- this is HR  data --------------------------------------*@
             + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblHR + ' </td>'
-            + '    <td  style="border-right: 1px solid;"> <input class="form-control" id="hr-date" type="date" value="@DateTime.Now" /></td>'
+            + '    <td  style="border-right: 1px solid;"> <input class="form-control" onfocusout="fnSetDate(this)" id="hr-date" type="date" value="" /> <span style="margin-left: 1rem;" id="hr-date-span"></span></td>'
             + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
             + '    <td  colspan="2" style=" border-right: 1px solid;">'
-            + '        <button type="button" id="btn-signature-hr" class="btn  form-control" onclick="fnUploadEmployeeSignature();"><i class=""></i>' + lblSignature + '</button>'
+            + '        <button type="button" id="btn-signature-hr" class="btn  form-control hideSignature_btn_HR"  areaName="HR" onclick="fnUploadEmployeeSignature(this);"><i class=""></i>' + lblSignature + '</button>'
+            + '        <div class=" ">'
+            + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
+            + '            <div id="hr_noSignature" style="display:none;">'
+            + '                <button type="button" disabled class="btn   @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '            </div>'
+            + '            <div id="hr_loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="hr_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            </div>'
+            + '        </div>'
+
             + '    </td>'
             + '</tr>'
             + '<tr class="Procedures CM-data" style="border: 1px solid;">'
-            //    @*------------------------------------- this is HR  data --------------------------------------*@
+            //    @*------------------------------------- this is CM  data --------------------------------------*@
             + '    <td  style="border-right: 1px solid;border-left: 1px solid;"> ' + lblCompanyManager + '</td>'
-            + '    <td  style="border-right: 1px solid;"> <input class="form-control" id="cm-date" type="date" value="@DateTime.Now" /></td>'
+            + '    <td  style="border-right: 1px solid;"> <input class="form-control " onfocusout="fnSetDate(this)" id="cm-date" type="date" value="" /> <span style="margin-left: 1rem;" id="cm-date-span"></span></td>'
             + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + '  </td>'
             + '    <td  colspan="2" style=" border-right: 1px solid;">'
-            + '        <button type="button" id="btn-signature-cm" class="btn  form-control" onclick="fnUploadEmployeeSignature();"><i class=""></i>  ' + lblSignature + ' </button>'
+            + '        <button type="button" id="btn-signature-cm" class="btn  form-control hideSignature_btn_CM"  areaName="CM" onclick="fnUploadEmployeeSignature(this);"><i class=""></i>  ' + lblSignature + ' </button>'
+            + '        <div class=" ">'
+            + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
+            + '            <div id="cm_noSignature" style="display:none;">'
+            + '                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '            </div>'
+            + '            <div id="cm_loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="cm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            </div>'
+            + '        </div>'
+
+
             + '    </td>'
             + '</tr>')
     }
 
 }
-
 function loadEmployeeProfile() {
 
     ajaxRequest({
@@ -174,7 +216,15 @@ function loadEmployeeProfileCallBack(response) {
         $('#ProfileImage').attr('src', profileImage);
     }
 
+    if (JSON.parse(localStorage.getItem('User')).employeeId == JSON.parse(response.Value).employeeId) {
+        setTimeout(function () {
+            $('#employee-evaluation').css('cursor', 'none').css('pointer-events', 'none');
 
+            $('.card-footer').hide();
+            $('.tr-btn-total').hide();
+        }, 100);
+    }
+    /*
     if (JSON.parse(localStorage.getItem('User')).roleName == 'Line Manager') {
 
         if (JSON.parse(localStorage.getItem('User')).isHR == false) {
@@ -192,22 +242,10 @@ function loadEmployeeProfileCallBack(response) {
         $(".lm-data input,.lm-data button,.lm-data >td ").prop('disabled', true).css('background-color', 'white');
         $(".HR-data input,.HR-data button,.HR-data >td ").prop('disabled', true).css('background-color', 'white');
     }
+    */
 
-
-    //------------ CHECK IF FORM ALREADY EXIST IS DATABASE THEN LOAD ....
-    //  fnLoadEmployeeEvaluationForm(Evaluation_History_Id);
 
 }
-
-
-function fnLoadEmployeeEvaluationForm() {
-
-    ajaxRequest({
-        commandName: 'HR_Employee_GetByNumber', values: { Language: _currentLanguage, EmployeeNumber: EmployeeNumber }, CallBack: loadEmployeeProfileCallBack
-    });
-}
-//function loadEmployeeProfileCallBack(response) {
-
 
 
 
@@ -289,10 +327,10 @@ function fnCheckValue(e) {
 */
 //---------------- LOAD EMPLOYEE SIGNATURE 
 //------------------------------------------ Developed by /\/\ati
-function fnUploadEmployeeSignature() {
+function fnUploadEmployeeSignature(areaNameForSignature) {
 
+    sessionStorage.setItem('areaNameForSignature', areaNameForSignature.attributes.areaname.value)
     ajaxRequest({ commandName: 'HR_Employee_Signature_Get', values: { LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId, }, CallBack: loadfnUploadEmployeeSignatureCallBack });
-
 }
 
 function loadfnUploadEmployeeSignatureCallBack(d) {
@@ -300,19 +338,40 @@ function loadfnUploadEmployeeSignatureCallBack(d) {
     var _employeeSignature = JSON.parse(d.Value);
 
     if (_employeeSignature == null) {
-        $('#noSignature').show();
-        $('.hideSignature_btn').hide();
-    } else {
-        $('#noSignature').hide();
-        $('#loadSignature').show();
-        $('.hideSignature_btn').hide();
+        sessionStorage.getItem('areaNameForSignature') == 'LM' ? ($('#lm_noSignature').show(), $('.hideSignature_btn_LM').hide()) : '';
+        sessionStorage.getItem('areaNameForSignature') == 'HR' ? ($('#hr_noSignature').show(), $('.hideSignature_btn_HR').hide()) : '';
+        sessionStorage.getItem('areaNameForSignature') == 'CM' ? ($('#cm_noSignature').show(), $('.hideSignature_btn_CM').hide()) : '';
 
+
+    } else {
+        /*
+        sessionStorage.getItem('areaNameForSignature') == 'LM' ? $('#lm_noSignature').hide() : '';
+        sessionStorage.getItem('areaNameForSignature') == 'HR' ? $('#hr_noSignature').hide() : '';
+        sessionStorage.getItem('areaNameForSignature') == 'CM' ? $('#cm_noSignature').hide() : '';
+        */
+        sessionStorage.getItem('areaNameForSignature') == 'LM' ? ($('#lm_loadSignature').show(), $('.hideSignature_btn_LM').hide()) : '';
+        sessionStorage.getItem('areaNameForSignature') == 'HR' ? ($('#hr_loadSignature').show(), $('.hideSignature_btn_HR').hide()) : '';
+        sessionStorage.getItem('areaNameForSignature') == 'CM' ? ($('#cm_loadSignature').show(), $('.hideSignature_btn_CM').hide()) : '';
+
+
+        /*
+        $('.hideSignature_btn_LM').hide();
+        $('.hideSignature_btn_HR').hide();
+        $('.hideSignature_btn_CM').hide();
+        */
 
         if (_employeeSignature.currentFileName != null) {
             var singature_ = '/UploadFile/' + _employeeSignature.currentFileName;
-            $('#loadEmployeeSignature').attr('src', singature_);
-            $('#SignedBy').val(1);
-            $('#Signature').val(_employeeSignature.currentFileName);
+
+
+            sessionStorage.getItem('areaNameForSignature') == 'LM' ? $('#lm_loadEmployeeSignature').attr('src', singature_) : '';
+            sessionStorage.getItem('areaNameForSignature') == 'HR' ? $('#hr_loadEmployeeSignature').attr('src', singature_) : '';
+            sessionStorage.getItem('areaNameForSignature') == 'CM' ? $('#cm_loadEmployeeSignature').attr('src', singature_) : '';
+
+
+
+            //$('#SignedBy').val(1);
+            //$('#Signature').val(_employeeSignature.currentFileName);
         }
     }
 
@@ -334,13 +393,14 @@ $('#btn-save-evaluation-form').click(function () {
     ajaxRequest({
         commandName: 'Request_Evaluation_Employee_Form_Save',
         values: {
-            Id: $('#Id').val(),
+            Id: Evaluation_History_Id,
             EvaluationId: EvaluationId,
             Employee_Id: $('#Employee_Id').val(),
             Employee_Department_Id: $('#Employee_Department_Id').val(),
             Employee_Department_Parent_Id: JSON.parse(localStorage.getItem('User')).employee_Department_ParentId,
             EvaluationForm: $('#employee-evaluation').html(),
             CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+            // isHRApproved: JSON.parse(localStorage.getItem('User')).isHR == true ? 1 : 0,
             Language: _currentLanguage
         }, CallBack: fn_Request_Evaluation_Employee_Form_Save_CallBack
     });
@@ -348,7 +408,7 @@ $('#btn-save-evaluation-form').click(function () {
 
 function fn_Request_Evaluation_Employee_Form_Save_CallBack(response) {
 
-    swal(response);
+    window.location.href = '/Employees/Request/Evaluation';
 
 }
 
@@ -366,11 +426,15 @@ function fnCalculate_Total_Result() {
     //--------- LOOP ON EACH FIELD
     for (var i_4 = 0; i_4 < column_one.length; i_4++) {
 
-        var input_isChecked = column_one[i_4].parentElement.children[0].checked
+        var input_isChecked = column_one[i_4].parentElement.children[0]
 
 
-        if (input_isChecked == true) {
+        if (input_isChecked.checked == true) {
             column_one_value = column_one_value + parseInt(column_one[i_4].outerText);
+
+            $('#' + column_one[i_4].parentElement.children[0].id).attr('checked', true)
+        } else {
+            $('#' + column_one[i_4].parentElement.children[0].id).attr('checked', false)
         }
 
     }
@@ -378,26 +442,40 @@ function fnCalculate_Total_Result() {
     //--------- LOOP ON EACH FIELD
     for (var i_6 = 0; i_6 < column_two.length; i_6++) {
 
-        var input_isChecked = column_two[i_6].parentElement.children[0].checked
-        if (input_isChecked == true) {
+        var input_isChecked = column_two[i_6].parentElement.children[0]
+        if (input_isChecked.checked == true) {
             column_two_value = column_two_value + parseInt(column_two[i_6].outerText);
+
+
+            $('#' + column_two[i_6].parentElement.children[0].id).attr('checked', true)
+        } else {
+            $('#' + column_two[i_6].parentElement.children[0].id).attr('checked', false)
+
+
         }
 
     }
     //--------- LOOP ON EACH FIELD
     for (var i_8 = 0; i_8 < column_three.length; i_8++) {
 
-        var input_isChecked = column_three[i_8].parentElement.children[0].checked
-        if (input_isChecked == true) {
+        var input_isChecked = column_three[i_8].parentElement.children[0]
+        if (input_isChecked.checked == true) {
             column_three_value = column_three_value + parseInt(column_three[i_8].outerText);
+            $('#' + column_three[i_8].parentElement.children[0].id).attr('checked', true)
+        } else {
+            $('#' + column_three[i_8].parentElement.children[0].id).attr('checked', false)
         }
 
     }     //--------- LOOP ON EACH FIELD
     for (var i_10 = 0; i_10 < column_four.length; i_10++) {
 
-        var input_isChecked = column_four[i_10].parentElement.children[0].checked
-        if (input_isChecked == true) {
+        var input_isChecked = column_four[i_10].parentElement.children[0]
+        if (input_isChecked.checked == true) {
             column_four_value = column_four_value + parseInt(column_four[i_10].outerText);
+            $('#' + column_four[i_10].parentElement.children[0].id).attr('checked', true)
+
+        } else {
+            $('#' + column_four[i_10].parentElement.children[0].id).attr('checked', false)
         }
 
     }
@@ -416,7 +494,7 @@ function fnCalculate_Total_Result() {
     $('#total_of_column_three').text(column_three_value)
     $('#total_of_column_four').text(column_four_value)
 
-    debugger
+
     var total_Column_Sum = column_one_value + column_two_value + column_three_value + column_four_value;
     //-------------- TOTAL PERCENTAGE 
     /*
@@ -433,5 +511,20 @@ function fnCalculate_Total_Result() {
 
 
     var grandTotal_Percentage = column_one_percentage + column_two_percentage + column_three_percentage + column_four_percentage;
-    $('#totalPercentage_of_All_Columns').text(grandTotal_Percentage);
+    $('#totalPercentage_of_All_Columns').text(grandTotal_Percentage.toString().substring(0, 4));
+}
+function fnSetDate(dateArea) {
+
+    if (dateArea.id == 'lm-date') {
+
+        $('#lm-date-span').text(dateArea.value);
+        dateArea.hidden = true;
+    } else if (dateArea.id == 'hr-date') {
+        $('#hr-date-span').text(dateArea.value);
+        dateArea.hidden = true;
+    } else if (dateArea.id == 'cm-date') {
+        $('#cm-date-span').text(dateArea.value);
+        dateArea.hidden = true;
+    }
+
 }

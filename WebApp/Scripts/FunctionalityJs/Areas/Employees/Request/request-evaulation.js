@@ -50,12 +50,12 @@ var loadRequestEvaluationsCallBack = function (inputDataJSON) {
 }
 var bindRequestEvaluations = function (inputDataJSON) {
     var record = 0;
-     
+      
     if (_btnValue == 'Pending') {
     var gridColumns = [
 
         { field: "request_Evaluation_Id", title: "Request_Evaluation_Id", hidden: true },
-        { field: "request_Evaluation_Id", title: "Request_Evaluation_Id", hidden: true },
+        { field: "request_Evaluation_History_Id", title: "request_Evaluation_History_Id", hidden: true },
         { field: "employee_DepartmentId", title: "employee_DepartmentId", hidden: true },
         { field: "lineManagerId", title: "lineManagerId", hidden: true },
         { field: "hR_Employee_Id", title: "hR_Employee_Id", hidden: true },
@@ -73,14 +73,19 @@ var bindRequestEvaluations = function (inputDataJSON) {
         { field: "departmentName", title: lblSection, filterable: false, hidden: false, width: 50 },
 
         ];
+        setTimeout(function () {
+
         bindKendoGrid($RequestEvaluations, 50, gridColumns, inputDataJSON, true);
+        }, 100);
 
-
+        $('#RequestEvaluations_Approved').hide();
+        $('#RequestEvaluations').show(); 
     } else {
-        $("#" + $RequestEvaluations).data("kendoGrid").dataSource.data([]);
-        
+        $('#RequestEvaluations').hide(); 
+        $('#RequestEvaluations_Approved').show();
+       
         var gridColumns_approved = [
-
+             
             { field: "employeeId", title: "EmployeeId", hidden: true },
             { field: "request_Evaluation_History_Id", title: "Request_Evaluation_History_Id", hidden: true },
             { field: "employee_DepartmentId", title: "employee_DepartmentId", hidden: true },
@@ -101,7 +106,8 @@ var bindRequestEvaluations = function (inputDataJSON) {
 
         ];
         
-        bindKendoGrid($RequestEvaluations, 50, gridColumns_approved, inputDataJSON, true);
+        bindKendoGrid("RequestEvaluations_Approved", 500, gridColumns_approved, inputDataJSON, true);
+       
 
     }
 
@@ -122,24 +128,23 @@ function redirectToEmployeeDetailView(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $RequestEvaluations).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+     
+    
+   // window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.hR_Employee_Number + '';
 
-
-
-    localStorage.setItem('Request_Evaluation_Id', dataItem.request_Evaluation_Id);
-    localStorage.setItem('hR_Employee_Id', dataItem.hR_Employee_Id); 
-    window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.hR_Employee_Number + '';
+    window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.hR_Employee_Number + '?' + 'Evaluation_History_Id=' + dataItem.request_Evaluation_History_Id + '';
 
 
 
 }
 function redirectTo_Approved_Request(e) {
-
-    var row = $(e).closest("tr");
-    var grid = $("#" + $RequestEvaluations).data("kendoGrid");
-    var dataItem = grid.dataItem(row);
-    debugger
      
-    window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.employeeNumber + '?' + 'Evaluation_History_Id=' + dataItem.request_Evaluation_History_Id + '';
+    var row = $(e).closest("tr");
+    var grid = $("#RequestEvaluations_Approved").data("kendoGrid");
+    var dataItems = grid.dataItem(row);
+      
+     
+    window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItems.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItems.employeeNumber + '?' + 'Evaluation_History_Id=' + dataItems.request_Evaluation_History_Id + '';
 
 
 

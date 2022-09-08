@@ -319,6 +319,7 @@
     Evaluation_Get_LineManager_by_DepartmentWise,
     Evaluation_Request_Grid,
     Evaluation_Template_Get,
+    Request_Evaluation_History_Get_By_Id,
     Evaluation_Request_Delete,
     Evaluation_Request_Save,
     Request_Evaluation_Employee_Form_Save,

@@ -11,6 +11,31 @@ namespace INMA.HR.Services.Commands.Request
 
     #region ========== Load Evaluation Tempalte Get 
 
+    [Command(Name = "Request_Evaluation_History_Get_By_Id")]
+    public class Request_Evaluation_History_Get_By_IdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Evaluation_History_Get_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion  
+    #region ========== Load Evaluation Tempalte Get 
+
     [Command(Name = "Evaluation_Template_Get")]
     public class Evaluation_Tempalte_GetCommand : CamelCommandBase
     {
@@ -42,6 +67,7 @@ namespace INMA.HR.Services.Commands.Request
         {
             var model = base.MappedModel(new
             {
+                Employee_Id = 0,
                 Language = string.Empty,
 
             }, viewInput);
@@ -140,31 +166,32 @@ namespace INMA.HR.Services.Commands.Request
     #region Request Evaluation Employee Form Save
     [Command(Name = "Request_Evaluation_Employee_Form_Save")]
     public class Request_Evaluation_Employee_Form_SaveCommand : CamelCommandBase
-    { 
+    {
         protected override object DoAction(object v)
         {
-          
+
             var model = base.MappedModel(new
             {
                 Id = 0,
                 EvaluationId = 0,
-                 
-             //   LM_Employee_Id = 0,
+
+                //   LM_Employee_Id = 0,
                 Employee_Id = 0,
-                Employee_Department_Id = 0,                
+                Employee_Department_Id = 0,
                 CreatedBy = 0,
                 Employee_Department_Parent_Id = 0,
-                EvaluationForm = string.Empty, 
-                Language = string.Empty, 
+                EvaluationForm = string.Empty,
+               // isHRApproved = 0,
+                Language = string.Empty,
             }, v);
 
             var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>(); 
+            IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
             var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Evaluation_Employee_Form_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-             
+
             return _response;
         }
     }
@@ -172,34 +199,34 @@ namespace INMA.HR.Services.Commands.Request
     #region Evaulation Request Save
     [Command(Name = "Evaluation_Request_Save")]
     public class Evaluation_Request_SaveCommand : CamelCommandBase
-    { 
+    {
         protected override object DoAction(object v)
         {
-          
+
             var model = base.MappedModel(new
             {
                 Id = 0,
                 DepartmentId = 0,
                 LM_Employee_Id = 0,
-                Employee_Id = 0,                
+                Employee_Id = 0,
                 CreatedBy = 0,
-                Language = string.Empty, 
+                Language = string.Empty,
             }, v);
 
             var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>(); 
+            IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
 
             values = _params.Get(model);
             var _response = repository.GetSingle<dynamic>(StoreProcedure.Evaluation_Request_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-             
+
             return _response;
         }
     }
     #endregion
-   
-    
-    
+
+
+
     [Command(Name = "Employees_Request_Evaluation_Get")]
     public class Employees_Request_Evaluation_GetCommand : CamelCommandBase
     {
@@ -208,7 +235,7 @@ namespace INMA.HR.Services.Commands.Request
             var model = base.MappedModel(new
             {
 
-                Id = 0, 
+                Id = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInEmployeeId = string.Empty,
                 LoggedInUserRoleId = 0,
@@ -218,7 +245,7 @@ namespace INMA.HR.Services.Commands.Request
                 StatusWise = string.Empty,
 
             }, viewInput);
-             
+
             IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
 
@@ -235,7 +262,7 @@ namespace INMA.HR.Services.Commands.Request
         {
             var model = base.MappedModel(new
             {
-                 
+
                 LoggedInUserId = string.Empty,
                 LoggedInEmployeeId = string.Empty,
                 LoggedInUserRoleId = 0,
@@ -243,10 +270,10 @@ namespace INMA.HR.Services.Commands.Request
                 LoggedInUserDepartementId = 0,
                 LoggedInUserDepartement_Parent_Id = 0,
                 Language = string.Empty,
-                 
+
 
             }, viewInput);
-             
+
             IDictionary<string, object> values = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
 

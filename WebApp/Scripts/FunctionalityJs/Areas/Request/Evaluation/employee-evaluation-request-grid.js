@@ -3,30 +3,34 @@ $(function () {
     $('#Language').val(_currentLanguage);
 
     loadEvaluationGrid();
- 
+
 });
 function loadEvaluationGrid() {
     ajaxRequest({
         commandName: 'Evaluation_Request_Grid',
-        values: { Language: $('#Language').val() }, CallBack: load_EvaluationGridCallBack
+        values: {
+            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+            Language: $('#Language').val()
+        }, CallBack: load_EvaluationGridCallBack
     });
 }
 var load_EvaluationGridCallBack = function (inputDataJSON) {
-    
+
     bindEvaluationGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindEvaluationGrid = function (inputDataJSON) {
-    
+
     var record = 0;
     var gridColumns = [
-   
+
         { title: "#", template: "<b>#= ++record #</b>", width: 10, },
+        { field: "request_Evaluation_History_Id", title: "Request_Evaluation_History_Id", hidden: true },
         { field: "request_Evaluation_Id", title: "request_Evaluation_Id", hidden: true },
         { field: "hR_Employee_Number", title: "HR_Employee_Number", hidden: true },
         { field: "hr_Employee_Id", title: "HR_Employee_Id", hidden: true },
         { field: "departmentId", title: "DepartmentId", hidden: true },
-        { field: "createrName", title: lblFrom, width: 100, filterable: false},
-        { field: "lM_Name", title: lblTo , width: 100, filterable: false},
+        { field: "createrName", title: lblFrom, width: 100, filterable: false },
+        { field: "lM_Name", title: lblTo, width: 100, filterable: false },
         //{ field: "employeeName", title: lblEmployeeName, width: 100, filterable: false},
         { field: "departmentName", title: lblSection, width: 100, filterable: false },
         { field: "issueDate", title: IssueDate, width: 50, filterable: false },
@@ -35,8 +39,8 @@ var bindEvaluationGrid = function (inputDataJSON) {
             field: 'status',
             width: 30,
             hidden: false,
-            filterable: false 
-         },
+            filterable: false
+        },
         //{
         //    field: "", width: 20,
         //    title: ' ',
@@ -57,25 +61,26 @@ var bindEvaluationGrid = function (inputDataJSON) {
     bindKendoGrid(EvaluationGrid, 50, gridColumns, inputDataJSON);
 };
 
-  
+
 function see_EvaluationDetailsById(event) {
 
     var row = $(event).closest("tr");
     var grid = $("#" + EvaluationGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.hR_Employee_Number + '';
+     
+    window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.hR_Employee_Number + '?' + 'Evaluation_History_Id=' + dataItem.request_Evaluation_History_Id + '';
 
 }
 function delete_EvaluationGridById(event) {
-     
+
     var row = $(event).closest("tr");
     var grid = $("#" + EvaluationGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     Swal.fire({
-     
+
         title: areYouSureTitle,
         text: doYouReallyWantToDeletThisRecord,
-       
+
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#5cb85c',
@@ -103,9 +108,9 @@ function delete_EvaluationGridById(event) {
             ajaxRequest({ commandName: 'Evaluation_Request_Delete', values: { Id: dataItem.id, Language: $('#Language').val() }, CallBack: delete_EvaluationGridByIdCallBack });
         }
     });
-    var delete_EvaluationGridByIdCallBack = function ( response) {
+    var delete_EvaluationGridByIdCallBack = function (response) {
         location.reload();
-      
+
     }
 
-} 
+}

@@ -523,10 +523,15 @@
     <Content Include="Content\Themes\Dashable\files\assets\js\vertical\menu\menu-ltr.js" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
+    <Content Include="JS\appCommands.js" />
+    <Content Include="JS\appCommands.min.js">
+      <DependentUpon>appCommands.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Charts\Chart.js" />
     <Content Include="Scripts\Charts\morris.js" />
     <Content Include="Scripts\Charts\raphael.min.js" />
     <Content Include="Scripts\crypto-script.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Client\client-project-issues-information-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Comment\comment-area.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Contractor\contractor-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Contractor\contractor-info-save.js" />
@@ -559,6 +564,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-resigned-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Rules\rules-grid.js" />
@@ -710,6 +716,7 @@
     <Content Include="Areas\Request\Views\Evaluation\Index.cshtml" />
     <Content Include="Areas\Request\Views\Evaluation\Create.cshtml" />
     <Content Include="Areas\Employees\Views\Request\Evaluation.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Employee\Resigned.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
@@ -1618,7 +1625,6 @@
     <Content Include="UploadFile\XtremeTech-91cc1c93-2096-4587-9e83-63b563e3e978.PNG" />
     <Content Include="UploadFile\XtremeTech-92ac139f-df98-4b58-95cf-59bed3572926.jpg" />
     <Content Include="UploadFile\XtremeTech-95ce2f8e-bd24-437f-be9f-c636cd96424f.png" />
-    <Content Include="UploadFile\XtremeTech-976b8342-89e2-4cc8-a762-3897c7ac608b.jpg" />
     <Content Include="UploadFile\XtremeTech-98523526-95b9-4884-99bd-94ddf74a51d7.png" />
     <Content Include="UploadFile\XtremeTech-9a5c8903-ac59-4213-afb7-77e5c3592f71.JPG" />
     <Content Include="UploadFile\XtremeTech-9e4149ca-ab40-4419-b7df-7875f7dfa65e.png" />
@@ -1637,13 +1643,10 @@
     <Content Include="UploadFile\XtremeTech-c263e235-7d63-4d90-9aad-d022f7e6da40.jpg" />
     <Content Include="UploadFile\XtremeTech-d53ff204-dc48-455a-bbbe-ef78368b2c82.png" />
     <Content Include="UploadFile\XtremeTech-d9f58479-9ba0-4648-82ad-51231c9ea5a8.jpg" />
-    <Content Include="UploadFile\XtremeTech-e0283b4e-7bc6-43ce-9ff2-d9d08f78e602.jpg" />
     <Content Include="UploadFile\XtremeTech-e06cc811-7eaa-4a5d-8d46-5d64527f37d7.png" />
     <Content Include="UploadFile\XtremeTech-e3ffd1ff-8075-4a85-ba16-0563ed0b42e0.JPG" />
     <Content Include="UploadFile\XtremeTech-e5e2a92f-bb64-4200-b911-f7d6e1b13111.JPG" />
     <Content Include="UploadFile\XtremeTech-e676f4ed-ed28-40cc-ba09-ffa97185a9ab.jpg" />
-    <Content Include="UploadFile\XtremeTech-e89ee6a7-af27-41c5-bf43-4cb2534f2811.jpg" />
-    <Content Include="UploadFile\XtremeTech-e93ae2ce-0c77-4841-902c-541de2110579.jpg" />
     <Content Include="UploadFile\XtremeTech-eda5330c-4680-44d0-880c-889b0ce44141.jpg" />
     <Content Include="UploadFile\XtremeTech-ee24dc93-ba65-4160-91db-5d038e216452.jpg" />
     <Content Include="UploadFile\XtremeTech-f9174158-53e4-48c3-9eb6-48edaa3fc72f.jpg" />

@@ -19,7 +19,7 @@ namespace INMA.HR.Services
     {
         // void UploadFileExt(string FilePath, string FileExt, Guid EntityId, int fileType, int UserId, string _factory, string _connectionString, int LinkId = 0);
         void UploadFile(string filePath, string origName, string curName, int entityType, int entityId, int documentType, string _factory, string _connectionString);
-        void UploadFileForSingleAndMultiple(string filePath, string origName, string curName, int entityType, int entityId, int documentType, int createdBy, string startDate, string endDate, int FKGeneric_Id, string remarks, string _factory, string _connectionString);
+        void UploadFileForSingleAndMultiple(string filePath, string origName, string curName, int entityType, int entityId, int documentType, int createdBy, string startDate, string endDate, string noExpiry, int FKGeneric_Id, string remarks, string _factory, string _connectionString);
     }
     public class FileUploadService : IFileService
     {
@@ -45,7 +45,7 @@ namespace INMA.HR.Services
             repository.ExecuteProcedure(StoreProcedure.Attachment_Save.ToString(), sqlParameters, _factory, _connectionString);
         }
         // THIS IS FOR SINGLE AND MULTIPLE FILE SAVING WITH CREATER ID 
-        public void UploadFileForSingleAndMultiple(string filePath, string origName, string curName, int entityType, int entityId, int documentType, int createdBy, string startDate, string endDate, int FKGeneric_Id, string remarks, string _factory, string _connectionString)
+        public void UploadFileForSingleAndMultiple(string filePath, string origName, string curName, int entityType, int entityId, int documentType, int createdBy, string startDate, string endDate,string noExpiry, int FKGeneric_Id, string remarks, string _factory, string _connectionString)
         {
             var distination = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["uploadFile"].ToString() + filePath.Substring(filePath.LastIndexOf("\\") + 1);
             if (!File.Exists(distination))
@@ -75,6 +75,7 @@ namespace INMA.HR.Services
             //sqlParameters.Add("@EndDate", DateTime.Parse(endDate).ToString("MM/dd/yyyy :hh:mm tt"));
             sqlParameters.Add("@StartDate", startDate);
             sqlParameters.Add("@EndDate", endDate);
+            sqlParameters.Add("@NoExpiry", noExpiry);
             sqlParameters.Add("@FKGeneric_Id", FKGeneric_Id);
             sqlParameters.Add("@remarks", remarks);
 

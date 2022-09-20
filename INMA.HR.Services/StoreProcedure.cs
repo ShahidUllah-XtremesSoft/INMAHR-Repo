@@ -30,6 +30,7 @@
     HR_Employee_GetByNumber,
     HR_Employee_Delete,
     HR_Employee_GetAllForGrid,
+    HR_Employee_Resigned_GetAll_ForGrid,
     HR_Employee_GetAll_For_Admin,
 
     HR_Employee_Leave_TakenDetail_Get,
@@ -402,8 +403,12 @@ public enum ProjectStoreProcedure
     Client_Project_Get,
     // CLIENT MEETING INFORMATION
     Client_Project_Meeting_Get,
+    Client_Project_Issues_Get,
     Client_Detail_By_ProjectId,
 
+
+    //---------- Client Login
+    Client_Login,
     #endregion
 
 
@@ -489,7 +494,7 @@ public enum ProjectStoreProcedure
 
     #region SMS
     SMS_Save,
-    SMS_GetAll,
+    SMS_GetAll ,
     #endregion
 
     #region REPORTS
@@ -509,3 +514,20 @@ public enum ProjectStoreProcedure
     #endregion
 
 }
+
+
+
+
+
+
+
+public class appCommands
+{
+
+    //employee commands
+
+    //  public const string SMS_GET_ALL = "SMS_GetAll";
+    public const string SMS_GET_ALL = "SMS_GetAll";
+
+
+};

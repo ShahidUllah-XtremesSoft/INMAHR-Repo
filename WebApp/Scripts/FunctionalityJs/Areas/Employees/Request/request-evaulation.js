@@ -12,6 +12,7 @@ $(function () {
 
 });
 function loadRequestEvaluations(btnStatus) {
+     
     if (btnStatus == 'Pending') {
         ajaxRequest({
             commandName: 'Employees_Request_Evaluation_Get',
@@ -50,6 +51,7 @@ var loadRequestEvaluationsCallBack = function (inputDataJSON) {
 }
 var bindRequestEvaluations = function (inputDataJSON) {
     var record = 0;
+     
       
     if (_btnValue == 'Pending') {
     var gridColumns = [

@@ -10,6 +10,9 @@ $(function () {
     // loadProjectSectiondownList();
 
     //| Date Picker
+    //renderKendoDateAndTimePickerWithNewFormat('DesignSection_Document_StartDate');
+    //renderKendoDateAndTimePickerWithNewFormat('DesignSection_Document_EndDate');
+
     renderKendoDateAndTimePickerWithNewFormat('DesignSection_Document_StartDate');
     renderKendoDateAndTimePickerWithNewFormat('DesignSection_Document_EndDate');
     //|End Date Picker
@@ -236,4 +239,20 @@ function fnLoadDesignSectionArea(e) {
             $('.div-show-only-for-design-section-employee-available-area').hide();
         }
     }
+}
+
+
+
+function fnCheck_NoExpiry(e, areaName) {
+     
+    if (areaName == 'EndDate') {
+        $('#DesignSection_Document_NoExpiry_Call')[0].checked = false
+        $('#DesignSection_Document_NoExpiry').val(0);
+    } else {
+
+        $('#DesignSection_Document_NoExpiry').val(1);
+        var checkExpiry = $('#DesignSection_Document_NoExpiry_Call').is(':Checked', true);
+        checkExpiry == true ? $('#DesignSection_Document_EndDate').val('') : $('#DesignSection_Document_NoExpiry_Call')[0].checked = false;
+    }
+
 }

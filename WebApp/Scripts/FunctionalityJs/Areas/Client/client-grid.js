@@ -50,10 +50,10 @@ var bindGrid = function (inputDataJSON) {
             width: 10,
             title: ' ',
            
-            template:
+            template:"#if(createdBy==JSON.parse(localStorage.getItem('User')).id){#"+
                 //"<a style='cursor:pointer; font-size:20px;' onClick= detailClient(this) title='View Client Detail' ><span class='fa fa-eye'></span></a>" +
                 " <a style='font-size:20px;cursor:pointer;' onClick= editClient(this) title="+lblEdit+" ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= deleteClientById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= deleteClientById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  #} else {}#"
         },
 
 

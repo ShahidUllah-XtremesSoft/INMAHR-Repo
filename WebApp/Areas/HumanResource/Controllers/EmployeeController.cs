@@ -19,6 +19,10 @@ namespace WebApp.Areas.HumanResource.Controllers
         {
             return View();
         }
+         public ActionResult Resigned()
+        {
+            return View();
+        }
 
         public ActionResult Add()
         {

@@ -141,6 +141,31 @@ namespace INMA.HR.Services
 
             }
         }
+        [Command(Name = "HR_Employee_Resigned_GetAll_ForGrid")]
+        public class HR_Employee_Resigned_GetAll_ForGridCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+
+                object result = new { status = false, returnUrl = "#" };
+
+
+                var model = base.MappedModel(new
+                {
+                    LoggedInUser = 0,
+                    RoleId = 0,
+                    Language = string.Empty
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetMultiple<dynamic>(StoreProcedure.HR_Employee_Resigned_GetAll_ForGrid.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            }
+        }
 
 
 

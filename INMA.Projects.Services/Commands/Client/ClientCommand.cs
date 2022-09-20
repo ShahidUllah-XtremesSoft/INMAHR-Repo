@@ -359,5 +359,67 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+      #region  CLIENT PROJECT ISSUES INFORMATION  LIST
+    [Command(Name = "Client_Project_Issues_Get")]
+    public class Client_Project_Issues_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                LoggedInEmployeeId = 0,
+                LoggedInUser = 0,
+                RoleId = 0,
+                Client_Id = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            var checkData = repository.GetMultiple<dynamic>(ProjectStoreProcedure.Client_Project_Issues_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+            return checkData;
+
+        }
+    }
+    #endregion
+
+
+    #region CLIENT LOGIN BY ID 
+
+
+    [Command(Name = "Client_Login")]
+    public class Client_LoginCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+
+                
+                Username = string.Empty,
+                Password = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Client_Login.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
 
 }

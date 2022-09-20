@@ -11,7 +11,8 @@ $(function () {
 
 function loadGrid() {
     ajaxRequest({
-        commandName: 'SMS_GetAll', values: {            
+       // commandName: 'SMS_GetAll', values: {            
+        commandName: SMSCommands.SMS_GET_ALL, values: {
             Language: $('#Language').val()
         }, CallBack: loadGridCallBack
     });

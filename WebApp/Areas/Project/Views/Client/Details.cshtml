@@ -65,7 +65,7 @@
                                     <!-- col-sm-10 -->
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                         <div class="row hideClient_signature">
                             <div class="col-sm-12">
                                 <div class="row mgbt-xs-0">
@@ -112,6 +112,9 @@
                 </li>
                 <li class="nav-item" onclick="fnCheckTab('ClientMeetingInformation');">
                     <a class="nav-link" data-toggle="tab" href="#ClientMeetingInformation" role="tab" id="PersonalDocumentTabLi">4.@ProjectUI.ProjectUI.lblClientMeetingInformation</a>
+                </li>
+                <li class="nav-item" onclick="fnCheckTab('ClientProjectIssuesInformation');">
+                    <a class="nav-link" data-toggle="tab" href="#ClientProjectIssuesInformation" role="tab" id="PersonalDocumentTabLi">5.@ProjectUI.ProjectUI.lblIssueInformation</a>
                 </li>
 
             </ul>
@@ -248,8 +251,8 @@
 
                                     </div>
                                     @*<div class="col-sm-3 text-right">
-                                            <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
-                                        </div>*@
+                                        <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
+                                    </div>*@
                                 </div>
 
 
@@ -263,8 +266,8 @@
                     <div class=" ">
 
                         @*@{
-                                Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/ClientPartialViews/_ClientPersonalDocumentGridPartialView.cshtml");
-                            }*@
+                            Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/ClientPartialViews/_ClientPersonalDocumentGridPartialView.cshtml");
+                        }*@
                         <div class="card profile-box flex-fill">
                             <div class="card-block">
                                 <div class="grid-main-div">
@@ -301,11 +304,23 @@
 
 
                 </div>
+                <div class="tab-pane" id="ClientProjectIssuesInformation" role="tabpanel">
+                    <div class="card profile-box flex-fill">
+                        <div class="card-block">
+                            <div class="grid-main-div">
+                                <h4 class="card-title">@ProjectUI.ProjectUI.lblIssueInformation <hr /></h4>
+                                <div id="grid-client-project-issues-information"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
 
             </div>
         </div>
 
-
+       
     </div>
 </div>
 
@@ -317,6 +332,7 @@
     <script src="~/Scripts/FunctionalityJs/Areas/Client/client-personal-document-grid-for-partialView.js?+971502324409"></script>
     <script src="~/Scripts/FunctionalityJs/Areas/Client/client-project-information-grid.js?+971502324409"></script>
     <script src="~/Scripts/FunctionalityJs/Areas/Client/client-meeting-information-grid.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Client/client-project-issues-information-grid.js?+971502324409"></script>
 
 }
 

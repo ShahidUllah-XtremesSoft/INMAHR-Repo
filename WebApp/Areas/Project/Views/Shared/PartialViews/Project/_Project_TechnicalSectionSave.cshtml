@@ -55,7 +55,7 @@
             <div class="col-sm-6">  </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
                     <input class="form-control" type="datetime" id="TechnicalSection_Document_StartDate" name="TechnicalSection_Document_StartDate" required />
@@ -63,11 +63,23 @@
             </div>
 
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                    <input class="form-control" type="datetime" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate" required />
+                    <input class="form-control" type="datetime" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate"   onchange="fnCheck_NoExpiry_TechnicalSection(this,'EndDate')" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+
+                    <br />
+                    <br />
+                    <label class="btn " for="TechnicalSection_Document_NoExpiry_Call">
+                        <input type="radio" id="TechnicalSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_TechnicalSection(this,'RadioButton')">
+                        <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
+                    </label>
+                    <input type="hidden" id="TechnicalSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="TechnicalSection_Document_NoExpiry">
                 </div>
             </div>
         </div>
@@ -99,7 +111,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="grid-load-technical-section-all-assigned-employees">
-                    
+
 
                 </div>
             </div>
@@ -115,4 +127,4 @@
     }
 
 </div>
-    <div id="div-technical-section-employees-area"></div>
+<div id="div-technical-section-employees-area"></div>

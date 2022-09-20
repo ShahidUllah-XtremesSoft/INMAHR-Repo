@@ -15,7 +15,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <div class="show-hide-employee-task-area" style="display:none;">
+                        <div class="show-hide-employee-task-area" style="display: none;float: right; border: 1px solid;">
                             <div class="row">
 
                                 <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
 
@@ -110,12 +110,24 @@
                         </div>
 
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                                <input class="form-control" type="date" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" required />
+                                <input class="form-control" type="date" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" onchange="fnCheck_NoExpiry_SupervisionSection(this,'EndDate')" />
 
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+
+                                <br />
+                                <br />
+                                <label class="btn " for="SupervisionSection_Document_NoExpiry_Call">
+                                    <input type="radio" id="SupervisionSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_SupervisionSection(this,'RadioButton')">
+                                    <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
+                                </label>
+                                <input type="hidden" id="SupervisionSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="SupervisionSection_Document_NoExpiry">
                             </div>
                         </div>
                     </div>

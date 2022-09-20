@@ -392,3 +392,18 @@ function fnLoadSupervisionSectionArea(e) {
 
 
 
+
+
+function fnCheck_NoExpiry_SupervisionSection(e, areaName) {
+
+    if (areaName == 'EndDate') {
+        $('#SupervisionSection_Document_NoExpiry_Call')[0].checked = false
+        $('#SupervisionSection_Document_NoExpiry').val(0);
+    } else {
+
+        $('#SupervisionSection_Document_NoExpiry').val(1);
+        var checkExpiry = $('#SupervisionSection_Document_NoExpiry_Call').is(':Checked', true);
+        checkExpiry == true ? $('#SupervisionSection_Document_EndDate').val('') : $('#SupervisionSection_Document_NoExpiry_Call')[0].checked = false;
+    }
+
+}

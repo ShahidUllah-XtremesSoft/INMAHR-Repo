@@ -384,6 +384,9 @@
   <data name="lblNoAttachment" xml:space="preserve">
     <value>No Attachment</value>
   </data>
+  <data name="lblNoExpiry" xml:space="preserve">
+    <value>No Expiry</value>
+  </data>
   <data name="lblNotificationDetails" xml:space="preserve">
     <value>Notification Details</value>
   </data>

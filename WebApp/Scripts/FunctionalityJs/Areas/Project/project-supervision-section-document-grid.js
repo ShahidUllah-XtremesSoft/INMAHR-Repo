@@ -77,16 +77,16 @@ var fn_Load_SupervisionSection_DocumentByIdResponse = function (inputDataJSON) {
         },
         {
             field: "expiryDate", title: lblExpiryDate, hidden: false, width: 20, filterable: false,
-            template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+            template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
         },
 
         {
             field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
            // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
-            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
-                "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
-                "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
+            template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
 
         },
 
@@ -96,9 +96,10 @@ var fn_Load_SupervisionSection_DocumentByIdResponse = function (inputDataJSON) {
             width: 10,
             hidden: false,
             filterable: false,
-            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
-                "if (totalDays <= 29) { # <span class='badge badge-warning'>#:status#</span> # } else" +
+            template: "#if (totalDays <= 0 && noExpiry == 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
+                "if (totalDays <= 29 && noExpiry == 0) { # <span class='badge badge-warning'>#:status#</span> # } else" +
                 "{# <span class='badge badge-success'>#:status#</span> # }#"
+
 
         }, {
             field: "",

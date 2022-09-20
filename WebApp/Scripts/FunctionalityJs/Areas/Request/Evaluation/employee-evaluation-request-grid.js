@@ -76,6 +76,7 @@ function delete_EvaluationGridById(event) {
     var row = $(event).closest("tr");
     var grid = $("#" + EvaluationGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+     
     Swal.fire({
 
         title: areYouSureTitle,
@@ -105,7 +106,7 @@ function delete_EvaluationGridById(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-            ajaxRequest({ commandName: 'Evaluation_Request_Delete', values: { Id: dataItem.id, Language: $('#Language').val() }, CallBack: delete_EvaluationGridByIdCallBack });
+            ajaxRequest({ commandName: 'Evaluation_Request_Delete', values: { Id: dataItem.request_Evaluation_Id, Language: $('#Language').val() }, CallBack: delete_EvaluationGridByIdCallBack });
         }
     });
     var delete_EvaluationGridByIdCallBack = function (response) {

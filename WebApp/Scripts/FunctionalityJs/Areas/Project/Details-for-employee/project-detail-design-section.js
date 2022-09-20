@@ -123,17 +123,23 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
             },
             { field: "documentType", title: documentType, hidden: true },
-            { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "combineDocumentType", title: documentType, hidden: false, width: 150, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             {
                 field: "releaseDate", title: lblIssueDate, hidden: false, width: 40, filterable: false,
                 template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
             },
             {
                 field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
-                template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+                template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
             },
+            {
+                field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
+                template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                    " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                    "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
 
+            },
 
 
             {
@@ -142,8 +148,8 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:status#</span> # } else" +
+                template: "#if (totalDays <= 0 && noExpiry == 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
+                    "if (totalDays <= 29 && noExpiry == 0) { # <span class='badge badge-warning'>#:status#</span> # } else" +
                     "{# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {
@@ -291,8 +297,8 @@ function fn_IsWorkStarted() {
                 }
             }).then(function (restult) {
                 if (restult.value) {
-                     
-                   
+
+
                     ajaxRequest({
                         commandName: 'Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters', values: {
 
@@ -303,7 +309,7 @@ function fn_IsWorkStarted() {
                             Language: _currentLanguage
                         }, CallBack: ''
                     });
-                    
+
                     //After ajax call .
                     $('#load-model').click();
 
@@ -428,9 +434,9 @@ $('#btn-design-section-upload-document').click(function () {
 
 
     if (customValidateForm('frmAddUpdate_DesignSection_Document')) {
-        if (!firstDateShouldBeGreaterThanSecondDate($('#DesignSection_Document_StartDate').val(), $('#DesignSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
-            return false;
-        }
+        // if (!firstDateShouldBeGreaterThanSecondDate($('#DesignSection_Document_StartDate').val(), $('#DesignSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+        //     return false;
+        // }
         buttonAddPleaseWait('btn-design-section-upload-document');
 
         $("#frmAddUpdate_DesignSection_Document").ajaxForm();
@@ -902,3 +908,18 @@ function progress_designSection(designSectionMenuResponse, designSectionCallingA
 }
 // --------------------- LOAD PROGRESS BAR END----------------------BY /\/\ati
 */
+
+
+function fnCheck_NoExpiry(e, areaName) {
+     
+    if (areaName == 'EndDate') {
+        $('#DesignSection_Document_NoExpiry_Call')[0].checked = false
+        $('#DesignSection_Document_NoExpiry').val(0);
+    } else {
+
+        $('#DesignSection_Document_NoExpiry').val(1);
+        var checkExpiry = $('#DesignSection_Document_NoExpiry_Call').is(':Checked', true);
+        checkExpiry == true ? $('#DesignSection_Document_EndDate').val('') : $('#DesignSection_Document_NoExpiry_Call')[0].checked = false;
+    }
+
+}

@@ -8,6 +8,9 @@ $(function () {
     //| Date Picker
     renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
     renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
+
+   // renderKendoDatePicker('TechnicalSection_Document_StartDate');
+   // renderKendoDatePicker('TechnicalSection_Document_EndDate');
     //|End Date Picker
 });
 function fnLoadTechnicalSectionReady() {
@@ -37,9 +40,9 @@ function fnLoadTechnicalSectionReady() {
 $('#btn-save-technical-section-government-documents').click(function () {
 
     if (customValidateForm('frmAddUpdate_TechnicalSection_Document')) {
-        if (!firstDateShouldBeGreaterThanSecondDate($('#StartDate').val(), $('#EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
-            return false;
-        }
+      //  if (!firstDateShouldBeGreaterThanSecondDate($('#StartDate').val(), $('#EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+      //      return false;
+      //  }
         buttonAddPleaseWait('btn-save-technical-section-government-documents');
 
         $("#frmAddUpdate_TechnicalSection_Document").ajaxForm();
@@ -77,8 +80,8 @@ $('#btn-save-technical-section-government-documents').click(function () {
     else {
         buttonRemovePleaseWait('btn-save-technical-section-government-documents', save, 'save');
         //----------- Reload DateTime Picker 
-        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
-        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
+         renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
+    //    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
         return false;
     }
 });
@@ -220,4 +223,19 @@ function fnLoadTechnicalSectionArea(e) {
 
         }
     }
+}
+
+
+function fnCheck_NoExpiry_TechnicalSection(e, areaName) {
+
+    if (areaName == 'EndDate') {
+        $('#TechnicalSection_Document_NoExpiry_Call')[0].checked = false
+        $('#TechnicalSection_Document_NoExpiry').val(0);
+    } else {
+
+        $('#TechnicalSection_Document_NoExpiry').val(1);
+        var checkExpiry = $('#TechnicalSection_Document_NoExpiry_Call').is(':Checked', true);
+        checkExpiry == true ? $('#TechnicalSection_Document_EndDate').val('') : $('#TechnicalSection_Document_NoExpiry_Call')[0].checked = false;
+    }
+
 }

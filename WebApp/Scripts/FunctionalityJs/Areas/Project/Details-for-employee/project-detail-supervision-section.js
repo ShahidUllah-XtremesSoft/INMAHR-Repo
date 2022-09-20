@@ -105,11 +105,12 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
                 width: 20,
                 filterable: false,
                 template: " #  if (currentFileName == null )" +
-                    " { # <label class='pcoded-badge label label-danger'>No Attachment</label># }        else if(currentFileName.split('.')[1]=='pdf')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:100%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:100%;cursor: pointer;'/> </a># } else" +
-                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/UploadFile/#=currentFileName#' style='width:100%';cursor: pointer; /></a> #} #"
+                    " { # <label class='pcoded-badge label label-danger'>" + lblNoAttachment + "</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:70%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:70%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:70%;cursor: pointer;'/> </a># } else" +
+                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:50%';cursor: pointer; /></a> #} #"
+
 
 
             },
@@ -121,15 +122,15 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
             },
             {
                 field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
-                template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+                template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
             },
 
             {
                 field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
-                    "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
+                template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                    " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                    "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
 
             },
 
@@ -139,8 +140,8 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:status#</span> # } else" +
+                template: "#if (totalDays <= 0 && noExpiry == 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
+                    "if (totalDays <= 29 && noExpiry == 0) { # <span class='badge badge-warning'>#:status#</span> # } else" +
                     "{# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {
@@ -294,9 +295,9 @@ $('#btn-supervision-section-upload-document').click(function () {
     $('#SupervisionSection_Document_Language').val(_currentLanguage);
     $('#SupervisionSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     if (customValidateForm('frmAddUpdate_SupervisionSection_Document')) {
-        if (!firstDateShouldBeGreaterThanSecondDate($('#SupervisionSection_Document_StartDate').val(), $('#SupervisionSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
-            return false;
-        }
+     //   if (!firstDateShouldBeGreaterThanSecondDate($('#SupervisionSection_Document_StartDate').val(), $('#SupervisionSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+     //       return false;
+     //   }
         buttonAddPleaseWait('btn-supervision-section-upload-document');
 
         $("#frmAddUpdate_SupervisionSection_Document").ajaxForm();
@@ -487,3 +488,18 @@ function fn_IsWorkStarted_SupervisionSection() {
 
 }
 
+
+
+function fnCheck_NoExpiry_SupervisionSection(e, areaName) {
+
+    if (areaName == 'EndDate') {
+        $('#SupervisionSection_Document_NoExpiry_Call')[0].checked = false
+        $('#SupervisionSection_Document_NoExpiry').val(0);
+    } else {
+
+        $('#SupervisionSection_Document_NoExpiry').val(1);
+        var checkExpiry = $('#SupervisionSection_Document_NoExpiry_Call').is(':Checked', true);
+        checkExpiry == true ? $('#SupervisionSection_Document_EndDate').val('') : $('#SupervisionSection_Document_NoExpiry_Call')[0].checked = false;
+    }
+
+}

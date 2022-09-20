@@ -231,6 +231,7 @@ namespace INMA.Projects.Services.Project
                             (int)model.CreatedBy,
                              (string)"",
                              (string)"",
+                             (string)"",
                              (int)0,
                               (string)"",
 
@@ -596,6 +597,7 @@ namespace INMA.Projects.Services.Project
                     DesignSection_Document_EndDate = string.Empty,
                     DesignSection_Document_Language = string.Empty,
                     DesignSection_Remarks = string.Empty,
+                    DesignSection_Document_NoExpiry = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
                 }, v);
                 #region ==========  PARAMETERS
@@ -678,6 +680,7 @@ namespace INMA.Projects.Services.Project
                         (int)model.DesignSection_Document_CreatedBy,
                         (string)model.DesignSection_Document_StartDate,
                         (string)model.DesignSection_Document_EndDate,
+                        (string)model.DesignSection_Document_NoExpiry,
                         (int)model.DesignSection_Document_ProjectId,
                         (string)model.DesignSection_Remarks,
 
@@ -1273,6 +1276,7 @@ namespace INMA.Projects.Services.Project
                     Project_Technical_Section_Parent_Type_DDL_Text = string.Empty,
                     TechnicalSection_Document_StartDate = string.Empty,
                     TechnicalSection_Document_EndDate = string.Empty,
+                    TechnicalSection_Document_NoExpiry = string.Empty,
                     TechnicalSection_Document_Language = string.Empty,
                     TechnicalSection_Remarks = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
@@ -1358,6 +1362,7 @@ namespace INMA.Projects.Services.Project
                         (int)model.TechnicalSection_Document_CreatedBy,
                         (string)model.TechnicalSection_Document_StartDate,
                         (string)model.TechnicalSection_Document_EndDate,
+                        (string)model.TechnicalSection_Document_NoExpiry,
                         (int)model.TechnicalSection_Document_ProjectId,
                         (string)model.TechnicalSection_Remarks,
 
@@ -1616,6 +1621,7 @@ namespace INMA.Projects.Services.Project
                     Project_Supervision_Section_Parent_Type_DDL = string.Empty,
                     SupervisionSection_Document_StartDate = string.Empty,
                     SupervisionSection_Document_EndDate = string.Empty,
+                    SupervisionSection_Document_NoExpiry = string.Empty,
                     SupervisionSection_Document_Language = string.Empty,
                     SupervisionSection_Remarks = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
@@ -1707,6 +1713,7 @@ namespace INMA.Projects.Services.Project
                         (int)model.SupervisionSection_Document_CreatedBy,
                         (string)model.SupervisionSection_Document_StartDate,
                         (string)model.SupervisionSection_Document_EndDate,
+                        (string)model.SupervisionSection_Document_NoExpiry,
                         (int)model.SupervisionSection_Document_ProjectId,
                         (string)model.SupervisionSection_Remarks,
 

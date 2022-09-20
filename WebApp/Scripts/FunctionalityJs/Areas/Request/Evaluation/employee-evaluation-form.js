@@ -28,7 +28,7 @@ function fn_Load_Evaluation_Form_data_from_db_using_Evaluation_Hisotry_Id() {
 }
 function fn_Load_Evaluation_Form_data_from_db_using_Evaluation_Hisotry_IdCallBack(response) {
 
-    $('#employee-evaluation').empty();
+    $('#employee-evaluation').empty(); 
     $('#employee-evaluation').html(JSON.parse(response.Value).evaluationForm);
 }
 function fn_Load_Evaluation_Form() {
@@ -142,7 +142,7 @@ function fn_Load_Evaluation_FormCallBack(response) {
             + '        <div class=" ">'
             + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
             + '            <div id="lm_noSignature" style="display:none;">'
-            + '                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '                <button type="button" disabled class="btn  @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
             + '            </div>'
             + '            <div id="lm_loadSignature" style="display:none;">'
             + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="lm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
@@ -179,7 +179,7 @@ function fn_Load_Evaluation_FormCallBack(response) {
             + '        <div class=" ">'
             + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
             + '            <div id="cm_noSignature" style="display:none;">'
-            + '                <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '                <button type="button" disabled class="btn  @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
             + '            </div>'
             + '            <div id="cm_loadSignature" style="display:none;">'
             + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="cm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
@@ -399,6 +399,7 @@ $('#btn-save-evaluation-form').click(function () {
             Employee_Department_Id: $('#Employee_Department_Id').val(),
             Employee_Department_Parent_Id: JSON.parse(localStorage.getItem('User')).employee_Department_ParentId,
             EvaluationForm: $('#employee-evaluation').html(),
+            EvaluationFormArb: $('#employee-evaluation').html(),
             CreatedBy: JSON.parse(localStorage.getItem('User')).id,
             // isHRApproved: JSON.parse(localStorage.getItem('User')).isHR == true ? 1 : 0,
             Language: _currentLanguage

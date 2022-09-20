@@ -17,7 +17,7 @@
 
 
                     <div class="col-md-6">
-                        <div class="show-hide-employee-task-area" style="display:none;">
+                        <div class="show-hide-employee-task-area" style="display: none;float: right; border: 1px solid;">
                             <div class="row">
 
                                 <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
@@ -111,7 +111,7 @@
                             <div class="col-sm-6">  </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
                                     <input class="form-control" type="date" id="TechnicalSection_Document_StartDate" name="TechnicalSection_Document_StartDate" required />
@@ -119,13 +119,35 @@
                             </div>
 
 
-                            <div class="col-sm-6">
+                            @*<div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
                                     <input class="form-control" type="date" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate" required />
                                 </div>
+                            </div>*@
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label>   <br />
+
+                                    <input class="form-control" type="date" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate" onchange="fnCheck_NoExpiry_TechnicalSection(this,'EndDate')" />
+                                </div>
                             </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+
+                                    <br />
+                                    <br />
+                                    <label class="btn " for="TechnicalSection_Document_NoExpiry_Call">
+                                        <input type="radio" id="TechnicalSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_TechnicalSection(this,'RadioButton')">
+                                        <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
+                                    </label>
+                                    <input type="hidden" id="TechnicalSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="TechnicalSection_Document_NoExpiry">
+                                </div>
+                            </div>
+
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">

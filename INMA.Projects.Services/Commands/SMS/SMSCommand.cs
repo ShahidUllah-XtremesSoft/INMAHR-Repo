@@ -1,6 +1,7 @@
 ﻿using CastleWindsor.Factory.Core;
 using CastleWindsor.Factory.Repository;
 using INMA.HR.Services;
+using INMA.HR.Services.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,9 @@ namespace INMA.Projects.Services.Commands.SMS
 {
     public class SMSCommand
     {
-        [Command(Name = "SMS_GetAll")]
-        public class SMS_GetAllCommand : CamelCommandBase
+   
+        [Command(Name =  appCommands.SMS_GET_ALL)]
+        public class classNames : CamelCommandBase
         {
             protected override object DoAction(object viewInput)
             {
@@ -31,7 +33,7 @@ namespace INMA.Projects.Services.Commands.SMS
                 CommandParameters _params = new CommandParameters();
 
                 values = _params.Get(model);
-                return repository.GetMultiple<dynamic>(ProjectStoreProcedure.SMS_GetAll.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                return repository.GetMultiple<dynamic>(appCommands.SMS_GET_ALL.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
             }
         }

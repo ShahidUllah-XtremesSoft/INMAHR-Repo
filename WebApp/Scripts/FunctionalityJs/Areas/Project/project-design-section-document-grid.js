@@ -99,8 +99,7 @@ function fnedit_DesignSection_GovernmentDocumentById(e) {
 
 
 
-var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJSON) {        
-     
+var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJSON) {
 
     var gridColumns = [
         { field: "attachmentId", title: "attachmentId", hidden: true, width: 20 },
@@ -113,7 +112,7 @@ var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJS
             width: 30,
             filterable: false,
             template: " #  if (currentFileName == null )" +
-                " { # <label class='pcoded-badge label label-danger'>"+lblNoAttachment+"</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
+                " { # <label class='pcoded-badge label label-danger'>" + lblNoAttachment + "</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
                 " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:30%;'/> </a># } else" +
@@ -129,16 +128,20 @@ var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJS
         },
         {
             field: "expiryDate", title: lblEndDate, hidden: false, width: 20, filterable: false,
-            template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+            template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
         },
 
         {
             field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
-            // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
+            /*
             template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
                 "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
                 "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
+            */
+            template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
 
         },
 
@@ -148,8 +151,8 @@ var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJS
             width: 10,
             hidden: false,
             filterable: false,
-            template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
-                "if (totalDays <= 29) { # <span class='badge badge-warning'>#:status#</span> # } else" +
+            template: "#if (totalDays <= 0 && noExpiry == 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
+                "if (totalDays <= 29 && noExpiry == 0) { # <span class='badge badge-warning'>#:status#</span> # } else" +
                 "{# <span class='badge badge-success'>#:status#</span> # }#"
 
         }, {
@@ -159,7 +162,7 @@ var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJS
 
             template:
                 //" <a style='font-size:20px;cursor:pointer;' onClick= fnedit_DesignSection_GovernmentDocumentById(this) title='Edit ' ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_GovernmentDocumentById(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
+                " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_GovernmentDocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
         },
 
 
@@ -201,7 +204,7 @@ function fn_delete_DesignSection_GovernmentDocumentById(event) {
             }
         }
     }).then(function (restult) {
-        if (restult.value) {            
+        if (restult.value) {
             ajaxRequest({
                 commandName: 'Project_DesignSection_Document_Delete',
                 values: {

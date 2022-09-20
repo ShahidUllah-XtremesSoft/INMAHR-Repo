@@ -862,6 +862,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Expiry.
+        /// </summary>
+        public static string lblNoExpiry {
+            get {
+                return ResourceManager.GetString("lblNoExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notification Details.
         /// </summary>
         public static string lblNotificationDetails {

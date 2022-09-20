@@ -181,6 +181,7 @@ namespace INMA.HR.Services.Commands.Request
                 CreatedBy = 0,
                 Employee_Department_Parent_Id = 0,
                 EvaluationForm = string.Empty,
+                EvaluationFormArb = string.Empty,
                // isHRApproved = 0,
                 Language = string.Empty,
             }, v);

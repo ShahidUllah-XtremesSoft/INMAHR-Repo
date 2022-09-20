@@ -22,5 +22,11 @@
     "inputFiles": [
       "Scripts/FunctionalityJs/Common/common-labels.js"
     ]
+  },
+  {
+    "outputFileName": "JS/appCommands.min.js",
+    "inputFiles": [
+      "JS/appCommands.js"
+    ]
   }
 ]

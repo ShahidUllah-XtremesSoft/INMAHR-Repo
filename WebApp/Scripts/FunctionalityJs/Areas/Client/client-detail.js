@@ -69,6 +69,9 @@ function fnCheckTab(selectedTab) {
     } else if (selectedTab == "ClientMeetingInformation") {
          
         loadClientMeetingInformationKendoGrid();
+    } else if (selectedTab == "ClientProjectIssuesInformation") {
+         
+        loadClientProjectIssueInformationKendoGrid();
     }
 
 }

@@ -201,16 +201,16 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
             },
             {
                 field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
-                template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+                template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
             },
 
             {
                 field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
-                // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
-                    "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
+                template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                    " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                    "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
+
 
             },
 
@@ -220,8 +220,8 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # }" +
+                template: "#if (totalDays <= 0  && noExpiry == 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                    "if (totalDays <= 29  && noExpiry == 0) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # }" +
                     " else {# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {
@@ -320,6 +320,7 @@ function fn_transfer_file(event) {
     var dataItem = grid.dataItem(row);
     selectedRecordDocumentType = dataItem.combineDocumentType;
 
+    $('#frmTransferDataModal').trigger('reset')
     $('#load-model').click();
     $('.div_showHide_Main_stepper').hide();
     $(".main_Section_In_Sub_section_transfer_modal").prop('selectedIndex', 0);
@@ -401,6 +402,7 @@ function fn_transfer_file_save() {
                     FromDocumentType: selectedRecordDocumentType,
                     ToDocumentType: $('#Project_Section_Parent_Type_DDL').data("kendoDropDownList").text() + ' | ' + $('#Project_DesignSection_SetupDetailTypeDDL').data("kendoDropDownList").text(),
                     ApprovedOrReturned: $('#ApprovedOrReturned').val(),
+                    DesignSection_comment_for_client_or_employee: $('#DesignSection_comment_for_client_or_employee').val(),
                     Language: $('#Language').val()
                 }, CallBack: fn_transfer_file_saveCallBack
             });

@@ -106,10 +106,10 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
                 filterable: false,
                 template: " #  if (currentFileName == null )" +
                     " { # <label class='pcoded-badge label label-danger'>" + lblNoAttachment + "</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:70%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:70%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:70%;cursor: pointer;'/> </a># } else" +
-                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:50%';cursor: pointer; /></a> #} #"
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:80%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:80%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:80%;cursor: pointer;'/> </a># } else" +
+                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:80%';cursor: pointer; /></a> #} #"
 
 
 
@@ -147,15 +147,20 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
             }, {
                 field: "attachmentRemarks",
                 title: lblRemarks,
-                width: 50,
-                hidden: true,
+                width: 70,
+                hidden: false,
                 filterable: false,
                 template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
 
             },
             {
                 field: "", title: "", width: 60 //, template: gridTemplate,
-                , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_SupervisionSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
+               // , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_SupervisionSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
+                , template: "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id){ #" +
+                    "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_SupervisionSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  # }" +
+                    "else {#    #}#"
+
+
             },
 
 

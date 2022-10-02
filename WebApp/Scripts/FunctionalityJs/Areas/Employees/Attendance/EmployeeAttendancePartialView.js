@@ -149,8 +149,14 @@ var bindAttendanceGrid = function (inputDataJSON) {
         {
             title: lblMorning + " / " + lblEvening, headerAttributes: { style: "text-align: center;" },
             columns: [
-                { field: "checkInTime", title: lblIn, width: 70, filterable: false, headerAttributes: { style: "text-align: center;" }, template: "#if (lateInTime =='' && remarks =='') { # <span style='color:green;'>#:checkInTime#</span> #}else {# <span style='color:red;'>#:checkInTime#</span> #}#" },
-                { field: "checkOutTime", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }, template: "#if (earlyOutTime =='' && remarks =='') { # <span style='color:green;'>#:checkOutTime#</span> #}else {# <span style='color:red;'>#:checkOutTime#</span> #}#" },
+                {
+                    field: "checkInTime", title: lblIn, width: 70, filterable: false, headerAttributes: { style: "text-align: center;" },
+                    template: "#if (lateInTime =='') { # <span style='color:green;'>#:checkInTime#</span> #}else {# <span style='color:red;'>#:checkInTime#</span> #}#"
+                },
+                {
+                    field: "checkOutTime", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" },
+                    template: "#if (earlyOutTime =='') { # <span style='color:green;'>#:checkOutTime#</span> #}else {# <span style='color:red;'>#:checkOutTime#</span> #}#"
+                },
 
                 /*
                 {

@@ -70,7 +70,7 @@ function loadProfileCallBack(response) {
         var empprofileImage = '/UploadFile/' + JSON.parse(response.Value).empCurrentFileName;
         $('#EmpProfileImage').attr('src', empprofileImage);
     }
-
+     
 
     if (responseDetails.currentFileName != null) {
 
@@ -104,26 +104,26 @@ function loadProfileCallBack(response) {
         var attachments = '/UploadFile/' + responseDetails.currentFileName;
         $('#letter-attachment').attr('src', fileExtension).attr('alt', responseDetails.orignalFileName);
         $('#attachment-open').attr('href', attachments);
-
-
-
-        if (responseDetails.client_Signature != null) {
-            var clientSignature = '/UploadFile/' + responseDetails.client_Signature;
-            $('#loadClientSignature').attr('src', clientSignature);
-            //    $('#Signature').val(responseDetails.client_Signature);
-            localStorage.setItem("ClientSignature", responseDetails.client_Signature);
-        } else {
-            localStorage.ClientSignature = '';
-        }
-
-
     }
+
+
+    //----------------------------- CLIENT SIGNATURE WORK START
+
+    if (responseDetails.client_Signature != null) {
+
+        var clientSignature = '/UploadFile/' + responseDetails.client_Signature;
+        $('#loadClientSignature').attr('src', clientSignature);
+        //    $('#Signature').val(responseDetails.client_Signature);
+        localStorage.setItem("ClientSignature", responseDetails.client_Signature);
+    } else {
+        localStorage.ClientSignature = '';
+    }
+
+
 }
 
 function fnShowSignature(e) {
-
-
-
+     
 
     var checkValue = $("#chk-signature").is(':checked')
     if (checkValue == true) {

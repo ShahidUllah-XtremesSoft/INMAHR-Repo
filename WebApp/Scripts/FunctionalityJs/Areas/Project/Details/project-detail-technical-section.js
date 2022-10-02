@@ -134,15 +134,15 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
             },
             {
                 field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
-                template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+                template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
             },
 
             {
                 field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
-                    "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
+                template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                    " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                    "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
 
             },
 
@@ -152,8 +152,8 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
+                template: "#if (totalDays <= 0  && noExpiry == 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                    "if (totalDays <= 29  && noExpiry == 0) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
                     "{# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {
@@ -189,7 +189,7 @@ function fn_technical_section_transfer_file(event) {
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
     var dataItem = grid.dataItem(row);
 
-
+    $('#frm_TechnicalSection_TransferDataModal').trigger('reset')
     $('#load-technical-section-model').click();
     $('.div_showHide_Main_stepper').hide();
     $(".main_Section_In_Sub_section_transfer_modal").prop('selectedIndex', 0);
@@ -264,6 +264,7 @@ function fn_technical_section_transfer_file_save() {
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#TechnicalSection_Remarks').val(),
                     ApprovedOrReturned: $('#ApprovedOrReturned_TechnicalSection').val(),
+                    TechnicalSection_comment_for_client_or_employee: $('#TechnicalSection_comment_for_client_or_employee').val(),
 
                     Language: $('#Language').val()
                 }, CallBack: fn_technical_section_transfer_file_saveCallBack

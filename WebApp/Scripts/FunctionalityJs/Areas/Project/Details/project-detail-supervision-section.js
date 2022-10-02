@@ -1,8 +1,8 @@
 ﻿$(function () {
 
-//| Date Picker
-renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
-renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
+    //| Date Picker
+    renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
+    renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
     //|End Date Picker
 });
 
@@ -93,7 +93,7 @@ function fnLoadSupervisionSection_Document(project_Id, Setup_Type_Id, grid_Id) {
 var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
     var pass_GridName = localStorage.getItem('grid_id');
 
-    
+
     if (pass_GridName != "") {
 
         var gridTemplate = '';
@@ -132,15 +132,16 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
             },
             {
                 field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
-                template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
+                template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
             },
 
             {
                 field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>#:expiryIn#</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } else" +
-                    "{# <span class='badge badge-success'>#:expiryIn#</span> # }#"
+                template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
+                    " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
+                    "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
+
 
             },
 
@@ -150,8 +151,8 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
                 width: 40,
                 hidden: false,
                 filterable: false,
-                template: "#if (totalDays <= 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
-                    "if (totalDays <= 29) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
+                template: "#if (totalDays <= 0  && noExpiry == 0) { # <span class='badge badge-danger'>" + lblStatusExpired + "</span> # } else " +
+                    "if (totalDays <= 29  && noExpiry == 0) { # <span class='badge badge-warning'>" + lblStatusValid + "</span> # } else" +
                     "{# <span class='badge badge-success'>#:status#</span> # }#"
 
             }, {
@@ -187,7 +188,7 @@ function fn_supervision_section_transfer_file(event) {
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
     var dataItem = grid.dataItem(row);
 
-
+    $('#frm_SupervisionSection_TransferDataModal').trigger('reset')
     $('#load-supervision-section-model').click();
 
 
@@ -263,6 +264,7 @@ function fn_supervision_section_transfer_file_save() {
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#SupervisionSection_Remarks').val(),
                     ApprovedOrReturned: $('#ApprovedOrReturned_SupervisionSection').val(),
+                    SupervisionSection_comment_for_client_or_employee: $('#SupervisionSection_comment_for_client_or_employee').val(),
                     Language: $('#Language').val()
                 }, CallBack: fn_supervision_section_transfer_file_saveCallBack
             });
@@ -599,7 +601,7 @@ function fnLoadOtherMainSection_SupervisionArea(selectedValue) {
                 label: lblSelect,
                 icon: " ",
             },
-           
+
             {
                 label: "Design Section",
                 icon: " ",

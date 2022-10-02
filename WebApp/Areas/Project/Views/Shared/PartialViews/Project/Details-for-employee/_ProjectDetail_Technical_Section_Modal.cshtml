@@ -150,12 +150,26 @@
 
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="col-form-label">@Resources.Global.lblRemarks</label>
                                     <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks"></textarea>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                                    <span style="color: red">*</span>
+                                    <select class="form-control" id="TechnicalSection_comment_for_client_or_employee" name="TechnicalSection_comment_for_client_or_employee" required>
+                                        <option value="" selected>Select</option>
+                                        <option value="Employee">Employee</option>
+                                        <option value="Client">Client</option>
+                                        <option value="Both">Both</option>
+                                        <option value="NoRemarks">No Remarks</option>
+                                    </select>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>

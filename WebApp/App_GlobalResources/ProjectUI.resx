@@ -288,6 +288,9 @@
   <data name="lblFloor" xml:space="preserve">
     <value>Floor</value>
   </data>
+  <data name="lblFor" xml:space="preserve">
+    <value>For</value>
+  </data>
   <data name="lblGarageParking" xml:space="preserve">
     <value>Garage / Parking</value>
   </data>
@@ -392,6 +395,9 @@
   </data>
   <data name="lblNotificationList" xml:space="preserve">
     <value>Notification List</value>
+  </data>
+  <data name="lblOld" xml:space="preserve">
+    <value>Old</value>
   </data>
   <data name="lblOurMission" xml:space="preserve">
     <value>Our Mission</value>

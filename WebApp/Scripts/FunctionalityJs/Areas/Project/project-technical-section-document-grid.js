@@ -62,10 +62,10 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
             filterable: false,
             template: " #  if (currentFileName == null )" +
                 " { # <label class='pcoded-badge label label-danger'>"+lblNoAttachment+"</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
-                " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
-                " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:30%;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
-                " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:30%;'/> </a># } else" +
-                " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>   <img class='' src='/Content/Images/attachment-icon.png' style='width:25%' /></a> #} #"
+                " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:50%;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
+                " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:50%;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
+                " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:50%;'/> </a># } else" +
+                " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>   <img class='' src='/Content/Images/attachment-icon.png' style='width:50%' /></a> #} #"
 
 
         },
@@ -101,9 +101,27 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
                 "if (totalDays <= 29 && noExpiry == 0) { # <span class='badge badge-warning'>#:status#</span> # } else" +
                 "{# <span class='badge badge-success'>#:status#</span> # }#"
 
+        },
+        {
+            field: "attachmentRemarks",
+            title: lblRemarks,
+            width: 70,
+            hidden: false,
+            filterable: false,
+       //     template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
+
         }, {
+            field: "remarks_comment_for_client_or_employee",
+            title: "Remarks For",
+            width: 40,
+            hidden: true,
+            filterable: false,
+            template: "  <span class='badge badge-info'>#:remarks_comment_for_client_or_employee#</span>  "
+
+        },
+        {
             field: "",
-            width: 5,
+            width: 10,
             title: ' ',
 
             template:

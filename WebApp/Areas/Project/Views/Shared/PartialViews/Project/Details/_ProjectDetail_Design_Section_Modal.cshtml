@@ -21,9 +21,9 @@
                         </div>
                         <div class="col-sm-2 pull-right">
 
-                            <div class="form-group"  >
+                            <div class="form-group">
                                 <div class="container">
-                                    <select class="form-control main_Section_In_Sub_section_transfer_modal"  onchange="fnLoadOtherMainSection(this.value);">
+                                    <select class="form-control main_Section_In_Sub_section_transfer_modal" onchange="fnLoadOtherMainSection(this.value);">
                                         <option selected value="No">@Resources.Global.lblNo</option>
                                         <option value="Yes">@Resources.Global.lblYes</option>
 
@@ -83,14 +83,37 @@
 
                         </div>
                     </div>
+                    @*<div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                    <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks" required></textarea>
+                                </div>
+                            </div>
+                        </div>*@
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                                <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks" required></textarea>
+                                <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks"></textarea>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                                <span style="color: red">*</span>
+                                <select class="form-control" id="DesignSection_comment_for_client_or_employee" name="DesignSection_comment_for_client_or_employee" required>
+                                    <option value="" selected>Select</option>
+                                    <option value="Employee">Employee</option>
+                                    <option value="Client">Client</option>
+                                    <option value="Both">Both</option>
+                                    <option value="NoRemarks">No Remarks</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
+
                     <!--<div class="row">
                     <div class="col-md-6">-->
                     @*<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> Upload Document</button>*@
@@ -185,12 +208,12 @@
                             </div>
 
                             @*<div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                                    <div class="form-group">
+                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
-                </div>
-            </div>*@
+                                        <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                     <div id="div-design-section-employees-area">

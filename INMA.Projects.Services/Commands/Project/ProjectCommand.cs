@@ -200,6 +200,7 @@ namespace INMA.Projects.Services.Project
                     Client_Id = 0,
                     ProjectStatus = string.Empty,
                     Location = string.Empty,
+                    OldProjectNo = 0,
 
                     Language = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
@@ -233,6 +234,7 @@ namespace INMA.Projects.Services.Project
                              (string)"",
                              (string)"",
                              (int)0,
+                              (string)"",
                               (string)"",
 
                             XtremeFactory._factory, XtremeFactory.connectionString);
@@ -598,6 +600,7 @@ namespace INMA.Projects.Services.Project
                     DesignSection_Document_Language = string.Empty,
                     DesignSection_Remarks = string.Empty,
                     DesignSection_Document_NoExpiry = string.Empty,
+                    DesignSection_comment_for_client_or_employee = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
                 }, v);
                 #region ==========  PARAMETERS
@@ -683,6 +686,7 @@ namespace INMA.Projects.Services.Project
                         (string)model.DesignSection_Document_NoExpiry,
                         (int)model.DesignSection_Document_ProjectId,
                         (string)model.DesignSection_Remarks,
+                        (string)model.DesignSection_comment_for_client_or_employee,
 
                         XtremeFactory._factory, XtremeFactory.connectionString);
 
@@ -921,6 +925,7 @@ namespace INMA.Projects.Services.Project
                     UserId = 0,
                     AttachmentRemarks = string.Empty,
                     ApprovedOrReturned = string.Empty,
+                    DesignSection_comment_for_client_or_employee = string.Empty,
                     Language = string.Empty
                 }, viewInput);
 
@@ -1279,6 +1284,7 @@ namespace INMA.Projects.Services.Project
                     TechnicalSection_Document_NoExpiry = string.Empty,
                     TechnicalSection_Document_Language = string.Empty,
                     TechnicalSection_Remarks = string.Empty,
+                    TechnicalSection_comment_for_client_or_employee = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
                 }, v);
                 #region ==========  PARAMETERS
@@ -1365,6 +1371,7 @@ namespace INMA.Projects.Services.Project
                         (string)model.TechnicalSection_Document_NoExpiry,
                         (int)model.TechnicalSection_Document_ProjectId,
                         (string)model.TechnicalSection_Remarks,
+                        (string)model.TechnicalSection_comment_for_client_or_employee,
 
                         XtremeFactory._factory, XtremeFactory.connectionString);
 
@@ -1585,6 +1592,7 @@ namespace INMA.Projects.Services.Project
                     UserId = 0,
                     AttachmentRemarks = string.Empty,
                     ApprovedOrReturned = string.Empty,
+                    TechnicalSection_comment_for_client_or_employee = string.Empty,
                     Language = string.Empty
                 }, viewInput);
 
@@ -1624,6 +1632,7 @@ namespace INMA.Projects.Services.Project
                     SupervisionSection_Document_NoExpiry = string.Empty,
                     SupervisionSection_Document_Language = string.Empty,
                     SupervisionSection_Remarks = string.Empty,
+                    SupervisionSection_comment_for_client_or_employee = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
                 }, v);
                 #region ==========  PARAMETERS
@@ -1716,6 +1725,7 @@ namespace INMA.Projects.Services.Project
                         (string)model.SupervisionSection_Document_NoExpiry,
                         (int)model.SupervisionSection_Document_ProjectId,
                         (string)model.SupervisionSection_Remarks,
+                        (string)model.SupervisionSection_comment_for_client_or_employee,
 
                         XtremeFactory._factory, XtremeFactory.connectionString);
 
@@ -2026,6 +2036,7 @@ namespace INMA.Projects.Services.Project
                     UserId = 0,
                     AttachmentRemarks = string.Empty,
                     ApprovedOrReturned = string.Empty,
+                    SupervisionSection_comment_for_client_or_employee = string.Empty,
                     Language = string.Empty
                 }, viewInput);
 

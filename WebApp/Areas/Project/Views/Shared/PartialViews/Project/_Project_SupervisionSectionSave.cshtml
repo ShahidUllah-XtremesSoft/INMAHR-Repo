@@ -110,7 +110,19 @@
                     <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
                 </div>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                    <span style="color: red">*</span>
+                    <select class="form-control" id="SupervisionSection_comment_for_client_or_employee" name="SupervisionSection_comment_for_client_or_employee" required>
+                        <option value="" selected>Select</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Client">Client</option>
+                        <option value="Both">Both</option>
+                        <option value="NoRemarks">No Remarks</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="card-footer">
             <div class="row">

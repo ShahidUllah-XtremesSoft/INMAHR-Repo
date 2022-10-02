@@ -574,6 +574,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For.
+        /// </summary>
+        public static string lblFor {
+            get {
+                return ResourceManager.GetString("lblFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Garage / Parking.
         /// </summary>
         public static string lblGarageParking {
@@ -885,6 +894,15 @@ namespace ProjectUI {
         public static string lblNotificationList {
             get {
                 return ResourceManager.GetString("lblNotificationList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old.
+        /// </summary>
+        public static string lblOld {
+            get {
+                return ResourceManager.GetString("lblOld", resourceCulture);
             }
         }
         

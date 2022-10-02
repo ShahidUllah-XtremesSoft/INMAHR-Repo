@@ -15,39 +15,39 @@
 
                     </div>
                     <div class="col-md-6">
-                        
-                            <div class="show-hide-employee-task-area card-block" style="display: none;float: right; border: 1px solid;">
-                                <div class="row">
 
-                                    <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
-                                        <span class="">    @ProjectUI.ProjectUI.lblAssignDate </span>
-                                        <b class=""><span class="assign-employee-start-date" id=""></span> </b>
-                                    </div>
+                        <div class="show-hide-employee-task-area card-block" style="display: none;float: right; border: 1px solid;">
+                            <div class="row">
+
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
+                                    <span class="">    @ProjectUI.ProjectUI.lblAssignDate </span>
+                                    <b class=""><span class="assign-employee-start-date" id=""></span> </b>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12 @Resources.Common.PullRight show-hide-completion-start-datetime">
-                                        <span class="">    @ProjectUI.ProjectUI.lblCompletionDate</span>
-                                        <b class=" "><span class="assign-employee-end-date" id=""></span> </b>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 @Resources.Common.PullRight show-hide-employee-start-datetime">
-
-                                        <span class="">    @Resources.Global.lblStartDate</span>
-                                        <b class="">
-                                            <span class="employee-work-date" id=""></span>
-                                            <span class="employee-work-time" id=""></span>
-                                        </b>
-                                        @*<button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>*@
-
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-completion-start-datetime">
+                                    <span class="">    @ProjectUI.ProjectUI.lblCompletionDate</span>
+                                    <b class=" "><span class="assign-employee-end-date" id=""></span> </b>
 
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 @Resources.Common.PullRight show-hide-employee-start-datetime">
 
+                                    <span class="">    @Resources.Global.lblStartDate</span>
+                                    <b class="">
+                                        <span class="employee-work-date" id=""></span>
+                                        <span class="employee-work-time" id=""></span>
+                                    </b>
+                                    @*<button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>*@
+
+                                </div>
 
                             </div>
+
+
                         </div>
+                    </div>
                 </div>
                 <div class="modal-body">
                     <form id="frmAddUpdate_DesignSection_Document" name="frmAddUpdate_DesignSection_Document" action="/services/Xtreme/multipart" method="post">
@@ -127,10 +127,23 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="col-form-label">@Resources.Global.lblRemarks</label>
                                     <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                                    <span style="color: red">*</span>
+                                    <select class="form-control" id="DesignSection_comment_for_client_or_employee" name="DesignSection_comment_for_client_or_employee" required>
+                                        <option value="" selected>Select</option>
+                                        <option value="Employee">Employee</option>
+                                        <option value="Client">Client</option>
+                                        <option value="Both">Both</option>
+                                        <option value="NoRemarks">No Remarks</option>
+                                    </select>
                                 </div>
                             </div>
 

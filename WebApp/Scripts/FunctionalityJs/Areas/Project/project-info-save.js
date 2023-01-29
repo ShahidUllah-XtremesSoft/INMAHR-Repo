@@ -218,6 +218,7 @@ function editProjectByIdCallBack(response) {
     $('#Location').val(response.location);
     $('#IsVIP').val(response.vipStatus);
     $('#IsUrgent').val(response.urgentStatus);
+    $('#OldProjectNo').val(response.oldProjectNo);
 
 
     $('#ProjectCategoryType_In_Setup_TypeDetail_Id').val(response.projectCategoryType_In_Setup_TypeDetail_Id);

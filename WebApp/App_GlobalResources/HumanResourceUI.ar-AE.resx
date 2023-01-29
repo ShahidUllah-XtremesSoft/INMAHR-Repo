@@ -605,6 +605,9 @@
   <data name="lblNew" xml:space="preserve">
     <value>جديد</value>
   </data>
+  <data name="lblNewBtn" xml:space="preserve">
+    <value>إنشاء رسالة جديدة</value>
+  </data>
   <data name="lblNewPassword" xml:space="preserve">
     <value>كلمة المرور الجديدة</value>
   </data>

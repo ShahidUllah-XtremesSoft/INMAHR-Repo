@@ -38,6 +38,7 @@
         .loginformsize {
             font-size: 50px;
         }
+
         #RequestLoader {
             position: fixed;
             z-index: 999;
@@ -109,7 +110,7 @@
 
     <div id="RequestLoader" class="modal">
         <div class="center">
-            <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150"/>
+            <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150" />
             <h3>Loading...</h3>
         </div>
     </div>
@@ -125,6 +126,11 @@
                         </div>
                         <div class="col-sm-2">
 
+
+                            @*<a href="@Url.Action("ExportToPDF", "Report")">Print </a>*@
+                            @*<a href="@Url.Action("DepartmentReportNew", "Report")" target="_blank">Print department </a>*@
+                            @*<button type="button" class="btn btn-outline-info" onclick="fnPrintReport(this)" > Print Department</button>
+                            <input type="date" id="start-date" value="" />*@
 
                             <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })">@Resources.Common.LanguageText </a>
 
@@ -153,17 +159,17 @@
                                         </div>
                                         <input id="Password" name="Password" type="password" class="form-control form-control-lg" placeholder="@HRModuleUI.HumanResourceUI.phPassword" aria-label="Password" aria-describedby="basic-addon1" required="">
                                     </div>
-                                    
+
                                     @*<div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
-                                        </div>
-                                         
-                                            <div class=" demo-section k-content kendo-direction"></div>
-                                            
-                                         <select id="MainApplicationModule_Id" class="form-control form-control-lg  " required ></select>
-                                    </div>*@
-                                    
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                            </div>
+
+                                                <div class=" demo-section k-content kendo-direction"></div>
+
+                                             <select id="MainApplicationModule_Id" class="form-control form-control-lg  " required ></select>
+                                        </div>*@
+
                                     <div class="input-group mb-3">
                                         <div class="form-group">
                                             <span style="color:red; font-size:18px" id="error_span" name="error_span"></span>
@@ -226,5 +232,10 @@
 
 
         $('#Language').val(_currentLanguage);
+
+
+
+
     })
+    
 </script>

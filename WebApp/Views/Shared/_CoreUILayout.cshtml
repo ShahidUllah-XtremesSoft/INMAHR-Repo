@@ -176,14 +176,19 @@
                 @*<img src="~/Content/Images/shjcBlue_logo.png" width="155px" height="49px"  />*@
             </a>
             <ul class="languageUL nav navbar-nav hidden-md-down @Resources.Common.PullLeft" style="padding-left:61px;">
-                <li class="nav-item p-x-1">
+                <li class="nav-item p-x-1 languageLi">
 
                     <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
+                </li>
+                <li class="nav-item p-x-1 project-search-icon" style="display:none;"> 
+                    <a class=" nav-link @Resources.Common.PullRight" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i> </a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
+
                 <li class="nav-item dropdown">
+
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
@@ -193,6 +198,7 @@
                 </li>
 
                 <li class="nav-item p-x-10"></li>
+            
                 <li class="nav-item p-x-1" id="LoggedInEmployeeName">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

@@ -126,6 +126,29 @@ namespace INMA.Projects.Services.Project
 
             }
         }
+        [Command(Name = "Project_Get_BySearch")]
+        public class Project_Get_BySearchCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            { 
+                var model = base.MappedModel(new
+                {
+                    LoggedInUser = 0,
+                    RoleId = 0,
+                    LoggedInEmployeeId = 0,
+                    SearchParameter = string.Empty,
+                    Language = string.Empty
+                }, viewInput);
+
+
+               
+                _ = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters(); 
+                IDictionary<string, object> values = _params.Get(model);
+                return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_Get_BySearch.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+            }
+        }
         [Command(Name = "Project_Delay_Get")]
         public class Project_Delay_GetCommand : CamelCommandBase
         {

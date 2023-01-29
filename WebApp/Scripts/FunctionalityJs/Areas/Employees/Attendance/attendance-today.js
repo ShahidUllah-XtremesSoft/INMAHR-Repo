@@ -222,11 +222,15 @@ var bindAttendanceGrid = function (inputDataJSON) {
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 55, },
         { field: "id", title: "id", hidden: true },
-        { field: "employeeNumber", title: empNum, width: 100, filterable: true },
+        {
+            field: "employeeNumber", title: empNum, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
+            template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick= redirectToEmployeeDetailView(this)  title='Employee Number'>#=employeeNumber#</a> ",
+
+        },
         { field: "employeeId", title: 'EmployeeId', width: 10, filterable: true, hidden: true },
-        { field: "employeeName", title: employeeName, width: 300, filterable: true },
+        { field: "employeeName", title: employeeName, width: 300, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "departmentId", title: 'DepartmentId', width: 300, filterable: true, hidden: true },
-        { field: "departmentName", title: department, width: 190, filterable: true },
+        { field: "departmentName", title: department, width: 190, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "checkInDate", title: checkinDate, width: 100, filterable: false },
         {
             title: status,
@@ -241,7 +245,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
                 " else if(status == 'Absent')" +
                 " { if(status == 'Absent' && departmentId==11 || departmentId==22) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}  " +
                 "else {# <span class='badge badge-primary'>#:status#</span> #}#"
-         //   , footerTemplate: "<span class=''>" + lblPresent + ":<span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ":<span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
+            //   , footerTemplate: "<span class=''>" + lblPresent + ":<span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ":<span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
 
         },
         {
@@ -306,6 +310,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
     ];
 
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
+  //  fnGridColors();
     calculateFooterData();
     /*
     setTimeout(function () {
@@ -390,6 +395,25 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
 
 };
+function redirectToEmployeeDetailView(e) {
+     
+    var row = $(e).closest("tr");
+    var grid = $("#" + attendanceGrid).data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+ 
+    
+    localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
+    localStorage.setItem('LoggedInEmployeeId', dataItem.employeeId);
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.employeeId);
+
+
+    localStorage.setItem('EmployeeIdForAttendance', dataItem.employeeId);
+    localStorage.setItem('EmployeeNumberForAttendance', dataItem.employeeNumber);
+    window.location.href = '/Employees/Attendance/Detail';//?employeeId=' + dataItem.id + '';
+
+
+}
+
 function redirecToLeaveRequest(e) {
     //window.location.href = '/Employees/Attendance/Today?empNum=' + dataItem.id + '';
     var row = $(e).closest("tr");
@@ -432,6 +456,28 @@ var getAttendanceIdsFromGrid = function () {
     }
     return attendanceIds;
 }
+function fnGridColors() {
+    setTimeout(function () {
+        var grid = $("#" + attendanceGrid).data("kendoGrid");
+        var gridData = grid.dataSource.view();
+        console.log(gridData)
+        for (var i = 0; i < gridData.length; i++) {
+
+            if (gridData[i].employeeNumber.match(/INMA.*/)) {
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(0, 133, 155, 0.21)');
+            }
+            if (gridData[i].employeeNumber.match(/NSS.*/)) {
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", '#06009b1c');
+            }
+            if (gridData[i].employeeNumber.match(/SHJ.*/)) {
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(5, 164, 0, 0.18)');
+            }
+
+        }
+
+
+    }, 100);
+}
 function calculateFooterData() {
     setTimeout(function () {
 
@@ -449,7 +495,7 @@ function calculateFooterData() {
             //}
             if (gridData[i].status == 'Absent') {
 
-                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17 || gridData[i].employeeId==24) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
+                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17 || gridData[i].employeeId == 24) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
                     // 17 & 22 is NSS and technical section id's ,this color will be orange as per HR       
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
 

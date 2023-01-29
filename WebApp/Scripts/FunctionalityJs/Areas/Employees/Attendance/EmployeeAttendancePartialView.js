@@ -229,7 +229,45 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
     ];
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
+    //var grid = $("#" + attendanceGrid).data("kendoGrid");
+    //grid.showColumn("employeeName");
+    //grid.saveAsExcel();
+    /*var grid = $("#" + attendanceGrid).data("kendoGrid");
+    grid.bind("excelExport", function (e) {
+        debugger
+        e.preventDefault();
+        grid.showColumn("employeeNumber");
+        grid.showColumn("employeeName");
+        e.workbook.fileName = "Grid.xlsx";
+        grid.saveAsExcel();
+        return true 
+    });*/
+
+    var exportFlag = false;
+    $("#" + attendanceGrid).data("kendoGrid").bind("excelExport", function (e) {
+         
+        if (!exportFlag) {
+            e.sender.showColumn(2);
+            e.sender.showColumn(4);
+            e.preventDefault();
+            exportFlag = true;
+            setTimeout(function () {
+                e.sender.saveAsExcel();
+            });
+        } else {
+            e.sender.hideColumn(2);
+            e.sender.hideColumn(4);
+            exportFlag = false;
+        }
+        
+    });
+
+
+
+
+
     setTimeout(function () {
+       
         calculateFooterData();
         /*
         var grid = $("#AttendanceGrid").data("kendoGrid");
@@ -482,7 +520,7 @@ var loadAttendance_LeaveDropdownListCallBack = function (response) {
             // var value = this.value();
             var value = this.text();
             if (value) {
-                 
+
 
                 var grid = $("#AttendanceGrid").data("kendoGrid");
 
@@ -518,7 +556,7 @@ function fnShowLeaveDetailsInPopup(e) {
     var dataItem = grid.dataItem(row);
     console.log(dataItem)
     $('.leave-history-modal-title').text(dataItem.status);
-   
+
 
     $('#btn-show-leave-details-modal').click();
     var inputJSON = {
@@ -560,7 +598,7 @@ var loadAttendanceLeaveDetailsGridData = function (inputDataJSON) {
         {
             field: "inOutTime", title: lblOut + " / " + lblIn, width: 40, filterable: false,
         },
-        
+
         //{
         //    title: lblIn + " / " + lblOut, headerAttributes: { style: "text-align: center;" },
         //    columns: [
@@ -572,7 +610,7 @@ var loadAttendanceLeaveDetailsGridData = function (inputDataJSON) {
         //    ]
         //},
         {
-            title: status,field: 'status',width: 30,hidden: false,filterable: false,
+            title: status, field: 'status', width: 30, hidden: false, filterable: false,
         },
         { field: "requested_Starttime", title: startTime, hidden: true, width: 60, filterable: false },
         { field: "requested_Endtime", title: returnTime, hidden: true, width: 60, filterable: false },

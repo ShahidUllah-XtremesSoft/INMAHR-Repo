@@ -117,28 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangeLang" xml:space="preserve">
-    <value>en-US</value>
-  </data>
-  <data name="CurrentLang" xml:space="preserve">
-    <value>ae-AE</value>
-  </data>
-  <data name="LanguageDirection" xml:space="preserve">
-    <value>ar-AE.css</value>
-  </data>
-  <data name="LanguageText" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="PageDirection" xml:space="preserve">
-    <value>rtl.js</value>
-  </data>
-  <data name="PageLayout" xml:space="preserve">
-    <value>style-rtl.css</value>
-  </data>
-  <data name="PullLeft" xml:space="preserve">
-    <value>pull-right</value>
-  </data>
-  <data name="PullRight" xml:space="preserve">
-    <value>pull-left</value>
+  <data name="startDate" xml:space="preserve">
+    <value>2022-10-20</value>
   </data>
 </root>

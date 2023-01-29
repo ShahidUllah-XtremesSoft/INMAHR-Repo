@@ -968,7 +968,7 @@
     function loggedInUserDetails_CallBack(loggedInDetails) {
 
 
-         
+          
         if (JSON.parse(loggedInDetails.Value) != null) {
 
         localStorage.setItem('User', loggedInDetails.Value);
@@ -1086,7 +1086,7 @@
 
     }
     function fn_Website_Configuration_Get_CallBack(response) {
-        console.log(JSON.parse(response.Value))
+       // console.log(JSON.parse(response.Value))
         var newResponse = JSON.parse(response.Value);
 
         if (newResponse != null) {
@@ -1124,7 +1124,7 @@
 
     }
     function fn_Website_Configuration_Services_Get_CallBack(response) {
-        console.log(JSON.parse(response.Value))
+      //  console.log(JSON.parse(response.Value))
         var newResponse = JSON.parse(response.Value);
         if (newResponse != null) {
 

@@ -32,6 +32,11 @@ namespace WebApp.Areas.Project.Controllers
         {
             return View("~/Areas/Project/Views/Project/Details-for-employee.cshtml");
 
+        } 
+        //-------------- Search All projects
+        public ActionResult Search()
+        {
+            return View("~/Areas/Project/Views/Project/Search-project.cshtml");
         }
         public ActionResult LoadAllEmployees()
         {
@@ -52,7 +57,8 @@ namespace WebApp.Areas.Project.Controllers
         public ActionResult Load_Supervision_Section_Employees()
         {
             return PartialView("~/Areas/Project/Views/Shared/PartialViews/Project/_Load_Supervision_Section_Employees.cshtml");
-        }
+        } 
+      
         #endregion
      
 

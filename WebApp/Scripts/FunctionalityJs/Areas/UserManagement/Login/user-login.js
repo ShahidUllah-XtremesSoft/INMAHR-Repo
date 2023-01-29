@@ -1,5 +1,5 @@
 ﻿$(function () {
-   //loadMainApplicationModule();
+    //loadMainApplicationModule();
     localStorage.setItem('Menus', ({}));
     localStorage.setItem('User', ({}));
     $('#Email').keyup(function (e) {
@@ -33,7 +33,7 @@
 
 });
 function userLoginCallBack(userLoginResponse) {
-    
+
     if (JSON.parse(userLoginResponse.Value).message == 'Detail are not verified' || JSON.parse(userLoginResponse.Value).message == "لم يتم التحقق من التفاصيل"
         //if (userLoginResponse.Value == 'null'  || JSON.parse(userLoginResponse.Value).message == 'Detail are not verified'
         //|| JSON.parse(userLoginResponse.Value).message != null    
@@ -44,15 +44,15 @@ function userLoginCallBack(userLoginResponse) {
     }
     else {
 
-     //   getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId, JSON.parse(userLoginResponse.Value).isHR, JSON.parse(userLoginResponse.Value).id);
-           
+        //   getAssignedMenusForRole(JSON.parse(userLoginResponse.Value).roleId, JSON.parse(userLoginResponse.Value).isHR, JSON.parse(userLoginResponse.Value).id);
+
         localStorage.setItem('LoggedInUserId', JSON.parse(userLoginResponse.Value).id);
         localStorage.setItem('isHR', JSON.parse(userLoginResponse.Value).isHR);
         localStorage.setItem('roleId', JSON.parse(userLoginResponse.Value).roleId);
 
 
-       // localStorage.setItem('User', userLoginResponse.Value);
-       // localStorage.setItem('EmployeeNumber', JSON.parse(userLoginResponse.Value).employeeNumber);
+        // localStorage.setItem('User', userLoginResponse.Value);
+        // localStorage.setItem('EmployeeNumber', JSON.parse(userLoginResponse.Value).employeeNumber);
         window.location.href = "/Home/Application/";
         swal('success', 'You`re logged in successfully');
     }
@@ -62,8 +62,8 @@ function userLoginCallBack(userLoginResponse) {
 //    ajaxRequest({ commandName: 'UserManagement_RoleMenu_GetByRole', values: { RoleId: roleId, IsHR: isHR, LoggedInUserId: loggedInUserId, Language: _currentLanguage, MainApplicationModule_Id: $('#MainApplicationModule_Id').val() }, CallBack: getAssignedMenusForRoleCallBack });
 //}
 
- function getAssignedMenusForRoleCallBack(roleMenus) {
-     
+function getAssignedMenusForRoleCallBack(roleMenus) {
+
     localStorage.setItem('Menus', (roleMenus.Value));
     localStorage.setItem('MainApplicationModule_Id', $('#MainApplicationModule_Id').val());
     window.location.href = "/HumanResource/Employee/Profile";
@@ -96,3 +96,19 @@ function fnLoadMainApplicationModuleCallBack(response) {
 
 }
 */
+
+
+
+
+
+function fnPrintReport(e) {
+    var startDate = $('#start-date').val() 
+    var reportExtension = "PDF";
+
+    var url = "/Report/DepartmentReportNew?reportExtension=" + reportExtension + "&startDate=" + startDate; 
+    var a = document.createElement('a');
+    a.setAttribute('href', url);
+    //a.innerHTML = "";
+    a.target = "_blank";
+    a.click();
+}

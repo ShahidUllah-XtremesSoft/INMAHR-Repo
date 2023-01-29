@@ -49,7 +49,7 @@ function stepper_TECHNICAL_SECTION(response) {
             selected: JSON.parse(response.Value)[i].project_sub_stepper_menu_selected,
             // successIcon: JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon,
         });
-
+         
         if (JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon == 'check') {
             step_Columns.push({ label: "Completed", enabled: false, selected: true, successIcon: "k-icon k-i-check", iconTemplate: function (e) { return '<strong> </strong>'; } });
         }

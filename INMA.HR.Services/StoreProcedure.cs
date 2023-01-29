@@ -334,6 +334,7 @@ public enum ProjectStoreProcedure
 
     #region PROJECT  
     Project_Get,
+    Project_Get_BySearch,
     Project_Delay_Get,
     Project_Get_By_Employee_Id,
     Project_save,

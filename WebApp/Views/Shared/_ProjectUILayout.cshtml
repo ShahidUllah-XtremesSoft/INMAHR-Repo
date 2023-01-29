@@ -159,18 +159,19 @@
                     <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
                 </li>
             </ul>
-
+          
             <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
                 @*<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
-                        <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('CompanyDocument');" id="liNewToExpireCompanyDocument"><i class="fa fa-file-o"></i> @Resources.Global.lblCompanyDocument <span class="badge badge-danger" id="companyDocumentCount">0</span></a>
+                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
+                    <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('CompanyDocument');" id="liNewToExpireCompanyDocument"><i class="fa fa-file-o"></i> @Resources.Global.lblCompanyDocument <span class="badge badge-danger" id="companyDocumentCount">0</span></a>
 
-                    </div>
-                </li>*@
+                </div>
+            </li>*@
 
-                <li class="nav-item p-x-10"></li>
+
+                <li class="nav-item p-x-1">  </li>
                 <li class="nav-item p-x-1" id="LoggedInEmployeeName">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -350,7 +351,7 @@
     var lblDoYouWantToTransferToOtherMainSection = '@Resources.Global.lblDoYouWantToTransferToOtherMainSection';
     var doYouReallyWantToUpdateThisStatus = '@Resources.Global.doYouReallyWantToUpdateThisStatus';
 
-    
+
     var lblStatusValid              = '@Resources.Global.lblStatusValid';
     var lblStatusExpired            = '@Resources.Global.lblStatusExpired';
 
@@ -372,7 +373,7 @@
     var lblDelay = '@Resources.Global.lblDelay';
     var lblOnTime = '@Resources.Global.lblOnTime';
     var doYouReallyWantToStartWorkingOnIt = '@Resources.Global.doYouReallyWantToStartWorkingOnIt';
-    
+
 
 
     var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
@@ -386,7 +387,7 @@
    var lblExpiryDateCannotBeLessThanIssue = '@HRModuleUI.HumanResourceUI.lblExpiryDateCannotBeLessThanIssue';
     var lblSelect = '@HRModuleUI.HumanResourceUI.lblSelect';
     var lblName = '@HRModuleUI.HumanResourceUI.lblName';
-    
+
    @*  var select = '@HRModuleUI.HumanResourceUI.lblSelect';
 
 
@@ -494,7 +495,7 @@
     var lblTotalTime = '@ProjectUI.ProjectUI.lblTotalTime';
     var lblApprovedBy = '@ProjectUI.ProjectUI.lblApprovedBy';
     var lblNoExpiry = '@ProjectUI.ProjectUI.lblNoExpiry';
-    
+
 
 
 

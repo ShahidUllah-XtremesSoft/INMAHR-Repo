@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Search" + ProjectUI.ProjectUI.lblProject;
+
+
+}
+<!--<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-12">
+                { Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_ProjectSearch_PartialView.cshtml"); }-->
+<!--</div>
+        </div>
+    </div>
+</div>-->
+
+<div class="card">
+    <div class="card-block">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <label class="col-form-label">Enter Project No  </label>
+                <div class="input-group">
+                    <input type="text" class="form-control " id="search-project" value="">
+                    <span style=" cursor: pointer;" class="input-group-addon btn-outline-success" onclick="fnLoadProjectBySearch(this, $('#search-project').val());"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-block">
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="project-grid"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-search.js"></script>
+
+}
+

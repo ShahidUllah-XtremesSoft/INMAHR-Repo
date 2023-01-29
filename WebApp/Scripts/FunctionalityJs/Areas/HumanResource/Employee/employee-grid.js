@@ -272,6 +272,7 @@ function redirectToEmployeeDetailView(e) {
     var row = $(e).closest("tr");
     var grid = $("#employee-grid").data("kendoGrid");
     var dataItem = grid.dataItem(row);
+     
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.id);
     localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);

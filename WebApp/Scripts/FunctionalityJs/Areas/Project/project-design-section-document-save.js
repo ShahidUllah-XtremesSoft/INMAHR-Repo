@@ -43,9 +43,10 @@ function fnLoadDesignSectionReady() {
 $('#btn-save-design-section-government-documents').click(function () {
 
     if (customValidateForm('frmAddUpdate_DesignSection_Document')) {
-        if (!firstDateShouldBeGreaterThanSecondDate($('#StartDate').val(), $('#EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
-            return false;
-        }
+        //if (!firstDateShouldBeGreaterThanSecondDate($('#StartDate').val(), $('#EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+        //    return false;
+        //}
+
         buttonAddPleaseWait('btn-save-design-section-government-documents');
 
         $("#frmAddUpdate_DesignSection_Document").ajaxForm();

@@ -609,6 +609,9 @@
   <data name="lblNew" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="lblNewBtn" xml:space="preserve">
+    <value>New</value>
+  </data>
   <data name="lblNewPassword" xml:space="preserve">
     <value>New Password</value>
   </data>

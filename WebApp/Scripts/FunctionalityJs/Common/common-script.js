@@ -215,8 +215,11 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
 
 }
 var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
+
+    
+
     $("#" + $gridid).kendoGrid({
-        toolbar: ["excel", "pdf", "search"],
+        toolbar: ["excel"],
         pdf: {
             allPages: true,
             paperSize: "A4",
@@ -225,9 +228,8 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
             landscape: true,
             template: $("#page-template").html()
         },
-        excel: {
-            fileName: "Export To Exceel.xlsx"
-        },
+       excel: { fileName: "Export To Exceel.xlsx"},
+       
 
         dataSource: {
             data: $data,
@@ -1021,7 +1023,7 @@ var treeFomatterRoleBase = function (arr, parent) {
 }
 
 var treeFomatter = function (arr, parent) {
-
+     
     var out = [];
     for (var i in arr) {
         if (arr[i].parentId == parent) {

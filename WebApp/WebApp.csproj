@@ -134,6 +134,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -172,6 +173,11 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Reporting, Version=16.2.22.914, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.Reporting.OpenXmlRendering, Version=16.2.22.914, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik Reporting R3 2022\Examples\CSharp\.NET Framework\AspNetMvcIntegrationDemo\bin\Telerik.Reporting.OpenXmlRendering.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -324,6 +330,7 @@
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\api\XtremeController.cs" />
+    <Compile Include="Controllers\ReportController .cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -599,6 +606,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-technical-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details\project-detail-design-section.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-delay-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\project-search.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-supervision-section-assigned-employees-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-technical-section-assigned-employees-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-assigned-employees-grid.js" />
@@ -717,7 +725,34 @@
     <Content Include="Areas\Request\Views\Evaluation\Create.cshtml" />
     <Content Include="Areas\Employees\Views\Request\Evaluation.cshtml" />
     <Content Include="Areas\HumanResource\Views\Employee\Resigned.cshtml" />
+    <Content Include="Areas\Project\Views\Project\Search-project.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_ProjectSearch_PartialView.cshtml" />
     <None Include="Resources\dropdowns.cs" />
+    <Compile Include="Reports\HR-Reports\HR_Department.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\HR_Department.Designer.cs">
+      <DependentUpon>HR_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\Report1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\Report1.Designer.cs">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\Report2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\Report2.Designer.cs">
+      <DependentUpon>Report2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\TestReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\HR-Reports\TestReport.Designer.cs">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Models\HR_Department.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
     <Compile Include="token\AddChallengeOnUnauthorizedResult.cs" />
@@ -1455,6 +1490,19 @@
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_All_Employees.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Project_TechnicalSectionSave.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_Load_Technical_Section_Employees.cshtml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\HR-Reports\HR_Department.resx">
+      <DependentUpon>HR_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\HR-Reports\Report1.resx">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\HR-Reports\Report2.resx">
+      <DependentUpon>Report2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\HR-Reports\TestReport.resx">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1857,6 +1905,7 @@
     <Folder Include="Exceptions\" />
     <Folder Include="logs\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
+    <Folder Include="Reports\Project-Reports\" />
     <Folder Include="_logs\" />
   </ItemGroup>
   <ItemGroup>
@@ -1896,6 +1945,7 @@
     <Content Include="App_GlobalResources\Common.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\Global.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>

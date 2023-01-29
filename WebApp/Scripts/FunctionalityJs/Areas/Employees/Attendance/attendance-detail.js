@@ -44,7 +44,7 @@ var loadAttendanceGridCallBack = function (inputDataJSON) {
     bindAttendanceGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAttendanceGrid = function (inputDataJSON) {
-
+     
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
@@ -67,6 +67,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
     ];
 
     bindKendoGrid(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
+    
 };
 
 function departmentTreeViewCheck(e) {

@@ -52,6 +52,8 @@ var bindEvaluationGrid = function (inputDataJSON) {
             field: "", width: 15,
             title: ' ',
             filterable: false,
+            //  template: "#if(isRecordExist == 0){ #<a style='font-size:20px;cursor:pointer;' onClick= delete_EvaluationGridById(this)  title='Delete '><span class='fa fa-trash'></span></a>#}" +
+            //      "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_EvaluationDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
             template: "#if(isRecordExist == 0){ #<a style='font-size:20px;cursor:pointer;' onClick= delete_EvaluationGridById(this)  title='Delete '><span class='fa fa-trash'></span></a>#}" +
                 "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_EvaluationDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
 
@@ -67,7 +69,7 @@ function see_EvaluationDetailsById(event) {
     var row = $(event).closest("tr");
     var grid = $("#" + EvaluationGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-     
+
     window.location.href = '/Request/Evaluation/Index?EvaluationId=' + dataItem.request_Evaluation_Id + '?' + 'EmployeeNumber=' + dataItem.hR_Employee_Number + '?' + 'Evaluation_History_Id=' + dataItem.request_Evaluation_History_Id + '';
 
 }
@@ -76,7 +78,7 @@ function delete_EvaluationGridById(event) {
     var row = $(event).closest("tr");
     var grid = $("#" + EvaluationGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-     
+
     Swal.fire({
 
         title: areYouSureTitle,

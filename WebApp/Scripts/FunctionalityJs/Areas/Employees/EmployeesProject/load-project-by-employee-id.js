@@ -3,7 +3,7 @@ var emp_ID = 0;
 $(function () {
 
     if (localStorage.getItem('MainApplicationModule_Id') == 2) {  
-
+        $('.project-search-icon').show();
         if (JSON.parse(localStorage.getItem('Menus'))[0].staticComment != 'Lock') { // Lock - mean to upload document first then employee will be able to see project
 
             setTimeout(function () {
@@ -55,6 +55,7 @@ var loadProjectGridByEmployeeIdbindGrid = function (inputDataJSONs) {
     var record = 0;
 
     if (inputDataJSONs.length <= 0) { $('#divEmployeeProject').hide(); } else {
+
 
         var gridColumnss = [
 

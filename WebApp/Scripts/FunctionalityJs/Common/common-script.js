@@ -1145,7 +1145,7 @@ function renderKendoDatePickerWithNewFormat(controlId, format = 'dd/MM/yyyy') {/
     //        dateInput: true
     //    });
 }
-function renderKendoTimePicker(controlId, timeFormate = 'HH:mm', startTime = '08:00 AM', endTime = '08:00 PM') {
+function renderKendoTimePicker(controlId, timeFormate = 'HH:mm', startTime = '08:00 AM', endTime = '11:30 PM') {
 
     var kendoTimePicker = $("#" + controlId).data("kendoTimePicker");
     if (kendoTimePicker != undefined) {

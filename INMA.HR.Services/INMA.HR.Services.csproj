@@ -133,6 +133,7 @@
     <Compile Include="Commands\Request\LeaveRequestCommand.cs" />
     <Compile Include="Commands\Request\LetterRequestCommand.cs" />
     <Compile Include="Commands\Request\ShortLeaveRequestCommand.cs" />
+    <Compile Include="Commands\Setup\RosterCommand.cs" />
     <Compile Include="Commands\Setup\PublicHolidayCommand.cs" />
     <Compile Include="Commands\UserManagement\LoginCommand.cs" />
     <Compile Include="Commands\UserManagement\MenuCommand.cs" />

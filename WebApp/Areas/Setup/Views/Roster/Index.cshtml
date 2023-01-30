@@ -1,0 +1,221 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblRoster;
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#RosterTab" role="tab">@HRModuleUI.HumanResourceUI.lblRoster</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#RosterAssociationTab" role="tab" id="RosterAssociationTabLi">@HRModuleUI.HumanResourceUI.lblRosterAssociation</a>
+                </li>
+
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="RosterTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form id="frmAddUpdateRoster" name="frmAddUpdateRoster" action="/services/Xtreme/multipart" method="post">
+                                            <input type="hidden" name="type" id="type" value="Setup_Roster_Save" />
+                                            <input type="hidden" name="Id" id="Id" value="0" />
+                                            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                                            <input type="hidden" name="Language" id="Language" value="" />
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTypeEng</label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="TypeEng" name="TypeEng" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTypeArb</label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="TypeArb" name="TypeArb" required />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblStartTime </label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="DayStartTime" name="DayStartTime" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@Resources.Global.lblEndTime </label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="DayEndTime" name="DayEndTime" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row break-div">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblBreakStartTime </label>
+                                                        <input class="form-control" id="BreakStartTime" name="BreakStartTime" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblBreakEndTime </label>
+                                                        <input type="time" class="form-control" id="BreakEndTime" name="BreakEndTime" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+
+                                                        <label class="btn  " for='isNoBreak' style="margin-bottom: 0px;text-align:@Resources.Common.PullRight" onchange="fnisNoBreak()">
+                                                            <input type="checkbox" id='isNoBreak' style="width: 15px;height: 15px;" name='isNoBreak' value="0">
+                                                            <font class="isNoBreak" style="font-size: large;">  No Break </font>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">  </div>
+                                            </div>
+                                            <div class="row">
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblRelaxationTime </label>
+                                                        @*<input class="form-control" id="StartTimeRelaxationMinutes" name="StartTimeRelaxationMinutes" value="0" />*@
+                                                        <input class="form-control" id="StartTimeRelaxationMinutes" name="StartTimeRelaxationMinutes" value="0" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"> </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="grid-main-div">
+                                            <div id="div-roster-grid">  </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @*<a href="@Url.Action("List","Employee")" class="btn btn-danger  @Resources.Common.PullRight" m-r-10" id=""> @Resources.Global.btnCancel</a>*@
+                                            <button class="btn btn-success  @Resources.Common.PullLeft" id="btn-save-roster"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="RosterAssociationTab" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="divSearchControls">
+                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDepartment</label>
+                                        <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" value="" />
+                                        <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" value="" />
+                                    </div>
+                                </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" onclick="fnLoadAllEmployeesListAsPerDepartment();"><i class="fa fa-search"></i>@HRModuleUI.HumanResourceUI.lblSearch</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5"> </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div id="load-employees-by-role-and-department"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-8">
+                                    <div class="grid-main-div">
+                                        <div id="div-roster-association-grid">  </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    @section scripts {
+
+        <script>
+        //Resource
+        var typeEng = '@HRModuleUI.HumanResourceUI.lblTypeEng';
+        var typeArb = '@HRModuleUI.HumanResourceUI.lblTypeArb';
+        var dayStartTime = '@Resources.Global.lblStartTime';
+        var dayEndTime = '@Resources.Global.lblEndTime';
+        var breakStartTime = '@HRModuleUI.HumanResourceUI.lblBreakStartTime';
+        var breakEndTime = '@HRModuleUI.HumanResourceUI.lblBreakEndTime';
+        var relaxationTime = '@HRModuleUI.HumanResourceUI.lblRelaxationTime';
+        var isNoBreak = '@HRModuleUI.HumanResourceUI.lblisNoBreak';
+
+           var lblFriday	 = '@HRModuleUI.HumanResourceUI.lblFriday';
+           var lblMonday	 = '@HRModuleUI.HumanResourceUI.lblMonday';
+           var lblSaturday	 = '@HRModuleUI.HumanResourceUI.lblSaturday';
+           var lblSunday	 = '@HRModuleUI.HumanResourceUI.lblSunday';
+           var lblThursday	 = '@HRModuleUI.HumanResourceUI.lblThursday';
+           var lblTuesday	 = '@HRModuleUI.HumanResourceUI.lblTuesday';
+           var lblWednesday	 = '@HRModuleUI.HumanResourceUI.lblWednesday';
+
+
+
+        /*
+
+        var date = new Date();
+        for (var i = 0; i < 10; i++) {
+            date.setDate(date.getDate() + 1);
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var time = hours + ":" + minutes;
+            var formattedDate = day + "/" + month + "/" + year + " " + time;
+            console.log(formattedDate);
+        }
+
+        */
+        </script>
+        <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster.js"></script>
+
+        <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster-association.js"></script>
+    }

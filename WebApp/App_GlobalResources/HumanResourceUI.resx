@@ -216,11 +216,17 @@
   <data name="lblBreak" xml:space="preserve">
     <value>Break</value>
   </data>
+  <data name="lblBreakEndTime" xml:space="preserve">
+    <value>Break End Time</value>
+  </data>
   <data name="lblBreakIn" xml:space="preserve">
     <value>Break In</value>
   </data>
   <data name="lblBreakOut" xml:space="preserve">
     <value>Break Out</value>
+  </data>
+  <data name="lblBreakStartTime" xml:space="preserve">
+    <value>Break Start Time</value>
   </data>
   <data name="lblCancelLeaveRequest" xml:space="preserve">
     <value>Leave Cancellation</value>
@@ -408,6 +414,9 @@
   <data name="lblEmployeePerformanceEvaluation" xml:space="preserve">
     <value>Employee Performance Evaluation</value>
   </data>
+  <data name="lblEmployeeRoster" xml:space="preserve">
+    <value>Employee Roster</value>
+  </data>
   <data name="lblEmployees" xml:space="preserve">
     <value>Employees</value>
   </data>
@@ -477,6 +486,9 @@
   <data name="lblForward" xml:space="preserve">
     <value>Forward</value>
   </data>
+  <data name="lblFriday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
   <data name="lblFristSelectRecordFromGrid" xml:space="preserve">
     <value>First select records from grid</value>
   </data>
@@ -509,6 +521,9 @@
   </data>
   <data name="lblIntituteName" xml:space="preserve">
     <value>Institute Name</value>
+  </data>
+  <data name="lblisNoBreak" xml:space="preserve">
+    <value>No Break</value>
   </data>
   <data name="lblIssueDate" xml:space="preserve">
     <value>Issue Date</value>
@@ -579,6 +594,9 @@
   <data name="lblMarksPercentage" xml:space="preserve">
     <value>Marks%</value>
   </data>
+  <data name="lblMonday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
   <data name="lblMorning" xml:space="preserve">
     <value>Morning</value>
   </data>
@@ -614,6 +632,9 @@
   </data>
   <data name="lblNewPassword" xml:space="preserve">
     <value>New Password</value>
+  </data>
+  <data name="lblNoBreak" xml:space="preserve">
+    <value>No Break</value>
   </data>
   <data name="lblNoSignature" xml:space="preserve">
     <value>No Signature</value>
@@ -732,6 +753,9 @@
   <data name="lblReadLetter" xml:space="preserve">
     <value>Read Letter</value>
   </data>
+  <data name="lblRelaxationTime" xml:space="preserve">
+    <value>Relaxation Time</value>
+  </data>
   <data name="lblReleaseDate" xml:space="preserve">
     <value>Release Date</value>
   </data>
@@ -768,6 +792,12 @@
   <data name="lblRole" xml:space="preserve">
     <value>Role</value>
   </data>
+  <data name="lblRoster" xml:space="preserve">
+    <value>Roster</value>
+  </data>
+  <data name="lblRosterAssociation" xml:space="preserve">
+    <value>Roster Association</value>
+  </data>
   <data name="lblRulesList" xml:space="preserve">
     <value>Rules List</value>
   </data>
@@ -776,6 +806,9 @@
   </data>
   <data name="lblSanctionsPenalties" xml:space="preserve">
     <value>Sanctions/Penalties</value>
+  </data>
+  <data name="lblSaturday" xml:space="preserve">
+    <value>Saturday</value>
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>Search</value>
@@ -797,6 +830,12 @@
   </data>
   <data name="lblSharingandTakingResponsibility" xml:space="preserve">
     <value>Sharing and Taking Responsibility</value>
+  </data>
+  <data name="lblShiftTime" xml:space="preserve">
+    <value>Shift Time</value>
+  </data>
+  <data name="lblShiftTiming" xml:space="preserve">
+    <value>Shift Timings</value>
   </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>Permission Leave</value>
@@ -840,6 +879,9 @@
   <data name="lblSubject" xml:space="preserve">
     <value>Subject</value>
   </data>
+  <data name="lblSunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
   <data name="lblSupervisoryskills" xml:space="preserve">
     <value>Supervisory skills</value>
   </data>
@@ -852,17 +894,32 @@
   <data name="lblTheLevelofExcellenceandExclusivity" xml:space="preserve">
     <value>The Level of Excellence and Exclusivity</value>
   </data>
+  <data name="lblThursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
   <data name="lblTime" xml:space="preserve">
     <value>Time</value>
   </data>
   <data name="lblTimeandSpeedofWork" xml:space="preserve">
     <value>Time and Speed of Work</value>
   </data>
+  <data name="lblTimeRoster" xml:space="preserve">
+    <value>Time Roster</value>
+  </data>
   <data name="lblTo" xml:space="preserve">
     <value>To</value>
   </data>
   <data name="lblTotal" xml:space="preserve">
     <value>Total</value>
+  </data>
+  <data name="lblTuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="lblTypeArb" xml:space="preserve">
+    <value>Type (Arabic)</value>
+  </data>
+  <data name="lblTypeEng" xml:space="preserve">
+    <value>Type (English)</value>
   </data>
   <data name="lblUpdatePassword" xml:space="preserve">
     <value>Update Password</value>
@@ -878,6 +935,9 @@
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
     <value>Sponsorship</value>
+  </data>
+  <data name="lblWednesday" xml:space="preserve">
+    <value>Wednesday</value>
   </data>
   <data name="MsgAttachmentNotFound" xml:space="preserve">
     <value>Attachment not found</value>

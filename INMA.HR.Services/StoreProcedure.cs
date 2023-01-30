@@ -312,6 +312,16 @@
     Setup_PublicHoliday_Save,
     Setup_PublicHoliday_Delete,
     Setup_PublicHoliday_Get,
+    
+    
+    Setup_Roster_Save,
+    Setup_Roster_Delete,
+    Setup_Roster_Get,
+
+    Roster_Association_Get_AllEmployees_by_DepartmentWise,
+
+
+
     Image_Save,
     #endregion
     UserManagement_Login_Role_Update,

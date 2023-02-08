@@ -4,9 +4,13 @@ $(function () {
     //renderKendoDatePicker('DayStartTime'); 
     renderKendoTimePicker('DayStartTime');
     renderKendoTimePicker('DayEndTime');
-
     renderKendoTimePicker('BreakStartTime');
     renderKendoTimePicker('BreakEndTime');
+
+    $('#DayStartTime').val(null)
+    $('#DayEndTime').val(null)
+    $('#BreakStartTime').val(null)
+    $('#BreakEndTime').val(null)
 
     $('#btn-save-roster').on('click', function (e) {
 
@@ -19,6 +23,13 @@ $(function () {
                     fnLoadRosterGrid();
                     $('#frmAddUpdateRoster')[0].reset();
                     $('#Id').val(0);
+                    setTimeout(function () {
+
+                        $('#DayStartTime').val(null)
+                        $('#DayEndTime').val(null)
+                        $('#BreakStartTime').val(null)
+                        $('#BreakEndTime').val(null)
+                    }, 100);
                 },
                 error: function (xhr, status, error) {
                     buttonRemovePleaseWait('btn-save-roster', save, 'save');
@@ -59,7 +70,8 @@ var bindfnLoadRosterGrid = function (inputDataJSON) {
         { field: "breakStartTime", title: breakStartTime, width: 100, filterable: false, hidden: false },
         { field: "breakEndTime", title: breakEndTime, width: 100, filterable: false, hidden: false },
         { field: "relaxationTime", title: relaxationTime, width: 100, filterable: false, hidden: false },
-        { field: "isNoBreak", title: isNoBreak, width: 80, filterable: false, hidden: false },
+        // { field: "isNoBreak", title: isNoBreak, width: 80, filterable: false, hidden: false },
+        // { field: "isOffDay", title: "isOffDay", width: 80, filterable: false, hidden: true },
         //Below is action column
         {
             field: "", width: 100,
@@ -84,10 +96,12 @@ function editRoster(event) {
     $('#BreakStartTime').val(dataItem.breakStartTime);
     $('#BreakEndTime').val(dataItem.breakEndTime);
     $('#StartTimeRelaxationMinutes').val(dataItem.relaxationTime);
-
-     $('#isNoBreak').val(dataItem.isNoBreak);
+    /*
+    $('#isOffDay').val(dataItem.isOffDay);
+    dataItem.isOffDay == 1 ? document.getElementById("isOffDay").checked = 1 : document.getElementById("isOffDay").checked = 0;
+    $('#isNoBreak').val(dataItem.isNoBreak);
     dataItem.isNoBreak == 1 ? document.getElementById("isNoBreak").checked = 1 : document.getElementById("isNoBreak").checked = 0;
-
+    */
 
 
 
@@ -134,32 +148,63 @@ function deleteRoster(event) {
         fnLoadRosterGrid();
     }
 }
+/*
+function fnCheckBox(e) {
 
-function fnisNoBreak(e) {
-  
-    
-    var _IsNoBreak = document.getElementById("isNoBreak").checked;
+    var dayStartTime = $("#DayStartTime").data("kendoTimePicker");
+    var dayEndTime = $("#DayEndTime").data("kendoTimePicker");
+    var breakStart = $("#BreakStartTime").data("kendoTimePicker")//.value(null).trigger("change");
+    var breakEnd = $("#BreakEndTime").data("kendoTimePicker")//.value(null).trigger("change");
 
-    if (_IsNoBreak == true) {
-        var breakStart = $("#BreakStartTime").data("kendoTimePicker")//.value(null).trigger("change");
-        var breakEnd = $("#BreakEndTime").data("kendoTimePicker")//.value(null).trigger("change");
-
-        breakStart.value('');
-        breakStart.trigger("change");
-        breakEnd.value('');
-        breakEnd.trigger("change");
-        $("#BreakStartTime").removeAttr("required");
-        $("#BreakEndTime").removeAttr("required");
-
-        document.getElementById("isNoBreak").value = 1;
-        
-
-    } else {
+    if (e == 'isNoBreak') {
 
 
-        $("#BreakStartTime").attr("required", true);
-        $("#BreakEndTime").attr("required", true);
-        document.getElementById("isNoBreak").value = 0;
-       
+
+        var _IsNoBreak = document.getElementById("isNoBreak").checked;
+        if (_IsNoBreak == true) {
+            breakStart.value('');
+            breakStart.trigger("change");
+            breakEnd.value('');
+            breakEnd.trigger("change");
+            $("#BreakStartTime").removeAttr("required");
+            $("#BreakEndTime").removeAttr("required");
+
+            document.getElementById("isNoBreak").value = 1;
+
+
+        } else {
+
+
+            $("#BreakStartTime").attr("required", true);
+            $("#BreakEndTime").attr("required", true);
+            document.getElementById("isNoBreak").value = 0;
+
+        }
+    } else if (e == 'isOffDay') {
+
+        var isOffDay = document.getElementById("isOffDay").checked;
+        if (isOffDay == true) {
+            document.getElementById("isOffDay").value = 1;
+            $('#frmAddUpdateRoster :input').removeAttr('required')
+            dayStartTime.value('');
+            dayStartTime.trigger("change");
+            dayEndTime.value('');
+            dayEndTime.trigger("change");
+            breakStart.value('');
+            breakStart.trigger("change");
+            breakEnd.value('');
+            breakEnd.trigger("change");
+
+            $('#StartTimeRelaxationMinutes').val(0);
+
+
+
+        } else {
+
+            $('#frmAddUpdateRoster :input').attr('required', 'required')
+            //$('#DayStartTime').attr('required', true);
+            document.getElementById("isOffDay").value = 0;
+        }
     }
 }
+*/

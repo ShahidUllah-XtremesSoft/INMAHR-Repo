@@ -259,6 +259,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeResourcesUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\HumanResource\Controllers\PayrollController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\PenaltyController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\RulesController.cs" />
     <Compile Include="Areas\HumanResource\Controllers\CompanyDocumentController.cs" />
@@ -304,6 +305,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RequestResourceUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Setup\Controllers\AllowanceController.cs" />
     <Compile Include="Areas\Setup\Controllers\RosterController.cs" />
     <Compile Include="Areas\Setup\Controllers\PublicHolidayController.cs" />
     <Compile Include="Areas\Setup\SetupAreaRegistration.cs" />
@@ -628,6 +630,8 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-request-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\evaluation-request-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-form.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance-type.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster-association.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
@@ -731,6 +735,8 @@
     <Content Include="Areas\Project\Views\Project\Search-project.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_ProjectSearch_PartialView.cshtml" />
     <Content Include="Areas\Setup\Views\Roster\Index.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Payroll\Index.cshtml" />
+    <Content Include="Areas\Setup\Views\Allowance\Index.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="Reports\HR-Reports\HR_Department.cs">
       <SubType>Component</SubType>

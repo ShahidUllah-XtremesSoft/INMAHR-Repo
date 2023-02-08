@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblAllowance;
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#AllowanceTypesTab" role="tab" id="AllowanceTypesTabLi"> @HRModuleUI.HumanResourceUI.tabAllowanceType</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#AllowanceTab" id="AllowanceTabLi" role="tab">@HRModuleUI.HumanResourceUI.lblAllowance</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="AllowanceTypesTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    <div class="col-md-4"> 
+                                   
+                                        <form id="frmAddUpdateAllowanceType" name="frmAddUpdateAllowanceType" action="/services/Xtreme/multipart" method="post">
+                                            <input type="hidden" name="type" id="type" value="Setup_Allowance_Type_Save" />
+                                            <input type="hidden" name="Id" id="Id" value="0" />
+                                            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                                            <input type="hidden" name="Language" id="Language" value="" />
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblAllowanceType  </label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="TypeEng" name="TypeEng" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAllowanceTypeArb</label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="TypeArb" name="TypeArb" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <div class="card-footer col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-success  @Resources.Common.PullLeft" id="btn-save-allowance-type"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="grid-main-div">
+                                            <div id="grid-allowance-type">  </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane " id="AllowanceTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form id="frmAddUpdateAllowance" name="frmAddUpdateAllowance" action="/services/Xtreme/multipart" method="post">
+                                            <input type="hidden" name="type" id="type" value="Setup_Allowance_Save" />
+                                            <input type="hidden" name="AllowanceID" id="AllowanceID" value="0" />
+                                            <input type="hidden" name="CreatedByAllowance" id="CreatedByAllowance" value="0" />
+                                            <input type="hidden" name="AllowanceLanguage" id="AllowanceLanguage" value="" />
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblAllowance  </label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="Setup_Allowance_TypeID" name="Setup_Allowance_TypeID" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSection</label> <span style="color: red">*</span>
+                                                        <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" value="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblProfession</label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="HR_Profession_Id" name="HR_Profession_Id" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAllowance @HRModuleUI.HumanResourceUI.lblAmount </label> <span style="color: red">*</span>
+                                                        <input type="number" class="form-control" id="AllowanceAmount" name="AllowanceAmount" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <div class="card-footer col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-success  @Resources.Common.PullLeft" id="btn-save-allowance"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="grid-main-div">
+                                            <div id="grid-allowance">  </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+        //Resource
+        var typeEng = '@HRModuleUI.HumanResourceUI.lblTypeEng';
+        var typeArb = '@HRModuleUI.HumanResourceUI.lblTypeArb';
+        var lblAllowance = '@HRModuleUI.HumanResourceUI.lblAllowance';
+        var lblAllowances = '@HRModuleUI.HumanResourceUI.lblAllowances';
+        var lblAllowanceType = '@HRModuleUI.HumanResourceUI.lblAllowanceType';
+        var lblAmount = '@HRModuleUI.HumanResourceUI.lblAmount';
+        var lblProfession = '@HRModuleUI.HumanResourceUI.lblProfession';
+        var lblSection = '@HRModuleUI.HumanResourceUI.lblSection';
+
+           var btnSave	 = '@HRModuleUI.HumanResourceUI.btnSave';
+
+
+    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance-type.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance.js"></script>
+
+}

@@ -51,14 +51,14 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblStartTime </label> <span style="color: red">*</span>
-                                                        <input class="form-control" id="DayStartTime" name="DayStartTime" required />
+                                                        <label class="col-form-label">@Resources.Global.lblStartTime </label>
+                                                        <input class="form-control" id="DayStartTime" name="DayStartTime" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="col-form-label">@Resources.Global.lblEndTime </label> <span style="color: red">*</span>
-                                                        <input class="form-control" id="DayEndTime" name="DayEndTime" required />
+                                                        <label class="col-form-label">@Resources.Global.lblEndTime </label>
+                                                        <input class="form-control" id="DayEndTime" name="DayEndTime" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,29 +67,40 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblBreakStartTime </label>
-                                                        <input class="form-control" id="BreakStartTime" name="BreakStartTime" required />
+                                                        <input class="form-control" id="BreakStartTime" name="BreakStartTime" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblBreakEndTime </label>
-                                                        <input type="time" class="form-control" id="BreakEndTime" name="BreakEndTime" required />
+                                                        <input type="time" class="form-control" id="BreakEndTime" name="BreakEndTime" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
+                                            @*<div class="row" hidden>
 
-                                                        <label class="btn  " for='isNoBreak' style="margin-bottom: 0px;text-align:@Resources.Common.PullRight" onchange="fnisNoBreak()">
-                                                            <input type="checkbox" id='isNoBreak' style="width: 15px;height: 15px;" name='isNoBreak' value="0">
-                                                            <font class="isNoBreak" style="font-size: large;">  No Break </font>
-                                                        </label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+
+                                                            <label class="btn" for='isOffDay' style="margin-bottom: 0px;text-align:@Resources.Common.PullRight" onchange="fnCheckBox('isOffDay')">
+                                                                <input type="checkbox" id='isOffDay' style="width: 15px;height: 15px;" name='isOffDay' value="0">
+                                                                <font class="isOffDay" style="font-size: large;">  OFF Day </font>
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">  </div>
-                                            </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+
+                                                            <label class="btn  " for='isNoBreak' style="margin-bottom: 0px;text-align:@Resources.Common.PullRight" onchange="fnCheckBox('isNoBreak')">
+                                                                <input type="checkbox" id='isNoBreak' style="width: 15px;height: 15px;" name='isNoBreak' value="0">
+                                                                <font class="isNoBreak" style="font-size: large;">  No Break </font>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>*@
+
                                             <div class="row">
 
 
@@ -137,31 +148,31 @@
                                         <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" value="" />
                                     </div>
                                 </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" onclick="fnLoadAllEmployeesListAsPerDepartment();"><i class="fa fa-search"></i>@HRModuleUI.HumanResourceUI.lblSearch</button>
-                                        </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" onclick="fnLoadAllEmployeesListAsPerDepartment();"><i class="fa fa-search"></i>@HRModuleUI.HumanResourceUI.lblSearch</button>
                                     </div>
-                                    <div class="col-md-5"> </div>
-                               
+                                </div>
+                                <div class="col-md-6" style="margin-top: 25px;">
+                                    <div class="card-footer ">
+
+                                        <button class="btn btn-success   @Resources.Common.PullRight" id="btn-save-roster-association" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <div id="load-employees-by-role-and-department"></div>
+                                        <div class="grid-main-div">
+                                            <div id="load-employees-by-role-and-department"></div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
 
-                                <div class="col-md-8">
-                                    <div class="grid-main-div">
-                                        <div id="div-roster-association-grid">  </div>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -173,11 +184,12 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    @section scripts {
+@section scripts {
 
-        <script>
+    <script>
         //Resource
         var typeEng = '@HRModuleUI.HumanResourceUI.lblTypeEng';
         var typeArb = '@HRModuleUI.HumanResourceUI.lblTypeArb';
@@ -187,6 +199,7 @@
         var breakEndTime = '@HRModuleUI.HumanResourceUI.lblBreakEndTime';
         var relaxationTime = '@HRModuleUI.HumanResourceUI.lblRelaxationTime';
         var isNoBreak = '@HRModuleUI.HumanResourceUI.lblisNoBreak';
+        var lblTimeRoster = '@HRModuleUI.HumanResourceUI.lblTimeRoster';
 
            var lblFriday	 = '@HRModuleUI.HumanResourceUI.lblFriday';
            var lblMonday	 = '@HRModuleUI.HumanResourceUI.lblMonday';
@@ -195,6 +208,7 @@
            var lblThursday	 = '@HRModuleUI.HumanResourceUI.lblThursday';
            var lblTuesday	 = '@HRModuleUI.HumanResourceUI.lblTuesday';
            var lblWednesday	 = '@HRModuleUI.HumanResourceUI.lblWednesday';
+           var btnSave	 = '@HRModuleUI.HumanResourceUI.btnSave';
 
 
 
@@ -214,8 +228,8 @@
         }
 
         */
-        </script>
-        <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster.js"></script>
+    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster.js"></script>
 
-        <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster-association.js"></script>
-    }
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster-association.js"></script>
+}

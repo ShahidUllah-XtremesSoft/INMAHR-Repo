@@ -186,6 +186,21 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>اضافة</value>
   </data>
+  <data name="lblAllowance" xml:space="preserve">
+    <value>Allowance</value>
+  </data>
+  <data name="lblAllowances" xml:space="preserve">
+    <value>Allowances</value>
+  </data>
+  <data name="lblAllowanceType" xml:space="preserve">
+    <value>Allowance Type (English)</value>
+  </data>
+  <data name="lblAllowanceTypeArb" xml:space="preserve">
+    <value>Allowance Type (Arabic)</value>
+  </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
   </data>
@@ -968,6 +983,9 @@
   </data>
   <data name="starttimecannotbegreaterthanendtime" xml:space="preserve">
     <value>بداية المدة لا يمكن ان تكون اكبر من مدة النهاية</value>
+  </data>
+  <data name="tabAllowanceType" xml:space="preserve">
+    <value>Allowances Type</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>

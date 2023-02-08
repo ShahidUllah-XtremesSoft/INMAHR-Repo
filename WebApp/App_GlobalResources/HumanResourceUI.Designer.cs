@@ -268,6 +268,51 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowance.
+        /// </summary>
+        public static string lblAllowance {
+            get {
+                return ResourceManager.GetString("lblAllowance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowances.
+        /// </summary>
+        public static string lblAllowances {
+            get {
+                return ResourceManager.GetString("lblAllowances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowance Type (English).
+        /// </summary>
+        public static string lblAllowanceType {
+            get {
+                return ResourceManager.GetString("lblAllowanceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowance Type (Arabic).
+        /// </summary>
+        public static string lblAllowanceTypeArb {
+            get {
+                return ResourceManager.GetString("lblAllowanceTypeArb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        public static string lblAmount {
+            get {
+                return ResourceManager.GetString("lblAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Approve.
         /// </summary>
         public static string lblApprove {
@@ -2622,6 +2667,15 @@ namespace HRModuleUI {
         public static string starttimecannotbegreaterthanendtime {
             get {
                 return ResourceManager.GetString("starttimecannotbegreaterthanendtime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowances Type.
+        /// </summary>
+        public static string tabAllowanceType {
+            get {
+                return ResourceManager.GetString("tabAllowanceType", resourceCulture);
             }
         }
         

@@ -104,10 +104,10 @@ var ajaxRequestAsync = function (options) {
 var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
     $("#" + $gridid).kendoGrid({
-        toolbar: ["excel", "pdf"],
-        excel: {
-            fileName: "Export To Exceel.xlsx"
-        },
+      //  toolbar: ["excel", "pdf"],
+      //  excel: {
+      //      fileName: "Export To Exceel.xlsx"
+      //  },
         //pdf: {
         //    fileName: "Export To pdf.pdf"
         //},
@@ -128,7 +128,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
             width: 20,
         },
         columns: $colModel,
-        editable: true,
+        editable:true,
         //edit: function (e) {
         // 
         //    var input = e.container.find(".k-input");
@@ -176,8 +176,10 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
         scrollable: true,
         resizable: true,
         sortable: true,
+       // editable:false,
         filterable: { mode: "row" },
         selectable: selectable,
+   
         pageable: {
             pageSizes: [50, 100, 250, 500, 1000],
             width: 20,

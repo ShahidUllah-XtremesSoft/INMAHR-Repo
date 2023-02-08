@@ -314,11 +314,25 @@
     Setup_PublicHoliday_Get,
     
     
+    Setup_Allowance_Save,
+    Setup_Allowance_Delete,
+    Setup_Allowance_Get,
+    Setup_Allowance_Type_Get_DDL,
+
+    Setup_Allowance_Type_Save,
+    Setup_Allowance_Type_Delete,
+    Setup_Allowance_Type_Get,
+
+
+
     Setup_Roster_Save,
     Setup_Roster_Delete,
     Setup_Roster_Get,
+    Setup_Roster_Get_DDL,
 
     Roster_Association_Get_AllEmployees_by_DepartmentWise,
+    Setup_Roster_Association_Multipe_Save,
+    Setup_Roster_Association_Delete,
 
 
 

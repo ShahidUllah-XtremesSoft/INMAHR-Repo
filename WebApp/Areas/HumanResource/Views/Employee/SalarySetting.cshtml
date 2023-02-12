@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblAllowance;
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#SalarySettingTab" role="tab" id="SalarySettingTabLi"> @HRModuleUI.HumanResourceUI.lblSalarySetting</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#AdditionTab" id="AdditionTabLi" role="tab">@HRModuleUI.HumanResourceUI.lblAddition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#DeductionTab" id="DeductionTabLi" role="tab">@HRModuleUI.HumanResourceUI.lblDeduction</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="SalarySettingTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        <form id="frmAddUpdateAdditionDeduction" name="frmAddUpdateAdditionDeduction" action="/services/Xtreme/multipart" method="post">
+                                            <input type="hidden" name="type" id="type" value="HR_Employee_RecursiveAdditionDeduction_addUpdateEmployeePayrollAddition" />
+                                            <input type="hidden" name="RecursiveID" id="RecursiveID" value="0" />
+                                            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                                            <input type="hidden" name="Language" id="Language" value="" />
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSelect  </label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="EmployeeID" name="EmployeeID" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblName  </label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="Name" name="Name" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAmount</label> <span style="color: red">*</span>
+                                                        <input class="form-control" type="number" id="Amount" name="Amount" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTypeEng</label> <span style="color: red">*</span>
+
+                                                        <select class="form-control" id="RecursiveType" name="RecursiveType" required>
+                                                            <option value="Addition" selected>Addition</option>
+                                                            <option value="Deduction">Deduction</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDate</label> <span style="color: red">*</span>
+                                                        <input class="form-control" id="RecursiveDate" name="RecursiveDate" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <div class="card-footer col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-success  @Resources.Common.PullLeft" id="btn-save-setting"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="grid-main-div">
+                                            <div id="grid-salary-setting-addition-deduction">  </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane " id="AdditionTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                @*<h2>@HRModuleUI.HumanResourceUI.lblAddition</h2>*@
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSearch  @HRModuleUI.HumanResourceUI.lblEmployees  </label>
+                                            <input class="form-control" id="EmployeeID_Addition"  />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btn_Addition_Search"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-2">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btnShowAll_Addition"><i class="fa fa-eye"></i> @HRModuleUI.HumanResourceUI.lblShowAll</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-main-div">
+                                    <div id="grid-salary-setting-addition">  </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="DeductionTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSearch  @HRModuleUI.HumanResourceUI.lblEmployees  </label>
+                                            <input class="form-control" id="EmployeeID_Deduction" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btn_Deduction_Search"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btnShowAll_Deduction"><i class="fa fa-eye"></i> @HRModuleUI.HumanResourceUI.lblShowAll</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-main-div">
+                                    <div id="grid-salary-setting-deduction">  </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+        //Resource
+        var lblEmployeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+        var lblName = '@HRModuleUI.HumanResourceUI.lblName';
+        var lblAmount = '@HRModuleUI.HumanResourceUI.lblAmount';
+        var lblAddition = '@HRModuleUI.HumanResourceUI.lblAddition';
+        var lblDeduction = '@HRModuleUI.HumanResourceUI.lblDeduction';
+        var lblDate = '@HRModuleUI.HumanResourceUI.lblDate';
+        var lblType = '@HRModuleUI.HumanResourceUI.lblType';
+        var lblSelect = '@HRModuleUI.HumanResourceUI.lblSelect';
+
+
+           var btnSave	 = '@HRModuleUI.HumanResourceUI.btnSave';
+
+
+    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-salary-setting.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-salary-setting-addition.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-salary-setting-deduction.js"></script>
+}

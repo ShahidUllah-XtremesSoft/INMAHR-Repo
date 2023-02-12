@@ -44,11 +44,21 @@
     HR_Employee_PersonalDocument_Exist,
     HR_Employee_PersonalDocument_GetNearToExpire,
     HR_Employee_PersonalDocument_GetNearToExpire_ById,
+    DDL_HR_Employee_Get,
     #endregion
     #region Employee Educational Document
     HR_Employee_EducationalDocument_Save,
     HR_Employee_EducationalDocument_Get,
     HR_Employee_EducationalDocument_Delete,
+    //---------- Employee Addition Deduction
+    HR_Employee_RecursiveAdditionDeduction_addUpdateEmployeePayrollAddition,
+    HR_Employee_RecursiveAdditionDeduction_Get,
+    HR_Employee_RecursiveAddition_Get,
+    HR_Employee_RecursiveDeduction_Get,
+    HR_Employee_RecursiveAdditionDeduction_Delete,
+
+    //---------------- PARYOLL
+    Employees_SelectForPayroll,
 
     #endregion
 

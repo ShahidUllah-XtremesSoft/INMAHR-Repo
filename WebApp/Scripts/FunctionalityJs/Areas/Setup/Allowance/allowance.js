@@ -81,7 +81,7 @@ var bindfnLoadAllowanceGrid = function (inputDataJSONs) {
     bindKendoGrid($AllowanceGrid, 50, gridColumns, inputDataJSONs);
 };
 function editAllowance(eventt) {
-     
+      
     var rows = $(eventt).closest("tr");
     var grid = $("#" + $AllowanceGrid).data("kendoGrid");
     var dataItem = grid.dataItem(rows);

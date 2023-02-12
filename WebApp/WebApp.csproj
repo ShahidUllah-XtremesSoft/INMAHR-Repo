@@ -574,7 +574,13 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-salary-setting-deduction.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-salary-setting-addition.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-salary-setting.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-resigned-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\old-payroll-for-test.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\payroll.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\payroll-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Rules\rules-grid.js" />
@@ -737,6 +743,8 @@
     <Content Include="Areas\Setup\Views\Roster\Index.cshtml" />
     <Content Include="Areas\HumanResource\Views\Payroll\Index.cshtml" />
     <Content Include="Areas\Setup\Views\Allowance\Index.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Payroll\Report.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Employee\SalarySetting.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="Reports\HR-Reports\HR_Department.cs">
       <SubType>Component</SubType>

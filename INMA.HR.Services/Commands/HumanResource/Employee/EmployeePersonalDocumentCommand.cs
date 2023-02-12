@@ -138,6 +138,28 @@ namespace INMA.HR.Services
 
         }
     }
+      [Command(Name = "DDL_HR_Employee_Get")]
+    public class DDL_HR_Employee_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                
+                Language = string.Empty
+            }, viewInput);
+
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            var checkResult= repository.GetMultiple<dynamic>(StoreProcedure.DDL_HR_Employee_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return checkResult;
+
+        }
+    }
 
 
 }

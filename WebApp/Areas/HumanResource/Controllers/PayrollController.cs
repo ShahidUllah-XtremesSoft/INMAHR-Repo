@@ -5,15 +5,16 @@ namespace WebApp.Areas.HumanResource.Controllers
 
     public class PayrollController : Controller
     {
-        // GET: HumanResource/
+        // GET: Payroll/
         public ActionResult Index()
         {
-            return View();
+            return View("~/Areas/HumanResource/Views/Payroll/Index.cshtml");
+
         }
-        //public ActionResult Addition()
-        //{
-        //    return View();
-        //}
+        public ActionResult Report()
+        {
+            return View("~/Areas/HumanResource/Views/Payroll/Report.cshtml");
+        }
         //public ActionResult Deduction()
         //{
         //    return View();

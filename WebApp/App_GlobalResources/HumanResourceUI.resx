@@ -129,6 +129,9 @@
   <data name="btnGridCreateLogin" xml:space="preserve">
     <value>Create </value>
   </data>
+  <data name="btnProceed" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
   <data name="btnReceivedLetters" xml:space="preserve">
     <value>Received Letters</value>
   </data>
@@ -183,6 +186,12 @@
   <data name="lblAction" xml:space="preserve">
     <value>Action</value>
   </data>
+  <data name="lblAddition" xml:space="preserve">
+    <value>Addition</value>
+  </data>
+  <data name="lblAdditions" xml:space="preserve">
+    <value>Additions</value>
+  </data>
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
   </data>
@@ -210,14 +219,23 @@
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>Approved Requests</value>
   </data>
+  <data name="lblApril" xml:space="preserve">
+    <value>April</value>
+  </data>
   <data name="lblAttachment" xml:space="preserve">
     <value>Attachment</value>
+  </data>
+  <data name="lblAugust" xml:space="preserve">
+    <value>August</value>
   </data>
   <data name="lblAvailableBalance" xml:space="preserve">
     <value>Available Balance</value>
   </data>
   <data name="lblBalance" xml:space="preserve">
     <value>Balance</value>
+  </data>
+  <data name="lblBasicSalary" xml:space="preserve">
+    <value>Basic Salary</value>
   </data>
   <data name="lblBehavioralandCommitment" xml:space="preserve">
     <value>Behavioral and Commitment</value>
@@ -312,6 +330,9 @@
   <data name="lblCriterion" xml:space="preserve">
     <value>Criterion</value>
   </data>
+  <data name="lblDaily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
   <data name="lbldailyAttendance" xml:space="preserve">
     <value>Daily Attendance</value>
   </data>
@@ -324,11 +345,20 @@
   <data name="lblDays" xml:space="preserve">
     <value>Days</value>
   </data>
+  <data name="lblDecember" xml:space="preserve">
+    <value>December</value>
+  </data>
   <data name="lblDecline" xml:space="preserve">
     <value>Decline</value>
   </data>
+  <data name="lblDeduction" xml:space="preserve">
+    <value>Deduction</value>
+  </data>
   <data name="lblDeductionDate" xml:space="preserve">
     <value>Deduction Date</value>
+  </data>
+  <data name="lblDeductions" xml:space="preserve">
+    <value>Deductions</value>
   </data>
   <data name="lblDegreeName" xml:space="preserve">
     <value>Degree Name</value>
@@ -435,6 +465,9 @@
   <data name="lblEmployees" xml:space="preserve">
     <value>Employees</value>
   </data>
+  <data name="lblEmployeeSalaryRecord" xml:space="preserve">
+    <value>Employee Salary Record</value>
+  </data>
   <data name="lblEmployeesAttendance" xml:space="preserve">
     <value>Employees Attendance</value>
   </data>
@@ -492,6 +525,9 @@
   <data name="lblExpiryDateCannotBeLessThanIssue" xml:space="preserve">
     <value>Expiry date cannot be less than issue date</value>
   </data>
+  <data name="lblFebruary" xml:space="preserve">
+    <value>February</value>
+  </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
   </data>
@@ -512,6 +548,9 @@
   </data>
   <data name="lblFromCountry" xml:space="preserve">
     <value>From Country</value>
+  </data>
+  <data name="lblGrossSalary" xml:space="preserve">
+    <value>Gross Salary</value>
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>Hours</value>
@@ -543,11 +582,23 @@
   <data name="lblIssueDate" xml:space="preserve">
     <value>Issue Date</value>
   </data>
+  <data name="lblJanuary" xml:space="preserve">
+    <value>January</value>
+  </data>
   <data name="lblJobResponsibilities" xml:space="preserve">
     <value>Job Responsibilities</value>
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>Joining Date</value>
+  </data>
+  <data name="lblJuly" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="lblJune" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="lblLabourWelfareDeduction" xml:space="preserve">
+    <value>Labour Welfare Deduction</value>
   </data>
   <data name="lblLate" xml:space="preserve">
     <value>Late</value>
@@ -569,6 +620,9 @@
   </data>
   <data name="lblLeaveCancellation" xml:space="preserve">
     <value>Leave Cancellation </value>
+  </data>
+  <data name="lblLeaveDeduction" xml:space="preserve">
+    <value>Leave Deduction</value>
   </data>
   <data name="lblLeaveName" xml:space="preserve">
     <value>Leave Name</value>
@@ -600,6 +654,9 @@
   <data name="lblLogout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="lblMarch" xml:space="preserve">
+    <value>March</value>
+  </data>
   <data name="lblMarkAsRead" xml:space="preserve">
     <value>Mark Read</value>
   </data>
@@ -609,8 +666,20 @@
   <data name="lblMarksPercentage" xml:space="preserve">
     <value>Marks%</value>
   </data>
+  <data name="lblMay" xml:space="preserve">
+    <value>May</value>
+  </data>
   <data name="lblMonday" xml:space="preserve">
     <value>Monday</value>
+  </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="lblMonthlyPayroll" xml:space="preserve">
+    <value>Monthly Payroll</value>
+  </data>
+  <data name="lblMonthWiseReport" xml:space="preserve">
+    <value>Month Wise Report</value>
   </data>
   <data name="lblMorning" xml:space="preserve">
     <value>Morning</value>
@@ -639,6 +708,9 @@
   <data name="lblNationality" xml:space="preserve">
     <value>Nationality</value>
   </data>
+  <data name="lblNetSalary" xml:space="preserve">
+    <value>Net Salary</value>
+  </data>
   <data name="lblNew" xml:space="preserve">
     <value>New</value>
   </data>
@@ -657,6 +729,9 @@
   <data name="lblNote" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="lblNovember" xml:space="preserve">
+    <value>November</value>
+  </data>
   <data name="lblNumberOfDays" xml:space="preserve">
     <value>Number Of Days</value>
   </data>
@@ -666,6 +741,9 @@
   <data name="lblOccupation" xml:space="preserve">
     <value>Occupation</value>
   </data>
+  <data name="lblOctober" xml:space="preserve">
+    <value>October</value>
+  </data>
   <data name="lblOfficialLetter" xml:space="preserve">
     <value>Letter</value>
   </data>
@@ -674,6 +752,15 @@
   </data>
   <data name="lblOther" xml:space="preserve">
     <value>Other</value>
+  </data>
+  <data name="lblOtherAddition" xml:space="preserve">
+    <value>Other Addition</value>
+  </data>
+  <data name="lblOtherAdditions" xml:space="preserve">
+    <value>Other Additions</value>
+  </data>
+  <data name="lblOtherDeduction" xml:space="preserve">
+    <value>Other Deduction</value>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>Other Status (Arabic)</value>
@@ -711,6 +798,15 @@
   <data name="lblPassword" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="lblPayroll" xml:space="preserve">
+    <value>Payroll</value>
+  </data>
+  <data name="lblPayrollisalreadyprocessed" xml:space="preserve">
+    <value>Payroll is already processed</value>
+  </data>
+  <data name="lblPayrollReport" xml:space="preserve">
+    <value>Payroll Report</value>
+  </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>Pending Requests</value>
   </data>
@@ -747,6 +843,9 @@
   <data name="lblProcedures" xml:space="preserve">
     <value>Procedures</value>
   </data>
+  <data name="lblProceed" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>Processed</value>
   </data>
@@ -755,6 +854,9 @@
   </data>
   <data name="lblProfileImage" xml:space="preserve">
     <value>Profile Image</value>
+  </data>
+  <data name="lblProvidentFundDeduction" xml:space="preserve">
+    <value>Provident Fund Deduction</value>
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>Public Holiday</value>
@@ -779,6 +881,12 @@
   </data>
   <data name="lblReply" xml:space="preserve">
     <value>Reply</value>
+  </data>
+  <data name="lblReport" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="lblReports" xml:space="preserve">
+    <value>Reports</value>
   </data>
   <data name="lblRequest" xml:space="preserve">
     <value>Request</value>
@@ -819,6 +927,9 @@
   <data name="lblSalary" xml:space="preserve">
     <value>Salary</value>
   </data>
+  <data name="lblSalarySetting" xml:space="preserve">
+    <value>Salary Setting</value>
+  </data>
   <data name="lblSanctionsPenalties" xml:space="preserve">
     <value>Sanctions/Penalties</value>
   </data>
@@ -831,6 +942,9 @@
   <data name="lblSection" xml:space="preserve">
     <value>Section</value>
   </data>
+  <data name="lblSecurityDeduction" xml:space="preserve">
+    <value>Security Deduction</value>
+  </data>
   <data name="lblSelect" xml:space="preserve">
     <value>Select</value>
   </data>
@@ -840,8 +954,14 @@
   <data name="lblSend" xml:space="preserve">
     <value>Send</value>
   </data>
+  <data name="lblSeptember" xml:space="preserve">
+    <value>September</value>
+  </data>
   <data name="lblServicesProvidedtoCustomers" xml:space="preserve">
     <value>Services Provided to Customers</value>
+  </data>
+  <data name="lblSetting" xml:space="preserve">
+    <value>lblSetting</value>
   </data>
   <data name="lblSharingandTakingResponsibility" xml:space="preserve">
     <value>Sharing and Taking Responsibility</value>
@@ -927,8 +1047,23 @@
   <data name="lblTotal" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="lblTotalAbsents" xml:space="preserve">
+    <value>Total Absent(s)</value>
+  </data>
+  <data name="lblTotalHours" xml:space="preserve">
+    <value>Total Hour(s)</value>
+  </data>
+  <data name="lblTotalLeaves" xml:space="preserve">
+    <value>Total Leave(s)</value>
+  </data>
+  <data name="lblTotalPresents" xml:space="preserve">
+    <value>Total Present(s)</value>
+  </data>
   <data name="lblTuesday" xml:space="preserve">
     <value>Tuesday</value>
+  </data>
+  <data name="lblType" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="lblTypeArb" xml:space="preserve">
     <value>Type (Arabic)</value>
@@ -953,6 +1088,15 @@
   </data>
   <data name="lblWednesday" xml:space="preserve">
     <value>Wednesday</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="lblYearlyPayroll" xml:space="preserve">
+    <value>Yearly Payroll</value>
+  </data>
+  <data name="lblYearWiseReport" xml:space="preserve">
+    <value>Year Wise Report</value>
   </data>
   <data name="MsgAttachmentNotFound" xml:space="preserve">
     <value>Attachment not found</value>

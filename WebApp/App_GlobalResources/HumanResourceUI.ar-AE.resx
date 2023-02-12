@@ -118,19 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Below are employees" xml:space="preserve">
-    <value>Employees Area</value>
+    <value>فضاء الموظفين</value>
   </data>
   <data name="Below are user management" xml:space="preserve">
     <value>User Manager</value>
   </data>
   <data name="Below Human Resource Module" xml:space="preserve">
-    <value>Human Resource</value>
+    <value>الموارد البشرية</value>
   </data>
   <data name="btnGridAlreadyCreated" xml:space="preserve">
     <value>تم التسجيل</value>
   </data>
   <data name="btnGridCreateLogin" xml:space="preserve">
     <value>سجل</value>
+  </data>
+  <data name="btnProceed" xml:space="preserve">
+    <value>Proceed</value>
   </data>
   <data name="btnReceivedLetters" xml:space="preserve">
     <value>الرسائل الواردة</value>
@@ -183,23 +186,29 @@
   <data name="lblAction" xml:space="preserve">
     <value>عمل</value>
   </data>
+  <data name="lblAddition" xml:space="preserve">
+    <value>Addition</value>
+  </data>
+  <data name="lblAdditions" xml:space="preserve">
+    <value>Additions</value>
+  </data>
   <data name="lblAddNew" xml:space="preserve">
     <value>اضافة</value>
   </data>
   <data name="lblAllowance" xml:space="preserve">
-    <value>Allowance</value>
+    <value>البدل</value>
   </data>
   <data name="lblAllowances" xml:space="preserve">
-    <value>Allowances</value>
+    <value>البدلات</value>
   </data>
   <data name="lblAllowanceType" xml:space="preserve">
-    <value>Allowance Type (English)</value>
+    <value>البدلات(الانجليزية)</value>
   </data>
   <data name="lblAllowanceTypeArb" xml:space="preserve">
-    <value>Allowance Type (Arabic)</value>
+    <value>البدلات (العربية)</value>
   </data>
   <data name="lblAmount" xml:space="preserve">
-    <value>Amount</value>
+    <value>المبلغ</value>
   </data>
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
@@ -210,14 +219,23 @@
   <data name="lblApprovedRequest" xml:space="preserve">
     <value>الطلبات المعتمدة</value>
   </data>
+  <data name="lblApril" xml:space="preserve">
+    <value>ابريل</value>
+  </data>
   <data name="lblAttachment" xml:space="preserve">
     <value>المرفق</value>
+  </data>
+  <data name="lblAugust" xml:space="preserve">
+    <value>اغسطس</value>
   </data>
   <data name="lblAvailableBalance" xml:space="preserve">
     <value>الرصيد المتوفر</value>
   </data>
   <data name="lblBalance" xml:space="preserve">
     <value>الرصيد</value>
+  </data>
+  <data name="lblBasicSalary" xml:space="preserve">
+    <value>Basic Salary</value>
   </data>
   <data name="lblBehavioralandCommitment" xml:space="preserve">
     <value>درجة الالتزام السلوكي و الوظيفي</value>
@@ -232,7 +250,7 @@
     <value>الاستراحة</value>
   </data>
   <data name="lblBreakEndTime" xml:space="preserve">
-    <value>Break End Time</value>
+    <value>نهاية فترة الاستراحة</value>
   </data>
   <data name="lblBreakIn" xml:space="preserve">
     <value>خروج للاستراحة</value>
@@ -241,7 +259,7 @@
     <value>عودة من الاستراحة</value>
   </data>
   <data name="lblBreakStartTime" xml:space="preserve">
-    <value>Break Start Time</value>
+    <value>بداية فترة الاستراحة</value>
   </data>
   <data name="lblCancelLeaveRequest" xml:space="preserve">
     <value>الغاء الاجازة</value>
@@ -312,6 +330,9 @@
   <data name="lblCriterion" xml:space="preserve">
     <value>المعيار</value>
   </data>
+  <data name="lblDaily" xml:space="preserve">
+    <value>يوميا</value>
+  </data>
   <data name="lbldailyAttendance" xml:space="preserve">
     <value>التحضير يومية</value>
   </data>
@@ -324,11 +345,20 @@
   <data name="lblDays" xml:space="preserve">
     <value>الايام</value>
   </data>
+  <data name="lblDecember" xml:space="preserve">
+    <value>ديسمبر</value>
+  </data>
   <data name="lblDecline" xml:space="preserve">
     <value>الغاء</value>
   </data>
+  <data name="lblDeduction" xml:space="preserve">
+    <value>Deduction</value>
+  </data>
   <data name="lblDeductionDate" xml:space="preserve">
     <value>تاريخ الاستطاع</value>
+  </data>
+  <data name="lblDeductions" xml:space="preserve">
+    <value>Deductions</value>
   </data>
   <data name="lblDegressIssueDate" xml:space="preserve">
     <value>تاريخ الإصداراسم الشهادة </value>
@@ -337,7 +367,7 @@
     <value>التاخيرات</value>
   </data>
   <data name="lblDepartementName" xml:space="preserve">
-    <value>Department Name</value>
+    <value>القسم</value>
   </data>
   <data name="lblDepartment" xml:space="preserve">
     <value>القسم</value>
@@ -374,16 +404,16 @@
     <value>الإسم الوثيقة</value>
   </data>
   <data name="lblEducationalDocumentDegreeFromCountry" xml:space="preserve">
-    <value>Degree From Country</value>
+    <value>بلد الشهادة</value>
   </data>
   <data name="lblEducationalDocumentDegreeMarks" xml:space="preserve">
-    <value>Degree Marks (%)</value>
+    <value>مجموع الشهادة (% )</value>
   </data>
   <data name="lblEducationalDocumentDegreeNameArb" xml:space="preserve">
-    <value>Degree Name (Arabic)</value>
+    <value>الشهادة العلمية (العربية)</value>
   </data>
   <data name="lblEducationalDocumentDegreeNameEng" xml:space="preserve">
-    <value>Degree Name (English)</value>
+    <value>الشهادة العلمية(الانجليزية)</value>
   </data>
   <data name="lblEducationalDocumentInstituteNameArb" xml:space="preserve">
     <value>اسم المدرسة(بالغات العربية)</value>
@@ -392,10 +422,10 @@
     <value>اسم المدرسة(بالغات الانجليزية)</value>
   </data>
   <data name="lblEducationalDocumentIssueDate" xml:space="preserve">
-    <value>Degree Issue Date</value>
+    <value>تاريخ اصدار الشهادة</value>
   </data>
   <data name="lblEID" xml:space="preserve">
-    <value>Emirates ID Number</value>
+    <value>رقم الهوية الاماراتية</value>
   </data>
   <data name="lblEIDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
@@ -410,10 +440,10 @@
     <value>امارة الاقامة</value>
   </data>
   <data name="lblEmiratesOfResidencyArb" xml:space="preserve">
-    <value>Emirates Of Residency (Arabic)</value>
+    <value>امارة الاقامة (العربية)</value>
   </data>
   <data name="lblEmiratesOfResidencyEng" xml:space="preserve">
-    <value>Emirates Of Residency  (English)</value>
+    <value>امارة الاقامة (الانجليزية)</value>
   </data>
   <data name="lblEmployeeDocument" xml:space="preserve">
     <value>الوثائق</value>
@@ -429,6 +459,9 @@
   </data>
   <data name="lblEmployees" xml:space="preserve">
     <value>الموظفين</value>
+  </data>
+  <data name="lblEmployeeSalaryRecord" xml:space="preserve">
+    <value>Employee Salary Record</value>
   </data>
   <data name="lblEmployeesAttendance" xml:space="preserve">
     <value>تحضير الموظفين</value>
@@ -490,6 +523,9 @@
   <data name="lblExpiryDateCannotBeLessThanIssue" xml:space="preserve">
     <value>تاريخ الاصدار لا يمكن ان يكون اقل من تاريخ الانتهاء</value>
   </data>
+  <data name="lblFebruary" xml:space="preserve">
+    <value>فبراير</value>
+  </data>
   <data name="lblFile" xml:space="preserve">
     <value>الملف</value>
   </data>
@@ -500,13 +536,16 @@
     <value>تحويل</value>
   </data>
   <data name="lblFriday" xml:space="preserve">
-    <value>Friday</value>
+    <value>الجمعة</value>
   </data>
   <data name="lblFristSelectRecordFromGrid" xml:space="preserve">
     <value>حدد الخيار من القائمة</value>
   </data>
   <data name="lblFrom" xml:space="preserve">
     <value>من</value>
+  </data>
+  <data name="lblGrossSalary" xml:space="preserve">
+    <value>Gross Salary</value>
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
@@ -530,16 +569,28 @@
     <value>المراسلات الداخلية</value>
   </data>
   <data name="lblisNoBreak" xml:space="preserve">
-    <value>No Break</value>
+    <value>بدون استراحة؟</value>
   </data>
   <data name="lblIssueDate" xml:space="preserve">
     <value>تاريخ الاصدار</value>
+  </data>
+  <data name="lblJanuary" xml:space="preserve">
+    <value>يناير</value>
   </data>
   <data name="lblJobResponsibilities" xml:space="preserve">
     <value>درجة تحمل الموظف لمسؤولياته الوظيفية</value>
   </data>
   <data name="lblJoinDate" xml:space="preserve">
     <value>تاريخ التوظيف</value>
+  </data>
+  <data name="lblJuly" xml:space="preserve">
+    <value>يوليو</value>
+  </data>
+  <data name="lblJune" xml:space="preserve">
+    <value>يونيو</value>
+  </data>
+  <data name="lblLabourWelfareDeduction" xml:space="preserve">
+    <value>Labour Welfare Deduction</value>
   </data>
   <data name="lblLate" xml:space="preserve">
     <value>تاخير</value>
@@ -557,11 +608,14 @@
     <value>الرصيد المتوفر</value>
   </data>
   <data name="lblleavebalancedeductiondetails" xml:space="preserve">
-    <value>Leave balance deduction details</value>
+    <value>تفاصيل خصم رصيد الإجازة</value>
   </data>
   <data name="lblLeaveCancellation" xml:space="preserve">
     <value>الغاء الاجازة</value>
     <comment>العودة الي العمل/الغاء إجازة</comment>
+  </data>
+  <data name="lblLeaveDeduction" xml:space="preserve">
+    <value>Leave Deduction</value>
   </data>
   <data name="lblLeaveName" xml:space="preserve">
     <value>Leave Name</value>
@@ -594,14 +648,29 @@
   <data name="lblLogout" xml:space="preserve">
     <value>تسجيل خروج</value>
   </data>
+  <data name="lblMarch" xml:space="preserve">
+    <value>مارس</value>
+  </data>
   <data name="lblMarkAsRead" xml:space="preserve">
     <value>ضع إشارة مقروء</value>
   </data>
   <data name="lblMarksPercentage" xml:space="preserve">
     <value>نسبة العلامات</value>
   </data>
+  <data name="lblMay" xml:space="preserve">
+    <value>مليو</value>
+  </data>
   <data name="lblMonday" xml:space="preserve">
-    <value>Monday</value>
+    <value>الاثنين</value>
+  </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>الشهر</value>
+  </data>
+  <data name="lblMonthlyPayroll" xml:space="preserve">
+    <value>Monthly Payroll</value>
+  </data>
+  <data name="lblMonthWiseReport" xml:space="preserve">
+    <value>Month Wise Report</value>
   </data>
   <data name="lblMorning" xml:space="preserve">
     <value>الفترة الصباحية</value>
@@ -616,7 +685,7 @@
     <value>رقم بطاقة البلدية</value>
   </data>
   <data name="lblMunicipalityCardReleaseDate" xml:space="preserve">
-    <value>Municipality Card Release Date</value>
+    <value>تاريخ إصدار بطاقة البلدية</value>
   </data>
   <data name="lblName" xml:space="preserve">
     <value>الإسم </value>
@@ -632,6 +701,9 @@
   <data name="lblNationality" xml:space="preserve">
     <value>الجنسية</value>
   </data>
+  <data name="lblNetSalary" xml:space="preserve">
+    <value>Net Salary</value>
+  </data>
   <data name="lblNew" xml:space="preserve">
     <value>جديد</value>
   </data>
@@ -642,13 +714,16 @@
     <value>كلمة المرور الجديدة</value>
   </data>
   <data name="lblNoBreak" xml:space="preserve">
-    <value>No Break</value>
+    <value>بدون استراحة</value>
   </data>
   <data name="lblNoSignature" xml:space="preserve">
     <value> لا التوقيع</value>
   </data>
   <data name="lblNote" xml:space="preserve">
     <value>الملاحظات</value>
+  </data>
+  <data name="lblNovember" xml:space="preserve">
+    <value>نوفمبر</value>
   </data>
   <data name="lblNumberOfDays" xml:space="preserve">
     <value>عدد الايام</value>
@@ -659,6 +734,9 @@
   <data name="lblOccupation" xml:space="preserve">
     <value>المهنة</value>
   </data>
+  <data name="lblOctober" xml:space="preserve">
+    <value>اكتوبر</value>
+  </data>
   <data name="lblOfficialLetter" xml:space="preserve">
     <value>رسالة رسمية</value>
   </data>
@@ -668,6 +746,15 @@
   <data name="lblOther" xml:space="preserve">
     <value>أخرى</value>
     <comment>أخرة</comment>
+  </data>
+  <data name="lblOtherAddition" xml:space="preserve">
+    <value>Other Addition</value>
+  </data>
+  <data name="lblOtherAdditions" xml:space="preserve">
+    <value>Other Additions</value>
+  </data>
+  <data name="lblOtherDeduction" xml:space="preserve">
+    <value>Other Deduction</value>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>(بالغات العربية) وضعيات أخرى</value>
@@ -700,10 +787,19 @@
     <value>رقم جواز السفر</value>
   </data>
   <data name="lblPassportReleaseDate" xml:space="preserve">
-    <value>Passport Release Date</value>
+    <value>تاريخ إصدار جواز السفر</value>
   </data>
   <data name="lblPassword" xml:space="preserve">
     <value>كلمة المرور </value>
+  </data>
+  <data name="lblPayroll" xml:space="preserve">
+    <value>Payroll</value>
+  </data>
+  <data name="lblPayrollisalreadyprocessed" xml:space="preserve">
+    <value>Payroll is already processed</value>
+  </data>
+  <data name="lblPayrollReport" xml:space="preserve">
+    <value>Payroll Report</value>
   </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>
@@ -727,7 +823,7 @@
     <value>تاريخ الإنتهاء</value>
   </data>
   <data name="lblPersonalDocumentReleaseDate" xml:space="preserve">
-    <value>Release Date</value>
+    <value>التاريخ إصدار</value>
   </data>
   <data name="lblPersonalDocumentType" xml:space="preserve">
     <value>نوع الوثيقة</value>
@@ -742,6 +838,9 @@
   <data name="lblProcedures" xml:space="preserve">
     <value>توثيق الإجراءات</value>
   </data>
+  <data name="lblProceed" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>معالجتها</value>
   </data>
@@ -750,6 +849,9 @@
   </data>
   <data name="lblProfileImage" xml:space="preserve">
     <value>الصورة الشخصية</value>
+  </data>
+  <data name="lblProvidentFundDeduction" xml:space="preserve">
+    <value>Provident Fund Deduction</value>
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>اجازة رسمية</value>
@@ -764,16 +866,22 @@
     <value>اقرأ الرسالة</value>
   </data>
   <data name="lblRelaxationTime" xml:space="preserve">
-    <value>Relaxation Time</value>
+    <value>وقت الاسترخاء</value>
   </data>
   <data name="lblReleaseDate" xml:space="preserve">
-    <value>Release Date</value>
+    <value>تاريخ الانجاز</value>
   </data>
   <data name="lblremarks" xml:space="preserve">
     <value>ملاحظات</value>
   </data>
   <data name="lblReply" xml:space="preserve">
     <value>الرد</value>
+  </data>
+  <data name="lblReport" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="lblReports" xml:space="preserve">
+    <value>Reports</value>
   </data>
   <data name="lblRequest" xml:space="preserve">
     <value>الطلب</value>
@@ -794,7 +902,7 @@
     <value>اجازة قيد التفعيل</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>إعادة ضبط</value>
   </data>
   <data name="lblReturnTime" xml:space="preserve">
     <value>الى</value>
@@ -804,10 +912,10 @@
     <value>دور</value>
   </data>
   <data name="lblRoster" xml:space="preserve">
-    <value>Roster</value>
+    <value>القائمة</value>
   </data>
   <data name="lblRosterAssociation" xml:space="preserve">
-    <value>Roster Association</value>
+    <value>قائمة الشركاء</value>
   </data>
   <data name="lblRulesList" xml:space="preserve">
     <value>قائمة  القواعد</value>
@@ -815,11 +923,14 @@
   <data name="lblSalary" xml:space="preserve">
     <value>الراتب</value>
   </data>
+  <data name="lblSalarySetting" xml:space="preserve">
+    <value>إعدادات الراتب</value>
+  </data>
   <data name="lblSanctionsPenalties" xml:space="preserve">
     <value>العقوبات</value>
   </data>
   <data name="lblSaturday" xml:space="preserve">
-    <value>Saturday</value>
+    <value>السبت</value>
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>بحث</value>
@@ -827,26 +938,35 @@
   <data name="lblSection" xml:space="preserve">
     <value>القسم</value>
   </data>
+  <data name="lblSecurityDeduction" xml:space="preserve">
+    <value>Security Deduction</value>
+  </data>
   <data name="lblSelect" xml:space="preserve">
     <value>اختر</value>
   </data>
   <data name="lblSelectLeave" xml:space="preserve">
-    <value>Select Leave</value>
+    <value>حدد مغادرة</value>
   </data>
   <data name="lblSend" xml:space="preserve">
     <value>ارسل</value>
   </data>
+  <data name="lblSeptember" xml:space="preserve">
+    <value>سبتمبر</value>
+  </data>
   <data name="lblServicesProvidedtoCustomers" xml:space="preserve">
     <value>مستوى الخدمات المقدمة للمتعاملين</value>
+  </data>
+  <data name="lblSetting" xml:space="preserve">
+    <value>lblSetting</value>
   </data>
   <data name="lblSharingandTakingResponsibility" xml:space="preserve">
     <value>المشاركة وتحمل المسؤولية</value>
   </data>
   <data name="lblShiftTime" xml:space="preserve">
-    <value>Shift Time</value>
+    <value>توقيت الدوام</value>
   </data>
   <data name="lblShiftTiming" xml:space="preserve">
-    <value>Shift Timings</value>
+    <value>توقيت الدوام</value>
   </data>
   <data name="lblShortLeave" xml:space="preserve">
     <value>إذن خروج</value>
@@ -873,7 +993,7 @@
     <value>الحالة المدنية</value>
   </data>
   <data name="lblSocialStatusEng" xml:space="preserve">
-    <value>Social Status  (English)</value>
+    <value>الحالة الاجتماعية (الإنجليزية)</value>
   </data>
   <data name="lblSocialStatusEnglish" xml:space="preserve">
     <value>الحالة المدنية (باللغة الإنجليزية)</value>
@@ -891,7 +1011,7 @@
     <value>الموضوع</value>
   </data>
   <data name="lblSunday" xml:space="preserve">
-    <value>Sunday</value>
+    <value>الاحد</value>
   </data>
   <data name="lblSupervisoryskills" xml:space="preserve">
     <value>المهارات الإشرافية</value>
@@ -907,7 +1027,7 @@
     <value>مستوى التميز و التفرد</value>
   </data>
   <data name="lblThursday" xml:space="preserve">
-    <value>Thursday</value>
+    <value>الخميس</value>
   </data>
   <data name="lblTime" xml:space="preserve">
     <value>الوقت</value>
@@ -916,7 +1036,7 @@
     <value>وقت  وسرعة انجاز العمل</value>
   </data>
   <data name="lblTimeRoster" xml:space="preserve">
-    <value>Time Roster</value>
+    <value>قائمة الوقت</value>
   </data>
   <data name="lblTo" xml:space="preserve">
     <value>إلى</value>
@@ -924,14 +1044,29 @@
   <data name="lblTotal" xml:space="preserve">
     <value>المجموع</value>
   </data>
+  <data name="lblTotalAbsents" xml:space="preserve">
+    <value>Total Absent(s)</value>
+  </data>
+  <data name="lblTotalHours" xml:space="preserve">
+    <value>Total Hour(s)</value>
+  </data>
+  <data name="lblTotalLeaves" xml:space="preserve">
+    <value>Total Leave(s)</value>
+  </data>
+  <data name="lblTotalPresents" xml:space="preserve">
+    <value>Total Present(s)</value>
+  </data>
   <data name="lblTuesday" xml:space="preserve">
-    <value>Tuesday</value>
+    <value>الثلثاء</value>
+  </data>
+  <data name="lblType" xml:space="preserve">
+    <value>نموذج</value>
   </data>
   <data name="lblTypeArb" xml:space="preserve">
-    <value>Type (Arabic)</value>
+    <value>نموذج (عربي)</value>
   </data>
   <data name="lblTypeEng" xml:space="preserve">
-    <value>Type (English)</value>
+    <value>نموذج (إنجليزي)</value>
   </data>
   <data name="lblUpdatePassword" xml:space="preserve">
     <value>تحديث كلمة المرور</value>
@@ -943,13 +1078,22 @@
     <value>تاريخ اصدار الإقامة</value>
   </data>
   <data name="lblVisaReleaseDate" xml:space="preserve">
-    <value>Visa Release Date</value>
+    <value>تاريخ إصدار التأشيرة</value>
   </data>
   <data name="lblVisaSponsorship" xml:space="preserve">
     <value>الكفيل</value>
   </data>
   <data name="lblWednesday" xml:space="preserve">
-    <value>Wednesday</value>
+    <value>الاربعاء</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>السنة</value>
+  </data>
+  <data name="lblYearlyPayroll" xml:space="preserve">
+    <value>Yearly Payroll</value>
+  </data>
+  <data name="lblYearWiseReport" xml:space="preserve">
+    <value>Year Wise Report</value>
   </data>
   <data name="MsgAttachmentNotFound" xml:space="preserve">
     <value>لايوجد المرفق</value>
@@ -985,7 +1129,7 @@
     <value>بداية المدة لا يمكن ان تكون اكبر من مدة النهاية</value>
   </data>
   <data name="tabAllowanceType" xml:space="preserve">
-    <value>Allowances Type</value>
+    <value>نوع البدلات</value>
   </data>
   <data name="tabEducationalDocument" xml:space="preserve">
     <value>وثيقة الدراسية</value>

@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblReport;
+}
+
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#YearWiseReportTab" role="tab" id="YearWiseReportTabLi"> @HRModuleUI.HumanResourceUI.lblYearWiseReport</a>
+                </li>
+
+                @*<li class="nav-item">
+            <a class="nav-link " data-toggle="tab" href="#MonthWiseTab" id="MonthWiseLi" role="tab">@HRModuleUI.HumanResourceUI.lblMonthWiseReport</a>
+        </li>*@
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="YearWiseReportTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSelect @HRModuleUI.HumanResourceUI.lblYear  </label> <span style="color: red">*</span>
+
+                                                <select class="form-control " required onchange="PayrollemployeeYearhWiseReport()">
+                                                    <option selected value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2026">2026</option>
+                                                    <option value="2027">2027</option>
+                                                    <option value="2028">2028</option>
+                                                    <option value="2029">2029</option>
+                                                    <option value="2030">2030</option>
+                                                    <option value="2031">2031</option>
+                                                    <option value="2032">2032</option>
+                                                    <option value="2033">2033</option>
+                                                    <option value="2034">2034</option>
+                                                    <option value="2035">2035</option>
+                                                    <option value="2036">2036</option>
+                                                    <option value="2037">2037</option>
+                                                    <option value="2038">2038</option>
+                                                    <option value="2039">2039</option>
+                                                    <option value="2040">2040</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid-main-div">
+                                            <div id="grid-payroll-report-yearly">  </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                @*<div class="tab-pane " id="MonthWiseTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    
+
+                                    <div class="col-md-12">
+                                        <h2>Coming soon...</h2>
+                                        <div class="grid-main-div">
+                                            <div id="grid-allowance">  </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>*@
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+        //Resource
+        var lblEmployeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+        var lblJanuary = '@HRModuleUI.HumanResourceUI.lblJanuary';
+        var lblFebruary = '@HRModuleUI.HumanResourceUI.lblFebruary';
+        var lblMarch = '@HRModuleUI.HumanResourceUI.lblMarch';
+        var lblApril = '@HRModuleUI.HumanResourceUI.lblApril';
+        var lblMay = '@HRModuleUI.HumanResourceUI.lblMay';
+        var lblJune = '@HRModuleUI.HumanResourceUI.lblJune';
+        var lblJuly = '@HRModuleUI.HumanResourceUI.lblJuly';
+        var lblAugust = '@HRModuleUI.HumanResourceUI.lblAugust';
+        var lblSeptember = '@HRModuleUI.HumanResourceUI.lblSeptember';
+        var lblOctober = '@HRModuleUI.HumanResourceUI.lblOctober';
+        var lblNovember = '@HRModuleUI.HumanResourceUI.lblNovember';
+        var lblDecember = '@HRModuleUI.HumanResourceUI.lblDecember';
+      
+           var btnSave	 = '@HRModuleUI.HumanResourceUI.btnSave';
+
+
+    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Payroll/payroll-report.js"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance-type.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance.js"></script>*@
+
+}

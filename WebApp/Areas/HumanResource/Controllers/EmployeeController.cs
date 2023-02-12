@@ -48,5 +48,10 @@ namespace WebApp.Areas.HumanResource.Controllers
         {
             return View();
         }
+        public ActionResult SalarySetting()
+        {
+            return View();
+        }
+
     }
 }

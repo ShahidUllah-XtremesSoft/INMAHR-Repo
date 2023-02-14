@@ -76,17 +76,18 @@ var bindfnLoadSalarySettingAdditionDeductionGrid = function (inputDataJSON) {
     bindKendoGrid($SalarySettingAdditionDeductionGrid, 50, gridColumns, inputDataJSON);
 };
 function editSalarySettingAdditionDeduction(event) {
-   
+    
     var row = $(event).closest("tr");
     var grid = $("#" + $SalarySettingAdditionDeductionGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     $('#RecursiveID').val(dataItem.recursiveID);
-    $('#EmployeeID').val(dataItem.employeeID);
+  //  $('#EmployeeID').val(dataItem.employeeID);
     $('#Amount').val(dataItem.amount);
     $('#Name').val(dataItem.name);
     $('#RecursiveType').val(dataItem.recursiveType);
     $('#RecursiveDate').val(dataItem.recursiveDate);
-    
+
+    $('#EmployeeID').data("kendoDropDownList").value(dataItem.employeeID);
 
 
 

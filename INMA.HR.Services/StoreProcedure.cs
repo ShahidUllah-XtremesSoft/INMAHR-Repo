@@ -59,6 +59,13 @@
 
     //---------------- PARYOLL
     Employees_SelectForPayroll,
+    PayrolForEmployee_GetLeavesandTotalhourbyid,
+    Payroll_LoadAdditionByEmployeeByID,
+    Payroll_LoadDeductionByEmployeeByID,
+    Payroll_addUpdateEmployeePayrollAddition,
+    Payroll_addUpdateEmployeePayrollRecursiveAddition,
+    Payroll_addUpdateEmployeePayrollDeduction,
+    Payroll_addUpdateEmployeePayrollRecursiveDeduction,
 
     #endregion
 

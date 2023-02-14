@@ -111,6 +111,7 @@
                     <span class="showHideBtn" style="display: none;">
                         <button class="btn btn-primary" id="btn-proceed-addition-deduction"><i class="fa fa-checked"></i>@HRModuleUI.HumanResourceUI.lblProceed</button>
 
+
                     </span>
                     <span class="showProceedMsg" style="">
                         <button class="btn btn-primary" disabled="" style="font-weight: bold;font-size: smaller;">
@@ -153,7 +154,7 @@
 </style>
 
 
-<div class="modal custom-modal fade modal-add-update-payroll-addition-deduction" role="dialog" style="display: none;" aria-hidden="true">
+<div class="modal custom-modal fade modal-add-update-payroll-addition-deduction" role="dialog" style="display: none;" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 
         <div class="modal-content">
@@ -216,87 +217,91 @@
                     <hr />
                     <div class="row">
                         <div class="col-sm-6 " style=" background:#2ecc7136;">
-                            <h4 class="text-primary" style="margin-left: 10px;">@HRModuleUI.HumanResourceUI.lblAdditions</h4>
-                            <div class="appendAddition" style="margin-left: 10px;"> </div>
-                            <div class="appendLabourAddition" style="margin-left: 10px;"> </div>
+                            @*<div class="appendAddition" style="margin-left: 10px;"> </div>
+                                <div class="appendLabourAddition" style="margin-left: 10px;"> </div>*@
+
+                            <div class="row">
+                                <div class="col-sm-6 " style=" background:#2ecc7136;">
+
+                                    <b>  @HRModuleUI.HumanResourceUI.lblAllowances</b><hr />
+                                    <table class="appendAllowances">  </table>
 
 
-                            <div class="col-sm-6 " style=" background:#2ecc7136;">
-                                Addition <hr />
+                                </div>
+                                <div class="col-sm-6 " style="background: #3ab35f42; ">
+                                    <b>@HRModuleUI.HumanResourceUI.lblSalarySetting @HRModuleUI.HumanResourceUI.lblAddition</b><hr />
 
-
-                                <table>
-
-
-                                    <tr>
-                                        <td>Bonus 1</td>
-                                        <td>100</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>Bonus 2</td>
-                                        <td>102</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bonus 3</td>
-                                        <td>103</td>
-                                    </tr>
-
-
-                                </table>
-                            </div>
-                            <div class="col-sm-6 " style=" background: #e74c3c36;">
-                                Deduction<hr />
+                                    <table class="appendAddition"></table>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6 " style="background: #e74c3c36;">
-                            <h4 class="text-primary" style="margin-left: 10px;">@HRModuleUI.HumanResourceUI.lblDeductions</h4>
-                            <div class="row" style="margin-left: 10px;">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div>
-                                            <div class="form-group">
-                                                <label>@HRModuleUI.HumanResourceUI.lblSecurityDeduction</label>
-                                                <input class="form-control" min="0" name="SecurityDeduction" id="SecurityDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <b> @HRModuleUI.HumanResourceUI.lblDeduction</b><hr />
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div>
+                                                <div class="form-group">
+                                                    <label>@HRModuleUI.HumanResourceUI.lblSecurityDeduction</label>
+                                                    <input class="form-control" min="0" name="SecurityDeduction" id="SecurityDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div>
+                                                <div class="form-group">
+                                                    <label>@HRModuleUI.HumanResourceUI.lblLeaveDeduction</label>
+                                                    <input class="form-control" min="0" name="LeaveDeduction" id="LeaveDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div>
-                                            <div class="form-group">
-                                                <label>@HRModuleUI.HumanResourceUI.lblLeaveDeduction</label>
-                                                <input class="form-control" min="0" name="LeaveDeduction" id="LeaveDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div>
+                                                <div class="form-group">
+                                                    <label>@HRModuleUI.HumanResourceUI.lblLabourWelfareDeduction</label>
+                                                    <input class="form-control" min="0" name="LabourWelfareDeduction" id="LabourWelfareDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div>
+                                                <div class="form-group">
+                                                    <label>@HRModuleUI.HumanResourceUI.lblProvidentFundDeduction</label>
+                                                    <input class="form-control" min="0" name="ProvidentFundDeduction" id="ProvidentFundDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div>
+                                                <div class="form-group">
+                                                    <label>@HRModuleUI.HumanResourceUI.lblOtherDeduction</label>
+                                                    <input class="form-control" min="0" name="OtherDeduction" id="OtherDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div>
-                                            <div class="form-group">
-                                                <label>@HRModuleUI.HumanResourceUI.lblLabourWelfareDeduction</label>
-                                                <input class="form-control" min="0" name="LabourWelfareDeduction" id="LabourWelfareDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div>
-                                            <div class="form-group">
-                                                <label>@HRModuleUI.HumanResourceUI.lblProvidentFundDeduction</label>
-                                                <input class="form-control" min="0" name="ProvidentFundDeduction" id="ProvidentFundDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div>
-                                            <div class="form-group">
-                                                <label>@HRModuleUI.HumanResourceUI.lblOtherDeduction</label>
-                                                <input class="form-control" min="0" name="OtherDeduction" id="OtherDeduction" type="number" value="0" oninput="this.value = Math.abs(this.value)">
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-6" style="background-color: #b33a3a24">
+                                    <b>@HRModuleUI.HumanResourceUI.lblSalarySetting @HRModuleUI.HumanResourceUI.lblDeduction</b><hr />
+
+                                    <table class="appendDeduction"></table>
                                 </div>
                             </div>
                         </div>
@@ -304,12 +309,16 @@
 
 
                 </div>
-                <div class="modal-footer">
+                <div class="card-footer">
 
 
-                    <button type="button" id="btnSave" class=" btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn" tabindex="24"><i class="fa fa-save"></i> Save</button>
-                    <button type="button" id="btnClose" class="btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block md-close" data-dismiss="modal" tabindex="25"><i class="fa fa-close"></i> Close</button>
-                    <button type="reset" style="display:none !important;" class=" btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block reset_btn"><i class="fa fa-remove"></i> Reset</button>
+
+
+
+                    @*<button type="button" id="btnSave" class=" btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn" tabindex="24"><i class="fa fa-save"></i> Save</button>*@
+                    <button type="button" id="btnClose" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block md-close" data-dismiss="modal" tabindex="25"><i class="fa fa-close"></i> @Resources.Global.lblClose</button>
+                    <button type="button" class="btn btn-success   @Resources.Common.PullRight" id="btnSave" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    <button type="reset" style="display:none !important;" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block reset_btn"><i class="fa fa-remove"></i> @Resources.Global.btnReset</button>
 
 
                 </div>

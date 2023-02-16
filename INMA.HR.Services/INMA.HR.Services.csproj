@@ -149,6 +149,7 @@
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Models\EmployeeRequestData.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
+    <Compile Include="Models\BulkPayrollInsertion.cs" />
     <Compile Include="Models\RosterAssociationModel.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\InternalLetterData.cs" />

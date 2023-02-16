@@ -13,15 +13,13 @@
                 </li>
 
                 @*<li class="nav-item">
-            <a class="nav-link " data-toggle="tab" href="#MonthWiseTab" id="MonthWiseLi" role="tab">@HRModuleUI.HumanResourceUI.lblMonthWiseReport</a>
-        </li>*@
+                        <a class="nav-link " data-toggle="tab" href="#MonthWiseTab" id="MonthWiseLi" role="tab">@HRModuleUI.HumanResourceUI.lblMonthWiseReport</a>
+                    </li>*@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content tabs card-block">
                 <div class="tab-pane active" id="YearWiseReportTab" role="tabpanel">
-                    <div class="row">
-                        <div class="card">
-                            <div class="card-block">
+                    <div class="row"> 
 
                                 <div class="row">
 
@@ -31,8 +29,9 @@
                                             <div class="form-group">
                                                 <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSelect @HRModuleUI.HumanResourceUI.lblYear  </label> <span style="color: red">*</span>
 
-                                                <select class="form-control " required onchange="PayrollemployeeYearhWiseReport()">
-                                                    <option selected value="2023">2023</option>
+                                                <select class="form-control " required onchange="PayrollemployeeYearhWiseReport()" id="PayrollYear">
+                                                    <option selected value="0">@HRModuleUI.HumanResourceUI.lblSelect</option>
+                                                    <option value="2023">2023</option>
                                                     <option value="2024">2024</option>
                                                     <option value="2025">2025</option>
                                                     <option value="2026">2026</option>
@@ -54,41 +53,48 @@
                                             </div>
                                         </div>
 
+
+                                    </div>
+                                </div>
+                                <div class="row">
+
+
+                                    <div class="col-md-12">
+
+
                                         <div class="grid-main-div">
                                             <div id="grid-payroll-report-yearly">  </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                            </div>
-                        </div>
+ 
                     </div>
 
 
                 </div>
                 @*<div class="tab-pane " id="MonthWiseTab" role="tabpanel">
-                    <div class="row">
-                        <div class="card">
-                            <div class="card-block">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-block">
 
-                                <div class="row">
-                                    
+                                    <div class="row">
 
-                                    <div class="col-md-12">
-                                        <h2>Coming soon...</h2>
-                                        <div class="grid-main-div">
-                                            <div id="grid-allowance">  </div>
+
+                                        <div class="col-md-12">
+                                            <h2>Coming soon...</h2>
+                                            <div class="grid-main-div">
+                                                <div id="grid-allowance">  </div>
+                                            </div>
                                         </div>
                                     </div>
+
+
                                 </div>
 
-
                             </div>
-
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
 
 
 
@@ -115,13 +121,13 @@
         var lblOctober = '@HRModuleUI.HumanResourceUI.lblOctober';
         var lblNovember = '@HRModuleUI.HumanResourceUI.lblNovember';
         var lblDecember = '@HRModuleUI.HumanResourceUI.lblDecember';
-      
+
            var btnSave	 = '@HRModuleUI.HumanResourceUI.btnSave';
 
 
     </script>
     <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Payroll/payroll-report.js"></script>
     @*<script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance-type.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance.js"></script>*@
+        <script src="~/Scripts/FunctionalityJs/Areas/Setup/Allowance/allowance.js"></script>*@
 
 }

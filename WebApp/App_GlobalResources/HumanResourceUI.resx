@@ -927,6 +927,9 @@
   <data name="lblSalary" xml:space="preserve">
     <value>Salary</value>
   </data>
+  <data name="lblSalaryGeneratedSuccessfully" xml:space="preserve">
+    <value>Salary Generated Successfully...!</value>
+  </data>
   <data name="lblSalarySetting" xml:space="preserve">
     <value>Salary Setting</value>
   </data>

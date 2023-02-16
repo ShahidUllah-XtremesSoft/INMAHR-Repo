@@ -664,6 +664,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saved.
+        /// </summary>
+        internal static string lblSaved {
+            get {
+                return ResourceManager.GetString("lblSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Second(s).
         /// </summary>
         internal static string lblSeconds {

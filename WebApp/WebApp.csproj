@@ -99,6 +99,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -121,11 +124,33 @@
       <HintPath>libs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.12.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.2\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -333,8 +358,8 @@
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\api\XtremeController.cs" />
-    <Compile Include="Controllers\ReportController .cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController .cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -581,6 +606,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\old-payroll-for-test.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\payroll.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\payroll-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Payroll\print-employee-salary-test.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Penalties\penalties-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Rules\rules-grid.js" />
@@ -770,7 +796,22 @@
     <Compile Include="Reports\HR-Reports\TestReport.Designer.cs">
       <DependentUpon>TestReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Models\RPT_SalarySlip_Model.cs" />
+    <Compile Include="Reports\Models\RPT_Model.cs" />
     <Compile Include="Reports\Models\HR_Department.cs" />
+    <Compile Include="Reports\Payroll\CompanyQuotation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Payroll\CompanyQuotation.Designer.cs">
+      <DependentUpon>CompanyQuotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Payroll\Report_SalarySlip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Payroll\Report_SalarySlip.Designer.cs">
+      <DependentUpon>Report_SalarySlip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Payroll\_salarySlip_Deductions.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
     <Compile Include="token\AddChallengeOnUnauthorizedResult.cs" />
@@ -1520,6 +1561,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\HR-Reports\TestReport.resx">
       <DependentUpon>TestReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Payroll\CompanyQuotation.resx">
+      <DependentUpon>CompanyQuotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Payroll\Report_SalarySlip.resx">
+      <DependentUpon>Report_SalarySlip.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />

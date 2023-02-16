@@ -107,7 +107,7 @@ var fnLoadPayrollGridCallBack = function (inputDataJSONs) {
 
         { title: "#", template: "<b>#= ++record #</b>", width: 15, },
 
-        // { field: "payrollID", title: "payrollID", hidden: true },
+        { field: "payrollID", title: "payrollID", hidden: true },
         { field: "employeeID", title: "employeeID", hidden: true },
         { field: "departmentID", title: "Department", hidden: true },
         { field: "designationID", title: "Designation", hidden: true },
@@ -166,7 +166,7 @@ var fnLoadPayrollGridCallBack = function (inputDataJSONs) {
             template: "#  if (isProceed == '0' ) " +
                 "{ #  <a style='font-size:20px;cursor:pointer;' data-toggle='modal'  data-target='.modal-add-update-payroll-addition-deduction' onClick= EditDetail(this) title='Edit ' ><span class='  fa fa-edit'></span></a>  #}" +
                 " else if (isProceed == '1') " +
-                "{#<a style='font-size: 20px; color: red; cursor: pointer;' onclick='printSalarySlip(this)' title='Print Slip'><span class='fa fa-print'></span></a>#} # "
+                "{#<a style='font-size: 20px; color: red; cursor: pointer;' data-type='PDF' onclick='printSalarySlip(this)'   title='Print Slip'><span class='fa fa-print'></span></a>#} # "
 
         }];
     bindKendoGrid($PayrollGrid, 500, gridColumns, inputDataJSONs, true, 750);
@@ -177,7 +177,26 @@ function printSalarySlip(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $PayrollGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    window.open('/HR/PrintSalary?' + dataItem.payrollID + '', '_blank');
+    console.log(dataItem)
+
+    var reportExtension = event.currentTarget.dataset.type;
+    var newObject = {
+        type: "Payroll_LoadEmployeeSalarySlipByID",
+        value: {
+            Payroll_Id: dataItem.payrollID,
+            Language: _currentLanguage
+        }
+    }
+     
+    window.open("/Report/SalaryReceipt?" +
+        "type=" + encodeURIComponent(newObject.type) +
+        "&value=" + encodeURIComponent(JSON.stringify(newObject.value)) +
+        "&reportExtension=" + reportExtension, '_blank');
+
+
+
+
+    //window.open('/HR/PrintSalary?' + dataItem.payrollID + '', '_blank');
 
 }
 function LoadRecordByID(e) {
@@ -320,9 +339,9 @@ function LoadPayrollDeductionByEmployeeID() {
     });
 }
 var getLoadPayrollDeductionByEmployeeID = function (d) {
-     
+
     if (JSON.parse(d.Value).length > 0) {
-       // console.log(JSON.parse(d.Value))
+        // console.log(JSON.parse(d.Value))
         if (JSON.parse(d.Value)[0].length > 0) {
             $('#SecurityDeduction').val(JSON.parse(d.Value)[0][0].securityDeduction);
             $('#LeaveDeduction').val(JSON.parse(d.Value)[0][0].leaveDeduction);
@@ -331,7 +350,7 @@ var getLoadPayrollDeductionByEmployeeID = function (d) {
             $('#OtherDeduction').val(JSON.parse(d.Value)[0][0].otherDeduction);
 
         }
-         
+
         var deductionList = JSON.parse(d.Value)[1];
         $('.appendDeduction').empty();
         if (deductionList.length > 0) {
@@ -374,7 +393,7 @@ $("#btnSave").click(function () {
 var deductionIDFrom_Response = 0;
 function proceedPayrollAdditionDeductionRecord(e) {
 
-     
+
     // ------------ NOTE
     // ------------ UPDATE AND INSERT ADDITION AND ALLOWANCES 
     if ($('.appendAddition input').length > 0) {
@@ -386,9 +405,9 @@ function proceedPayrollAdditionDeductionRecord(e) {
                 EntryStatus: $('.appendAddition input')[i].name
             }
 
-             ajaxRequest({ commandName: 'Payroll_addUpdateEmployeePayrollRecursiveAddition', values: { data: JSON.stringify(data), Language: _currentLanguage }, CallBack: '' });
+            ajaxRequest({ commandName: 'Payroll_addUpdateEmployeePayrollRecursiveAddition', values: { data: JSON.stringify(data), Language: _currentLanguage }, CallBack: '' });
 
-           //   console.log(data);
+            //   console.log(data);
         }
 
     }
@@ -400,9 +419,9 @@ function proceedPayrollAdditionDeductionRecord(e) {
                 EmployeeID: $('#EmployeeID').val(), AllowanceID: $('.appendAllowances input')[i].id, Amount: $('.appendAllowances input')[i].value, PayrollMonth: $('#PayrollMonth :selected').val(), PayrollYear: $('#PayrollYear :selected').val(),
                 EntryStatus: $('.appendAllowances input')[i].name
             }
-           ajaxRequest({ commandName: 'Payroll_addUpdateEmployeePayrollAddition', values: { data: JSON.stringify(data), Language: _currentLanguage }, CallBack: '' });
+            ajaxRequest({ commandName: 'Payroll_addUpdateEmployeePayrollAddition', values: { data: JSON.stringify(data), Language: _currentLanguage }, CallBack: '' });
 
-         //  console.log(data);
+            //  console.log(data);
         }
 
     }
@@ -444,7 +463,7 @@ function proceedPayrollAdditionDeductionRecord(e) {
 
 
     /*
-    KendoGlobalAjax({
+    ajaxRequest({
         commandName: 'Payroll_addUpdateEmployeePayrollDeduction',
         values: {
             EmployeeID: $('#EmployeeID').val(),
@@ -467,13 +486,13 @@ function proceedPayrollAdditionDeductionRecord(e) {
 
 }
 var fnLoadPayrollDeduction_Callback = function (inputDataJSONs) {
-     
+
     var db_DeductionID = JSON.parse(inputDataJSONs.Value).deductionID
     //   deductionIDFrom_Response
     if ($('.appendDeduction input').length > 0) {
 
         for (var i = 0; i < $('.appendDeduction input').length; i++) {
-             
+
             var data = {
                 EmployeeID: $('#EmployeeID').val(),
                 RecursiveID: $('.appendDeduction input')[i].id,
@@ -487,21 +506,82 @@ var fnLoadPayrollDeduction_Callback = function (inputDataJSONs) {
             }
             ajaxRequest({ commandName: 'Payroll_addUpdateEmployeePayrollRecursiveDeduction', values: { data: JSON.stringify(data), Language: _currentLanguage }, CallBack: '' });
 
-          //  console.log(data);
+            //  console.log(data);
         }
 
     }
 
-
     $('.md-close').click();
-    setTimeout(function () {
-        fnLoadPayrollGrid();
-    }, 50);
     Swal.fire({
 
         icon: 'success',
-        title: 'Salary Generated successfully...',
+        title: lblSaved,
         showConfirmButton: false,
-        timer: 1500
+        timer: 800
     });
+    setTimeout(function () { 
+        fnLoadPayrollGrid();
+    }, 50);
+
+}
+$('#btn-proceed-addition-deduction').click(function () {
+
+    proceedAttendanceRecord();
+});
+
+function proceedAttendanceRecord(e) {
+
+    var grid = $("#grid-payroll").data("kendoGrid");
+    var gridData = grid.dataSource._data;
+
+    var payrollDataArray = [];
+
+
+    for (var j = 0; j < gridData.length; j++) {
+
+
+        var payrollData = {
+            PayrollID: gridData[j].payrollID, //'00000000-0000-0000-0000-000000000000',
+            EmployeeID: gridData[j].employeeID,
+            BasicSalary: gridData[j].basicSalary,
+            Totaladdation: gridData[j].totaladdation == null ? 0 : gridData[j].totaladdation,
+            TotalDeduction: gridData[j].totalDeduction == null ? 0 : gridData[j].totalDeduction,//gridData[j].totalDeduction,
+            Grosssalary: gridData[j].grosssalary,
+            Totalpresent: gridData[j].totalpresent,
+            TotalAbsent: gridData[j].totalAbsent,
+            Totalleave: gridData[j].totalleave,
+            PayrollMonth: $('#PayrollMonth :selected').val(),
+            PayrollYear: $('#PayrollYear :selected').val()
+
+        }
+
+        payrollDataArray.push(payrollData);
+    }
+
+    ajaxRequest({
+        commandName: 'Payroll_addUpdateEmployeePayroll_New', values: {
+            BulkPayrollInsertion: payrollDataArray,
+            UserID: JSON.parse(localStorage.getItem('User')).id,
+            Language: _currentLanguage
+        }, CallBack: proceedAttendanceRecordCallBack
+    });
+
+
+
+
+}
+function proceedAttendanceRecordCallBack() {
+    $('.showHideBtn').hide();
+    $('.showProceedMsg').show();
+    Swal.fire({
+
+        icon: 'success',
+        title: lblSalaryGeneratedSuccessfully,
+        showConfirmButton: false,
+        timer: 1000
+    });
+    setTimeout(function () {
+
+        location.reload();
+    }, 1000);
 }

@@ -2491,6 +2491,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Salary Generated Successfully...!.
+        /// </summary>
+        public static string lblSalaryGeneratedSuccessfully {
+            get {
+                return ResourceManager.GetString("lblSalaryGeneratedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Salary Setting.
         /// </summary>
         public static string lblSalarySetting {

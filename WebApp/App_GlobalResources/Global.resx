@@ -318,6 +318,9 @@
   <data name="lblReset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="lblSaved" xml:space="preserve">
+    <value>Saved</value>
+  </data>
   <data name="lblSeconds" xml:space="preserve">
     <value>Second(s)</value>
   </data>

@@ -66,6 +66,11 @@
     Payroll_addUpdateEmployeePayrollRecursiveAddition,
     Payroll_addUpdateEmployeePayrollDeduction,
     Payroll_addUpdateEmployeePayrollRecursiveDeduction,
+    Payroll_addUpdateEmployeePayroll_New,
+    Payroll_employeeMonthWiseReport,
+
+    //----Payroll Report
+    Payroll_LoadEmployeeSalarySlipByID,
 
     #endregion
 

@@ -1,0 +1,273 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblPromotion;
+}
+
+<div class="card-header">
+    <div class="form-group">
+
+        <label class="col-form-label col-sm-1">@HRModuleUI.HumanResourceUI.lblSection</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="DepartmentId" name="DepartmentId" value="" tabindex="1" />
+        </div>
+        <label class="col-form-label col-sm-1">@HRModuleUI.HumanResourceUI.lblEmployees</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="HR_Employees" value="" tabindex="2" />
+        </div>
+        <div class="col-md-3" style="top: 10px;">
+            <button type="button" class="btn btn-success " id="btn-search"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmployeeNumber</label>
+                                    <div class="col-xs-7 controls pull-right" id="EmployeeNumber"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmployeeName</label>
+                                    <div class="col-xs-7 controls pull-right" id="EmployeeName"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5   ">@HRModuleUI.HumanResourceUI.lblJoinDate</label>
+                                    <div class="col-xs-7 controls pull-right" id="JoinDate"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblPhone</label>
+                                    <div class="col-xs-7 controls pull-right" id="PhoneNumber"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblEmail</label>
+                                    <div class="col-xs-7 controls pull-right" id="Email"></div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">
+                                        @HRModuleUI.HumanResourceUI.lblDepartment
+                                    </label>
+                                    <div class="col-xs-7 controls pull-right" id="Department">
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">
+                                        @HRModuleUI.HumanResourceUI.lblLineManager
+                                    </label>
+                                    <div class="col-xs-7 controls pull-right" id="DirectResponsible">
+
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2"></div>
+
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">  @HRModuleUI.HumanResourceUI.lblOccupation</label>
+                                    <input type="hidden" value="" id="CurrentProfessionId" />
+                                    <div class="col-xs-7 controls pull-right" id="Profession">
+
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5">@HRModuleUI.HumanResourceUI.lblEmploymentStatus</label>
+                                    <div class="col-xs-7 controls pull-right" id="ContractType">
+
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-5  ">@HRModuleUI.HumanResourceUI.lblNationality</label>
+                                    <div class="col-xs-7 controls pull-right" id="Nationality">
+
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3 text-right">
+                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="card">
+    <div class="card-header"><strong>@HRModuleUI.HumanResourceUI.lblPromotion</strong></div>
+
+    <div class="card-block">
+        <div class="col-md-4"> 
+
+        <form id="frmAddUpdatePromotion" name="frmAddUpdatePromotion" action="/services/Xtreme/multipart" method="post">
+            <input type="hidden" name="type" id="type" value="Setup_Promotion_Save">
+            <input type="hidden" name="PromotionID" id="PromotionID" value="0">
+            <input type="hidden" id="CreatedBy" name="CreatedBy" />
+            <input type="hidden" id="Language" name="Language" value="" />
+
+            <input type="hidden" class="form-control" id="HR_Employee_Id" name="HR_Employee_Id" value="" />
+            <input type="hidden" class="form-control" id="HR_DepartmentId" name="HR_DepartmentId" value="" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblPromotion @HRModuleUI.HumanResourceUI.lblDate</label>
+                        <input type="text" class="form-control" id="PromotionDate" name="PromotionDate" value="" />
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblType</label>
+                        <select class="form-control" name="PromotionType" id="PromotionType" tabindex="3" onchange="fnSelectType(this)" required>
+                            <option value="" selected>@HRModuleUI.HumanResourceUI.lblSelect</option>
+                            <option value="Position">Position</option>
+                            <option value="Financial">Financial</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="div-show-hide-from-to" style="display:none;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblFrom</label>
+                            <input readonly type="text" class="form-control" id="From_HR_Profession_Id" name="From_HR_Profession_Id" value="" />
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTo</label>
+                            <input type="text" class="form-control" id="To_HR_Profession_Id" name="To_HR_Profession_Id" value="" />
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label>
+                        <input type="file" class="form-control" id="PromotionAttachment" name="PromotionAttachment" value="" />
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 card-footer">
+
+                    <button type="button" class="btn btn-success" id="btn-save-promotion"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+        <div class="col-md-8">  
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="grid-promotion"></div>
+                        </div>
+                     
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script>
+    var lblPromotion = '@HRModuleUI.HumanResourceUI.lblPromotion';
+    var lblSection = '@HRModuleUI.HumanResourceUI.lblSection';
+    var lblProfession = '@HRModuleUI.HumanResourceUI.lblProfession';
+    var lblDate = '@HRModuleUI.HumanResourceUI.lblDate';
+    var lblType = '@HRModuleUI.HumanResourceUI.lblType';
+    var lblFrom = '@HRModuleUI.HumanResourceUI.lblFrom';
+    var lblTo = '@HRModuleUI.HumanResourceUI.lblTo';
+    var lblEmployeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+    var lblAttachment = '@HRModuleUI.HumanResourceUI.lblAttachment';
+    </script>
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Promotion/promotion.js"></script>
+}

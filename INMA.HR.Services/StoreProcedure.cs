@@ -71,7 +71,10 @@
 
     //----Payroll Report
     Payroll_LoadEmployeeSalarySlipByID,
-
+    //----Payroll Bonus
+    PayrollBonus_Save,
+    PayrollBonus_Delete,
+    Payroll_BonusByEmployeeByID,
     #endregion
 
     #region Human Resource Department
@@ -353,14 +356,22 @@
     Setup_Roster_Get_DDL,
 
     Roster_Association_Get_AllEmployees_by_DepartmentWise,
+    Roster_Associated_Employees_Get,
     Setup_Roster_Association_Multipe_Save,
     Setup_Roster_Association_Delete,
 
 
 
     Image_Save,
+
+    //------ PROMOTION
+    Employees_Get_By_DepartmentID,
+    Setup_Promotion_Save,
+    Setup_Promotion_Delete,
+    Setup_Promotion_Get,
     #endregion
     UserManagement_Login_Role_Update,
+
     #region Evaluation
     Evaluation_Get_AllEmployees_by_DepartmentWise,
     Evaluation_Get_LineManager_by_DepartmentWise,
@@ -370,6 +381,20 @@
     Evaluation_Request_Delete,
     Evaluation_Request_Save,
     Request_Evaluation_Employee_Form_Save,
+    #endregion
+
+    #region APPRAISAL 
+    Appraisal_Template_Get,
+    Request_Appraisal_Answer_Get,
+    Request_Appraisal_Pending,
+    Request_Appraisal_AlreadyExist,
+    Appraisal_Request_Save,
+    Appraisal_Request_Delete,
+    Request_Appraisal_Status_Update,
+    Appraisal_Get_AllEmployees_by_DepartmentWise,
+    Appraisal_Get_LineManager_by_DepartmentWise,
+
+    Request_Appraisal_Answer_Multiple_Save,
     #endregion
 
 }

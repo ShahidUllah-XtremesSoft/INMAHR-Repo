@@ -1,11 +1,11 @@
 ﻿var allNotificationCount = 0;
-    var isLoggedInUserHR = JSON.parse(localStorage.getItem('User')).isHR;
+var isLoggedInUserHR = JSON.parse(localStorage.getItem('User')).isHR;
 $(function () {
-     
-    if (isLoggedInUserHR== false) {
-         // $('#liNewToExpireDocument').css('display', 'none');
-          $('#liNewToExpireCompanyDocument').css('display', 'none');
-         // $('#spanNotificationCount').text('0');
+
+    if (isLoggedInUserHR == false) {
+        // $('#liNewToExpireDocument').css('display', 'none');
+        $('#liNewToExpireCompanyDocument').css('display', 'none');
+        // $('#spanNotificationCount').text('0');
         loadNearToExpireDocumentGrid();
     }
     else {
@@ -20,7 +20,15 @@ function viewNearToExpireDocumentsModalGrid(e) {
 
     $('#spanNotificationCount').text(allNotificationCount);
     if (e == 'EmployeeDocument') {
+
         $('#modalNearToExpireDocument').modal();
+        setTimeout(function () {
+
+            var nearToExpireDocumentGridd = $("#nearToExpireDocumentGrid").data("kendoGrid");
+            nearToExpireDocumentGridd.refresh();   
+            nearToExpireDocumentGridd.dataSource.read();
+            nearToExpireDocumentGridd.resize();
+        }, 300)
     } else if (e == 'CompanyDocument') {
 
         $("#load-company-document-partial-view").load("/CompanyDocument/LoadCompanyDocument");
@@ -31,9 +39,9 @@ function viewNearToExpireDocumentsModalGrid(e) {
 
 
 function loadNearToExpireDocumentGrid() {
-      
+
     //values - are key value pair json object
-    if (isLoggedInUserHR==true) {
+    if (isLoggedInUserHR == true) {
         ajaxRequest({ commandName: 'HR_Employee_PersonalDocument_GetNearToExpire', values: { Language: _currentLanguage }, CallBack: loadNearToExpireDocumentGridCallBack });
     } else {
         ajaxRequest({
@@ -51,7 +59,7 @@ var loadNearToExpireDocumentGridCallBack = function (inputDataJSON) {
     bindloadNearToExpireDocumentGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindloadNearToExpireDocumentGrid = function (inputDataJSON) {
-     
+
     allNotificationCount += inputDataJSON.length;
     $('#spanNotificationCount').text(allNotificationCount);
     $('#documentCount').text(inputDataJSON.length);
@@ -92,7 +100,9 @@ var bindloadNearToExpireDocumentGrid = function (inputDataJSON) {
 
     ];
 
+
     bindKendoGrid('nearToExpireDocumentGrid', 20, gridColumns, inputDataJSON, true, 550);
+
 };
 
 
@@ -115,10 +125,10 @@ function fnLoadDetailScreen(e) {
     var grid = $("#nearToExpireDocumentGrid").data("kendoGrid");
     var dataItem = grid.dataItem(row);
 
-     
+
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.id);
-    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id); 
+    localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);
 
     window.location.href = '/HumanResource/Employee/Detail/';
 }

@@ -61,9 +61,11 @@ namespace WebApp.Controllers
                     {
 
                         _salarySlipHeader.EmployeeID = Convert.ToInt32(item["employeeID"]);
+                        _salarySlipHeader.EmployeeNumber = item["employeeNumber"].ToString();  
                         _salarySlipHeader.EmployeeName = item["employeeName"].ToString();
                         _salarySlipHeader.BasicSalary = Convert.ToDecimal(item["basicSalary"]);
                         _salarySlipHeader.Profession = item["profession"].ToString();
+                        _salarySlipHeader.Department = item["department"].ToString();
                         _salarySlipHeader.PayrollMonth = item["payrollMonth"].ToString();
                         _salarySlipHeader.PayrollYear = item["payrollYear"].ToString();
 

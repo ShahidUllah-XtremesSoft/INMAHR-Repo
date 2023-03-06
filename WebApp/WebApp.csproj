@@ -317,7 +317,7 @@
     <Compile Include="Areas\Request\Controllers\CashInLeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LeaveController.cs" />
     <Compile Include="Areas\Request\Controllers\LetterController.cs" />
-    <Compile Include="Areas\Request\Controllers\EvaluationController.cs" />
+    <Compile Include="Areas\Request\Controllers\AppraisalController.cs" />
     <Compile Include="Areas\Request\Controllers\ShortLeaveController.cs" />
     <Compile Include="Areas\Request\RequestAreaRegistration.cs" />
     <Compile Include="Areas\Request\Views\App_LocalResources\RequestResourceUI.ar-AE.Designer.cs">
@@ -330,6 +330,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RequestResourceUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Setup\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Setup\Controllers\AllowanceController.cs" />
     <Compile Include="Areas\Setup\Controllers\RosterController.cs" />
     <Compile Include="Areas\Setup\Controllers\PublicHolidayController.cs" />
@@ -599,6 +600,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-index.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-new.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\internal-letter-read.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-progress.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-salary-setting-deduction.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-salary-setting-addition.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\HumanResource\Employee\employee-salary-setting.js" />
@@ -659,11 +661,16 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-generate-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-pending-request-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-self-appraisal-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-request-grid.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\evaluation-request-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\appraisal-generate-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-form.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Setup\Promotion\promotion.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance-type.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\employees-associated-roster.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster-association.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
@@ -760,8 +767,8 @@
     <Content Include="Areas\HumanResource\Views\Penalty\List.cshtml" />
     <Content Include="Areas\Project\Views\Project\Delay.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\EmailTemplate\_EmailTemplate.cshtml" />
-    <Content Include="Areas\Request\Views\Evaluation\Index.cshtml" />
-    <Content Include="Areas\Request\Views\Evaluation\Create.cshtml" />
+    <Content Include="Areas\Request\Views\Appraisal\Index.cshtml" />
+    <Content Include="Areas\Request\Views\Appraisal\Create.cshtml" />
     <Content Include="Areas\Employees\Views\Request\Evaluation.cshtml" />
     <Content Include="Areas\HumanResource\Views\Employee\Resigned.cshtml" />
     <Content Include="Areas\Project\Views\Project\Search-project.cshtml" />
@@ -771,6 +778,10 @@
     <Content Include="Areas\Setup\Views\Allowance\Index.cshtml" />
     <Content Include="Areas\HumanResource\Views\Payroll\Report.cshtml" />
     <Content Include="Areas\HumanResource\Views\Employee\SalarySetting.cshtml" />
+    <Content Include="Areas\Setup\Views\Promotion\Index.cshtml" />
+    <Content Include="Areas\HumanResource\Views\Employee\Progress.cshtml" />
+    <Content Include="Areas\Request\Views\Appraisal\Index -BACKUP--.cshtml" />
+    <Content Include="Areas\Request\Views\Appraisal\Self.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="Reports\HR-Reports\HR_Department.cs">
       <SubType>Component</SubType>
@@ -799,19 +810,12 @@
     <Compile Include="Reports\Models\RPT_SalarySlip_Model.cs" />
     <Compile Include="Reports\Models\RPT_Model.cs" />
     <Compile Include="Reports\Models\HR_Department.cs" />
-    <Compile Include="Reports\Payroll\CompanyQuotation.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\Payroll\CompanyQuotation.Designer.cs">
-      <DependentUpon>CompanyQuotation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\Payroll\Report_SalarySlip.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\Payroll\Report_SalarySlip.Designer.cs">
       <DependentUpon>Report_SalarySlip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Payroll\_salarySlip_Deductions.cs" />
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
     <Compile Include="token\AddChallengeOnUnauthorizedResult.cs" />
@@ -1561,9 +1565,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\HR-Reports\TestReport.resx">
       <DependentUpon>TestReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Payroll\CompanyQuotation.resx">
-      <DependentUpon>CompanyQuotation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Payroll\Report_SalarySlip.resx">
       <DependentUpon>Report_SalarySlip.cs</DependentUpon>

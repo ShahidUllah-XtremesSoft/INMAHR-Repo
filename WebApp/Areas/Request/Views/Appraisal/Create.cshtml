@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblAppraisal;
+}
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#AppraisalTab" role="tab"> @HRModuleUI.HumanResourceUI.lblAppraisal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#PendingAppraisalTab" role="tab" id="PendingAppraisalTabLi">@HRModuleUI.HumanResourceUI.lblPending @HRModuleUI.HumanResourceUI.lblAppraisal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#ApprovedAppraisalTab" role="tab" id="ApprovedAppraisalTabLi">@HRModuleUI.HumanResourceUI.lblApproved @HRModuleUI.HumanResourceUI.lblAppraisal</a>
+                </li>
+
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="AppraisalTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form id="frmAppraisal" name="frmAppraisal" action="/services/Xtreme/multipart" method="post">
+
+                                            <!--type is required should be same as command name-->
+                                            <input type="hidden" name="type" id="type" value="Appraisal_Request_Save" />
+                                            <input type="hidden" name="Id" id="Id" value="0" />
+                                            <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                                            <input type="hidden" name="Language" id="Language" value="" />
+                                            <input type="hidden" id="Employee_Id" name="Employee_Id" value="0" />
+
+                                            <div class="row">
+
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSection  <span style="color:red">*</span></label>
+                                                        <input class="form-control" id="DepartmentId" name="DepartmentId" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="row">
+
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblLineManager  <span style="color:red">*</span></label>
+                                                        <input class="form-control" id="LM_Employee_Id" name="LM_Employee_Id" required />
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div>
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblYear</label>
+                                                        <select class="form-control" id="Year" name="Year">
+
+                                                            <option selected="" value="2023">2023</option>
+                                                            <option value="2024">2024</option>
+                                                            <option value="2025">2025</option>
+                                                            <option value="2026">2026</option>
+                                                            <option value="2027">2027</option>
+                                                            <option value="2028">2028</option>
+                                                            <option value="2029">2029</option>
+                                                            <option value="2030">2030</option>
+                                                            <option value="2031">2031</option>
+                                                            <option value="2032">2032</option>
+                                                            <option value="2033">2033</option>
+                                                            <option value="2034">2034</option>
+                                                            <option value="2035">2035</option>
+                                                            <option value="2036">2036</option>
+                                                            <option value="2037">2037</option>
+                                                            <option value="2038">2038</option>
+                                                            <option value="2039">2039</option>
+                                                            <option value="2040">2040</option>
+
+                                                        </select>
+
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            @*<button class="btn btn-success  @Resources.Common.PullLeft" id="btnSave"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>*@
+                                            <button class="btn btn-primary  @Resources.Common.PullLeft" id="btnGenerate"> <i class="fa fa-save"></i> @HRModuleUI.HumanResourceUI.lblGenerate</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="PendingAppraisalTab" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <div class="grid-main-div">
+                                    <div id="appraisal-pending-request-grid">  </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="grid-main-div">
+                                    <div id="load-employees-pending-evaluation"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane" id="ApprovedAppraisalTab" role="tabpanel">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Approved Appraisal</h3>
+                            <div class="form-group">
+                                <div class="grid-main-div">
+                                    <div id="load-employees-roster"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-pending-request-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-generate-save.js"></script>
+    <script>
+        //Grid columns
+
+        var IssueDate = '@HRModuleUI.HumanResourceUI.lblIssueDate';
+        var lblSection = '@HRModuleUI.HumanResourceUI.lblSection';
+        var lblSend = '@HRModuleUI.HumanResourceUI.lblSend';
+        var lblGenerate = '@HRModuleUI.HumanResourceUI.lblGenerate';
+        var lblTo = '@HRModuleUI.HumanResourceUI.lblTo';
+        var lblFrom = '@HRModuleUI.HumanResourceUI.lblFrom';
+        var lblEmployeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+        var lblStatus = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var lblDelete = '@Resources.Global.lblDelete';
+        var lblEdit = '@Resources.Global.lblEdit';
+        var lblSend = '@HRModuleUI.HumanResourceUI.lblSend';
+        var lblRecordAlreadyExist = '@HRModuleUI.HumanResourceUI.lblRecordAlreadyExist';
+        var lblYear = '@HRModuleUI.HumanResourceUI.lblYear';
+        var doYouReallyWantToSendToMAnager = '@Resources.Global.doYouReallyWantToSendToMAnager';
+
+        
+
+
+
+
+
+
+    </script>
+}

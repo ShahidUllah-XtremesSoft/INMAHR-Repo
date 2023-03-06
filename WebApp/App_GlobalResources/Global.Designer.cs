@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        internal static string btnBack {
+            get {
+                return ResourceManager.GetString("btnBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string btnCancel {
@@ -156,6 +165,15 @@ namespace Resources {
         internal static string doYouReallyWantToDeleteThisRecord {
             get {
                 return ResourceManager.GetString("doYouReallyWantToDeleteThisRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to send to manager ?.
+        /// </summary>
+        internal static string doYouReallyWantToSendToMAnager {
+            get {
+                return ResourceManager.GetString("doYouReallyWantToSendToMAnager", resourceCulture);
             }
         }
         

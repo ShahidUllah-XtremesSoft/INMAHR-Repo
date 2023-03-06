@@ -6,7 +6,13 @@ $(function () {
     renderKendoTimePicker('DayEndTime');
     renderKendoTimePicker('BreakStartTime');
     renderKendoTimePicker('BreakEndTime');
-
+    $("#FlexibleTime").kendoTimePicker({
+        format: "HH:mm",
+        min: "01:00",
+        max: "10:00",
+        dateInput: true,
+    });
+    $('#FlexibleTime').val(null)
     $('#DayStartTime').val(null)
     $('#DayEndTime').val(null)
     $('#BreakStartTime').val(null)
@@ -61,15 +67,16 @@ var fnLoadRosterGridCallBack = function (inputDataJSON) {
 }
 var bindfnLoadRosterGrid = function (inputDataJSON) {
     var gridColumns = [
-        { title: "#", template: "<b>#= ++record #</b>", width: 30, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 50, },
         { field: "id", title: "id", hidden: true },
         { field: "typeEng", title: typeEng, width: 150, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "typeArb", title: typeArb, width: 150, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "dayStartTime", title: dayStartTime, width: 80, filterable: false, hidden: false },
-        { field: "dayEndTime", title: dayEndTime, width: 80, filterable: false, hidden: false },
-        { field: "breakStartTime", title: breakStartTime, width: 100, filterable: false, hidden: false },
-        { field: "breakEndTime", title: breakEndTime, width: 100, filterable: false, hidden: false },
-        { field: "relaxationTime", title: relaxationTime, width: 100, filterable: false, hidden: false },
+        { field: "dayStartTime", title: dayStartTime, width: 150, filterable: false, hidden: false },
+        { field: "dayEndTime", title: dayEndTime, width: 150, filterable: false, hidden: false },
+        { field: "breakStartTime", title: breakStartTime, width: 150, filterable: false, hidden: false },
+        { field: "breakEndTime", title: breakEndTime, width: 150, filterable: false, hidden: false },
+        { field: "relaxationTime", title: relaxationTime, width: 150, filterable: false, hidden: false },
+        { field: "flexibleTime", title: lblFlexibleTime, width: 150, filterable: false, hidden: false },
         // { field: "isNoBreak", title: isNoBreak, width: 80, filterable: false, hidden: false },
         // { field: "isOffDay", title: "isOffDay", width: 80, filterable: false, hidden: true },
         //Below is action column
@@ -95,6 +102,7 @@ function editRoster(event) {
     $('#DayEndTime').val(dataItem.dayEndTime);
     $('#BreakStartTime').val(dataItem.breakStartTime);
     $('#BreakEndTime').val(dataItem.breakEndTime);
+    $('#FlexibleTime').val(dataItem.flexibleTime);
     $('#StartTimeRelaxationMinutes').val(dataItem.relaxationTime);
     /*
     $('#isOffDay').val(dataItem.isOffDay);
@@ -208,3 +216,12 @@ function fnCheckBox(e) {
     }
 }
 */
+function fnClearFlexibileTimeField() {
+    $("#FlexibleTime").kendoTimePicker({
+        format: "HH:mm",
+        min: "01:00",
+        max: "10:00",
+        dateInput: true,
+    });
+    $('#FlexibleTime').val(null)
+}

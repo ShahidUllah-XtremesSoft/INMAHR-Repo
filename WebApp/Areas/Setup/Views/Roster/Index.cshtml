@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#RosterAssociationTab" role="tab" id="RosterAssociationTabLi">@HRModuleUI.HumanResourceUI.lblRosterAssociation</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#EmployeesRosterTab" role="tab" id="EmployeesRosterTabLi">@HRModuleUI.HumanResourceUI.lblEmployees @HRModuleUI.HumanResourceUI.lblRoster</a>
+                </li>
 
             </ul>
             <!-- Tab panes -->
@@ -34,13 +37,13 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTypeEng</label> <span style="color: red">*</span>
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNameEng</label> <span style="color: red">*</span>
                                                         <input class="form-control" id="TypeEng" name="TypeEng" required />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTypeArb</label> <span style="color: red">*</span>
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblNameArb</label> <span style="color: red">*</span>
                                                         <input class="form-control" id="TypeArb" name="TypeArb" required />
                                                     </div>
                                                 </div>
@@ -111,8 +114,14 @@
                                                         <input class="form-control" id="StartTimeRelaxationMinutes" name="StartTimeRelaxationMinutes" value="0" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6"> </div>
-                                            </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblFlexibleTime </label>
+                                                        <input class="form-control "  id="FlexibleTime" name="FlexibleTime" value="" /> 
+                                                    </div> 
+                                                </div> 
+                                                <div class="col-md-1"> <label class="col-form-label">&nbsp; </label> <i class="fa fa-remove" onclick="fnClearFlexibileTimeField();" style="font-size: 20px; margin-left: -27px; cursor: pointer; margin-top: 44px;"></i> </div> 
+                                            </div> 
 
                                         </form>
 
@@ -178,6 +187,20 @@
 
 
                 </div>
+                <div class="tab-pane" id="EmployeesRosterTab" role="tabpanel">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="grid-main-div">
+                                    <div id="load-employees-roster"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
 
 
@@ -191,8 +214,8 @@
 
     <script>
         //Resource
-        var typeEng = '@HRModuleUI.HumanResourceUI.lblTypeEng';
-        var typeArb = '@HRModuleUI.HumanResourceUI.lblTypeArb';
+        var typeEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
+        var typeArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
         var dayStartTime = '@Resources.Global.lblStartTime';
         var dayEndTime = '@Resources.Global.lblEndTime';
         var breakStartTime = '@HRModuleUI.HumanResourceUI.lblBreakStartTime';
@@ -200,6 +223,7 @@
         var relaxationTime = '@HRModuleUI.HumanResourceUI.lblRelaxationTime';
         var isNoBreak = '@HRModuleUI.HumanResourceUI.lblisNoBreak';
         var lblTimeRoster = '@HRModuleUI.HumanResourceUI.lblTimeRoster';
+        var lblFlexibleTime = '@HRModuleUI.HumanResourceUI.lblFlexibleTime';
 
            var lblFriday	 = '@HRModuleUI.HumanResourceUI.lblFriday';
            var lblMonday	 = '@HRModuleUI.HumanResourceUI.lblMonday';
@@ -229,7 +253,8 @@
 
         */
     </script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster.js?+971502324409"></script>
 
     <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/time-roster-association.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Setup/Roster/employees-associated-roster.js"></script>
 }

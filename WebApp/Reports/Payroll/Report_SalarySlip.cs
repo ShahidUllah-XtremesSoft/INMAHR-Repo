@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Web;
 using Telerik.Reporting;
 using WebApp.Reports.Models;
 
@@ -15,24 +18,31 @@ namespace WebApp.Reports.Payroll
             // Required for telerik Reporting designer support
             //
             InitializeComponent();
-
+            var salaryMonth = string.Empty;
             decimal totalAdditionSum = 0, totalDeductionSum = 0, total_salary = 0;
 
             if (_salarySlipHeader != null)
             {
+                txt_employee_number.Value = _salarySlipHeader.EmployeeNumber;
                 txt_employeeName.Value = _salarySlipHeader.EmployeeName;
+                txt_department.Value = _salarySlipHeader.Department;
                 txt_employee_professionss.Value = _salarySlipHeader.Profession;
+                salaryMonth = _salarySlipHeader.PayrollMonth;
                 txt_month.Value = _salarySlipHeader.PayrollMonth;
+                txt_salary_month.Value = salaryMonth;
                 txt_year.Value = _salarySlipHeader.PayrollYear;
+                txt_salary_slip_year.Value = _salarySlipHeader.PayrollYear;
+                txt_slipDate.Value = DateTime.Now.ToShortDateString();
                 txt_BasicSalary.Value = _salarySlipHeader.BasicSalary.ToString();
+
                 total_salary = (decimal)_salarySlipHeader.BasicSalary;
 
                 object_header.DataSource = _salarySlipHeader;
 
-                //logo.Value = "~/UploadFile/" + _company.currentFileName;
-                //  string img = HttpContext.Current.Server.MapPath("~/UploadFile/" + _company.currentFileName);
-                //  Image myImg = Image.FromFile(img);
-                //  logo.Value = myImg;
+                string img = HttpContext.Current.Server.MapPath("~/Content/Images/logo.png");
+                Image myImg = Image.FromFile(img);
+                logo.Value = myImg;
+                 //logo.Value = "~/Content/Images/logo.png";
 
             }
             if (_salarySlip_Additions != null)
@@ -42,7 +52,9 @@ namespace WebApp.Reports.Payroll
                 {
                     totalAdditionSum = totalAdditionSum + (decimal)item.Amount;
                 }
-                txt_totalAddition_sum.Value = totalAdditionSum.ToString();
+                  
+              //  decimal totalAdditionSumup = (total_salary + totalAdditionSum);
+                txt_totalAddition_sum.Value = (total_salary + totalAdditionSum).ToString();
 
             }
             if (_salarySlip_Deductions != null)

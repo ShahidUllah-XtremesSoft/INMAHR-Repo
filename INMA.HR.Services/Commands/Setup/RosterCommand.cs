@@ -27,6 +27,7 @@ namespace INMA.HR.Services.Commands.Setup
                 BreakStartTime = string.Empty,
                 BreakEndTime = string.Empty,
                 StartTimeRelaxationMinutes = 0,
+                FlexibleTime = string.Empty,
                // isNoBreak = 0,
                // isOffDay = 0,
                 CreatedBy = 0,
@@ -101,6 +102,25 @@ namespace INMA.HR.Services.Commands.Setup
             CommandParameters _params = new CommandParameters();
             values = _params.Get(model);
             return repository.GetMultiple<dynamic>(StoreProcedure.Roster_Association_Get_AllEmployees_by_DepartmentWise.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
+    #endregion
+    #region =========== Get Employees List
+
+
+    [Command(Name = "Roster_Associated_Employees_Get")]
+    public class Roster_Associated_Employees_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            var model = base.MappedModel(new { LoggedInUserId = 0, DepartmentId = 0, Language = string.Empty }, viewInput);
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(StoreProcedure.Roster_Associated_Employees_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
         }
     }

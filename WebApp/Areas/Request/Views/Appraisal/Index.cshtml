@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblEvaluation;
+
+}
+
+<div class="card">
+    <div class="card-block">
+        @*<form id="frmEvaluation">*@
+        <!--type is required should be same as command name-->
+        <input type="hidden" name="type" id="type" value="Request_Evaluation_Employee_Form_Save" />
+        <input type="hidden" name="Id" id="Id" value="0" />
+        <input type="hidden" name="EvaluationId" id="EvaluationId" value="0" />
+        @*<input type="hidden" name="LM_Employee_Id" id="LM_Employee_Id" value="0" />*@
+        <input type="hidden" name="Employee_Id" id="Employee_Id" value="0" />
+        <input type="hidden" name="Employee_Department_Id" id="Employee_Department_Id" value="0" />
+        <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+        <input type="hidden" name="Language" id="Language" value="" />
+
+
+        <input type="hidden" id="TotalColumnOne" value="0" />
+        <input type="hidden" id="TotalColumnTwo" value="0" />
+        <input type="hidden" id="TotalColumnThree" value="0" />
+        <input type="hidden" id="TotalColumnFour" value="0" />
+
+
+
+        @*<div class="row">
+                <div class="col-md-3">
+                    <div class="">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSearch</label>
+                        <input class="form-control" id="EmployeeId" name="EmployeeId" required />
+                    </div>
+                </div>
+
+            </div>*@
+
+        <div class="card showHideemployeeDetails" style="border:none;">
+            <div class="card-header">
+
+                <h5>@HRModuleUI.HumanResourceUI.lblEmployeePerformanceEvaluation</h5>
+                <div class="card-header-right"> </div>
+            </div>
+            <div class="card-block">
+
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <table style="width:auto">
+                            <tr>
+                                <td rowspan="5">
+                                    <img src="/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:135px;" alt="Profile Image">
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <label class=""><b>@HRModuleUI.HumanResourceUI.lblEmployeeName:</b></label>
+                                    <label class="" id="EmployeeName" name="">-</label>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <label class=""><b>@HRModuleUI.HumanResourceUI.lblProfession:</b></label>
+                                    <label class="" id="EmployeeProfession" name="">-</label>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <label class=""><b>@HRModuleUI.HumanResourceUI.lblSection:</b></label>
+                                    <label class="" id="EmployeeSection" name="">-</label>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+
+                                <td>
+                                    <label class=""><b>@HRModuleUI.HumanResourceUI.lblLineManager:</b></label>
+                                    <label class="" id="EmployeeLineManager" name="">-</label>
+                                </td>
+                            </tr>
+
+
+
+
+                        </table>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            @*<br />*@
+            <div class="row">
+
+                <div class="col-md-9 evaluation-form">
+                    <h5>@HRModuleUI.HumanResourceUI.lblRatings</h5>
+                    @*<hr />*@
+                    @*Dont Remove anything from below table ,It's used in Js'*@
+
+                    <table style="width: 100%;" id="employee-evaluation">
+                        <thead><tr style="border: 1px solid; background: cyan;" id="employee-evaluation-header"> </tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="col-md-3"> </div>
+            </div>
+
+
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-success   @Resources.Common.PullRight" id="btn-save-evaluation-form"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+
+@section scripts {
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Evaluation/employee-evaluation-form.js?"></script>
+    <script>
+        var lblTotal = '@HRModuleUI.HumanResourceUI.lblTotal';
+        var lblPerformanceScores = '@HRModuleUI.HumanResourceUI.lblPerformanceScores';
+        var lblLineManager = '@HRModuleUI.HumanResourceUI.lblLineManager';
+        var lblCompanyManager = '@HRModuleUI.HumanResourceUI.lblCompanyManager';
+        var lblApprovedBy = '@HRModuleUI.HumanResourceUI.lblApprovedBy';
+        var lblSignature = '@HRModuleUI.HumanResourceUI.lblSignature';
+        var lblNoSignature = '@HRModuleUI.HumanResourceUI.lblNoSignature';
+        var lblHR = '@HRModuleUI.HumanResourceUI.lblHR';
+        var lblProcedures = '@HRModuleUI.HumanResourceUI.lblProcedures';
+    </script>
+
+    @*<script>
+            var lblEvaluation = '@HRModuleUI.HumanResourceUI.lblEvaluation';
+            var lblEvaluation = '@HRModuleUI.HumanResourceUI.lblEvaluationRequest';
+            var lblCriterion = '@HRModuleUI.HumanResourceUI.lblCriterion';
+            var lblBelowExpectations = '@HRModuleUI.HumanResourceUI.lblBelowExpectations';
+            var lblExpected = '@HRModuleUI.HumanResourceUI.lblExpected';
+            var lblExpectations = '@HRModuleUI.HumanResourceUI.lblExpectations';
+            var lblExceedExpections = '@HRModuleUI.HumanResourceUI.lblExceedExpections';
+            var lblPerformanceandAchivment = '@HRModuleUI.HumanResourceUI.lblPerformanceandAchivment';
+            var lblCareerAchievements = '@HRModuleUI.HumanResourceUI.lblCareerAchievements';
+            var lblQualityOfFunctionality = '@HRModuleUI.HumanResourceUI.lblQualityOfFunctionality';
+            var lblFlexibilityinGettingtheJobDone = '@HRModuleUI.HumanResourceUI.lblFlexibilityinGettingtheJobDone';
+            var lblAchieveGoals = '@HRModuleUI.HumanResourceUI.lblAchieveGoals';
+            var lblTimeandSpeedofWork = '@HRModuleUI.HumanResourceUI.lblTimeandSpeedofWork';
+            var lblCollaborationJobCommitmentandAttendance = '@HRModuleUI.HumanResourceUI.lblCollaborationJobCommitmentandAttendance';
+            var lblCooperationwithCustomers = '@HRModuleUI.HumanResourceUI.lblCooperationwithCustomers';
+            var lblBehavioralandCommitment = '@HRModuleUI.HumanResourceUI.lblBehavioralandCommitment';
+            var lblDisciplineinAttendance = '@HRModuleUI.HumanResourceUI.lblDisciplineinAttendance';
+            var lblCompliancewithRulesofProcedure = '@HRModuleUI.HumanResourceUI.lblCompliancewithRulesofProcedure';
+            var lblInitiativeandCreativity = '@HRModuleUI.HumanResourceUI.lblInitiativeandCreativity';
+            var lblInitiativeorMethodofWork = '@HRModuleUI.HumanResourceUI.lblInitiativeorMethodofWork';
+            var lblPerformanceProductivity = '@HRModuleUI.HumanResourceUI.lblPerformanceProductivity';
+            var lblTheLevelofExcellenceandExclusivity = '@HRModuleUI.HumanResourceUI.lblTheLevelofExcellenceandExclusivity';
+            var lblServicesProvidedtoCustomers = '@HRModuleUI.HumanResourceUI.lblServicesProvidedtoCustomers';
+            var lblSharingandTakingResponsibility = '@HRModuleUI.HumanResourceUI.lblSharingandTakingResponsibility';
+            var lblJobResponsibilities = '@HRModuleUI.HumanResourceUI.lblJobResponsibilities';
+            var lblSupervisoryskills = '@HRModuleUI.HumanResourceUI.lblSupervisoryskills';
+            var lblAbilitytoPlanandOrganize = '@HRModuleUI.HumanResourceUI.lblAbilitytoPlanandOrganize';
+            var lblAbilitytoCoachandTrain = '@HRModuleUI.HumanResourceUI.lblAbilitytoCoachandTrain';
+            var lblLearningAbility = '@HRModuleUI.HumanResourceUI.lblLearningAbility';
+            var lblAbilitytoLearnSkills = '@HRModuleUI.HumanResourceUI.lblAbilitytoLearnSkills';
+            var lblHowtoBenefitfromtheExperiences = '@HRModuleUI.HumanResourceUI.lblHowtoBenefitfromtheExperiences';
+            var lblDevelopmentofhisPerformance = '@HRModuleUI.HumanResourceUI.lblDevelopmentofhisPerformance';
+            var lblPerformanceScores = '@HRModuleUI.HumanResourceUI.lblPerformanceScores';
+            var lblProcedures = '@HRModuleUI.HumanResourceUI.lblProcedures';
+            var lblEmployeePerformanceEvaluation = '@HRModuleUI.HumanResourceUI.lblEmployeePerformanceEvaluation';
+            var lblRatings = '@HRModuleUI.HumanResourceUI.lblRatings';
+            var lblEvaluations = '@HRModuleUI.HumanResourceUI.lblEvaluations';
+
+        </script>*@
+
+}

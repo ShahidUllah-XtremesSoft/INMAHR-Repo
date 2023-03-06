@@ -129,12 +129,13 @@
     <Compile Include="Commands\LetterCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\Payroll\PayrollCommand.cs" />
-    <Compile Include="Commands\Request\EvaluationCommand.cs" />
+    <Compile Include="Commands\Request\AppraisalCommand.cs" />
     <Compile Include="Commands\Request\CashInLeaveCommand.cs" />
     <Compile Include="Commands\Request\LeaveCancelRequestCommand.cs" />
     <Compile Include="Commands\Request\LeaveRequestCommand.cs" />
     <Compile Include="Commands\Request\LetterRequestCommand.cs" />
     <Compile Include="Commands\Request\ShortLeaveRequestCommand.cs" />
+    <Compile Include="Commands\Setup\PromotionCommand.cs" />
     <Compile Include="Commands\Setup\AllowanceCommand.cs" />
     <Compile Include="Commands\Setup\RosterCommand.cs" />
     <Compile Include="Commands\Setup\PublicHolidayCommand.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Models\EmployeeRequestData.cs" />
     <Compile Include="Models\FileUploadModel.cs" />
     <Compile Include="Models\BulkPayrollInsertion.cs" />
+    <Compile Include="Models\AppraisalModel.cs" />
     <Compile Include="Models\RosterAssociationModel.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\InternalLetterData.cs" />

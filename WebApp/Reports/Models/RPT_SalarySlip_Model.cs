@@ -15,9 +15,11 @@ namespace WebApp.Reports.Models
     {
 
         public int EmployeeID { get; set; }
+        public string EmployeeNumber { get; set; }
         public string EmployeeName { get; set; }
         public decimal? BasicSalary { get; set; }
         public string Profession { get; set; }
+        public string Department { get; set; }
         public string PayrollMonth { get; set; }
         public string PayrollYear { get; set; }
     }

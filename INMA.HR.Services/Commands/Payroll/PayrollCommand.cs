@@ -102,8 +102,8 @@ namespace INMA.HR.Services
             return repository.GetDataSet<dynamic>(StoreProcedure.Payroll_LoadDeductionByEmployeeByID.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
         }
-    }  
-   
+    }
+
     [Command(Name = "Payroll_addUpdateEmployeePayrollAddition")]
     public class Payroll_addUpdateEmployeePayrollAdditionCommand : CamelCommandBase
     {
@@ -129,7 +129,7 @@ namespace INMA.HR.Services
 
         }
     }
-     [Command(Name = "Payroll_addUpdateEmployeePayrollRecursiveAddition")]
+    [Command(Name = "Payroll_addUpdateEmployeePayrollRecursiveAddition")]
     public class Payroll_addUpdateEmployeePayrollRecursiveAdditionCommand : CamelCommandBase
     {
         protected override object DoAction(object viewInput)
@@ -182,7 +182,7 @@ namespace INMA.HR.Services
             _ = new Dictionary<string, object>();
             CommandParameters _params = new CommandParameters();
             IDictionary<string, object> values = _params.Get(model);
-            var results =Ioc.Resolve<IRepository>().GetSingle<dynamic>(StoreProcedure.Payroll_addUpdateEmployeePayrollDeduction.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var results = Ioc.Resolve<IRepository>().GetSingle<dynamic>(StoreProcedure.Payroll_addUpdateEmployeePayrollDeduction.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
             return results;
         }
     }
@@ -231,20 +231,20 @@ namespace INMA.HR.Services
                 Language = string.Empty
             }, data);
 
-           
-                var repository = Ioc.Resolve<IRepository>();
-                IDictionary<string, object> values = new Dictionary<string, object>();
-                CommandParameters _params = new CommandParameters();
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
 
 
-                var table = new KeyValuePair<string, DataTable>("[dbo].[BulkPayrollInsertion]", ExtensionMethods.ToDataTable(model.BulkPayrollInsertion));
-                var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
-                ProductList.Add("@BulkPayrollInsertion", table);
-                values = _params.Get(model);
-                return repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Payroll_addUpdateEmployeePayroll_New.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
+            var table = new KeyValuePair<string, DataTable>("[dbo].[BulkPayrollInsertion]", ExtensionMethods.ToDataTable(model.BulkPayrollInsertion));
+            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
+            ProductList.Add("@BulkPayrollInsertion", table);
+            values = _params.Get(model);
+            return repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Payroll_addUpdateEmployeePayroll_New.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
 
-          
-          
+
+
         }
 
     }
@@ -272,7 +272,7 @@ namespace INMA.HR.Services
         }
     }
     #endregion
-     #region COMMAND IS USED IN REPORT 
+    #region COMMAND IS USED IN REPORT 
     [Command(Name = "Payroll_LoadEmployeeSalarySlipByID")]
     public class Payroll_LoadEmployeeSalarySlipByIDCommand : CamelCommandBase
     {
@@ -296,4 +296,81 @@ namespace INMA.HR.Services
     }
     #endregion
 
+    #region Payroll Bonuses
+    [Command(Name = "PayrollBonus_Save")]
+    public class PayrollBonus_SaveCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            var model = base.MappedModel(new
+            {
+                PayrollBonusID = 0,
+                B_EmployeeID = 0,
+                B_PayrollID = 0,
+                B_NameEng = string.Empty,
+                B_NameArb = string.Empty,
+                B_Amount = string.Empty,
+                B_Remarks = string.Empty,
+              //  B_PayrollMonth = string.Empty,
+              //  B_PayrollYear = string.Empty,
+                B_Language = string.Empty,
+
+            }, viewInput);
+
+
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            IDictionary<string, object> values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetSingle<dynamic>(StoreProcedure.PayrollBonus_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
+
+
+    [Command(Name = "Payroll_BonusByEmployeeByID")]
+    public class Payroll_BonusByEmployeeByIDCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeID = 0,
+                month = string.Empty,
+                year = string.Empty,
+                Language = string.Empty,
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            IDictionary<string, object> values = _params.Get(model);
+            return repository.GetDataSet<dynamic>(StoreProcedure.Payroll_BonusByEmployeeByID.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
+    [Command(Name = "PayrollBonus_Delete")]
+    public class PayrollBonus_DeleteCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,              
+                Language = string.Empty,
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            IDictionary<string, object> values = _params.Get(model);
+            return repository.GetSingle<dynamic>(StoreProcedure.PayrollBonus_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+        }
+    }
+    #endregion
 }

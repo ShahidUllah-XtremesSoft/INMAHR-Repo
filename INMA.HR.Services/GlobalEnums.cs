@@ -53,8 +53,10 @@ namespace INMA.HR.Services
         Notification = 36,
         Contractor = 37,
         CommentAttachment = 38,
-        Rule=39,
-        Penalty=40
+        Rule = 39,
+        Penalty = 40,
+        //PROMOTION
+        Promotion = 41
     }
     public enum DocumentType
     {
@@ -79,7 +81,7 @@ namespace INMA.HR.Services
         #region CLIENT MEETINGS ENUM
 
         Meetings = 10,
-      
+
         #endregion
 
         #region PROJECT ENUM
@@ -138,10 +140,12 @@ namespace INMA.HR.Services
         Meeting_Multiple = 39,
 
 
-        Requests =10001,
-        ShorLeave_Requests =10002,
+        Requests = 10001,
+        ShorLeave_Requests = 10002,
         Rule_Document = 10003,
         Penalty_Document = 10004,
+
+        Promotion_Document = 10005,
 
 
 

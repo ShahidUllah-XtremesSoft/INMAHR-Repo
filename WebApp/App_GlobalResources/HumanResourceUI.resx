@@ -210,8 +210,20 @@
   <data name="lblAmount" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="lblAns" xml:space="preserve">
+    <value>Ans</value>
+  </data>
+  <data name="lblAppraisal" xml:space="preserve">
+    <value>Appraisal</value>
+  </data>
+  <data name="lblAppraisals" xml:space="preserve">
+    <value>Appraisals</value>
+  </data>
   <data name="lblApprove" xml:space="preserve">
     <value>Approve</value>
+  </data>
+  <data name="lblApproved" xml:space="preserve">
+    <value>Approved</value>
   </data>
   <data name="lblApprovedBy" xml:space="preserve">
     <value>Approved By</value>
@@ -245,6 +257,12 @@
   </data>
   <data name="lblBody" xml:space="preserve">
     <value>Body</value>
+  </data>
+  <data name="lblBonus" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
+  <data name="lblBonuses" xml:space="preserve">
+    <value>Bonuses</value>
   </data>
   <data name="lblBreak" xml:space="preserve">
     <value>Break</value>
@@ -396,6 +414,9 @@
   <data name="lblDocument" xml:space="preserve">
     <value>Document</value>
   </data>
+  <data name="lblDraft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
   <data name="lblEarly" xml:space="preserve">
     <value>Early</value>
   </data>
@@ -459,6 +480,9 @@
   <data name="lblEmployeePerformanceEvaluation" xml:space="preserve">
     <value>Employee Performance Evaluation</value>
   </data>
+  <data name="lblEmployeeProgress" xml:space="preserve">
+    <value>Employee Progress</value>
+  </data>
   <data name="lblEmployeeRoster" xml:space="preserve">
     <value>Employee Roster</value>
   </data>
@@ -488,6 +512,9 @@
   </data>
   <data name="lblEmployeesPermissionLeaveRequests" xml:space="preserve">
     <value>Employees Permission Leave Request(s)</value>
+  </data>
+  <data name="lblEmployeesProgress" xml:space="preserve">
+    <value>Employees Progress</value>
   </data>
   <data name="lblEmployeesShortLeaveRequests" xml:space="preserve">
     <value>Employees Short Leave Requests</value>
@@ -534,6 +561,9 @@
   <data name="lblFlexibilityinGettingtheJobDone" xml:space="preserve">
     <value>Flexibility in Getting the Job Done</value>
   </data>
+  <data name="lblFlexibleTime" xml:space="preserve">
+    <value>Flexible Time</value>
+  </data>
   <data name="lblForward" xml:space="preserve">
     <value>Forward</value>
   </data>
@@ -548,6 +578,9 @@
   </data>
   <data name="lblFromCountry" xml:space="preserve">
     <value>From Country</value>
+  </data>
+  <data name="lblGenerate" xml:space="preserve">
+    <value>Generate</value>
   </data>
   <data name="lblGrossSalary" xml:space="preserve">
     <value>Gross Salary</value>
@@ -807,6 +840,9 @@
   <data name="lblPayrollReport" xml:space="preserve">
     <value>Payroll Report</value>
   </data>
+  <data name="lblPending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>Pending Requests</value>
   </data>
@@ -855,11 +891,20 @@
   <data name="lblProfileImage" xml:space="preserve">
     <value>Profile Image</value>
   </data>
+  <data name="lblProgress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="lblPromotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
   <data name="lblProvidentFundDeduction" xml:space="preserve">
     <value>Provident Fund Deduction</value>
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>Public Holiday</value>
+  </data>
+  <data name="lblQ" xml:space="preserve">
+    <value>Q</value>
   </data>
   <data name="lblQualityOfFunctionality" xml:space="preserve">
     <value>Quality Of Functionality</value>
@@ -869,6 +914,9 @@
   </data>
   <data name="lblReadLetter" xml:space="preserve">
     <value>Read Letter</value>
+  </data>
+  <data name="lblRecordAlreadyExist" xml:space="preserve">
+    <value>Record Already Exist</value>
   </data>
   <data name="lblRelaxationTime" xml:space="preserve">
     <value>Relaxation Time</value>
@@ -1016,6 +1064,9 @@
   </data>
   <data name="lblSubject" xml:space="preserve">
     <value>Subject</value>
+  </data>
+  <data name="lblSubmit" xml:space="preserve">
+    <value>Submit</value>
   </data>
   <data name="lblSunday" xml:space="preserve">
     <value>Sunday</value>

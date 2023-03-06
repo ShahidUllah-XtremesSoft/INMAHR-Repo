@@ -45,6 +45,8 @@ function loadEmployeeProfileCallBack(response) {
     $('#CreatedBy').val(JSON.parse(response.Value).id);
     $('#EmployeeId').val(JSON.parse(response.Value).employeeId);
     localStorage.setItem('EmployeeIdToLoadLeaveBalance', JSON.parse(response.Value).employeeId);
+    
+
     $.each(JSON.parse(response.Value), function (key, value) {
         $('#' + capitalizeFirstLetter(key)).text(value);
     });
@@ -52,7 +54,7 @@ function loadEmployeeProfileCallBack(response) {
         var profileImage = '/UploadFile/' + JSON.parse(response.Value).currentFileName;
         $('#ProfileImage').attr('src', profileImage);
     }
-
+     
     //loadLeaveRequestGrid();
     loadPersonalDocumentsGrid();
     //loadEducationalDocumentsGrid();
@@ -60,6 +62,7 @@ function loadEmployeeProfileCallBack(response) {
 
     loadEmployeeVacationLeaveBalanceGrid();
     //loadShortLeaveGrid();
+
 }
 
 ////|Load Employee Profile Ends

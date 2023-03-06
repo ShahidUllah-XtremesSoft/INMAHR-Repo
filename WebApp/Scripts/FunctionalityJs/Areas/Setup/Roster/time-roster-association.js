@@ -75,29 +75,30 @@ var fnLoadEmployeesByDepartmentIdCallBack = function (response) {
         //     },
         //     width: 5
         // },
-        { title: "#", template: "<b>#= ++record #</b>", width: 8, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 30, },
 
         { field: "EmployeeId", title: "EmployeeId", hidden: true },
         // { field: "departmentId", title: "DepartmentId", hidden: true, filterable: false },
-        { field: "employeeNumber", title: employeeNumber, hidden: false, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, editable: true },
-        { field: "name", title: lblName, hidden: false, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, editable: true },
-        { field: "defaultTime", title: lblTimeRoster, hidden: false, width: 50, filterable: false, editor: categoryDropDownEditor },
-        /* { field: "sunday", title: lblSunday, hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
-         { field: "monday", title: lblMonday, hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
-         { field: "tuesday", title: lblTuesday, hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
-         { field: "wednesday", title: lblWednesday, hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
-         { field: "thursday", title: lblThursday, hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
-         { field: "friday", title: lblFriday, hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
-         { field: "saturday", title: lblSaturday, width: 20, filterable: false, editor: categoryDropDownEditor },*/
+        { field: "employeeNumber", title: employeeNumber, hidden: true, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, editable: true },
+        { field: "name", title: lblName, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, editable: true },
+        //{ field: "defaultTime", title: "Default Time", hidden: false, width: 20, filterable: false, editor: categoryDropDownEditor },
+        { field: "sunday", title: lblSunday, hidden: false, width: 100, filterable: false, editor: categoryDropDownEditor,/*template: ' <span class="k-state-default"> <p style="font-size:x-smaller;">#: sunday #</p></span>'*/ },
+        { field: "monday", title: lblMonday, hidden: false, width: 100, filterable: false, editor: categoryDropDownEditor,/* template: ' <span class="k-state-default"> <p style="font-size:smaller;">#: monday #</p></span>'*/ },
+        { field: "tuesday", title: lblTuesday, hidden: false, width: 100, filterable: false, editor: categoryDropDownEditor,/* template: ' <span class="k-state-default"> <p style="font-size:smaller;">#: tuesday #</p></span>'*/ },
+        { field: "wednesday", title: lblWednesday, hidden: false, width: 100, filterable: false, editor: categoryDropDownEditor,/* template: ' <span class="k-state-default"> <p style="font-size:smaller;">#: wednesday #</p></span>'*/ },
+        { field: "thursday", title: lblThursday, hidden: false, width: 100, filterable: false, editor: categoryDropDownEditor, /*template: ' <span class="k-state-default"> <p style="font-size:smaller;">#: thursday #</p></span>'*/ },
+        { field: "friday", title: lblFriday, hidden: false, width: 50, filterable: false, editor: categoryDropDownEditor,/*template: ' <span class="k-state-default"> <p style="font-size:smaller;">#: friday #</p></span>'*/ },
+        { field: "saturday", title: lblSaturday, width: 50, filterable: false, editor: categoryDropDownEditor, /*template: ' <span class="k-state-default"> <p style="font-size:smaller;">#: saturday #</p></span>' */ },
+        /*
+        {
+            field: "", width: 30,
+            title: "",
+            template: "   <a style='font-size:20px;cursor:pointer;' onClick= deleteRosterAssociation(this)  title='Delete'><span class='fa fa-trash'></span></a>  "
+            //  template: "#if(isRecordExist == 1){ # <a style='font-size:20px;cursor:pointer;' onClick= deleteRosterAssociation(this)  title='Delete'><span class='fa fa-trash'></span></a>#}" +
+            //      "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_EvaluationDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
 
-       // {
-       //     field: "", width: 10,
-       //     title: "",
-       //     template: "   <a style='font-size:20px;cursor:pointer;' onClick= deleteRosterAssociation(this)  title='Delete'><span class='fa fa-trash'></span></a>  "
-       //     //  template: "#if(isRecordExist == 1){ # <a style='font-size:20px;cursor:pointer;' onClick= deleteRosterAssociation(this)  title='Delete'><span class='fa fa-trash'></span></a>#}" +
-       //     //      "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_EvaluationDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
-       //
-       // }
+        }
+        */
     ];
 
     bindEditAblekendoGrid('load-employees-by-role-and-department', 100, gridColumns, JSON.parse(response.Value));
@@ -111,23 +112,31 @@ function categoryDropDownEditor(container, options) {
 
     var rosterDDL = JSON.parse(sessionStorage.getItem('RosterDDL'))
 
-    $('<input  name="' + options.field + '"/>')
+    $('<input  name="' + options.field + '" />')
         .appendTo(container)
         .kendoDropDownList({
             autoBind: false,
             dataTextField: "value",
             dataValueField: "id",
+            //  template: ' <span class="k-state-default"><b>#: data.value #</b><p style="font-size:smaller;">#: data.rosterTimings #</p></span>',
             dataSource: rosterDDL,
+
             change: function (e) {
+
                 // Handle the change event here
+
+                var dataItem = this.dataItem();
+                var rosterTimings = dataItem.rosterTimings;
                 var text = this.text();
                 var value = this.value();
                 var grid = $("#load-employees-by-role-and-department").data("kendoGrid");
                 var dataItem = grid.dataItem(grid.tbody.find("tr.k-grid-edit-row"));
 
 
+
                 if (value !== text) {
                     dataItem.set(grid.editable.options.fields.field, text);
+
 
                     var uid = this.element.closest("[data-uid]").data("uid"),
                         dataSource = grid.dataSource,
@@ -240,18 +249,20 @@ function fnSaveTimeRosterAssociation(btnValue, btnId, btnIcon) {
                 if (gridRow.dirty != undefined) {
                     if (gridRow.dirty == true) {
 
-
+                         
                         for (var z = 0; z < rosterDDL.length; z++) {
+
+
                             // Commented Code is working but commented due to Roster Change
-                            /*  var check1 = rosterDDL[z].value == gridRow.sunday ? (gridRow.sunday = rosterDDL[z].id) : gridRow.sunday
-                              var check2 = rosterDDL[z].value == gridRow.monday ? (gridRow.monday = rosterDDL[z].id) : gridRow.monday
-                              var check3 = rosterDDL[z].value == gridRow.tuesday ? (gridRow.tuesday = rosterDDL[z].id) : gridRow.tuesday
-                              var check4 = rosterDDL[z].value == gridRow.wednesday ? (gridRow.wednesday = rosterDDL[z].id) : gridRow.wednesday
-                              var check5 = rosterDDL[z].value == gridRow.thursday ? (gridRow.thursday = rosterDDL[z].id) : gridRow.thursday
-                              var check6 = rosterDDL[z].value == gridRow.friday ? (gridRow.friday = rosterDDL[z].id) : gridRow.friday
-                              var check7 = rosterDDL[z].value == gridRow.saturday ? (gridRow.saturday = rosterDDL[z].id) : gridRow.saturday
-                              */
-                            var check7 = rosterDDL[z].value == gridRow.defaultTime ? (gridRow.defaultTime = rosterDDL[z].id) : gridRow.defaultTime
+                            var check1 = rosterDDL[z].value == gridRow.sunday ? (gridRow.sunday = rosterDDL[z].id) : gridRow.sunday
+                            var check2 = rosterDDL[z].value == gridRow.monday ? (gridRow.monday = rosterDDL[z].id) : gridRow.monday
+                            var check3 = rosterDDL[z].value == gridRow.tuesday ? (gridRow.tuesday = rosterDDL[z].id) : gridRow.tuesday
+                            var check4 = rosterDDL[z].value == gridRow.wednesday ? (gridRow.wednesday = rosterDDL[z].id) : gridRow.wednesday
+                            var check5 = rosterDDL[z].value == gridRow.thursday ? (gridRow.thursday = rosterDDL[z].id) : gridRow.thursday
+                            var check6 = rosterDDL[z].value == gridRow.friday ? (gridRow.friday = rosterDDL[z].id) : gridRow.friday
+                            var check7 = rosterDDL[z].value == gridRow.saturday ? (gridRow.saturday = rosterDDL[z].id) : gridRow.saturday
+
+                            // var check7 = rosterDDL[z].value == gridRow.saturday ? (gridRow.saturday = rosterDDL[z].id) : gridRow.saturday
                         }
 
 
@@ -260,16 +271,17 @@ function fnSaveTimeRosterAssociation(btnValue, btnId, btnIcon) {
 
                                 //--------- Grid Data-------------
                                 Id: 0,
-                                Sunday: 'NULL',
-                                Monday: 'NULL',
-                                Tuesday: 'NULL',
-                                Wednesday: 'NULL',
-                                Thursday: 'NULL',
-                                Friday: 'NULL',
-                                Saturday: 'NULL',
+                                Sunday: gridRow.sunday,
+                                Monday: gridRow.monday,
+                                Tuesday: gridRow.tuesday,
+                                Wednesday: gridRow.wednesday,
+                                Thursday: gridRow.thursday,
+                                Friday: gridRow.friday,
+                                Saturday: gridRow.saturday,
                                 HR_Employee_Id: gridRow.employeeId,
                                 HR_Department_Id: $('#DepartmentId').val(),
-                                DefaultTime: gridRow.defaultTime
+                                //  CreatedBy: parseInt(JSON.parse(localStorage.getItem('User')).id),
+                                //LoggedIn_EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
 
                             });
                         //  }
@@ -278,7 +290,7 @@ function fnSaveTimeRosterAssociation(btnValue, btnId, btnIcon) {
                 }
             }
             if (postingArray.length > 0) {
-                console.log(postingArray)
+                //console.log(postingArray)
                 ajaxRequest({
                     commandName: 'Setup_Roster_Association_Multipe_Save',
                     values:

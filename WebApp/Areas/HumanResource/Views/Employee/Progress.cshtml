@@ -1,0 +1,386 @@
+﻿
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblProgress;
+}
+<head>
+    <base href="https://demos.telerik.com/kendo-ui/orgchart/index">
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.default-ocean-blue.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/jquery.min.js"></script>
+
+
+    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.all.min.js"></script>
+
+
+
+</head>
+
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#ProgressTab" role="tab" id="ProgressTabLi"> @HRModuleUI.HumanResourceUI.lblProgress</a>
+                </li>
+
+                @*<li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#AdditionTab" id="AdditionTabLi" role="tab">@HRModuleUI.HumanResourceUI.lblAddition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#DeductionTab" id="DeductionTabLi" role="tab">@HRModuleUI.HumanResourceUI.lblDeduction</a>
+                    </li>*@
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+                <div class="tab-pane active" id="ProgressTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+
+                                        <div id="example">
+                                            <div id="orgchart"></div>
+
+                                            @*<script  >
+                                                    var data = [
+                                                        { id: 1, name: "Gevin Bell", title: "CEO", expanded: true, parentId: false, avatar: "../content/web/treelist/people/1.jpg" },
+                                                        { id: 2, name: "Clevey Thrustfield", title: "COO", expanded: true, parentId: 1, avatar: "../content/web/treelist/people/2.jpg" },
+                                                        { id: 3, name: "Carol Baker", title: "CFO", expanded: false, parentId: 1, avatar: "../content/web/treelist/people/3.jpg" },
+                                                        { id: 4, name: "Kendra Howell", title: "CMO", expanded: false, parentId: 1, avatar: "../content/web/treelist/people/4.jpg" },
+                                                        { id: 5, name: "Sean Rusell", title: "Financial Manager", expanded: true, parentId: 3, avatar: "../content/web/treelist/people/5.jpg" },
+                                                        { id: 6, name: "Steven North", title: "Senior Manager", expanded: false, parentId: 3, avatar: "../content/web/treelist/people/6.jpg" },
+                                                        { id: 7, name: "Michelle Hudson", title: "Operations Manager", expanded: true, parentId: 2, avatar: "../content/web/treelist/people/7.jpg" },
+                                                        { id: 8, name: "Andrew Berry", title: "Team Lead", parentId: 5, avatar: "../content/web/treelist/people/8.jpg" },
+                                                        { id: 9, name: "Jake Miller", title: "Junior Accountant", parentId: 5, avatar: "../content/web/treelist/people/9.jpg" },
+                                                        { id: 10, name: "Austin Piper", title: "Accountant", parentId: 5, avatar: "../content/web/treelist/people/10.jpg" },
+                                                        { id: 11, name: "Dilyana Newman", title: "Accountant", parentId: 5, avatar: "../content/web/treelist/people/11.jpg" },
+                                                        { id: 12, name: "Eva Andrews", title: "Team Lead", parentId: 6, avatar: "../content/web/treelist/people/12.jpg" },
+                                                        { id: 13, name: "Kaya Nilsen", title: "Financial Specialist", parentId: 6, avatar: "../content/web/treelist/people/13.jpg" },
+                                                        { id: 14, name: "Elena Austin", title: "Team Lead", parentId: 4, avatar: "../content/web/treelist/people/14.jpg" },
+                                                        { id: 15, name: "Lora Samuels", title: "Lawyer", parentId: 4, avatar: "../content/web/treelist/people/15.jpg" },
+                                                        { id: 16, name: "Lillian Carr", title: "Operator", parentId: 7, avatar: "../content/web/treelist/people/17.jpg" },
+                                                        { id: 17, name: "David Henderson", title: "Team Lead", parentId: 7, avatar: "../content/web/treelist/people/16.jpg" }
+                                                    ];
+
+                                                    $("#orgchart").kendoOrgChart({
+                                                        dataSource: data
+                                                    });
+                                                </script>*@
+                                        </div>
+
+                                    </div>
+                                    @*<div class="col-md-4">
+
+                                            <form id="frmAddUpdateAdditionDeduction" name="frmAddUpdateAdditionDeduction" action="/services/Xtreme/multipart" method="post">
+                                                <input type="hidden" name="type" id="type" value="HR_Employee_RecursiveAdditionDeduction_addUpdateEmployeePayrollAddition" />
+                                                <input type="hidden" name="RecursiveID" id="RecursiveID" value="0" />
+                                                <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                                                <input type="hidden" name="Language" id="Language" value="" />
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSelect  </label> <span style="color: red">*</span>
+                                                            <input class="form-control" id="EmployeeID" name="EmployeeID" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblName  </label> <span style="color: red">*</span>
+                                                            <input class="form-control" id="Name" name="Name" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAmount</label> <span style="color: red">*</span>
+                                                            <input class="form-control" type="number" id="Amount" name="Amount" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblTypeEng</label> <span style="color: red">*</span>
+
+                                                            <select class="form-control" id="RecursiveType" name="RecursiveType" required>
+                                                                <option value="Addition" selected>Addition</option>
+                                                                <option value="Deduction">Deduction</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblDate</label> <span style="color: red">*</span>
+                                                            <input class="form-control" id="RecursiveDate" name="RecursiveDate" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                            <div class="card-footer col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button class="btn btn-success  @Resources.Common.PullLeft" id="btn-save-setting"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <div class="grid-main-div">
+                                                <div id="grid-salary-setting-addition-deduction">  </div>
+                                            </div>
+                                        </div>*@
+
+
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--<div class="tab-pane " id="AdditionTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">-->
+                @*<h2>@HRModuleUI.HumanResourceUI.lblAddition</h2>*@
+                <!--<div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSearch  @HRModuleUI.HumanResourceUI.lblEmployees  </label>
+                                            <input class="form-control" id="EmployeeID_Addition" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btn_Addition_Search"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btnShowAll_Addition"><i class="fa fa-eye"></i> @HRModuleUI.HumanResourceUI.lblShowAll</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-main-div">
+                                    <div id="grid-salary-setting-addition">  </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="DeductionTab" role="tabpanel">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label"> @HRModuleUI.HumanResourceUI.lblSearch  @HRModuleUI.HumanResourceUI.lblEmployees  </label>
+                                            <input class="form-control" id="EmployeeID_Deduction" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btn_Deduction_Search"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-success" value="Search" style="margin-top:35px;" id="btnShowAll_Deduction"><i class="fa fa-eye"></i> @HRModuleUI.HumanResourceUI.lblShowAll</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-main-div">
+                                    <div id="grid-salary-setting-deduction">  </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>-->
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+        //Resource
+        var lblEmployeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+        var lblName = '@HRModuleUI.HumanResourceUI.lblName';
+        var lblAmount = '@HRModuleUI.HumanResourceUI.lblAmount';
+        var lblAddition = '@HRModuleUI.HumanResourceUI.lblAddition';
+        var lblDeduction = '@HRModuleUI.HumanResourceUI.lblDeduction';
+        var lblDate = '@HRModuleUI.HumanResourceUI.lblDate';
+        var lblType = '@HRModuleUI.HumanResourceUI.lblType';
+        var lblSelect = '@HRModuleUI.HumanResourceUI.lblSelect';
+
+
+           var btnSave	 = '@HRModuleUI.HumanResourceUI.btnSave';
+         
+                                                var data = [
+                                                    { id: 1, name: "Engr Muhammad", title: "General Manager", expanded: true, parentId: false, avatar: "../content/web/treelist/people/1.jpg" },
+
+                                                    {
+                                                        id: 2, name: "Engr Moudar", title: "Deputy Manager", expanded: false, parentId: 1, avatar: "../content/web/treelist/people/8.jpg",
+
+                                                    },
+                                                    { id: 4, name: "Hani", title: "Secretary", expanded: false, parentId: 1, avatar: "../content/web/treelist/people/24.jpg" },
+                                                    { id: 3, name: "Alaa Faisal", title: "Finance Manager", expanded: true, parentId: 1, avatar: "../content/web/treelist/people/10.jpg" },
+
+
+                                                    { id: 5, name: "Omar Khaled Al-Obeid ", title: "Account Manager",  parentId: 3, avatar: "../content/web/treelist/people/6.jpg" },
+                                                    { id: 6, name: "Abdulsalam Al sabbagh", title: "Accountant", parentId: 3, avatar: "https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/48/Places-user-identity-icon.png" },
+                                                    { id: 7, name: "ALAA MOSEF ALBAITAR", title: "Accountant", parentId: 3, avatar: "https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/48/Places-user-identity-icon.png" },
+
+
+                                                    { id: 8, name: "Design Section", title: "Section", expanded: false, parentId: 2   },
+                                                    { id: 9, name: "Technical Section", title: "Section", expanded: false, parentId: 2   },
+                                                    { id: 10, name: "Supervision Section", title: "Section", expanded: false, parentId: 2 },
+
+                                                    { id: 11, name: "Engr.Ahmad Qudsia ", title: "Architect-25%", expanded: true, parentId: 8, avatar: "../content/web/treelist/people/9.jpg" },
+                                                    { id: 12, name: "Designer Employee", title: "Designer-20%", parentId: 11, avatar: "../content/web/treelist/people/19.jpg" },
+                                                    { id: 13, name: "Cordinator Employee", title: "Cordinator-30%", parentId: 11, avatar: "../content/web/treelist/people/20.jpg" },
+                                                    { id: 14, name: "3D Employee", title: "3D-50%", parentId: 11, avatar: "../content/web/treelist/people/16.jpg" },
+
+                                                    /*
+                                                    { id: 15, name: "Engr.Atyan ", title: "Architect-25%", expanded: true, parentId: 8, avatar: "../content/web/treelist/people/23.jpg" },
+                                                    { id: 16, name: "Designer Employee", title: "Designer-40%", parentId: 15, avatar: "../content/web/treelist/people/22.jpg" },
+                                                    { id: 17, name: "Cordinator Employee", title: "Cordinator-30%", parentId: 15, avatar: "../content/web/treelist/people/24.jpg" },
+                                                    { id: 18, name: "3D Employee", title: "3D-30%", parentId: 15, avatar: "../content/web/treelist/people/16.jpg" },
+                                                    */
+
+                                                    { id: 15, name: "Yazan Adel Al-Qasim ", title: "Architectural Engineer-25%", expanded: true, parentId: 9, avatar: "../content/web/treelist/people/23.jpg" },
+                                                    { id: 16, name: "Designer Employee", title: "Designer-40%", parentId: 15, avatar: "../content/web/treelist/people/22.jpg" },
+                                                    { id: 17, name: "Cordinator Employee", title: "Cordinator-30%", parentId: 15, avatar: "../content/web/treelist/people/24.jpg" },
+                                                    { id: 18, name: "3D Employee", title: "3D-30%", parentId: 15, avatar: "../content/web/treelist/people/16.jpg" },
+
+                                                    { id: 19, name: "Khaled Hamed Abdelhadi Mohamed El-Faki ", title: "Architectural Engineer-25%", expanded: true, parentId: 10, avatar: "../content/web/treelist/people/2.jpg" },
+                                                    { id: 20, name: "Designer Employee", title: "Designer-40%", parentId: 19, avatar: "../content/web/treelist/people/8.jpg" },
+                                                    { id: 21, name: "Cordinator Employee", title: "Cordinator-30%", parentId: 19, avatar: "../content/web/treelist/people/9.jpg" },
+                                                    { id: 22, name: "3D Employee", title: "3D-30%", parentId: 19, avatar: "../content/web/treelist/people/16.jpg" },
+
+                                                ];
+
+                                                $("#orgchart").kendoOrgChart({
+                                                    editable: true,
+                                                    dataSource: data,
+                                                    //cardsColors: ["pink", "tan", "orange"],
+                                               //     cancel: onCancel,
+                                                    change: onChange,
+                                                    collapse: onCollapse,
+                                                  //  create: onCreate,
+                                                    expand: onExpand,
+                                                //    dataBinding: onDataBinding,
+                                                 //   dataBound: onDataBound,
+                                                    delete: onDelete,
+                                                 //   edit: onEdit,
+                                                //    save: onSave,
+                                                    select: onSelect
+                                                   /*  groupField: "parentId",
+                                                    groupHeaderTemplate: function (e) {
+                                                        var org = $('#orgchart').data('kendoOrgChart')
+                                                        var ds = org.dataSource
+                                                        var parent = ds.get(e.value)
+                                                        var result = ''
+
+                                                        if (!parent) {
+                                                            result = '<span>&nbsp</span>'
+                                                        } else {
+                                                            result = '<span>Reports To: <strong>' + parent.name + '</strong></span>'
+                                                        }
+                                                        return result;
+                                                    },
+                                                     */
+                                                });
+        function onCancel(e) {
+            console.log("event: Cancel");
+        }
+
+        function onChange(e) {
+             
+            var row = e.dataItems[0];
+
+            var org = $('#orgchart').data('kendoOrgChart')
+            var ds = org.dataSource
+            var parent = ds.get(e.dataItems[0].parentId)
+            console.log("event: Change");
+        }
+
+        function onCollapse(e) {
+            console.log("event: Collapse --> " + e.dataItems[0].name + " collapsed");
+        }
+
+        function onCreate(e) {
+            console.log("event: Create");
+        }
+
+        function onExpand(e) {
+            console.log("event: Expand --> " + e.dataItems[0].name + " expanded");
+
+        }
+
+        function onDataBinding(e) {
+            console.log("event: DataBinding");
+        }
+
+        function onDataBound(e) {
+            console.log("event: DataBound");
+        }
+
+        function onDelete(e) {
+            console.log("event: Delete");
+        }
+
+        function onEdit(e) {
+            console.log("event: Edit");
+        }
+
+        function onSave(e) {
+            console.log("event: Save");
+        }
+
+        function onSelect(e) {
+            console.log("event: Select --> " + e.dataItems[0].name + " selected");
+        }
+
+
+    </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-progress.js"></script>
+
+
+}

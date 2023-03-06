@@ -210,8 +210,20 @@
   <data name="lblAmount" xml:space="preserve">
     <value>المبلغ</value>
   </data>
+  <data name="lblAns" xml:space="preserve">
+    <value>Ans</value>
+  </data>
+  <data name="lblAppraisal" xml:space="preserve">
+    <value>Appraisal</value>
+  </data>
+  <data name="lblAppraisals" xml:space="preserve">
+    <value>Appraisals</value>
+  </data>
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
+  </data>
+  <data name="lblApproved" xml:space="preserve">
+    <value>Approved</value>
   </data>
   <data name="lblApprovedBy" xml:space="preserve">
     <value>معتمد من</value>
@@ -245,6 +257,12 @@
   </data>
   <data name="lblBody" xml:space="preserve">
     <value>الجسم</value>
+  </data>
+  <data name="lblBonus" xml:space="preserve">
+    <value>Bonus</value>
+  </data>
+  <data name="lblBonuses" xml:space="preserve">
+    <value>Bonuses</value>
   </data>
   <data name="lblBreak" xml:space="preserve">
     <value>الاستراحة</value>
@@ -394,6 +412,9 @@
     <value>الوثائق</value>
     <comment>الوثيقة</comment>
   </data>
+  <data name="lblDraft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
   <data name="lblEarly" xml:space="preserve">
     <value>اظافي دقائق</value>
   </data>
@@ -457,6 +478,9 @@
   <data name="lblEmployeePerformanceEvaluation" xml:space="preserve">
     <value>تقييم أداء الموظف</value>
   </data>
+  <data name="lblEmployeeProgress" xml:space="preserve">
+    <value>Employee Progress</value>
+  </data>
   <data name="lblEmployees" xml:space="preserve">
     <value>الموظفين</value>
   </data>
@@ -483,6 +507,9 @@
   </data>
   <data name="lblEmployeesPermissionLeaveRequests" xml:space="preserve">
     <value>طلبات إجازات  الموظفين</value>
+  </data>
+  <data name="lblEmployeesProgress" xml:space="preserve">
+    <value>Employees Progress</value>
   </data>
   <data name="lblEmployeesRequest" xml:space="preserve">
     <value>طلب موظفين</value>
@@ -532,6 +559,9 @@
   <data name="lblFlexibilityinGettingtheJobDone" xml:space="preserve">
     <value>المرونة في انجاز العمل</value>
   </data>
+  <data name="lblFlexibleTime" xml:space="preserve">
+    <value>Flexible Time</value>
+  </data>
   <data name="lblForward" xml:space="preserve">
     <value>تحويل</value>
   </data>
@@ -543,6 +573,9 @@
   </data>
   <data name="lblFrom" xml:space="preserve">
     <value>من</value>
+  </data>
+  <data name="lblGenerate" xml:space="preserve">
+    <value>Generate</value>
   </data>
   <data name="lblGrossSalary" xml:space="preserve">
     <value>Gross Salary</value>
@@ -801,6 +834,9 @@
   <data name="lblPayrollReport" xml:space="preserve">
     <value>Payroll Report</value>
   </data>
+  <data name="lblPending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>
   </data>
@@ -850,11 +886,20 @@
   <data name="lblProfileImage" xml:space="preserve">
     <value>الصورة الشخصية</value>
   </data>
+  <data name="lblProgress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="lblPromotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
   <data name="lblProvidentFundDeduction" xml:space="preserve">
     <value>Provident Fund Deduction</value>
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>اجازة رسمية</value>
+  </data>
+  <data name="lblQ" xml:space="preserve">
+    <value>Q</value>
   </data>
   <data name="lblQualityOfFunctionality" xml:space="preserve">
     <value>حجم ونوعية الأداء الوظيفي</value>
@@ -864,6 +909,9 @@
   </data>
   <data name="lblReadLetter" xml:space="preserve">
     <value>اقرأ الرسالة</value>
+  </data>
+  <data name="lblRecordAlreadyExist" xml:space="preserve">
+    <value>Record Already Exist</value>
   </data>
   <data name="lblRelaxationTime" xml:space="preserve">
     <value>وقت الاسترخاء</value>
@@ -960,7 +1008,7 @@
     <value>مستوى الخدمات المقدمة للمتعاملين</value>
   </data>
   <data name="lblSetting" xml:space="preserve">
-    <value>lblSetting</value>
+    <value>Setting</value>
   </data>
   <data name="lblSharingandTakingResponsibility" xml:space="preserve">
     <value>المشاركة وتحمل المسؤولية</value>
@@ -1012,6 +1060,9 @@
   </data>
   <data name="lblSubject" xml:space="preserve">
     <value>الموضوع</value>
+  </data>
+  <data name="lblSubmit" xml:space="preserve">
+    <value>Submit</value>
   </data>
   <data name="lblSunday" xml:space="preserve">
     <value>الاحد</value>

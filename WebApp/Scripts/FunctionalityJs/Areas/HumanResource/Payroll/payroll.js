@@ -76,8 +76,8 @@ function fnLoadPayrollGrid() {
         values: {
             DepartmentID: $('#DepartmentId').val() == "" ? 0 : $('#DepartmentId').val(),
             DesignationID: $('#DesignationID').val() == "" ? 0 : $('#DesignationID').val(),
-            PayrollMonth: $('#PayrollMonth').val(),
-            PayrollYear: $('#PayrollYear').val(),
+            PayrollMonth: $('#PayrollMonth :selected').val(),
+            PayrollYear: $('#PayrollYear :selected').val(),
             Language: _currentLanguage
 
         }, CallBack: fnLoadPayrollGridCallBack
@@ -177,7 +177,7 @@ function printSalarySlip(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $PayrollGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    console.log(dataItem)
+    // console.log(dataItem)
 
     var reportExtension = event.currentTarget.dataset.type;
     var newObject = {
@@ -187,7 +187,7 @@ function printSalarySlip(e) {
             Language: _currentLanguage
         }
     }
-     
+
     window.open("/Report/SalaryReceipt?" +
         "type=" + encodeURIComponent(newObject.type) +
         "&value=" + encodeURIComponent(JSON.stringify(newObject.value)) +
@@ -209,6 +209,7 @@ function LoadRecordByID(e) {
 
 function EditDetail(e) {
     $('#frmAddUpdatePayrollAdditionDeduction').trigger('reset');
+    $('#frmAddUpdatePayrollBonuses').trigger('reset');
 
     var row = $(e).closest("tr");
     var grid = $("#" + $PayrollGrid).data("kendoGrid");
@@ -223,6 +224,7 @@ function EditDetail(e) {
 
     LoadLeavesAndTotalHoursByEmployee();
     LoadPayrollAdditionByEmployeeID();
+    LoadPayrollBonusesByEmployeeID();
     LoadPayrollDeductionByEmployeeID();
 
 
@@ -325,6 +327,100 @@ var getLoadPayrollAdditionByEmployeeID = function (d) {
     }
 }
 
+function LoadPayrollBonusesByEmployeeID() {
+
+    ajaxRequest({
+        commandName: 'Payroll_BonusByEmployeeByID',
+        values: {
+            EmployeeID: $('#EmployeeID').val(),
+            month: $('#PayrollMonth :selected').val(),
+            year: $('#PayrollYear :selected').val(),
+            Language: _currentLanguage
+
+        }, CallBack: getLoadPayrollBonusesByEmployeeID
+    });
+}
+var getLoadPayrollBonusesByEmployeeID = function (d) {
+
+    $('.appendBonuses').empty();
+    if (JSON.parse(d.Value).length > 0) {
+
+        var bonusList = JSON.parse(d.Value)[0];
+
+        for (var i = 0; i < bonusList.length; i++) {
+            $('.appendBonuses').append(
+                `<tr data-current-row-id=` + bonusList[i].payrollBonusID + `>
+                        <td>
+                             <div class="row">
+                                 <div class="col-sm-4" style="pointer-events:none;">
+                                     <div>
+                                         <div class="form-group">
+                                             <label>`+ bonusList[i].bonusName + `</label>
+                                             <input class="form-control" min="0"    id="B_Amount` + bonusList[i].payrollBonusID + `"   type="number" value="` + bonusList[i].amount + `" oninput="this.value = Math.abs(this.value)">
+                                             <input class="form-control"     id="B_NameEng` + bonusList[i].payrollBonusID + `"   type="hidden" value="` + bonusList[i].nameEng + `">
+                                             <input class="form-control"     id="B_NameArb` + bonusList[i].payrollBonusID + `"   type="hidden" value="` + bonusList[i].nameArb + `">
+
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="col-sm-8">
+                                     <div>
+                                             <label>`+ lblremarks + `</label>
+                                        <div class="" style="display:flex;">
+                                             <input style="pointer-events:none;" class="form-control col-sm-10""      id="B_Remarks`+ bonusList[i].payrollBonusID + `" type="text"   value="` + bonusList[i].remarks + `">
+                                            <a class="EditBonusDetail" style="font-size:20px;cursor:pointer;margin-left:8px;"   title="Edit "><span class="  fa fa-edit"></span></a>
+                                            <a class="DeleteBonusDetail" style="font-size:20px;cursor:pointer;margin-left:8px;"   title="Delete"><span class="  fa fa-remove"></span></a>
+                                         </div>
+
+                                     </div>
+
+                                 </div>
+                             </div>
+                    </td>
+                 </tr>`)
+        }
+
+
+    }
+}
+$(".appendBonuses").on('click', '.EditBonusDetail', function () {
+     
+    var currentRow = $(this).closest("tr");
+
+    // var rCell1 = currentRow.find("td:eq(0)").text();
+    var PayrollBonusID = $(currentRow).attr('data-current-row-id');
+    var b_NameEng = $('#B_NameEng' + PayrollBonusID).val();
+    var b_NameArb = $('#B_NameArb' + PayrollBonusID).val();
+    var b_Amount = $('#B_Amount' + PayrollBonusID).val();
+    var b_Remarks = $('#B_Remarks' + PayrollBonusID).val();
+
+
+    $("#btn_add_bonus").click();
+    $('#PayrollBonusID').val(PayrollBonusID);
+    $('#B_NameEng').val(b_NameEng);
+    $('#B_NameArb').val(b_NameArb);
+    $('#B_Amount').val(b_Amount);
+    $('#B_Remarks').val(b_Remarks);
+});
+$(".appendBonuses").on('click', '.DeleteBonusDetail', function () {
+     
+    var currentRow = $(this).closest("tr");
+     
+    var PayrollBonusID = $(currentRow).attr('data-current-row-id');
+    
+    ajaxRequest({
+        commandName: 'PayrollBonus_Delete',
+        values: {
+            Id: PayrollBonusID,
+            Language: _currentLanguage
+
+        }, CallBack: ''
+    });
+    LoadPayrollBonusesByEmployeeID();
+    //--- Load Grid
+    fnLoadPayrollGrid();
+});
+
 function LoadPayrollDeductionByEmployeeID() {
 
     ajaxRequest({
@@ -387,9 +483,56 @@ var getLoadPayrollDeductionByEmployeeID = function (d) {
 $('#btn-search').on('click', function (e) {
     fnLoadPayrollGrid();
 });
+$("#btn_add_bonus").click(function () {
+
+    $('#B_EmployeeID').val($('#EmployeeID').val() == '' ? 0 : $('#EmployeeID').val())
+    $('#B_PayrollID').val($('#PayrollID').val() == '' ? 0 : $('#PayrollID').val())
+    $('#B_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id)
+    $('#B_Language').val(_currentLanguage)
+});
+$("#btnSave_Bonus").click(function () {
+
+    if (customValidateForm('frmAddUpdatePayrollBonuses')) {
+        $("#frmAddUpdatePayrollBonuses").ajaxForm();
+        buttonAddPleaseWait('btnSave_Bonus');
+        var options = {
+            success: function (response, statusText, jqXHR) {
+                swal(response);
+                LoadPayrollBonusesByEmployeeID();
+                $('#frmAddUpdatePayrollBonuses')[0].reset();
+                $('#PayrollBonusID').val(0);
+                $('#btnClose_Bonus').click();
+                //--- Load Grid
+                fnLoadPayrollGrid();
+            },
+            error: function (xhr, status, error) {
+                buttonRemovePleaseWait('btnSave_Bonus', save, 'save');
+                var errmsg = xhr.status + ':' + xhr.responseText + ':' + error;
+                alert(errmsg);
+            }
+            , complete: function () {
+                buttonRemovePleaseWait('btnSave_Bonus', save, 'save');
+                LoadPayrollBonusesByEmployeeID();
+                //--- Load Grid
+                fnLoadPayrollGrid();
+            }
+        };
+        $("#frmAddUpdatePayrollBonuses").ajaxSubmit(options);
+    }
+    else {
+
+        buttonRemovePleaseWait('btnSave_Bonus', save, 'save');
+    }
+
+});
+
+
+
+
 $("#btnSave").click(function () {
     proceedPayrollAdditionDeductionRecord();
 });
+
 var deductionIDFrom_Response = 0;
 function proceedPayrollAdditionDeductionRecord(e) {
 
@@ -519,8 +662,9 @@ var fnLoadPayrollDeduction_Callback = function (inputDataJSONs) {
         showConfirmButton: false,
         timer: 800
     });
-    setTimeout(function () { 
+    setTimeout(function () {
         fnLoadPayrollGrid();
+        $('#btnClose_Bonus').click();
     }, 50);
 
 }
@@ -581,7 +725,8 @@ function proceedAttendanceRecordCallBack() {
         timer: 1000
     });
     setTimeout(function () {
-
-        location.reload();
+        //--- Load Grid
+        fnLoadPayrollGrid();
+       // location.reload();
     }, 1000);
 }

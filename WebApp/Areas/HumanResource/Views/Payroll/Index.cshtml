@@ -215,7 +215,7 @@
 
                     </div>
                     <hr />
-                    <div class="row">
+                    <div class="row" >
                         <div class="col-sm-6 " style=" background:#2ecc7136;">
                             @*<div class="appendAddition" style="margin-left: 10px;"> </div>
                                 <div class="appendLabourAddition" style="margin-left: 10px;"> </div>*@
@@ -233,6 +233,19 @@
 
                                     <table class="appendAddition"></table>
                                 </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 card-block" style=" background:#2ecc7136;">
+                                    <b>  @HRModuleUI.HumanResourceUI.lblBonuses</b>
+                                    <a class="btn btn-sm btn-primary   @Resources.Common.PullRight" id="btn_add_bonus"   data-toggle="modal" data-target=".modal-add-update-bonuses" value="Add" style="color: white;"> @HRModuleUI.HumanResourceUI.lblAddNew</a>
+
+                                    <hr />
+                                    <table class="appendBonuses" style="width:100%;">  </table>
+
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-sm-6 " style="background: #e74c3c36;">
@@ -316,13 +329,98 @@
 
 
                     @*<button type="button" id="btnSave" class=" btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn" tabindex="24"><i class="fa fa-save"></i> Save</button>*@
-                    <button type="button" id="btnClose" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block md-close" data-dismiss="modal" tabindex="25"><i class="fa fa-close"></i> @Resources.Global.lblClose</button>
+                    <button type="button" id="btnClose" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block md-close" data-dismiss="modal"  ><i class="fa fa-close"></i> @Resources.Global.lblClose</button>
                     <button type="button" class="btn btn-success   @Resources.Common.PullRight" id="btnSave" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                     <button type="reset" style="display:none !important;" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block reset_btn"><i class="fa fa-remove"></i> @Resources.Global.btnReset</button>
 
 
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal custom-modal fade modal-add-update-bonuses" role="dialog" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title col-md-8 ">@HRModuleUI.HumanResourceUI.btnSave @HRModuleUI.HumanResourceUI.lblBonus</h5>
+
+                @*<button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span> </button>*@
+
+            </div>
+            <form class="md-float-material" id="frmAddUpdatePayrollBonuses" name="frmAddUpdatePayrollBonuses" action="/services/Xtreme/multipart" method="post">
+                @*<div class="modal-body p-b-0" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">*@
+                <div class="modal-body p-b-0" >
+                    <input type="hidden" id="PayrollBonusID" name="PayrollBonusID" value="0" />
+                    <input type="hidden" id="B_EmployeeID" name="B_EmployeeID" value="0" />
+                    <input type="hidden" id="B_PayrollID" name="B_PayrollID" value="0" />
+                    <input type="hidden" id="B_CreatedBy" name="B_CreatedBy" value="0" />
+                    <input type="hidden" id="B_Language" name="B_Language" value="0" />
+
+                    <input type="hidden" name="type" id="type" value="PayrollBonus_Save" />
+                    <div class="form-control">
+                        <div class="row ">
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">@HRModuleUI.HumanResourceUI.lblNameEng:</label>
+                                    <input class="form-control" type="text" name="B_NameEng" id="B_NameEng" value="" required>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="row ">
+
+                          
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">@HRModuleUI.HumanResourceUI.lblNameArb:</label>
+                                    <input class="form-control" type="text" name="B_NameArb" id="B_NameArb" value="" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row ">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">@HRModuleUI.HumanResourceUI.lblAmount:</label>
+                                    <input class="form-control" type="number" name="B_Amount" id="B_Amount" value="" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="row ">
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">@HRModuleUI.HumanResourceUI.lblremarks:</label>
+                                    <input class="form-control" type="text" name="B_Remarks" id="B_Remarks" value="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+            <div class="card-footer">
+                <button type="button" id="btnClose_Bonus" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block md-close" 
+                       
+                        data-toggle="modal" data-target=".modal-add-update-bonuses" 
+                        ><i class="fa fa-close"></i> @Resources.Global.lblClose</button>
+                <button type="button" id="btnSave_Bonus"   class="btn btn-success   @Resources.Common.PullRight" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                <button type="reset" id="btnReset_Bonus" style="display:none !important;" class=" @Resources.Common.PullRight btn btn-danger waves-effect m-r-20 f-w-600 d-inline-block ">  @Resources.Global.btnReset</button>
+
+
+            </div>
+
         </div>
     </div>
 </div>
@@ -348,8 +446,18 @@
         var lblGrossSalary = '@HRModuleUI.HumanResourceUI.lblGrossSalary';
         var lblNetSalary = '@HRModuleUI.HumanResourceUI.lblNetSalary';
         var lblSalaryGeneratedSuccessfully = '@HRModuleUI.HumanResourceUI.lblSalaryGeneratedSuccessfully';
+
+        var lblBonus = '@HRModuleUI.HumanResourceUI.lblBonus';
+        var lblBonuses = '@HRModuleUI.HumanResourceUI.lblBonuses';
+        var lblNameEng = '@HRModuleUI.HumanResourceUI.lblNameEng';
+        var lblNameArb = '@HRModuleUI.HumanResourceUI.lblNameArb';
+        var lblAmount = '@HRModuleUI.HumanResourceUI.lblAmount';
+        var lblremarks = '@HRModuleUI.HumanResourceUI.lblremarks';
+
         var lblSaved = '@Resources.Global.lblSaved';
-       
+        
+
+
 
 
     </script>

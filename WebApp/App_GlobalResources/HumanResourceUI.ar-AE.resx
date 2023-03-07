@@ -681,6 +681,9 @@
   <data name="lblLogout" xml:space="preserve">
     <value>تسجيل خروج</value>
   </data>
+  <data name="lblManager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
   <data name="lblMarch" xml:space="preserve">
     <value>مارس</value>
   </data>
@@ -997,6 +1000,9 @@
   </data>
   <data name="lblSelectLeave" xml:space="preserve">
     <value>حدد مغادرة</value>
+  </data>
+  <data name="lblSelf" xml:space="preserve">
+    <value>Self</value>
   </data>
   <data name="lblSend" xml:space="preserve">
     <value>ارسل</value>

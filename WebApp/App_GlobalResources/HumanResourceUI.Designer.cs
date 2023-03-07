@@ -1771,6 +1771,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manager.
+        /// </summary>
+        public static string lblManager {
+            get {
+                return ResourceManager.GetString("lblManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to March.
         /// </summary>
         public static string lblMarch {
@@ -2712,6 +2721,15 @@ namespace HRModuleUI {
         public static string lblSelectLeave {
             get {
                 return ResourceManager.GetString("lblSelectLeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Self.
+        /// </summary>
+        public static string lblSelf {
+            get {
+                return ResourceManager.GetString("lblSelf", resourceCulture);
             }
         }
         

@@ -1,0 +1,76 @@
+﻿
+
+@{
+    ViewBag.Title = HRModuleUI.HumanResourceUI.lblAppraisal + " " + HRModuleUI.HumanResourceUI.lblRequest;
+
+}
+
+<div class="card">
+
+
+    <input type="hidden" id="CreatedBy" name="CreatedBy" />
+    <input type="hidden" id="Id" name="Id" value="0" />
+    <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
+    <input type="hidden" id="Language" name="Language" value="" />
+
+    <div class="card">
+        <div class="card-header">
+
+
+            <h5>@HRModuleUI.HumanResourceUI.lblAppraisal</h5>
+            <div class="card-header-right">
+
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" id="btnPendingData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblPendingRequest</button>
+                    <button id="btnApprovedData" onclick="fnLoadGridByStatus(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
+
+                </div>
+
+            </div>
+
+            <div class="grid-main-div">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="RequestAppraisal"></div>
+                        <div id="RequestAppraisal_Approved"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section scripts {
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Request/request-appraisals.js"></script>
+    <script>
+        //Grid columns
+
+         var empNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+        var comment = '@HRModuleUI.HumanResourceUI.lblComment';
+        var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var action = '@HRModuleUI.HumanResourceUI.lblAction';
+        var lblFristSelectRecordFromGrid = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid ';
+        var lblname  = '@HRModuleUI.HumanResourceUI.lblName ';
+          var btnDecline= '@HRModuleUI.HumanResourceUI.lblDecline';
+        var btnAccept = '@HRModuleUI.HumanResourceUI.lblAccept';
+        var lblSection = '@HRModuleUI.HumanResourceUI.lblSection';
+        var lblYear = '@HRModuleUI.HumanResourceUI.lblYear';
+
+
+
+    </script>
+}
+
+
+

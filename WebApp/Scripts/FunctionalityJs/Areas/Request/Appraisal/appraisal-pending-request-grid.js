@@ -124,7 +124,7 @@ function see_AppraisalDetailsById(event) {
     var dataItem = grid.dataItem(row);
 
 
-    window.location.href = '/Request/Appraisal/Index?AppraisalId=' + dataItem.appraisalId + '?' + 'EmployeeId=' + dataItem.employeeId + '?' + 'DepartmentId=' + dataItem.departmentId + '?' + 'Year=' + dataItem.year + '?' + 'ManagerId=' + dataItem.managerId + '';
+    window.location.href = '/Request/Appraisal/Index?AppraisalId=' + dataItem.appraisalId + '?' + 'EmployeeId=' + dataItem.employeeId + '?' + 'DepartmentId=' + dataItem.departmentId + '?' + 'Year=' + dataItem.year + '?' + 'ManagerId=' + dataItem.managerId + '?' + 'EmployeeNumber=' + dataItem.employee_Number + '';
 
 }
 function delete_AppraisalPendingGridById(event) {

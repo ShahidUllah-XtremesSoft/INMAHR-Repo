@@ -395,6 +395,10 @@
     Appraisal_Get_LineManager_by_DepartmentWise,
 
     Request_Appraisal_Answer_Multiple_Save,
+    Request_Appraisal_Answer_Multiple_Remarks_Save,
+    // -------------------- MANAGER REQUEST HISTORY AREA ---------------
+
+    Employees_Request_Appraisal_Get,
     #endregion
 
 }

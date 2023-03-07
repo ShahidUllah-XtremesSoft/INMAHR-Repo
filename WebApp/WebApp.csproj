@@ -591,7 +591,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\InternalLetter\SendLetters\internal-letter-send-letter-load-data.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\Cancel.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\cash-in-leaves.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\request-evaulation.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\request-appraisals.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\short-leaves-request-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\request-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Employees\Request\leaves.js" />
@@ -660,6 +660,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\summary-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-appraisal-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-generate-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-pending-request-grid.js" />
@@ -769,7 +770,6 @@
     <Content Include="Areas\Project\Views\Shared\PartialViews\EmailTemplate\_EmailTemplate.cshtml" />
     <Content Include="Areas\Request\Views\Appraisal\Index.cshtml" />
     <Content Include="Areas\Request\Views\Appraisal\Create.cshtml" />
-    <Content Include="Areas\Employees\Views\Request\Evaluation.cshtml" />
     <Content Include="Areas\HumanResource\Views\Employee\Resigned.cshtml" />
     <Content Include="Areas\Project\Views\Project\Search-project.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\_ProjectSearch_PartialView.cshtml" />
@@ -782,6 +782,7 @@
     <Content Include="Areas\HumanResource\Views\Employee\Progress.cshtml" />
     <Content Include="Areas\Request\Views\Appraisal\Index -BACKUP--.cshtml" />
     <Content Include="Areas\Request\Views\Appraisal\Self.cshtml" />
+    <Content Include="Areas\Employees\Views\Request\Appraisal.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="Reports\HR-Reports\HR_Department.cs">
       <SubType>Component</SubType>

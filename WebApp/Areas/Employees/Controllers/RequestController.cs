@@ -41,9 +41,10 @@ namespace WebApp.Areas.Employees.Controllers
         {
             return View("~/Areas/Employees/Views/Request/ShorLeave_RequestDetails.cshtml");
         }
-        public ActionResult Evaluation()
+       
+          public ActionResult Appraisal()
         {
-            return View("~/Areas/Employees/Views/Request/Evaluation.cshtml");
+            return View("~/Areas/Employees/Views/Request/Appraisal.cshtml");
         }
 
     }

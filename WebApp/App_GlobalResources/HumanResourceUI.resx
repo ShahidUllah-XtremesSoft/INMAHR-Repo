@@ -687,6 +687,9 @@
   <data name="lblLogout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="lblManager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
   <data name="lblMarch" xml:space="preserve">
     <value>March</value>
   </data>
@@ -1001,6 +1004,9 @@
   </data>
   <data name="lblSelectLeave" xml:space="preserve">
     <value>Select Leave</value>
+  </data>
+  <data name="lblSelf" xml:space="preserve">
+    <value>Self</value>
   </data>
   <data name="lblSend" xml:space="preserve">
     <value>Send</value>

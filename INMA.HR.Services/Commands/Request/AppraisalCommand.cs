@@ -356,6 +356,7 @@ namespace INMA.HR.Services.Commands.Request
                 AppraisalModel = new List<AppraisalModel>(),
                 CreatedBy = 0,
                 Appraisal_Id = 0,
+                Status = string.Empty,
                 Language = string.Empty
             }, viewInput);
 
@@ -466,4 +467,92 @@ namespace INMA.HR.Services.Commands.Request
         }
     }
     #endregion
+
+
+
+
+    #region ========== Load Manager Appraisal Tempalte Get 
+
+    [Command(Name = "Setup_Appraisal_Template_Get")]
+    public class Setup_Appraisal_Template_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetDataSet<dynamic>(StoreProcedure.Setup_Appraisal_Template_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
+    #region Request Appraisal Performance  Save
+    [Command(Name = "Request_Appraisal_Performance_Save")]
+    public class Request_Appraisal_Performance_SaveCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                AppraisalId = 0,                 
+                Employee_Id = 0,
+                Employee_Department_Id = 0,
+                Employee_Department_Parent_Id = 0,
+                CreatedBy = 0,
+                AppraisalForm = string.Empty,
+                AppraisalFormArb = string.Empty,
+                LoggedInEmployee_RoleId = 0, 
+                Year = string.Empty,
+                Language = string.Empty,
+            }, v);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Appraisal_Performance_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
+
+    #region ========== Load Appraisal  Template Get 
+
+    [Command(Name = "Request_Appraisal_Performance_Get_By_Id")]
+    public class Request_Appraisal_Performance_Get_By_IdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                AppraisalId = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            IDictionary<string, object> values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Appraisal_Performance_Get_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion  
 }

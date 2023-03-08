@@ -51,7 +51,7 @@ function fn_Load_Appraisal_FormCallBack(response) {
         var isCategoryNameExist = '', appendCategory = '', appendFooter = '', collapse_id_ = '', question_Count = 0;
 
         for (var i = 0; i < db_response.length; i++) {
-
+             
             question_Count = question_Count + 1
             if (isCategoryNameExist != db_response[i].category) {
                 isCategoryNameExist = db_response[i].category;
@@ -82,7 +82,7 @@ function fn_Load_Appraisal_FormCallBack(response) {
                                     <strong>` + lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span>
                                     <div class="">
                                         <strong>`+ lblAns + ':' + `</strong>
-                                        <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id=`+ db_response[i].id + `
+                                        <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id=`+ db_response[i].question_Id + `
                                                   rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;">` + db_response[i].answer + `</textarea>
                                     </div>`)
 
@@ -97,7 +97,7 @@ function fn_Load_Appraisal_FormCallBack(response) {
                                     <strong>`+ lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span>
                                     <div class="">
                                         <strong>`+ lblAns + ':' + `</strong>
-                                        <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id=`+ db_response[i].id + `  
+                                        <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id=`+ db_response[i].question_Id + `
                                                   rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;">` + db_response[i].answer + `</textarea>
                                     </div>
                                 </div>

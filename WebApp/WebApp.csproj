@@ -660,6 +660,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\summary-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-appraisal-manager-form.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-appraisal-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-generate-save.js" />

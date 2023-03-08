@@ -25,6 +25,7 @@ var bindAppraisalPendingGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 10, },
 
         { field: "appraisalId", title: "AppraisalId", hidden: true },
+        { field: "appraisalPerformanceId", title: "AppraisalPerformanceId", hidden: true },
         { field: "employee_Number", title: "Employee_Number", hidden: true },
         { field: "employeeId", title: "EmployeeId", hidden: true },
         { field: "managerId", title: "ManagerId", hidden: true },
@@ -124,7 +125,7 @@ function see_AppraisalDetailsById(event) {
     var dataItem = grid.dataItem(row);
 
 
-    window.location.href = '/Request/Appraisal/Index?AppraisalId=' + dataItem.appraisalId + '?' + 'EmployeeId=' + dataItem.employeeId + '?' + 'DepartmentId=' + dataItem.departmentId + '?' + 'Year=' + dataItem.year + '?' + 'ManagerId=' + dataItem.managerId + '?' + 'EmployeeNumber=' + dataItem.employee_Number + '';
+    window.location.href = '/Request/Appraisal/Index?AppraisalId=' + dataItem.appraisalId + '?' + 'EmployeeId=' + dataItem.employeeId + '?' + 'DepartmentId=' + dataItem.departmentId + '?' + 'Year=' + dataItem.year + '?' + 'ManagerId=' + dataItem.managerId + '?' + 'EmployeeNumber=' + dataItem.employee_Number + '?' + 'AppraisalPerformanceId=' + dataItem.appraisalPerformanceId + '';
 
 }
 function delete_AppraisalPendingGridById(event) {

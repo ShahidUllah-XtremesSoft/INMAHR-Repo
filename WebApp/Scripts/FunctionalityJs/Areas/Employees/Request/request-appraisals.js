@@ -7,57 +7,45 @@ $(function () {
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
-    loadRequestAppraisal('Pending');
+    fnLoadRequestAppraisal('Pending');
 
 
 });
-function loadRequestAppraisal(btnStatus) {
+function fnLoadRequestAppraisal(btnStatus) {
+     
+    btnStatus == "Pending" ? (btnStatus='Send') : btnStatus;
 
-    if (btnStatus == 'Pending') {
-        ajaxRequest({
-            commandName: 'Employees_Request_Appraisal_Get',
-            values: {
-                Id: $('#Id').val(),
-                LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
-                LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
-                LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
-                LoggedInUserRoleName: JSON.parse(localStorage.getItem('User')).roleName,
-                LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
-                Language: _currentLanguage,
-                StatusWise: btnStatus
-            }, CallBack: loadRequestAppraisalCallBack
-        });
+    ajaxRequest({
+        commandName: 'Employees_Request_Appraisal_Get',
+        values: {
+            Id: $('#Id').val(),
+            LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInUserRoleName: JSON.parse(localStorage.getItem('User')).roleName,
+            LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
+            Language: _currentLanguage,
+            StatusWise: btnStatus
+        }, CallBack: fnLoadRequestAppraisalCallBack
+    });
 
-    } else {
-        ajaxRequest({
-            commandName: 'Employees_Request_Appraisal_History_Get',
-            values: {
-                LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
-                LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
-                LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
-                LoggedInUserRoleName: JSON.parse(localStorage.getItem('User')).roleName,
-                LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
-                LoggedInUserDepartement_Parent_Id: JSON.parse(localStorage.getItem('User')).employee_Department_ParentId,
-                Language: _currentLanguage,
-            }, CallBack: loadRequestAppraisalCallBack
-        });
 
-    }
 
 
 }
-var loadRequestAppraisalCallBack = function (inputDataJSON) {
+var fnLoadRequestAppraisalCallBack = function (inputDataJSON) {
     bindRequestAppraisal(JSON.parse(inputDataJSON.Value));
 }
 var bindRequestAppraisal = function (inputDataJSON) {
     var record = 0;
-
+     
 
     if (_btnValue == 'Pending') {
         var gridColumns = [
 
             { title: "#", template: "<b>#= ++record #</b>", width: 10 },
             { field: "appraisalId", title: "AppraisalId", hidden: true },
+            { field: "appraisalPerformanceId", title: "AppraisalPerformanceId", hidden: true },
             { field: "employee_Number", title: "Employee_Number", hidden: true },
             { field: "employeeId", title: "EmployeeId", hidden: true },
             { field: "managerId", title: "ManagerId", hidden: true },
@@ -72,9 +60,11 @@ var bindRequestAppraisal = function (inputDataJSON) {
             { field: "status", title: lblStatus, width: 30, hidden: false, filterable: false }
 
         ];
+            bindKendoGrid($RequestAppraisal, 50, gridColumns, inputDataJSON, true);
+
+        /*
         setTimeout(function () {
 
-            bindKendoGrid($RequestAppraisal, 50, gridColumns, inputDataJSON, true);
         }, 100);
 
         $('#RequestAppraisal_Approved').hide();
@@ -107,7 +97,7 @@ var bindRequestAppraisal = function (inputDataJSON) {
 
         bindKendoGrid("RequestAppraisal_Approved", 500, gridColumns_approved, inputDataJSON, true);
 
-
+        */
     }
 
 
@@ -117,7 +107,7 @@ var bindRequestAppraisal = function (inputDataJSON) {
 
 //--------------------- FUNCTION AREA ----------------
 function fnLoadGridByStatus(btnValue) {
-    loadRequestAppraisal(btnValue);
+    fnLoadRequestAppraisal(btnValue);
     _btnValue = btnValue;
 
 
@@ -128,9 +118,9 @@ function redirectToEmployeeDetailView(e) {
     var grid = $("#" + $RequestAppraisal).data("kendoGrid");
     var dataItem = grid.dataItem(row);
 
-     
 
-    window.location.href = '/Request/Appraisal/Index?AppraisalId=' + dataItem.appraisalId + '?' + 'EmployeeId=' + dataItem.employeeId + '?' + 'DepartmentId=' + dataItem.departmentId + '?' + 'Year=' + dataItem.year + '?' + 'ManagerId=' + dataItem.managerId + '?' + 'EmployeeNumber=' + dataItem.employee_Number + '';
+
+    window.location.href = '/Request/Appraisal/Index?AppraisalId=' + dataItem.appraisalId + '?' + 'EmployeeId=' + dataItem.employeeId + '?' + 'DepartmentId=' + dataItem.departmentId + '?' + 'Year=' + dataItem.year + '?' + 'ManagerId=' + dataItem.managerId + '?' + 'EmployeeNumber=' + dataItem.employee_Number + '?' + 'AppraisalPerformanceId=' + dataItem.appraisalPerformanceId + '';
 
 
 

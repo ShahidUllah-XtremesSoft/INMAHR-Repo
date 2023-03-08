@@ -399,6 +399,9 @@
     // -------------------- MANAGER REQUEST HISTORY AREA ---------------
 
     Employees_Request_Appraisal_Get,
+    Setup_Appraisal_Template_Get,
+    Request_Appraisal_Performance_Save,
+    Request_Appraisal_Performance_Get_By_Id,
     #endregion
 
 }

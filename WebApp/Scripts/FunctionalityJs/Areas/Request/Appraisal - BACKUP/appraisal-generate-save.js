@@ -1,7 +1,6 @@
 ﻿$(function () {
 
-    //loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox_New();
-    loadDepartmentManager();
+    loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox_New();
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $('#Employee_Id').val(JSON.parse(localStorage.getItem('User')).employeeId);
     //Events Starts
@@ -11,7 +10,7 @@
     $('#btnGenerate').on('click', function (e) {
 
         if (customValidateForm('frmAppraisal')) {
-
+             
             ajaxRequest({
                 commandName: 'Request_Appraisal_AlreadyExist',
                 values: {
@@ -34,7 +33,7 @@
 
 function fn_Request_Appraisal_AlreadyExist_Callback(d) {
     var response = JSON.parse(d.Value);
-
+    
     if (response.id > 0) {
         Swal.fire(
             '',
@@ -51,28 +50,6 @@ function fn_Request_Appraisal_AlreadyExist_Callback(d) {
 
 
 
-function loadDepartmentManager() {
-
-    ajaxRequest({
-        commandName: 'HR_Employee_Get_By_DepartmentId',
-        values: {
-            LoggedInUserId: JSON.parse(localStorage.getItem('User')).id,
-            LoggedInUserDepartementId: JSON.parse(localStorage.getItem('User')).departmentId,
-            LoggedInUserRoleId: JSON.parse(localStorage.getItem('User')).roleId,
-            
-            Language: _currentLanguage,
-        }, CallBack: loadDepartmentManager_callBack
-    });
-
-}
-function loadDepartmentManager_callBack(d) {
-     
-    $('#DepartmentId').val(JSON.parse(d.Value).reportedTo_DepartmentId);
-    $('#LM_Employee_Id').val(JSON.parse(d.Value).reportedTo_employeeId);
-
-
-}
-/*
 function loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox_New() {
 
     ajaxRequest({
@@ -139,4 +116,3 @@ var getloadAll_LINE_Manager_AsPerDepartmentId = function (inputDataJSON) {
 
 
 }
-*/

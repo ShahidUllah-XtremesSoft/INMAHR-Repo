@@ -52,148 +52,179 @@ function fn_Load_Appraisal_Answers() {
         }, CallBack: fn_Load_Appraisal_FormCallBack
     });
 }
+function redirecttoEdit() {
+    window.location.href = '/Request/Appraisal/Self?AppraisalId=' + AppraisalId + '?' + 'EmployeeId=' + AppraisalEmployeeId + '?' + 'DepartmentId=' + AppraisalEmployee_DepartmentId + '?' + 'Year=' + Appraisal_Year + '?' + 'ManagerId=' + Appraisal_ManagerId + '';
+}
 
 function fn_Load_Appraisal_FormCallBack(response) {
 
     var db_response = JSON.parse(response.Value);
+     
     if (db_response.length > 0) {
+
+        $('#Remarks').val(db_response[0].remarks)
+        if (JSON.parse(localStorage.getItem('User')).employeeId != AppraisalEmployeeId  ) {
+            if (db_response[0].status != 'Completed' ) {
+                $('.appendButtons').append(`<div class="card-footer  "><div class="row">
+                                                    <div class="col-md-12">
+                                                        <button onclick="fnSaveRecord($(this),'Approved')" class="btn btn-success   ` + PullLeft + `" id="btnSave_final"><i class="fa fa-save"></i>  ` + lblApprove + `</button>
+                                                        <button onclick="fnSaveRecord($('#question-answer`+ collapse_id_ + `'),'Declined')" class="btn btn-danger   ` + PullLeft + `" id=""><i class="fa fa-remove"></i> ` + lblDecline + `   </button>
+                                                        <button onclick="history.back()"   class="btn btn-link   ` + PullLeft + `" id="btnBack_final"><i class="fa fa-back"></i> ` + btnBack + ` </button>
+                                                    </div>
+                                                    </div>
+                                                </div>`);
+                $('#Remarks').removeAttr('readonly', false);
+            }
+        } else {
+            if (  db_response[0].status == 'Declined' || db_response[0].status != 'Completed')
+                $('.appendButtons').append(`<div class="card-footer  "><div class="row">
+                                                    <div class="col-md-12">
+                                                        <button onclick="redirecttoEdit()" class="btn btn-primary   ` + PullLeft + `" id=""><i class="fa fa-edit"></i>  ` + lblEdit + `</button>
+                                                    </div>
+                                                    </div>
+                                                </div>`);
+        }
+
+
+
         $('.append-appraisal-data').empty();
-        var isCategoryNameExist = '', appendCategory = '', appendFooter = '', collapse_id_ = '', question_Count = 0, condition_Remarks_ReadOnly = '';
+        var isCategoryNameExist = '', appendCategory = '', collapse_id_ = '', question_Count = 0;
 
         for (var i = 0; i < db_response.length; i++) {
 
             question_Count = question_Count + 1
 
 
-            condition_Remarks_ReadOnly = JSON.parse(localStorage.getItem('User')).employeeId == db_response[i].employee_Id ? 'readonly' : '';
+
             if (isCategoryNameExist != db_response[i].category) {
                 isCategoryNameExist = db_response[i].category;
                 collapse_id_ = 'collapse_id_' + i;
 
                 //   appendCategory = `   <div class="card-header" id="Category_` + i + `" style="background-color:whitesmoke;">
                 appendCategory = `   <div class="card-header" id="Category_` + i + `" style="background-color:whitesmoke;">
+                                        <div class="row">
+                                        <div class="col-md-12">
                                         <h5 class="mb-0">
                                            
                                             <button class="btn btn-link" data-toggle="collapse" data-target="#`+ collapse_id_ + `" aria-expanded="true" aria-controls="` + collapse_id_ + `">
                                                 <span style="color:` + db_response[i].color + `">` + db_response[i].category + `</span>
                                             </button>
                                         </h5>
+                                    </div>                        
+                                    </div>                                    
                                     </div>`
 
-                if (JSON.parse(localStorage.getItem('User')).employeeId != AppraisalEmployeeId) {
 
-                    appendFooter = `<div class="card-footer">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button onclick="fnSaveRecord($('#question-answer`+ collapse_id_ + `'),'Approved')" class="btn btn-success  ` + PullLeft + `" id="save-btn"><i class="fa fa-save"></i> ` + lblApprove + `</button>
-                                        <button onclick="fnSaveRecord($('#question-answer`+ collapse_id_ + `'),'Declined')" class="btn btn-danger  ` + PullLeft + `" id=""><i class="fa fa-remove"></i> ` + lblDecline + `</button>
-                                        <a href="/Employees/Request/Appraisal"  class="btn btn-link   ` + PullLeft + `" id="btnBack"><i class="fa fa-back"></i> ` + btnBack + `</a>
-                                    </div>
-                                </div>
-                            </div></br>`
-                }
-            } else {
-                appendCategory = '';
-                appendFooter = '';
 
-                $("#question-answer" + collapse_id_).append(` 
-                                   
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                    <strong>` + lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span></br>
-                                        <strong>`+ lblAns + ':' + `</strong>
-                                        <textarea readonly class="form-control" cols="20" data-helper-text="" data-ui-id=""
-                                                  rows="5" style="background: white;width:100%; overflow: hidden; overflow-wrap: break-word; resize: vertical;">` + db_response[i].answer + `</textarea>
-                                        </div>
-                                        <div class="col-md-6">
-                                         <strong>&nbsp;</strong></br>
-                                         <strong>`+ lblremarks + ':' + `</strong></br>
-                                        <textarea `+ condition_Remarks_ReadOnly + ` class="Remarks form-control" cols="20" data-helper-text="" data-ui-id="" id=` + db_response[i].id + `
-                                                  rows="5" style="color: red;background: white;width:100%; overflow: hidden; overflow-wrap: break-word; resize: vertical;">` + db_response[i].remarks + `</textarea>
-                                        </div> `)
-
-            }
-
-            $('.append-appraisal-data').append(
-                `  ` + appendCategory + `
+                $('.append-appraisal-data').append(
+                    `  ` + appendCategory + `
 
                         <div id="`+ collapse_id_ + `" class="collapse show" aria-labelledby="Category_` + i + `" data-parent="#accordion">
                             <div class="card-body">
                                 <div id="question-answer`+ collapse_id_ + `" class="question-answer card-block">
                                     <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                     <strong>`+ lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span></br>                                    
                                         <strong>`+ lblAns + ':' + `</strong>
                                         <textarea  readonly class="form-control" cols="20" data-helper-text="" data-ui-id=""
                                                   rows="5" style="background: white;width:100%; overflow: hidden; overflow-wrap: break-word; resize: vertical;">` + db_response[i].answer + `</textarea>
                                     
                                 </div>
-                                <div class="col-md-6">
-                                         <strong>&nbsp;</strong></br>
-                                         <strong>`+ lblremarks + ':' + `</strong></br>
-                                        <textarea  `+ condition_Remarks_ReadOnly + ` class="Remarks form-control" cols="20" data-helper-text="" data-ui-id="" id=` + db_response[i].id + `
-                                                  rows="5" style="color: red;background: white;width:100%; overflow: hidden; overflow-wrap: break-word; resize: vertical;">` + db_response[i].remarks + `</textarea>
-                                        </div>
+                                
                                 </div>
                                 </div>
-                              `+ appendFooter + `
+                              
                             </div>
                         </div>
                       `);
+            } else {
+                appendCategory = '';
+
+
+                $("#question-answer" + collapse_id_).append(` 
+                                   
+                                    <div class="row">
+                                    <div class="col-md-12">
+                                    <strong>` + lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span></br>
+                                        <strong>`+ lblAns + ':' + `</strong>
+                                        <textarea readonly class="form-control" cols="20" data-helper-text="" data-ui-id=""
+                                                  rows="5" style="background: white;width:100%; overflow: hidden; overflow-wrap: break-word; resize: vertical;">` + db_response[i].answer + `</textarea>
+                                        </div>
+                                         `)
+
+            }
+
+            $('#' + collapse_id_).collapse('show');
 
         }
 
     }
 }
+/*
  
-
 function fnSaveRecord(e,bntStatus) {
-     
-    var formData = $(e).find('.Remarks');
-    if (formData.length > 0) {
-        var postingArray = [];
-        for (var i = 0; i < formData.length; i++) {
-
-            postingArray.push(
-                {
-
-                    //--------- Form Data-------------
-                    Id: 0,
-                    QuestionId: formData[i].id,
-                    Answer: formData[i].value,
-                    Employee_Id: AppraisalEmployeeId,
-                    HR_Department_Id: AppraisalEmployee_DepartmentId,
-                    HR_Department_Manager_Id: Appraisal_ManagerId,
-                    Year: Appraisal_Year
-
-
-
-                });
-
-        }
-        if (postingArray.length > 0) {
-         //   console.log(postingArray)
-
-            ajaxRequest({
-                commandName: 'Request_Appraisal_Answer_Multiple_Remarks_Save',
-                values:
-                {
-                    AppraisalModel: postingArray,
-                    Appraisal_Id: AppraisalId,
-                    Status: bntStatus,
-                    CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                    Language: _currentLanguage == null ? '' : _currentLanguage
-                }, CallBack: fnSaveAppraisalBulk_callback
-            });
-
-
+    
+   var formData = $(e).find('.Remarks');
+   if (formData.length > 0) {
+       var postingArray = [];
+       for (var i = 0; i < formData.length; i++) {
             
-        }  
-    }
+           postingArray.push(
+               {
+ 
+                   //--------- Form Data-------------
+                   Id: 0,
+                   QuestionId: formData[i].id,
+                   Answer: formData[i].value,
+                   Employee_Id: AppraisalEmployeeId,
+                   HR_Department_Id: AppraisalEmployee_DepartmentId,
+                   HR_Department_Manager_Id: Appraisal_ManagerId,
+                   Year: Appraisal_Year
+ 
+ 
+ 
+               });
+ 
+       }
+       if (postingArray.length > 0) {
+       
+ 
+           ajaxRequest({
+               commandName: 'Request_Appraisal_Answer_Multiple_Remarks_Save',
+               values:
+               {
+                   AppraisalModel: postingArray,
+                   Appraisal_Id: AppraisalId,
+                   Status: bntStatus,
+                   CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                   Language: _currentLanguage == null ? '' : _currentLanguage
+               }, CallBack: fnSaveAppraisalBulk_callback
+           });
+ 
+ 
+           
+       }  
+       */
+function fnSaveRecord(e, bntStatus) {
+
+
+    ajaxRequest({
+        commandName: 'Request_Appraisal_Update',
+        values:
+        {
+            Appraisal_Id: AppraisalId,
+            Remarks: $('#Remarks').val(),
+            Status: bntStatus,
+            isHR: JSON.parse(localStorage.getItem('User')).isHR == true ? 1 : 0,
+            CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+            LoggedInRoleName: JSON.parse(localStorage.getItem('User')).roleName,
+            Language: _currentLanguage == null ? '' : _currentLanguage
+        }, CallBack: fnSaveAppraisalUpdate_callback
+    });
+
 }
 
-
-var fnSaveAppraisalBulk_callback = function (response) {
+var fnSaveAppraisalUpdate_callback = function (response) {
 
     AppraisalId = JSON.parse(response.Value).insertedId;
     swal(response.Value);

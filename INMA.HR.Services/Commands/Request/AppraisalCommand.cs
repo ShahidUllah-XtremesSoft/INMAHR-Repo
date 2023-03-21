@@ -7,146 +7,7 @@ using System.Linq;
 
 namespace INMA.HR.Services.Commands.Request
 {
-    /*
-    #region ========== Load Appraisal Tempalte Get 
-
-    [Command(Name = "Request_Appraisal_History_Get_By_Id")]
-    public class Request_Appraisal_History_Get_By_IdCommand : CamelCommandBase
-    {
-        protected override object DoAction(object viewInput)
-        {
-            var model = base.MappedModel(new
-            {
-                Id = 0,
-                Language = string.Empty,
-
-            }, viewInput);
-
-            var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>();
-            CommandParameters _params = new CommandParameters();
-
-            values = _params.Get(model);
-            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Appraisal_History_Get_By_Id.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-
-            return _response;
-        }
-    }
-    #endregion  
-    #region ========== Load Appraisal Tempalte Get 
-
-    [Command(Name = "Appraisal_Template_Get")]
-    public class Appraisal_Tempalte_GetCommand : CamelCommandBase
-    {
-        protected override object DoAction(object viewInput)
-        {
-            var model = base.MappedModel(new
-            {
-                Language = string.Empty,
-
-            }, viewInput);
-
-            var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>();
-            CommandParameters _params = new CommandParameters();
-
-            values = _params.Get(model);
-            var _response = repository.GetDataSet<dynamic>(StoreProcedure.Appraisal_Template_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-
-            return _response;
-        }
-    }
-    #endregion  
- 
-    #region ========== Delete Appraisal Requests By Id
-
-    [Command(Name = "Appraisal_Request_Delete")]
-    public class Appraisal_Request_DeleteCommand : CamelCommandBase
-    {
-        protected override object DoAction(object viewInput)
-        {
-            var model = base.MappedModel(new
-            {
-                Id = 0,
-                Language = string.Empty,
-
-            }, viewInput);
-
-            var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>();
-            CommandParameters _params = new CommandParameters();
-
-            values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Appraisal_Request_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-
-            return _response;
-        }
-    }
-    #endregion
-   
-    #region ========== Load Employees By Department wise
-    [Command(Name = "Appraisal_Get_AllEmployees_by_DepartmentWise")]
-    public class Appraisal_Get_AllEmployees_by_DepartmentWiseCommand : CamelCommandBase
-    {
-        protected override object DoAction(object viewInput)
-        {
-            var model = base.MappedModel(new
-            {
-                LoggedInUserId = 0,
-                LoggedInEmployeeId = 0,
-                LineManager_DepartmentId = string.Empty,
-                Language = string.Empty
-            }, viewInput);
-
-
-            var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>();
-            CommandParameters _params = new CommandParameters();
-
-            values = _params.Get(model);
-            var response = repository.GetMultiple<dynamic>(StoreProcedure.Appraisal_Get_AllEmployees_by_DepartmentWise.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-            return response;
-
-        }
-    }
-    #endregion
-
-    #region Request Appraisal Employee Form Save
-    [Command(Name = "Request_Appraisal_Employee_Form_Save")]
-    public class Request_Appraisal_Employee_Form_SaveCommand : CamelCommandBase
-    {
-        protected override object DoAction(object v)
-        {
-
-            var model = base.MappedModel(new
-            {
-                Id = 0,
-                AppraisalId = 0,
-
-                //   LM_Employee_Id = 0,
-                Employee_Id = 0,
-                Employee_Department_Id = 0,
-                CreatedBy = 0,
-                Employee_Department_Parent_Id = 0,
-                AppraisalForm = string.Empty,
-                AppraisalFormArb = string.Empty,
-                // isHRApproved = 0,
-                Language = string.Empty,
-            }, v);
-
-            var repository = Ioc.Resolve<IRepository>();
-            IDictionary<string, object> values = new Dictionary<string, object>();
-            CommandParameters _params = new CommandParameters();
-
-            values = _params.Get(model);
-            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Appraisal_Employee_Form_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
-
-            return _response;
-        }
-    }
-    #endregion
-    */
-
+     
     #region ========== Load Appraisal Pending Requests 
 
     [Command(Name = "Request_Appraisal_AlreadyExist")]
@@ -194,6 +55,31 @@ namespace INMA.HR.Services.Commands.Request
 
             values = _params.Get(model);
             var _response = repository.GetMultiple<dynamic>(StoreProcedure.Request_Appraisal_Pending.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
+    #region ========== Load Appraisal Approved Requests 
+
+    [Command(Name = "Request_Appraisal_Approved")]
+    public class Request_Appraisal_ApprovedCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Employee_Id = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Request_Appraisal_Approved.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }
@@ -433,6 +319,36 @@ namespace INMA.HR.Services.Commands.Request
         }
     }
     #endregion
+    #region ========== Request_Appraisal_Update
+
+    [Command(Name = "Request_Appraisal_Update")]
+    public class Request_Appraisal_UpdateCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Appraisal_Id = 0,
+                LoggedInRoleName = string.Empty,               
+                Remarks = string.Empty,
+                Status = string.Empty,
+                CreatedBy = 0,
+                isHR = 0,                
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Appraisal_Update.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
 
     // -------------------- MANAGER REQUEST HISTORY AREA ---------------
     #region Load All Employees Self Pending Request
@@ -554,5 +470,65 @@ namespace INMA.HR.Services.Commands.Request
             return _response;
         }
     }
-    #endregion  
+    #endregion
+    #region BULK  Appraisal_Request_and_Answer_and_Performance_ApproveOrDecline 
+
+    [Command(Name = "Appraisal_Request_and_Answer_and_Performance_ApproveOrDecline")]
+    public class Appraisal_Request_and_Answer_and_Performance_ApproveOrDeclineCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+
+                LoggedInUser = string.Empty,
+                LoggedInUserDepartmentId = 0,
+                LoggedInUserRoleId = 0,
+                RequestIds = string.Empty,
+                Status = string.Empty,
+                Comment = string.Empty,
+                Language = string.Empty,
+
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetSingle<dynamic>(StoreProcedure.Appraisal_Request_and_Answer_and_Performance_ApproveOrDecline.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
+
+    #endregion
+    #region ========== Load HR EMPLOYEE GET BY DEPARTMENTID 
+
+    [Command(Name = "HR_Employee_Get_By_DepartmentId")]
+    public class HR_Employee_Get_By_DepartmentIdCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                LoggedInUserId = 0,
+                LoggedInUserDepartementId = 0,
+                LoggedInUserRoleId = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            IDictionary<string, object> values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.HR_Employee_Get_By_DepartmentId.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
 }

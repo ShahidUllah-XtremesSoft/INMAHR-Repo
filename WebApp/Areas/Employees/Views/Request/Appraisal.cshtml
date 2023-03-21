@@ -27,7 +27,13 @@
                 <div class="col-md-12">
                     <button type="button" id="btnPendingData" onclick="fnLoadRequestAppraisal(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblPendingRequest</button>
                     <button id="btnApprovedData" onclick="fnLoadRequestAppraisal(this.value);" class="btn btn-outline-info pull-left" value="Approved"><i class=""></i> @HRModuleUI.HumanResourceUI.lblApprovedRequest</button>
+                    <div id="btnAreaShowHideOnConditionBase" style="display:none;">
 
+                        <button id="btnCancel" class="btn btn-danger pull-right" value="Decline"><i class="fa fa-ban"></i> @HRModuleUI.HumanResourceUI.lblDecline</button>
+                        <button type="button" id="btnSave" class="btn btn-success  pull-right" value="Approved"><i class="fa fa-check"></i> @HRModuleUI.HumanResourceUI.lblApprove</button>
+
+
+                    </div>
                 </div>
 
             </div>
@@ -59,6 +65,9 @@
          var empNumber = '@HRModuleUI.HumanResourceUI.lblEmpNum';
         var comment = '@HRModuleUI.HumanResourceUI.lblComment';
         var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var lblPending= '@HRModuleUI.HumanResourceUI.lblPending';
+        var lblDecline= '@HRModuleUI.HumanResourceUI.lblDecline';
+        var lblApproved= '@HRModuleUI.HumanResourceUI.lblApproved';
         var action = '@HRModuleUI.HumanResourceUI.lblAction';
         var lblFristSelectRecordFromGrid = '@HRModuleUI.HumanResourceUI.lblFristSelectRecordFromGrid ';
         var lblname  = '@HRModuleUI.HumanResourceUI.lblName ';
@@ -68,6 +77,8 @@
         var lblYear = '@HRModuleUI.HumanResourceUI.lblYear';
 
 
+        @*var approveText = '@Resources.Global.doYouReallyWantToApproveThisRequest';
+        var approveText = '@Resources.Global.doYouReallyWantToDeclineThisRequest';*@
 
     </script>
 }

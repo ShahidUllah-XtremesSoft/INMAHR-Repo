@@ -700,6 +700,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        public static string lblCompleted {
+            get {
+                return ResourceManager.GetString("lblCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compliance with Rules of Procedure.
         /// </summary>
         public static string lblCompliancewithRulesofProcedure {

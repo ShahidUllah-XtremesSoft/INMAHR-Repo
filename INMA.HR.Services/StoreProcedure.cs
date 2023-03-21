@@ -387,10 +387,12 @@
     Appraisal_Template_Get,
     Request_Appraisal_Answer_Get,
     Request_Appraisal_Pending,
+    Request_Appraisal_Approved,
     Request_Appraisal_AlreadyExist,
     Appraisal_Request_Save,
     Appraisal_Request_Delete,
     Request_Appraisal_Status_Update,
+    Request_Appraisal_Update,
     Appraisal_Get_AllEmployees_by_DepartmentWise,
     Appraisal_Get_LineManager_by_DepartmentWise,
 
@@ -402,6 +404,8 @@
     Setup_Appraisal_Template_Get,
     Request_Appraisal_Performance_Save,
     Request_Appraisal_Performance_Get_By_Id,
+    Appraisal_Request_and_Answer_and_Performance_ApproveOrDecline,
+    HR_Employee_Get_By_DepartmentId,
     #endregion
 
 }

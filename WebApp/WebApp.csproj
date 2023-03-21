@@ -660,15 +660,13 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\summary-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-approved-request-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-appraisal-manager-form.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-appraisal-details.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\CashInLeave\cash-in-leave.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-generate-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\appraisal-pending-request-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Request\Appraisal\employee-self-appraisal-save.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-request-grid.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\appraisal-generate-save.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Request\Evaluation\employee-evaluation-form.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Promotion\promotion.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance-type.js" />

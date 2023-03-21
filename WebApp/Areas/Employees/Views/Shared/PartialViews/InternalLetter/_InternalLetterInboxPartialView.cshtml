@@ -167,6 +167,7 @@
     var markRead = '@HRModuleUI.HumanResourceUI.lblMarkAsRead';
     var lblDelete = '@Resources.Global.lblDelete';
     var lblLetterNumber = '@HRModuleUI.HumanResourceUI.lblLetterNumber';
+    var lblSection = '@HRModuleUI.HumanResourceUI.lblSection';
 
     $(function () {
         loadLetterInboxGrid();
@@ -253,8 +254,12 @@
             {
                 field: "number", title: lblLetterNumber, width: 20, filterable: true,
                 template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
-            },  {
+            },
+            {
                 field: "subject", title: subject, width: 40, hidden: false , filterable: true,
+              //  template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
+            },{
+                field: "senderDepartmentName", title: lblSection, width: 40, hidden: false , filterable: true,
               //  template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
             },
             {

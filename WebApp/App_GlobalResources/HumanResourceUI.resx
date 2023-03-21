@@ -330,6 +330,9 @@
   <data name="lblCompanyRules" xml:space="preserve">
     <value>Company Rules</value>
   </data>
+  <data name="lblCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
   <data name="lblCompliancewithRulesofProcedure" xml:space="preserve">
     <value>Compliance with Rules of Procedure</value>
   </data>

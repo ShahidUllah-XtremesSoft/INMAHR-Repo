@@ -1,8 +1,5 @@
 ﻿var AppraisalPendingGrid = "appraisal-pending-request-grid";
-$(function () {
 
-    loadAppraisalPendingGrid();
-});
 $('#PendingAppraisalTabLi').click(function () {
     loadAppraisalPendingGrid();
 
@@ -33,30 +30,28 @@ var bindAppraisalPendingGrid = function (inputDataJSON) {
         { field: "employeeId", title: "EmployeeId", hidden: true },
         { field: "managerId", title: "ManagerId", hidden: true },
         { field: "departmentId", title: "DepartmentId", hidden: true },
-        { field: "employeeName", title: lblFrom, width: 80, filterable: false },
-        { field: "manager_Name", title: lblTo, width: 80, filterable: false },
-        { field: "departmentName", title: lblSection, width: 70, filterable: false },
+        { field: "employeeName", title: lblFrom, width: 100, filterable: false },
+        { field: "manager_Name", title: lblTo, width: 100, filterable: false },
+        { field: "departmentName", title: lblSection, width: 100, filterable: false },
 
-        { field: "year", title: lblYear, width: 20, hidden: false, filterable: false },
-        { field: "statusForCondition", title: lblYear, width: 20, hidden: true, filterable: false },
-         {
+        { field: "year", title: lblYear, width: 30, hidden: false, filterable: false },
+        // { field: "status", title: lblStatus, width: 30, hidden: false, filterable: false },
+        {
             title: lblStatus,
             field: 'status',
-            width: 40, filterable: false,
-            template: "#if (statusForCondition == 'Declined') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # }  else {# <span class='badge badge-success'>#:status#</span> # }#"
+            width: 30, filterable: false,
+            template: "#if (status == 'Declined') { # <span class='badge badge-danger'>" + lblDecline + "</span> # } else if(status == 'Pending') {# <span class='badge badge-primary'>" + lblPending +"</span> # } else if(status == 'Send') {# <span class='badge badge-success'>"+lblSend+"</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
             //template: `<span class='badge badge-success'>` + lblDecline + `</span>`
 
         },
         //Below is action column
         {
-            field: "", width: 30,
+            field: "", width: 40,
             title: ' ',
             filterable: false,
             //  template: "#if(isRecordExist == 0){ #<a style='font-size:20px;cursor:pointer;' onClick= delete_AppraisalPendingGridById(this)  title='Delete '><span class='fa fa-trash'></span></a>#}" +
             //      "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_AppraisalDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
-            //    template: `#if(status == 'Pending' || status == 'Declined')
-            //   template: `#if((isManagerApproved==0  || isHRApproved==0  || isUpperManagmentApproved==0)  && statusForCondition == 'Declined')
-            template: `#if( statusForCondition =='Pending' || statusForCondition == 'Declined' || statusForCondition == 'Returned')
+            template: `#if(status == 'Pending' || status == 'Declined')
 {
 #
 <button type="button" onclick="send_AppraisalPendingGridById(this);"   class="btn-sm btn btn-info    waves-effect" style="font-size: smaller;margin-top: -5px;">` + lblSend + `</button>
@@ -65,8 +60,7 @@ var bindAppraisalPendingGrid = function (inputDataJSON) {
  <a style='font-size:20px;cursor:pointer;' onClick=delete_AppraisalPendingGridById(this)  title"` + lblDelete + `"><span class='fa fa-trash'></span></a>
 
 #
-}else 
-{
+}else if(  status != 'Declined'){
 #
 <a style='font-size:20px;cursor:pointer;' onClick= see_AppraisalDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>
 #

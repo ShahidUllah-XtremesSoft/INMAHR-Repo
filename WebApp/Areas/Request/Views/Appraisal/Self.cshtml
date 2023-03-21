@@ -15,34 +15,65 @@
         <div class="row">
             <div class="col-md-12 ">
                 <div id="accordion">
-                    <div class="card append-appraisal-data">
-                        <div class="card-header" id="">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
-                                    <span>Role And Responsibilities</span>
-                                </button>
-                            </h5>
-                        </div>
+                    <form id="frmSelfAppraisal">
 
-                        <div id="collapse_1" class="collapse show" aria-labelledby="" data-parent="#accordion">
+
+                        @*<div class="card append-appraisal-data" style="max-height: 715px; overflow: auto;">*@
+                        <div class="card append-appraisal-data" style="max-height: 740px; overflow: auto;">
+                            <div class="card-header" id="">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
+                                        <span>Role And Responsibilities</span>
+                                    </button>
+                                </h5>
+                            </div>
+
+                            @*<div id="collapse_1" class="collapse show" aria-labelledby="" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="question-answer card-block">
+                                        <strong>@HRModuleUI.HumanResourceUI.lblQ.1</strong> <span>What is your job description and what are your responsibilities ?</span>
+                                        <div class="">
+                                            <strong>@HRModuleUI.HumanResourceUI.lblAns:</strong>
+                                            <textarea  class="form-control" cols="20" data-helper-text="" data-ui-id="" id="Answer" name="Answer"
+                                                      rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button onclick="fnSaveRecord($(this))" class="btn btn-success  @Resources.Common.PullLeft" id="btnSave_1"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            <a href="/Request/Appraisal/Create" class="btn btn-link  @Resources.Common.PullLeft" id="btnBack"><i class="fa fa-back"></i> @Resources.Global.btnBack</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+                    </form>
+
+                    <!--<div class="card remarks-data">
+                        
+                        <div id="collapse_final_remarks"  >
                             <div class="card-body">
-                                <div class="question-answer card-block">
-                                    <strong>@HRModuleUI.HumanResourceUI.lblQ.1</strong> <span>What is your job description and what are your responsibilities ?</span>
-                                    <div class="">
-                                        <strong>@HRModuleUI.HumanResourceUI.lblAns:</strong>
+                                <div class="question-answer card-block">-->
+                                    @*<strong>@HRModuleUI.HumanResourceUI.lblQ.1</strong> <span></span>*@
+                                    <!--<div class="">
+                                        <strong>@HRModuleUI.HumanResourceUI.lblremarks:</strong>
                                         <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id="Answer" name="Answer"
                                                   rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button onclick="fnSaveRecord($(this))" class="btn btn-success  @Resources.Common.PullLeft" id="btnSave_1"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                                        <a href="/Request/Evaluation/Create"  class="btn btn-link  @Resources.Common.PullLeft" id="btnBack"><i class="fa fa-back"></i> @Resources.Global.btnBack</a>
-                                        @*@Html.ActionLink(Resources.Global.btnBack, "Create", "Evaluation")*@
-                                    </div>
-                                </div>
+                            
+                        </div>
+                    </div>-->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button onclick="fnSaveRecord($(this))" class="btn btn-success  @Resources.Common.PullLeft" id="btnSave_final"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                <a href="/Request/Appraisal/Create" class="btn btn-link  @Resources.Common.PullLeft" id="btnBack_final"><i class="fa fa-back"></i> @Resources.Global.btnBack</a>
+                                
                             </div>
                         </div>
                     </div>

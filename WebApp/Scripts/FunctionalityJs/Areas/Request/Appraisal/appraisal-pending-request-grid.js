@@ -21,8 +21,8 @@ var load_AppraisalPendingGridCallBack = function (inputDataJSON) {
     bindAppraisalPendingGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindAppraisalPendingGrid = function (inputDataJSON) {
-
-
+     
+ 
     var gridColumns = [
 
         { title: "#", template: "<b>#= ++record #</b>", width: 10, },
@@ -42,8 +42,9 @@ var bindAppraisalPendingGrid = function (inputDataJSON) {
          {
             title: lblStatus,
             field: 'status',
-            width: 40, filterable: false,
-            template: "#if (statusForCondition == 'Declined') { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>#:status#</span> # }  else {# <span class='badge badge-success'>#:status#</span> # }#"
+            width: 40, filterable: false,             
+             template: "#if(statusForCondition.match(/Declined*/) ) { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition.match(/Pending*/)  || statusForCondition.match(/Waiting*/)) {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
+
             //template: `<span class='badge badge-success'>` + lblDecline + `</span>`
 
         },
@@ -56,7 +57,7 @@ var bindAppraisalPendingGrid = function (inputDataJSON) {
             //      "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_AppraisalDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
             //    template: `#if(status == 'Pending' || status == 'Declined')
             //   template: `#if((isManagerApproved==0  || isHRApproved==0  || isUpperManagmentApproved==0)  && statusForCondition == 'Declined')
-            template: `#if( statusForCondition =='Pending' || statusForCondition == 'Declined' || statusForCondition == 'Returned')
+            template: `#if(   statusForCondition.match(/Pending*/) || statusForCondition.match(/Declined*/) || statusForCondition.match(/Returned*/)  )
 {
 #
 <button type="button" onclick="send_AppraisalPendingGridById(this);"   class="btn-sm btn btn-info    waves-effect" style="font-size: smaller;margin-top: -5px;">` + lblSend + `</button>
@@ -112,7 +113,7 @@ function send_AppraisalPendingGridById(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-            ajaxRequest({ commandName: 'Request_Appraisal_Status_Update', values: { Id: send_dataItem.appraisalId, Language: _currentLanguage }, CallBack: status_AppraisalPendingGridByIdCallBack });
+            ajaxRequest({ commandName: 'Request_Appraisal_Status_Update', values: { Id: send_dataItem.appraisalId, LoggedInRoleName:JSON.parse(localStorage.getItem('User')).roleName, Language: _currentLanguage }, CallBack: status_AppraisalPendingGridByIdCallBack });
         }
     });
     var status_AppraisalPendingGridByIdCallBack = function (response) {

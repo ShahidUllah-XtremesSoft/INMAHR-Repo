@@ -59,12 +59,15 @@ function redirecttoEdit() {
 function fn_Load_Appraisal_FormCallBack(response) {
 
     var db_response = JSON.parse(response.Value);
-     
+
+         
     if (db_response.length > 0) {
 
-        $('#Remarks').val(db_response[0].remarks)
-        if (JSON.parse(localStorage.getItem('User')).employeeId != AppraisalEmployeeId  ) {
-            if (db_response[0].status != 'Completed' ) {
+        $('#lm-remarks').text(db_response[0].lmRemarks);
+        $('#cm-remarks').text(db_response[0].cmRemarks);
+        $('#hr-remarks').text(db_response[0].hrRemarks);
+        if (JSON.parse(localStorage.getItem('User')).employeeId != AppraisalEmployeeId) {
+            if (db_response[0].status != 'Completed') {
                 $('.appendButtons').append(`<div class="card-footer  "><div class="row">
                                                     <div class="col-md-12">
                                                         <button onclick="fnSaveRecord($(this),'Approved')" class="btn btn-success   ` + PullLeft + `" id="btnSave_final"><i class="fa fa-save"></i>  ` + lblApprove + `</button>
@@ -74,15 +77,22 @@ function fn_Load_Appraisal_FormCallBack(response) {
                                                     </div>
                                                 </div>`);
                 $('#Remarks').removeAttr('readonly', false);
+
+            } else {
+
+                $('#Remarks').hide();
             }
         } else {
-            if (  db_response[0].status == 'Declined' || db_response[0].status != 'Completed')
+
+            if (db_response[0].status.match(/Declined*/))
+
                 $('.appendButtons').append(`<div class="card-footer  "><div class="row">
                                                     <div class="col-md-12">
                                                         <button onclick="redirecttoEdit()" class="btn btn-primary   ` + PullLeft + `" id=""><i class="fa fa-edit"></i>  ` + lblEdit + `</button>
                                                     </div>
                                                     </div>
                                                 </div>`);
+            $('#Remarks').hide();
         }
 
 
@@ -160,74 +170,45 @@ function fn_Load_Appraisal_FormCallBack(response) {
 
     }
 }
-/*
- 
-function fnSaveRecord(e,bntStatus) {
-    
-   var formData = $(e).find('.Remarks');
-   if (formData.length > 0) {
-       var postingArray = [];
-       for (var i = 0; i < formData.length; i++) {
-            
-           postingArray.push(
-               {
- 
-                   //--------- Form Data-------------
-                   Id: 0,
-                   QuestionId: formData[i].id,
-                   Answer: formData[i].value,
-                   Employee_Id: AppraisalEmployeeId,
-                   HR_Department_Id: AppraisalEmployee_DepartmentId,
-                   HR_Department_Manager_Id: Appraisal_ManagerId,
-                   Year: Appraisal_Year
- 
- 
- 
-               });
- 
-       }
-       if (postingArray.length > 0) {
-       
- 
-           ajaxRequest({
-               commandName: 'Request_Appraisal_Answer_Multiple_Remarks_Save',
-               values:
-               {
-                   AppraisalModel: postingArray,
-                   Appraisal_Id: AppraisalId,
-                   Status: bntStatus,
-                   CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-                   Language: _currentLanguage == null ? '' : _currentLanguage
-               }, CallBack: fnSaveAppraisalBulk_callback
-           });
- 
- 
-           
-       }  
-       */
+
 function fnSaveRecord(e, bntStatus) {
 
+    var isUnCheckedExist = 0;
+    //if (JSON.parse(localStorage.getItem('User')).roleName == 'Line Manager') {
+    if (JSON.parse(localStorage.getItem('User')).roleName != 'User' || JSON.parse(localStorage.getItem('User')).isHR != true) {
+        $('#btn-save-appraisal-form').click();
+        isUnCheckedExist = $('#employee-appraisal>tbody').find('.btn-danger').length;
+    }
 
-    ajaxRequest({
-        commandName: 'Request_Appraisal_Update',
-        values:
-        {
-            Appraisal_Id: AppraisalId,
-            Remarks: $('#Remarks').val(),
-            Status: bntStatus,
-            isHR: JSON.parse(localStorage.getItem('User')).isHR == true ? 1 : 0,
-            CreatedBy: JSON.parse(localStorage.getItem('User')).id,
-            LoggedInRoleName: JSON.parse(localStorage.getItem('User')).roleName,
-            Language: _currentLanguage == null ? '' : _currentLanguage
-        }, CallBack: fnSaveAppraisalUpdate_callback
-    });
+    if (isUnCheckedExist == 0) {
 
+
+        ajaxRequest({
+            commandName: 'Request_Appraisal_Update',
+            values:
+            {
+                Appraisal_Id: AppraisalId,
+                Remarks: $('#Remarks').val(),
+                Status: bntStatus,
+                isHR: JSON.parse(localStorage.getItem('User')).isHR == true ? 1 : 0,
+                CreatedBy: JSON.parse(localStorage.getItem('User')).id,
+                LoggedInRoleName: JSON.parse(localStorage.getItem('User')).roleName,
+                Language: _currentLanguage == null ? '' : _currentLanguage
+            }, CallBack: fnSaveAppraisalUpdate_callback
+        });
+
+
+    }
 }
 
 var fnSaveAppraisalUpdate_callback = function (response) {
 
     AppraisalId = JSON.parse(response.Value).insertedId;
     swal(response.Value);
+    setTimeout(function () {
+
+        window.location.href = '/Employees/Request/Appraisal';
+    }, 500);
     //fnLoadAllEmployeesListAsPerDepartment();
 }
 

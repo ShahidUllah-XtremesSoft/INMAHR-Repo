@@ -121,7 +121,7 @@
     <value>فضاء الموظفين</value>
   </data>
   <data name="Below are user management" xml:space="preserve">
-    <value>User Manager</value>
+    <value>مدير المستخدمين</value>
   </data>
   <data name="Below Human Resource Module" xml:space="preserve">
     <value>الموارد البشرية</value>
@@ -133,7 +133,7 @@
     <value>سجل</value>
   </data>
   <data name="btnProceed" xml:space="preserve">
-    <value>Proceed</value>
+    <value>قيد الاجراء</value>
   </data>
   <data name="btnReceivedLetters" xml:space="preserve">
     <value>الرسائل الواردة</value>
@@ -187,10 +187,10 @@
     <value>عمل</value>
   </data>
   <data name="lblAddition" xml:space="preserve">
-    <value>Addition</value>
+    <value>إضافة</value>
   </data>
   <data name="lblAdditions" xml:space="preserve">
-    <value>Additions</value>
+    <value>الاضافات</value>
   </data>
   <data name="lblAddNew" xml:space="preserve">
     <value>اضافة</value>
@@ -211,19 +211,19 @@
     <value>المبلغ</value>
   </data>
   <data name="lblAns" xml:space="preserve">
-    <value>Ans</value>
+    <value>الجواب</value>
   </data>
   <data name="lblAppraisal" xml:space="preserve">
-    <value>Appraisal</value>
+    <value>توصية</value>
   </data>
   <data name="lblAppraisals" xml:space="preserve">
-    <value>Appraisals</value>
+    <value>التقييمات</value>
   </data>
   <data name="lblApprove" xml:space="preserve">
     <value>اعتماد</value>
   </data>
   <data name="lblApproved" xml:space="preserve">
-    <value>Approved</value>
+    <value>موافقة</value>
   </data>
   <data name="lblApprovedBy" xml:space="preserve">
     <value>معتمد من</value>
@@ -247,7 +247,7 @@
     <value>الرصيد</value>
   </data>
   <data name="lblBasicSalary" xml:space="preserve">
-    <value>Basic Salary</value>
+    <value>راتب اساسي</value>
   </data>
   <data name="lblBehavioralandCommitment" xml:space="preserve">
     <value>درجة الالتزام السلوكي و الوظيفي</value>
@@ -259,10 +259,10 @@
     <value>الجسم</value>
   </data>
   <data name="lblBonus" xml:space="preserve">
-    <value>Bonus</value>
+    <value>علاوة</value>
   </data>
   <data name="lblBonuses" xml:space="preserve">
-    <value>Bonuses</value>
+    <value>المكافآت</value>
   </data>
   <data name="lblBreak" xml:space="preserve">
     <value>الاستراحة</value>
@@ -331,7 +331,7 @@
     <value>النظام الداخلي للشركة</value>
   </data>
   <data name="lblCompleted" xml:space="preserve">
-    <value>Completed</value>
+    <value>مكتمل</value>
   </data>
   <data name="lblCompliancewithRulesofProcedure" xml:space="preserve">
     <value>الالتزامه بالنظام الداخلي</value>
@@ -373,13 +373,13 @@
     <value>الغاء</value>
   </data>
   <data name="lblDeduction" xml:space="preserve">
-    <value>Deduction</value>
+    <value>المستقطع</value>
   </data>
   <data name="lblDeductionDate" xml:space="preserve">
     <value>تاريخ الاستطاع</value>
   </data>
   <data name="lblDeductions" xml:space="preserve">
-    <value>Deductions</value>
+    <value>الخصومات</value>
   </data>
   <data name="lblDegressIssueDate" xml:space="preserve">
     <value>تاريخ الإصداراسم الشهادة </value>
@@ -416,7 +416,7 @@
     <comment>الوثيقة</comment>
   </data>
   <data name="lblDraft" xml:space="preserve">
-    <value>Draft</value>
+    <value>مسودة</value>
   </data>
   <data name="lblEarly" xml:space="preserve">
     <value>اظافي دقائق</value>
@@ -482,13 +482,13 @@
     <value>تقييم أداء الموظف</value>
   </data>
   <data name="lblEmployeeProgress" xml:space="preserve">
-    <value>Employee Progress</value>
+    <value>تقدم الموظف</value>
   </data>
   <data name="lblEmployees" xml:space="preserve">
     <value>الموظفين</value>
   </data>
   <data name="lblEmployeeSalaryRecord" xml:space="preserve">
-    <value>Employee Salary Record</value>
+    <value>سجل رواتب الموظف</value>
   </data>
   <data name="lblEmployeesAttendance" xml:space="preserve">
     <value>تحضير الموظفين</value>
@@ -512,7 +512,7 @@
     <value>طلبات إجازات  الموظفين</value>
   </data>
   <data name="lblEmployeesProgress" xml:space="preserve">
-    <value>Employees Progress</value>
+    <value>تقدم الموظفين</value>
   </data>
   <data name="lblEmployeesRequest" xml:space="preserve">
     <value>طلب موظفين</value>
@@ -563,7 +563,7 @@
     <value>المرونة في انجاز العمل</value>
   </data>
   <data name="lblFlexibleTime" xml:space="preserve">
-    <value>Flexible Time</value>
+    <value>وقت مرن</value>
   </data>
   <data name="lblForward" xml:space="preserve">
     <value>تحويل</value>
@@ -578,10 +578,10 @@
     <value>من</value>
   </data>
   <data name="lblGenerate" xml:space="preserve">
-    <value>Generate</value>
+    <value>يولد</value>
   </data>
   <data name="lblGrossSalary" xml:space="preserve">
-    <value>Gross Salary</value>
+    <value>الراتب الكلى</value>
   </data>
   <data name="lblHours" xml:space="preserve">
     <value>عدد الساعة المطلوبة</value>
@@ -626,7 +626,7 @@
     <value>يونيو</value>
   </data>
   <data name="lblLabourWelfareDeduction" xml:space="preserve">
-    <value>Labour Welfare Deduction</value>
+    <value>خصم رعاية العمل</value>
   </data>
   <data name="lblLate" xml:space="preserve">
     <value>تاخير</value>
@@ -651,10 +651,10 @@
     <comment>العودة الي العمل/الغاء إجازة</comment>
   </data>
   <data name="lblLeaveDeduction" xml:space="preserve">
-    <value>Leave Deduction</value>
+    <value>خصم الاجارزات</value>
   </data>
   <data name="lblLeaveName" xml:space="preserve">
-    <value>Leave Name</value>
+    <value>اترك الاسم</value>
   </data>
   <data name="lblLeaveRequest" xml:space="preserve">
     <value>طلب اجازة</value>
@@ -685,7 +685,7 @@
     <value>تسجيل خروج</value>
   </data>
   <data name="lblManager" xml:space="preserve">
-    <value>Manager</value>
+    <value>مدير</value>
   </data>
   <data name="lblMarch" xml:space="preserve">
     <value>مارس</value>
@@ -706,10 +706,10 @@
     <value>الشهر</value>
   </data>
   <data name="lblMonthlyPayroll" xml:space="preserve">
-    <value>Monthly Payroll</value>
+    <value>كشف المرتب الشهري</value>
   </data>
   <data name="lblMonthWiseReport" xml:space="preserve">
-    <value>Month Wise Report</value>
+    <value>التقرير الشهري</value>
   </data>
   <data name="lblMorning" xml:space="preserve">
     <value>الفترة الصباحية</value>
@@ -741,7 +741,7 @@
     <value>الجنسية</value>
   </data>
   <data name="lblNetSalary" xml:space="preserve">
-    <value>Net Salary</value>
+    <value>صافي الراتب</value>
   </data>
   <data name="lblNew" xml:space="preserve">
     <value>جديد</value>
@@ -787,13 +787,13 @@
     <comment>أخرة</comment>
   </data>
   <data name="lblOtherAddition" xml:space="preserve">
-    <value>Other Addition</value>
+    <value>إضافة أخرى</value>
   </data>
   <data name="lblOtherAdditions" xml:space="preserve">
-    <value>Other Additions</value>
+    <value>إضافات أخرى</value>
   </data>
   <data name="lblOtherDeduction" xml:space="preserve">
-    <value>Other Deduction</value>
+    <value>خصم آخر</value>
   </data>
   <data name="lblOtherStatusArb" xml:space="preserve">
     <value>(بالغات العربية) وضعيات أخرى</value>
@@ -832,16 +832,16 @@
     <value>كلمة المرور </value>
   </data>
   <data name="lblPayroll" xml:space="preserve">
-    <value>Payroll</value>
+    <value>كشف رواتب</value>
   </data>
   <data name="lblPayrollisalreadyprocessed" xml:space="preserve">
-    <value>Payroll is already processed</value>
+    <value>تم تجهيز كشوف المرتبات</value>
   </data>
   <data name="lblPayrollReport" xml:space="preserve">
-    <value>Payroll Report</value>
+    <value>تقرير الرواتب</value>
   </data>
   <data name="lblPending" xml:space="preserve">
-    <value>Pending</value>
+    <value>قيد الانتظار</value>
   </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>
@@ -881,7 +881,7 @@
     <value>توثيق الإجراءات</value>
   </data>
   <data name="lblProceed" xml:space="preserve">
-    <value>Proceed</value>
+    <value>قيد الاجراء</value>
   </data>
   <data name="lblProcessed" xml:space="preserve">
     <value>معالجتها</value>
@@ -893,19 +893,19 @@
     <value>الصورة الشخصية</value>
   </data>
   <data name="lblProgress" xml:space="preserve">
-    <value>Progress</value>
+    <value>تقدم</value>
   </data>
   <data name="lblPromotion" xml:space="preserve">
-    <value>Promotion</value>
+    <value>ترقية</value>
   </data>
   <data name="lblProvidentFundDeduction" xml:space="preserve">
-    <value>Provident Fund Deduction</value>
+    <value>خصم صندوق الادخار</value>
   </data>
   <data name="lblPublicHoliday" xml:space="preserve">
     <value>اجازة رسمية</value>
   </data>
   <data name="lblQ" xml:space="preserve">
-    <value>Q</value>
+    <value>س</value>
   </data>
   <data name="lblQualityOfFunctionality" xml:space="preserve">
     <value>حجم ونوعية الأداء الوظيفي</value>
@@ -917,7 +917,7 @@
     <value>اقرأ الرسالة</value>
   </data>
   <data name="lblRecordAlreadyExist" xml:space="preserve">
-    <value>Record Already Exist</value>
+    <value>سجل موجود بالفعل</value>
   </data>
   <data name="lblRelaxationTime" xml:space="preserve">
     <value>وقت الاسترخاء</value>
@@ -932,10 +932,10 @@
     <value>الرد</value>
   </data>
   <data name="lblReport" xml:space="preserve">
-    <value>Report</value>
+    <value>تقرير</value>
   </data>
   <data name="lblReports" xml:space="preserve">
-    <value>Reports</value>
+    <value>التقارير</value>
   </data>
   <data name="lblRequest" xml:space="preserve">
     <value>الطلب</value>
@@ -978,7 +978,7 @@
     <value>الراتب</value>
   </data>
   <data name="lblSalaryGeneratedSuccessfully" xml:space="preserve">
-    <value>Salary Generated Successfully...!</value>
+    <value>تولد الراتب بنجاح ...!</value>
   </data>
   <data name="lblSalarySetting" xml:space="preserve">
     <value>إعدادات الراتب</value>
@@ -996,7 +996,7 @@
     <value>القسم</value>
   </data>
   <data name="lblSecurityDeduction" xml:space="preserve">
-    <value>Security Deduction</value>
+    <value>الخصم الأمني</value>
   </data>
   <data name="lblSelect" xml:space="preserve">
     <value>اختر</value>
@@ -1005,7 +1005,7 @@
     <value>حدد مغادرة</value>
   </data>
   <data name="lblSelf" xml:space="preserve">
-    <value>Self</value>
+    <value>الذات</value>
   </data>
   <data name="lblSend" xml:space="preserve">
     <value>ارسل</value>
@@ -1017,7 +1017,7 @@
     <value>مستوى الخدمات المقدمة للمتعاملين</value>
   </data>
   <data name="lblSetting" xml:space="preserve">
-    <value>Setting</value>
+    <value>جلسة</value>
   </data>
   <data name="lblSharingandTakingResponsibility" xml:space="preserve">
     <value>المشاركة وتحمل المسؤولية</value>
@@ -1071,7 +1071,7 @@
     <value>الموضوع</value>
   </data>
   <data name="lblSubmit" xml:space="preserve">
-    <value>Submit</value>
+    <value>يُقدِّم</value>
   </data>
   <data name="lblSunday" xml:space="preserve">
     <value>الاحد</value>
@@ -1108,16 +1108,16 @@
     <value>المجموع</value>
   </data>
   <data name="lblTotalAbsents" xml:space="preserve">
-    <value>Total Absent(s)</value>
+    <value>مجموع الغائبين</value>
   </data>
   <data name="lblTotalHours" xml:space="preserve">
-    <value>Total Hour(s)</value>
+    <value>مجموع الساعات</value>
   </data>
   <data name="lblTotalLeaves" xml:space="preserve">
-    <value>Total Leave(s)</value>
+    <value>إجمالي الإجازات</value>
   </data>
   <data name="lblTotalPresents" xml:space="preserve">
-    <value>Total Present(s)</value>
+    <value>مجموع الحاضر (ق)</value>
   </data>
   <data name="lblTuesday" xml:space="preserve">
     <value>الثلثاء</value>
@@ -1153,10 +1153,10 @@
     <value>السنة</value>
   </data>
   <data name="lblYearlyPayroll" xml:space="preserve">
-    <value>Yearly Payroll</value>
+    <value>كشوف المرتبات السنوية</value>
   </data>
   <data name="lblYearWiseReport" xml:space="preserve">
-    <value>Year Wise Report</value>
+    <value>التقرير العام</value>
   </data>
   <data name="MsgAttachmentNotFound" xml:space="preserve">
     <value>لايوجد المرفق</value>

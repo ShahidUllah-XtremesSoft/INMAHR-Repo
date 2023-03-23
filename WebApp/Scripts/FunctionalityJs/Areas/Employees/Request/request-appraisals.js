@@ -77,7 +77,8 @@ var bindRequestAppraisal = function (inputDataJSON) {
                 title: lblStatus,
                 field: 'status',
                 width: 60, filterable: false,
-                template: "#if (statusForCondition == 'Declined') { # <span class='badge badge-danger'>" + lblDecline + "</span> # } else if(statusForCondition == 'Pending') {# <span class='badge badge-primary'>" + lblPending + "</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
+              //  template: "#if(statusForCondition.match('Declined') ) { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition == 'Pending' || statusForCondition.match('Waiting')) {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
+                template: "#if(statusForCondition.match(/Declined*/) ) { # <span class='badge badge-danger'>#:status#</span> # } else if(statusForCondition.match(/Pending*/)  || statusForCondition.match(/Waiting*/)) {# <span class='badge badge-primary'>#:status#</span> # } else {# <span class='badge badge-success'>#:status#</span> # }#"
                 //template: `<span class='badge badge-success'>` + lblDecline + `</span>`
 
             },

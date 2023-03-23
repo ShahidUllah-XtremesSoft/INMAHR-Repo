@@ -17,4 +17,18 @@ namespace INMA.HR.Services
 
 
     }
+    public class AppraisalPerformanceModel
+    {
+
+        public int? Setup_Appraisal_Performance_Id { get; set; }
+        public int? AppraisalId { get; set; }
+        public string ColumnOne { get; set; }
+        public string ColumnTwo { get; set; }
+        public string ColumnThree { get; set; }
+        public string ColumnFour { get; set; }
+         
+      
+
+
+    }
 }

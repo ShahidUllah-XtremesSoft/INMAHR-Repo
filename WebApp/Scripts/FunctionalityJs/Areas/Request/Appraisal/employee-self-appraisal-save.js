@@ -47,12 +47,12 @@ function fn_Load_Appraisal_FormCallBack(response) {
 
     var db_response = JSON.parse(response.Value);
     if (db_response.length > 0) {
- 
+
         $('.append-appraisal-data').empty();
         var isCategoryNameExist = '', appendCategory = '', appendFooter = '', collapse_id_ = '', question_Count = 0;
 
         for (var i = 0; i < db_response.length; i++) {
-             
+
             question_Count = question_Count + 1
             if (isCategoryNameExist != db_response[i].category) {
                 isCategoryNameExist = db_response[i].category;
@@ -167,7 +167,7 @@ function loadEmployeeProfileCallBack(response) {
 }
 
 function fnSaveRecord(e) {
-     
+
     if (customValidateForm('frmSelfAppraisal')) {
 
 
@@ -224,5 +224,8 @@ var fnSaveAppraisalBulk_callback = function (response) {
 
     AppraisalId = JSON.parse(response.Value).insertedId;
     swal(response.Value);
+    setTimeout(function () {
+        window.location.href ='/Request/Appraisal/Create'
+    }, 1000);
     //fnLoadAllEmployeesListAsPerDepartment();
 }

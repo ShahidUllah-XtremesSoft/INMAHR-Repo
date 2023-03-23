@@ -403,7 +403,9 @@
     Employees_Request_Appraisal_Get,
     Setup_Appraisal_Template_Get,
     Request_Appraisal_Performance_Save,
+    Request_Appraisal_Performance_Multiple_Save,
     Request_Appraisal_Performance_Get_By_Id,
+    Request_Appraisal_Performance_Answer_Get_By_Id,
     Appraisal_Request_and_Answer_and_Performance_ApproveOrDecline,
     HR_Employee_Get_By_DepartmentId,
     #endregion

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnBack" xml:space="preserve">
-    <value>Back</value>
+    <value>خلف</value>
   </data>
   <data name="btnCancel" xml:space="preserve">
     <value>الغاء</value>
@@ -127,7 +127,7 @@
     <value>قيد الاجراء</value>
   </data>
   <data name="btnReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>إعادة ضبط</value>
   </data>
   <data name="btnSave" xml:space="preserve">
     <value>حفظ</value>
@@ -142,7 +142,7 @@
     <value>هل ترغب في المصادقة على هذا لطلب ؟</value>
   </data>
   <data name="doYouReallyWantToChangeStatus" xml:space="preserve">
-    <value>Do you really want to change status ?</value>
+    <value>هل تريد حقًا تغيير الوضع؟</value>
   </data>
   <data name="doYouReallyWantToDeclineTheseRequests" xml:space="preserve">
     <value>هل ترغب في الغاء الطلب ؟</value>
@@ -154,16 +154,16 @@
     <value>هل ترغب فعلا في حذف هذه الاظافة ؟</value>
   </data>
   <data name="doYouReallyWantToSendToMAnager" xml:space="preserve">
-    <value>Do you really want to send to manager ?</value>
+    <value>هل تريد حقا أن ترسل إلى المدير؟</value>
   </data>
   <data name="doYouReallyWantToStartWorkingOnIt" xml:space="preserve">
-    <value>Do you really want to start working on it ?</value>
+    <value>هل تريد حقًا البدء في العمل عليها؟</value>
   </data>
   <data name="doYouReallyWantToUpdateThisStatus" xml:space="preserve">
-    <value>Do you really want to Update this status?</value>
+    <value>هل تريد حقًا تحديث هذه الحالة؟</value>
   </data>
   <data name="lblAboutUs" xml:space="preserve">
-    <value>About Us</value>
+    <value>معلومات عنا</value>
   </data>
   <data name="lblAccept" xml:space="preserve">
     <value>قبول</value>
@@ -178,7 +178,7 @@
     <value>الصيغة المسموح بها (png, jpg,pdf)</value>
   </data>
   <data name="lblApplication" xml:space="preserve">
-    <value>Application</value>
+    <value>طلب</value>
   </data>
   <data name="lblApplicationVersionNo" xml:space="preserve">
     <value>1</value>
@@ -196,7 +196,7 @@
     <value>هل انت متاكد ؟</value>
   </data>
   <data name="lblClose" xml:space="preserve">
-    <value>Close</value>
+    <value>يغلق</value>
   </data>
   <data name="lblCompanyDescription" xml:space="preserve">
     <value>تفاصيل الوثيقة</value>
@@ -221,13 +221,13 @@
     <value>اسم الوثيقة  (باللغة الانجليزية)</value>
   </data>
   <data name="lblContact" xml:space="preserve">
-    <value>Contact</value>
+    <value>اتصال</value>
   </data>
   <data name="lblContactUs" xml:space="preserve">
-    <value>Contact Us</value>
+    <value>اتصل بنا</value>
   </data>
   <data name="lblDay" xml:space="preserve">
-    <value>Day</value>
+    <value>يوم</value>
   </data>
   <data name="lblDecline" xml:space="preserve">
     <value>الغاء</value>
@@ -236,85 +236,85 @@
     <value>رفض؟</value>
   </data>
   <data name="lblDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>تأخير</value>
   </data>
   <data name="lblDelete" xml:space="preserve">
     <value>حذف</value>
   </data>
   <data name="lblDocumentAttachment" xml:space="preserve">
-    <value>Document/Attachment</value>
+    <value>وثيقة / مرفق</value>
   </data>
   <data name="lblDoYouWantToTransferToOtherMainSection" xml:space="preserve">
-    <value>Do you want to transfer to other main section</value>
+    <value>هل تريد التحويل إلى قسم رئيسي آخر</value>
   </data>
   <data name="lblEndDate" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>
   </data>
   <data name="lblEndTime" xml:space="preserve">
-    <value>End Time</value>
+    <value>وقت النهاية</value>
   </data>
   <data name="lblExpiryDate" xml:space="preserve">
-    <value>Expiry Date</value>
+    <value>تاريخ الانتهاء</value>
   </data>
   <data name="lblGroupBoardOfDirectors" xml:space="preserve">
-    <value>Group Board Of Directors</value>
+    <value>مجلس إدارة المجموعة</value>
   </data>
   <data name="lblHome" xml:space="preserve">
-    <value>Home</value>
+    <value>بيت</value>
   </data>
   <data name="lblHours" xml:space="preserve">
-    <value>Hour(s)</value>
+    <value>ساعات</value>
   </data>
   <data name="lblInma" xml:space="preserve">
     <value>إنماء العالمية ذ.م.م</value>
   </data>
   <data name="lblIssueDate" xml:space="preserve">
-    <value>Issue Date</value>
+    <value>تاريخ الإصدار</value>
   </data>
   <data name="lblLoading" xml:space="preserve">
     <value>...تحميل</value>
   </data>
   <data name="lblMinutes" xml:space="preserve">
-    <value>Minute(s)</value>
+    <value>دقائق</value>
   </data>
   <data name="lblModule" xml:space="preserve">
-    <value>Module</value>
+    <value>وحدة</value>
   </data>
   <data name="lblNo" xml:space="preserve">
     <value>لا</value>
   </data>
   <data name="lblNotStartedYet" xml:space="preserve">
-    <value>Not started yet</value>
+    <value>لم تبدأ بعد</value>
   </data>
   <data name="lblOnTime" xml:space="preserve">
-    <value>On Time</value>
+    <value>في الوقت المحدد</value>
   </data>
   <data name="lblOops" xml:space="preserve">
-    <value>Oops...</value>
+    <value>أُووبس...</value>
   </data>
   <data name="lblOurMission" xml:space="preserve">
-    <value>Our Mission</value>
+    <value>مهمتنا</value>
   </data>
   <data name="lblOurPlan" xml:space="preserve">
-    <value>Our Plan</value>
+    <value>خطتنا</value>
   </data>
   <data name="lblOurVision" xml:space="preserve">
-    <value>Our Vision</value>
+    <value>رؤيتنا</value>
   </data>
   <data name="lblPartners" xml:space="preserve">
-    <value>Partners</value>
+    <value>شركاء</value>
   </data>
   <data name="lblPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>كلمة المرور</value>
   </data>
   <data name="lblPleaseContactToSystemEngineerThankyou" xml:space="preserve">
-    <value>Please contact to system engineer, Thank you...!</value>
+    <value>الرجاء الاتصال بمهندس النظام شكرا لك ...!</value>
   </data>
   <data name="lblPoweredBy" xml:space="preserve">
     <value>انجز بواسطة</value>
   </data>
   <data name="lblRemarks" xml:space="preserve">
-    <value>Remarks</value>
+    <value>ملاحظات</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>إعادة ضبط</value>
@@ -323,16 +323,16 @@
     <value>سجل المحفوظ</value>
   </data>
   <data name="lblSeconds" xml:space="preserve">
-    <value>Second(s)</value>
+    <value>ثانية (ثوان)</value>
   </data>
   <data name="lblServices" xml:space="preserve">
-    <value>Services</value>
+    <value>خدمات</value>
   </data>
   <data name="lblStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>
   </data>
   <data name="lblStartTime" xml:space="preserve">
-    <value>Start Time</value>
+    <value>وقت البدء</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>الحالة</value>
@@ -344,7 +344,7 @@
     <value>صالح</value>
   </data>
   <data name="lblUsefulLinks" xml:space="preserve">
-    <value>Useful Links</value>
+    <value>روابط مفيدة</value>
   </data>
   <data name="lblUsername" xml:space="preserve">
     <value>Username</value>
@@ -362,7 +362,7 @@
     <value>You dont have permission to access this application..!</value>
   </data>
   <data name="textAlign" xml:space="preserve">
-    <value>right</value>
+    <value>يمين</value>
   </data>
   <data name="treeViewPaddingLeft" xml:space="preserve">
     <value>28px</value>

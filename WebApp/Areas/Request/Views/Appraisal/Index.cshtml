@@ -146,8 +146,8 @@
                     <a class="nav-link active" data-toggle="tab" href="#SelfAppraisalTab" role="tab"> @HRModuleUI.HumanResourceUI.lblAppraisal</a>
                 </li>
                 @*<li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#ManagerAppraisalTab" role="tab" id="ManagerAppraisalTabLi">@HRModuleUI.HumanResourceUI.lblManager @HRModuleUI.HumanResourceUI.lblAppraisal</a>
-                </li>*@
+                        <a class="nav-link" data-toggle="tab" href="#ManagerAppraisalTab" role="tab" id="ManagerAppraisalTabLi">@HRModuleUI.HumanResourceUI.lblManager @HRModuleUI.HumanResourceUI.lblAppraisal</a>
+                    </li>*@
 
 
             </ul>
@@ -159,59 +159,112 @@
                             <div class="">
                                 <div class="row">
                                     @*<div class="col-md-6 ">*@
-                                        <div class="col-md-6 "  >
-                                            <div id="accordion" style="max-height: 905px;overflow-y: scroll;">
-                                                <div class="card append-appraisal-data">  </div></div>
-
-                                                <div class="card remarks-data">
-
-                                                    <div id="collapse_final_remarks">
-                                                        <div class="card-body">
-                                                            <div class="question-answer card-block">
-                                                                @*<strong>@HRModuleUI.HumanResourceUI.lblQ.1</strong> <span></span>*@
-                                                                <div class="">
-                                                                    <strong>@HRModuleUI.HumanResourceUI.lblremarks:</strong>
-                                                                    <textarea readonly class="form-control" cols="20" data-helper-text="" data-ui-id="" id="Remarks"
-                                                                              rows="5" style="width:100%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;color:red"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="appendButtons">   </div>
-
+                                    <div class="col-md-6 ">
+                                        <div id="accordion" style="max-height: 898px;overflow-y: scroll;">
+                                            <div class="card append-appraisal-data">  </div>
                                         </div>
-                                        <div class="col-md-6 ">
 
-                                            <h5>@HRModuleUI.HumanResourceUI.lblRatings</h5>
+                                        <div class="card remarks-data">
 
-                                            @*Dont Remove anything from below table ,It's used in Js'*@
+                                            <div id="collapse_final_remarks">
+                                                <div class="card-body">
+                                                    <div class="question-answer card-block">
+                                                        @*<strong>@HRModuleUI.HumanResourceUI.lblQ.1</strong> <span></span>*@
+                                                        <strong>@HRModuleUI.HumanResourceUI.lblremarks</strong>
+                                                        <hr />
+                                                      
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-md-3" style="text-align: left;"><strong>@HRModuleUI.HumanResourceUI.lblLineManager:</strong></div>
+                                                            <div class="col-md-9"><span style="color:red;" id="lm-remarks">  </span></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3" style="text-align:left;">
+                                                                <strong>@HRModuleUI.HumanResourceUI.lblCompanyManager:</strong>
+                                                            </div>
+                                                            <div class="col-md-9"><span style="color:red;" id="cm-remarks">  </span></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3" style="text-align: left;">
+                                                                <strong>@HRModuleUI.HumanResourceUI.lblHR:</strong>
+                                                            </div>
+                                                            <div class="col-md-9"><span style="color:red;" id="hr-remarks">  </span></div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="">
 
-                                            <table style="width: 100%;" id="employee-appraisal">
-                                                <thead><tr style="border: 1px solid; background: cyan;" id="employee-appraisal-header"> </tr></thead>
-                                                <tbody></tbody>
-                                            </table>
-
-                                            <div class="card-footer showHideFromEmployee">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <button class="btn btn-success    @Resources.Common.PullRight" id="btn-save-appraisal-form"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
-                                                        @*<button onclick="history.back()" class="btn btn-link  btnBack @Resources.Common.PullRight" id=""><i class="fa fa-back"></i> @Resources.Global.btnBack</button>*@
-
+                                                            <textarea readonly class="form-control" cols="20" data-helper-text="" data-ui-id="" id="Remarks"
+                                                                      rows="5" style="width:100%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;color:red"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
 
+                                        <div class="appendButtons">   </div>
+
                                     </div>
+                                    <div class="col-md-6 ">
+
+                                        <h5>@HRModuleUI.HumanResourceUI.lblRatings</h5>
+
+                                        @*Dont Remove anything from below table ,It's used in Js'*@
+
+                                        <table style="width: 100%;" id="employee-appraisal">
+                                            <thead><tr style="border: 1px solid; background: cyan;" id="employee-appraisal-header"> </tr></thead>
+                                            <tbody></tbody>
+                                        </table>
+
+                                        <div class="card-footer showHideFromEmployee" style="display:none;">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-success    @Resources.Common.PullRight" id="btn-save-appraisal-form"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>
+                                                    @*<button onclick="history.back()" class="btn btn-link  btnBack @Resources.Common.PullRight" id=""><i class="fa fa-back"></i> @Resources.Global.btnBack</button>*@
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
 
                             </div>
 
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!--<div class="tab-pane" id="ManagerAppraisalTab" role="tabpanel">
                     <div class="row">
                         <div class="col-md-12 showHideManagerTab">
@@ -220,26 +273,26 @@
 
                                 <div class="col-md-9 appraisal-form">
                                     <h5>HRModuleUI.HumanResourceUI.lblRatings</h5>-->
-                                    @*<hr />*@
-                                    @*Dont Remove anything from below table ,It's used in Js'*@
+                @*<hr />*@
+                @*Dont Remove anything from below table ,It's used in Js'*@
 
-                                    <!--<table style="width: 100%;" id="employee-appraisal">
-                                        <thead><tr style="border: 1px solid; background: cyan;" id="employee-appraisal-header"> </tr></thead>
-                                        <tbody></tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-3"> </div>
-                            </div>
+                <!--<table style="width: 100%;" id="employee-appraisal">
+                            <thead><tr style="border: 1px solid; background: cyan;" id="employee-appraisal-header"> </tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-3"> </div>
+                </div>
 
 
-                            <div class="card-footer showHideFromEmployee">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-success    @Resources.Common.PullRight" id="btn-save-appraisal-form"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>-->
-                                        @*<button class="btn btn-link    @Resources.Common.PullRight" id="btnBack"><i class="fa fa-back"></i> @Resources.Global.btnBack</button>*@
-                                        @*<a href="/Employees/Request/Appraisal" class="btn btn-link  btnBack @Resources.Common.PullRight" id=""><i class="fa fa-back"></i> @Resources.Global.btnBack</a>*@
-                                        <!--<button onclick="history.back()" class="btn btn-link  btnBack @Resources.Common.PullRight" id=""><i class="fa fa-back"></i> @Resources.Global.btnBack</button>
-                                        
+                <div class="card-footer showHideFromEmployee">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success    @Resources.Common.PullRight" id="btn-save-appraisal-form"><i class="fa fa-send"></i> @HRModuleUI.HumanResourceUI.lblSend</button>-->
+                @*<button class="btn btn-link    @Resources.Common.PullRight" id="btnBack"><i class="fa fa-back"></i> @Resources.Global.btnBack</button>*@
+                @*<a href="/Employees/Request/Appraisal" class="btn btn-link  btnBack @Resources.Common.PullRight" id=""><i class="fa fa-back"></i> @Resources.Global.btnBack</a>*@
+                <!--<button onclick="history.back()" class="btn btn-link  btnBack @Resources.Common.PullRight" id=""><i class="fa fa-back"></i> @Resources.Global.btnBack</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +301,7 @@
 
 
                 </div>-->
-                
+
 
 
             </div>
@@ -278,7 +331,7 @@
         var lblApprove = '@HRModuleUI.HumanResourceUI.lblApprove';
         var lblDecline = '@HRModuleUI.HumanResourceUI.lblDecline';
         var lblEdit = '@Resources.Global.lblEdit';
-        
+
         var btnSave = '@Resources.Global.btnSave';
         var PullLeft = '@Resources.Common.PullLeft';
         var PullRight = '@Resources.Common.PullRight';
@@ -297,8 +350,8 @@
         var lblNoSignature = '@HRModuleUI.HumanResourceUI.lblNoSignature';
         var lblHR = '@HRModuleUI.HumanResourceUI.lblHR';
         var lblProcedures = '@HRModuleUI.HumanResourceUI.lblProcedures';
-        
-          
+
+
     </script>
 
 

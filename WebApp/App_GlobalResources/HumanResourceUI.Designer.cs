@@ -1402,6 +1402,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Flexible.
+        /// </summary>
+        public static string lblFlexible {
+            get {
+                return ResourceManager.GetString("lblFlexible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flexible Time.
         /// </summary>
         public static string lblFlexibleTime {

@@ -564,6 +564,9 @@
   <data name="lblFlexibilityinGettingtheJobDone" xml:space="preserve">
     <value>Flexibility in Getting the Job Done</value>
   </data>
+  <data name="lblFlexible" xml:space="preserve">
+    <value>Flexible</value>
+  </data>
   <data name="lblFlexibleTime" xml:space="preserve">
     <value>Flexible Time</value>
   </data>

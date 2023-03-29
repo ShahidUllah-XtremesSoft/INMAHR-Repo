@@ -562,6 +562,9 @@
   <data name="lblFlexibilityinGettingtheJobDone" xml:space="preserve">
     <value>المرونة في انجاز العمل</value>
   </data>
+  <data name="lblFlexible" xml:space="preserve">
+    <value>وقت مرن</value>
+  </data>
   <data name="lblFlexibleTime" xml:space="preserve">
     <value>وقت مرن</value>
   </data>

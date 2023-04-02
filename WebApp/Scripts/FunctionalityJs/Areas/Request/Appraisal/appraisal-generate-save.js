@@ -2,6 +2,7 @@
 
     //loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox_New();
     loadDepartmentManager();
+    loadAccessForAppraisal();
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $('#Employee_Id').val(JSON.parse(localStorage.getItem('User')).employeeId);
     //Events Starts
@@ -34,7 +35,7 @@
 
 function fn_Request_Appraisal_AlreadyExist_Callback(d) {
     var response = JSON.parse(d.Value);
-
+    
     if (response.id > 0) {
         Swal.fire(
             '',
@@ -51,6 +52,30 @@ function fn_Request_Appraisal_AlreadyExist_Callback(d) {
 
 
 
+function loadAccessForAppraisal() {
+
+    ajaxRequest({
+        commandName: 'Setup_Appraisal_Permission_isAccess',
+        values: {
+            Employee_Id: JSON.parse(localStorage.getItem('User')).employeeId,
+            DepartmentId: $('#DepartmentId').val(),
+            Year: $('#Year').val(),
+
+            Language: _currentLanguage,
+        }, CallBack: loadAccessForAppraisal_callBack
+    });
+
+}
+function loadAccessForAppraisal_callBack(d) {
+     
+    var response = JSON.parse(d.Value);
+      
+    if (response.id > 0) {
+        $('.chk_is_Access').show();
+    }  
+
+
+}
 function loadDepartmentManager() {
 
     ajaxRequest({

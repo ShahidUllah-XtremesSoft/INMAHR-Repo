@@ -37,9 +37,10 @@
                                 <input type="hidden" id="Employee_Id" name="Employee_Id" value="0" />
                                 <input type="hidden" id="DepartmentId" name="DepartmentId" value="0" />
                                 <input type="hidden" id="LM_Employee_Id" name="LM_Employee_Id" value="0" />
-                                <div>
+
+                                <div class="chk_is_Access" style="display:none;">
                                     <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblYear</label>
-                                    <select class="form-control" id="Year" name="Year">
+                                    <select class="form-control " id="Year" name="Year">
 
                                         <option selected="" value="2023">2023</option>
                                         <option value="2024">2024</option>
@@ -65,11 +66,11 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 chk_is_Access" style="display:none;">
 
                             <div style="padding-top:40px">
 
-                                <button class="btn btn-primary  @Resources.Common.PullLeft" id="btnGenerate"> <i class="fa fa-save"></i> @HRModuleUI.HumanResourceUI.lblGenerate</button>
+                                <button class="btn btn-primary  @Resources.Common.PullLeft" id="btnGenerate"> <i class="fa fa-save"> </i> @HRModuleUI.HumanResourceUI.lblNew</button>
                             </div>
 
                         </div>
@@ -131,8 +132,8 @@
 
 @section scripts {
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-pending-request-grid.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-approved-request-grid.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-pending-request-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-approved-request-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
     <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/appraisal-generate-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 
     <script>

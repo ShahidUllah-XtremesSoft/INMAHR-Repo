@@ -600,6 +600,9 @@
   <data name="lblHR" xml:space="preserve">
     <value>HR</value>
   </data>
+  <data name="lblHRManager" xml:space="preserve">
+    <value>HR Manager</value>
+  </data>
   <data name="lblIn" xml:space="preserve">
     <value>IN</value>
   </data>
@@ -854,6 +857,9 @@
   </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>Pending Requests</value>
+  </data>
+  <data name="lblPercentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="lblPerformanceandAchivment" xml:space="preserve">
     <value>Performance and Achivment</value>
@@ -1121,6 +1127,9 @@
   </data>
   <data name="lblTotalLeaves" xml:space="preserve">
     <value>Total Leave(s)</value>
+  </data>
+  <data name="lblTotalPercentage" xml:space="preserve">
+    <value>Total Percentage</value>
   </data>
   <data name="lblTotalPresents" xml:space="preserve">
     <value>Total Present(s)</value>

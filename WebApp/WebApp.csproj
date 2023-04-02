@@ -332,6 +332,7 @@
     </Compile>
     <Compile Include="Areas\Setup\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Setup\Controllers\AllowanceController.cs" />
+    <Compile Include="Areas\Setup\Controllers\AppraisalController.cs" />
     <Compile Include="Areas\Setup\Controllers\RosterController.cs" />
     <Compile Include="Areas\Setup\Controllers\PublicHolidayController.cs" />
     <Compile Include="Areas\Setup\SetupAreaRegistration.cs" />
@@ -670,6 +671,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Promotion\promotion.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Allowance\allowance-type.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Setup\Appraisal\appraisal-permission.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\employees-associated-roster.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster-association.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster.js" />
@@ -782,6 +784,7 @@
     <Content Include="Areas\Request\Views\Appraisal\Index -BACKUP--.cshtml" />
     <Content Include="Areas\Request\Views\Appraisal\Self.cshtml" />
     <Content Include="Areas\Employees\Views\Request\Appraisal.cshtml" />
+    <Content Include="Areas\Setup\Views\Appraisal\Permission.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="Reports\HR-Reports\HR_Department.cs">
       <SubType>Component</SubType>

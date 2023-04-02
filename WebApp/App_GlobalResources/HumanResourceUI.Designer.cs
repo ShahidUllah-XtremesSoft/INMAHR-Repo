@@ -1510,6 +1510,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HR Manager.
+        /// </summary>
+        public static string lblHRManager {
+            get {
+                return ResourceManager.GetString("lblHRManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IN.
         /// </summary>
         public static string lblIn {
@@ -2271,6 +2280,15 @@ namespace HRModuleUI {
         public static string lblPendingRequest {
             get {
                 return ResourceManager.GetString("lblPendingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage.
+        /// </summary>
+        public static string lblPercentage {
+            get {
+                return ResourceManager.GetString("lblPercentage", resourceCulture);
             }
         }
         
@@ -3072,6 +3090,15 @@ namespace HRModuleUI {
         public static string lblTotalLeaves {
             get {
                 return ResourceManager.GetString("lblTotalLeaves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Percentage.
+        /// </summary>
+        public static string lblTotalPercentage {
+            get {
+                return ResourceManager.GetString("lblTotalPercentage", resourceCulture);
             }
         }
         

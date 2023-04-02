@@ -9,6 +9,7 @@ var Appraisal_ManagerId = parseInt(window.location.href.split('?')[5].split('=')
 var EmployeeNumber = window.location.href.split('?')[6].split('=')[1];
 var appraisal_Performance_Id = parseInt(window.location.href.split('?')[7].split('=')[1]);
 var isUnChecked = 0;  // this variable is also used in employee-appraisal-details.js  --------please keep in mind before any modifications thanks ........by |\/|ati
+
 $(function () {
 
 
@@ -169,78 +170,85 @@ function fn_Load_Appraisal_Form_For_ManagerCallBack(response) {
             '<td style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="total_of_column_four">0</strong></td>                           ' +
 
             '</tr>' +
-            '<tr style="border: 1px solid; background: #cde627;" class="TotalPercentageScores">' +
-            '<td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong> ' + lblTotal + '  %</strong></td>' +
-            '<td colspan="4" style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="totalPercentage_of_All_Columns">0</strong></td>' +
+            '<tr style="border: 1px solid; background: cyan;" class="TotalPerformanceScores">' +
+            '<td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong> ' + lblTotalPerformanceScores + '  </strong></td>' +
+            '<td colspan="4" style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="totalPerformanceScore_of_All_Columns">0</strong></td>' +
 
             '</tr>' +
-            /*  '<tr style="border: 1px solid; " class=" tr-btn-total ">' +
-           '<td> </td>' +
-           '<td colspan="4" style="text-align:end;border-right: 1px solid;font-size: x-large;" class=" ">' +
-           '<button class="btn form-control btn-primary showHideFromEmployee" id="btn-calculate-total-result" onclick="fnCalculate_Total_Result()"><i class="fa fa-calculator"></i> ' + lblTotal + ' </button>' +
-           '</td>' +
-           '</tr>' +
-           ' <tr><td colspan="5"> &nbsp; </td></tr>'
-           + '<tr><td colspan="5"> &nbsp; </td></tr>'
-           + '<tr><td style="background: lightgray;"> <strong>' + lblProcedures + ' </strong> </td></tr>'
-              + '<tr class="Procedures lm-data" style="border: 1px solid;">'
-              //    @*------------------------------------- this is Line Manager (LM) data --------------------------------------*@
-              + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblLineManager + ' </td>'
-              + '    <td  style="border-right: 1px solid;display:none;"> <input class="form-control" onfocusout="fnSetDate(this)" id="lm-date" type="date" value="" /> <span  style="margin-left: 1rem;" id="lm-date-span"></span></td>'
-              + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
-              + '    <td  colspan="2" style="  width: 20%;">'
-              + '        <button type="button" id="btn-signature-lm" class="btn form-control hideSignature_btn_LM" areaName="LM" onclick="fnUploadEmployeeSignature(this);"><i class=""></i> ' + lblSignature + '</button>'
-              + '        <div class=" ">'
-              + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
-              + '            <div id="lm_noSignature" style="display:none;">'
-              + '                <button type="button" disabled class="btn @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
-              + '            </div>'
-              + '            <div id="lm_loadSignature" style="display:none;">'
-              + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="lm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
-              + '            </div>'
-              + '        </div>'
-              + '    </td>'
-              + '</tr>'
-              + '<tr class="Procedures HR-data" style="border: 1px solid;">'
-              //    @*------------------------------------- this is HR  data --------------------------------------*@
-              + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblHR + ' </td>'
-              + '    <td  style="border-right: 1px solid;display:none;"> <input class="form-control" onfocusout="fnSetDate(this)" id="hr-date" type="date" value="" /> <span style="margin-left: 1rem;" id="hr-date-span"></span></td>'
-              + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
-              + '    <td  colspan="2" style="  ">'
-              + '        <button type="button" id="btn-signature-hr" class="btn form-control hideSignature_btn_HR"  areaName="HR" onclick="fnUploadEmployeeSignature(this);"><i class=""></i>' + lblSignature + '</button>'
-              + '        <div class=" ">'
-              + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
-              + '            <div id="hr_noSignature" style="display:none;">'
-              + '                <button type="button" disabled class="btn @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
-              + '            </div>'
-              + '            <div id="hr_loadSignature" style="display:none;">'
-              + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="hr_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
-              + '            </div>'
-              + '        </div>'
-  
-              + '    </td>'
-              + '</tr>'
-              + '<tr class="Procedures CM-data" style="border: 1px solid;">'
-              //    @*------------------------------------- this is CM  data --------------------------------------*@
-              + '    <td  style="border-right: 1px solid;border-left: 1px solid;"> ' + lblCompanyManager + '</td>'
-              + '    <td  style="border-right: 1px solid;display:none;"> <input class="form-control " onfocusout="fnSetDate(this)" id="cm-date" type="date" value="" /> <span style="margin-left: 1rem;" id="cm-date-span"></span></td>'
-              + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + '  </td>'
-              + '    <td  colspan="2" style="  ">'
-              + '        <button type="button" id="btn-signature-cm" class="btn form-control hideSignature_btn_CM"  areaName="CM" onclick="fnUploadEmployeeSignature(this);"><i class=""></i>  ' + lblSignature + ' </button>'
-              + '        <div class=" ">'
-              + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
-              + '            <div id="cm_noSignature" style="display:none;">'
-              + '                <button type="button" disabled class="bt  @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
-              + '            </div>'
-              + '            <div id="cm_loadSignature" style="display:none;">'
-              + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="cm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
-              + '            </div>'
-              + '        </div>'
-  
-  
-              + '    </td>'
-              + '</tr>*/
-            + '')
+            '<tr style="border: 1px solid; background: #cde627;" class="TotalPercentageScores">' +
+            '<td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong> ' + lblPercentage + '  </strong></td>' +
+            '<td colspan="4" style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="totalPercentage_of_All_Columns">0  </strong></td>' +
+            '</tr>' +
+
+
+            /*
+
+            '<tr style="border: 1px solid; " class=" tr-btn-total ">' +
+            '<td> </td>' +
+            '<td colspan="4" style="text-align:end;border-right: 1px solid;font-size: x-large;" class=" ">' +
+            '<button class="btn form-control btn-primary showHideFromEmployee" id="btn-calculate-total-result" onclick="fnCalculate_Total_Result()"><i class="fa fa-calculator"></i> ' + lblTotal + ' </button>' +
+            '</td>' +
+            '</tr>' +
+            ' <tr><td colspan="5"> &nbsp; </td></tr>'
+            + '<tr><td colspan="5"> &nbsp; </td></tr>'
+            + '<tr><td style="background: lightgray;"> <strong>' + lblProcedures + ' </strong> </td></tr>'
+            + '<tr class="Procedures lm-data" style="border: 1px solid;">'
+            //    @*------------------------------------- this is Line Manager (LM) data --------------------------------------*@
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblLineManager + ' </td>'
+            + '    <td  style="border-right: 1px solid;display:none;"> <input class="form-control" onfocusout="fnSetDate(this)" id="lm-date" type="date" value="" /> <span  style="margin-left: 1rem;" id="lm-date-span"></span></td>'
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
+            + '    <td  colspan="2" style="  width: 20%;">'
+            + '        <button type="button" id="btn-signature-lm" class="btn form-control hideSignature_btn_LM" areaName="LM" onclick="fnUploadEmployeeSignature(this);"><i class=""></i> ' + lblSignature + '</button>'
+            + '        <div class=" ">'
+            + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
+            + '            <div id="lm_noSignature" style="display:none;">'
+            + '                <button type="button" disabled class="btn @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '            </div>'
+            + '            <div id="lm_loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="lm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            </div>'
+            + '        </div>'
+            + '    </td>'
+            + '</tr>'
+            + '<tr class="Procedures HR-data" style="border: 1px solid;">'                       
+            //    @*------------------------------------- this is CM  data --------------------------------------*@
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;"> ' + lblCompanyManager + '</td>'
+            + '    <td  style="border-right: 1px solid;display:none;"> <input class="form-control " onfocusout="fnSetDate(this)" id="cm-date" type="date" value="" /> <span style="margin-left: 1rem;" id="cm-date-span"></span></td>'
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + '  </td>'
+            + '    <td  colspan="2" style="  ">'
+            + '        <button type="button" id="btn-signature-cm" class="btn form-control hideSignature_btn_CM"  areaName="CM" onclick="fnUploadEmployeeSignature(this);"><i class=""></i>  ' + lblSignature + ' </button>'
+            + '        <div class=" ">'
+            + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
+            + '            <div id="cm_noSignature" style="display:none;">'
+            + '                <button type="button" disabled class="bt  @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '            </div>'
+            + '            <div id="cm_loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="cm_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            </div>'
+            + '        </div>'
+
+
+            + ' </td>'
+            + '</tr>'
+            + '<tr class="Procedures CM-data" style="border: 1px solid;">'
+            //    @*------------------------------------- this is HR  data --------------------------------------*@
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblHRManager + ' </td>'
+            + '    <td  style="border-right: 1px solid;display:none;"> <input class="form-control" onfocusout="fnSetDate(this)" id="hr-date" type="date" value="" /> <span style="margin-left: 1rem;" id="hr-date-span"></span></td>'
+            + '    <td  style="border-right: 1px solid;border-left: 1px solid;">' + lblApprovedBy + ' </td>'
+            + '    <td  colspan="2" style="  ">'
+            + '        <button type="button" id="btn-signature-hr" class="btn form-control hideSignature_btn_HR"  areaName="HR" onclick="fnUploadEmployeeSignature(this);"><i class=""></i>' + lblSignature + '</button>'
+            + '        <div class=" ">'
+            + '            <input type="hidden" class="form-control" name="Signature" id="Signature" value="" />'
+            + '            <div id="hr_noSignature" style="display:none;">'
+            + '                <button type="button" disabled class="btn @Resources.Common.PullRight" style=" font-size: large;">' + lblNoSignature + '</button>'
+            + '            </div>'
+            + '            <div id="hr_loadSignature" style="display:none;">'
+            + '                <img src="" class="img-avatar  @Resources.Common.PullLeft" id="hr_loadEmployeeSignature" style="border-radius:4%;width:130px;" alt=' + lblSignature + ' >'
+            + '            </div>'
+            + '        </div>'
+
+            + '    </td>'*/
+            + '</tr>')
     }
 
 }
@@ -485,6 +493,7 @@ function fnCalculate_Total_Result() {
     }
 
 
+    //var _percentSign = _currentLanguage == "en-US" == true ? '<span class=' + PullRight + '>%</span>' : '<span class=' + PullLeft + '>%</span>';
 
     //------ CLEAR FIELDS
     $('#total_of_column_one').text('0')
@@ -510,7 +519,11 @@ function fnCalculate_Total_Result() {
 
 
     var grandTotal_Percentage = column_one_percentage + column_two_percentage + column_three_percentage + column_four_percentage;
-    $('#totalPercentage_of_All_Columns').text(grandTotal_Percentage.toString().substring(0, 4));
+
+    $('#totalPercentage_of_All_Columns').text(grandTotal_Percentage.toString().substring(0, 4) + '%');
+
+    var grandTotal_PerformanceScore = column_one_value + column_two_value + column_three_value + column_four_value;
+    $('#totalPerformanceScore_of_All_Columns').text(grandTotal_PerformanceScore.toString().substring(0, 4));
 }
 function fnSetDate(dateArea) {
 

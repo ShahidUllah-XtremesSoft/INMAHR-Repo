@@ -214,7 +214,7 @@
     <value>الجواب</value>
   </data>
   <data name="lblAppraisal" xml:space="preserve">
-    <value>توصية</value>
+    <value>تقييم</value>
   </data>
   <data name="lblAppraisals" xml:space="preserve">
     <value>التقييمات</value>
@@ -595,6 +595,9 @@
   <data name="lblHR" xml:space="preserve">
     <value>مدير الموارد البشرية</value>
   </data>
+  <data name="lblHRManager" xml:space="preserve">
+    <value>مدير الموارد البشرية</value>
+  </data>
   <data name="lblIn" xml:space="preserve">
     <value>دخول</value>
   </data>
@@ -848,6 +851,9 @@
   </data>
   <data name="lblPendingRequest" xml:space="preserve">
     <value>الطلبات المعلقة</value>
+  </data>
+  <data name="lblPercentage" xml:space="preserve">
+    <value>النسبة المئوية</value>
   </data>
   <data name="lblPerformanceandAchivment" xml:space="preserve">
     <value>الأداء والإنجاز</value>
@@ -1118,6 +1124,9 @@
   </data>
   <data name="lblTotalLeaves" xml:space="preserve">
     <value>إجمالي الإجازات</value>
+  </data>
+  <data name="lblTotalPercentage" xml:space="preserve">
+    <value>النسبة الإجمالية</value>
   </data>
   <data name="lblTotalPresents" xml:space="preserve">
     <value>مجموع الحاضر (ق)</value>

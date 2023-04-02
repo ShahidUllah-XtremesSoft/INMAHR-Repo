@@ -172,8 +172,8 @@
                                                         @*<strong>@HRModuleUI.HumanResourceUI.lblQ.1</strong> <span></span>*@
                                                         <strong>@HRModuleUI.HumanResourceUI.lblremarks</strong>
                                                         <hr />
-                                                      
-                                                        
+
+
                                                         <div class="row">
                                                             <div class="col-md-3" style="text-align: left;"><strong>@HRModuleUI.HumanResourceUI.lblLineManager:</strong></div>
                                                             <div class="col-md-9"><span style="color:red;" id="lm-remarks">  </span></div>
@@ -186,7 +186,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-3" style="text-align: left;">
-                                                                <strong>@HRModuleUI.HumanResourceUI.lblHR:</strong>
+                                                                <strong>@HRModuleUI.HumanResourceUI.lblHRManager:</strong>
                                                             </div>
                                                             <div class="col-md-9"><span style="color:red;" id="hr-remarks">  </span></div>
                                                         </div>
@@ -320,8 +320,8 @@
 
 
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/employee-appraisal-details.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/employee-appraisal-manager-form.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/employee-appraisal-details.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Appraisal/employee-appraisal-manager-form.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
     <script>
          var lblAppraisal = '@HRModuleUI.HumanResourceUI.lblAppraisal';
         var lblSubmit = '@HRModuleUI.HumanResourceUI.lblSubmit';
@@ -339,16 +339,21 @@
 
 
 
+
+        var lblPercentage = '@HRModuleUI.HumanResourceUI.lblPercentage';
+        var lblTotalPercentage = '@HRModuleUI.HumanResourceUI.lblTotalPercentage';
         var lblTotal = '@HRModuleUI.HumanResourceUI.lblTotal';
         var lblPerformanceScores = '@HRModuleUI.HumanResourceUI.lblPerformanceScores';
+        var lblTotalPerformanceScores = '@HRModuleUI.HumanResourceUI.lblTotal @HRModuleUI.HumanResourceUI.lblPerformanceScores';
         var lblManager = '@HRModuleUI.HumanResourceUI.lblManager';
         @*var lblLineManager  = '@HRModuleUI.HumanResourceUI.lblLineManager';*@
-        var lblLineManager  = '@HRModuleUI.HumanResourceUI.lblManager';
+        var lblLineManager  = '@HRModuleUI.HumanResourceUI.lblLineManager';
         var lblCompanyManager = '@HRModuleUI.HumanResourceUI.lblCompanyManager';
         var lblApprovedBy = '@HRModuleUI.HumanResourceUI.lblApprovedBy';
         var lblSignature = '@HRModuleUI.HumanResourceUI.lblSignature';
         var lblNoSignature = '@HRModuleUI.HumanResourceUI.lblNoSignature';
         var lblHR = '@HRModuleUI.HumanResourceUI.lblHR';
+        var lblHRManager = '@HRModuleUI.HumanResourceUI.lblHRManager';
         var lblProcedures = '@HRModuleUI.HumanResourceUI.lblProcedures';
 
 

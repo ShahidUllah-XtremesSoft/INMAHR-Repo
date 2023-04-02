@@ -10,6 +10,33 @@ namespace INMA.HR.Services.Commands.Request
      
     #region ========== Load Appraisal Pending Requests 
 
+    [Command(Name = "Setup_Appraisal_Permission_isAccess")]
+    public class Setup_Appraisal_Permission_isAccessCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Employee_Id = 0,
+                DepartmentId = 0,
+                Year = string.Empty,
+                Language = string.Empty
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            IDictionary<string, object> values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Setup_Appraisal_Permission_isAccess.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
+    #region ========== Load Appraisal Pending Requests 
+
     [Command(Name = "Request_Appraisal_AlreadyExist")]
     public class Request_Appraisal_AlreadyExistCommand : CamelCommandBase
     {
@@ -594,4 +621,74 @@ namespace INMA.HR.Services.Commands.Request
         }
     }
     #endregion
+    
+    #region ========== Load HR EMPLOYEE GET BY DEPARTMENTID 
+
+    [Command(Name = "Appraisal_Permission_Get_AllEmployees_by_DepartmentWise")]
+    public class Appraisal_Permission_Get_AllEmployees_by_DepartmentWiseCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                LoggedInUserId = 0,
+                DepartmentId = 0,
+                Year = string.Empty,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            IDictionary<string, object> values = _params.Get(model);
+            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Appraisal_Permission_Get_AllEmployees_by_DepartmentWise.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
+
+    #region =====Appraisal ASSOCIATION BULK 
+    // USED IN SETUP ONLY .........................................
+
+    [Command(Name = "Setup_Appraisal_Association_Multipe_Save")]
+    public class Setup_Appraisal_Association_Multipe_SaveCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                AssociationModel = new List<AppraisalAssociation>(),
+                Year = string.Empty,
+                CreatedBy = 0,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+            IDictionary<string, object> values = _params.Get(model);
+
+
+            var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Setup_Appraisal_Association_Multipe_Save]", ExtensionMethods.ToDataTable(model.AssociationModel));
+            var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
+            ProductList.Add("@UD_Setup_Appraisal_Association_Multipe_Save", table);
+            var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Setup_Appraisal_Association_Multipe_Save.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
+             
+
+
+            return response.ToList()[0];
+
+
+        }
+
+    }
+
+    #endregion
+
+
+
 }

@@ -1,4 +1,4 @@
-﻿ 
+﻿
 
 namespace INMA.HR.Services
 {
@@ -13,7 +13,7 @@ namespace INMA.HR.Services
         public int HR_Department_Manager_Id { get; set; }
         public int HR_Department_Id { get; set; }
         public string Year { get; set; }
-      
+
 
 
     }
@@ -26,8 +26,21 @@ namespace INMA.HR.Services
         public string ColumnTwo { get; set; }
         public string ColumnThree { get; set; }
         public string ColumnFour { get; set; }
-         
-      
+
+
+
+
+    }
+    public class AppraisalAssociation
+    {
+
+        public int? Id { get; set; }
+        public int HR_Employee_Id { get; set; }
+        public int HR_Department_Id { get; set; }
+        public int isEnabled { get; set; }
+        //   public string Year { get; set; }
+
+
 
 
     }

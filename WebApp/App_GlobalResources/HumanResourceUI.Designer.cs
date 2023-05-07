@@ -3211,6 +3211,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yearly.
+        /// </summary>
+        public static string lblYearly {
+            get {
+                return ResourceManager.GetString("lblYearly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yearly Payroll.
         /// </summary>
         public static string lblYearlyPayroll {

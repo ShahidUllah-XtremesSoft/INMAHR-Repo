@@ -31,10 +31,10 @@ $(document).ready(function () {
             alert("Only formats are allowed : " + fileExtension.join(', '));
         }
     });
-    $(document).ajaxStart(function () {
-        // Show image container
-        $('#RequestLoader').show();
-    });
+    //$(document).ajaxStart(function () {
+    //    // Show image container
+    //    $('#RequestLoader').show();
+    //});
     $(document).ajaxComplete(function () {
         // Hide image container
         $('#RequestLoader').hide();

@@ -1167,6 +1167,9 @@
   <data name="lblYear" xml:space="preserve">
     <value>Year</value>
   </data>
+  <data name="lblYearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
   <data name="lblYearlyPayroll" xml:space="preserve">
     <value>Yearly Payroll</value>
   </data>

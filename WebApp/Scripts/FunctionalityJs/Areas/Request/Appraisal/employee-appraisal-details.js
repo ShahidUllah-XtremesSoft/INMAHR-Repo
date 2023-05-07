@@ -35,8 +35,24 @@ function loadEmployeeProfileCallBack(response) {
         $('#ProfileImage').attr('src', profileImage);
     }
 
+    fnLoadEmployeeAttendanceAndLeaves_Yearly();
 }
 
+function fnLoadEmployeeAttendanceAndLeaves_Yearly() {
+
+    ajaxRequest({
+        commandName: 'Employee_GetAttendanceAndLeaves_Yearly', values: { EmployeeID: AppraisalEmployeeId, Year: Appraisal_Year, Language: _currentLanguage }, CallBack: fnLoadEmployeeAttendanceAndLeaves_Yearly_Callback
+    });
+}
+function fnLoadEmployeeAttendanceAndLeaves_Yearly_Callback(response__) {
+
+    if (JSON.parse(response__.Value) != null) {
+
+        $('#isPresent').val(JSON.parse(response__.Value).isPresent);
+        $('#isAbsent').val(JSON.parse(response__.Value).isAbsent);
+        $('#isLeave').val(JSON.parse(response__.Value).isLeave);
+    }
+}
 
 function fn_Load_Appraisal_Answers() {
 
@@ -60,7 +76,7 @@ function fn_Load_Appraisal_FormCallBack(response) {
 
     var db_response = JSON.parse(response.Value);
 
-         
+
     if (db_response.length > 0) {
 
         $('#lm-remarks').text(db_response[0].lmRemarks);

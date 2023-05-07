@@ -1,0 +1,99 @@
+﻿
+@{
+
+    ViewBag.Title = HRModuleUI.HumanResourceUI.btnSentLetters;
+
+}
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-2 col-sm-2">
+                <img class="img-sm rounded-circle mr-3 " id="ProfileImage"
+                     style="border-radius: 4%; width: 150px;"
+                     src="/Content/Images/user.jpg" alt="">
+            </div>
+            <div class="col-md-10 col-sm-10">
+                <div class="details text-right">
+
+                    <p class="sender-email">
+                        <div class="form-group">
+                            <div>
+                                <strong id=""> @HRModuleUI.HumanResourceUI.lblFrom:-<span id="divFromDepartment"></span>-<span id="divFrom"></span></strong>
+                                <a class="btnReply btn btn-danger @Resources.Common.PullRight  m-r-10" onclick="window.history.back();" style="color: white;"><i class="   fa fa-backward"></i> @Resources.Global.btnBack</a>
+                            </div>
+                           
+                        </div>
+                    </p>
+                    <b>
+                        <p class="msg-subject ">  @HRModuleUI.HumanResourceUI.lblIssueDate:<span class="letter-date"></span> </p>
+                        <p class="msg-subject ">  @HRModuleUI.HumanResourceUI.lblTime:<span class="letter-time"></span> </p>
+                        <p class="msg-subject ">  @HRModuleUI.HumanResourceUI.lblLetterNumber:<span class="letter-number"></span> </p>
+                    </b>
+                    <hr />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-11">
+                <div class="details text-right">
+
+                    <p class="sender-email">
+                        <div class="form-group">
+                            <div>
+                                <strong id="divFrom"></strong>
+                            </div>
+
+                        </div>
+                    </p>
+                    <b>
+                        <p id="">  @HRModuleUI.HumanResourceUI.lblTo: <span id="divTo"></span></p>
+                    </b>
+
+                </div>
+            </div>
+        </div>
+
+
+        <hr />
+       
+        <div class="card shadow-none mt-3 border border-light">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <p>  <b id="txt-subject">Title</b></p><hr />
+                    </div>
+                </div>
+                <br />
+
+                <p id="txt-body"></p>
+                <hr>
+                <div class="row attachmentRow" style="display:none;">
+                    <h5><i class="fa fa-paperclip mr-2"></i> @HRModuleUI.HumanResourceUI.lblAttachment<span></span></h5>
+                    <div class="appendLetterAttachment">
+
+                    
+                    @*<div class="col-sm-4 col-md-3">
+                        <a target="_blank" id="attachment-open" href="">
+                            <img id="letter-attachment" src="" alt="attachment" class="img-thumbnail" style="width: 30%;">
+                        </a>
+                    </div>*@
+                    </div>
+
+                </div>
+                @*<div class="media mt-3">
+                        <a href="javascript:void();" class="media-left">  </a>
+                        <div class="media-body"></div>
+                    </div>*@
+            </div>
+        </div>
+         
+    </div>
+</div>
+@section scripts {
+
+    @*<script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-read.js?971522324409"></script>*@
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-read.js?@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+}
+
+

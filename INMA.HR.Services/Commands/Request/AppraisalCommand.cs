@@ -688,6 +688,32 @@ namespace INMA.HR.Services.Commands.Request
     }
 
     #endregion
+    #region ========== Load Appraisal Get Employee Attendance Yearly 
+
+    [Command(Name = "Employee_GetAttendanceAndLeaves_Yearly")]
+    public class Employee_GetAttendanceAndLeaves_YearlyCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeID = 0,
+                Year = 0,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            IDictionary<string, object> values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Employee_GetAttendanceAndLeaves_Yearly.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion  
 
 
 

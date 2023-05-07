@@ -1164,6 +1164,9 @@
   <data name="lblYear" xml:space="preserve">
     <value>السنة</value>
   </data>
+  <data name="lblYearly" xml:space="preserve">
+    <value>السنوي</value>
+  </data>
   <data name="lblYearlyPayroll" xml:space="preserve">
     <value>كشوف المرتبات السنوية</value>
   </data>

@@ -290,21 +290,21 @@
 
             { title: "#", template: "<b>#= ++record #</b>", width: 5, },
             {
-                field: "number", title: lblLetterNumber, width: 20, filterable: true, hidden: true,
+                field: "number", title: lblLetterNumber, width: 20, filterable: true, hidden: false,
                 template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
             },
-            { field: "departmentName", title: section, width: 40, filterable: true},
+            { field: "departmentName", title: section, width: 40, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }},
             {
                 field: "subject", title: subject, width: 40, filterable: true, hidden: true,
                 template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>",
             },
             {
-                field: "body", title: description, width: 70, filterable: true,
+                field: "body", title: description, width: 70, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
                 template: "<div style='font-weight:normal;'>#=body#</div>" //"#if(isRead == false){#<div style='font-weight:bold;'>#=body#</div>#}else{#<div style='font-weight:normal;'>#=body#</div>#}# ",
             },
             //{ field: "body", title: description, width: 60, filterable: true },
             {
-                field: "", title: dateTime, width: 20, filterable: true,//createdDate
+                field: "", title: dateTime, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },//createdDate
                 template: "<div  class='viewbutton'>#=createdDate#</div>" //"#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
             },

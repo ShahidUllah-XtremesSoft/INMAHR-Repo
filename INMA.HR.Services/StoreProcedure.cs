@@ -387,6 +387,7 @@
     #region APPRAISAL 
     Appraisal_Template_Get,
     Request_Appraisal_Answer_Get,
+    Employee_GetAttendanceAndLeaves_Yearly,
     Request_Appraisal_Pending,
     Request_Appraisal_Approved,
     Request_Appraisal_AlreadyExist,

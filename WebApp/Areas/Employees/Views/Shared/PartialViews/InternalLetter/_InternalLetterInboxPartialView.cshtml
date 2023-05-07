@@ -252,14 +252,14 @@
             { field: "id", title: "id", hidden: true },
             { title: "#", template: "<b>#= ++record #</b>", width: 5, },
             {
-                field: "number", title: lblLetterNumber, width: 20, filterable: true,
+                field: "number", title: lblLetterNumber, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
                 template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
             },
             {
-                field: "subject", title: subject, width: 40, hidden: false , filterable: true,
+                field: "subject", title: subject, width: 40, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
               //  template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
             },{
-                field: "senderDepartmentName", title: lblSection, width: 40, hidden: false , filterable: true,
+                field: "senderDepartmentName", title: lblSection, width: 40, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
               //  template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>#}#",
             },
             {
@@ -268,7 +268,7 @@
             },
             //{ field: "body", title: description, width: 60, filterable: true },
             {
-                field: "", title: dateTime, width: 20, filterable: true,//createdDate
+                field: "", title: dateTime, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },//createdDate
                 template: "#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
             },

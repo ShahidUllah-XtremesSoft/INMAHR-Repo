@@ -21,6 +21,19 @@ function fnloadAssignedEmployees_TechnicalSection(section_id, sub_section_id) {
         }, CallBack: fnloadAssignedEmployees_TechnicalSectionCallBack
     });
 }
+
+function fnLoadDefault_AssignedEmployees_TechnicalSection(parentName) {
+
+     
+    ajaxRequest({
+        commandName: 'Project_Linked_Employees_By_Parent',
+        values: {
+            Project_Id: parameterId,
+            ParentType: parentName,
+            Language: _currentLanguage
+        }, CallBack: fnloadAssignedEmployees_TechnicalSectionCallBack
+    });
+}
 var fnloadAssignedEmployees_TechnicalSectionCallBack = function (inputDataJSON) {
     bindfnloadAssignedEmployees_TechnicalSection(JSON.parse(inputDataJSON.Value));
 }
@@ -32,11 +45,19 @@ var bindfnloadAssignedEmployees_TechnicalSection = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 15 },
         { field: "id", title: "id", width: 10, hidden: true },
         {
-            field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "employeeNumber", title: employeeNumber, width: 40, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
         },
         { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "setup_type_detail_name", title: lblAssignedSubSection, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "setup_type_detail_name", title: lblWork, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        {
+            field: "startDate", title: lblStartDate, hidden: false, width: 40, filterable: false,
+            template: "#if (startDate ==null) { # <span class='badge badge-danger'>" + lblNotStartedYet + "</span> # } else {# <span class='badge badge-success'>#:startDate#</span> # }#"
+        },
+        {
+            field: "endDate", title: lblCompletionDate, hidden: false, width: 40, filterable: false,
+            template: "#if (endDate ==null) { # <span class='badge'>-</span> # } else {# <span class='badge badge-danger'>#:endDate#</span> # }#"
+        },
         {
             field: "", width: 10, title: ' ',
             template: " <a style='font-size:20px;cursor:pointer;' onClick= deleteAssignedEmployeeById_TechnicalSection(this)  title="+lblDelete+"><span class='fa fa-trash'></span></a>  "
@@ -86,7 +107,7 @@ function deleteAssignedEmployeeById_TechnicalSection(event) {
     });
     var deleteAssignedEmployeeById_TechnicalSectionCallBack = function (response) {
         swal(response.Value);
-        fnloadAssignedEmployees_TechnicalSection($('#Project_Technical_Section_Parent_Type_DDL').val(), $('#Setup_SetupType_Id_for_Technical_Section').val());
+        fnLoadDefault_AssignedEmployees_TechnicalSection('TechnicalSection');
 
     }
 

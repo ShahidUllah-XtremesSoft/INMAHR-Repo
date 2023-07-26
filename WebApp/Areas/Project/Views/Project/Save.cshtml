@@ -9,17 +9,17 @@
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#ProjectInfo" role="tab">1.@ProjectUI.ProjectUI.lblProjectInformation</a>
                 </li>
-                <li class="nav-item " id="ProjectUnitInformationLI" style="display:none;">
-                    <a class="nav-link" data-toggle="tab" href="#ProjectUnitInformation" role="tab" id="">2.Basic Information</a>
-                </li>
+                @*<li class="nav-item " id="ProjectUnitInformationLI" style="display:none;">
+                        <a class="nav-link" data-toggle="tab" href="#ProjectUnitInformation" role="tab" id="">2.@ProjectUI.ProjectUI.lblBasicInformation</a>
+                    </li>*@
                 <li class="nav-item " id="ProjectDesingSectionLI" style="display:none;">
-                    <a class="nav-link" data-toggle="tab" href="#ProjectDesingSection" role="tab" id="">3.@ProjectUI.ProjectUI.lblProjectDesignSection</a>
+                    <a class="nav-link" data-toggle="tab" href="#ProjectDesingSection" role="tab" id="">2.@ProjectUI.ProjectUI.lblProjectDesignSection</a>
                 </li>
                 <li class="nav-item " id="ProjectTechnicalSectionLI" style="display:none;">
-                    <a class="nav-link" data-toggle="tab" href="#ProjectTechnicalSection" role="tab" id="">4.@ProjectUI.ProjectUI.lblProjectTechnicalSection</a>
+                    <a class="nav-link" data-toggle="tab" href="#ProjectTechnicalSection" role="tab" id="">3.@ProjectUI.ProjectUI.lblProjectTechnicalSection</a>
                 </li>
                 <li class="nav-item " id="ProjectSupervisionSectionLI" style="display:none;">
-                    <a class="nav-link" data-toggle="tab" href="#ProjectSupervisionSection" role="tab" id="">5.@ProjectUI.ProjectUI.lblProjectSupervisionSection</a>
+                    <a class="nav-link" data-toggle="tab" href="#ProjectSupervisionSection" role="tab" id="">4.@ProjectUI.ProjectUI.lblProjectSupervisionSection</a>
                 </li>
 
             </ul>
@@ -34,12 +34,12 @@
                     }
 
                 </div>
-                <div class="tab-pane" id="ProjectUnitInformation" role="tabpanel">
-                    @{
-                        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_UnitSave.cshtml");
-                    }
+                @*<div class="tab-pane" id="ProjectUnitInformation" role="tabpanel">
+                        @{
+                            Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_UnitSave.cshtml");
+                        }
 
-                </div>
+                    </div>*@
                 <div class="tab-pane" id="ProjectDesingSection" role="tabpanel">
                     @{
                         Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_DesignSectionSave.cshtml");
@@ -68,19 +68,29 @@
 
 
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-info-save.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-unit-save.js?+971502324409"></script>
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-design-section-document-save.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-design-section-assigned-employees-grid.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-info-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Areas/Project/project-info-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>*@
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-unit-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-technical-section-document-save.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-technical-section-assigned-employees-grid.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-design-section-document-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-design-section-assigned-employees-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-technical-section-document-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-technical-section-assigned-employees-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-document-save.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-document-grid.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-assigned-employees-grid.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-document-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-document-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/project-supervision-section-assigned-employees-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+
+
+    <script>
+    var employee_TotalProject = '@ProjectUI.ProjectUI.lblProjects';
+        var lblWork = '@ProjectUI.ProjectUI.lblWork';
+        
+
+    </script>
 }
 
 

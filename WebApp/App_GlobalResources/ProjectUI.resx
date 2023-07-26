@@ -138,6 +138,9 @@
   <data name="lblApprovedBy" xml:space="preserve">
     <value>Approved By</value>
   </data>
+  <data name="lblArea" xml:space="preserve">
+    <value>Area</value>
+  </data>
   <data name="lblAssign" xml:space="preserve">
     <value>Assign</value>
   </data>
@@ -159,11 +162,20 @@
   <data name="lblAvailableEmployees" xml:space="preserve">
     <value>Available Employee(s)</value>
   </data>
+  <data name="lblBasicInformation" xml:space="preserve">
+    <value>Basic Information</value>
+  </data>
   <data name="lblBathroom" xml:space="preserve">
     <value>Bathroom</value>
   </data>
+  <data name="lblBoth" xml:space="preserve">
+    <value>Both</value>
+  </data>
   <data name="lblBranch" xml:space="preserve">
     <value>Branch</value>
+  </data>
+  <data name="lblCategory" xml:space="preserve">
+    <value>Category</value>
   </data>
   <data name="lblChangeStatus" xml:space="preserve">
     <value>Change Status</value>
@@ -255,8 +267,14 @@
   <data name="lblEmail" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="lblEmployee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
   <data name="lblEmployeeName" xml:space="preserve">
     <value>Employee</value>
+  </data>
+  <data name="lblEngineer" xml:space="preserve">
+    <value>Engineer</value>
   </data>
   <data name="lblEngineeringConsultancy" xml:space="preserve">
     <value>Engineering Consultancy</value>
@@ -278,6 +296,9 @@
   </data>
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
+  </data>
+  <data name="lblfilter" xml:space="preserve">
+    <value>Filter</value>
   </data>
   <data name="lblFinance" xml:space="preserve">
     <value>Finance</value>
@@ -390,6 +411,12 @@
   <data name="lblNoExpiry" xml:space="preserve">
     <value>No Expiry</value>
   </data>
+  <data name="lblNoRemarks" xml:space="preserve">
+    <value>No Remarks</value>
+  </data>
+  <data name="lblNOTE" xml:space="preserve">
+    <value>NOTE</value>
+  </data>
   <data name="lblNotificationDetails" xml:space="preserve">
     <value>Notification Details</value>
   </data>
@@ -398,6 +425,9 @@
   </data>
   <data name="lblOld" xml:space="preserve">
     <value>Old</value>
+  </data>
+  <data name="lblOptional" xml:space="preserve">
+    <value>Optional</value>
   </data>
   <data name="lblOurMission" xml:space="preserve">
     <value>Our Mission</value>
@@ -426,6 +456,9 @@
   <data name="lblPhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
+  <data name="lblPlease" xml:space="preserve">
+    <value>Please</value>
+  </data>
   <data name="lblPlotNo" xml:space="preserve">
     <value>Plot No</value>
   </data>
@@ -433,7 +466,7 @@
     <value>Price</value>
   </data>
   <data name="lblProfessionName" xml:space="preserve">
-    <value>Profession Name</value>
+    <value>Profession</value>
   </data>
   <data name="lblProgress" xml:space="preserve">
     <value>Progress</value>
@@ -471,6 +504,9 @@
   <data name="lblProjectNo" xml:space="preserve">
     <value>Project No</value>
   </data>
+  <data name="lblProjects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
   <data name="lblProjectStatus" xml:space="preserve">
     <value>Project Status</value>
   </data>
@@ -494,6 +530,9 @@
   </data>
   <data name="lblSection" xml:space="preserve">
     <value>Section</value>
+  </data>
+  <data name="lblSelect" xml:space="preserve">
+    <value>Select</value>
   </data>
   <data name="lblServices" xml:space="preserve">
     <value>Services</value>
@@ -560,5 +599,8 @@
   </data>
   <data name="lblVIP" xml:space="preserve">
     <value>VIP</value>
+  </data>
+  <data name="lblWork" xml:space="preserve">
+    <value>Work</value>
   </data>
 </root>

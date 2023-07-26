@@ -22,22 +22,34 @@ function fnloadAssignedEmployees(sub_section_id) {
         }, CallBack: fnloadAssignedEmployeesCallBack
     });
 }
+function fnLoadDefault_AssignedEmployees(parentName) {
+
+
+    ajaxRequest({
+        commandName: 'Project_Linked_Employees_By_Parent',
+        values: {
+            Project_Id: parameterId,
+            ParentType:parentName,
+            Language: _currentLanguage
+        }, CallBack: fnloadAssignedEmployeesCallBack
+    });
+}
 var fnloadAssignedEmployeesCallBack = function (inputDataJSON) {
+   
     bindfnloadAssignedEmployees(JSON.parse(inputDataJSON.Value));
 }
 var bindfnloadAssignedEmployees = function (inputDataJSON) {
-
-
+      
     var gridColumns = [
 
         { title: "#", template: "<b>#= ++record #</b>", width: 15 },
         { field: "id", title: "id", width: 10, hidden: true },
         {
-            field: "employeeNumber", title: employeeNumber, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+            field: "employeeNumber", title: employeeNumber, width: 20, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
             //    , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= fnLoadDetailScreen(this)  '>#=document#</a> ",
         },
         { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "setup_type_detail_name", title: lblAssignedSubSection, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "setup_type_detail_name", title: lblWork, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } ,hidden: false},
         {
             field: "startDate", title: lblStartDate, hidden: false, width: 40, filterable: false,
             template: "#if (startDate ==null) { # <span class='badge badge-danger'>" + lblNotStartedYet+"</span> # } else {# <span class='badge badge-success'>#:startDate#</span> # }#"
@@ -45,8 +57,6 @@ var bindfnloadAssignedEmployees = function (inputDataJSON) {
         {
             field: "endDate", title: lblCompletionDate, hidden: false, width: 40, filterable: false,
             template: "#if (endDate ==null) { # <span class='badge'>-</span> # } else {# <span class='badge badge-danger'>#:endDate#</span> # }#"
-
-
         },
         {
             field: "", width: 10, title: ' ',
@@ -54,7 +64,7 @@ var bindfnloadAssignedEmployees = function (inputDataJSON) {
         },
     ];
 
-    bindKendoGrid('grid-load-all-assigned-employees', 100, gridColumns, inputDataJSON, true, 550);
+    bindKendoGrid('grid-load-all-assigned-employees', 100, gridColumns, inputDataJSON, true, 450);
     $('#checkAll').hide();
 };
 

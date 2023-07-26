@@ -124,6 +124,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Area.
+        /// </summary>
+        public static string lblArea {
+            get {
+                return ResourceManager.GetString("lblArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assign.
         /// </summary>
         public static string lblAssign {
@@ -187,6 +196,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Basic Information.
+        /// </summary>
+        public static string lblBasicInformation {
+            get {
+                return ResourceManager.GetString("lblBasicInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bathroom.
         /// </summary>
         public static string lblBathroom {
@@ -196,11 +214,29 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both.
+        /// </summary>
+        public static string lblBoth {
+            get {
+                return ResourceManager.GetString("lblBoth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Branch.
         /// </summary>
         public static string lblBranch {
             get {
                 return ResourceManager.GetString("lblBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        public static string lblCategory {
+            get {
+                return ResourceManager.GetString("lblCategory", resourceCulture);
             }
         }
         
@@ -477,9 +513,27 @@ namespace ProjectUI {
         /// <summary>
         ///   Looks up a localized string similar to Employee.
         /// </summary>
+        public static string lblEmployee {
+            get {
+                return ResourceManager.GetString("lblEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee.
+        /// </summary>
         public static string lblEmployeeName {
             get {
                 return ResourceManager.GetString("lblEmployeeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engineer.
+        /// </summary>
+        public static string lblEngineer {
+            get {
+                return ResourceManager.GetString("lblEngineer", resourceCulture);
             }
         }
         
@@ -543,6 +597,15 @@ namespace ProjectUI {
         public static string lblFile {
             get {
                 return ResourceManager.GetString("lblFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        public static string lblfilter {
+            get {
+                return ResourceManager.GetString("lblfilter", resourceCulture);
             }
         }
         
@@ -880,6 +943,24 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Remarks.
+        /// </summary>
+        public static string lblNoRemarks {
+            get {
+                return ResourceManager.GetString("lblNoRemarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOTE.
+        /// </summary>
+        public static string lblNOTE {
+            get {
+                return ResourceManager.GetString("lblNOTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notification Details.
         /// </summary>
         public static string lblNotificationDetails {
@@ -903,6 +984,15 @@ namespace ProjectUI {
         public static string lblOld {
             get {
                 return ResourceManager.GetString("lblOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Optional.
+        /// </summary>
+        public static string lblOptional {
+            get {
+                return ResourceManager.GetString("lblOptional", resourceCulture);
             }
         }
         
@@ -988,6 +1078,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please.
+        /// </summary>
+        public static string lblPlease {
+            get {
+                return ResourceManager.GetString("lblPlease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plot No.
         /// </summary>
         public static string lblPlotNo {
@@ -1006,7 +1105,7 @@ namespace ProjectUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profession Name.
+        ///   Looks up a localized string similar to Profession.
         /// </summary>
         public static string lblProfessionName {
             get {
@@ -1123,6 +1222,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Projects.
+        /// </summary>
+        public static string lblProjects {
+            get {
+                return ResourceManager.GetString("lblProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Status.
         /// </summary>
         public static string lblProjectStatus {
@@ -1191,6 +1299,15 @@ namespace ProjectUI {
         public static string lblSection {
             get {
                 return ResourceManager.GetString("lblSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string lblSelect {
+            get {
+                return ResourceManager.GetString("lblSelect", resourceCulture);
             }
         }
         
@@ -1389,6 +1506,15 @@ namespace ProjectUI {
         public static string lblVIP {
             get {
                 return ResourceManager.GetString("lblVIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work.
+        /// </summary>
+        public static string lblWork {
+            get {
+                return ResourceManager.GetString("lblWork", resourceCulture);
             }
         }
     }

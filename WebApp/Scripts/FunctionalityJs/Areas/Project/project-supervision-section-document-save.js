@@ -18,7 +18,7 @@ $(function () {
     renderKendoDatePickerWithNewFormat('ExtendedConstructionEndDate');
     //|End Date Picker
     $('#SupervisionSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-    $('#SupervisionSection_Update_Area_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);    
+    $('#SupervisionSection_Update_Area_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
 
 });
 function fnLoadSupervisionSectionReady() {
@@ -27,11 +27,12 @@ function fnLoadSupervisionSectionReady() {
     $('#SupervisionSection_Update_Area_Language').val(_currentLanguage);
     $('#SupervisionSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $('#SupervisionSection_Update_Area_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-    
+
+    fnLoadSupervisionSectionArea($('.checkbtnValue_SupervisionSection.active')[0]);
 
     loadProject_Supervision_Section_dropdownList();
     loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
-    load_Supervision_Section_finance_dropdownList();
+    // load_Supervision_Section_finance_dropdownList();
 
 
     if (Parameter_Project_Id > 0 == true) {
@@ -39,7 +40,7 @@ function fnLoadSupervisionSectionReady() {
 
         $('#SupervisionSection_Document_ProjectId').val(Parameter_Project_Id);
         $('#SupervisionSection_Update_Area_ProjectId').val(Parameter_Project_Id);
-        fnLoadSupervisionSection_Document_Grid(Parameter_Project_Id);
+        //  fnLoadSupervisionSection_Document_Grid(Parameter_Project_Id);
 
         // fnLoadSupervisionSection_Document(Parameter_Project_Id);
 
@@ -101,7 +102,7 @@ $('#btn-save-supervision-section-government-documents').click(function () {
     }
 });
 //btn-save-supervision-update-section-area
-$('#btn-save-supervision-update-section-area').click(function () {    
+$('#btn-save-supervision-update-section-area').click(function () {
     if (customValidateForm('frmAddUpdate_SupervisionSection_Update_area')) {
         if (!firstDateShouldBeGreaterThanSecondDate($('#ConstructionStartDate').val(), $('#ConstructionEndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
             return false;
@@ -162,8 +163,8 @@ function fnEditProject_Supervision_Updated_Area_ById(projectId) {
         }, CallBack: fnEditProject_Supervision_Updated_Area_ByIdCallBack
     });
 }
-function fnEditProject_Supervision_Updated_Area_ByIdCallBack(response) {
-    var response = JSON.parse(response.Value);
+function fnEditProject_Supervision_Updated_Area_ByIdCallBack(responsee) {
+    var response = JSON.parse(responsee.Value);
     console.log(response);
     if (response != null) {
 
@@ -171,18 +172,18 @@ function fnEditProject_Supervision_Updated_Area_ByIdCallBack(response) {
             $('#SupervisionSection_Update_Area_ProjectId').val(response.project_Id);
 
             $("#ConstructionStartDate").kendoDatePicker({ value: response.constructionStartDate, format: "dd/MM/yyyy" });
-            $('#ConstructionMonths').val(response.constructionMonths != null ? response.constructionMonths : 0 );
+            $('#ConstructionMonths').val(response.constructionMonths != null ? response.constructionMonths : 0);
             $("#ConstructionEndDate").kendoDatePicker({ value: response.constructionEndDate, format: "dd/MM/yyyy" });
 
             $("#ExtendedConstructionStartDate").kendoDatePicker({ value: response.extendedConstructionStartDate, format: "dd/MM/yyyy" });
-            $('#ExtendedConstructionMonths').val(response.extendedConstructionMonths != null ? response.extendedConstructionMonths : 0); 
+            $('#ExtendedConstructionMonths').val(response.extendedConstructionMonths != null ? response.extendedConstructionMonths : 0);
             $("#ExtendedConstructionEndDate").kendoDatePicker({ value: response.extendedConstructionEndDate, format: "dd/MM/yyyy" });
 
             $("#Project_SupervisionSection_Contractor_DDL").data('kendoDropDownList').value(response.contractor_Id != null ? response.contractor_Id : -1);
+            $('#Project_SupervisionSection_Contractor_Id').val(response.contractor_Id != null ? response.contractor_Id : 0)
             $("#Project_SupervisionSection_Finance_DDL").data("kendoMultiSelect").value(response.finance_Id != null ? response.finance_Id.split(',') : 0);
-
-
-
+            $('#Project_SupervisionSection_Finance_Id').val(response.finance_Id != null ? response.finance_Id.split(',') : 0)
+            
 
 
         }, 100);
@@ -250,7 +251,7 @@ function onSelect_SupervisionSection(e) {
     var selected_Id = e.dataItem.id;
     $('#Project_SupervisionSection_Entity_Id').val(selected_Id);
     var selected_Text = e.dataItem.name;
-    fnLoadSupervisionSectionArea($('.checkbtnValue.active')[0]);
+    fnLoadSupervisionSectionArea($('.checkbtnValue_SupervisionSection.active')[0]);
 };
 
 
@@ -322,7 +323,7 @@ function fnSupervision_Section_Finance_DDL_Callback(e) {
 function fnLoadSupervisionSectionArea(e) {
 
     var areaname = e.value;
-    $('.checkbtnValue').removeClass('active')
+    $('.checkbtnValue_SupervisionSection').removeClass('active')
     $(e).addClass('active')
 
 
@@ -332,44 +333,48 @@ function fnLoadSupervisionSectionArea(e) {
         $('.div-Supervision-section-assigned-employees-area').hide();
         $('.div-Supervision-section-update-supervision-area').hide();
 
-
+        fnLoadSupervisionSection_Document_Grid(Parameter_Project_Id);
         $("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList").enable(true);
         $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").enable(true);
     } else if (areaname == 'Available Employee') {
 
         $('#div-Supervision-section-employees-area').show();
-
-        $("#div-Supervision-section-employees-area").load("/Project/Project/Load_Supervision_Section_Employees");
+        if ($("#div-Supervision-section-employees-area > div.grid-main-div").children().length <= 0) {
+            $("#div-Supervision-section-employees-area").load("/Project/Project/Load_Supervision_Section_Employees");
+        }
         $('.div-Supervision-section-document-upload-area').hide();
         $('.div-Supervision-section-assigned-employees-area').hide();
         $('.div-Supervision-section-update-supervision-area').hide();
+        if ($("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList") != undefined) {
 
-        $("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList").enable(true);
-        $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").enable(true);
-
+            $("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList").enable(true);
+        }
+        if ($("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList") != undefined) {
+            $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").enable(true);
+        }
     } else if (areaname == 'Assigned Employee') {
 
         $("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList").enable(true);
         $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").enable(true);
 
-        if ($('#Project_SupervisionSection_Entity_Id').val() == '0') {
-            swalMessage('info', 'Please select section and sub section', 2500);
-        } else {
+        //if ($('#Project_SupervisionSection_Entity_Id').val() == '0') {
+        //    swalMessage('info', 'Please select section and sub section', 2500);
+        //} else {
+
+        fnLoadDefault_AssignedEmployees_SupervisionSection('SupervisionSection');
+        $('.div-Supervision-section-assigned-employees-area').show();
+        $('#div-Supervision-section-employees-area').hide();
+        $('.div-Supervision-section-document-upload-area').hide();
+        $('.div-Supervision-section-update-supervision-area').hide();
+
+        //setTimeout(function () {
+
+        //     fnloadAssignedEmployees_SupervisionSection($('#Project_Supervision_Section_Parent_Type_DDL').val(), $('#Project_SupervisionSection_SetupDetailTypeDDL').val());
+        //}, 100);
 
 
-            $('.div-Supervision-section-assigned-employees-area').show();
-            $('#div-Supervision-section-employees-area').hide();
-            $('.div-Supervision-section-document-upload-area').hide();
-            $('.div-Supervision-section-update-supervision-area').hide();
-
-            setTimeout(function () {
-
-                fnloadAssignedEmployees_SupervisionSection($('#Project_Supervision_Section_Parent_Type_DDL').val(), $('#Project_SupervisionSection_SetupDetailTypeDDL').val());
-            }, 100);
 
 
-
-        }
     } else if (areaname == 'Update Supervision') {
 
 
@@ -379,8 +384,12 @@ function fnLoadSupervisionSectionArea(e) {
         $('#div-Supervision-section-employees-area').hide();
         $('.div-Supervision-section-document-upload-area').hide();
         load_Supervision_Section_Contractor_dropdownList();
+        load_Supervision_Section_finance_dropdownList();
         //load_Supervision_Section_finance_dropdownList();
-        fnEditProject_Supervision_Updated_Area_ById(Parameter_Project_Id == 0 ? $('#SupervisionSection_Document_ProjectId').val() : Parameter_Project_Id);
+        setTimeout(function () {
+
+            fnEditProject_Supervision_Updated_Area_ById(Parameter_Project_Id == 0 ? $('#SupervisionSection_Document_ProjectId').val() : Parameter_Project_Id);
+        }, 50);
 
 
         $("#Project_Supervision_Section_Parent_Type_DDL").data("kendoDropDownList").enable(false);

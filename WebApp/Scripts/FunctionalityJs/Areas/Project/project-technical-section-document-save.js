@@ -9,15 +9,15 @@ $(function () {
     renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
     renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
 
-   // renderKendoDatePicker('TechnicalSection_Document_StartDate');
-   // renderKendoDatePicker('TechnicalSection_Document_EndDate');
+    // renderKendoDatePicker('TechnicalSection_Document_StartDate');
+    // renderKendoDatePicker('TechnicalSection_Document_EndDate');
     //|End Date Picker
 });
 function fnLoadTechnicalSectionReady() {
 
     $('#TechnicalSection_Document_Language').val(_currentLanguage);
     $('#TechnicalSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-
+    fnLoadTechnicalSectionArea($('.checkbtnValue_TechnicalSection.active')[0]);
 
     loadProject_Technical_Section_dropdownList();
 
@@ -26,7 +26,7 @@ function fnLoadTechnicalSectionReady() {
         $('#ProjectSupervisionSectionLI').show();
 
         $('#TechnicalSection_Document_ProjectId').val(Parameter_Project_Id);
-        fnLoadTechnicalSection_Document_Grid(Parameter_Project_Id);
+        //  fnLoadTechnicalSection_Document_Grid(Parameter_Project_Id);
 
         // fnLoadTechnicalSection_Document(Parameter_Project_Id);
 
@@ -40,9 +40,9 @@ function fnLoadTechnicalSectionReady() {
 $('#btn-save-technical-section-government-documents').click(function () {
 
     if (customValidateForm('frmAddUpdate_TechnicalSection_Document')) {
-      //  if (!firstDateShouldBeGreaterThanSecondDate($('#StartDate').val(), $('#EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
-      //      return false;
-      //  }
+        //  if (!firstDateShouldBeGreaterThanSecondDate($('#StartDate').val(), $('#EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+        //      return false;
+        //  }
         buttonAddPleaseWait('btn-save-technical-section-government-documents');
 
         $("#frmAddUpdate_TechnicalSection_Document").ajaxForm();
@@ -80,8 +80,8 @@ $('#btn-save-technical-section-government-documents').click(function () {
     else {
         buttonRemovePleaseWait('btn-save-technical-section-government-documents', save, 'save');
         //----------- Reload DateTime Picker 
-         renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
-    //    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
+        renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_StartDate');
+        //    renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_Document_EndDate');
         return false;
     }
 });
@@ -159,7 +159,7 @@ function onSelect_TechnicalSection(e) {
     var selected_Id = e.dataItem.id;
     $('#Project_TechnicalSection_Entity_Id').val(selected_Id);
     var selected_Text = e.dataItem.name;
-    fnLoadTechnicalSectionArea($('.checkbtnValue.active')[0]);
+    fnLoadTechnicalSectionArea($('.checkbtnValue_TechnicalSection.active')[0]);
     /* if (selected_Text == 'Design Section'           ||
           selected_Text == 'Engineer'                 ||
           selected_Text == 'Structural Engineer'      ||
@@ -177,15 +177,15 @@ function onSelect_TechnicalSection(e) {
           }, 50);
          
   
-              fnLoadTechnicalSectionArea($('.checkbtnValue.active')[0]);
+              fnLoadTechnicalSectionArea($('.checkbtnValue_TechnicalSection.active')[0]);
   
       }*/
 };
 
 function fnLoadTechnicalSectionArea(e) {
-
+    
     var areaname = e.value;
-    $('.checkbtnValue').removeClass('active')
+    $('.checkbtnValue_TechnicalSection').removeClass('active')
     $(e).addClass('active')
 
 
@@ -194,34 +194,41 @@ function fnLoadTechnicalSectionArea(e) {
         $('#div-technical-section-employees-area').hide();
         $('.div-technical-section-assigned-employees-area').hide();
         //$('.show-sub-section-name').empty();
-
+        fnLoadTechnicalSection_Document_Grid(Parameter_Project_Id == 0 || Parameter_Project_Id == null ? $('#TechnicalSection_Document_ProjectId').val() : Parameter_Project_Id);
 
     } else if (areaname == 'Available Employee') {
 
         $('#div-technical-section-employees-area').show();
-
-        $("#div-technical-section-employees-area").load("/Project/Project/Load_Technical_Section_Employees");
-        
+        if ($("#div-technical-section-employees-area > div.grid-main-div").children().length <= 0) { 
+                $("#div-technical-section-employees-area").load("/Project/Project/Load_Technical_Section_Employees");
+            
+        }
         $('.div-technical-section-document-upload-area').hide();
         $('.div-technical-section-assigned-employees-area').hide();
 
     } else if (areaname == 'Assigned Employee') {
+         
 
+        //  if ($('#Project_TechnicalSection_Entity_Id').val() == '0') {
+        //      swalMessage('info', 'Please select section and sub section', 2500);
+        //  } else {
 
-        if ($('#Project_TechnicalSection_Entity_Id').val() == '0') {
-            swalMessage('info', 'Please select section and sub section', 2500);
-        } else {
+      //  if ($('#Project_TechnicalSection_Entity_Id').val() > 0) {
+      //      fnloadAssignedEmployees_TechnicalSection($('#Project_TechnicalSection_Entity_Id').val());
+      //  } else {
+            fnLoadDefault_AssignedEmployees_TechnicalSection('TechnicalSection');
+     //   }
 
+        $('.div-technical-section-assigned-employees-area').show();
+        $('#div-technical-section-employees-area').hide();
+        $('.div-technical-section-document-upload-area').hide();
+        /*
+      setTimeout(function () {
+              fnloadAssignedEmployees_TechnicalSection($('#Project_Technical_Section_Parent_Type_DDL').val(), $('#Setup_SetupType_Id_for_Technical_Section').val());
 
-            $('.div-technical-section-assigned-employees-area').show();
-            $('#div-technical-section-employees-area').hide();
-            $('.div-technical-section-document-upload-area').hide();
-            setTimeout(function () {
-                fnloadAssignedEmployees_TechnicalSection($('#Project_Technical_Section_Parent_Type_DDL').val(), $('#Setup_SetupType_Id_for_Technical_Section').val());
-
-            }, 550);
-
-        }
+          }, 550);
+      */
+        // }
     }
 }
 

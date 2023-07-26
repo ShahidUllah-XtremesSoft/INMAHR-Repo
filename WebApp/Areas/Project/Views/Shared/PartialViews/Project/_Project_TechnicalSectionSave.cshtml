@@ -1,6 +1,12 @@
 ﻿
 
-
+<style>
+    .btn-secondary:active, .btn-secondary.active, .open > .btn-secondary.dropdown-toggle, .selectedColor {
+        color: #263238;
+        background-color: oldlace;
+        border-color: 1px black;
+    }
+</style>
 
 
 
@@ -16,109 +22,131 @@
     <input type="hidden" name="TechnicalSection_Document_Language" id="TechnicalSection_Document_Language" class="Language" value="">
 
     <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
+        <div class="col-sm-3">
+            <div class="form-group ">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
                 <input class="form-control" id="Project_Technical_Section_Parent_Type_DDL" name="Project_Technical_Section_Parent_Type_DDL" required />
                 <input type="hidden" class="form-control" id="Setup_SetupType_Id_for_Technical_Section" name="Setup_SetupType_Id_for_Technical_Section" value="0" />
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
+        <div class="col-sm-3">
+            <div class=" form-group">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
                 <input type="text" class="form-control pname" name="Project_TechnicalSection_SetupDetailTypeDDL" id="Project_TechnicalSection_SetupDetailTypeDDL" required>
                 <input type="hidden" class="form-control pname" name="Project_TechnicalSection_Entity_Id" id="Project_TechnicalSection_Entity_Id" value="0">
                 <input type="hidden" class="form-control pname" name="Project_Technical_Section_Parent_Type_DDL_Text" id="Project_Technical_Section_Parent_Type_DDL_Text" value=" ">
             </div>
         </div>
+        <div class="col-sm-3"> </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
 
-            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i>@ProjectUI.ProjectUI.lblUploadDocument</button>
-            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Available Employee"><i class=""></i>@ProjectUI.ProjectUI.lblAvailableEmployees </button>
-            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Assigned Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAssignedEmployees</button>
+            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft active checkbtnValue_TechnicalSection" value="Available Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i> @ProjectUI.ProjectUI.lblAvailableEmployees </button>
+            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft checkbtnValue_TechnicalSection" value="Assigned Employee"> <i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i>  @ProjectUI.ProjectUI.lblAssignedEmployees</button>
+            <button type="button" onclick="fnLoadTechnicalSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft  checkbtnValue_TechnicalSection" value="Upload Document">  <i class="fa fa-arrow-down"></i> <i class="fa fa-file"></i>   @ProjectUI.ProjectUI.lblUploadDocument</button>
 
         </div>
     </div>
-    <div class="div-technical-section-document-upload-area form-control">
+    <div class="div-technical-section-document-upload-area form-control selectedColor" style="display:none;">
         <div class="row">
-
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                    @*<input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile" onchange="validatePersonalDocument('TechnicalSectionGovernmentDocumentFile');" />*@
-                    <input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile" />
-                </div>
-            </div>
-            <div class="col-sm-6">  </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                    <input class="form-control" type="datetime" id="TechnicalSection_Document_StartDate" name="TechnicalSection_Document_StartDate" required />
-                </div>
-            </div>
+            <div class="col-sm-3">
 
 
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                <div class="row">
 
-                    <input class="form-control" type="datetime" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate"   onchange="fnCheck_NoExpiry_TechnicalSection(this,'EndDate')" />
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class=" ">
+                            <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
+                            @*<input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile" onchange="validatePersonalDocument('TechnicalSectionGovernmentDocumentFile');" />*@
+                            <input type="file" class="form-control" name="TechnicalSectionGovernmentDocumentFile" required id="TechnicalSectionGovernmentDocumentFile" />
+                        </div>
+                    </div>
 
-                    <br />
-                    <br />
-                    <label class="btn " for="TechnicalSection_Document_NoExpiry_Call">
-                        <input type="radio" id="TechnicalSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_TechnicalSection(this,'RadioButton')">
-                        <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
-                    </label>
-                    <input type="hidden" id="TechnicalSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="TechnicalSection_Document_NoExpiry">
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class=" ">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                            <input class="form-control" type="datetime" id="TechnicalSection_Document_StartDate" name="TechnicalSection_Document_StartDate" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    <div class="col-sm-8">
+                        <div class=" ">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                            <input class="form-control" type="datetime" id="TechnicalSection_Document_EndDate" name="TechnicalSection_Document_EndDate" onchange="fnCheck_NoExpiry_TechnicalSection(this,'EndDate')" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class=" ">
+
+                            <br />
+                            <br />
+                            <label class="btn " for="TechnicalSection_Document_NoExpiry_Call">
+                                <input type="radio" id="TechnicalSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_TechnicalSection(this,'RadioButton')">
+                                <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
+                            </label>
+                            <input type="hidden" id="TechnicalSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="TechnicalSection_Document_NoExpiry">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class=" ">
+                            <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                            <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class=" ">
+                            <label class="col-form-label">@Resources.Global.lblRemarks @ProjectUI.ProjectUI.lblFor</label>
+                            <span style="color: red">*</span>
+                            <select class="form-control" id="TechnicalSection_comment_for_client_or_employee" name="TechnicalSection_comment_for_client_or_employee" required>
+                                <option value="" selected>@Resources.ProjectUI.lblSelect</option>
+                                <option value="Employee">@Resources.ProjectUI.lblEmployee</option>
+                                <option value="Client">@Resources.ProjectUI.lblClient</option>
+                                <option value="Both">@Resources.ProjectUI.lblBoth</option>
+                                <option value="NoRemarks">@Resources.ProjectUI.lblNoRemarks</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success  pull-right" id="btn-save-technical-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                    <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                    <textarea class="form-control" id="TechnicalSection_Remarks" name="TechnicalSection_Remarks"></textarea>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
-                    <span style="color: red">*</span>
-                    <select class="form-control" id="TechnicalSection_comment_for_client_or_employee" name="TechnicalSection_comment_for_client_or_employee" required>
-                        <option value="" selected>Select</option>
-                        <option value="Employee">Employee</option>
-                        <option value="Client">Client</option>
-                        <option value="Both">Both</option>
-                        <option value="NoRemarks">No Remarks</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-success  pull-right" id="btn-save-technical-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                    <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
-                </div>
+            <div class="col-sm-9">
+                @{
+                    Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_TechnicalSection_Document_Grid.cshtml");
+                }
             </div>
         </div>
     </div>
 
 </form>
-<div class="div-technical-section-assigned-employees-area" style="display:none;">
-    <br />
-    <br />
-    <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+<div class="div-technical-section-assigned-employees-area selectedColor" style="display:none;">
+  
+    <strong>@Resources.ProjectUI.lblNOTE:</strong><span>@Resources.ProjectUI.lblPlease @Resources.ProjectUI.lblSelect<b> @Resources.ProjectUI.lblSection</b> & <b>@Resources.ProjectUI.lblFile </b> @Resources.ProjectUI.lblFor.ToLower()  @Resources.ProjectUI.lblfilter.ToLower() @Resources.ProjectUI.lblEngineer.ToLower()</span>
     <div class="grid-main-div">
         <div class="row">
             <div class="col-md-12">
@@ -133,10 +161,11 @@
 
 
 
-<div class="div-technical-section-document-upload-area">
+@*<div class="div-technical-section-document-upload-area selectedColor">
     @{
         Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_TechnicalSection_Document_Grid.cshtml");
     }
 
-</div>
-<div id="div-technical-section-employees-area"></div>
+</div>*@
+
+<div id="div-technical-section-employees-area"> </div>

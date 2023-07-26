@@ -4,7 +4,7 @@
 
 
 }
- <style>
+<style>
     .k-step-text {
         /*max-width: calc(20em - 0px) !important;*/
         overflow: unset !important;
@@ -17,16 +17,18 @@
     body {
         overflow-x: hidden;
     }
-     .Main_ProgressBar {
-         height: 12px;
-         width: -webkit-fill-available;
-         /*background-color: #1274ac;*/
-     }
-         .Main_ProgressBar > .k-reset > .k-state-selected {
-             background-color: #37b400 !important;
-             border-color: #000000 !important;
-         }
-        /* .Main_ProgressBar,
+
+    .Main_ProgressBar {
+        height: 12px;
+        width: -webkit-fill-available;
+        /*background-color: #1274ac;*/
+    }
+
+        .Main_ProgressBar > .k-reset > .k-state-selected {
+            background-color: #37b400 !important;
+            border-color: #000000 !important;
+        }
+    /* .Main_ProgressBar,
          .Main_ProgressBar:hover,
          .k-ghost-splitbar-horizontal,
          .k-ghost-splitbar-vertical,
@@ -47,84 +49,82 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-12">
+
+    <div class="col-sm-4">
         <div class="card ">
-
-            <div class="card-header" style="background: #eceff1;">
-                <div class="row">
-
-                    <div class="col-sm-9">
-                        <h6>
-                            <span class=" txt-project-title" style="font-weight: bold;margin-right: 15px !important;"></span>
-                        </h6>
-                    </div>
-
-                    <div class="col-sm-3 " style="text-align: end;">
-
-                        <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
-                        <span class="badge badge-info    project-number">   </span>
-
-
-                    </div>
-
-                </div>
-
-
-
-
-
-            </div>
-            <div class="card-block" style="min-height: 20rem;">
-
-                <div class="">
-                    <div class="m-b-20">
-                        <h6 class="sub-title m-b-15">@ProjectUI.ProjectUI.lblOverview</h6>
-                        <hr />
-                        <p class="txt-description" style="overflow-x: auto;height: 20rem;">
-                    </div>
-
-
-
-
-                </div>
-            </div>
-
-            <div class="card-footer">
-
-                <div class="row">
-
+            <ul class="nav nav-tabs  tabs  " role="tablist">
+                <li class="nav-item  ">
+                    <a class="nav-link active" data-toggle="tab" href="#" role="tab">@ProjectUI.ProjectUI.lblProjectInformation</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tabs">
+                <div class="tab-pane active" id="" role="tabpanel">
                     <div class="">
-                        <div class="col-sm-4">
-                            <span class="badge ">@ProjectUI.ProjectUI.lblStatus:</span>
-                            <select class="project_status_ddl" onchange="fnChangeProject_MainStatus(this);" id="" style="background-color: #49626a; color: white; font: bold;">
 
-                                <option value="Active">Active</option>
-                                <option value="Closed">Closed</option>
-                                <option value="Hold">Hold</option>
-                                <option value="Delay">Delay</option>
-                                <option value="Completed">Completed</option>
-                            </select>
+                        <table class="table table-striped table-border">
+                            <tbody>
+
+                                <tr>
+                                    <td>@ProjectUI.ProjectUI.lblProjectNo</td>
+                                    <td class=" "> <h6 class="btn-info btn    project-number" style="display:inline">   </h6></td>
+                                </tr>
+                                <tr>
+                                    <td> @ProjectUI.ProjectUI.lblProject :</td>
+                                    <td class="">
+                                        <h6>  <span class=" txt-project-title" style="font-weight: bold;margin-right: 15px !important;"></span> </h6>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>@ProjectUI.ProjectUI.lblStatus</td>
+                                    <td>
+                                        @*<select class="project_status_ddl form-control" onchange="fnChangeProject_MainStatus(this);" id="" style="background-color: #49626a; color: white; font: bold;height:3rem">*@
+                                        <select class="project_status_ddl form-control" onchange="fnChangeProject_MainStatus(this);" id="" style="font: bold;height:3rem">
+
+                                            <option value="Active">Active</option>
+                                            <option value="Closed">Closed</option>
+                                            <option value="Hold">Hold</option>
+                                            <option value="Delay">Delay</option>
+                                            <option value="Completed">Completed</option>
+                                        </select>
+
+
+                                    </td>
+                                </tr>
 
 
 
-                        </div>
-                        <div class="col-sm-2"> </div>
+                            </tbody>
+                        </table>
+                
+
+                    </div>
+                    <div class="card-footer">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
+                                <span class="badge badge-danger    text-project-created-by">   </span>
 
 
-                        <div class="col-sm-6 " style="text-align: end;">
-
-                            <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
-                            <span class="badge badge-danger    text-project-created-by">   </span>
+                            </div>
 
 
                         </div>
                     </div>
-
                 </div>
             </div>
+
+
+
+
         </div>
     </div>
-    <div class="col-sm-5">
+
+    <div class="col-sm-4">
         <div class="card ">
             <ul class="nav nav-tabs  tabs  " role="tablist">
                 <li class="nav-item  ">
@@ -190,13 +190,13 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div id="Main_ProgressBar" class="Main_ProgressBar" ></div>
+                            <div id="Main_ProgressBar" class="Main_ProgressBar"></div>
 
                         </div>
                         @*<div class="col-sm-2">
-                            <b><span class="Main_ProgressBar_Percentage"></span></b>
+                                <b><span class="Main_ProgressBar_Percentage"></span></b>
 
-                        </div>*@
+                            </div>*@
                     </div>
                 </div>
                 <div class="tab-pane" id="ClientInformation" role="tabpanel">
@@ -231,7 +231,7 @@
 
         </div>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-4">
         <div class="card  ">
             <ul class="nav nav-tabs  tabs  " role="tablist">
                 <li class="nav-item  ">

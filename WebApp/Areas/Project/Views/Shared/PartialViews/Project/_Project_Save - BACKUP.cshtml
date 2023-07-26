@@ -1,0 +1,151 @@
+﻿
+
+
+
+
+<div class="row">
+    <form id="frmAddUpdateProject" name="frmAddUpdateProject" action="/services/Xtreme/multipart" method="post">
+        <div class="card">
+            <div class="card-block">
+
+                <input type="hidden" name="Id" id="Id" value="0">
+                <input type="hidden" name="HR_Employee_Id" id="HR_Employee_Id" value="0">
+                <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
+                <input type="hidden" name="ProjectStatus" id="ProjectStatus" value="0%" />
+                <input type="hidden" name="type" id="type" value="Project_Save">
+                <input type="hidden" name="Language" id="Language" value="">
+
+                <div class="row">
+                    <div class="col-sm-4"> 
+                        <div class="input-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblClient </label> <span style="color: red">*</span><br />
+                            <input class="form-control " id="ClientDDL" required style="width:70%" />
+                            <input type="hidden" class="form-control" id="Client_Id" name="Client_Id" value="" />
+                            <div class="input-group-append">
+                                <a href="@Url.Action("Save","Client")" class="btn btn-success" style="height: 31px; font-size: small;" id=""> <i class="fa fa-plus"></i> Add</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblProject</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="NameEng" id="NameEng" value="" placeholder="Enter Name" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblOld @ProjectUI.ProjectUI.lblProject #</label><br />
+                            <input type="number" class="form-control pname" name="OldProjectNo" id="OldProjectNo" value="0">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" style="display:none;">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblProject</label><span style="color:red"> *</span><br />
+                            <input type="text" class="form-control pname" name="NameArb" id="NameArb" value=" " placeholder="Enter Name">
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6" id="ProfileImageDiv">
+                        <div class="form-group">
+                            <label class="col-form-label">@Resources.Global.lblDocumentAttachment   </label><br />
+                            <input type="file" class="form-control" name="ProjectImage" id="ProjectImage" multiple />
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblProjectDetails </label><br />
+                            <textarea type="text" class="form-control editor " name="DescriptionEng" id="DescriptionEng" value=""></textarea>
+                            <input type="hidden" class="form-control  " name="DescriptionArb" id="DescriptionArb" value=" " />
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="col-sm-12"  style="display:none;">
+                            <div class="form-group">
+                                <textarea type="text" class="form-control editor" name="DescriptionArb" id="DescriptionArb" value=""></textarea>
+                            </div>
+                        </div>
+                    </div>*@
+
+
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblProjectCategory </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="ProjectCategoryDDL" value="" required />
+                            <input type="hidden" class="form-control" id="ProjectCategoryType_In_Setup_TypeDetail_Id" name="ProjectCategoryType_In_Setup_TypeDetail_Id" value="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblCity </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="CityDDL" required />
+                            <input type="hidden" class="form-control" id="City_Id" name="City_Id" value="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblVIP ? </label> <span style="color: red">*</span><br />
+                            <select class="form-control" name="IsVIP" id="IsVIP" required>
+                                <option value="">--Select--</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblUrgent ? </label> <span style="color: red">*</span><br />
+                            <select class="form-control" name="IsUrgent" id="IsUrgent" required>
+                                <option value="">--Select--</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label> <span style="color: red">*</span><br />
+                            <input class="form-control" id="Location" name="Location" required style="height: 10rem;">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success  pull-right" id="btn-save-project"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+
+                            <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+

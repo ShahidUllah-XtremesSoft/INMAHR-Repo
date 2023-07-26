@@ -432,6 +432,7 @@ public enum ProjectStoreProcedure
     Project_Delete,
     Project_HR_Employee,
     Project_Linked_Employees_By_SectionId,
+    Project_Linked_Employees_By_Parent,
     Project_Linked_Employees_By_Project_Id_Get,
     Project_Linked_Employees_By_ProjectId,
 

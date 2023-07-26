@@ -1,0 +1,86 @@
+﻿
+<style>
+    .highlighted-row {
+        /*background-color: #7a530273;*/
+        background-color: #7a530229;
+    }
+
+        .highlighted-row.k-alt {
+            background-color: #7a530229;
+        }
+</style>
+
+<div class="card">
+    <div class="card-block">
+        <input type="hidden" name="Language" id="Language" />
+        <input type="hidden" name="CreatedBy" id="CreatedBy" />
+        <div class="row">
+         
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.Global.lblStartDate</label>
+                    <input type="text" class="form-control" id="StartDate" name="StartDate" value="" />
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-form-label">@Resources.Global.lblEndDate</label>
+                    <input type="date" class="form-control" id="EndDate" name="EndDate" value="" />
+                </div>
+
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                </div>
+
+            </div>
+            @*<div class="col-md-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success @Resources.Common.PullRight" value="Search" style="margin-top:33px;" id="btnReset"><i class="fa fa-refresh"></i> @Resources.Global.lblReset</button>
+                </div>
+
+            </div>*@
+ 
+        </div>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="AttendanceGrid"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" id="btn-show-leave-details-modal" hidden class="btn btn-primary" data-toggle="modal" data-target="#modalShowLeaveDetails">   </button>
+<div class="modal fade" id="modalShowLeaveDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="max-width:1150px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="leave-history-modal-title" id="myModalLabel">.History</h4>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div id="grid-show-leave-details">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+

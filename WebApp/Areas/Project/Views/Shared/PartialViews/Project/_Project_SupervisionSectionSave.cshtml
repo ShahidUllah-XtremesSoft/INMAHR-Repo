@@ -1,6 +1,12 @@
 ﻿
 
-
+<style>
+    .btn-secondary:active, .btn-secondary.active, .open > .btn-secondary.dropdown-toggle, .selectedColor {
+        color: #263238;
+        background-color: oldlace;
+        border-color: 1px black;
+    }
+</style>
 
 
 
@@ -16,14 +22,14 @@
     <input type="hidden" name="SupervisionSection_Document_Language" id="SupervisionSection_Document_Language" class="Language" value="">
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <div class="form-group">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
                 <input class="form-control" id="Project_Supervision_Section_Parent_Type_DDL" name="Project_Supervision_Section_Parent_Type_DDL" required />
                 <input type="hidden" class="form-control" id="Setup_SetupType_Id_for_Supervision_Section" name="Setup_SetupType_Id_for_Supervision_Section" value="0" />
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <div class="form-group">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
                 <input type="text" class="form-control pname" name="Project_SupervisionSection_SetupDetailTypeDDL" id="Project_SupervisionSection_SetupDetailTypeDDL" required>
@@ -31,105 +37,119 @@
                 <input type="hidden" class="form-control pname" name="Project_Supervision_Section_Parent_Type_DDL_Text" id="Project_Supervision_Section_Parent_Type_DDL_Text" value=" ">
             </div>
         </div>
+        <div class="col-sm-63"> </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
 
-            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i>@ProjectUI.ProjectUI.lblUploadDocument</button>
-            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Available Employee"><i class=""></i>  @ProjectUI.ProjectUI.lblAvailableEmployees </button>
-            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Assigned Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAssignedEmployees </button>
-            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Update Supervision"><i class=""></i>@ProjectUI.ProjectUI.lblUpdateSupervision   </button>
+            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue_SupervisionSection" value="Available Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i>  @ProjectUI.ProjectUI.lblAvailableEmployees </button>
+            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue_SupervisionSection" value="Assigned Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i> @ProjectUI.ProjectUI.lblAssignedEmployees </button>
+            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left  checkbtnValue_SupervisionSection" value="Upload Document"><i class="fa fa-arrow-down"></i> <i class="fa fa-file"></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
+            <button type="button" onclick="fnLoadSupervisionSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue_SupervisionSection" value="Update Supervision"><i class="fa fa-arrow-down"></i> @ProjectUI.ProjectUI.lblUpdateSupervision   </button>
 
         </div>
     </div>
-    <div class="div-Supervision-section-document-upload-area form-control">
-
+    <div class="div-Supervision-section-document-upload-area form-control selectedColor" style="display:none;">
         <div class="row">
+            <div class="col-sm-3">
+                <div class="row">
 
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                    @*<input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required id="SupervisionSectionGovernmentDocumentFile" onchange="validatePersonalDocument('SupervisionSectionGovernmentDocumentFile');" />*@
-                    <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required id="SupervisionSectionGovernmentDocumentFile"/>
-                </div>
-            </div><div class="col-sm-6">  </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                    <input class="form-control" type="datetime" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" required />
-                </div>
-            </div>
-
-
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
-
-                    <input class="form-control" type="datetime" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate"    onchange="fnCheck_NoExpiry_SupervisionSection(this,'EndDate')"/>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-
-                    <br />
-                    <br />
-                    <label class="btn " for="SupervisionSection_Document_NoExpiry_Call">
-                        <input type="radio" id="SupervisionSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_SupervisionSection(this,'RadioButton')">
-                        <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
-                    </label>
-                    <input type="hidden" id="SupervisionSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="SupervisionSection_Document_NoExpiry">
-                </div>
-            </div>
-        </div>
-        @*<div class="row">
-                <div class="col-md-6">
-                    <div class="">
+                    <div class="col-sm-12">
                         <div class=" ">
-                            <label class="col-form-label">.Select Finance</label>
-                            <select name="supervsn_finance" id="supervsn_finance" class="form-control" multiple="multiple" required>
-                                <option value="Owner">Owner</option>
-                                <option value="SZHP">SZHP</option>
-                                <option value="Government Of Sharjah">Government Of Sharjah</option>
-                                <option value="Dewan">Dewan</option>
-                                <option value="Emirates Islamic Bank">Emirates Islamic Bank</option>
-                                <option value="Emirates Development Bank">Emirates Development Bank</option>
-                                <option value="Other">Other</option>
+                            <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
+                            @*<input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required id="SupervisionSectionGovernmentDocumentFile" onchange="validatePersonalDocument('SupervisionSectionGovernmentDocumentFile');" />*@
+                            <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required id="SupervisionSectionGovernmentDocumentFile" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class=" ">
+                            <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                            <input class="form-control" type="datetime" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-8">
+                        <div class=" ">
+                            <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                            <input class="form-control" type="datetime" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" onchange="fnCheck_NoExpiry_SupervisionSection(this,'EndDate')" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class=" ">
+
+                            <br />
+                            <br />
+                            <label class="btn " for="SupervisionSection_Document_NoExpiry_Call">
+                                <input type="radio" id="SupervisionSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_SupervisionSection(this,'RadioButton')">
+                                <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
+                            </label>
+                            <input type="hidden" id="SupervisionSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="SupervisionSection_Document_NoExpiry">
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="col-md-6">
+                            <div class="">
+                                <div class=" ">
+                                    <label class="col-form-label">.Select Finance</label>
+                                    <select name="supervsn_finance" id="supervsn_finance" class="form-control" multiple="multiple" required>
+                                        <option value="Owner">Owner</option>
+                                        <option value="SZHP">SZHP</option>
+                                        <option value="Government Of Sharjah">Government Of Sharjah</option>
+                                        <option value="Dewan">Dewan</option>
+                                        <option value="Emirates Islamic Bank">Emirates Islamic Bank</option>
+                                        <option value="Emirates Development Bank">Emirates Development Bank</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class=" ">
+                            <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                            <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class=" ">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                            <span style="color: red">*</span>
+                            <select class="form-control" id="SupervisionSection_comment_for_client_or_employee" name="SupervisionSection_comment_for_client_or_employee" required>
+                                <option value="" selected>Select</option>
+                                <option value="Employee">Employee</option>
+                                <option value="Client">Client</option>
+                                <option value="Both">Both</option>
+                                <option value="NoRemarks">No Remarks</option>
                             </select>
                         </div>
                     </div>
                 </div>
-
-            </div>*@
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                    <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success  pull-right" id="btn-save-supervision-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                            <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
-                    <span style="color: red">*</span>
-                    <select class="form-control" id="SupervisionSection_comment_for_client_or_employee" name="SupervisionSection_comment_for_client_or_employee" required>
-                        <option value="" selected>Select</option>
-                        <option value="Employee">Employee</option>
-                        <option value="Client">Client</option>
-                        <option value="Both">Both</option>
-                        <option value="NoRemarks">No Remarks</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-success  pull-right" id="btn-save-supervision-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                    <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
-                </div>
+            <div class="col-sm-9">
+                @{
+                    Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_SupervisionSection_Document_Grid.cshtml");
+                }
             </div>
         </div>
     </div>
@@ -140,77 +160,70 @@
     <input type="hidden" name="SupervisionSection_Update_Area_Language" id="SupervisionSection_Update_Area_Language" value="">
     <input type="hidden" name="SupervisionSection_Update_Area_CreatedBy" id="SupervisionSection_Update_Area_CreatedBy" value="0" />
     <input type="hidden" name="SupervisionSection_Update_Area_ProjectId" id="SupervisionSection_Update_Area_ProjectId" value="0">
-    <div class="div-Supervision-section-update-supervision-area form-control" style="display:none;">
+    <div class="div-Supervision-section-update-supervision-area form-control selectedColor" style="display:none;">
 
         <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
+            <div class="col-sm-4">
+                <div class=" ">
                     <label class="col-form-label">@ProjectUI.ProjectUI.lblContractor</label><span style="color:red"> *</span><br />
                     <input type="text" class="form-control pname" name="Project_SupervisionSection_Contractor_DDL" id="Project_SupervisionSection_Contractor_DDL" required>
                     <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Contractor_Id" id="Project_SupervisionSection_Contractor_Id" value="0">
                 </div>
             </div>
-            <div class="col-md-6">
-
-            </div>
+            <div class="col-md-8">  </div>
         </div>
         <div class="row">
-
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                            <input class="form-control" type="datetime" id="ConstructionStartDate" name="ConstructionStartDate" required />
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label  ">@ProjectUI.ProjectUI.lblConstructionMonths</label>  <br />
-                            <input class="form-control" type="number" id="ConstructionMonths" name="ConstructionMonths" value="0" />
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
-                            <input class="form-control" type="datetime" id="ConstructionEndDate" name="ConstructionEndDate" required />
-                        </div>
-                    </div>
+            <div class="col-sm-2">
+                <div class=" ">
+                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="datetime" id="ConstructionStartDate" name="ConstructionStartDate" required />
                 </div>
             </div>
-        </div>
-        <div class="row">
-
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label lbl-ExtendedConstructionStartDate-startDate">@ProjectUI.ProjectUI.lblExtendedConstructionStartDate</label> <span style="color:red">*</span> <br />
-                            <input class="form-control" type="datetime" id="ExtendedConstructionStartDate" name="ExtendedConstructionStartDate" />
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label  ">@ProjectUI.ProjectUI.lblExtendedConstructionMonths</label>  <br />
-                            <input class="form-control" type="number" id="ExtendedConstructionMonths" name="ExtendedConstructionMonths" value="0" />
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label lbl-ExtendedConstructionEndDate-endDate">@ProjectUI.ProjectUI.lblExtendedConstructionEndDate</label> <span style="color:red">*</span> <br />
-                            <input class="form-control" type="datetime" id="ExtendedConstructionEndDate" name="ExtendedConstructionEndDate" />
-                        </div>
-                    </div>
+            <div class="col-sm-2">
+                <div class=" ">
+                    <label class="col-form-label  ">@ProjectUI.ProjectUI.lblConstructionMonths</label>  <br />
+                    <input class="form-control" type="number" id="ConstructionMonths" name="ConstructionMonths" value="0" />
                 </div>
             </div>
+
+
+            <div class="col-sm-2">
+                <div class=" ">
+                    <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="datetime" id="ConstructionEndDate" name="ConstructionEndDate" required />
+                </div>
+            </div>
+            <div class="col-sm-6"></div>
         </div>
+
+
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
+            <div class="col-sm-2">
+                <div class=" ">
+                    <label class="col-form-label lbl-ExtendedConstructionStartDate-startDate">@ProjectUI.ProjectUI.lblExtendedConstructionStartDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="datetime" id="ExtendedConstructionStartDate" name="ExtendedConstructionStartDate" />
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class=" ">
+                    <label class="col-form-label  ">@ProjectUI.ProjectUI.lblExtendedConstructionMonths</label>  <br />
+                    <input class="form-control" type="number" id="ExtendedConstructionMonths" name="ExtendedConstructionMonths" value="0" />
+                </div>
+            </div>
+
+
+            <div class="col-sm-2">
+                <div class=" ">
+                    <label class="col-form-label lbl-ExtendedConstructionEndDate-endDate">@ProjectUI.ProjectUI.lblExtendedConstructionEndDate</label> <span style="color:red">*</span> <br />
+                    <input class="form-control" type="datetime" id="ExtendedConstructionEndDate" name="ExtendedConstructionEndDate" />
+                </div>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class=" ">
                     <label class="col-form-label">@ProjectUI.ProjectUI.lblFinance</label><span style="color:red"> *</span><br />
                     @*<select class="form-control" multiple="multiple" name="Project_SupervisionSection_Finance_DDL" id="Project_SupervisionSection_Finance_DDL" required></select>*@
                     <div id="avoidMultipleDDLappends">
@@ -219,22 +232,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6"> </div>
+            <div class="col-md-8"> </div>
 
         </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card-footer">
                     <button class="btn btn-success  pull-right" id="btn-save-supervision-update-section-area"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<div class="div-Supervision-section-assigned-employees-area" style="display:none;">
-    <br />
-    <br />
-    <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+<div class="div-Supervision-section-assigned-employees-area selectedColor" style="display:none;">
+    <strong>@Resources.ProjectUI.lblNOTE:</strong><span>@Resources.ProjectUI.lblPlease @Resources.ProjectUI.lblSelect<b> @Resources.ProjectUI.lblSection</b> & <b>@Resources.ProjectUI.lblFile </b> @Resources.ProjectUI.lblFor.ToLower()  @Resources.ProjectUI.lblfilter.ToLower() @Resources.ProjectUI.lblEngineer.ToLower()</span>
+
     <div class="grid-main-div">
         <div class="row">
             <div class="col-md-12">
@@ -250,10 +262,10 @@
 
 
 
-<div class="div-Supervision-section-document-upload-area">
-    @{
-        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_SupervisionSection_Document_Grid.cshtml");
-    }
+@*<div class="div-Supervision-section-document-upload-area">
+        @{
+            Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_SupervisionSection_Document_Grid.cshtml");
+        }
 
-</div>
+    </div>*@
 <div id="div-Supervision-section-employees-area"></div>

@@ -53,12 +53,12 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
     var gridColumns = [
         { field: "attachmentId", title: "attachmentId", hidden: true, width: 20 },
         { field: "TechnicalSection_Document_Id", title: "TechnicalSection_Document_Id", hidden: true },
-        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 20, },
         {
             field: "currentFileName",
             title: lblDocumentAttachment,
             hidden: false,
-            width: 20,
+            width: 50,
             filterable: false,
             template: " #  if (currentFileName == null )" +
                 " { # <label class='pcoded-badge label label-danger'>"+lblNoAttachment+"</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
@@ -70,20 +70,20 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
 
         },
         { field: "documentType", title: "documentType", hidden: true},
-        { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+        { field: "combineDocumentType", title: documentType, hidden: false, width: 200, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         {
-            field: "releaseDate", title: lblIssueDate, hidden: false, width: 20, filterable: false ,
+            field: "releaseDate", title: lblIssueDate, hidden: false, width: 70, filterable: false ,
             template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
         },
         {
-            field: "expiryDate", title: lblEndDate, hidden: false, width: 20, filterable: false,
+            field: "expiryDate", title: lblEndDate, hidden: false, width: 70, filterable: false,
           //  template: "   <label class='badge   badge-danger'>#=expiryDate #</label>",
             template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
         },
 
         {
-            field: "expiryIn", title: lblExpiresIn, hidden: false, width: 15, filterable: false,
+            field: "expiryIn", title: lblExpiresIn, hidden: false, width: 70, filterable: false,
            // template: "   <label class='badge   badge-success'>#=expiryIn #</label>"
             template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
                 " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
@@ -94,7 +94,7 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
         {
             title: status,
             field: 'status',
-            width: 10,
+            width: 70,
             hidden: false,
             filterable: false,
             template: "#if (totalDays <= 0 && noExpiry == 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
@@ -105,7 +105,7 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
         {
             field: "attachmentRemarks",
             title: lblRemarks,
-            width: 70,
+            width: 200,
             hidden: false,
             filterable: false,
        //     template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
@@ -121,7 +121,7 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
         },
         {
             field: "",
-            width: 10,
+            width: 30,
             title: ' ',
 
             template:
@@ -130,7 +130,7 @@ var fn_Load_TechnicalSection_DocumentByIdResponse = function (inputDataJSON) {
 
 
     ];
-    bindKendoGrid('TechnicalSection_Document_KendoGrid', 50, gridColumns, inputDataJSON, true, 400);
+    bindKendoGrid('TechnicalSection_Document_KendoGrid', 50, gridColumns, inputDataJSON, true, 435);
 
 };
 

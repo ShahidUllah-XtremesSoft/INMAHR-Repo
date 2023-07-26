@@ -14,9 +14,9 @@
                 <input type="hidden" name="Language" id="Language" value="">
 
                 <div class="row">
-                    <div class="col-sm-6" id="ProfileImageDiv">
+                    <div class="col-sm-3" id="ProfileImageDiv">
                         <div class="form-group">
-                            <label class="col-form-label">@ProjectUI.ProjectUI.lblImage</label><br />
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblImage (@ProjectUI.ProjectUI.lblOptional)</label><br />
                             <input type="file" class="form-control" name="ProfileImage" id="ProfileImage" onchange="validateFileType('ProfileImage',['png', 'jpg']);" />
                         </div>
                     </div>
@@ -42,18 +42,19 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 1</label> <span style="color: red">*</span><br />
-                            <input type="text" class="form-control " id="PhoneNumber1" name="PhoneNumber1" placeholder="Enter Phone Number" maxlength="20" required onkeypress="return only0To9Allowed(event);"/>
+                            <input type="text" class="form-control " id="PhoneNumber1" name="PhoneNumber1" value="009715" maxlength="20" required onkeypress="return only0To9Allowed(event);"/>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 2</label> <span style="color: red">*</span><br />
-                            <input type="text" class="form-control " id="PhoneNumber2" name="PhoneNumber2" placeholder="Enter Phone Number" maxlength="20" required onkeypress="return only0To9Allowed(event);"/>
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 2</label> <br />
+                            <input type="text" class="form-control " id="PhoneNumber2" name="PhoneNumber2"value="009715" maxlength="20"   onkeypress="return only0To9Allowed(event);"/>
                         </div>
                     </div>
+                    <div class="col-sm-6">  </div>
 
 
 
@@ -61,38 +62,39 @@
                 <div class="row">
 
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 1</label> <span style="color: red">*</span><br />
                             <input type="text" class="form-control" id="Email1" name="Email1" placeholder="Enter Email" required />
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 2</label> <span style="color: red">*</span><br />
-                            <input type="text" class="form-control" id="Email2" name="Email2" placeholder="Enter Email" required />
-                        </div>
-                    </div> 
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="col-form-label">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature </label> <br />
-                            <input type="file" class="form-control" name="ClientSignature" id="ClientSignature" onchange="validateFileType('ClientSignature',['png', 'jpg']);" /> 
-                   
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 2</label>  <br />
+                            <input type="text" class="form-control" id="Email2" name="Email2" placeholder="Enter Email" value=" " />
                         </div>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature </label> <br />
+                            <input type="file" class="form-control" name="ClientSignature" id="ClientSignature" onchange="validateFileType('ClientSignature',['png', 'jpg']);" />
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3">  </div>
 
                 </div>
 
                 <div class="row">
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblNationality </label> <span style="color: red">*</span><br />
                             <input class="form-control" id="NationalityDDL" value="" required readonly />
                             <input type="hidden" class="form-control" id="Nationality_Id" name="Nationality_Id" value=""  />
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblCity </label> <span style="color: red">*</span><br />
                             <input class="form-control" id="CityDDL"   required />
@@ -109,10 +111,10 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label> <span style="color: red">*</span><br />
-                            <input class="form-control" id="Location" name="Location" maxlength="500" required style="height: 10rem;">
+                            <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label>  <br />
+                            <input class="form-control" id="Location" name="Location" maxlength="500" value=" "   style="height: 5rem;">
 
                         </div>
                     </div>

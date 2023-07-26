@@ -31,11 +31,12 @@ function fnLoadDesignSectionReady() {
 
         $('#DesignSection_Document_ProjectId').val(Parameter_Project_Id);
         loadProjectSectiondownList();
-        fnLoadDesignSection_GovernmentDocument_(Parameter_Project_Id);
+        // fnLoadDesignSection_GovernmentDocument_(Parameter_Project_Id);
 
 
     }
 
+    fnLoadDesignSectionArea($('.checkbtnValue.active')[0]);
 
 }
 
@@ -96,6 +97,7 @@ $('#btn-save-design-section-government-documents').click(function () {
 
 function loadProjectSectiondownList() { ajaxRequest({ commandName: 'DDL_DESIGN_SECTION_Project_MainType', values: { Language: _currentLanguage }, CallBack: fnloadloadProjectSectiondownListCallBack }); }
 function fnloadloadProjectSectiondownListCallBack(response) {
+
     $("#Project_Section_Parent_Type_DDL").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
@@ -175,30 +177,31 @@ var loadProject_DesignSection_SubSection_DDLCallBackk = function (loadjQueryDrop
 
 }
 function onSelect(e) {
+
     var selected_Id = e.dataItem.id;
     $('#Project_DesignSection_Entity_Id').val(selected_Id);
     var selected_Text = e.dataItem.name;
-    if (selected_Text == 'Architecture Engineer' || selected_Text == 'Engineer') {
+    //   if (selected_Text == 'Architecture Engineer' || selected_Text == 'Engineer') {
 
-        //$("#div-design-section-employees-area").load("/Project/Project/LoadAllEmployees");
-        //setTimeout(function () {
+    //$("#div-design-section-employees-area").load("/Project/Project/LoadAllEmployees");
+    //setTimeout(function () {
 
-        //    $('.show-sub-section-name').empty();
-        //    $('.show-sub-section-name').append('' +
-        //        '<button type="button" class="btn btn-success waves-effect waves-light"> ' + localStorage.getItem('Main-Section-Name') + '</button>' +
-        //        '<button type="button" class="btn btn-outline-success waves-effect waves-light"> <i class="fa fa-arrow-right"></i></button>' +
-        //        '<button type="button" data-sub-section-id=' + selected_Id + ' data-main-section-id=' + $('#Setup_SetupType_Id').val() + ' class="btn btn-primary waves-effect waves-light sectionAndSubSectionId"> ' + selected_Text + '</button>');
-        //    //  $('.show-sub-section-name').append('<button type="button" data-sub-section-id=' + selected_Id + ' data-main-section-id=' + $('#Setup_SetupType_Id').val()+' class="btn btn-outline-primary waves-effect waves-light sectionAndSubSectionId"> ' + selected_Text + '</button>');
-        //}, 50);
-
-
+    //    $('.show-sub-section-name').empty();
+    //    $('.show-sub-section-name').append('' +
+    //        '<button type="button" class="btn btn-success waves-effect waves-light"> ' + localStorage.getItem('Main-Section-Name') + '</button>' +
+    //        '<button type="button" class="btn btn-outline-success waves-effect waves-light"> <i class="fa fa-arrow-right"></i></button>' +
+    //        '<button type="button" data-sub-section-id=' + selected_Id + ' data-main-section-id=' + $('#Setup_SetupType_Id').val() + ' class="btn btn-primary waves-effect waves-light sectionAndSubSectionId"> ' + selected_Text + '</button>');
+    //    //  $('.show-sub-section-name').append('<button type="button" data-sub-section-id=' + selected_Id + ' data-main-section-id=' + $('#Setup_SetupType_Id').val()+' class="btn btn-outline-primary waves-effect waves-light sectionAndSubSectionId"> ' + selected_Text + '</button>');
+    //}, 50);
 
 
 
-        fnLoadDesignSectionArea($('.checkbtnValue.active')[0]);
 
 
-    }
+    fnLoadDesignSectionArea($('.checkbtnValue.active')[0]);
+
+
+    // }
 };
 
 function fnLoadDesignSectionArea(e) {
@@ -210,42 +213,53 @@ function fnLoadDesignSectionArea(e) {
 
     if (areaname == 'Upload Document') {
         $('.div-design-section-document-upload-area').show();
+        //$('.div-design-section-document-upload-area').css('background-color','oldlace');
+
         $('#div-design-section-employees-area').hide();
         $('.div-design-section-assigned-employees-area').hide();
 
         $('.div-show-only-for-design-section-employee-available-area').hide();
         //$('.show-sub-section-name').empty();
+        fnLoadDesignSection_GovernmentDocument_(Parameter_Project_Id == 0 || Parameter_Project_Id == null ? $('#DesignSection_Document_ProjectId').val() : Parameter_Project_Id);
+
 
 
     } else if (areaname == 'Available Employee') {
 
         $('#div-design-section-employees-area').show();
         $('.div-show-only-for-design-section-employee-available-area').show();
+        if ($("#div-design-section-employees-area").children().length <= 0) {
 
-        $("#div-design-section-employees-area").load("/Project/Project/LoadAllEmployeess");
+            $("#div-design-section-employees-area").load("/Project/Project/LoadAllEmployeess");
+        }
         $('.div-design-section-document-upload-area').hide();
         $('.div-design-section-assigned-employees-area').hide();
     } else if (areaname == 'Assigned Employee') {
 
 
-        if ($('#Project_DesignSection_Entity_Id').val() == '0') {
-            swalMessage('info', 'Please select section and sub section', 2500);
+        //  if ($('#Project_DesignSection_Entity_Id').val() == '0') {
+        //     swalMessage('info', 'Please select section and sub section', 2500);
+        //   } else {
+
+         
+        if ($('#Project_DesignSection_Entity_Id').val() > 0) {
+            fnloadAssignedEmployees($('#Project_DesignSection_Entity_Id').val());
         } else {
-
-            fnloadAssignedEmployees($('#Project_DesignSection_Entity_Id').val());   
-
-            $('.div-design-section-assigned-employees-area').show();
-            $('#div-design-section-employees-area').hide();
-            $('.div-design-section-document-upload-area').hide();
-            $('.div-show-only-for-design-section-employee-available-area').hide();
+            fnLoadDefault_AssignedEmployees('DesignSection'); 
         }
+
+        $('.div-design-section-assigned-employees-area').show();
+        $('#div-design-section-employees-area').hide();
+        $('.div-design-section-document-upload-area').hide();
+        $('.div-show-only-for-design-section-employee-available-area').hide();
+        //  }
     }
 }
 
 
 
 function fnCheck_NoExpiry(e, areaName) {
-     
+
     if (areaName == 'EndDate') {
         $('#DesignSection_Document_NoExpiry_Call')[0].checked = false
         $('#DesignSection_Document_NoExpiry').val(0);

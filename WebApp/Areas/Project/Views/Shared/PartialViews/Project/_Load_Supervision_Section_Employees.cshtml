@@ -1,19 +1,44 @@
-﻿<div class="div-show-only-for-supervision-section-employee-available-area form-control" style="display:block">
+﻿<div class="div-show-only-for-supervision-section-employee-available-area form-control selectedColor" style="display:block">
     <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
-                <input class="form-control" type="datetime" id="SupervisionSection_AssignedDocument_StartDate" value="" />
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
+                        <input class="form-control" type="datetime" id="SupervisionSection_AssignedDocument_StartDate" value="" />
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
-                <input class="form-control" type="text" id="SupervisionSection_CompletionDate" value="" />
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                        <input class="form-control" type="text" id="SupervisionSection_CompletionDate" value="" />
+                    </div>
+                </div>
             </div>
+            <div class="row ">
+
+                <div class="col-md-12">
+                    <div class="card-footer" id="btnAreaShowHideOnConditionBase">
+                        <button type="button" id="btn-save-Supervision-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                    </div> 
+                </div> 
+            </div> 
         </div>
+        <div class="col-md-9">
+            <div class="grid-main-div">
+                <div class="row">
+                    <div class="col-md-12"> 
+                        <div id="grid-load-supervision-section-all-employees">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
 
 </div>
@@ -24,46 +49,7 @@
 
             </div>
         </div>
-    </div>*@
-
-<div class="row ">
-    @*<div class="col-md-12">
-            <div class="form-group  typeddlRow">
-                <label class="col-form-label">Select @ProjectUI.ProjectUI.lblType</label><span style="color:red"> *</span><br />
-                <div id="container">
-
-                    <input type="text" class="form-control pname" id="Project_SupervisionSection_SetupDetail_TypeDDL">
-                </div>
-                <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Type_SetupDetail_Id" id="Project_SupervisionSection_Type_SetupDetail_Id" value="0">
-            </div>
-        </div>*@
-
-    <div class="col-md-12">
-        <div class="card-footer" id="btnAreaShowHideOnConditionBase">
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="button" id="btn-save-Supervision-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-<div class="grid-main-div">
-    <div class="row">
-        <div class="col-md-12">
-
-            <div id="grid-load-supervision-section-all-employees">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal-footer"> </div>
-
-
+    </div>*@ 
 
 <script>
     $(function () {
@@ -72,7 +58,7 @@
         //| Date Picker
         renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
         renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
-      //|End Date Picker
+        //|End Date Picker
 
         setTimeout(function () {
             if (parameterId == null || parameterId == 0 || parameterId == '') {
@@ -111,7 +97,7 @@
     }
     var bindloadSupervisionSectionAllEmployees = function (inputDataJSON) {
 
-
+        
         var gridColumnss = [
 
             { title: "#", template: "<b>#= ++record #</b>", width: 15 },
@@ -122,6 +108,8 @@
             },
             { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             { field: "professionName", title: lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "employee_TotalProject", title: employee_TotalProject, width: 30, filterable: false },
+
             {
                 headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
                 template: function (dataItem) {
@@ -136,10 +124,10 @@
             },
 
         ];
-      
 
-            bindKendoGrid('grid-load-supervision-section-all-employees', 100, gridColumnss, inputDataJSON, true, 550);
-      
+
+        bindKendoGrid('grid-load-supervision-section-all-employees', 100, gridColumnss, inputDataJSON, true, 550);
+
 
 
 
@@ -158,8 +146,8 @@
 
 
     //---------------- BUTTON EVENTS
-    $('#btn-save-Supervision-section-employees').click(function (e) {
-     
+    $('#btn-save-Supervision-section-employees').unbind("click").click(function (e) {
+
         var valid = true;
 
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
@@ -265,7 +253,7 @@
         //| Date Picker
         renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_AssignedDocument_StartDate');
         renderKendoDateAndTimePickerWithNewFormat('SupervisionSection_CompletionDate');
-      //|End Date Picker
+        //|End Date Picker
 
     }
 

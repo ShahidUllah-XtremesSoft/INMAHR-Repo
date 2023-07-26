@@ -1,24 +1,77 @@
 ﻿
 
-<div class="div-show-only-for-technical-section-employee-available-area form-control" style="display:block">
+<div class="div-show-only-for-technical-section-employee-available-area form-control selectedColor" style="display:block">
     <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
-                <input class="form-control" type="datetime" id="TechnicalSection_AssignedDocument_StartDate" value="" />
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
-                @*<input class="form-control" type="date"  id="DesignSection_AssignedDocument_StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")"  />*@
-                <input class="form-control" type="text" id="TechnicalSection_CompletionDate" value="" />
-            </div>
-        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
+                        <input class="form-control" type="datetime" id="TechnicalSection_AssignedDocument_StartDate" value="" />
+                    </div>
+                </div>
 
-        
-    </div> 
-     
+
+
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                        @*<input class="form-control" type="date"  id="DesignSection_AssignedDocument_StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")"  />*@
+                        <input class="form-control" type="text" id="TechnicalSection_CompletionDate" value="" />
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="form-group  typeddlRow">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSelect @ProjectUI.ProjectUI.lblType</label> <br />
+                        <div id="container">
+
+                            <input type="text" class="form-control pname" id="Project_TechnicalSection_SetupDetail_TypeDDL">
+                        </div>
+                        <input type="hidden" class="form-control pname" name="Project_TechnicalSection_Type_SetupDetail_Id" id="Project_TechnicalSection_Type_SetupDetail_Id" value="0">
+                    </div>
+                </div>
+                @*
+                        <button type="button" id="btnPendingData" onclick="fnLoadGridById_for_Technical_Section(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> Available Employees</button>
+                        <button id="btnApprovedData" onclick="fnLoadGridById_for_Technical_Section(this.value);" class="btn btn-outline-info pull-left" value="Assigned"><i class=""></i> Assigned </button>
+                        <div id="btnAreaShowHideOnConditionBase">
+
+                            <button type="button" class="btn btn-danger pull-right btnClose " data-dismiss="modal">Close</button>
+                            <button type="button" id="btn-save-technical-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Save</button>
+
+                        </div>
+                    </div>*@
+                <div class="col-md-12">
+                    <div class="card-footer" id="btnAreaShowHideOnConditionBase">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" id="btn-save-technical-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <div class="grid-main-div">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div id="grid-load-tecnical-section-all-employees">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
@@ -28,57 +81,8 @@
         </div>
     </div>
 </div>
-<hr />
 
-<div class="">
-    <div class="row ">
-        <div class="col-md-12">
-            <div class="form-group  typeddlRow">
-                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSelect @ProjectUI.ProjectUI.lblType</label> <br />
-                <div id="container">
 
-                    <input type="text" class="form-control pname" id="Project_TechnicalSection_SetupDetail_TypeDDL">
-                </div>
-                <input type="hidden" class="form-control pname" name="Project_TechnicalSection_Type_SetupDetail_Id" id="Project_TechnicalSection_Type_SetupDetail_Id" value="0">
-            </div>
-        </div>
-        @*
-                <button type="button" id="btnPendingData" onclick="fnLoadGridById_for_Technical_Section(this.value);" class="btn btn-outline-danger  pull-left active" value="Pending"><i class=""></i> Available Employees</button>
-                <button id="btnApprovedData" onclick="fnLoadGridById_for_Technical_Section(this.value);" class="btn btn-outline-info pull-left" value="Assigned"><i class=""></i> Assigned </button>
-                <div id="btnAreaShowHideOnConditionBase">
-
-                    <button type="button" class="btn btn-danger pull-right btnClose " data-dismiss="modal">Close</button>
-                    <button type="button" id="btn-save-technical-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> Save</button>
-
-                </div>
-            </div>*@
-        <div class="col-md-12">
-            <div class="card-footer" id="btnAreaShowHideOnConditionBase">
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="button" id="btn-save-technical-section-employees" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-<div class="grid-main-div">
-    <div class="row">
-        <div class="col-md-12">
-
-            <div id="grid-load-tecnical-section-all-employees">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal-footer">
-
-</div>
 
 
 
@@ -87,15 +91,17 @@
         //| Date Picker
         renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_AssignedDocument_StartDate');
         renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_CompletionDate');
-      //|End Date Picker
+        //|End Date Picker
         //  $('#modal-load-all-technical-section-employees').modal();
 
         setTimeout(function () {
             if (parameterId == null || parameterId == 0 || parameterId == '') {
                 parameterId = $('#TechnicalSection_Document_ProjectId').val()
             }
+            
 
-            loadTechnicalSectionAllEmployees();
+                loadTechnicalSectionAllEmployees();
+            
 
             loadProject_TechnicalSection_SetupDetail_TypeDDL();
 
@@ -111,7 +117,7 @@
     });
 
     function loadTechnicalSectionAllEmployees() {
-         
+
         ajaxRequest({
             commandName: 'Project_HR_Employee', values: {
                 Project_Id: parameterId,
@@ -126,7 +132,7 @@
         bindloadTechnicalSectionAllEmployees(JSON.parse(inputDataJSON.Value));
     }
     var bindloadTechnicalSectionAllEmployees = function (inputDataJSON) {
-       
+
 
         var gridColumnss = [
 
@@ -138,6 +144,7 @@
             },
             { field: "empName", title: employeeName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             { field: "professionName", title: lblProfessionName, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "employee_TotalProject", title: employee_TotalProject, width: 30, filterable: false },
             {
                 headerTemplate: "<input type='checkbox' id='checkAll'  class='k-checkbox header-checkbox'>",
                 template: function (dataItem) {
@@ -154,7 +161,7 @@
         ];
 
         bindKendoGrid('grid-load-tecnical-section-all-employees', 100, gridColumnss, inputDataJSON, true, 550);
-        $("#grid-load-tecnical-section-all-employees thead [data-field=professionName] .k-link").html(".professionName")
+        /*$("#grid-load-tecnical-section-all-employees thead [data-field=professionName] .k-link").html(".professionName")*/
 
         $('#checkAll').show();
     };
@@ -172,7 +179,7 @@
 
 
     //---------------- BUTTON EVENTS
-    $('#btn-save-technical-section-employees').click(function (e) {
+    $('#btn-save-technical-section-employees').unbind("click").click(function (e) {
         var valid = true;
 
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
@@ -279,7 +286,7 @@
         //| Date Picker
         renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_AssignedDocument_StartDate');
         renderKendoDateAndTimePickerWithNewFormat('TechnicalSection_CompletionDate');
-      //|End Date Picker
+        //|End Date Picker
     }
 
 

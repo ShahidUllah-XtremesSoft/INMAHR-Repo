@@ -10,6 +10,7 @@ $(function () {
     _currentLanguage == 'en-US' ? loadCityDropdownListEng() : loadCityDropdownListArb();
     loadProjectCategoryTypeDDL();
     loadClientDDL();
+    fnLoadUnitReady();
     //--------------------------FN LOAD AREA END --------------------------
     if (parameterId > 0 == true) {
         fnEditProjectById(parameterId);
@@ -31,7 +32,7 @@ $(function () {
                 success: function (response, statusText, jqXHR) {
                     buttonRemovePleaseWait('btn-save-project', save, 'save');
 
-                    swal(response);
+                    // swal(response);
                     var messageResponseParse = JSON.parse(response);
                     if (messageResponseParse.type == undefined) {
                         messageResponseParse = JSON.parse(messageResponseParse);
@@ -148,7 +149,7 @@ $(function () {
 
 
     $('#btnSendSMS').click(function () {
-        alert('');
+
         if (customValidateForm('frmSendSMS')) {
 
             buttonAddPleaseWait('btnSendSMS');
@@ -205,10 +206,11 @@ function fnEditProjectById(projectId) {
     });
 }
 function editProjectByIdCallBack(response) {
-    var response = JSON.parse(response.Value);
 
+    var response = JSON.parse(response.Value);
     $('#Id').val(response.id);
     $('#UnitProject_Id').val(response.id);
+    document.getElementById('btn-save-project').setAttribute("_ProjectId", response.id);
 
     $('#NameEng').val(response.projectName);
     $('#DescriptionEng').html(response.descriptionEng);
@@ -218,7 +220,8 @@ function editProjectByIdCallBack(response) {
     $('#Location').val(response.location);
     $('#IsVIP').val(response.vipStatus);
     $('#IsUrgent').val(response.urgentStatus);
-    $('#OldProjectNo').val(response.oldProjectNo);
+     
+   // $('#OldProjectNo').val(response.oldProjectNo);
 
 
     $('#ProjectCategoryType_In_Setup_TypeDetail_Id').val(response.projectCategoryType_In_Setup_TypeDetail_Id);
@@ -233,14 +236,14 @@ function editProjectByIdCallBack(response) {
         $("#ClientDDL").data('kendoDropDownList').value(response.client_Id);
         $("#CityDDL").data('kendoDropDownList').value(response.city_Id);
     }, 50);
+ 
 }
 
-
-
+ 
 
 $('.nav-tabs').on('click', function (e) {
     // BELOW CODE FOR CALLING CHILD EVENTS
-     
+
     if (e.target.href != undefined) {
         if (e.target.href.split('#')[1] == 'ProjectUnitInformation') {
             fnLoadUnitReady();

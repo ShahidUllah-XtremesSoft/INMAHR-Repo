@@ -1,5 +1,11 @@
 ﻿
-
+<style>
+    .btn-secondary:active, .btn-secondary.active, .open > .btn-secondary.dropdown-toggle, .selectedColor {
+        color: #263238;
+        background-color: oldlace;
+        border-color: 1px black;
+    }
+</style>
 
 <form id="frmAddUpdate_DesignSection_Document" name="frmAddUpdate_DesignSection_Document" action="/services/Xtreme/multipart" method="post">
 
@@ -10,15 +16,15 @@
     <input type="hidden" name="type" id="type" value="Project_DesignSection_GovernmentDocument_Save">
     <input type="hidden" name="DesignSection_Document_Language" id="DesignSection_Document_Language" class="Language" value="">
 
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row  ">
+        <div class="col-sm-3">
             <div class="form-group">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
                 <input class="form-control" id="Project_Section_Parent_Type_DDL" name="Project_Section_Parent_Type_DDL" required />
                 <input type="hidden" class="form-control" id="Setup_SetupType_Id" name="Setup_SetupType_Id" value="0" />
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
 
             <div class="form-group">
                 <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
@@ -28,129 +34,176 @@
 
             </div>
         </div>
+        <div class="col-sm-6"></div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
 
-            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left active checkbtnValue" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
-            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Available Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAvailableEmployees </button>
-            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-left checkbtnValue" value="Assigned Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAssignedEmployees </button>
+            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft checkbtnValue active" value="Available Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i> @ProjectUI.ProjectUI.lblAvailableEmployees </button>
+            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft checkbtnValue" value="Assigned Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i> @ProjectUI.ProjectUI.lblAssignedEmployees </button>
+            <button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft  checkbtnValue " value="Upload Document"><i class="fa fa-arrow-down"></i> <i class="fa fa-file"></i>  @ProjectUI.ProjectUI.lblUploadDocument</button>
 
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
 
-    <div class="div-design-section-document-upload-area form-control">
-        <div class="row">
-            @*<div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
-                        <input type="text" class="form-control pname" name="Project_DesignSection_SetupDetailTypeDDL" id="Project_DesignSection_SetupDetailTypeDDL" required>
-                        <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id" id="Project_DesignSection_Entity_Id" value="0">
-                        <input type="hidden" class="form-control pname" name="Project_Section_Parent_Type_DDL_Text" id="Project_Section_Parent_Type_DDL_Text" value=" ">
+            <div class="div-design-section-document-upload-area form-control selectedColor" style="display:none;">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="row">
+                            @*<div class="col-sm-6">
+                                    <div class="">
+                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
+                                        <input type="text" class="form-control pname" name="Project_DesignSection_SetupDetailTypeDDL" id="Project_DesignSection_SetupDetailTypeDDL" required>
+                                        <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id" id="Project_DesignSection_Entity_Id" value="0">
+                                        <input type="hidden" class="form-control pname" name="Project_Section_Parent_Type_DDL_Text" id="Project_Section_Parent_Type_DDL_Text" value=" ">
+                                    </div>
+                                </div>*@
+                            <div class="col-sm-12">
+                                <div class="">
+                                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
+                                    @*<input type="file" class="form-control" name="DesignSectionGovernmentDocumentFile" required id="DesignSectionGovernmentDocumentFile" onchange="validatePersonalDocument('DesignSectionGovernmentDocumentFile');" />*@
+                                    <input type="file" class="form-control" name="DesignSectionGovernmentDocumentFile" required id="DesignSectionGovernmentDocumentFile" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                                    <input class="form-control" type="datetime" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-8">
+                                <div class="">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+
+                                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" onchange="fnCheck_NoExpiry(this,'EndDate')" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="">
+
+                                    <br />
+                                    <br />
+                                    <label class="btn " for="DesignSection_Document_NoExpiry_Call">
+                                        <input type="radio" id="DesignSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry(this,'RadioButton')">
+                                        <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
+                                    </label>
+                                    <input type="hidden" id="DesignSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="DesignSection_Document_NoExpiry">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="">
+                                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                    <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="">
+                                    <label class="col-form-label">@Resources.Global.lblRemarks @ProjectUI.ProjectUI.lblFor</label>
+                                    <span style="color: red">*</span>
+                                    <select class="form-control" id="DesignSection_comment_for_client_or_employee" name="DesignSection_comment_for_client_or_employee" required>
+                                        <option value="" selected>@Resources.ProjectUI.lblSelect</option>
+                                        <option value="Employee">@Resources.ProjectUI.lblEmployee</option>
+                                        <option value="Client">@Resources.ProjectUI.lblClient</option>
+                                        <option value="Both">@Resources.ProjectUI.lblBoth</option>
+                                        <option value="NoRemarks">@Resources.ProjectUI.lblNoRemarks</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-success  @Resources.Common.PullRight" id="btn-save-design-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                            <a style="display:none;" href="@Url.Action("List","Project")" class="btn btn-danger  @Resources.Common.PullRight  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>*@
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
-                    @*<input type="file" class="form-control" name="DesignSectionGovernmentDocumentFile" required id="DesignSectionGovernmentDocumentFile" onchange="validatePersonalDocument('DesignSectionGovernmentDocumentFile');" />*@
-                    <input type="file" class="form-control" name="DesignSectionGovernmentDocumentFile" required id="DesignSectionGovernmentDocumentFile"  />
-                </div>
-            </div>
-            <div class="col-sm-6"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                    <input class="form-control" type="datetime" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                    <div class="col-sm-9">
+                        @{
+                            Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_DesignSection_Document_Grid.cshtml");
+                        }
+                    </div>
+
                 </div>
             </div>
 
+            <div class="div-show-only-for-design-section-employee-available-area form-control selectedColor">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
+                                    <input class="form-control" type="datetime" id="DesignSection_AssignedDocument_StartDate" value="" />
+                                </div>
+                            </div>
 
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                                    @*<input class="form-control" type="date"  id="DesignSection_AssignedDocument_StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")"  />*@
+                                    <input class="form-control" type="text" id="DesignSection_AssignedDocument_CompletionDate" value="" />
+                                </div>
+                            </div>
 
-                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate"  onchange="fnCheck_NoExpiry(this,'EndDate')"    />
-                </div>
-            </div> 
-            <div class="col-sm-4">
-                <div class="form-group">
+                            @*<div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
 
-                    <br />
-                    <br />
-                    <label class="btn " for="DesignSection_Document_NoExpiry_Call">
-                        <input type="radio" id="DesignSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry(this,'RadioButton')">
-                        <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
-                    </label>
-                    <input type="hidden" id="DesignSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="DesignSection_Document_NoExpiry">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                    <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks"></textarea>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
-                    <span style="color: red">*</span>
-                    <select class="form-control" id="DesignSection_comment_for_client_or_employee" name="DesignSection_comment_for_client_or_employee" required>
-                        <option value="" selected>Select</option>
-                        <option value="Employee">Employee</option>
-                        <option value="Client">Client</option>
-                        <option value="Both">Both</option>
-                        <option value="NoRemarks">No Remarks</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-success  pull-right" id="btn-save-design-section-government-documents"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
-                    <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                        <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
+                                    </div>
+                                </div>*@
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-footer" id="btnAreaShowHideOnConditionBase">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" id="btnSave_DesingSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div id="div-design-section-employees-area"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="div-show-only-for-design-section-employee-available-area form-control" style="display:none">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblAssign @HRModuleUI.HumanResourceUI.lblDate </label> <span style="color:red">*</span> <br />
-                    <input class="form-control" type="datetime"  id="DesignSection_AssignedDocument_StartDate" value=""  />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
-                    @*<input class="form-control" type="date"  id="DesignSection_AssignedDocument_StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")"  />*@
-                    <input class="form-control" type="text"  id="DesignSection_AssignedDocument_CompletionDate" value=""  />
-                </div>
-            </div> 
-
-            @*<div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
-
-                    <input class="form-control" type="datetime" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" required />
-                </div>
-            </div>*@
-        </div>
-    </div>
-
 </form>
 
-<div class="div-design-section-assigned-employees-area" style="display:none;">
-    <br />
-    <br />
-    <strong>NOTE:</strong><span>Please select <b>section</b> and <b>sub section </b> for filter employees</span>
+<div class="div-design-section-assigned-employees-area selectedColor" style="display:none;">
+    <strong>@Resources.ProjectUI.lblNOTE:</strong><span>@Resources.ProjectUI.lblPlease @Resources.ProjectUI.lblSelect<b> @Resources.ProjectUI.lblSection</b> & <b>@Resources.ProjectUI.lblFile </b> @Resources.ProjectUI.lblFor.ToLower()  @Resources.ProjectUI.lblfilter.ToLower() @Resources.ProjectUI.lblEngineer.ToLower()</span>
     <div class="grid-main-div">
         <div class="row">
             <div class="col-md-12">
@@ -160,12 +213,11 @@
             </div>
         </div>
     </div>
- </div>
-
-<div class="div-design-section-document-upload-area">
-    @{
-        Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_DesignSection_Document_Grid.cshtml");
-    }
-
 </div>
-<div  id="div-design-section-employees-area"></div>
+
+@*<div class="div-design-section-document-upload-area">
+        @{
+            Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/_Project_DesignSection_Document_Grid.cshtml");
+        }
+
+    </div>*@

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>INMA.HR.Services</RootNamespace>
     <AssemblyName>INMA.HR.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <SccProjectName>SAK</SccProjectName>
@@ -48,11 +48,13 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\WebApp\libs\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="CastleWindsor.Factory.Core">
-      <HintPath>..\WebApp\libs\CastleWindsor.Factory.Core.dll</HintPath>
+    <Reference Include="CastleWindsor.Factory.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebApp\Librarires\CastleWindsor.Factory.Core.dll</HintPath>
     </Reference>
-    <Reference Include="CastleWindsor.Factory.Repository">
-      <HintPath>..\WebApp\libs\CastleWindsor.Factory.Repository.dll</HintPath>
+    <Reference Include="CastleWindsor.Factory.Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebApp\Librarires\CastleWindsor.Factory.Repository.dll</HintPath>
     </Reference>
     <Reference Include="Dapper">
       <HintPath>..\WebApp\libs\Dapper.dll</HintPath>

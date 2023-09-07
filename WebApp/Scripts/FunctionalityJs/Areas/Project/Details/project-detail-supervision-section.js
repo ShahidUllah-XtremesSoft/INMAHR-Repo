@@ -52,6 +52,7 @@ function stepper_SUPERVISION_SECTION(response) {
             step_Columns.push({ label: "Completed", enabled: false, selected: true, successIcon: "k-icon k-i-check", iconTemplate: function (e) { return '<strong> </strong>'; } });
         }
     }
+    /*
     setTimeout(function () {
 
         if (localStorage.getItem('SupervisionSection_Menu_Area') != '') {
@@ -59,6 +60,7 @@ function stepper_SUPERVISION_SECTION(response) {
             progressbar_subSection(JSON.parse(response.Value), localStorage.getItem('SupervisionSection_Menu_Area'));
         }
     }, 100);
+    */
     bindkendoStepper('supervision-section-stepper', false, step_Columns, '', stepper_Fn_SupervisionSection_Onselect, 'auto', "vertical");
 
     fnApprovedOrReturn_DDL('ApprovedOrReturned_SupervisionSection'); // Load approved or Return ddl for Supervision section
@@ -78,7 +80,7 @@ function stepper_Fn_SupervisionSection_Onselect(e) {
 
 /*
  
-************LOAD Supervision SECTION SUB STEPPER END ********************* By /\/\ati
+************LOAD Supervision SECTION SUB STEPPER END ********************* By |\/|ati
  
 */
 
@@ -167,10 +169,10 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
             {
                 field: "", title: "", width: 60 //, template: gridTemplate,
                 , template: "#if(statusForCondition =='Transfered'){ #" +
-                    "<button type='button' onclick='fn_supervisionsection_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;'>Assign</button> " +
-                    " <button type='button' onclick='fn_supervision_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>Transfer</button> # }" +
+                    "<button type='button' onclick='fn_supervisionsection_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;display:none;'>" + lblAssign + "</button> " +
+                    " <button type='button' onclick='fn_supervision_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> # }" +
                     "else {# " +
-                    " <button type='button' onclick='fn_supervision_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>Transfer</button> #}#"
+                    " <button type='button' onclick='fn_supervision_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> #}#"
             },
 
 
@@ -181,15 +183,16 @@ var fnLoadSupervisionSection_Document_CallBacck = function (inputDataJSON) {
     }
 };
 
-
+var selectedRecordDocumentType_Supervision = null;
 function fn_supervision_section_transfer_file(event) {
 
     var row = $(event).closest("tr");
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-
+    selectedRecordDocumentType_Supervision = dataItem.combineDocumentType;
     $('#frm_SupervisionSection_TransferDataModal').trigger('reset')
     $('#load-supervision-section-model').click();
+    fnApprovedOrReturn_DDL('ApprovedOrReturned_SupervisionSection'); // Load approved or Return ddl for Supervision section
 
 
     $('.div_showHide_Main_stepper').hide();
@@ -263,7 +266,9 @@ function fn_supervision_section_transfer_file_save() {
                     EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#SupervisionSection_Remarks').val(),
-                    ApprovedOrReturned: $('#ApprovedOrReturned_SupervisionSection').val(),
+                    FromDocumentType: selectedRecordDocumentType_Supervision,
+                    ToDocumentType: $('#Project_SupervisionSection_Parent_Type_DDL').data("kendoDropDownList").text() + ' | ' + $('#Project_SupervisionSection_SetupDetailTypeDDL').data("kendoDropDownList").text(),
+                    ApprovedOrReturned: $('#ApprovedOrReturned_SupervisionSection').data("kendoDropDownList").value(),
                     SupervisionSection_comment_for_client_or_employee: $('#SupervisionSection_comment_for_client_or_employee').val(),
                     Language: $('#Language').val()
                 }, CallBack: fn_supervision_section_transfer_file_saveCallBack
@@ -271,21 +276,23 @@ function fn_supervision_section_transfer_file_save() {
         }
     });
     var fn_supervision_section_transfer_file_saveCallBack = function (response) {
+        selectedRecordDocumentType_Supervision = null;
         swal(response.Value);
 
         fnLoadSupervisionSection_Document(project_Id, $('#SupervisionSection_From_SetupType_Id').val(), $('#SupervisionSection_Grid-Name').val());
         $('.btnClose').click();
-        fnLoadMain_Progress_DetailsById(); //Load Main Progress
+        loadProject_SupervisionSectiondownList('TechnicalSection');
+      //  fnLoadMain_Progress_DetailsById(); //Load Main Progress
 
     }
 
 }
 
-//***************** FN TRANSFER FILE AREA END------------------------BY /\/\ati
+//***************** FN TRANSFER FILE AREA END------------------------BY |\/|ati
 
 
 
-//***************** FN ASSIGN   AREA START---------------------------BY /\/\ati
+//***************** FN ASSIGN   AREA START---------------------------BY |\/|ati
 function fn_supervisionsection_open_assign_modal(event) {
 
     var row = $(event).closest("tr");
@@ -382,7 +389,7 @@ function deleteAssignedEmployeeById_SupervisionSection(event) {
 }
 
 
-//***************** FN ASSIGN   AREA END---------------------------BY /\/\ati
+//***************** FN ASSIGN   AREA END---------------------------BY |\/|ati
 
 
 function loadProject_SupervisionSectiondownLists() { ajaxRequest({ commandName: 'DDL_SUPERVISION_SECTION_Project_MainType', values: { Language: _currentLanguage }, CallBack: fnloadProject_SupervisionSectiondownListsCallBack }); }
@@ -417,7 +424,11 @@ function fn_SupervisionSection_OnSelect_Section_DDL(e) {
 
 function loadProject_SupervisionSection_SubSection_DDL(controlId, typeName, selectText = null) {
 
-    ajaxRequest({ commandName: 'Setup_Type_DropdownByTypeName_New', values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_SupervisionSection_SubSection_DDLCallBackk });
+    ajaxRequest({
+      //  commandName: 'Setup_Type_DropdownByTypeName_New',
+        commandName: 'Setup_Main_Section_DropdownByTypeName',
+        values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_SupervisionSection_SubSection_DDLCallBackk
+    });
 }
 var loadProject_SupervisionSection_SubSection_DDLCallBackk = function (loadjQueryDropdownListResponse, controlId) {
 
@@ -472,7 +483,7 @@ function fnLoadSupervisionSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
     }
 }
 
-// --------------------- LOAD ALL EMPLOYEES START----------------------BY /\/\ati
+// --------------------- LOAD ALL EMPLOYEES START----------------------BY |\/|ati
 function load_SupervisionSection_AllEmployees(setup_TypeDetail_Id, setup_Type_Id) {
 
     ajaxRequest({
@@ -560,7 +571,7 @@ function loopThroughGrid_SupervisionSection(btnValue, btnId, btnIcon) {
 
     }
     if (postingArray.length > 0) {
-        console.log(postingArray)
+      //  console.log(postingArray)
         ajaxRequest({
             commandName: 'Project_Save_Multiple_Employees',
             values:
@@ -587,7 +598,7 @@ var fn_project_save_Multiple_employee_SupervisionSection_callback = function (re
     //|End Date Picker
 
 }
-// --------------------- LOAD ALL EMPLOYEES END----------------------BY /\/\ati
+// --------------------- LOAD ALL EMPLOYEES END----------------------BY |\/|ati
 
 
 

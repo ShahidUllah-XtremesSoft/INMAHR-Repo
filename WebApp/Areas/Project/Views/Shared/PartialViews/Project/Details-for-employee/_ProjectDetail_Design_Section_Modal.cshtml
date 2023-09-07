@@ -3,8 +3,8 @@
 @* *********************                                           *********************** *@
 @* ********************* LOAD DESIGN SECTION MODEL FOR UPLOADING DOCUMENT **************** *@
 @* *********************                                            ********************** *@
-@* ********************* **************** BY /\/\ati ************************************* *@
-<button type="button" style="display:none;" class="btn btn-primary" id="load-model" data-toggle="modal" data-target="#modal-design-section-upload-document"></button>
+@* ********************* **************** BY |\/|ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary close-design-upload-modal" id="load-model" data-toggle="modal" data-target="#modal-design-section-upload-document"></button>
 <div class="modal fade" id="modal-design-section-upload-document" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -60,7 +60,7 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group  typeddlRow">
+                                <div class="   typeddlRow">
                                     <div id="container">
                                         <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
 
@@ -75,9 +75,9 @@
                             </div>
                             <div class="col-sm-6">
 
-                                <div class="form-group">
+                                <div class=" ">
                                     <div class="container">
-                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />
+                                        <label class="col-form-label"> @ProjectUI.ProjectUI.lblFile / @ProjectUI.ProjectUI.lblArea </label><span style="color:red"> *</span><br />
 
                                         <input type="text" class="form-control pname" name="Project_DesignSection_SetupDetailTypeDDL" id="Project_DesignSection_SetupDetailTypeDDL" required>
                                         <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id" id="Project_DesignSection_Entity_Id" value="0">
@@ -89,63 +89,66 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label><br />
+                            <div class="col-sm-6">
+                                <div class=" ">
+                                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment </label>  <span style="color: red">*</span><br />
                                     <input type="file" class="form-control" name="DesignSectionGovernmentDocumentFile" required id="DesignSectionGovernmentDocumentFile" />
                                 </div>
                             </div>
 
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
-                                    <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" required />
+                            <div class="col-sm-3">
+                                <div class=" ">
+                                    <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label>  <br />
+                                    <input class="form-control" type="date" id="DesignSection_Document_StartDate" name="DesignSection_Document_StartDate" />
                                 </div>
                             </div>
 
 
-                            <div class="col-sm-4">
-                                <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class=" ">
                                     <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label>  <br />
-                                    <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" onchange="fnCheck_NoExpiry(this,'EndDate')" />
+                                    <input class="form-control" type="date" id="DesignSection_Document_EndDate" name="DesignSection_Document_EndDate" onchange="fnCheck_NoExpiry_in_design(this,'EndDate')" />
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class=" ">
 
                                     <br />
                                     <br />
                                     <label class="btn " for="DesignSection_Document_NoExpiry_Call">
-                                        <input type="radio" id="DesignSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry(this,'RadioButton')">
+                                        <input checked type="radio" id="DesignSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_in_design(this,'RadioButton')">
                                         <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
                                     </label>
-                                    <input type="hidden" id="DesignSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="DesignSection_Document_NoExpiry">
+                                    <input type="hidden" id="DesignSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="1" name="DesignSection_Document_NoExpiry">
                                 </div>
                             </div>
+                            <div class="col-sm-3">  </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="form-group">
+                            <div class="col-md-6">
+                                <div class=" ">
                                     <label class="col-form-label">@Resources.Global.lblRemarks</label>
                                     <textarea class="form-control" id="DesignSection_Remarks" name="DesignSection_Remarks"></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                            <div class="col-md-3">
+                                <div class=" ">
                                     <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
                                     <span style="color: red">*</span>
+
                                     <select class="form-control" id="DesignSection_comment_for_client_or_employee" name="DesignSection_comment_for_client_or_employee" required>
-                                        <option value="" selected>Select</option>
-                                        <option value="Employee">Employee</option>
-                                        <option value="Client">Client</option>
-                                        <option value="Both">Both</option>
-                                        <option value="NoRemarks">No Remarks</option>
+                                        <option value="">@ProjectUI.ProjectUI.lblSelect</option>
+                                        <option selected value="Employee">@ProjectUI.ProjectUI.lblEmployee</option>
+                                        <option value="Client">@ProjectUI.ProjectUI.lblClient</option>
+                                        <option value="Both">@ProjectUI.ProjectUI.lblBoth</option>
+                                        <option value="NoRemarks">@ProjectUI.ProjectUI.lblNoRemarks</option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-3"> </div>
 
                         </div>
 
@@ -176,4 +179,138 @@
 
 
 @* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+
+@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD DESIGN SECTION MODEL FOR TRANSFER RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY |\/|ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-design-transfer-model" data-toggle="modal" data-target="#modal-design-section-transfer-to-section"></button>
+<div class="modal fade" id="modal-design-section-transfer-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblTransferTo</h5>
+            </div>
+            <div class="modal-body" style="height:auto;">
+                <form id="frmTransferDataModal">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <label class="col-form-label">@Resources.Global.lblDoYouWantToTransferToOtherMainSection :</label><br />
+                        </div>
+                        <div class="col-sm-2 pull-right">
+
+                            <div class="form-group">
+                                <div class="container">
+                                    <select class="form-control main_Section_In_Sub_section_transfer_modal" onchange="fnLoadOtherMainSection(this.value);">
+                                        <option selected value="No">@Resources.Global.lblNo</option>
+                                        <option value="Yes">@Resources.Global.lblYes</option>
+
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"> </div>
+                    </div>
+
+
+                    <div class="row div_showHide_Main_stepper">
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                <div id="Project_load_other_main_section_stepper_in_DesignSection" style="background: oldlace;">  </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                @*<label class="col-form-label">.Transfer to </label><span style="color:red"> *</span><br />*@
+                                <div id="container_parent_type_ddl_design_transfer_modal">
+                                    <input class="form-control pname" id="Project_Section_Parent_Type_DDL_design_transfer_modal" required>
+                                </div>
+                                <input type="hidden" class="form-control pname" name="To_id_design" id="To_id_design" value="0">
+                                <input type="hidden" class="form-control pname" id="From_id_design" value="0">
+                                <input type="hidden" class="form-control pname" id="Attachment_Id_design_transfer_modal" value="0">
+                                <input type="hidden" class="form-control pname" id="Grid_name_transfer_design" value="0">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <div id="container_child_type_ddl_design_transfer_modal">
+                                    @*<label class="col-form-label">@ProjectUI.ProjectUI.lblSubSection</label><span style="color:red"> *</span><br />*@
+                                    <input type="text" class="form-control pname" name="Project_DesignSection_Transfer_Modal_SetupDetailTypeDDL_design_transfer_modal" id="Project_DesignSection_Transfer_Modal_SetupDetailTypeDDL_design_transfer_modal" required>
+                                    <input type="hidden" class="form-control pname" name="Project_DesignSection_Entity_Id_transfer_modal" id="Project_DesignSection_Entity_Id_transfer_modal" value="0">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                @*<label class="col-form-label">.Transfer to </label><span style="color:red"> *</span><br />*@
+                                <div id="container">
+                                    <input type="text" class="form-control pname" id="ApprovedOrReturned" name="ApprovedOrReturned" required>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                <textarea class="form-control" id="DesignSection_transfer_modal_Remarks" name="DesignSection_transfer_modal_Remarks" maxlength="1000"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                                <span style="color: red">*</span>
+                                <select class="form-control" id="DesignSection_comment_for_client_or_employee_in_transfer_modal" name="DesignSection_comment_for_client_or_employee_in_transfer_modal" required>
+                                    <option value="">@ProjectUI.ProjectUI.lblSelect</option>
+                                    <option selected value="Employee">@ProjectUI.ProjectUI.lblEmployee</option>
+                                    <option value="Client">@ProjectUI.ProjectUI.lblClient</option>
+                                    <option value="Both">@ProjectUI.ProjectUI.lblBoth</option>
+                                    <option value="NoRemarks">@ProjectUI.ProjectUI.lblNoRemarks</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div id="btnAreaShowHideOnConditionBase">
+
+                            <button type="button" class="btn btn-danger   pull-right btnClose clearField_transfer_modal" data-dismiss="modal">@Resources.Global.lblClose</button>
+                            <button type="button" id="btn-transfer" class="btn   btn-success  pull-right" value="Save"> @ProjectUI.ProjectUI.lblTransfer</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
 

@@ -169,8 +169,20 @@ var bindAttendanceGrid = function (inputDataJSON) {
         }, {
             title: lblBreak, headerAttributes: { style: "text-align: center;" },
             columns: [
-                { field: "breakIn", title: lblOut, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                { field: "breakOut", title: lblIn, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
+                {
+                    field: "breakIn", title: lblOut, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+                    , template: `#if (breakStartDefaultTime !=null && breakIn >= breakStartDefaultTime  && breakIn !=null) 
+                                     { # <span style='color:green;'>#:breakIn#</span> #}
+                                 else
+                                     { if (breakIn !=null ) { # <span style='color:red;'>#:breakIn#</span> #} else {''}}#`
+                },
+                {
+                    field: "breakOut", title: lblIn, width: 60, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
+                    , template: `#if (breakEndDefaultTime !=null && breakOut <= breakEndDefaultTime && breakOut !=null ) 
+                                    { # <span style='color:green;'>#:breakOut#</span> #}
+                                else 
+                                    { if (breakOut !=null ) { # <span style='color:red;'>#:breakOut#</span> #} else {''}}#`
+                },
             ]
         },
 
@@ -225,7 +237,10 @@ var bindAttendanceGrid = function (inputDataJSON) {
         //  },
         //   { field: "breakIn", title: lblBreakIn, width: 40, filterable: false, hidden: false },
         //   { field: "breakOut", title: lblBreakOut, width: 40, filterable: false, hidden: false },
-        { field: "remarks", title: lblRemarks, width: 300, filterable: false, hidden: false },
+        {
+            field: "remarks", title: lblRemarks, width: 300, filterable: false, hidden: false
+            , footerTemplate: "<span class=''> <span   class='TotalOT' style='color:green;'>0</span></span>"
+        },
 
     ];
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
@@ -243,9 +258,10 @@ var bindAttendanceGrid = function (inputDataJSON) {
         return true 
     });*/
 
+
     var exportFlag = false;
     $("#" + attendanceGrid).data("kendoGrid").bind("excelExport", function (e) {
-         
+
         if (!exportFlag) {
             e.sender.showColumn(2);
             e.sender.showColumn(4);
@@ -259,15 +275,18 @@ var bindAttendanceGrid = function (inputDataJSON) {
             e.sender.hideColumn(4);
             exportFlag = false;
         }
-        
+
     });
 
 
 
 
 
+
+
+
     setTimeout(function () {
-       
+
         calculateFooterData();
         /*
         var grid = $("#AttendanceGrid").data("kendoGrid");
@@ -479,6 +498,7 @@ function calculateFooterData() {
         ('0' + (totalDelayTimeSeconds % 60)).slice(-2);
 
     //------------- Total Dealy Time Calculation
+
     totalOvertimeSeconds = totalOvertimeSeconds + (totalOvertimeMinutes * 60) + (totalOvertimeHours * 3600);
     var grandtotalOverTime = ('0' + (parseInt(totalOvertimeSeconds / (60 * 60)))).slice(-2) + ":" +
         ('0' + (parseInt(totalOvertimeSeconds / 60 % 60))).slice(-2) + ":" +
@@ -486,7 +506,12 @@ function calculateFooterData() {
 
 
 
-
+    /*
+    console.log('grandTotalLateInTime' + grandTotalLateInTime);
+    console.log('grandTotalEarlyTimeOut' + grandTotalEarlyTimeOut);
+    console.log('grandtotalDelayTime' + grandtotalDelayTime);
+    console.log('grandtotalOverTime' + grandtotalOverTime);
+    */
 
     //$(".footerLateTimeInPlaceholder").text(totallateInTime);
     $(".footerLateTimeInPlaceholder").text(grandTotalLateInTime);
@@ -496,9 +521,50 @@ function calculateFooterData() {
     $(".footerTotalDelayTimeInPlaceholder").text(grandtotalDelayTime);
     $(".footerTotalOverTimePlaceholder").text(grandtotalOverTime);
 
+    fnCalculateTotalOfOvertimeAndDelay(grandtotalOverTime, grandtotalDelayTime)
 }
+function fnCalculateTotalOfOvertimeAndDelay(totalOverTime, totalDelayTime) {
 
 
+    // Split the time strings into hours, minutes, and seconds
+    var overTimeParts = totalOverTime.split(':');
+    var delayTimeParts = totalDelayTime.split(':');
+
+    // Create Date objects with arbitrary dates (we'll use only the time components)
+    var overTime = new Date(2000, 0, 1, overTimeParts[0], overTimeParts[1], overTimeParts[2]);
+    var delayTime = new Date(2000, 0, 1, delayTimeParts[0], delayTimeParts[1], delayTimeParts[2]);
+
+    var date1 = new Date("Sat Jan 01 2000 " + totalOverTime + " GMT+0400");
+    var date2 = new Date("Sat Jan 01 2000 " + totalDelayTime + " GMT+0400");
+
+    var timeDiff = date1 - date2;
+
+    if (timeDiff > 0) {
+        var hours = Math.floor(timeDiff / 3600000); // 1 hour = 3600000 milliseconds
+        timeDiff %= 3600000;
+
+        var minutes = Math.floor(timeDiff / 60000); // 1 minute = 60000 milliseconds
+        timeDiff %= 60000;
+
+        var seconds = Math.floor(timeDiff / 1000); // 1 second = 1000 milliseconds
+
+        var formattedTime = ("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+
+
+        //  console.log(formattedTime); // Should output '02:25:00'
+
+        $(".TotalOT").text(formattedTime);
+
+    }
+
+
+
+
+
+}
+function padNumber(number) {
+    return (number < 10 ? '0' : '') + number;
+}
 
 function loadAttendance_LeaveDropdownList() {
     ajaxRequest({

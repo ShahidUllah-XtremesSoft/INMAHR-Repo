@@ -217,7 +217,14 @@ var bindAttendanceGrid = function (inputDataJSON) {
         processButtonToggling(inputDataJSON);
         var isHR = !inputDataJSON[0].isHR;
     }
+    inputDataJSON.sort(function (a, b) {
 
+        // return a.departmentId - b.departmentId;
+        //  return a.parentId - b.parentId;
+        if (a.companyName < b.companyName) {
+            return -1;
+        }
+    });
     var record = 0;
     var gridColumns = [
         { title: "#", template: "<b>#= ++record #</b>", width: 55, },
@@ -243,7 +250,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
                 "else if (status == 'Present')" +
                 " { # <span class=''>" + lblPresent + "</span> # }" +
                 " else if(status == 'Absent')" +
-                " { if(status == 'Absent' && departmentId==11 || departmentId==22) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}  " +
+                " { if(status == 'Absent' && departmentId==11 || departmentId==22  || departmentId == 17 || departmentId == 18) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}  " +
                 "else {# <span class='badge badge-primary'>#:status#</span> #}#"
             //   , footerTemplate: "<span class=''>" + lblPresent + ":<span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ":<span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
 
@@ -310,7 +317,7 @@ var bindAttendanceGrid = function (inputDataJSON) {
     ];
 
     bindAttendanceKendoGridOnly(attendanceGrid, 50, gridColumns, inputDataJSON, true, 750);
-  //  fnGridColors();
+    fnGridColors();
     calculateFooterData();
     /*
     setTimeout(function () {
@@ -396,12 +403,12 @@ var bindAttendanceGrid = function (inputDataJSON) {
 
 };
 function redirectToEmployeeDetailView(e) {
-     
+
     var row = $(e).closest("tr");
     var grid = $("#" + attendanceGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
- 
-    
+
+
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.employeeId);
     localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.employeeId);
@@ -460,17 +467,39 @@ function fnGridColors() {
     setTimeout(function () {
         var grid = $("#" + attendanceGrid).data("kendoGrid");
         var gridData = grid.dataSource.view();
-        console.log(gridData)
+         console.log(gridData)
         for (var i = 0; i < gridData.length; i++) {
+           
+            var absentStatus = gridData[i].status;
+            if (gridData[i].status != "Absent" && gridData[i].status != "Site") {
 
-            if (gridData[i].employeeNumber.match(/INMA.*/)) {
-                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(0, 133, 155, 0.21)');
-            }
-            if (gridData[i].employeeNumber.match(/NSS.*/)) {
-                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", '#06009b1c');
-            }
-            if (gridData[i].employeeNumber.match(/SHJ.*/)) {
-                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(5, 164, 0, 0.18)');
+                if (gridData[i].employeeNumber.match(/INMA.*/)) {
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(0, 137, 160, 0.13)').css("color", 'rgb(0,0,0)');
+                }
+                if (gridData[i].employeeNumber.match(/NSS.*/)) {
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(6, 0, 155, 0.13)').css("color", 'rgb(0,0,0)');
+                }
+                if (gridData[i].employeeNumber.match(/SHJ.*/)) {
+                    //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(5, 164, 0, 0.13)').css("color", 'rgb(0,0,0)');
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(32, 168, 216, 0.25)').css("color", 'rgb(0,0,0)');
+                }
+
+                if (gridData[i].departmentId == 10) { // Design Section
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(56 195 21 / 35%)').css("color", 'rgb(0,0,0)');
+                } if (gridData[i].departmentId == 11) { // Supervision Section
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(21 195 171 / 35%)').css("color", 'rgb(0,0,0)');
+                } if (gridData[i].departmentId == 12) { // Technical Section
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(195 149 21 / 35%)').css("color", 'rgb(0,0,0)');
+                } if (gridData[i].departmentId == 13) { // Contract And Tender Section
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(195 93 21 / 35%)').css("color", 'rgb(0,0,0)');
+                } if (gridData[i].departmentId == 14) { // Accountant Section
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(168 21 195 / 35%)').css("color", 'rgb(0,0,0)');
+                } if (gridData[i].departmentId == 16) { // Administration 
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(27 14 133 / 32%)').css("color", 'rgb(0,0,0)');
+                } if (gridData[i].departmentId == 8) { // Sharjah Eng Cons.
+                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(0 180 255 / 34%)').css("color", 'rgb(0,0,0)');
+
+                }
             }
 
         }
@@ -495,7 +524,7 @@ function calculateFooterData() {
             //}
             if (gridData[i].status == 'Absent') {
 
-                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17 || gridData[i].employeeId == 24) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
+                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17 || gridData[i].employeeId == 24 || gridData[i].departmentId == 18) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
                     // 17 & 22 is NSS and technical section id's ,this color will be orange as per HR       
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
 

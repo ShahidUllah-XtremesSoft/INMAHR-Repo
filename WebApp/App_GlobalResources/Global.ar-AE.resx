@@ -177,6 +177,9 @@
   <data name="lblAllowedFormatsArePngJpgPdf" xml:space="preserve">
     <value>الصيغة المسموح بها (png, jpg,pdf)</value>
   </data>
+  <data name="lblAllRightReserved" xml:space="preserve">
+    <value>جميع الحقوق محفوظة</value>
+  </data>
   <data name="lblApplication" xml:space="preserve">
     <value>طلب</value>
   </data>

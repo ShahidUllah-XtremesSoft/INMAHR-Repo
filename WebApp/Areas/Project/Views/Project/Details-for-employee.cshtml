@@ -23,142 +23,120 @@
 <input type="hidden" id="Id" name="Id" value="0" />
 <input type="hidden" id="LoggedInUserId" name="LoggedInUserId" value="0" />
 <input type="hidden" id="EmployeeId" name="LoggedInUserId" value="0" />
-<div class="row">
 
-</div>
-
-<div class="row">
+<div class="row hideMar">
     <div class="col-sm-12">
+        <div class="row onlyForHeadSection">
+            <div class="col-sm-6 ">
+                <div class="card " style="margin-bottom: 2px; display: none;">
+                    <div class="m-b-20">
+                        <button type="button" onclick="fn_open_project_assign_modal(this);" class="btn    btn-outline-primary    waves-effect" style="font-size:large;">  @ProjectUI.ProjectUI.lblTransfer @ProjectUI.ProjectUI.lblProject </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card ">
 
             <div class="card-header" style="background: #eceff1;">
                 <div class="row">
+                    <div class="col-sm-6 ">
+                        <h5>
 
-                    <div class="col-sm-9">
-                        <h6>
-                            <span class=" txt-project-title" style="font-weight: bold;margin-right: 15px !important;"></span>
-                        </h6>
+                            <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
+                            <span class="badge badge-success    project-number">   </span>
+                        </h5>
+
                     </div>
-
-                    <div class="col-sm-3 " style="text-align: end;">
-
-                        <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
-                        <span class="badge badge-info    project-number">   </span>
-                    </div>
-                </div>
-
-            </div>
-            <div class="card-block">
-
-                <div class="">
-                    <div class="m-b-20">
-                        <h6 class="sub-title m-b-15">@ProjectUI.ProjectUI.lblOverview</h6>
-                        <hr />
-                        <p class="txt-description" style="overflow-x: auto;height: 21rem;">
-                    </div>
-
-
-
-
-                </div>
-            </div>
-
-            <div class="card-footer">
-
-                <div class="row">
-
-                    <div class="">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4" style="display:none;">
-                            <span class="badge ">@ProjectUI.ProjectUI.lblStatus:</span>
-                            <select class="project_status_ddl" disabled id="" style="background-color: #49626a; color: white; font: bold;">
-
-                                <option value="Active">Active</option>
-                                <option value="Closed">Closed</option>
-                                <option value="Hold">Hold</option>
-                                <option value="Completed">Completed</option>
-                            </select>
-
-
-
-                        </div>
-                        <div class="col-sm-2"> </div>
-
-
-                        <div class="col-sm-6 " style="text-align: end;">
-
+                    <div class="col-sm-6 " style="text-align:end;">
+                        <h5>
                             <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
                             <span class="badge badge-danger    text-project-created-by">   </span>
+                        </h5>
 
 
-                        </div>
                     </div>
-
                 </div>
+
             </div>
+            @*<div class="card-block">
+
+                    <div class="">
+                        <div class="m-b-20">
+                            <h6 class="sub-title m-b-15">@ProjectUI.ProjectUI.lblOverview</h6>
+                            <hr />
+                            <p class="txt-description" style="overflow-x: auto;height: 21rem;">
+                        </div>
+
+
+
+
+                    </div>
+                </div>*@
         </div>
+
+
     </div>
     @*  <div class="col-sm-4">
-                <div class="card ">
-                          <div class="card-header" style="background: #eceff1;">
-                              <h6>
-                                  <span class="">@ProjectUI.ProjectUI.lblProjectDetails</span>
-                              </h6>
+        <div class="card ">
+                  <div class="card-header" style="background: #eceff1;">
+                      <h6>
+                          <span class="">@ProjectUI.ProjectUI.lblProjectDetails</span>
+                      </h6>
 
-                          </div>
-                          <div class="">
+                  </div>
+                  <div class="">
 
-                              <table class="table table-striped table-border">
-                                  <tbody>
-                                      <tr>
+                      <table class="table table-striped table-border">
+                          <tbody>
+                              <tr>
 
-                                          <td>@ProjectUI.ProjectUI.lblProject @ProjectUI.ProjectUI.lblClient :</td>
-                                          <td class="">
-                                              <b><span class="text-client-name"></span></b>
-                                          </td>
+                                  <td>@ProjectUI.ProjectUI.lblProject @ProjectUI.ProjectUI.lblClient :</td>
+                                  <td class="">
+                                      <b><span class="text-client-name"></span></b>
+                                  </td>
 
-                                      </tr>
-                                      <tr>
-                                          <td>@ProjectUI.ProjectUI.lblPrice</td>
-                                          <td class="text-price"></td>
-                                      </tr>
+                              </tr>
+                              <tr>
+                                  <td>@ProjectUI.ProjectUI.lblPrice</td>
+                                  <td class="text-price"></td>
+                              </tr>
 
-                                      <tr>
-                                          <td>Started Date:</td>
-                                          <td>
-                                              <span class="badge badge-success text-startdate"></span>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>@ProjectUI.ProjectUI.lblCompletionDate:</td>
-                                          <td>
-                                              <span class="badge badge-danger text-enddate"></span>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td></td>
+                              <tr>
+                                  <td>Started Date:</td>
+                                  <td>
+                                      <span class="badge badge-success text-startdate"></span>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>@ProjectUI.ProjectUI.lblCompletionDate:</td>
+                                  <td>
+                                      <span class="badge badge-danger text-enddate"></span>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td></td>
 
-                                          <td class="">
-                                              <span class=" "></span>
-                                          </td>
-
-
-
-                                      </tr>
+                                  <td class="">
+                                      <span class=" "></span>
+                                  </td>
 
 
-                                      <tr>
-                                          <td>@ProjectUI.ProjectUI.lblProgress</td>
-                                          <td class="text-progress-status">0 %</td>
-                                      </tr>
-                                  </tbody>
-                              </table>
+
+                              </tr>
 
 
-                          </div>
+                              <tr>
+                                  <td>@ProjectUI.ProjectUI.lblProgress</td>
+                                  <td class="text-progress-status">0 %</td>
+                              </tr>
+                          </tbody>
+                      </table>
 
-                     </div>
-                      </div>*@
+
+                  </div>
+
+             </div>
+              </div>*@
     @*<div class="col-sm-4">
             <div class="card ">
                 <div class="card-header" style="background: #eceff1;">
@@ -190,7 +168,7 @@
     <div class="card">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card-block projectTabs">
+                <div class="card-block projectTabs" style="display:none;">
                     <div id="sub-section-progress-bar" style="display:none;">
                         <div class="row">
                             <div class="col-sm-12">
@@ -216,10 +194,19 @@
                                         <hr />
                                     </h4>*@
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         @*<table class="table table-striped table-border">*@
-                                        <table class="table ">
+                                        <table class="table table-bordered  ">
                                             <tbody>
+                                                <tr>
+
+                                                    <td>@ProjectUI.ProjectUI.lblProject:</td>
+                                                    <td colspan="2"><span class="txt-project-title"></span></td>
+                                                    <td style="display:none; cursor:pointer;font-size:x-large" onclick="window.location.href = '/Project/Project/Save?id=' + project_Id + '';"><span class="fa fa-edit"></span></td>
+
+
+
+                                                </tr>
                                                 <tr>
 
                                                     <td>@ProjectUI.ProjectUI.lblProjectCategory:</td>
@@ -230,6 +217,11 @@
                                                 <tr>
                                                     <td>@ProjectUI.ProjectUI.lblProjectType</td>
                                                     <td class="ProjectType"></td>
+
+
+                                                </tr>
+                                                <tr>
+
                                                     <td>@ProjectUI.ProjectUI.lblProjectArea</td>
                                                     <td> <span class=" ProjectAreaType"></span>  </td>
 
@@ -239,6 +231,10 @@
                                                     <td>
                                                         <span class="badge badge-danger IsVIP"></span>
                                                     </td>
+
+                                                </tr>
+                                                <tr>
+
                                                     <td>@ProjectUI.ProjectUI.lblUrgent</td>
                                                     <td>
                                                         <span class="badge badge-danger IsUrgent"></span>
@@ -250,6 +246,8 @@
                                                     <td>
                                                         <span class="   PlotNo"></span>
                                                     </td>
+                                                </tr>
+                                                <tr>
                                                     <td>@ProjectUI.ProjectUI.lblMulkNo</td>
                                                     <td>
                                                         <span class="MulkNo"></span>
@@ -283,11 +281,45 @@
                                                 </tr>
                                                 <tr>
 
-                                                    <td>@ProjectUI.ProjectUI.lblLocation</td>
-                                                    <td class="ProjectLocation"></td>
+                                                    <td style="border: 2px solid gray;">@ProjectUI.ProjectUI.lblStatus</td>
+                                                    <td style="border: 2px solid gray;display:none;" class="NotFor_Accountant">
+                                                        <b>
+                                                            <span class="ProjectStatus"></span>
+                                                        </b>
+                                                    </td>
+                                                    <td style="border: 2px solid gray;display:none;" class="onlyFor_Accountant">
+                                                        <select class="project_status_ddl" onchange="fnChangeProject_MainStatus(this);" style="background-color: #49626a;font: bold;width: 50%;height: 38px;background: white;color: black;">
+
+                                                            <option value="Active">@ProjectUI.ProjectUI.lblActive</option>
+                                                            <option value="Re Activated">@ProjectUI.ProjectUI.lblReActivated</option>
+                                                            <option value="Closed">@ProjectUI.ProjectUI.lblClosed</option>
+                                                            <option value="Holded">@ProjectUI.ProjectUI.lblHold</option>
+                                                            <option value="Delay">@ProjectUI.ProjectUI.lblDelay</option>
+                                                            <option value="Completed">@ProjectUI.ProjectUI.lblCompleted</option>
+                                                        </select>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                        <div class="col-sm-4">
+                                        <div class="card ">
+                                            <div class="card-header" style="background: #eceff1;padding: 3px;">
+                                                <h6 style="margin: 0px;"><span class="">@ProjectUI.ProjectUI.lblProject @Resources.Global.lblDocumentAttachment</span></h6>
+
+                                            </div>
+                                            <div class="" style="height: 450px; overflow-x: auto; min-height: 24rem;">
+
+                                                <table class="table table-striped table-border">
+                                                    <tbody class="load-attachments">
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
 
@@ -311,10 +343,10 @@
                     @* ********************* **************** ********** ************************************* *@
                     @* ********************* **************** ********** ************************************* *@
                     @* ********************* **************** ********** ************************************* *@
-                    @* ********************* **************** BY /\/\ati ************************************* *@
+                    @* ********************* **************** BY |\/|ati ************************************* *@
                     <div id="ProjectDesignSection" class="tab-pane projectTabs" role="tabpanel">
 
-                        <hr />
+
 
 
                         <div class="  profile-box flex-fill">
@@ -334,7 +366,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         @*<button type="button" onclick="fnLoadDesignSectionArea(this);" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>*@
-                                                        <button type="button" id="btn-load-upload-document" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
+                                                        <button type="button" style="display:none;" id="btn-load-upload-document" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
 
                                                     </div>
                                                 </div>
@@ -343,89 +375,89 @@
                                                         <button type="button" onclick="fnLoadDesignSection_Document_and_History_Area(this);" class="btn btn-secondary pull-left " value="History" style="width:50%;"><i class=""></i> History </button>
 
                                                 <hr />*@
-                                            <div class="tab-content tabs">
-                                                <div class="tab-pane active projectDesignSectionTabs" id="DesignSection_GovernmentInfo" role="tabpanel">
+                                            <div class="tab-content tabs DesignSection_area">
+                                                @*<div class="tab-pane active projectDesignSectionTabs" id="DesignSection_GovernmentInfo" role="tabpanel">
 
-                                                    @*<h4 class="card-title">Design Sub Section  </h4><hr />*@
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-government-document"></div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-government-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_InitialSketch" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_InitialSketch" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-initial-sketch-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-initial-sketch-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_SketchPlanning" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_SketchPlanning" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-sketch-planning-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-sketch-planning-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_TownPlanning" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_TownPlanning" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-town-planning-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-town-planning-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_Modifications" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_Modifications" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-modification-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-modification-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_ModificationType" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_ModificationType" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-modification-type-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-modification-type-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_ModificationServices" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_ModificationServices" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-modification-services-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-modification-services-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_ModificationFee" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectDesignSectionTabs" id="DesignSection_ModificationFee" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-modification-fee-document"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-modification-fee-document"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                    </div>*@
                                             </div>
                                         </div>
                                     </div>
@@ -449,10 +481,10 @@
                     @* ********************* **************** ********** ************************************* *@
                     @* ********************* **************** ********** ************************************* *@
                     @* ********************* **************** ********** ************************************* *@
-                    @* ********************* **************** BY /\/\ati ************************************* *@
+                    @* ********************* **************** BY |\/|ati ************************************* *@
                     <div id="ProjectTechnicalSection" class="tab-pane projectTabs" role="tabpanel">
 
-                        <hr />
+
                         <div class="  profile-box flex-fill">
                             <div class="card-block">
                                 <div id="div-technical-section">
@@ -469,95 +501,96 @@
                                             <div id="">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <button type="button" id="btn-technical-section-load-upload-document-modal" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
+                                                        <button type="button" style="display:none;" id="btn-technical-section-load-upload-document-modal" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="tab-content tabs">
-                                                <div class="tab-pane active projectTechnicalSectionTabs" id="TechnicalSection_TechnicalManager" role="tabpanel">
+                                            <div class="tab-content tabs TechnicalSection_area">
 
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                @*<div class="tab-pane active projectTechnicalSectionTabs" id="TechnicalSection_TechnicalManager" role="tabpanel">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-technical-manager"></div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-technical-manager"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MEPSection" role="tabpanel">
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MEPSection" role="tabpanel">
 
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-mep-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-mep-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MEPSubmissionSection" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MEPSubmissionSection" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-mep-submission-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-mep-submission-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MEPApprovalSection" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MEPApprovalSection" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-mep-approval-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-mep-approval-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_StructuralSection" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_StructuralSection" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-structural-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-structural-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MunicipalitySection" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MunicipalitySection" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-municipality-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-municipality-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_TenderSection" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_TenderSection" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-tender-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-tender-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MunicipalitySubmissionSection" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                <div class="tab-pane   projectTechnicalSectionTabs" id="TechnicalSection_MunicipalitySubmissionSection" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-technical-section-municipality-submission-section"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-technical-section-municipality-submission-section"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                    </div>*@
+
                                             </div>
                                         </div>
                                     </div>
@@ -580,13 +613,13 @@
                     @* ********************* **************** ********** ************************************* *@
                     @* ********************* **************** ********** ************************************* *@
                     @* ********************* **************** ********** ************************************* *@
-                    @* ********************* **************** BY /\/\ati ************************************* *@
+                    @* ********************* **************** BY |\/|ati ************************************* *@
                     <div id="ProjectSupervisionSection" class="tab-pane projectTabs" role="tabpanel">
 
-                        <hr />
+
                         <div class="  profile-box flex-fill">
                             <div class="card-block">
-                                <div id="div-technical-section">
+                                <div id="div-supervision-section">
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <div id="example">
@@ -600,105 +633,105 @@
                                             <div id="">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <button type="button" id="btn-supervision-section-load-upload-document-modal" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
+                                                        <button type="button" style="display:none;" id="btn-supervision-section-load-upload-document-modal" class="btn btn-secondary pull-right checkbtnValue active" value="Upload Document"><i class=""></i> @ProjectUI.ProjectUI.lblUploadDocument</button>
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="tab-content tabs">
-                                                <div class="tab-pane active projectSupervisionSectionTabs" id="SupervisionSection_Payments" role="tabpanel">
+                                            <div class="tab-content tabs SupervisionSection_area">
+                                                @*<div class="tab-pane  projectSupervisionSectionTabs" id="SupervisionSection_Payments" role="tabpanel">
 
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-payments"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-payments"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_Site" role="tabpanel">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_Site" role="tabpanel">
 
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-site"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-site"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionLetters" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionLetters" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-supervision-letters"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-supervision-letters"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionMunicipality" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionMunicipality" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-municipality"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-municipality"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_ShopDrawing_SubContractor" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_ShopDrawing_SubContractor" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-shop-drawing-sub-contractor"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-shop-drawing-sub-contractor"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionDocuments" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionDocuments" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-supervision-documents"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-supervision-documents"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_CashFlow" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_CashFlow" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-cash-flow"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-cash-flow"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionContract" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_SupervisionContract" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-supervision-contract"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-supervision-contract"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_CompletionDocument" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+                                                    <div class="tab-pane   projectSupervisionSectionTabs" id="SupervisionSection_CompletionDocument" role="tabpanel">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
 
-                                                            <div class="grid-main-div">
-                                                                <div id="grid-project-supervision-section-completion-documents"></div>
+                                                                <div class="grid-main-div">
+                                                                    <div id="grid-project-supervision-section-completion-documents"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                    </div>*@
+
                                             </div>
                                         </div>
                                     </div>
@@ -718,6 +751,7 @@
 </div>
 
 @{
+    Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/Details-for-employee/_ProjectDetail_Project_Transfer_Modal.cshtml");
     Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/Details-for-employee/_ProjectDetail_Design_Section_Modal.cshtml");
     Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/Details-for-employee/_ProjectDetail_Technical_Section_Modal.cshtml");
     Html.RenderPartial("~/Areas/Project/Views/Shared/PartialViews/Project/Details-for-employee/_ProjectDetail_Supervision_Section_Modal.cshtml");
@@ -739,15 +773,31 @@
         $('#Areatype').val('ProjectDetail')  // COMMENT Js is commented due to not required .but it's working
 
     </script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-project-transfer.modal.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-design-section.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-design-section-transfer-file.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-technical-section.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-technical-section-transfer-file.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-design-section.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-technical-section.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-supervision-section.js?+971502324409"></script>
-
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-supervision-section.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Details-for-employee/project-detail-supervision-section-transfer-file.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 
     @*<script src="~/Scripts/FunctionalityJs/Areas/Comment/comment-area.js"></script>*@
+
+    <script>
+
+        var lblFile = '@ProjectUI.ProjectUI.lblFile';
+        var lblFileName = '@ProjectUI.ProjectUI.lblFileName';
+        var lblProjectInformation = '@ProjectUI.ProjectUI.lblProjectInformation';
+        var lblDesignSection = '@ProjectUI.ProjectUI.lblDesignSection';
+        var lblTechnicalSection = '@ProjectUI.ProjectUI.lblTechnicalSection';
+        var lblSupervisionSection = '@ProjectUI.ProjectUI.lblSupervisionSection';
+        var lblPleaseSelectSection = '@ProjectUI.ProjectUI.lblPleaseSelectSection';
+
+
+    </script>
 
 }
 

@@ -1,0 +1,103 @@
+﻿
+
+@{
+    ViewBag.Title = @HRModuleUI.HumanResourceUI.lblReport;
+}
+
+<style>
+    .highlighted-row {
+        /*background-color: #7a530273;*/
+        background-color: #7a530229;
+    }
+
+        .highlighted-row.k-alt {
+            background-color: #7a530229;
+        }
+</style>
+
+<div class="card">
+    <div class="card-block">
+        <input type="hidden" name="Language" id="Language" />
+        <input type="hidden" name="CreatedBy" id="CreatedBy" />
+        <div class="row">
+ 
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="col-form-label">  @HRModuleUI.HumanResourceUI.lblMonth</label>
+                    <input type="date" class="form-control" id="StartMonth" name="StartMonth" value="" />
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblYear</label>
+                    <input type="text" class="form-control" id="StartYear" name="StartYear"  />
+
+                </div>
+
+            </div>
+
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                </div>
+
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <button type="button" class="btn btn-danger @Resources.Common.PullRight" value="Search" style="margin-top:33px;" id="btnReset"><i class="fa fa-refresh"></i> @Resources.Global.lblReset</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="AttendanceReportGrid"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-report.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+
+
+    <script>
+
+
+        //Grid columns
+         var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';
+         var empNum = '@HRModuleUI.HumanResourceUI.lblEmpNum';
+         var department= '@HRModuleUI.HumanResourceUI.lblDepartment';
+         var checkinDate= '@HRModuleUI.HumanResourceUI.lblDate';
+         var checkinTime= '@HRModuleUI.HumanResourceUI.lblCheckinTime';
+         var checkoutTime= '@HRModuleUI.HumanResourceUI.lblCheckoutTime';
+        var lblShiftTime= '@HRModuleUI.HumanResourceUI.lblShiftTime';
+        var status = '@HRModuleUI.HumanResourceUI.lblStatus';
+        var lateTimeIn = '@HRModuleUI.HumanResourceUI.lblLateInTime';
+        var earlyTimeOut = '@HRModuleUI.HumanResourceUI.lblEarlyOutTime';
+        var remarks = '@HRModuleUI.HumanResourceUI.lblremarks';
+        var lblDelay = '@HRModuleUI.HumanResourceUI.lblDelay';
+        var lblOverTime = '@HRModuleUI.HumanResourceUI.lblOverTime';
+        var lblCheckinTime = '@HRModuleUI.HumanResourceUI.lblCheckinTime';
+        var lblCheckoutTime = '@HRModuleUI.HumanResourceUI.lblCheckoutTime';
+        var lblPresent = '@HRModuleUI.HumanResourceUI.lblPresent';
+        var lblAbsent = '@HRModuleUI.HumanResourceUI.lblAbsent';
+        var lblLeave = '@HRModuleUI.HumanResourceUI.lblLeave';
+        var lblTotal = '@HRModuleUI.HumanResourceUI.lblTotal';
+  
+        
+      
+
+
+        var selectMonth = '@HRModuleUI.HumanResourceUI.lblSelect @HRModuleUI.HumanResourceUI.lblMonth';
+        var selectYear = '@HRModuleUI.HumanResourceUI.lblSelect @HRModuleUI.HumanResourceUI.lblYear';
+
+    </script>
+
+}

@@ -1,0 +1,90 @@
+﻿@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD MODEL FOR ASSIGN RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY |\/|ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-project-assign-model" data-toggle="modal" data-target="#modal-project-assign-to-employees"></button>
+<div class="modal fade" id="modal-project-assign-to-employees" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id=""> @ProjectUI.ProjectUI.lblAssignTo</h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control pname" id="Project_assignedModal_setup_type_Id" value="0">
+                <input type="hidden" class="form-control pname" id="Project_assignedModal_setup_type_detail_Id" value="0">
+                <form id="frm_ProjectAssignDataModal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" onclick="fn_Load_Project_Employees_Area(this);" class="btn btn-secondary active pull-left form-control checkbtnValue_Project" value="Available Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAvailableEmployees   </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" onclick="fn_Load_Project_Employees_Area(this);" class="btn btn-secondary pull-left form-control checkbtnValue_Project" value="Assigned Employee"><i class=""></i> @ProjectUI.ProjectUI.lblAssignedEmployees   </button>
+                        </div>
+                    </div>
+
+                    <div id="div-project-section-employees-area">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="col-form-label show-sub-section-name" style="font-size:x-large; text-decoration:underline"> </label> <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div id="grid-project-load-all-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-footer" id="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <button type="button" class="btn btn-danger   pull-right  " data-dismiss="modal">@Resources.Global.lblClose  </button>
+                                                <button type="button" id="projectDetail_btnSave_ProjectSection" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @ProjectUI.ProjectUI.lblAssigned  </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="div-project-section-assigned-employees-area" style="display:none;">
+                        <br />
+                        <br />
+
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="grid-load-project-all-assigned-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@
+@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@

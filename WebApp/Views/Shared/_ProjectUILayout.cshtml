@@ -137,14 +137,14 @@
 
 
 <body class="navbar-fixed sidebar-nav fixed-nav">
-    <div id="RequestLoader" class="modal">
+    @*<div id="RequestLoader" class="modal">
         <div class="center">
             <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150" />
             <h3>@Resources.Global.lblLoading</h3>
         </div>
-    </div>
+    </div>*@
     @{
-        Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
+     //   Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
         //Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_CompanyNearToExpireDocument.cshtml");
 
     }
@@ -217,11 +217,13 @@
     </main>
 
     <footer class="footer">
-        <span class="text-left">
-            <a href="https://xtremessoft.com">@Resources.Global.lblInma</a>  &copy; 2022 @Resources.Global.lblXtremesSoftware
-        </span>
+        @*<span class="text-left">
+            
+            <a href="https://inma.ae">@Resources.Global.lblInma</a>  &copy; @DateTime.Now.Year
+
+        </span>*@
         <span class="@Resources.Common.PullRight">
-            @Resources.Global.lblPoweredBy <a href="https://xtremessoft.com"> @Resources.Global.lblXtremeSoft</a>
+            @Resources.Global.lblPoweredBy <a href="https://inma.ae"  </a>@Resources.Global.lblInma  &copy; @DateTime.Now.Year
         </span>
     </footer>
 
@@ -310,7 +312,7 @@
     @*<script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>*@
 
     <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js"></script>
+    @*<script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js"></script>*@
 </body>
 
 </html>
@@ -505,7 +507,7 @@
     $(function () {
        // var versionNumber = Date.now();
         if (localStorage.MainApplicationModule_Id == 2) {
-            document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/shjcBlue_logo.png)";
+            document.getElementsByClassName("navbar-brand")[0].style.backgroundImage = "url(/Content/Images/logo.png)";
             document.getElementsByClassName("navbar-brand")[0].style.backgroundSize = "contain"
 
         }
@@ -547,12 +549,12 @@
         var loggedUserName = _currentLanguage == 'en-US' ? (JSON.parse(localStorage.getItem('User')).employeeNameEng) : (JSON.parse(localStorage.getItem('User')).employeeNameArb);
         loggedUserName = '@Resources.Global.Welcome  ' + loggedUserName;
         $('#LoggedInEmployeeName').text(loggedUserName);
-
+        
         setTimeout(function () {
             addTinyMCE();
 
         }, 200);
-
+         
 
 
     });
@@ -606,25 +608,26 @@
     });
 
 
-    function formatDate(date) {
-        if (date != null) {
-            var d = new Date(date),
+    //function formatDate(date) {
+    //    if (date != null) {
+    //        var d = new Date(date),
 
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
+    //            month = '' + (d.getMonth() + 1),
+    //            day = '' + d.getDate(),
+    //            year = d.getFullYear();
 
-            if (month.length < 2) month = '0' + month;
-            if (day.length < 2) day = '0' + day;
-            console.log([year, month, day].join('-'));
-            return [year, month, day].join('-');
-        }
-        else {
-            return '';
-        }
-    }
+    //        if (month.length < 2) month = '0' + month;
+    //        if (day.length < 2) day = '0' + day;
+    //        console.log([year, month, day].join('-'));
+    //        return [year, month, day].join('-');
+    //    }
+    //    else {
+    //        return '';
+    //    }
+    //}
 
     // Add TinyMCE
+    
     function addTinyMCE() {
 
 
@@ -646,8 +649,8 @@
 
         setTimeout(function () {
             $('.tox-notifications-container').hide();  //Hide Yellow label which comes on editor body .
-        }, 550);
+        }, 850);
     }
-
+    
 
 </script>

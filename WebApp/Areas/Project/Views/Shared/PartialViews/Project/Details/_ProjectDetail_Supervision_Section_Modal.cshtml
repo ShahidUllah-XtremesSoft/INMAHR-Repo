@@ -88,7 +88,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                                <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks" required></textarea>
+                                <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -96,11 +96,11 @@
                                 <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
                                 <span style="color: red">*</span>
                                 <select class="form-control" id="SupervisionSection_comment_for_client_or_employee" name="SupervisionSection_comment_for_client_or_employee" required>
-                                    <option value="" selected>Select</option>
-                                    <option value="Employee">Employee</option>
-                                    <option value="Client">Client</option>
-                                    <option value="Both">Both</option>
-                                    <option value="NoRemarks">No Remarks</option>
+                                    <option value="">@ProjectUI.ProjectUI.lblSelect</option>
+                                    <option selected value="Employee">@ProjectUI.ProjectUI.lblEmployee</option>
+                                    <option value="Client">@ProjectUI.ProjectUI.lblClient</option>
+                                    <option value="Both">@ProjectUI.ProjectUI.lblBoth</option>
+                                    <option value="NoRemarks">@ProjectUI.ProjectUI.lblNoRemarks</option>
                                 </select>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
 @* *********************                                           ******************** *@
 @* ********************* LOAD MODEL FOR ASSIGN RECORD TO SECTION ******************** *@
 @* *********************                                            ******************* *@
-@* ********************* **************** BY /\/\ati ************************************* *@
+@* ********************* **************** BY |\/|ati ************************************* *@
 <button type="button" style="display:none;" class="btn btn-primary" id="load-supervision-section-assign-model" data-toggle="modal" data-target="#modal-supervision-section-assign-to-section"></button>
 <div class="modal fade" id="modal-supervision-section-assign-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -238,7 +238,7 @@
                 </form>
             </div>
 
-           
+
         </div>
 
     </div>

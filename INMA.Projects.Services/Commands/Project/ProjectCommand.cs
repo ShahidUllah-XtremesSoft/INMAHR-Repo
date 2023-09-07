@@ -292,13 +292,33 @@ namespace INMA.Projects.Services.Project
                     //messageBody = "Project Info "+(model.Id == 0 ? "created" : "updated") + System.Environment.NewLine+"Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
                     //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody,"Project Info",_response.InsertedId,model.Client_Id,employee.EmployeeId);
 
-                    var res = notificationService.Save("Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", _response.InsertedId, model.CreatedBy, employee.EmployeeId, model.Language);
+                    var res = notificationService.Save(
+                            "Project"
+                        , "Project"
+                        , (model.Id == 0 ? clientDetailInfo.NameEng + " created" : clientDetailInfo.NameEng + " updated") + " successfully"
+                        , (model.Id == 0 ? clientDetailInfo.NameEng + " created" : clientDetailInfo.NameEng + " updated") + " successfully"
+                        // , "Project " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " "
+                        // , "Project " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " "
+                        , ""
+                        , _response.InsertedId
+                        , model.CreatedBy
+                        , employee.EmployeeId
+                        , model.Language);
 
                 }
                 var projectCreator = GetProjectCreatorInfoByProjectId((int)_response.InsertedId);
                 if (projectCreator != null && projectCreator.UserId != model.CreatedBy)
                 {
-                    var res = notificationService.Save("Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + "", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Project info " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", _response.InsertedId, model.CreatedBy, projectCreator.EmployeeId, model.Language);
+                    var res = notificationService.Save(
+                        "Project " + (model.Id == 0 ? "created" : "updated") + ""
+                        , "Project " + (model.Id == 0 ? "created" : "updated") + ""
+                        , "Project " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " "
+                        , "Project " + (model.Id == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " "
+                        , ""
+                        , _response.InsertedId
+                        , model.CreatedBy
+                        , projectCreator.EmployeeId
+                        , model.Language);
                 }
                 return _response;
 
@@ -515,22 +535,6 @@ namespace INMA.Projects.Services.Project
                 var _response = Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Project_Unit_Save.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
-                //if (model.UploadedFiles.Count > 0)
-                //{
-                //    Service = new FileUploadService();
-                //    foreach (var file in model.UploadedFiles)
-                //    {
-                //        Service.UploadFile(
-                //            file.CurrentFilePath,
-                //            file.OriginalFileName,
-                //            file.CurrentFileName,
-                //            (int)EntityType.Project,
-                //            (int)_response.InsertedId,
-                //            (int)DocumentType.ProjectAttachment,
-                //            XtremeFactory._factory, XtremeFactory.connectionString);
-
-                //    }
-                //}
 
                 /*SMS Sending Code
                 if (_response.Type.ToString().ToLower() == "success")
@@ -547,22 +551,7 @@ namespace INMA.Projects.Services.Project
                     }
                 }
                 */
-                //Send Notification
-                var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.UnitProject_Id);
-                var clientDetailInfo = GetClientDetailByProjectId(0, model.UnitProject_Id);
-                NotificationService notificationService = new NotificationService();
-                foreach (var employee in projectLinkedEmployees)
-                {
-                    //messageBody = "Project Info "+(model.Id == 0 ? "created" : "updated") + System.Environment.NewLine+"Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
-                    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody,"Project Info",_response.InsertedId,model.Client_Id,employee.EmployeeId);
-                    var res = notificationService.Save("Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", model.UnitProject_Id, model.UnitCreatedBy, employee.EmployeeId, model.UnitLanguage);
 
-                }
-                var projectCreator = GetProjectCreatorInfoByProjectId((int)model.UnitProject_Id);
-                if (projectCreator != null && projectCreator.UserId != model.UnitCreatedBy)
-                {
-                    var res = notificationService.Save("Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + "", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "Basic info " + (model.UnitId == 0 ? "created" : "updated") + " for project# " + clientDetailInfo.ProjectNumber + " ", "", model.UnitProject_Id, model.UnitCreatedBy, projectCreator.EmployeeId, model.UnitLanguage);
-                }
                 return _response;
 
             }
@@ -743,7 +732,8 @@ namespace INMA.Projects.Services.Project
                         string subject = string.Empty, description = string.Empty;
                         subject = "File";
                         //   description = "New document( " + model.Project_Section_Parent_Type_DDL_Text + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Section_Parent_Type_DDL_Text + "";
-                        description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )  Project# " + clientDetailInfo.ProjectNumber + "";
+                        //description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )  Project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.DesignSection_Document_ProjectId, model.DesignSection_Document_CreatedBy, employee.EmployeeId, model.DesignSection_Document_Language);
@@ -884,6 +874,7 @@ namespace INMA.Projects.Services.Project
                     ProjectId = 0,
                     Language = string.Empty
                 }, viewInput);
+
                 /*if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)smsModel.ProjectId);
@@ -898,7 +889,11 @@ namespace INMA.Projects.Services.Project
                     }
                 }
                 */
+
+
                 //Send Notification
+                /*
+                 * THIS NOTIFICATION IS WORKING SUCCESSFULLY,IT'S COMMENTED AS PER COMPANY MANAGER REQUIREMENT
                 if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)smsModel.ProjectId);
@@ -921,6 +916,7 @@ namespace INMA.Projects.Services.Project
                         }
                     }
                 }
+                */
                 return _response;
 
             }
@@ -1002,8 +998,9 @@ namespace INMA.Projects.Services.Project
                     {
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
-                        subject = "File Transferred";
-                        description = "File transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        subject = model.ApprovedOrReturned;
+                        //   description = "File " + model.ApprovedOrReturned + " from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "File " + model.ApprovedOrReturned + " from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType;
 
                         foreach (var employee in projectLinkedEmployees)
                         {
@@ -1050,6 +1047,31 @@ namespace INMA.Projects.Services.Project
             }
         }
         #endregion
+        #region  LOAD EMPLOYEES AS PER DEPARTMENT ID ONLY FOR PROJECT RECEIVING
+
+        [Command(Name = "Project_Transfer_To_Employee")]
+        public class Project_Transfer_To_EmployeeCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    Project_Id = 0,
+                    EmployeeDepartmentId = 0,
+                    Language = string.Empty
+
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Project_Transfer_To_Employee.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+            }
+        }
+        #endregion
         #region  PROJECT LOAD ASSIGNED ENGINEERS FOR PROJECT DESIGN SECTION
 
         [Command(Name = "Project_Linked_Employees_By_SectionId")]
@@ -1071,6 +1093,34 @@ namespace INMA.Projects.Services.Project
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
                 return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Project_Linked_Employees_By_SectionId.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+            }
+        }
+        #endregion
+
+
+        #region  PROJECT LOAD ASSIGNED ENGINEERS FOR PROJECT DESIGN SECTION
+
+        [Command(Name = "Project_Linked_Multiple_Employees_GetBy_Project_and_DepartmentId")]
+        public class Project_Linked_Multiple_Employees_GetBy_Project_and_DepartmentIdCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    Project_Id = 0,
+                    LoggedInEmployeeId = 0,
+                    EmployeeDepartmentId = 0,
+                    Language = string.Empty
+
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Project_Linked_Multiple_Employees_GetBy_Project_and_DepartmentId.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
             }
         }
@@ -1175,7 +1225,8 @@ namespace INMA.Projects.Services.Project
                     //}
                 }
                 */
-
+                /* 
+                 * This notification is working but commented due to logic moved to store procedure 
                 //Send Notification
                 if (_response.Type.ToString().ToLower() == "success")
                 {
@@ -1200,6 +1251,7 @@ namespace INMA.Projects.Services.Project
                         }
                     }
                 }
+                */
                 return _response;
 
             }
@@ -1240,9 +1292,13 @@ namespace INMA.Projects.Services.Project
                 valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
                 valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.ProjectModel[0].Sub_Section_Entity_Id);
                 valuesGetTypeAndDetail.Add("@Language", "en-US");
-                var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
+                var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.projectconnectionString);
                 var clientDetailInfo = GetClientDetailByProjectId(0, model.ProjectModel[0].Project_Id);
                 //SMS Sending Code
+
+                /*
+                 * BELOW SMS CODE IS WORKING .BUT TEMPRARY COMMENTED IN DEVELOPMENT MODE
+                 * 
                 if (response.ToList()[0].Type.ToString().ToLower() == "success")
                 {
 
@@ -1255,12 +1311,19 @@ namespace INMA.Projects.Services.Project
                         if (employee != null)
                         {
                             //messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to Design Section" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                            // messageBody = employee.EmpNameEng.ToString().Trim() + " has been added to " + responseSetupTypeAndDetail.SetupType + " - " + responseSetupTypeAndDetail.SetupTypeDetail + "" + "." + "Project # - " + employee.ProjectNumber + "." + "Name - " + employee.NameEng + "." + "Location - " + employee.Location;
                             messageBody = employee.EmpNameEng.ToString().Trim() + " has been added to " + responseSetupTypeAndDetail.SetupType + " - " + responseSetupTypeAndDetail.SetupTypeDetail + "" + "." + "Project # - " + employee.ProjectNumber + "." + "Name - " + employee.NameEng + "." + "Location - " + employee.Location;
                             //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
                             int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, "" + responseSetupTypeAndDetail.SetupType + " - " + responseSetupTypeAndDetail.SetupTypeDetail + "", model.ProjectModel[0].Project_Id, 0, employee.EmployeeId);
 
                         }
                     }
+
+
+
+
+
+
                     //Below commented code will send SMS to all asigned employees now and previous
                     //foreach (var employee in projectLinkedEmployees)
                     //{
@@ -1271,6 +1334,8 @@ namespace INMA.Projects.Services.Project
                     //
                     //}
                 }
+
+                */
                 //Ends SMS Sending Code
 
                 //Send Notification
@@ -1303,6 +1368,123 @@ namespace INMA.Projects.Services.Project
                         }
                     }
                 }
+                return response.ToList()[0];
+
+
+            }
+
+        }
+
+
+
+        #endregion
+        #region  PROJECT SEND TO MULTIPLE ENGINEERS BY SECTION HEAD
+
+        [Command(Name = "Project_Send_To_Multiple_Employees_By_SectionHead")]
+        public class Project_Send_To_Multiple_Employees_By_SectionHeadCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    ProjectModel = new List<ProjectModel>(),
+                    CreatedBy = 0,
+                    Language = ""
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+
+                values = _params.Get(model);
+
+
+                var table = new KeyValuePair<string, DataTable>("[dbo].[UD_Project_Save_Multiple_Employees]", ExtensionMethods.ToDataTable(model.ProjectModel));
+                var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
+                ProductList.Add("@UD_Project_Save_Multiple_Employees", table);
+                var response = repository.GetMultipleWithTableValuParam<dynamic>(ProjectStoreProcedure.Project_Send_To_Multiple_Employees_By_SectionHead.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+                var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.ProjectModel[0].Project_Id);
+                /*
+                IDictionary<string, object> valuesGetTypeAndDetail = new Dictionary<string, object>();
+                valuesGetTypeAndDetail.Add("@SetupTypeId", model.ProjectModel[0].Section_Entity_Id);
+                valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.ProjectModel[0].Sub_Section_Entity_Id);
+                valuesGetTypeAndDetail.Add("@Language", "en-US");
+                var responseSetupTypeAndDetail = repository.GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                */
+                //var clientDetailInfo = GetClientDetailByProjectId(0, model.ProjectModel[0].Project_Id);
+                //SMS Sending Code
+                if (response.ToList()[0].Type.ToString().ToLower() == "success")
+                {
+
+                    string messageBody = string.Empty;
+                    Commands.SMSService smsService = new Commands.SMSService();
+                    //Added below logic to send SMS only to now added employee(s)
+                    foreach (var asignedEmployee in model.ProjectModel)
+                    {
+                        var employee = projectLinkedEmployees.Where(filter => filter.EmployeeId == asignedEmployee.HR_Employee_Id).FirstOrDefault();
+                        if (employee != null)
+                        {
+                            messageBody =
+                                employee.EmpNameEng.ToString().Trim() + " has been added to " +
+                                // responseSetupTypeAndDetail.SetupType + " - " +
+                                //  responseSetupTypeAndDetail.SetupTypeDetail + "" + "." +
+                                "Project # - " +
+                                employee.ProjectNumber + "." +
+                                "Name - " +
+                                employee.NameEng + "." +
+                                "Location - " +
+                                employee.Location;
+
+                            int _smsResponse =
+                                smsService.SendSMS(employee.PhoneNumber, messageBody, "", model.ProjectModel[0].Project_Id, 0, employee.EmployeeId, model.ProjectModel[0].CreatedBy);
+
+                        }
+                    }
+                    //Below commented code will send SMS to all asigned employees now and previous
+                    //foreach (var employee in projectLinkedEmployees)
+                    //{
+                    //    //messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to Design Section" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                    //    messageBody = model.ProjectModel.Count().ToString()+" more employee(s) has been added to "+ responseSetupTypeAndDetail.SetupType + " - "+responseSetupTypeAndDetail.SetupTypeDetail + "" + System.Environment.NewLine + "Project # - " + employee.ProjectNumber + System.Environment.NewLine + "Name - " + employee.NameEng + System.Environment.NewLine + "Location - " + employee.Location;
+                    //    //int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody);
+                    //    int _smsResponse = smsService.SendSMS(employee.PhoneNumber, messageBody, ""+ responseSetupTypeAndDetail.SetupType + " - "+responseSetupTypeAndDetail.SetupTypeDetail + "", model.ProjectModel[0].Project_Id, 0, employee.EmployeeId);
+                    //
+                    //}
+                }
+                //Ends SMS Sending Code
+
+                //Send Notification
+                /*
+                if (response.ToList()[0].Type.ToString().ToLower() == "success")
+                {
+
+
+                    if (projectLinkedEmployees.Count > 0 && clientDetailInfo != null)
+                    {
+                        NotificationService notificationService = new NotificationService();
+                        //string subject = string.Empty, description = string.Empty;
+                        string subject = string.Empty, description = string.Empty;
+                        subject = "Employee added";                     
+                        foreach (var employee in projectLinkedEmployees)
+                        {
+                            foreach (var asignedEmployee in model.ProjectModel)
+                            {
+                                var employeeAdded = projectLinkedEmployees.Where(filter => filter.EmployeeId == asignedEmployee.HR_Employee_Id).FirstOrDefault();
+                                description = "" + employeeAdded.EmpNameEng.ToString().Trim() + " has been added in section " + responseSetupTypeAndDetail.SetupType + " Project# " + clientDetailInfo.ProjectNumber + "";
+                                var res = notificationService.Save(subject, subject, description, description, "", model.ProjectModel[0].Project_Id, model.ProjectModel[0].CreatedBy, employee.EmployeeId, model.ProjectModel[0].Language);
+                            }
+                        }
+                        var projectCreator = GetProjectCreatorInfoByProjectId((int)model.ProjectModel[0].Project_Id);
+                        if (projectCreator != null && projectCreator.UserId != model.ProjectModel[0].CreatedBy)
+                        {
+                            var res = notificationService.Save(subject, subject, description, description, "", model.ProjectModel[0].Project_Id, model.ProjectModel[0].CreatedBy, projectCreator.EmployeeId, model.ProjectModel[0].Language);
+                        }
+                    }
+                }
+
+
+                */
                 return response.ToList()[0];
 
 
@@ -1453,9 +1635,10 @@ namespace INMA.Projects.Services.Project
                     {
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
-                        subject = "Filed";
+                        subject = "File";
                         //description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " ) Project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Technical_Section_Parent_Type_DDL_Text + "";
-                        description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " ) Project# " + clientDetailInfo.ProjectNumber + "";
+                        //description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " ) Project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " )";
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.TechnicalSection_Document_ProjectId, model.TechnicalSection_Document_CreatedBy, employee.EmployeeId, model.TechnicalSection_Document_Language);
@@ -1568,6 +1751,9 @@ namespace INMA.Projects.Services.Project
                 }
                 */
                 //Send Notification
+                /*
+                 * THIS NOTIFICATION IS WORKING SUCCESSFULLY,IT'S COMMENTED AS PER COMPANY MANAGER REQUIREMENT
+
                 if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)smsModel.ProjectId);
@@ -1577,9 +1763,9 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty,
                                 description = string.Empty;
-                        subject = "File Deleted";
+                        subject = "Deleted";
                         //description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
-                        
+
                         description = "File deleted from ( " + smsModel.Document.Split('|')[0] + " ) Project# " + clientDetailInfo.ProjectNumber + "";
                         foreach (var employee in projectLinkedEmployees)
                         {
@@ -1592,6 +1778,7 @@ namespace INMA.Projects.Services.Project
                         }
                     }
                 }
+                */
                 return _response;
 
             }
@@ -1654,8 +1841,8 @@ namespace INMA.Projects.Services.Project
                 CommandParameters _params = new CommandParameters();
 
                 values = _params.Get(model);
-                var _response= repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_TechnicalSection_Document_Transfer_ById.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-               
+                var _response = repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_TechnicalSection_Document_Transfer_ById.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
                 var smsModel = base.MappedModel(new
                 {
 
@@ -1680,8 +1867,9 @@ namespace INMA.Projects.Services.Project
                     {
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
-                        subject = "File Transferred";
-                        description = "File transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        subject = model.ApprovedOrReturned;
+                        //   description = "File " + model.ApprovedOrReturned + " from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "File " + model.ApprovedOrReturned + " from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType;
 
                         foreach (var employee in projectLinkedEmployees)
                         {
@@ -1830,7 +2018,7 @@ namespace INMA.Projects.Services.Project
                     valuesGetTypeAndDetail.Add("@SetupTypeId", model.Project_Supervision_Section_Parent_Type_DDL);
                     valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.Project_SupervisionSection_Entity_Id);
                     valuesGetTypeAndDetail.Add("@Language", "en-US");
-                    var responseSetupTypeAndDetail = Ioc.Resolve<IRepository>().GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
+                    var responseSetupTypeAndDetail = Ioc.Resolve<IRepository>().GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.SupervisionSection_Document_ProjectId);
@@ -1856,7 +2044,7 @@ namespace INMA.Projects.Services.Project
                     valuesGetTypeAndDetail.Add("@SetupTypeId", model.Project_Supervision_Section_Parent_Type_DDL);
                     valuesGetTypeAndDetail.Add("@SetupTypeDetailId", model.Project_SupervisionSection_Entity_Id);
                     valuesGetTypeAndDetail.Add("@Language", "en-US");
-                    var responseSetupTypeAndDetail = Ioc.Resolve<IRepository>().GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.connectionString);
+                    var responseSetupTypeAndDetail = Ioc.Resolve<IRepository>().GetSingle<dynamic>("Setup_Type_With_Detail_GetByTypeAndDetailId".ToString(), valuesGetTypeAndDetail, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
 
@@ -1865,8 +2053,10 @@ namespace INMA.Projects.Services.Project
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
                         subject = "File";
-                       // description = "New document( " + responseSetupTypeAndDetail.SetupType + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + responseSetupTypeAndDetail.SetupType + "";
-                        description = "New file added in ( " + responseSetupTypeAndDetail.SetupType + " )  Project# " + clientDetailInfo.ProjectNumber + "";
+                        // description = "New document( " + responseSetupTypeAndDetail.SetupType + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + responseSetupTypeAndDetail.SetupType + "";
+                        //    description = "New file added in ( " + responseSetupTypeAndDetail.SetupType + " )  Project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "New file added in ( " + responseSetupTypeAndDetail.SetupType + " )";
+
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.SupervisionSection_Document_ProjectId, model.SupervisionSection_Document_CreatedBy, employee.EmployeeId, model.SupervisionSection_Document_Language);
@@ -2031,6 +2221,9 @@ namespace INMA.Projects.Services.Project
                 }
                 */
                 //Send Notification
+                /*
+                 * THIS NOTIFICATION IS WORKING SUCCESSFULLY,IT'S COMMENTED AS PER COMPANY MANAGER REQUIREMENT
+
                 if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)smsModel.ProjectId);
@@ -2039,7 +2232,7 @@ namespace INMA.Projects.Services.Project
                     {
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
-                        subject = "File Deleted";
+                        subject = "Deleted";
                         //description = "Document( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + ", section: " + smsModel.Document.Split('|')[0] + "";
                         //description = "File ( " + smsModel.Document.Split('|')[0] + " ) removed from  project# " + clientDetailInfo.ProjectNumber + "";
                         description = "File deleted from ( " + smsModel.Document.Split('|')[0] + " ) Project# " + clientDetailInfo.ProjectNumber + "";
@@ -2054,6 +2247,7 @@ namespace INMA.Projects.Services.Project
                         }
                     }
                 }
+                */
                 return _response;
 
             }
@@ -2151,9 +2345,9 @@ namespace INMA.Projects.Services.Project
                 CommandParameters _params = new CommandParameters();
 
                 values = _params.Get(model);
-                var _response=  repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_SupervisionSection_Document_Transfer_ById.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                var _response = repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_SupervisionSection_Document_Transfer_ById.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
-               
+
 
                 //Send Notification
                 if (_response.Type.ToString().ToLower() == "success")
@@ -2164,8 +2358,11 @@ namespace INMA.Projects.Services.Project
                     {
                         NotificationService notificationService = new NotificationService();
                         string subject = string.Empty, description = string.Empty;
-                        subject = "File Transferred";
-                        description = "File transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        // subject = "File Transferred";
+                        // description = "File transferred from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        subject = model.ApprovedOrReturned;
+                        //  description = "File " + model.ApprovedOrReturned + " from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType + "  project# " + clientDetailInfo.ProjectNumber + "";
+                        description = "File " + model.ApprovedOrReturned + " from " + smsModel.FromDocumentType + " to " + smsModel.ToDocumentType;
 
                         foreach (var employee in projectLinkedEmployees)
                         {

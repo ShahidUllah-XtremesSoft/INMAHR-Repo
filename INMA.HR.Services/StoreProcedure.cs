@@ -6,6 +6,7 @@
     DDL_Attendance_Leave,
     DDL_Department_Parent_Section,
     Setup_Type_DropdownByTypeName_New,
+   
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
     Notification_Save,
@@ -296,6 +297,7 @@
     Employee_Attendance_Today_GetByDepartment,
     Employee_Attendance_UpdateTodayAttendanceAsProcessed,
     Employee_Attendance_GetByEmployee,
+    Employee_Attendance_YearlyMonthly_Report_Get,
     Employee_Attendance_LeaveDetail_History,
     Employee_Attendance_TodayAttendance_Get,
     Employee_Attendance_Linking,
@@ -431,7 +433,9 @@ public enum ProjectStoreProcedure
     Project_Attachment_By_Id,
     Project_Delete,
     Project_HR_Employee,
+    Project_Transfer_To_Employee,
     Project_Linked_Employees_By_SectionId,
+    Project_Linked_Multiple_Employees_GetBy_Project_and_DepartmentId,
     Project_Linked_Employees_By_Parent,
     Project_Linked_Employees_By_Project_Id_Get,
     Project_Linked_Employees_By_ProjectId,
@@ -447,6 +451,7 @@ public enum ProjectStoreProcedure
     Project_DesignSection_Document_Get,
     Project_DesignSection_Document_Delete,
     Project_Save_Multiple_Employees,
+    Project_Send_To_Multiple_Employees_By_SectionHead,
     Project_Linked_Multiple_Employees_Delete_By_Id,
     // PROJECT DETAILS DESIGN SECTION
     Project_DesignSection_Document_GetById,
@@ -481,6 +486,7 @@ public enum ProjectStoreProcedure
     #endregion
     #region Client
     Client_Save,
+    Client_Save_Limited_field,
     Client_Get,
     Client_Delete,
     Client_Details_By_Id,
@@ -554,7 +560,7 @@ public enum ProjectStoreProcedure
     #region COMMENT
     Comment_Save,
     Comment_Get_ByAreaID,
-    Comment_Delete, 
+    Comment_Delete,
 
     #endregion
 
@@ -562,7 +568,7 @@ public enum ProjectStoreProcedure
 
 
     #region   DROP DOWNS
-
+    Setup_Main_Section_DropdownByTypeName,
     DDL_Setup_City,
     DDL_ProjectCategoryType_In_Setup_TypeDetail_Get,
     DDL_Project,

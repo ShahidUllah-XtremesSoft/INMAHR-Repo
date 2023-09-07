@@ -107,6 +107,37 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+    
+    #region CLIENT SAVE
+
+    [Command(Name = "Client_Save_Limited_field")]
+    public class Client_Save_Limited_fieldCommand : CamelCommandBase
+    {
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new
+            {
+                Id = 0,
+                CreatedBy = 0,
+                NameEng = string.Empty, 
+                Email1 = string.Empty, 
+                PhoneNumber1 = string.Empty    
+            }, v); 
+             
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+           
+
+            values = _params.Get(model); 
+            var _response = Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Client_Save_Limited_field.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+ 
+
+            
+            return _response;
+
+        }
+    }
+    #endregion
 
     #region CLIENT EDIT BY ID 
 

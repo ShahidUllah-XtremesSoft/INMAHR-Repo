@@ -24,6 +24,7 @@ namespace INMA.HR.Services.Commands.Common
                 LoggedInUserDepartmentId = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
+                MainApplicationModule_Id = 1,
                 Language = string.Empty
 
             }, v);

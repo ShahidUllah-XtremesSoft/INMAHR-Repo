@@ -13,7 +13,7 @@ $(function () {
 
 
     fnLoadCityByNationalityId(0)
-   
+
     $("#NationalityDDL").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "id",
@@ -36,7 +36,7 @@ $(function () {
 
         },
     });
-     
+
     $("#NationalityDDL").data("kendoDropDownList").value(234)
     $('#Nationality_Id').val(234);
     //$("#NationalityDDL").data("kendoDropDownList").enable(false);
@@ -146,7 +146,8 @@ $(function () {
             dataTextField: "name",
             dataValueField: "id",
             filter: "contains",
-            value: -1,
+            // value: -1,
+            index: 3,
             //    dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('CityListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('CityListArb'))),
             dataSource: JSON.parse(localStorage.getItem('CityListEng')),
             change: function (e) {

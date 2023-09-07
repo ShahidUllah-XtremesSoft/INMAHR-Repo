@@ -2,7 +2,7 @@
 var project_Id = (new URL(location.href)).searchParams.get('id');
 /*
 
-************LOAD TECHNICAL SECTION SUB STEPPER ********************* By /\/\ati
+************LOAD TECHNICAL SECTION SUB STEPPER ********************* By |\/|ati
 
 */
 
@@ -21,7 +21,7 @@ function stepper_TECHNICAL_SECTION(response) {
 
     for (var i = 0; i < JSON.parse(response.Value).length; i++) {
 
-        //************************ CHANGE COLOR OF MAIN STEPPER MENU BY /\/\ati 
+        //************************ CHANGE COLOR OF MAIN STEPPER MENU BY |\/|ati 
         if (JSON.parse(response.Value)[i].parent_Type == 'DesignSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
             error_PROJECT_MAIN_SECTION_Design_Stepper = true;
 
@@ -42,10 +42,17 @@ function stepper_TECHNICAL_SECTION(response) {
         });
 
         if (JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon == 'check') {
-            step_Columns.push({ label: "Completed", enabled: false, selected: true, successIcon: "k-icon k-i-check", iconTemplate: function (e) { return '<strong> </strong>'; } });
+            step_Columns.push({
+                label: "Completed",
+                enabled: false,
+                selected: true,
+                successIcon: "k-icon k-i-check",
+                iconTemplate: function (e) { return '<strong> </strong>'; }
+            });
         }
     }
 
+    /*
     setTimeout(function () {
 
         if (localStorage.getItem('TechnicalSection_Menu_Area') != '') {
@@ -53,28 +60,59 @@ function stepper_TECHNICAL_SECTION(response) {
             progressbar_subSection(JSON.parse(response.Value), localStorage.getItem('TechnicalSection_Menu_Area'));
         }
     }, 100)
-
+    */
     bindkendoStepper('technical-section-stepper', false, step_Columns, '', stepper_Fn_TechnicalSection_Onselect, 'auto', "vertical");
+    if ($("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
+
+        var stepperInstance_technical = $("#technical-section-stepper").data('kendoStepper');
+    //    fnCheckProject_SubSection_Tab(stepperInstance_technical.options.steps[0].label, stepperInstance_technical.options.steps[0].Id)
+        fn_Project_Dynamic_Section_Tab(stepperInstance_technical.options.steps[0].label, stepperInstance_technical.options.steps[0].Id)
+
+    }
 }
 function stepper_Fn_TechnicalSection_Onselect(e) {
 
     var stepper_data = e.step.options;
     //e.step.element 
-    fnCheckProject_SubSection_Tab(stepper_data.label, stepper_data.Id);
+    // fnCheckProject_SubSection_Tab(stepper_data.label, stepper_data.Id);
 
 
 
 }
 
+$("#technical-section-stepper").on("click", '.k-step', function (e) {
+    e.stopPropagation();
+
+
+    var currentStep = $(this).select();
+    var stepName = 0;
+    if (currentStep.find('a').attr('title') != '') {
+        stepName = currentStep.find('a').attr('title').trim();
+    }
+    var stepIdFromFilter = 0;
+    $.grep($("#technical-section-stepper").data('kendoStepper').options.steps, function (obj) {
+
+        obj.label == stepName ? (stepIdFromFilter = obj.Id) : 0;
+    });
+  //  fnCheckProject_SubSection_Tab(stepName, stepIdFromFilter)
+    fn_Project_Dynamic_Section_Tab(stepName, stepIdFromFilter)
+});
+
+
 /*
  
-************LOAD TECHNICAL SECTION SUB STEPPER END ********************* By /\/\ati
+************LOAD TECHNICAL SECTION SUB STEPPER END ********************* By |\/|ati
  
 */
 
 function fnLoadTechnicalSection_Document(project_Id, Setup_Type_Id, grid_Id) {
     ajaxRequest({
-        commandName: 'Project_TechnicalSection_Document_GetById', values: { Project_Id: project_Id, Setup_Type_Id: Setup_Type_Id, Language: _currentLanguage }, CallBack: fnLoadTechnicalSection_Document_CallBacck
+        commandName: 'Project_TechnicalSection_Document_GetById',
+        values: {
+            Project_Id: project_Id,
+            Setup_Type_Id: Setup_Type_Id,
+            Language: _currentLanguage
+        }, CallBack: fnLoadTechnicalSection_Document_CallBacck
     });
 
     localStorage.setItem('grid_id', grid_Id);
@@ -83,7 +121,7 @@ function fnLoadTechnicalSection_Document(project_Id, Setup_Type_Id, grid_Id) {
 var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
     var pass_GridName = localStorage.getItem('grid_id');
 
-
+    //console.log(JSON.parse(inputDataJSON.Value));
     if (pass_GridName != "") {
 
         var gridTemplate = '';
@@ -94,39 +132,41 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
         var gridColumns = [
             { field: "entityId", title: "EntityId", hidden: true, width: 20 },
             { field: "entityType", title: "EntityType", hidden: true, width: 20 },
-            { field: "documentType", title: "DocumentType", hidden: true, width: 20 },
+            /*{ field: "documentType", title: "DocumentType", hidden: true, width: 20 },*/
             { field: "setup_Type_Id", title: "setup_Type_Id", hidden: true, width: 20 },
             { field: "setup_TypeDetail_Id", title: "setup_TypeDetail_Id", hidden: true, width: 20 },
             { field: "attachmentId", title: "attachmentId", hidden: true, width: 20 },
-            { title: "#", template: "<b>#= ++record #</b>", width: 10, },
+            { title: "#", template: "<b>#= ++record #</b>", width: 15, },
             {
                 field: "currentFileName",
-                title: lblDocumentAttachment,
+                title: lblFile,
                 hidden: false,
                 width: 20,
                 filterable: false,
                 template: " #  if (currentFileName == null )" +
                     " { # <label class='pcoded-badge label label-danger'>" + lblNoAttachment + "</label># }                                                                     else if(currentFileName.split('.')[1]=='pdf')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:80%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:80%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
-                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:80%;cursor: pointer;'/> </a># } else" +
-                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:80%';cursor: pointer; /></a> #} #"
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/pdf.png'        style='width:60%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='xlsx')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/xls.png'        style='width:60%;cursor: pointer;'/> </a># }else if(currentFileName.split('.')[1]=='docs' || currentFileName.split('.')[1]=='docx'|| currentFileName.split('.')[1]=='doc')" +
+                    " { #  <a  target='_blank' href='/UploadFile/#=currentFileName #'> <img class='' src='/Content/Images/docx.png'       style='width:60%;cursor: pointer;'/> </a># } else" +
+                    " { # <a  target='_blank' href='/UploadFile/#=currentFileName #'>  <img class='' src='/Content/Images/attachment-icon.png' style='width:60%';cursor: pointer; /></a> #} #"
 
             },
-            { field: "documentType", title: documentType, hidden: true },
-            { field: "combineDocumentType", title: documentType, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+
+            { field: "documentTypeName", title: lblFileName, hidden: false, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "combineDocumentType", title: lblFileName, hidden: true, width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             {
                 field: "releaseDate", title: lblIssueDate, hidden: false, width: 40, filterable: false,
-                template: "   <label class='badge   badge-success'>#=releaseDate #</label>"
+                template: "   <label class=' '>#=releaseDate #</label>"
+
             },
             {
                 field: "expiryDate", title: lblExpiryDate, hidden: false, width: 40, filterable: false,
-                template: "#if(noExpiry != 1) { #<label class='badge   badge-danger'>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
+                template: "#if(noExpiry != 1) { #<label class=''>#=expiryDate #</label> #} else {# <label class='badge  '>" + lblNoExpiry + "</label> #}#",
 
             },
 
             {
-                field: "expiryIn", title: lblExpiresIn, hidden: false, width: 40, filterable: false,
+                field: "expiryIn", title: lblExpiresIn, hidden: true, width: 40, filterable: false,
                 template: "#if(noExpiry == 1) { #<label class='badge  '>" + lblNoExpiry + "</label>#} else {#" +
                     " #if (totalDays <= 0) { #<span class='badge badge-danger'>#:expiryIn#</span> # } else if (totalDays <= 29) { # <span class='badge badge-warning'>#:expiryIn#</span> # } " +
                     "else {# <span class='badge badge-success'>#:expiryIn#</span> # }# #}#"
@@ -137,7 +177,7 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
                 title: status,
                 field: 'status',
                 width: 40,
-                hidden: false,
+                hidden: true,
                 filterable: false,
                 template: "#if (totalDays <= 0 && noExpiry == 0) { # <span class='badge badge-danger'>#:status#</span> # } else " +
                     "if (totalDays <= 29 && noExpiry == 0) { # <span class='badge badge-warning'>#:status#</span> # } else" +
@@ -146,22 +186,63 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
             }, {
                 field: "attachmentRemarks",
                 title: lblRemarks,
-                width: 70,
+                width: 150,
                 hidden: false,
                 filterable: false,
-                template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
+                template: "  <span class='badge badge-danger'>#:attachmentRemarks#</span>  "
+
+            }, {
+                title: status,
+                field: 'statusForCondition',
+                width: 40,
+                hidden: true,
+                filterable: false
+
 
             },
+            //{
+            //    field: "", title: "", width: 40 //, template: gridTemplate,
+            //    //  , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
+            //    , template: "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id){ #" +
+            //        "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  # }" +
+            //        "else {#    #}#"
+
+
+            //},
+
+            //{
+            //    field: "", title: "", width: 60 //, hidden: 'statusForCondition !="Transfered" :' + false + '? ' + true + '' //, template: gridTemplate,
+            //    , template: "#if(localStorage.isSectionHead == 'Yes'){ #" +
+            //        " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-outline-sm waves-effect    waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+            //        "#}" +
+            //        "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && (statusForCondition !=null ? statusForCondition.match(/Return.*/) :statusForCondition )){ #" +
+
+            //        //" <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect    waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+            //        "#}" +
+            //        //"else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && (statusForCondition !=null ? statusForCondition.match(/Transfer.*/) :statusForCondition )){ #" +
+
+            //        //"#}" +
+            //        "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null){ #" +
+            //        "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
+            //        " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect    waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+
+            //        "#}#"
+
+            //},
+             
             {
-                field: "", title: "", width: 40 //, template: gridTemplate,
-              //  , template: " <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  "
-                , template: "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id){ #" +
-                    "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>  # }" +
-                    "else {#    #}#"
-
+                field: "", title: "", width: 60 //, hidden: 'statusForCondition !="Transfered" :' + false + '? ' + true + '' //, template: gridTemplate,
+                , template: "#if(localStorage.isSectionHead == 'Yes' && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
+                    "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id){# <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>#}#" +
+                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-outline-sm waves-effect    waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+                    "#}" +
+                    "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
+                    "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
+                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm  waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+                    "#}" +
+                    "else { ''} #"
 
             },
-
 
 
         ];
@@ -236,12 +317,12 @@ $('#btn-technical-section-upload-document').click(function () {
     $('#TechnicalSection_Document_ProjectId').val(project_Id);
     $('#TechnicalSection_Document_Language').val(_currentLanguage);
     $('#TechnicalSection_Document_CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
-
+    $('#Project_Technical_Section_Parent_Type_DDL_Text').val($("#technical-section-stepper").data('kendoStepper').selectedStep.options.label);
 
     if (customValidateForm('frmAddUpdate_TechnicalSection_Document')) {
-      //  if (!firstDateShouldBeGreaterThanSecondDate($('#TechnicalSection_Document_StartDate').val(), $('#TechnicalSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
-      //      return false;
-      //  }
+        //  if (!firstDateShouldBeGreaterThanSecondDate($('#TechnicalSection_Document_StartDate').val(), $('#TechnicalSection_Document_EndDate').val(), $('.lbl-startDate').text(), $('.lbl-endDate').text())) {
+        //      return false;
+        //  }
         buttonAddPleaseWait('btn-technical-section-upload-document');
 
         $("#frmAddUpdate_TechnicalSection_Document").ajaxForm();
@@ -290,19 +371,33 @@ function fnUpdateTechnicalSection_Employee_document_CompletionDate() {
         }, CallBack: ''
 
     });
-    location.reload();
+    var gridId_technicalSection = $('.TechnicalSection_Tab.active').find('.k-grid').attr('id');
+    fnLoadTechnicalSection_Document(project_Id, $("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id, gridId_technicalSection);
+    $('.close-technical-upload-modal').click();
 }
 
 
 
 $('#btn-technical-section-load-upload-document-modal').click(function () {
     document.getElementById("frmAddUpdate_TechnicalSection_Document").reset();
-    fn_IsWorkStarted_TechnicalSection();
+    if ($("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id != undefined) {
+        fn_IsWorkStarted_TechnicalSection();
+    } else {
+        $($($(this).parent())[0]).append(('<h5 class="lblPleaseSelectSection" style="background-color:#f9df6c4f">' + lblPleaseSelectSection + '</h5>'))
+        $("#technical-section-stepper").data('kendoStepper').element.css('background-color', '#f9df6c4f');
+
+        setTimeout(function () {
+            $('.lblPleaseSelectSection').empty();
+            $("#technical-section-stepper").data('kendoStepper').element.css('background-color', 'transparent');
+        }, 1500);
+
+    }
+   
 
 
 });
 
-//***************** FN TRANSFER FILE AREA END------------------------BY /\/\ati
+//***************** FN TRANSFER FILE AREA END------------------------BY |\/|ati
 
 function fn_IsWorkStarted_TechnicalSection() {
     ajaxRequest({
@@ -423,7 +518,7 @@ function fn_IsWorkStarted_TechnicalSection() {
                 $('.show-hide-employee-task-area').hide();
             }
             loadProject_TechnicalSectiondownLists()
-            loadProject_TechnicalSection_SubSection_DDL('Project_TechnicalSection_SetupDetailTypeDDL', '0');
+            //  loadProject_TechnicalSection_SubSection_DDL('Project_TechnicalSection_SetupDetailTypeDDL', '0');
         }
     }
 
@@ -469,7 +564,11 @@ function fn_TechnicalSection_OnSelect_Section_DDL(e) {
 
 function loadProject_TechnicalSection_SubSection_DDL(controlId, typeName, selectText = null) {
 
-    ajaxRequest({ commandName: 'Setup_Type_DropdownByTypeName_New', values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_TechnicalSection_SubSection_DDLCallBackk });
+    ajaxRequest({
+        //commandName: 'Setup_Type_DropdownByTypeName_New',
+        commandName: 'Setup_Main_Section_DropdownByTypeName',
+        values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_TechnicalSection_SubSection_DDLCallBackk
+    });
 }
 var loadProject_TechnicalSection_SubSection_DDLCallBackk = function (loadjQueryDropdownListResponse, controlId) {
 
@@ -487,13 +586,16 @@ var loadProject_TechnicalSection_SubSection_DDLCallBackk = function (loadjQueryD
 }
 function onSelect_TechnicalSection_SubSection_DDL(e) {
     var selected_Id = e.dataItem.id;
+
+    $('#Project_Technical_Section_Parent_Type_DDL_Text').val(e.dataItem.name.trim());
+
     $('#Project_TechnicalSection_Entity_Id').val(selected_Id);
 };
 
 
 
 function fnCheck_NoExpiry_TechnicalSection(e, areaName) {
-   
+
     if (areaName == 'EndDate') {
         $('#TechnicalSection_Document_NoExpiry_Call')[0].checked = false
         $('#TechnicalSection_Document_NoExpiry').val(0);

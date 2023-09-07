@@ -358,6 +358,26 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
+    [Command(Name = "Setup_Main_Section_DropdownByTypeName")]
+    public class Setup_Main_Section_DropdownByTypeNameCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                TypeName = string.Empty,
+                Language = string.Empty
+            }, viewInput);
 
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Setup_Main_Section_DropdownByTypeName.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
 
 }

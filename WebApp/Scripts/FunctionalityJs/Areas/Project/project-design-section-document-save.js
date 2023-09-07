@@ -146,7 +146,11 @@ function fn_OnSelect_Section_DDL(e) {
 
 function loadProject_DesignSection_SubSection_DDL(controlId, typeName, selectText = null) {
 
-    ajaxRequest({ commandName: 'Setup_Type_DropdownByTypeName_New', values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_DesignSection_SubSection_DDLCallBackk });
+    ajaxRequest({
+        //commandName: 'Setup_Type_DropdownByTypeName_New',
+        commandName: 'Setup_Main_Section_DropdownByTypeName',
+        values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_DesignSection_SubSection_DDLCallBackk
+    });
 }
 var loadProject_DesignSection_SubSection_DDLCallBackk = function (loadjQueryDropdownListResponse, controlId) {
 

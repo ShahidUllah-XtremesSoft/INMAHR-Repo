@@ -3,9 +3,9 @@
 @* *********************                                           ******************** *@
 @* ********************* LOAD Supervision SECTION MODEL FOR UPLOADING DOCUMENT ******************** *@
 @* *********************                                            ******************* *@
-@* ********************* **************** BY /\/\ati ************************************* *@
-<button type="button" style="display:none;" class="btn btn-primary" id="load-supervision-section-model" data-toggle="modal" data-target="#modal-supervision-section-transfer-to-section"></button>
-<div class="modal fade" id="modal-supervision-section-transfer-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+@* ********************* **************** BY |\/|ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary close-supervision-upload-modal" id="load-supervision-section-model" data-toggle="modal" data-target="#modal-supervision-section-upload-document"></button>
+<div class="modal fade" id="modal-supervision-section-upload-document" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,7 +15,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <div class="show-hide-employee-task-area" style="display: none;float: right; border: 1px solid;">
+                        <div class="show-hide-employee-task-area" style="display: none;float: right;">
                             <div class="row">
 
                                 <div class="col-md-12 @Resources.Common.PullRight show-hide-assign-start-datetime">
@@ -68,8 +68,9 @@
                     <input type="hidden" name="SupervisionSection_Document_Language" id="SupervisionSection_Document_Language" class="Language" value="en-US">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="form-group  typeddlRow">
+                            <div class="   typeddlRow">
                                 <div id="SupervisionSection_ParentSection_container">
+                                    <label class="col-form-label">@ProjectUI.ProjectUI.lblSection</label><span style="color:red"> *</span><br />
                                     <input class="form-control pname" id="Project_SupervisionSection_Parent_Type_DDL" required readonly>
                                 </div>
                                 <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Setup_SetupType_Id" id="Project_SupervisionSection_Setup_SetupType_Id" value="0">
@@ -79,10 +80,12 @@
                         </div>
                         <div class="col-sm-6">
 
-                            <div class="form-group">
+                            <div class=" ">
                                 <div id="SupervisionSection_SubSection_container">
+                                    <label class="col-form-label"> @ProjectUI.ProjectUI.lblFile / @ProjectUI.ProjectUI.lblArea </label><span style="color:red"> *</span><br />
                                     <input type="text" class="form-control pname" name="Project_SupervisionSection_SetupDetailTypeDDL" id="Project_SupervisionSection_SetupDetailTypeDDL" required>
                                     <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Entity_Id" id="Project_SupervisionSection_Entity_Id" value="0">
+                                    <input type="hidden" class="form-control pname" name="Project_Supervision_Section_Parent_Type_DDL_Text" id="Project_Supervision_Section_Parent_Type_DDL_Text" value="0">
 
                                 </div>
                             </div>
@@ -92,63 +95,63 @@
 
                     <div class="row">
 
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label class="col-form-label">Document/Attachment  </label><br>
-                                <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required="" id="SupervisionSectionGovernmentDocumentFile">
+                        <div class="col-sm-6">
+                            <div class=" ">
+                                <label class="col-form-label">@Resources.Global.lblDocumentAttachment   </label> <span style="color: red">*</span><br>
+                                <input type="file" class="form-control" name="SupervisionSectionGovernmentDocumentFile" required id="SupervisionSectionGovernmentDocumentFile">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label> <span style="color:red">*</span> <br />
+                        <div class="col-sm-3">
+                            <div class=" ">
+                                <label class="col-form-label lbl-startDate">@ProjectUI.ProjectUI.lblIssueDate</label>  <br />
 
-                                <input class="form-control" type="date" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" required />
+                                <input class="form-control" type="date" id="SupervisionSection_Document_StartDate" name="SupervisionSection_Document_StartDate" />
 
                             </div>
                         </div>
 
 
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label> <span style="color:red">*</span> <br />
+                        <div class="col-sm-3">
+                            <div class=" ">
+                                <label class="col-form-label lbl-endDate">@ProjectUI.ProjectUI.lblExpiryDate</label>   <br />
 
                                 <input class="form-control" type="date" id="SupervisionSection_Document_EndDate" name="SupervisionSection_Document_EndDate" onchange="fnCheck_NoExpiry_SupervisionSection(this,'EndDate')" />
 
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
+                        <div class="col-sm-3">
+                            <div class=" ">
 
                                 <br />
                                 <br />
                                 <label class="btn " for="SupervisionSection_Document_NoExpiry_Call">
-                                    <input type="radio" id="SupervisionSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_SupervisionSection(this,'RadioButton')">
+                                    <input checked type="radio" id="SupervisionSection_Document_NoExpiry_Call" style="width: 15px;height: 15px;" onchange="fnCheck_NoExpiry_SupervisionSection(this,'RadioButton')">
                                     <font class="columnTwo" style="font-size: initial;"> @ProjectUI.ProjectUI.lblNoExpiry </font>
                                 </label>
-                                <input type="hidden" id="SupervisionSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="0" name="SupervisionSection_Document_NoExpiry">
+                                <input type="hidden" id="SupervisionSection_Document_NoExpiry" style="width: 15px;height: 15px;" value="1" name="SupervisionSection_Document_NoExpiry">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
+                        <div class="col-md-6">
+                            <div class=" ">
                                 <label class="col-form-label">@Resources.Global.lblRemarks</label>
-                                <textarea class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks"></textarea>
+                                <input class="form-control" id="SupervisionSection_Remarks" name="SupervisionSection_Remarks" />
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
+                        <div class="col-md-3">
+                            <div class=" ">
                                 <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
                                 <span style="color: red">*</span>
                                 <select class="form-control" id="SupervisionSection_comment_for_client_or_employee" name="SupervisionSection_comment_for_client_or_employee" required>
-                                    <option value="" selected>Select</option>
-                                    <option value="Employee">Employee</option>
-                                    <option value="Client">Client</option>
-                                    <option value="Both">Both</option>
-                                    <option value="NoRemarks">No Remarks</option>
+                                    <option value="">@ProjectUI.ProjectUI.lblSelect</option>
+                                    <option selected value="Employee">@ProjectUI.ProjectUI.lblEmployee</option>
+                                    <option value="Client">@ProjectUI.ProjectUI.lblClient</option>
+                                    <option value="Both">@ProjectUI.ProjectUI.lblBoth</option>
+                                    <option value="NoRemarks">@ProjectUI.ProjectUI.lblNoRemarks</option>
                                 </select>
                             </div>
                         </div>
@@ -182,3 +185,135 @@
 
 @* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
 
+@* ********************* ************** ******* ********************************************************************************************************************************************************************************************************************* *@
+@* ********************* ************** ******* ******************** *@
+@* *********************                                           ******************** *@
+@* ********************* LOAD Supervision SECTION MODEL FOR TRANSFER RECORD TO SECTION ******************** *@
+@* *********************                                            ******************* *@
+@* ********************* **************** BY |\/|ati ************************************* *@
+<button type="button" style="display:none;" class="btn btn-primary" id="load-supervision-transfer-model" data-toggle="modal" data-target="#modal-supervision-section-transfer-to-section"></button>
+<div class="modal fade" id="modal-supervision-section-transfer-to-section" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="">@ProjectUI.ProjectUI.lblTransferTo</h5>
+            </div>
+            <div class="modal-body" style="height:auto;">
+                <form id="frmTransferDataModal_SupervisionSection">
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <label class="col-form-label">@Resources.Global.lblDoYouWantToTransferToOtherMainSection :</label><br />
+                        </div>
+                        <div class="col-sm-2 pull-right">
+
+                            <div class="form-group">
+                                <div class="container">
+                                    <select class="form-control main_Section_In_Sub_section_transfer_modal" onchange="fnLoadOtherMainSection_In_SupervisionSection(this.value);">
+                                        <option selected value="No">@Resources.Global.lblNo</option>
+                                        <option value="Yes">@Resources.Global.lblYes</option>
+
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"> </div>
+                    </div>
+                    <div class="row div_showHide_Main_stepper">
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                <div id="Project_load_other_main_section_stepper_in_SupervisionSection" style="background: oldlace;">  </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                <div id="container_parent_type_ddl_supervision_transfer_modal">
+                                    <input class="form-control pname" id="Project_Section_Parent_Type_DDL_supervision_transfer_modal" required>
+                                </div>
+                                <input type="hidden" class="form-control pname" name="To_id_supervision" id="To_id_supervision" value="0">
+                                <input type="hidden" class="form-control pname" id="From_id_supervision" value="0">
+                                <input type="hidden" class="form-control pname" id="Attachment_Id_supervision_transfer_modal" value="0">
+                                <input type="hidden" class="form-control pname" id="Grid_name_transfer_supervision" value="0">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <div id="container_child_type_ddl_supervision_transfer_modal">
+                                    <input type="text" class="form-control pname" name="Project_SupervisionSection_SetupDetailTypeDDL_supervision_transfer_modal" id="Project_SupervisionSection_SetupDetailTypeDDL_supervision_transfer_modal" required>
+                                    <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Entity_Id_transfer_modal" id="Project_SupervisionSection_Entity_Id_transfer_modal" value="0">
+
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group  typeddlRow">
+                                <div id="container">
+                                    <input class="form-control pname" id="ApprovedOrReturned_SupervisionSection" name="ApprovedOrReturned_SupervisionSection" required>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblRemarks</label>
+                                <textarea class="form-control" id="SupervisionSection_transfer_modal_Remarks" name="SupervisionSection_transfer_modal_Remarks"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
+                                <span style="color: red">*</span>
+                                <select class="form-control" id="SupervisionSection_comment_for_client_or_employee_in_transfer_modal" name="SupervisionSection_comment_for_client_or_employee_in_transfer_modal" required>
+                                    <option value="">@ProjectUI.ProjectUI.lblSelect</option>
+                                    <option selected value="Employee">@ProjectUI.ProjectUI.lblEmployee</option>
+                                    <option value="Client">@ProjectUI.ProjectUI.lblClient</option>
+                                    <option value="Both">@ProjectUI.ProjectUI.lblBoth</option>
+                                    <option value="NoRemarks">@ProjectUI.ProjectUI.lblNoRemarks</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div id="">
+
+                            <button type="button" class="btn btn-danger   pull-right btnClose clearField_supervision_section_transfer_modal" data-dismiss="modal">@Resources.Global.lblClose</button>
+                            <button type="button" id="btn-supervision-transfer" class="btn   btn-success  pull-right" value="Save"> @ProjectUI.ProjectUI.lblTransfer</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ********************* ********************* END **************************************** *@

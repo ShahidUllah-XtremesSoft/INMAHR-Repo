@@ -163,11 +163,24 @@
     <div class="div-Supervision-section-update-supervision-area form-control selectedColor" style="display:none;">
 
         <div class="row">
-            <div class="col-sm-4">
+            @*<div class="col-sm-4">
                 <div class=" ">
                     <label class="col-form-label">@ProjectUI.ProjectUI.lblContractor</label><span style="color:red"> *</span><br />
                     <input type="text" class="form-control pname" name="Project_SupervisionSection_Contractor_DDL" id="Project_SupervisionSection_Contractor_DDL" required>
                     <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Contractor_Id" id="Project_SupervisionSection_Contractor_Id" value="0">
+                </div>
+            </div>*@
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <label class="col-form-label">@ProjectUI.ProjectUI.lblContractor </label> <span style="color: red">*</span><br />
+
+                    <input type="text" class="form-control pname" name="Project_SupervisionSection_Contractor_DDL" id="Project_SupervisionSection_Contractor_DDL" required style="width:70%">
+                    <input type="hidden" class="form-control pname" name="Project_SupervisionSection_Contractor_Id" id="Project_SupervisionSection_Contractor_Id" value="0">
+
+                    <div class="input-group-append">
+                        @*<a onclick="fnShowClientPartialView()" class="btn btn-success" style="height: 31px; font-size: small; color: white;" id=""> <i class="fa fa-plus"></i> Add</a>*@
+                        <a href="~/Project/Contractor/Save" class="btn btn-success" style="height: 31px; font-size: small; color: white;" id=""> <i class="fa fa-plus"></i> Add</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8">  </div>

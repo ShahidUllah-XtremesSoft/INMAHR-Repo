@@ -104,10 +104,10 @@ var ajaxRequestAsync = function (options) {
 var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
     $("#" + $gridid).kendoGrid({
-      //  toolbar: ["excel", "pdf"],
-      //  excel: {
-      //      fileName: "Export To Exceel.xlsx"
-      //  },
+        //  toolbar: ["excel", "pdf"],
+        //  excel: {
+        //      fileName: "Export To Exceel.xlsx"
+        //  },
         //pdf: {
         //    fileName: "Export To pdf.pdf"
         //},
@@ -128,7 +128,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
             width: 20,
         },
         columns: $colModel,
-        editable:true,
+        editable: true,
         //edit: function (e) {
         // 
         //    var input = e.container.find(".k-input");
@@ -176,10 +176,10 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
         scrollable: true,
         resizable: true,
         sortable: true,
-       // editable:false,
+        // editable:false,
         filterable: { mode: "row" },
         selectable: selectable,
-   
+
         pageable: {
             pageSizes: [50, 100, 250, 500, 1000],
             width: 20,
@@ -218,7 +218,7 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
 }
 var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
 
-    
+
 
     $("#" + $gridid).kendoGrid({
         toolbar: ["excel"],
@@ -230,8 +230,8 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
             landscape: true,
             template: $("#page-template").html()
         },
-       excel: { fileName: "Export To Exceel.xlsx"},
-       
+        excel: { fileName: "Export To Exceel.xlsx" },
+
 
         dataSource: {
             data: $data,
@@ -262,9 +262,10 @@ var bindAttendanceKendoGridOnly = function ($gridid, $pageSize, $colModel, $data
 
 
 
+
 var bindKendoGrid_Groupable = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
     $("#" + $gridid).kendoGrid({
-        
+
         dataSource: {
             data: $data,
             pageSize: $pageSize
@@ -285,7 +286,7 @@ var bindKendoGrid_Groupable = function ($gridid, $pageSize, $colModel, $data, se
             record = (this.dataSource.page() - 1) * this.dataSource.pageSize();// this is use to add dynamic serial number in grid 
         }
     }).data("kendoGrid");
-     
+
 }
 
 
@@ -463,24 +464,24 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
 
     $("#" + $stepperId).kendoStepper({
         orientation: $orientation,
-        linear: $linear,  // If linear true then we cant select any step ... by Mati 
+        linear: $linear,  // If linear true then we cant select any step ... by |\/|ati
         steps: $steps,
         //  width:$width,
-        activate: $onActivate, //pass function name  ... by /\/\ati 
-        select: $onSelect      //pass function name  ... by /\/\ati 
+        activate: $onActivate, //pass function name  ...  
+        select: $onSelect      //pass function name  ...  
     });
 
     var stepper = $("#" + $stepperId).width($width);
     stepper.resize();
-
     //stepper.find('.k-step-done').css("background-color", "lawngreen");
     stepper.find('.k-step-error').css("background-color", "mistyrose");
     // stepper.find('.k-step-done').css("background-color", "greenyellow");
+   // $("#" + $stepperId).unbind($steps);
 
 
     /*
        $("#stepper").kendoStepper({
-           linear: false, // If linear true then we cant select any step ... by Mati
+           linear: false,  
            steps: [{
                label: "Personal Info",
                icon: "home",
@@ -517,10 +518,7 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
       
        */
 }
-
-
-
-
+ 
 
 
 var validateForm = function ($form) {
@@ -1025,7 +1023,7 @@ var treeFomatterRoleBase = function (arr, parent) {
 }
 
 var treeFomatter = function (arr, parent) {
-     
+
     var out = [];
     for (var i in arr) {
         if (arr[i].parentId == parent) {

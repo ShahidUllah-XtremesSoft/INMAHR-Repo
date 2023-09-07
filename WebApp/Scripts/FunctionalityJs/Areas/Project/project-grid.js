@@ -1,5 +1,5 @@
 ﻿var $grid = "project-grid";
-
+var project_Id = 0;
 $(function () {
 
     // requestFrom = (new URL(location.href)).searchParams.get('from');
@@ -34,10 +34,11 @@ var loadProjectGridCallBack = function (inputDataJSON) {
     bindGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindGrid = function (inputDataJSON) {
+   //  console.log(inputDataJSON);
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
-        { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+        { title: "#", template: "<b>#= ++record #</b>", width: 10, },
 
         {
             field: "projectNumber", title: lblProjectNo, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
@@ -49,20 +50,28 @@ var bindGrid = function (inputDataJSON) {
         },
         { field: "clientName", title: lblClientName, width: 70, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
         { field: "projectCreatedDate", title: lblIssueDate, width: 30, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "urgentStatus", title: lblUrgent, width: 15, filterable: false},
-        { field: "vipStatus", title: lblVIP, width: 15, filterable: false},
-        { field: "progressStatus", title: lblProjectStatus, width: 25, filterable: false},
-        { field: "oldProjectNo", title: ":Old Proj.No", width: 20, filterable: false},
+        { field: "urgentStatus", title: lblUrgent, width: 15, filterable: false },
+        { field: "vipStatus", title: lblVIP, width: 15, filterable: false },
+        { field: "progressStatus", title: lblStatus, width: 25, filterable: false },
+        { field: "oldProjectNo", title: ":Old Proj.No", width: 20, filterable: false, hidden: true },
+        { field: "isSectionHead", title: "isSectionHead", width: 20, filterable: false, hidden: true },
+        { field: "isAccountant", title: "isAccountant", width: 20, filterable: false, hidden: true },
+        { field: "isEmployeeExist", title: "isEmployeeExist", width: 20, filterable: false, hidden: true },
+        
         {
             field: "", title: "", width: 30
-            , template: "#if(isEmployeeExist =='Yes'){ #" +
+            , template: `#if(isSectionHead =='Yes')
+                {#
+                       
+                     <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title=` + lblEdit + ` ><span class='fa fa-pencil'></span></a> 
+                     <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title=` + lblDelete + `><span class='fa fa-trash'></span></a>   
+               
+                
+                #}  else if(isSectionHead !='Yes' && isEmployeeExist=='Yes'){}
+                 else {#  
 
-                //   " <a style='font-size:20px;cursor:pointer;' onClick= detailProject(this)  ><span class='fa fa-eye'></span></a> # }" +
-                " #} " +
-                "else {# " +
-
-                " <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title=" + lblEdit + " ><span class='fa fa-pencil'></span></a> " +
-                " <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   #}#"
+                  <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title=` + lblEdit + ` ><span class='fa fa-pencil'></span></a> 
+                 <a style='font-size:20px;cursor:pointer;' onClick= deleteProjectById(this)  title=` + lblDelete + `><span class='fa fa-trash'></span></a>   #}#`
         },
 
 
@@ -71,11 +80,14 @@ var bindGrid = function (inputDataJSON) {
     ];
 
     if (inputDataJSON.length > 0) {
-        localStorage.setItem('isEmployeeExist', inputDataJSON[0].isEmployeeExist); // Used in child js for menu stepper retrieving ... by /\/\ati
+        localStorage.setItem('isEmployeeExist', inputDataJSON[0].isEmployeeExist); // Used in child js for menu stepper retrieving ... by |\/|ati
+        localStorage.setItem('isSectionHead', inputDataJSON[0].isSectionHead); // Used in child js for menu stepper retrieving ... by |\/|ati
+        localStorage.setItem('isAccountant', inputDataJSON[0].isAccountant); // Used in child js for menu stepper retrieving ... by |\/|ati
     }
     bindKendoGrid($grid, 100, gridColumns, inputDataJSON, true, 750);
 
 };
+
 
 function editProject(e) {
     var row = $(e).closest("tr");
@@ -89,12 +101,13 @@ function detailProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    var check_isEmployeeExist = localStorage.getItem('isEmployeeExist');
-    if (check_isEmployeeExist == "No") {
+    //console.log(dataItem);
+     
+    if (dataItem.isEmployeeExist == "No" || dataItem.isAccountant == "Yes") {
 
         window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
     } else {
-      
+
         window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
 
     }
@@ -143,3 +156,5 @@ function deleteProjectById(event) {
     }
 
 }
+
+  

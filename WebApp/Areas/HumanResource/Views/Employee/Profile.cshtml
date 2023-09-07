@@ -13,7 +13,7 @@
 <div class="row">
 
 </div>
-<div class="card">
+<div class="card hide_HR_project_tabs" >
     <div class="card-block">
         <div class="row">
             <div class="col-sm-8">
@@ -135,7 +135,53 @@
 
             </div>
             <div class="col-sm-3 text-right">
-                <img src="~/Content/Images/user.jpg" class="img-avatar" id="ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
+                <img src="~/Content/Images/user.jpg" class="img-avatar ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="card divEmployeeProject" style="display:none;">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-8">
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-3  ">@HRModuleUI.HumanResourceUI.lblName</label>
+                                    <h3 class="col-xs-9 controls pull-right EmployeeName"></h3>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row mgbt-xs-0">
+                                    <label class="col-xs-3  ">  @HRModuleUI.HumanResourceUI.lblSection</label>
+                                    <div class="col-xs-9 controls pull-right Department">
+
+                                    </div>
+                                    <!-- col-sm-10 -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                   
+                     
+                </div>
+
+            </div>
+            <div class="col-sm-3 text-right">
+                <img src="~/Content/Images/user.jpg" class="img-avatar ProfileImage" name="ProfileImage" style="border-radius:4%;width:110px;" alt="@HRModuleUI.HumanResourceUI.lblProfileImage" />
             </div>
         </div>
 
@@ -380,9 +426,9 @@
     <div class="col-md-12" id="divEmployeeProject">
         <div class="card">
             <div class="card-header">                                
-                <strong>@ProjectUI.ProjectUI.lblProject</strong>
+                <strong>@ProjectUI.ProjectUI.lblProjects</strong>
             </div>
-            <div class="card-block">
+            <div class="card">
                 <div class="grid-main-div">
                     <div id="load-project-grid-employee-by-id">
 
@@ -397,8 +443,17 @@
 
 
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-profile.js?+971522324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/EmployeesProject/load-project-by-employee-id.js?+971502324409"></script>
+
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Employee/employee-profile.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/EmployeesProject/load-project-by-employee-id.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script>
+        var lblProjectNo = '@ProjectUI.ProjectUI.lblProjectNo';
+        var lblProject = '@ProjectUI.ProjectUI.lblProject';
+        var lblClient = '@ProjectUI.ProjectUI.lblClient';
+        var lblVIP = '@ProjectUI.ProjectUI.lblVIP';
+        var lblUrgent = '@ProjectUI.ProjectUI.lblUrgent';
+        var lblIssueDate = '@ProjectUI.ProjectUI.lblIssueDate';
+    </script>
 }
 
 

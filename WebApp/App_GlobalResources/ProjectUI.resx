@@ -123,6 +123,9 @@
   <data name="lblAboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="lblActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
   </data>
@@ -216,11 +219,17 @@
   <data name="lblClients" xml:space="preserve">
     <value>Clients</value>
   </data>
+  <data name="lblClosed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
   <data name="lblComingSoon" xml:space="preserve">
     <value>Coming Soon...!</value>
   </data>
   <data name="lblComplete" xml:space="preserve">
     <value>Complete</value>
+  </data>
+  <data name="lblCompleted" xml:space="preserve">
+    <value>Completed</value>
   </data>
   <data name="lblCompletionDate" xml:space="preserve">
     <value>Completion Date</value>
@@ -254,6 +263,15 @@
   </data>
   <data name="lblCreatedBy" xml:space="preserve">
     <value>Created By</value>
+  </data>
+  <data name="lblCreatedDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="lblDelay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="lblDesignSection" xml:space="preserve">
+    <value>Design Section</value>
   </data>
   <data name="lblDesignSectionReport" xml:space="preserve">
     <value>Design Section Report</value>
@@ -297,6 +315,9 @@
   <data name="lblFile" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="lblFileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
   <data name="lblfilter" xml:space="preserve">
     <value>Filter</value>
   </data>
@@ -312,6 +333,9 @@
   <data name="lblFor" xml:space="preserve">
     <value>For</value>
   </data>
+  <data name="lblFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
   <data name="lblGarageParking" xml:space="preserve">
     <value>Garage / Parking</value>
   </data>
@@ -320,6 +344,9 @@
   </data>
   <data name="lblHall" xml:space="preserve">
     <value>Hall</value>
+  </data>
+  <data name="lblHold" xml:space="preserve">
+    <value>Hold</value>
   </data>
   <data name="lblHome" xml:space="preserve">
     <value>Home</value>
@@ -390,6 +417,9 @@
   <data name="lblMeetingWithEngineer" xml:space="preserve">
     <value>Meeting With Engineer</value>
   </data>
+  <data name="lblMissing" xml:space="preserve">
+    <value>Missing</value>
+  </data>
   <data name="lblModule" xml:space="preserve">
     <value>Module</value>
   </data>
@@ -459,6 +489,9 @@
   <data name="lblPlease" xml:space="preserve">
     <value>Please</value>
   </data>
+  <data name="lblPleaseSelectSection" xml:space="preserve">
+    <value>Please select the section...!</value>
+  </data>
   <data name="lblPlotNo" xml:space="preserve">
     <value>Plot No</value>
   </data>
@@ -519,11 +552,17 @@
   <data name="lblProjectType" xml:space="preserve">
     <value>Project Type</value>
   </data>
+  <data name="lblReActivated" xml:space="preserve">
+    <value>ReActivated</value>
+  </data>
   <data name="lblReport" xml:space="preserve">
     <value>Report</value>
   </data>
   <data name="lblReports" xml:space="preserve">
     <value>Reports</value>
+  </data>
+  <data name="lblRequired" xml:space="preserve">
+    <value>Required</value>
   </data>
   <data name="lblRoom" xml:space="preserve">
     <value>Room</value>
@@ -558,11 +597,20 @@
   <data name="lblSummaryReport" xml:space="preserve">
     <value>Summary Report</value>
   </data>
+  <data name="lblSupervisionSection" xml:space="preserve">
+    <value>Supervision Section</value>
+  </data>
   <data name="lblTeam" xml:space="preserve">
     <value>Team</value>
   </data>
+  <data name="lblTechnicalSection" xml:space="preserve">
+    <value>Technical Section</value>
+  </data>
   <data name="lblTechnicalSectionReport" xml:space="preserve">
     <value>Technical Section Report</value>
+  </data>
+  <data name="lblTo" xml:space="preserve">
+    <value>To</value>
   </data>
   <data name="lblTotalClients" xml:space="preserve">
     <value>Total Clients</value>

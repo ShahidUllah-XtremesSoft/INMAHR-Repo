@@ -25,6 +25,10 @@ namespace WebApp.Areas.Employees.Controllers
         {
             return View();
         }
+        public ActionResult Report()
+        {
+            return View();
+        }
         public PartialViewResult PersonalAttendancePartialView()
         {
             return PartialView();

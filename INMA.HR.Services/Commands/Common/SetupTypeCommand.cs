@@ -50,6 +50,7 @@ namespace INMA.HR.Services.Commands.Common
 
         }
     }
+  
 
     [Command(Name = "Setup_Type_DropdownByTypeName_For_ShortLeave")]
     public class Setup_Type_DropdownByTypeName_For_ShortLeaveCommand : CamelCommandBase

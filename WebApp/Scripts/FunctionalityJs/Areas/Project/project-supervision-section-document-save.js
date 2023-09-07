@@ -229,7 +229,8 @@ function fnSupervision_Section_DDL_Callback(e) {
 function loadProject_SupervisionSection_SubSection_DDL(controlId, typeName, selectText = null) {
 
     ajaxRequest({
-        commandName: 'Setup_Type_DropdownByTypeName_New',
+  //      commandName: 'Setup_Type_DropdownByTypeName_New',
+        commandName: 'Setup_Main_Section_DropdownByTypeName',
         values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_SupervisionSection_SubSection_DDLCallBackk
     });
 }

@@ -49,10 +49,12 @@ function loadEmployeeProfileCallBack(response) {
 
     $.each(JSON.parse(response.Value), function (key, value) {
         $('#' + capitalizeFirstLetter(key)).text(value);
+        $('.' + capitalizeFirstLetter(key)).text(value);
     });
     if (JSON.parse(response.Value).currentFileName != null) {
         var profileImage = '/UploadFile/' + JSON.parse(response.Value).currentFileName;
-        $('#ProfileImage').attr('src', profileImage);
+        $('.ProfileImage').attr('src', profileImage);
+       
     }
      
     //loadLeaveRequestGrid();

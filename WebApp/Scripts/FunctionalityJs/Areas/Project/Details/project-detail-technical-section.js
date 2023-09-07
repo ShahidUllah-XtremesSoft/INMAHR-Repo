@@ -49,12 +49,12 @@ function stepper_TECHNICAL_SECTION(response) {
             selected: JSON.parse(response.Value)[i].project_sub_stepper_menu_selected,
             // successIcon: JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon,
         });
-         
+
         if (JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon == 'check') {
             step_Columns.push({ label: "Completed", enabled: false, selected: true, successIcon: "k-icon k-i-check", iconTemplate: function (e) { return '<strong> </strong>'; } });
         }
     }
-
+    /*
     setTimeout(function () {
 
         if (localStorage.getItem('TechnicalSection_Menu_Area') != '') {
@@ -62,7 +62,7 @@ function stepper_TECHNICAL_SECTION(response) {
             progressbar_subSection(JSON.parse(response.Value), localStorage.getItem('TechnicalSection_Menu_Area'));
         }
     }, 100)
-
+    */
     bindkendoStepper('technical-section-stepper', false, step_Columns, '', stepper_Fn_TechnicalSection_Onselect, 'auto', "vertical");
 
     fnApprovedOrReturn_DDL('ApprovedOrReturned_TechnicalSection'); // Load approved or Return ddl for technical section
@@ -80,7 +80,7 @@ function stepper_Fn_TechnicalSection_Onselect(e) {
 
 /*
  
-************LOAD TECHNICAL SECTION SUB STEPPER END ********************* By /\/\ati
+************LOAD TECHNICAL SECTION SUB STEPPER END ********************* By |\/|ati
  
 */
 
@@ -168,10 +168,10 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
             {
                 field: "", title: "", width: 60 //, template: gridTemplate,
                 , template: "#if(statusForCondition =='Transfered'){ #" +
-                    "<button type='button' onclick='fn_technicalsection_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;'>Assign</button> " +
-                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>Transfer</button> # }" +
+                    "<button type='button' onclick='fn_technicalsection_open_assign_modal(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-danger    waves-effect'style='font-size: smaller;display:none;'>" + lblAssign + "</button> " +
+                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> # }" +
                     "else {# " +
-                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>Transfer</button> #}#"
+                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-sm btn btn-info    waves-effect'style='font-size: smaller;'>" + lblTransfer + "</button> #}#"
             },
 
 
@@ -182,14 +182,16 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
     }
 };
 
-
+var selectedRecordDocumentType_Technical = null;
 function fn_technical_section_transfer_file(event) {
 
     var row = $(event).closest("tr");
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-
+    selectedRecordDocumentType_Technical = dataItem.combineDocumentType;
     $('#frm_TechnicalSection_TransferDataModal').trigger('reset')
+    fnApprovedOrReturn_DDL('ApprovedOrReturned'); // Load approved or Return ddl
+
     $('#load-technical-section-model').click();
     $('.div_showHide_Main_stepper').hide();
     $(".main_Section_In_Sub_section_transfer_modal").prop('selectedIndex', 0);
@@ -263,7 +265,9 @@ function fn_technical_section_transfer_file_save() {
                     EmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#TechnicalSection_Remarks').val(),
-                    ApprovedOrReturned: $('#ApprovedOrReturned_TechnicalSection').val(),
+                    FromDocumentType: selectedRecordDocumentType_Technical,
+                    ToDocumentType: $('#Project_TechnicalSection_Parent_Type_DDL').data("kendoDropDownList").text() + ' | ' + $('#Project_TechnicalSection_SetupDetailTypeDDL').data("kendoDropDownList").text(),
+                    ApprovedOrReturned: $('#ApprovedOrReturned_TechnicalSection').data("kendoDropDownList").value(),
                     TechnicalSection_comment_for_client_or_employee: $('#TechnicalSection_comment_for_client_or_employee').val(),
 
                     Language: $('#Language').val()
@@ -272,22 +276,23 @@ function fn_technical_section_transfer_file_save() {
         }
     });
     var fn_technical_section_transfer_file_saveCallBack = function (response) {
+        selectedRecordDocumentType_Technical = null;
         swal(response.Value);
 
         fnLoadTechnicalSection_Document(project_Id, $('#TechnicalSection_From_SetupType_Id').val(), $('#TechnicalSection_Grid-Name').val());
         $('.btnClose').click();
         loadProject_TechnicalSectiondownList('TechnicalSection');
-        fnLoadMain_Progress_DetailsById(); //Load Main Progress
+        // fnLoadMain_Progress_DetailsById(); //Load Main Progress
 
     }
 
 }
 
-//***************** FN TRANSFER FILE AREA END------------------------BY /\/\ati
+//***************** FN TRANSFER FILE AREA END------------------------BY |\/|ati
 
 
 
-//***************** FN ASSIGN   AREA START---------------------------BY /\/\ati
+//***************** FN ASSIGN   AREA START---------------------------BY |\/|ati
 function fn_technicalsection_open_assign_modal(event) {
 
     var row = $(event).closest("tr");
@@ -384,7 +389,7 @@ function deleteAssignedEmployeeById_TechnicalSection(event) {
 }
 
 
-//***************** FN ASSIGN   AREA END---------------------------BY /\/\ati
+//***************** FN ASSIGN   AREA END---------------------------BY |\/|ati
 
 
 function loadProject_TechnicalSectiondownLists() { ajaxRequest({ commandName: 'DDL_TECHNICAL_SECTION_Project_MainType', values: { Language: _currentLanguage }, CallBack: fnloadProject_TechnicalSectiondownListsCallBack }); }
@@ -419,7 +424,11 @@ function fn_TechnicalSection_OnSelect_Section_DDL(e) {
 
 function loadProject_TechnicalSection_SubSection_DDL(controlId, typeName, selectText = null) {
 
-    ajaxRequest({ commandName: 'Setup_Type_DropdownByTypeName_New', values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_TechnicalSection_SubSection_DDLCallBackk });
+    ajaxRequest({
+        //    commandName: 'Setup_Type_DropdownByTypeName_New',
+        commandName: 'Setup_Main_Section_DropdownByTypeName',
+        values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_TechnicalSection_SubSection_DDLCallBackk
+    });
 }
 var loadProject_TechnicalSection_SubSection_DDLCallBackk = function (loadjQueryDropdownListResponse, controlId) {
 
@@ -472,7 +481,7 @@ function fnLoadTechnicalSectionArea(e, setup_TypeDetail_Id, setup_Type_Id) {
     }
 }
 
-// --------------------- LOAD ALL EMPLOYEES START----------------------BY /\/\ati
+// --------------------- LOAD ALL EMPLOYEES START----------------------BY |\/|ati
 function load_TechnicalSection_AllEmployees(setup_TypeDetail_Id, setup_Type_Id) {
 
     ajaxRequest({
@@ -560,7 +569,7 @@ function loopThroughGrid_TechnicalSection(btnValue, btnId, btnIcon) {
 
     }
     if (postingArray.length > 0) {
-        console.log(postingArray)
+     //   console.log(postingArray)
         ajaxRequest({
             commandName: 'Project_Save_Multiple_Employees',
             values:

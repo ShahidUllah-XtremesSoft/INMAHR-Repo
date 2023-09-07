@@ -20,24 +20,13 @@ var project_Id = (new URL(location.href)).searchParams.get('id');
 
 $(function () {
 
-    //var pb = $("#Main_ProgressBar").kendoProgressBar({
-    //    type: "chunk",
-    //    chunkCount: 3,
-    //    min: 0,
-    //    max: 3,
-    //    value: 0
-    //}).data("kendoProgressBar");
 
     $('#Language').val(_currentLanguage);
     $('#LoggedInUserId').val(JSON.parse(localStorage.getItem('User')).id);
-    loadProjectSectiondownList('');
-    loadProject_TechnicalSectiondownList('');
-    loadProject_SupervisionSectiondownList();
 
-    setTimeout(function () {
 
-        stepper_PROJECT_MAIN_SECTIONS();
-    }, 150);
+    stepper_PROJECT_MAIN_SECTIONS(); // Call Main 3 Sections
+
 
     fnLoadProjectDetailsById();
 
@@ -46,12 +35,14 @@ $(function () {
 });
 //|Load Project Details Start
 function fnLoadProjectDetailsById() {
+
     ajaxRequest({
         commandName: 'Project_Details_By_Id',
         values: {
             Id: project_Id,
             LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
             RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
             Language: $('#Language').val()
         }, CallBack: loadProjectDetailsByIdCallBack
     });
@@ -65,11 +56,12 @@ function loadProjectDetailsByIdCallBack(response) {
         $(".project-number").text(response.projectNumber)
         $(".txt-description").html(response.descriptionEng)
         $(".text-price").text(response.price)
-        $(".text-startdate").text(response.projectStartDate)
+        $(".text-startdate").text(response.projectCreatedDate)
         $(".text-enddate").text(response.projectEndDate)
         $(".text-client-name").text(response.clientName)
         $(".text-progress-status").text(response.projectStatus)
         $(".text-project-created-by").text(response.projectCreaterName)
+
         $(".project_status_ddl").val(response.status)
         $(".ProjectCategory").text(response.projectCategory)
         $(".IsVIP").text(response.vipStatus)
@@ -87,6 +79,7 @@ function loadProjectDetailsByIdCallBack(response) {
         $(".Kitchen").text(response.kitchen)
         $(".Hall").text(response.hall)
         $(".Garage").text(response.garage)
+        $(".Area").text(response.area)
 
         // Contractor Data
         $(".text-contractor").text(response.contractorName);
@@ -94,9 +87,13 @@ function loadProjectDetailsByIdCallBack(response) {
 
 
         fnLoadAttachmentDetailsById();
-        fnLoadMain_Progress_DetailsById();
+        //  fnLoadMain_Progress_DetailsById(); //This is progress call
 
     }
+    loadProjectSectiondownList('');
+    // loadProject_TechnicalSectiondownList('');
+    // loadProject_SupervisionSectiondownList();
+
 }
 
 //|Load Project Details Start
@@ -142,7 +139,7 @@ function fnLoadAttachmentDetailsByIdCallBack(response) {
 
                 $('.load-attachments').append('' +
                     '<tr>' +
-                    '<td><a target="_blank" href="/UploadFile/' + responseJSON[i].currentFileName + '" class="m-b-5 d-block">  <img src="' + fileExtension + '" class="img-avatar"   style="border-radius: 6px;width: auto;height: 3rem;"></a> </td>' +
+                    '<td><a target="_blank" href="/UploadFile/' + responseJSON[i].currentFileName + '" class="m-b-5 d-block">  <img src="' + fileExtension + '" class="img-avatar"   style="border-radius: 6px;width: auto;height: 2rem;"></a> </td>' +
                     '<td><a target="_blank" href="/UploadFile/' + responseJSON[i].currentFileName + '" class="m-b-5 d-block">' + responseJSON[i].orignalFileName + '</a></td>' +
                     '</tr>')
 
@@ -174,9 +171,9 @@ function fnLoadMain_Progress_DetailsById() {
 function fnLoadMain_Progress_DetailsByIdCallBack(response) {
 
     var responseJSON = JSON.parse(response.Value);
-     
+
     if (responseJSON != null) {
-        
+
         $("#Main_ProgressBar").kendoProgressBar({
             type: "chunk",
             chunkCount: 3,
@@ -187,7 +184,7 @@ function fnLoadMain_Progress_DetailsByIdCallBack(response) {
 
         $('.text-progress-status').text(Math.round(responseJSON.finalProgress * 33.33) + ' %');
         $('.Main_ProgressBar_Percentage').text(Math.round(responseJSON.finalProgress * 33.33) + ' %');
-        
+
 
     }
 
@@ -199,19 +196,19 @@ function fnLoadMain_Progress_DetailsByIdCallBack(response) {
 
 /*
 
-************PROJECT MAIN STEPPER START ********************* By Mati
+************PROJECT MAIN STEPPER START ********************* By |\/|ati
 
 */
 
 function stepper_PROJECT_MAIN_SECTIONS() {
 
     var step_Columns = [
-        {
-            label: "Project Information",
-            error: error_PROJECT_MAIN_SECTION_Information_Stepper,
-            //selected: selected_PROJECT_MAIN_SECTION_Information_Stepper,
+        //{
+        //    label: "Project Information",
+        //    error: error_PROJECT_MAIN_SECTION_Information_Stepper,
+        //    //selected: selected_PROJECT_MAIN_SECTION_Information_Stepper,
 
-        },
+        //},
         {
             label: "Design Section",
             error: error_PROJECT_MAIN_SECTION_Design_Stepper,
@@ -230,22 +227,25 @@ function stepper_PROJECT_MAIN_SECTIONS() {
         },
     ];
 
-    bindkendoStepper('project-section-stepper', false, step_Columns, '', stepper_Fn_Onselect, 1200, "horizontal");
-    function onActivate(e) {
-        var stepper_data = e.step.options;
-    }
+    bindkendoStepper('project-section-stepper', false, step_Columns, '', stepper_Fn_Onselect, 1000, "horizontal");
 
-    function stepper_Fn_Onselect(e) {
+    fnCheckProjectTab('Design Section');
+}
+function onActivate(e) {
+    var stepper_data = e.step.options;
+}
 
-        var stepper_data = e.step.options;
-        //  console.log("Selected: " + stepper_data.Id);
+function stepper_Fn_Onselect(e) {
 
-        fnCheckProjectTab(stepper_data.label);
-    }
+
+    var stepper_data = e.step.options;
+    //  console.log("Selected: " + stepper_data.Id);
+
+    fnCheckProjectTab(stepper_data.label);
 }
 /*
 
-************PROJECT MAIN STEPPER START END********************* By Mati
+************PROJECT MAIN STEPPER START END********************* By |\/|ati
 
 */
 
@@ -253,20 +253,12 @@ function stepper_PROJECT_MAIN_SECTIONS() {
 function fnCheckProjectTab(selectedTab) {
 
 
-    if (selectedTab == lblProjectInformation) {
 
-        $('.projectTabs').removeClass('active');
-        $('#ProjectInfo').addClass('active');
-        $('#sub-section-progress-bar').hide();
-        // loadPersonalDocumentsKendoGrid();
-
-
-
-    } else if (selectedTab == lblProjectDesignSection) {
+    if (selectedTab == lblProjectDesignSection) {
 
         $('.projectTabs').removeClass('active');
         $('#ProjectDesignSection').addClass('active');
-        $('#sub-section-progress-bar').show();
+        // $('#sub-section-progress-bar').show();
 
         loadProjectSectiondownList('DesignSection');
         setTimeout(function () {
@@ -278,7 +270,7 @@ function fnCheckProjectTab(selectedTab) {
 
         $('.projectTabs').removeClass('active');
         $('#ProjectTechnicalSection').addClass('active');
-        $('#sub-section-progress-bar').show();
+        //  $('#sub-section-progress-bar').show();
         loadProject_TechnicalSectiondownList('TechnicalSection');
         setTimeout(function () {
             var technical_section_stepper_id = $("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id;
@@ -289,7 +281,7 @@ function fnCheckProjectTab(selectedTab) {
 
         $('.projectTabs').removeClass('active');
         $('#ProjectSupervisionSection').addClass('active');
-        $('#sub-section-progress-bar').show();
+        //  $('#sub-section-progress-bar').show();
         loadProject_SupervisionSectiondownList();
         setTimeout(function () {
             var supervision_section_stepper_id = $("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id;
@@ -458,7 +450,7 @@ function fnCheckProject_SubSection_Tab(selectedTab, current_Step_Id) {
 
 
 // --------------------- LOAD PROGRESS BAR START---------------------- 
-
+/*
 $(function () {
     $(".sub_section_progressBar").kendoProgressBar({
         min: 0, max: 0,
@@ -495,9 +487,10 @@ function progressbar_subSection(differentSectionMenuResponse, CallingArea) {
         // }
 
     }
-    setTimeout(console.clear(), 200);
-     
+ //   setTimeout(console.clear(), 200);
+
 }
+*/
 // --------------------- LOAD PROGRESS BAR END----------------------BY /\/\ati
 
 // --------------------- LOAD ALL ASSIGNED EMPLOYESS RELATED TO PROJECT START----------------------BY /\/\ati
@@ -574,44 +567,48 @@ function fnLoadClientInformationByProjectId() {
 function fnLoadClientInformationByProjectIdCallBack(response) {
     var count = 1;
     $('.load-client-iformation-by-project').html('');
-
     if (JSON.parse(response.Value).length > 0) {
         JSON.parse(response.Value).forEach(function (item) {
-            var statusClass = ''
-            if (item.status == 'Valid') {
-                statusClass = 'badge  badge-success '
-            } else if (item.status == 'Expired') {
-                statusClass = 'badge  badge-danger'
-            } else {
-                statusClass = 'badge  badge-warning'
-            }
 
 
-            var extension = item.currentFileName.split('.').pop().toLowerCase();
-            if (extension == 'pdf') {
-                var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+            if (item.currentFileName != null) {
+                $('.load-client-iformation-by-project-header').show();
+                var statusClass = ''
+                if (item.status == 'Valid') {
+                    statusClass = 'badge  badge-success '
+                } else if (item.status == 'Expired') {
+                    statusClass = 'badge  badge-danger'
+                } else {
+                    statusClass = 'badge  badge-warning'
+                }
+
+
+                var extension = item.currentFileName.split('.').pop().toLowerCase();
+                if (extension == 'pdf') {
+                    var fileImage = '<img src="/Content/Images/pdf.png" style="width:30px;"/>';
+                }
+                else {
+                    var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
+                }
+                $('.load-client-iformation-by-project').append(
+                    '<tr>' +
+                    '<td hidden class="PersonalDocumentId">' + item.id + '</td>' +
+                    '<td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
+                    '<td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td>' +
+                    '<td class="PersonalDocumentType"><b>' + count++ + '</b></td> ' +
+                    '<td class="PersonalDocumentType">' + item.documentType + '</td> ' +
+                    '<td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> ' +
+                    '<td class="PersonalDocumentExpiryDate">' + item.expiryDate + '</td>' +
+                    '<td class="PersonalDocumentExpiryIn"><span class="' + statusClass + '">' + item.expiryIn + '</span></td>' +
+                    '<td class="PersonalDocumentStatus "><span class="' + statusClass + '">' + item.status + '</span></td>' +
+                    '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
+                    //'<td style="padding-top:20px;">' +
+                    //'<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editPersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>  ' +
+                    //'<a class="" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deletePersonalDocument(this)"></i></a>' +
+                    //'</td>' +
+                    '</tr > '
+                );
             }
-            else {
-                var fileImage = '<img src="/Content/Images/attachment.png" style="width:30px;"/>';
-            }
-            $('.load-client-iformation-by-project').append(
-                '<tr>' +
-                '<td hidden class="PersonalDocumentId">' + item.id + '</td>' +
-                '<td hidden class="PersonalDocumentSetupDetailTypeId">' + item.setupDetailTypeId + '</td>' +
-                '<td hidden class="PersonalDocumentFile">' + item.currentFileName + '</td>' +
-                '<td class="PersonalDocumentType"><b>' + count++ + '</b></td> ' +
-                '<td class="PersonalDocumentType">' + item.documentType + '</td> ' +
-                '<td class="PersonalDocumentReleaseDate">' + item.releaseDate + '</td> ' +
-                '<td class="PersonalDocumentExpiryDate">' + item.expiryDate + '</td>' +
-                '<td class="PersonalDocumentExpiryIn"><span class="' + statusClass + '">' + item.expiryIn + '</span></td>' +
-                '<td class="PersonalDocumentStatus "><span class="' + statusClass + '">' + item.status + '</span></td>' +
-                '<td style="font-size: x-large;" class=""><a  target="_blank" href="/UploadFile/' + item.currentFileName + '">' + fileImage + '</td>' +
-                //'<td style="padding-top:20px;">' +
-                //'<a class="edit"  title="Edit" data-toggle="tooltip"><i class="fa fa-edit" onclick="editPersonalDocument(this)" style="font-size: 26px;color: green;"></i></a>  ' +
-                //'<a class="" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" style="font-size: 26px;color: #FF4500;" onclick="deletePersonalDocument(this)"></i></a>' +
-                //'</td>' +
-                '</tr > '
-            );
         });
     }
 
@@ -630,10 +627,13 @@ function fnApprovedOrReturn_DDL(ddlName) {
     $("#" + ddlName).kendoDropDownList({
         dataTextField: "text",
         dataValueField: "value",
+        value: 'Transfered',
         dataSource: {
             data: [
-                { value: 'Approved', text: 'Approved' },
-                { value: 'Returned', text: 'Returned' }
+                //  { id:1, value: '-- Select --'  },
+                { value: 'Transfered', text: 'Transfer' },
+                { value: 'Approved', text: 'Approve' },
+                { value: 'Returned', text: 'Return' }
             ]
         }
     });

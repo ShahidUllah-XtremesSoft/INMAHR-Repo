@@ -9,19 +9,19 @@ $(function () {
     fnLoadAllCountNotification();
 
     setInterval(function () {
-       
+
         fnLoadAllCountNotification();
     }, 120000); //120 seconds
-     
+
 
 
 });
- 
+
 var ajaxRequest_OnlyForNotifications = function (options) {
- 
+
     $.ajax({
         type: 'POST',
-      
+
         url: '/services/Xtreme/process',
         data: JSON.stringify({ type: options.commandName, value: options.values }),
         contentType: "application/json; charset=utf-8",
@@ -31,15 +31,15 @@ var ajaxRequest_OnlyForNotifications = function (options) {
             }
         },
         success: function (data) {
-             
+
             if (options.CallBack !== '') {
-                options.CallBack(data, options.controlId); 
+                options.CallBack(data, options.controlId);
             }
         },
-       
+
     });
 }
- 
+
 function fnLoadAllCountNotification() {
 
     //values - are key value pair json object
@@ -52,6 +52,7 @@ function fnLoadAllCountNotification() {
             LoggedInUserDepartmentId: loggedInUserDetail.departmentId,
             LoggedInUserId: loggedInUserDetail.id,
             LoggedInUserRoleId: loggedInUserDetail.roleId,
+            MainApplicationModule_Id: localStorage.MainApplicationModule_Id != undefined ? localStorage.MainApplicationModule_Id : 1,
             Language: _currentLanguage,
         }, CallBack: fnLoadAllCountNotificationCallBack
     });

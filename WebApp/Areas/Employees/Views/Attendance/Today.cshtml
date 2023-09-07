@@ -63,8 +63,8 @@
     </div>
 @section scripts {
     @*<script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-grid.js"></script>*@
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-today.js?+971522324409"></script>
-
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/Attendance/attendance-today.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+ 
     <script>
         //Grid columns
          var employeeName = '@HRModuleUI.HumanResourceUI.lblEmployeeName';

@@ -2,8 +2,9 @@
 var emp_ID = 0;
 $(function () {
 
-    if (localStorage.getItem('MainApplicationModule_Id') == 2) {  
+    if (localStorage.getItem('MainApplicationModule_Id') == 2) {
         $('.project-search-icon').show();
+        $('.divEmployeeProject').show();
         if (JSON.parse(localStorage.getItem('Menus'))[0].staticComment != 'Lock') { // Lock - mean to upload document first then employee will be able to see project
 
             setTimeout(function () {
@@ -12,7 +13,7 @@ $(function () {
         } else {
 
             $('.hide_HR_project_tabs').hide();
-           
+
         }
         $('.hide_HR_project_tabs').hide();
     } else {
@@ -53,7 +54,7 @@ var loadProjectGridByEmployeeIdCallBack = function (inputDataJSON) {
 }
 var loadProjectGridByEmployeeIdbindGrid = function (inputDataJSONs) {
     var record = 0;
-
+    console.log(inputDataJSONs);
     if (inputDataJSONs.length <= 0) { $('#divEmployeeProject').hide(); } else {
 
 
@@ -64,13 +65,16 @@ var loadProjectGridByEmployeeIdbindGrid = function (inputDataJSONs) {
             { title: "#", template: "<b>#= ++record #</b>", width: 5, },
 
             {
-                field: "projectNumber", title: ".projectNumber", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" }, hidden: false }
+                field: "projectNumber", title: lblProjectNo, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" }, hidden: false }
                 , template: "<a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> ",
             },
             {
-                field: "projectName", title: ".projectName", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
+                field: "projectName", title: lblProject, width: 50, filterable: false
             },
-            { field: "clientName", title: ".clientName", width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
+            { field: "clientName", title: ".clientName", width: 50, filterable: false,hidden:true},
+            { field: "vipStatus", title: lblVIP, width: 10, filterable: false },
+            { field: "urgentStatus", title: lblUrgent, width: 10, filterable: false },
+            { field: "projectCreatedDate", title: lblIssueDate, width: 20, filterable: false},
             //  { field: "projectCreatedDate", title: lblIssueDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             // {
             //     field: "", title: "", width: 30
@@ -81,7 +85,7 @@ var loadProjectGridByEmployeeIdbindGrid = function (inputDataJSONs) {
 
 
         ];
-        bindKendoGrid("load-project-grid-employee-by-id", 100, gridColumnss, inputDataJSONs, true, 750);
+        bindKendoGrid("load-project-grid-employee-by-id", 100, gridColumnss, inputDataJSONs, true, 400);
 
     }
 

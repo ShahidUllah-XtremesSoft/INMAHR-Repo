@@ -77,7 +77,7 @@
                             <div class="form-group  typeddlRow">
                                 @*<label class="col-form-label">.Transfer to </label><span style="color:red"> *</span><br />*@
                                 <div id="container">
-                                    <input class="form-control pname" id="ApprovedOrReturned" name="ApprovedOrReturned" required>
+                                    <input type="text" class="form-control pname" id="ApprovedOrReturned" name="ApprovedOrReturned" required>
                                 </div>
                             </div>
 
@@ -103,11 +103,11 @@
                                 <label class="col-form-label">@ProjectUI.ProjectUI.lblFor</label>
                                 <span style="color: red">*</span>
                                 <select class="form-control" id="DesignSection_comment_for_client_or_employee" name="DesignSection_comment_for_client_or_employee" required>
-                                    <option value="" selected>Select</option>
-                                    <option value="Employee">Employee</option>
-                                    <option value="Client">Client</option>
-                                    <option value="Both">Both</option>
-                                    <option value="NoRemarks">No Remarks</option>
+                                    <option value="">@ProjectUI.ProjectUI.lblSelect</option>
+                                    <option selected value="Employee">@ProjectUI.ProjectUI.lblEmployee</option>
+                                    <option value="Client">@ProjectUI.ProjectUI.lblClient</option>
+                                    <option value="Both">@ProjectUI.ProjectUI.lblBoth</option>
+                                    <option value="NoRemarks">@ProjectUI.ProjectUI.lblNoRemarks</option>
                                 </select>
                             </div>
                         </div>

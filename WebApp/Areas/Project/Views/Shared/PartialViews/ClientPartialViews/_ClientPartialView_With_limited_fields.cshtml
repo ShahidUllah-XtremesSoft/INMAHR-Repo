@@ -1,0 +1,47 @@
+﻿
+
+
+
+
+
+<div class="card-block" style="background-color: #b0bec5">
+
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblName</label><br />
+                <input type="text" class="form-control  "  id="NameEng" value="" placeholder="Enter Name" maxlength="100" >
+                @*<span class="errorField" style="   color:red;">@ProjectUI.ProjectUI.lblMissing</span>*@
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 1</label> <span style="color: red">*</span><br />
+                <input type="text" class="form-control " id="PhoneNumber1"  value="009715" maxlength="20" required onkeypress="return only0To9Allowed(event);" />
+
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="col-form-label">@ProjectUI.ProjectUI.lblEmail 1</label> <br />
+                <input type="text" class="form-control" id="Email1"  placeholder="Enter Email"  />
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-success  pull-right" id="btn-save-client-limited-fields"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                <button type="button" class="btn btn-danger  pull-right" id="btn-cancel-client-limited-field">  @Resources.Global.btnCancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

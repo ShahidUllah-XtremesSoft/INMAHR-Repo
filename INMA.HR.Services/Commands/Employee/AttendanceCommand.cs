@@ -152,6 +152,32 @@ namespace INMA.HR.Services.Commands.Employee
 
         }
     }
+    [Command(Name = "Employee_Attendance_YearlyMonthly_Report_Get")]
+    public class Employee_Attendance_YearlyMonthly_Report_GetCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                EmployeeId = 0,
+                RoleId = 0,
+                CreatedBy = 0,
+                StartYear = string.Empty,
+                StartMonth = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var response = repository.GetMultiple<dynamic>(StoreProcedure.Employee_Attendance_YearlyMonthly_Report_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            return response;
+
+        }
+    }
     [Command(Name = "Employee_Attendance_LeaveDetail_History")]
     public class Employee_Attendance_LeaveDetail_HistoryCommand : CamelCommandBase
     {

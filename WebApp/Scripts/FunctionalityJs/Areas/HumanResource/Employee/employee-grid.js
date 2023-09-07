@@ -179,7 +179,19 @@ var bindEmployeeGrid = function (inputDataJSON) {
 
         }
     }
-
+   
+    inputDataJSON.sort(function (a, b) {
+         
+       // return a.departmentId - b.departmentId;
+      //  return a.parentId - b.parentId;
+        if (a.companyName < b.companyName  ) {
+            return -1;
+        }
+    });
+      
+     
+  
+    
     var isHR = !inputDataJSON[0].isHR;
 
     if (requestFrom == 'attendance') {
@@ -240,24 +252,48 @@ var bindEmployeeGrid = function (inputDataJSON) {
 
     ];
 
-    bindKendoGrid($grid, 100, gridColumns, inputDataJSON, true, 750);
+    
+   bindKendoGrid($grid, 100, gridColumns, inputDataJSON, true, 750);
     setTimeout(function () {
         var grid = $("#" + $grid).data("kendoGrid");
         var gridData = grid.dataSource.view();
-        console.log(gridData)
+      //   console.log(gridData)
         for (var i = 0; i < gridData.length; i++) {
             if (gridData[i].companyName == 'INMA' || gridData[i].companyName == 'إنماء') { // 1 is INMA department id ,this color will be info as per Company CEO.
                 //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-info");
-                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", '#00859b1c');
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(0, 137, 160, 0.13)').css("color", 'rgb(0,0,0)');
 
 
 
             }
-            if (gridData[i].parentId == 17) { // 17 is NSS department id ,this color will be info as per HR.
+            if (gridData[i].parentId == 17 || gridData[i].departmentId == 17) { // 17 is NSS department id ,this color will be info as per HR.
                 //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-info");
-                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", '#06009b1c');
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(6, 0, 155, 0.13)').css("color", 'rgb(0,0,0)');
 
 
+
+            }
+            /*
+            if (gridData[i].parentId == 8 || gridData[i].departmentId == 8) { // 17 is NSS department id ,this color will be info as per HR.
+                //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-info");
+                  grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(0, 180, 255, 0.11)').css("color", 'rgb(0,0,0)'); 
+
+            }
+            */
+            if (gridData[i].departmentId == 10) { // Design Section
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(56 195 21 / 35%)').css("color", 'rgb(0,0,0)');
+            } if (gridData[i].departmentId == 11) { // Supervision Section
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(21 195 171 / 35%)').css("color", 'rgb(0,0,0)');
+            } if (gridData[i].departmentId == 12) { // Technical Section
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(195 149 21 / 35%)').css("color", 'rgb(0,0,0)');
+            } if (gridData[i].departmentId == 13) { // Contract And Tender Section
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(195 93 21 / 35%)').css("color", 'rgb(0,0,0)');
+            } if (gridData[i].departmentId == 14) { // Accountant Section
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(168 21 195 / 35%)').css("color", 'rgb(0,0,0)');
+            } if (gridData[i].departmentId == 16) { // Administration 
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(27 14 133 / 32%)').css("color", 'rgb(0,0,0)');
+            } if (  gridData[i].departmentId == 8) { // 17 is NSS department id ,this color will be info as per HR.
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(0 180 255 / 34%)').css("color", 'rgb(0,0,0)');
 
             }
 
@@ -272,7 +308,7 @@ function redirectToEmployeeDetailView(e) {
     var row = $(e).closest("tr");
     var grid = $("#employee-grid").data("kendoGrid");
     var dataItem = grid.dataItem(row);
-     
+
     localStorage.setItem('EmployeeNumber', dataItem.employeeNumber);
     localStorage.setItem('LoggedInEmployeeId', dataItem.id);
     localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.id);

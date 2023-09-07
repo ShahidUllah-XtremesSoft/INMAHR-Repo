@@ -250,6 +250,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Rights Reserved.
+        /// </summary>
+        internal static string lblAllRightReserved {
+            get {
+                return ResourceManager.GetString("lblAllRightReserved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application.
         /// </summary>
         internal static string lblApplication {

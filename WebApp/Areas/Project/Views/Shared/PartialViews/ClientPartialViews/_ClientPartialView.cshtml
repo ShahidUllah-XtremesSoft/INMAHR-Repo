@@ -9,7 +9,7 @@
             <div class="card-block">
 
                 <input type="hidden" name="Id" id="Id" value="0">
-                <input type="hidden" name="CreatedBy" id="CreatedBy" value="" >
+                <input type="hidden" name="CreatedBy" id="CreatedBy" value="">
                 <input type="hidden" name="type" id="type" value="Client_Save">
                 <input type="hidden" name="Language" id="Language" value="">
 
@@ -45,13 +45,13 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 1</label> <span style="color: red">*</span><br />
-                            <input type="text" class="form-control " id="PhoneNumber1" name="PhoneNumber1" value="009715" maxlength="20" required onkeypress="return only0To9Allowed(event);"/>
+                            <input type="text" class="form-control " id="PhoneNumber1" name="PhoneNumber1" value="009715" maxlength="20" required onkeypress="return only0To9Allowed(event);" />
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblPhone 2</label> <br />
-                            <input type="text" class="form-control " id="PhoneNumber2" name="PhoneNumber2"value="009715" maxlength="20"   onkeypress="return only0To9Allowed(event);"/>
+                            <input type="text" class="form-control " id="PhoneNumber2" name="PhoneNumber2" value="009715" maxlength="20" onkeypress="return only0To9Allowed(event);" />
                         </div>
                     </div>
                     <div class="col-sm-6">  </div>
@@ -74,6 +74,13 @@
                             <input type="text" class="form-control" id="Email2" name="Email2" placeholder="Enter Email" value=" " />
                         </div>
                     </div>
+
+                    <div class="col-sm-6">  </div>
+
+                </div>
+                <div class="row">
+
+
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblClient @HRModuleUI.HumanResourceUI.lblSignature </label> <br />
@@ -81,31 +88,31 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-3">  </div>
+                    <div class="col-sm-9">  </div>
 
                 </div>
 
                 <div class="row">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" style="display:none;">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblNationality </label> <span style="color: red">*</span><br />
                             <input class="form-control" id="NationalityDDL" value="" required readonly />
-                            <input type="hidden" class="form-control" id="Nationality_Id" name="Nationality_Id" value=""  />
+                            <input type="hidden" class="form-control" id="Nationality_Id" name="Nationality_Id" value="" />
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblCity </label> <span style="color: red">*</span><br />
-                            <input class="form-control" id="CityDDL"   required />
-                            <input type="hidden" class="form-control" id="City_Id" name="City_Id"  value="" />
+                            <input class="form-control" id="CityDDL" required />
+                            <input type="hidden" class="form-control" id="City_Id" name="City_Id" value="3" />
                         </div>
                     </div>
                     <div class="col-sm-4">
                         @*<div class="form-group">
-                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature </label> <br />
-                    <input type="file" class="form-control" name="EmployeeSignature" id="EmployeeSignature" onchange="validateFileType('EmployeeSignature',['png', 'jpg']);" />
-                </div>*@
+                                <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature </label> <br />
+                                <input type="file" class="form-control" name="EmployeeSignature" id="EmployeeSignature" onchange="validateFileType('EmployeeSignature',['png', 'jpg']);" />
+                            </div>*@
                     </div>
 
                 </div>
@@ -114,7 +121,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="col-form-label">@ProjectUI.ProjectUI.lblLocation </label>  <br />
-                            <input class="form-control" id="Location" name="Location" maxlength="500" value=" "   style="height: 5rem;">
+                            <input class="form-control" id="Location" name="Location" maxlength="500" value=" " >
 
                         </div>
                     </div>

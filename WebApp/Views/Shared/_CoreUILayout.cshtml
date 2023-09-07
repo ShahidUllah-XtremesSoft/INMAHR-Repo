@@ -180,7 +180,7 @@
 
                     <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
                 </li>
-                <li class="nav-item p-x-1 project-search-icon" style="display:none;"> 
+                <li class="nav-item p-x-1 project-search-icon" style="display:none;">
                     <a class=" nav-link @Resources.Common.PullRight" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i> </a>
                 </li>
             </ul>
@@ -198,7 +198,7 @@
                 </li>
 
                 <li class="nav-item p-x-10"></li>
-            
+
                 <li class="nav-item p-x-1" id="LoggedInEmployeeName">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -243,12 +243,20 @@
         <!-- /.conainer-fluid -->
     </main>
 
-    <footer class="footer">
+    @*<footer class="footer">
         <span class="text-left">
             <a href="https://xtremessoft.com">@Resources.Global.lblInma</a>  &copy; 2022 @Resources.Global.lblXtremesSoftware
         </span>
         <span class="@Resources.Common.PullRight">
             @Resources.Global.lblPoweredBy <a href="https://xtremessoft.com"> @Resources.Global.lblXtremeSoft</a>
+        </span>
+    </footer>*@
+    <footer class="footer">
+        <span class="text-left">
+            <a href="https://inma.ae">@Resources.Global.lblInma</a>  &copy; @DateTime.Now.Year  
+        </span>
+        <span class="@Resources.Common.PullRight">
+            @Resources.Global.lblPoweredBy <a href="https://inma.ae"> @Resources.Global.lblInma</a>
         </span>
     </footer>
 

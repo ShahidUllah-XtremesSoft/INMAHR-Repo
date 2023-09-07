@@ -1,7 +1,7 @@
 ﻿var parameterId = (new URL(location.href)).searchParams.get('id');
 $(function () {
 
-
+    
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(parseInt(JSON.parse(localStorage.getItem('User')).id));
 
@@ -95,12 +95,13 @@ $(function () {
         ajaxRequest({ commandName: 'DDL_ProjectCategoryType_In_Setup_TypeDetail_Get', values: { Language: _currentLanguage }, CallBack: loadloadProjectCategoryTypeDDLCallBack });
     }
     function loadloadProjectCategoryTypeDDLCallBack(response) {
-
+        //console.log(JSON.parse(response.Value));
         $("#ProjectCategoryDDL").kendoDropDownList({
             dataTextField: "name",
             dataValueField: "id",
             filter: "contains",
             value: -1,
+            // index: 3,
             //    dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('CityListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('CityListArb'))),
             dataSource: JSON.parse(response.Value),
             change: function (e) {
@@ -109,7 +110,56 @@ $(function () {
 
             },
         });
+        $("#ProjectCategoryDDL").data('kendoDropDownList').value(80)
     }
+
+
+
+    //------------------------------------------------- CLIENT SAVE FROM PARTIAL VIEW 
+    $('#btn-save-client-limited-fields').click(function (e) {
+        $('.errorField').remove();
+        if ($('#NameEng').val() == '') { $('#NameEng').parent().append('<span class="errorField" style="   color:red;">' + lblMissing + '</span>') }
+        else if ($('#Email1').val() == '') { $('#Email1').parent().append('<span class="errorField" style="   color:red;">' + lblMissing + '</span>') }
+        else {
+            ajaxRequest({
+                commandName: 'Client_Save_Limited_field',
+                values: {
+                    Id: 0,
+                    NameEng: $('#NameEng').val(),
+                    Email1: $('#Email1').val(),
+                    PhoneNumber1: $('#PhoneNumber1').val(),
+                    CreatedBy: $('#CreatedBy').val(),
+
+                }, CallBack: saveClient_CallBack
+            });
+        }
+
+
+    });
+
+
+    function saveClient_CallBack(response) {
+
+        var response = JSON.parse(response.Value);
+        ajaxRequest({ commandName: 'DDL_Client', values: { Language: _currentLanguage }, CallBack: loadClientDDLCallBack });
+        $('.clientAddDiv').toggle();
+
+        $('#Client_Id').val(response.id);
+        setTimeout(function () {
+            $("#ClientDDL").data('kendoDropDownList').value(response.id);
+
+        }, 500);
+    }
+
+
+
+
+    $('#btn-cancel-client-limited-field').click(function () {
+        $('.clientAddDiv').toggle();
+
+    });
+    //------------------------------------------------- CLIENT SAVE FROM PARTIAL VIEW  end
+
     function loadClientDDL() {
         ajaxRequest({ commandName: 'DDL_Client', values: { Language: _currentLanguage }, CallBack: loadClientDDLCallBack });
     }
@@ -137,6 +187,7 @@ $(function () {
             dataValueField: "id",
             filter: "contains",
             value: -1,
+            // index:3,
             //    dataSource: _currentLanguage == 'en-US' ? JSON.parse(localStorage.getItem('CityListEng')) : fnRemoveSelectInArabic(JSON.parse(localStorage.getItem('CityListArb'))),
             dataSource: JSON.parse(localStorage.getItem('CityListEng')),
             change: function (e) {
@@ -145,6 +196,8 @@ $(function () {
 
             },
         });
+        $("#CityDDL").data('kendoDropDownList').value(3);
+
     }
 
 
@@ -210,9 +263,8 @@ function editProjectByIdCallBack(response) {
     var response = JSON.parse(response.Value);
     $('#Id').val(response.id);
     $('#UnitProject_Id').val(response.id);
-    document.getElementById('btn-save-project').setAttribute("_ProjectId", response.id);
-
-    $('#NameEng').val(response.projectName);
+    document.getElementById('btn-save-project').setAttribute("_ProjectId", response.id);     
+    $('#ProjectName').val(response.projectName);
     $('#DescriptionEng').html(response.descriptionEng);
 
 
@@ -220,8 +272,8 @@ function editProjectByIdCallBack(response) {
     $('#Location').val(response.location);
     $('#IsVIP').val(response.vipStatus);
     $('#IsUrgent').val(response.urgentStatus);
-     
-   // $('#OldProjectNo').val(response.oldProjectNo);
+
+    // $('#OldProjectNo').val(response.oldProjectNo);
 
 
     $('#ProjectCategoryType_In_Setup_TypeDetail_Id').val(response.projectCategoryType_In_Setup_TypeDetail_Id);
@@ -236,10 +288,10 @@ function editProjectByIdCallBack(response) {
         $("#ClientDDL").data('kendoDropDownList').value(response.client_Id);
         $("#CityDDL").data('kendoDropDownList').value(response.city_Id);
     }, 50);
- 
+
 }
 
- 
+
 
 $('.nav-tabs').on('click', function (e) {
     // BELOW CODE FOR CALLING CHILD EVENTS
@@ -260,3 +312,12 @@ $('.nav-tabs').on('click', function (e) {
 
 
 });
+
+
+
+function fnShowClientPartialView() {
+    $('.clientAddDiv').toggle();
+}
+
+
+

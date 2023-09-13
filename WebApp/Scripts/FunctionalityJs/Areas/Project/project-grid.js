@@ -102,7 +102,8 @@ function detailProject(e) {
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
     //console.log(dataItem);
-     
+    window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
+    /*
     if (dataItem.isEmployeeExist == "No" || dataItem.isAccountant == "Yes") {
 
         window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
@@ -111,6 +112,7 @@ function detailProject(e) {
         window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
 
     }
+    */
 }
 
 

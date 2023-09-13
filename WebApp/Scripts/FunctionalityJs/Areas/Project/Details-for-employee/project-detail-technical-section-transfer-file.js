@@ -113,6 +113,8 @@ function fn_technical_section_transfer_file_save() {
         $('.btnClose').click();
         loadProjectSectiondownList_in_technical_transfer_modal();
         //    fnLoadMain_Progress_DetailsById(); //Load Main Progress
+        loadProject_TechnicalSectiondownList('TechnicalSection');
+
     }
 
 }

@@ -18,17 +18,12 @@ function stepper_TECHNICAL_SECTION(response) {
 
 
     var step_Columns = []
-
+    //  console.log(JSON.parse(response.Value));
     for (var i = 0; i < JSON.parse(response.Value).length; i++) {
-
+     //   console.log(JSON.parse(response.Value)[i].parent_Type);
         //************************ CHANGE COLOR OF MAIN STEPPER MENU BY |\/|ati 
-        if (JSON.parse(response.Value)[i].parent_Type == 'DesignSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
-            error_PROJECT_MAIN_SECTION_Design_Stepper = true;
-
-        } else if (JSON.parse(response.Value)[i].parent_Type == 'TechnicalSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
+        if (JSON.parse(response.Value)[i].parent_Type == 'TechnicalSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
             error_PROJECT_MAIN_SECTION_Technical_Stepper = true;
-        } else if (JSON.parse(response.Value)[i].parent_Type == 'SupervisionSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
-            error_PROJECT_MAIN_SECTION_Supervision_Stepper = true;
         }
 
 
@@ -37,6 +32,8 @@ function stepper_TECHNICAL_SECTION(response) {
             label: JSON.parse(response.Value)[i].name,
             error: JSON.parse(response.Value)[i].project_sub_stepper_menu_error,
             enabled: JSON.parse(response.Value)[i].project_sub_stepper_menu_enabled,
+            approved_file: JSON.parse(response.Value)[i].approved_file,
+            return_file: JSON.parse(response.Value)[i].return_file,
             selected: JSON.parse(response.Value)[i].project_sub_stepper_menu_selected,
             // successIcon: JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon,
         });
@@ -64,9 +61,13 @@ function stepper_TECHNICAL_SECTION(response) {
     bindkendoStepper('technical-section-stepper', false, step_Columns, '', stepper_Fn_TechnicalSection_Onselect, 'auto', "vertical");
     if ($("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
 
-        var stepperInstance_technical = $("#technical-section-stepper").data('kendoStepper');
-    //    fnCheckProject_SubSection_Tab(stepperInstance_technical.options.steps[0].label, stepperInstance_technical.options.steps[0].Id)
-        fn_Project_Dynamic_Section_Tab(stepperInstance_technical.options.steps[0].label, stepperInstance_technical.options.steps[0].Id)
+        var stepper_t = JSON.parse(response.Value)
+        const enabledObjects_t = stepper_t.filter(item_t => item_t.project_sub_stepper_menu_selected === 1);
+        fn_Project_Dynamic_Section_Tab(enabledObjects_t[0].conditionalField, enabledObjects_t[0].id)
+
+
+    } else {
+        fn_Project_Dynamic_Section_Tab($("#technical-section-stepper").data('kendoStepper').selectedStep.options.label, $("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id)
 
     }
 }
@@ -94,7 +95,7 @@ $("#technical-section-stepper").on("click", '.k-step', function (e) {
 
         obj.label == stepName ? (stepIdFromFilter = obj.Id) : 0;
     });
-  //  fnCheckProject_SubSection_Tab(stepName, stepIdFromFilter)
+    //  fnCheckProject_SubSection_Tab(stepName, stepIdFromFilter)
     fn_Project_Dynamic_Section_Tab(stepName, stepIdFromFilter)
 });
 
@@ -229,7 +230,7 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
             //        "#}#"
 
             //},
-             
+
             {
                 field: "", title: "", width: 60 //, hidden: 'statusForCondition !="Transfered" :' + false + '? ' + true + '' //, template: gridTemplate,
                 , template: "#if(localStorage.isSectionHead == 'Yes' && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
@@ -238,10 +239,19 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
                     "#}" +
                     "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
                     "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
-                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm  waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+                    " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+                    "#}" +
+                    "else if(statusForCondition !=null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
+                    "  #if(!statusForCondition.match(/approve.*/) && localStorage.employeeDepartment.match(/Technical Section.*/)){ # <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> #}#" +
                     "#}" +
                     "else { ''} #"
 
+                    //"else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
+                    //"<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
+                    //" <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm  waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+                    //"#}" +
+                    //"else { ''} #"
+                     
             },
 
 
@@ -392,7 +402,7 @@ $('#btn-technical-section-load-upload-document-modal').click(function () {
         }, 1500);
 
     }
-   
+
 
 
 });

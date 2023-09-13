@@ -282,7 +282,7 @@ function fn_supervision_section_transfer_file_save() {
         fnLoadSupervisionSection_Document(project_Id, $('#SupervisionSection_From_SetupType_Id').val(), $('#SupervisionSection_Grid-Name').val());
         $('.btnClose').click();
         loadProject_SupervisionSectiondownList('TechnicalSection');
-      //  fnLoadMain_Progress_DetailsById(); //Load Main Progress
+        //  fnLoadMain_Progress_DetailsById(); //Load Main Progress
 
     }
 
@@ -406,6 +406,8 @@ function fnloadProject_SupervisionSectiondownListsCallBack(response) {
 
     });
     $('#Project_SupervisionSection_Parent_Type_DDL').data("kendoDropDownList").options.enabled
+     
+
 }
 
 function fn_SupervisionSection_OnSelect_Section_DDL(e) {
@@ -425,7 +427,7 @@ function fn_SupervisionSection_OnSelect_Section_DDL(e) {
 function loadProject_SupervisionSection_SubSection_DDL(controlId, typeName, selectText = null) {
 
     ajaxRequest({
-      //  commandName: 'Setup_Type_DropdownByTypeName_New',
+        //  commandName: 'Setup_Type_DropdownByTypeName_New',
         commandName: 'Setup_Main_Section_DropdownByTypeName',
         values: { TypeName: typeName, Language: _currentLanguage }, controlId, CallBack: loadProject_SupervisionSection_SubSection_DDLCallBackk
     });
@@ -571,7 +573,7 @@ function loopThroughGrid_SupervisionSection(btnValue, btnId, btnIcon) {
 
     }
     if (postingArray.length > 0) {
-      //  console.log(postingArray)
+        //  console.log(postingArray)
         ajaxRequest({
             commandName: 'Project_Save_Multiple_Employees',
             values:

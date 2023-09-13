@@ -19,9 +19,11 @@ function fn_transfer_file(event) {
     var row = $(event).closest("tr");
     var grid = $("#" + event.getAttribute('data-grid-name')).data("kendoGrid");
     var dataItem = grid.dataItem(row);
+    // console.log(dataItem);
 
-    selectedRecordDocumentType = dataItem.documentTypeName;
-
+ //   selectedRecordDocumentType = dataItem.documentTypeName;
+    selectedRecordDocumentType = dataItem.combineDocumentType.split('->')[0];
+    //console.log(dataItem.combineDocumentType.split('->')[0]);
     $('#frmTransferDataModal').trigger('reset')
     fnApprovedOrReturn_DDL('ApprovedOrReturned'); // Load approved or Return ddl
 
@@ -96,7 +98,8 @@ function fn_transfer_file_save() {
                     UserId: JSON.parse(localStorage.getItem('User')).id,
                     AttachmentRemarks: $('#DesignSection_transfer_modal_Remarks').val(),
                     FromDocumentType: selectedRecordDocumentType,
-                    ToDocumentType: $('#Project_DesignSection_Transfer_Modal_SetupDetailTypeDDL_design_transfer_modal').data("kendoDropDownList").text(),
+                    // ToDocumentType: $('#Project_DesignSection_Transfer_Modal_SetupDetailTypeDDL_design_transfer_modal').data("kendoDropDownList").text(),
+                    ToDocumentType: $('#Project_Section_Parent_Type_DDL_design_transfer_modal').data("kendoDropDownList").text(),
                     // ToDocumentType: $('#Project_Section_Parent_Type_DDL_design_transfer_modal').data("kendoDropDownList").text() + ' |  ' + $('#Project_DesignSection_Transfer_Modal_SetupDetailTypeDDL_design_transfer_modal').data("kendoDropDownList").text(),
                     ApprovedOrReturned: $('#ApprovedOrReturned').data("kendoDropDownList").value(),
                     DesignSection_comment_for_client_or_employee: $('#DesignSection_comment_for_client_or_employee_in_transfer_modal').val(),
@@ -113,6 +116,9 @@ function fn_transfer_file_save() {
         $('.btnClose').click();
         loadProjectSectiondownList_in_transfer_modal();
         //    fnLoadMain_Progress_DetailsById(); //Load Main Progress
+        // stepper_PROJECT_MAIN_SECTIONS();
+        loadProjectSectiondownList('DesignSection')
+
     }
 
 }
@@ -205,7 +211,7 @@ function fnCheck_NoExpiry(e, areaName) {
 
 
 function fnLoadOtherMainSection(selectedValue) {
- 
+
     if (selectedValue == 'Yes') {
         $('.div_showHide_Main_stepper').show();
         var step_Columnss = [

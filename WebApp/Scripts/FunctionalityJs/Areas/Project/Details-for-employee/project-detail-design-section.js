@@ -15,28 +15,28 @@ function loadProjectSectiondownList(callingArea) {
 function fnloadloadProjectSectiondownListCallBack(response) { stepper_DESIGN_SECTION(response) }
 
 function stepper_DESIGN_SECTION(response) {
+    // console.log(JSON.parse(response.Value));
     var step_Columns = []
-
-    for (var i = 0; i < JSON.parse(response.Value).length; i++) {
-
+    var stepper_d = JSON.parse(response.Value)
+    for (var i = 0; i < stepper_d.length; i++) {
+        // console.log(stepper_d[i].parent_Type);
         //************************ CHANGE COLOR OF MAIN STEPPER MENU BY |\/|ATI 
-        if (JSON.parse(response.Value)[i].parent_Type == 'DesignSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
+        if (stepper_d[i].parent_Type == 'DesignSection' && stepper_d[i].project_sub_stepper_menu_error == true) {
             error_PROJECT_MAIN_SECTION_Design_Stepper = true;
-
-        } else if (JSON.parse(response.Value)[i].parent_Type == 'TechnicalSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
-            error_PROJECT_MAIN_SECTION_Technical_Stepper = true;
-        } else if (JSON.parse(response.Value)[i].parent_Type == 'SupervisionSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
-            error_PROJECT_MAIN_SECTION_Supervision_Stepper = true;
         }
-
+        // console.log(stepper_d);
 
         step_Columns.push({
-            Id: JSON.parse(response.Value)[i].id,
-            label: JSON.parse(response.Value)[i].name,
-            error: JSON.parse(response.Value)[i].project_sub_stepper_menu_error,
-            enabled: JSON.parse(response.Value)[i].project_sub_stepper_menu_enabled,
-            selected: JSON.parse(response.Value)[i].project_sub_stepper_menu_selected,
-            // successIcon: JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon,
+            Id: stepper_d[i].id,
+            label: stepper_d[i].name,
+            error: stepper_d[i].project_sub_stepper_menu_error,
+            //    enabled: stepper_d[i].project_sub_stepper_menu_enabled,
+            approved_file: stepper_d[i].approved_file,
+            return_file: stepper_d[i].return_file,
+            transfer_file: stepper_d[i].transfer_file,
+            selected: stepper_d[i].project_sub_stepper_menu_selected,
+            //  icon: "circle",
+            // successIcon: stepper_d[i].project_sub_stepper_menu_successIcon,
         });
 
 
@@ -44,7 +44,7 @@ function stepper_DESIGN_SECTION(response) {
 
 
 
-        if (JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon == 'check') {
+        if (stepper_d[i].project_sub_stepper_menu_successIcon == 'check') {
             step_Columns.push({
                 label: "Completed",
                 enabled: false,
@@ -54,26 +54,33 @@ function stepper_DESIGN_SECTION(response) {
             });
         }
     }
-    /*
-    setTimeout(function () {
 
-        if (localStorage.getItem('DesignSection_Menu_Area') != '') {
-            progressbar_subSection(JSON.parse(response.Value), localStorage.getItem('DesignSection_Menu_Area'));
-        }
-    }, 100);
-    */
 
     bindkendoStepper('design-section-stepper', false, step_Columns, '', stepper_Fn_DesignSection_Onselect, 'auto', "vertical");
-    if ($("#design-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
+    setTimeout(function () {
 
-        var stepperInstance = $("#design-section-stepper").data('kendoStepper');
-        //  fnCheckProject_SubSection_Tab(stepperInstance.options.steps[0].label, stepperInstance.options.steps[0].Id)
-        fn_Project_Dynamic_Section_Tab(stepperInstance.options.steps[0].label, stepperInstance.options.steps[0].Id)
 
-    }
-    //   $("#design-section-stepper").focus();
+        if ($("#design-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
+
+            var stepperInstance = $("#design-section-stepper").data('kendoStepper');
+            //  fnCheckProject_SubSection_Tab(stepperInstance.options.steps[0].label, stepperInstance.options.steps[0].Id)
+            const enabledObjects = stepper_d.filter(item => item.project_sub_stepper_menu_selected === 1);
+
+            // console.log(enabledObjects);
+            // fn_Project_Dynamic_Section_Tab(stepperInstance.options.steps[0].label, stepperInstance.options.steps[0].Id)
+            fn_Project_Dynamic_Section_Tab(enabledObjects[0].conditionalField, enabledObjects[0].id)
+        } else {
+
+
+
+            fn_Project_Dynamic_Section_Tab($("#design-section-stepper").data('kendoStepper').selectedStep.options.label, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id)
+
+        }
+    }, 100);
+
 
 }
+
 
 function stepper_Fn_DesignSection_Onselect(e) {
 
@@ -134,7 +141,7 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
     //  var MainStepper_ = $('#project-section-stepper').data('kendoStepper').selectedStep.options.conditionalField;
     //  console.log(MainStepper_);
-    //  console.log(JSON.parse(inputDataJSON.Value));
+   // console.log(JSON.parse(inputDataJSON.Value));
     if (pass_GridName != "") {
 
         var gridTemplate = '';
@@ -221,15 +228,7 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
  
              },
              */
-            {
-                title: status,
-                field: 'statusForCondition',
-                width: 40,
-                hidden: true,
-                filterable: false
 
-
-            },
             {
                 field: "", title: "", width: 60 //, hidden: 'statusForCondition !="Transfered" :' + false + '? ' + true + '' //, template: gridTemplate,
                 , template: "#if(localStorage.isSectionHead == 'Yes' && localStorage.employeeDepartment.match(/Design Section.*/)){ #" +
@@ -239,6 +238,9 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                     "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Design Section.*/)){ #" +
                     "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_SubSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
                     " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
+                    "#}" +
+                    "else if(statusForCondition !=null && localStorage.employeeDepartment.match(/Design Section.*/)){ #" +
+                    "  #if(!statusForCondition.match(/approve.*/) && localStorage.employeeDepartment.match(/Design Section.*/)){ # <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> #}#" +
                     "#}" +
                     "else { ''} #"
 
@@ -546,7 +548,7 @@ function fnUpdateDesignSection_Employee_document_CompletionDate() {
         }, CallBack: ''
 
     });
-     
+
 
     var gridId = $('.DesignSection_Tab.active').find('.k-grid').attr('id');
     fnLoadDesignSection_Document(project_Id, $("#design-section-stepper").data('kendoStepper').selectedStep.options.Id, gridId);
@@ -661,15 +663,16 @@ function progress_designSection(designSectionMenuResponse, designSectionCallingA
 
 
 function fnCheck_NoExpiry_in_design(e, areaName) {
-    alert('');
+
     if (areaName == 'EndDate') {
         $('#DesignSection_Document_NoExpiry_Call')[0].checked = false
         $('#DesignSection_Document_NoExpiry').val(0);
+        $('#DesignSection_Document_NoExpiry_Call').is(':Checked', false);
     } else {
 
         $('#DesignSection_Document_NoExpiry').val(1);
-        var checkExpiry = $('#DesignSection_Document_NoExpiry_Call').is(':Checked', true);
-        checkExpiry == true ? $('#DesignSection_Document_EndDate').val('') : $('#DesignSection_Document_NoExpiry_Call')[0].checked = false;
+        var checkExpiry_d = $('#DesignSection_Document_NoExpiry_Call').is(':Checked', true);
+        checkExpiry_d == true ? $('#DesignSection_Document_EndDate').val('') : $('#DesignSection_Document_NoExpiry_Call')[0].checked = false;
     }
 
 }

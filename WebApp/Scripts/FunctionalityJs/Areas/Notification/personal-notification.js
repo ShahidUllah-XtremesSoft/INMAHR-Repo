@@ -17,7 +17,9 @@ $(function () {
 
     loadGrid();
 
-    $('#btnSearch').click(function () {
+    $('#btnSearch').click(function (e) {
+        debugger
+        e.preventDefault();
         loadGrid();
     });
 });
@@ -47,7 +49,7 @@ var bindGrid = function (inputDataJSON) {
 
     //                template: "#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
-     console.log(inputDataJSON)
+  //  console.log(inputDataJSON)
 
     var gridColumns = [
 
@@ -57,12 +59,12 @@ var bindGrid = function (inputDataJSON) {
         { title: "#", template: "<b>#= ++record #</b>", width: 5, },
         {
             field: "projectNumber", title: lblProjectNo, width: 10, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }
-          //  , template: "#if(isRemoved== 0){# <a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> #}else {#<span>#=projectNumber#</span>#}#",
-              , template: " <a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a>  ",
+            //  , template: "#if(isRemoved== 0){# <a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a> #}else {#<span>#=projectNumber#</span>#}#",
+            , template: " <a style='cursor:pointer;text-decoration:underline;color:blue;'  class='viewbutton' onClick= detailProject(this)  title=''>#=projectNumber#</a>  ",
         },
         {
             field: "isRemoved", title: "isRemoved", width: 20, filterable: false, hidden: true
-         },
+        },
         {
             field: "sender", title: lblFrom, width: 20, filterable: false
             , template: "#if(isRead == false){#<div style='font-weight:bold;white-space:nowrap;font-size:small' >#=sender#</div> #} else {#<div style='white-space:nowrap;font-size:small' class='viewbutton'>#=sender#</div>#}#",
@@ -90,8 +92,9 @@ var bindGrid = function (inputDataJSON) {
         },
     ];
 
-    bindKendoGrid($grid, 250, gridColumns, inputDataJSON, true, 750);
+    bindKendoGrid($grid, 12, gridColumns, inputDataJSON, true, 750);
 
+     
     if (inputDataJSON.length != null) {
 
         fnGridColors();
@@ -137,7 +140,7 @@ function fnGridColors() {
         if ((gridData[i].description.match(/create.*/) || gridData[i].description.match(/update.*/)) && gridData[i].isRead == false) {
             grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(255 0 0 / 8%)')
         }
-     
+
 
     }
 

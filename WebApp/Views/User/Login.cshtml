@@ -219,8 +219,8 @@
     <script src="~/Content/Themes/Dashable/files/assets/js/common-pages.js"></script>-->
 
     <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Login/user-login.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/UserManagement/Login/user-login.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
     <!--Sweet Alert 2-->

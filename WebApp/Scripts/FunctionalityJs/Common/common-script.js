@@ -468,57 +468,73 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
         steps: $steps,
         //  width:$width,
         activate: $onActivate, //pass function name  ...  
-        select: $onSelect      //pass function name  ...  
+        select: $onSelect,      //pass function name  ...  
+
+
     });
 
     var stepper = $("#" + $stepperId).width($width);
+    var stepperr = $("#" + $stepperId).data('kendoStepper')
     stepper.resize();
+
+
+    for (var index = 0; index < $steps.length; index++) {
+
+
+        /*
+        if ($steps[index].approved_file == '') {
+            $(stepperr.steps()[index].element[0]).css("background-color", "rgb(197 197 197 / 20%)");
+
+        }
+        */
+
+        if ($steps[index].approved_file > 0) {
+
+            //stepper.find('.k-step-done').css("background-color", "#a1f94a9c");
+            $(stepperr.steps()[index].element[0]).css("background-color", "#a1f94a9c").css("border", "ridge");
+
+
+        } if ($steps[index].return_file > 0) {
+
+             $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "ridge");
+           // $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "1px ridge");
+            //  $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "groove");
+
+        }
+
+
+        //---------- FOR MAIN SECTION
+        var parent_stepper = $("#project-section-stepper").data('kendoStepper');
+        if ($steps[index].error === true) {
+
+            $(parent_stepper.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "1px solid darkred");
+
+
+            if (parent_stepper.selectedStep.options.conditionalField == 'Design Section') {
+
+                $(parent_stepper.steps()[index].element[0]).css("background-color", "transparent").css("border", "none");
+                error_PROJECT_MAIN_SECTION_Design_Stepper = false
+            } else if (parent_stepper.selectedStep.options.conditionalField == 'Technical Section') {
+                $(parent_stepper.steps()[index].element[0]).css("background-color", "transparent").css("border", "none");
+                error_PROJECT_MAIN_SECTION_Technical_Stepper = false
+            } else if (parent_stepper.selectedStep.options.conditionalField == 'Supervision Section') {
+                $(parent_stepper.steps()[index].element[0]).css("background-color", "transparent").css("border", "none");
+                error_PROJECT_MAIN_SECTION_Supervision_Stepper = false
+            }
+
+        }
+    }
+
+
+
     //stepper.find('.k-step-done').css("background-color", "lawngreen");
-    stepper.find('.k-step-error').css("background-color", "mistyrose");
     // stepper.find('.k-step-done').css("background-color", "greenyellow");
-   // $("#" + $stepperId).unbind($steps);
+    // $("#" + $stepperId).unbind($steps);
 
 
-    /*
-       $("#stepper").kendoStepper({
-           linear: false,  
-           steps: [{
-               label: "Personal Info",
-               icon: "home",
-               selected: false
-           }, {
-               label: "Education",
-               icon: "dictionary-add",
-               error: false,
-               selected: false,
-               iconTemplate: "<p style='background-color:red'>#:label#</p>"
-           }, {
-               label: "Experience",
-               icon: "flip-vertical",
-               selected: false
-           }, {
-               label: "Attachments",
-               icon: "attachment",
-               selected: false
-           }, {
-               label: "Review",
-               icon: "preview",
-               enabled: false,
-               selected: false
-           }, {
-               label: "Submit",
-               icon: "file-add",
-               selected: false
-           }, {
-               label: "Submit",
-               icon: "complete",
-               selected: false
-           }]
-       });
-      
-       */
+
 }
- 
+
 
 
 var validateForm = function ($form) {

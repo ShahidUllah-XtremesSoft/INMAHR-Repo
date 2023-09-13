@@ -76,6 +76,7 @@ function loadProjectDetailsByIdCallBack(response) {
         $(".Kitchen").text(response.kitchen)
         $(".Hall").text(response.hall)
         $(".Garage").text(response.garage)
+        //   console.log(response);
 
         localStorage.setItem('employeeDepartment', response.employee_Department);
         localStorage.setItem('isEmployeeExist', response.isEmployeeExist);  // Used in child js for menu stepper retrieving ... by |\/|ati
@@ -87,6 +88,10 @@ function loadProjectDetailsByIdCallBack(response) {
         response.isAccountant === "Yes" ? $('.onlyFor_Accountant').show() : $('.NotFor_Accountant').show();
 
         fnLoadAttachmentDetailsById();
+       
+        response.error_d > 0 ? error_PROJECT_MAIN_SECTION_Design_Stepper = true : error_PROJECT_MAIN_SECTION_Design_Stepper = false;
+        response.error_t > 0 ? error_PROJECT_MAIN_SECTION_Technical_Stepper = true : error_PROJECT_MAIN_SECTION_Technical_Stepper = false;
+        response.error_s > 0 ? error_PROJECT_MAIN_SECTION_Supervision_Stepper = true : error_PROJECT_MAIN_SECTION_Supervision_Stepper = false;
         /*
         if (response.status != 'Active') {
 
@@ -178,7 +183,7 @@ function disableElements(selector) {
 
 
 //|Load Project Details Start
- 
+
 function fnLoadAttachmentDetailsById() {
     ajaxRequest({
         commandName: 'Project_Attachment_By_Id',
@@ -237,7 +242,7 @@ function fnLoadAttachmentDetailsByIdCallBack(response) {
 }
 
 
- 
+
 
 
 
@@ -538,22 +543,34 @@ function progressbar_subSection(differentSectionMenuResponse, CallingArea) {
 function fnApprovedOrReturn_DDL(ddlName) {
 
 
+
+    var sec_head = localStorage.getItem('isSectionHead');
+
     $("#" + ddlName).kendoDropDownList({
         dataTextField: "text",
         dataValueField: "value",
         value: 'Transfered',
+        dataBound: function (e) {
+
+            for (var i = 0; i < this.dataSource.data().length; i++) {
+                var item = this.dataSource.at(i);
+                if (localStorage.getItem('isSectionHead') === 'No' && item.value == 'Approved') {
+                    this.dataSource.remove(item);
+
+                }
+            }
+        },
         dataSource: {
             data: [
                 //  { id:1, value: '-- Select --'  },
-                { value: 'Transfered', text: 'Transfer' },
-                { value: 'Approved', text: 'Approve' },
-                { value: 'Returned', text: 'Return' }
+                { value: 'Transfered', text: 'Transfer', hidden: false },
+                { value: 'Approved', text: 'Approve', hidden: sec_head === 'Yes' ? false : true },
+                { value: 'Returned', text: 'Return', hidden: false }
             ]
         }
     });
 
 }
-
 
 
 // --------------------- CHANGE PROJECT STATUS ---------------------

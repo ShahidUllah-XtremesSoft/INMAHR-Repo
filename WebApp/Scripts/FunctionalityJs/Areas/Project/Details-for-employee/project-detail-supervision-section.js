@@ -21,12 +21,7 @@ function stepper_SUPERVISION_SECTION(response) {
     for (var i = 0; i < JSON.parse(response.Value).length; i++) {
 
         //************************ CHANGE COLOR OF MAIN STEPPER MENU BY |\/|ati 
-        if (JSON.parse(response.Value)[i].parent_Type == 'DesignSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
-            error_PROJECT_MAIN_SECTION_Design_Stepper = true;
-
-        } else if (JSON.parse(response.Value)[i].parent_Type == 'SupervisionSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
-            error_PROJECT_MAIN_SECTION_Supervision_Stepper = true;
-        } else if (JSON.parse(response.Value)[i].parent_Type == 'SupervisionSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
+    if (JSON.parse(response.Value)[i].parent_Type == 'SupervisionSection' && JSON.parse(response.Value)[i].project_sub_stepper_menu_error == true) {
             error_PROJECT_MAIN_SECTION_Supervision_Stepper = true;
         }
 
@@ -36,6 +31,8 @@ function stepper_SUPERVISION_SECTION(response) {
             label: JSON.parse(response.Value)[i].name,
             error: JSON.parse(response.Value)[i].project_sub_stepper_menu_error,
             enabled: JSON.parse(response.Value)[i].project_sub_stepper_menu_enabled,
+            approved_file: JSON.parse(response.Value)[i].approved_file,
+            return_file: JSON.parse(response.Value)[i].return_file,
             selected: JSON.parse(response.Value)[i].project_sub_stepper_menu_selected,
             // successIcon: JSON.parse(response.Value)[i].project_sub_stepper_menu_successIcon,
         });
@@ -56,10 +53,18 @@ function stepper_SUPERVISION_SECTION(response) {
     bindkendoStepper('supervision-section-stepper', false, step_Columns, '', stepper_Fn_SupervisionSection_Onselect, 'auto', "vertical");
     if ($("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
 
-        var stepperInstance_supervision = $("#supervision-section-stepper").data('kendoStepper');
-       
-        //  fnCheckProject_SubSection_Tab(stepperInstance_supervision.options.steps[0].label, stepperInstance_supervision.options.steps[0].Id)
-        fn_Project_Dynamic_Section_Tab(stepperInstance_supervision.options.steps[0].label, stepperInstance_supervision.options.steps[0].Id)
+     //   var stepperInstance_supervision = $("#supervision-section-stepper").data('kendoStepper');
+       // fn_Project_Dynamic_Section_Tab(stepperInstance_supervision.options.steps[0].label, stepperInstance_supervision.options.steps[0].Id)
+
+        var stepper_s = JSON.parse(response.Value)
+        const enabledObjects_s = stepper_s.filter(item_s => item_s.project_sub_stepper_menu_selected === 1);
+        fn_Project_Dynamic_Section_Tab(enabledObjects_s[0].conditionalField, enabledObjects_s[0].id)
+
+
+
+    } else {
+        fn_Project_Dynamic_Section_Tab($("#supervision-section-stepper").data('kendoStepper').selectedStep.options.label, $("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id)
+
     }
 }
 function stepper_Fn_SupervisionSection_Onselect(e) {
@@ -276,8 +281,8 @@ function fn_delete_SupervisionSection_DocumentById(event) {
     var grid = $("#" + gridId).data("kendoGrid");
     localStorage.setItem('grid__id', gridId);
     var dataItem = grid.dataItem(row);
-    console.clear();
-    console.log(dataItem)
+    //  console.clear();
+    //  console.log(dataItem)
     Swal.fire({
 
         title: areYouSureTitle,
@@ -415,7 +420,7 @@ $('#btn-supervision-section-load-upload-document-modal').click(function () {
         }, 1500);
 
     }
-    
+
 
 });
 function fn_IsWorkStarted_SupervisionSection() {
@@ -509,6 +514,8 @@ function fn_IsWorkStarted_SupervisionSection() {
 
                     loadProject_SupervisionSectiondownLists();
                     loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
+                    setTimeout(function () { $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").toggle(); }, 500);
+
 
                 }
             });
@@ -543,6 +550,9 @@ function fn_IsWorkStarted_SupervisionSection() {
             }
             loadProject_SupervisionSectiondownLists();
             //   loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', '0');
+            
+            setTimeout(function () {  $("#Project_SupervisionSection_SetupDetailTypeDDL").data("kendoDropDownList").toggle();   }, 500);
+            
         }
     }
 

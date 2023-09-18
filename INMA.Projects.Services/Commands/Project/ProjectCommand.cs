@@ -4,13 +4,14 @@ using INMA.HR.Services;
 using INMA.HR.Services.Common;
 using INMA.Projects.Services.Services;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+using System.Data; 
+using System.Linq; 
 
 namespace INMA.Projects.Services.Project
 {
     public class ProjectCommand
     {
+       
 
         [Command(Name = "Project_Role_Mapping_For_Employees_Save")]
         public class Project_Role_Mapping_For_Employees_SaveCommand : CamelCommandBase
@@ -855,14 +856,18 @@ namespace INMA.Projects.Services.Project
                     CreatedBy = 0,
                     Language = string.Empty
                 }, viewInput);
-
-
-
-
                 var repository = Ioc.Resolve<IRepository>();
                 IDictionary<string, object> values = new Dictionary<string, object>();
                 CommandParameters _params = new CommandParameters();
                 values = _params.Get(model);
+
+
+
+                //------ PHYSICAL FILE DELETED
+                var model_File = base.MappedModel(new { FileName = string.Empty }, viewInput); 
+                PhysicalFileManager.PhysicalFileDelete(model_File.FileName);
+
+               
                 var _response = repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_DesignSection_Document_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
                 //SMS Sending Code
@@ -1728,6 +1733,10 @@ namespace INMA.Projects.Services.Project
 
 
 
+                //------ PHYSICAL FILE DELETED
+                var model_File = base.MappedModel(new { FileName = string.Empty }, viewInput);
+                PhysicalFileManager.PhysicalFileDelete(model_File.FileName);
+
 
 
                 var repository = Ioc.Resolve<IRepository>();
@@ -2197,6 +2206,9 @@ namespace INMA.Projects.Services.Project
                     ProjectId = 0,
                     Language = string.Empty
                 }, viewInput);
+                //------ PHYSICAL FILE DELETED
+                var model_File = base.MappedModel(new { FileName = string.Empty }, viewInput);
+                PhysicalFileManager.PhysicalFileDelete(model_File.FileName);
 
 
                 var repository = Ioc.Resolve<IRepository>();

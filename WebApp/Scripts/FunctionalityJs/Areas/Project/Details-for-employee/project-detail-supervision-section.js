@@ -316,6 +316,7 @@ function fn_delete_SupervisionSection_DocumentById(event) {
                 commandName: 'Project_SupervisionSection_Document_Delete',
                 values: {
                     Id: dataItem.attachmentId,
+                    FileName: dataItem.currentFileName,
                     ProjectId: project_Id,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
                     Document: dataItem.combineDocumentType,

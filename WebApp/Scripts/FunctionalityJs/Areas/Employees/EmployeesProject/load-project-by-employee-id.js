@@ -1,25 +1,22 @@
 ﻿
 var emp_ID = 0;
 $(function () {
-
-    if (localStorage.getItem('MainApplicationModule_Id') == 2) {
-        $('.project-search-icon').show();
-        $('.divEmployeeProject').show();
-        if (JSON.parse(localStorage.getItem('Menus'))[0].staticComment != 'Lock') { // Lock - mean to upload document first then employee will be able to see project
-
-            setTimeout(function () {
-                loadProjectGridByEmployeeId();
-            }, 50);
-        } else {
+    setTimeout(function () {
+        if (localStorage.getItem('MainApplicationModule_Id') == 2) {
+            //   $('.project-search-icon').show();
+            $('.divEmployeeProject').show();
 
             $('.hide_HR_project_tabs').hide();
+            if (JSON.parse(localStorage.getItem('Menus'))[0].staticComment != 'Lock') { // Lock - mean to upload document first then employee will be able to see project
+                $('.divEmployeeProject').show();
+                loadProjectGridByEmployeeId();
+
+            }
+        } else {
+            $('#divEmployeeProject').hide();
 
         }
-        $('.hide_HR_project_tabs').hide();
-    } else {
-        $('#divEmployeeProject').hide();
-
-    }
+    }, 100);
 });
 
 
@@ -71,10 +68,10 @@ var loadProjectGridByEmployeeIdbindGrid = function (inputDataJSONs) {
             {
                 field: "projectName", title: lblProject, width: 50, filterable: false
             },
-            { field: "clientName", title: ".clientName", width: 50, filterable: false,hidden:true},
+            { field: "clientName", title: ".clientName", width: 50, filterable: false, hidden: true },
             { field: "vipStatus", title: lblVIP, width: 10, filterable: false },
             { field: "urgentStatus", title: lblUrgent, width: 10, filterable: false },
-            { field: "projectCreatedDate", title: lblIssueDate, width: 20, filterable: false},
+            { field: "projectCreatedDate", title: lblIssueDate, width: 20, filterable: false },
             //  { field: "projectCreatedDate", title: lblIssueDate, width: 50, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
             // {
             //     field: "", title: "", width: 30

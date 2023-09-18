@@ -60,7 +60,7 @@ function stepper_TECHNICAL_SECTION(response) {
     */
     bindkendoStepper('technical-section-stepper', false, step_Columns, '', stepper_Fn_TechnicalSection_Onselect, 'auto', "vertical");
     if ($("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
-
+         
         var stepper_t = JSON.parse(response.Value)
         const enabledObjects_t = stepper_t.filter(item_t => item_t.project_sub_stepper_menu_selected === 1);
         fn_Project_Dynamic_Section_Tab(enabledObjects_t[0].conditionalField, enabledObjects_t[0].id)
@@ -234,7 +234,7 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
             {
                 field: "", title: "", width: 60 //, hidden: 'statusForCondition !="Transfered" :' + false + '? ' + true + '' //, template: gridTemplate,
                 , template: "#if(localStorage.isSectionHead == 'Yes' && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
-                    "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id){# <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>#}#" +
+                    "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id  && statusForCondition ==null){# <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>#}#" +
                     " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-outline-sm waves-effect    waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
                     "#}" +
                     "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
@@ -301,6 +301,7 @@ function fn_delete_TechnicalSection_DocumentById(event) {
                 commandName: 'Project_TechnicalSection_Document_Delete',
                 values: {
                     Id: dataItem.attachmentId,
+                    FileName: dataItem.currentFileName,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
                     ProjectId: project_Id,
                     Document: dataItem.combineDocumentType,

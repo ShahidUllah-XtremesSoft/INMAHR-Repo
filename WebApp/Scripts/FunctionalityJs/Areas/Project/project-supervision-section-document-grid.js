@@ -173,7 +173,7 @@ function fn_delete_SupervisionSection_DocumentById(event) {
             ajaxRequest({
                 commandName: 'Project_SupervisionSection_Document_Delete',
                 values: {
-                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage, Document: dataItem.combineDocumentType, ProjectId: $('#Id').val()
+                    Id: dataItem.attachmentId, FileName: dataItem.currentFileName, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage, Document: dataItem.combineDocumentType, ProjectId: $('#Id').val()
                 }, CallBack: fn_delete_SupervisionSection_DocumentCallBack
             });        }
     });

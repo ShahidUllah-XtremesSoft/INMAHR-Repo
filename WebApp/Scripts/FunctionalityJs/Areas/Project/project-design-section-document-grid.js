@@ -1,4 +1,4 @@
-﻿ 
+﻿
 var Parameter_Project_Id = (new URL(location.href)).searchParams.get('id');
 setTimeout(function () {
 
@@ -72,7 +72,7 @@ var fnLoadDesignSection_GovernmentDocument_CallBack = function (inputDataJSON) {
     });
    */
 
-     
+
     fn_Load_DesignSection_GovernmentDocumentByIdResponse(JSON.parse(inputDataJSON.Value));
 
 }
@@ -165,7 +165,7 @@ var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJS
             width: 200,
             hidden: false,
             filterable: false,
-         //   template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
+            //   template: "  <span class='badge badge-info'>#:attachmentRemarks#</span>  "
 
         }, {
             field: "remarks_comment_for_client_or_employee",
@@ -229,7 +229,9 @@ function fn_delete_DesignSection_GovernmentDocumentById(event) {
             ajaxRequest({
                 commandName: 'Project_DesignSection_Document_Delete',
                 values: {
-                    Id: dataItem.attachmentId, CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage, Document: dataItem.combineDocumentType, ProjectId: $('#Id').val()
+                    Id: dataItem.attachmentId,
+                    FileName: dataItem.currentFileName,
+                    CreatedBy: JSON.parse(localStorage.getItem('User')).id, Language: _currentLanguage, Document: dataItem.combineDocumentType, ProjectId: $('#Id').val()
                 }, CallBack: fn_delete_DesignSection_GovernmentDocumentCallBack
             });
         }

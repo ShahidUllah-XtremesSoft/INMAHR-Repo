@@ -226,8 +226,8 @@ namespace WebApp.Controllers
         {
             return new HttpResponseMessage(HttpStatusCode.InternalServerError)
             {
-                Content = new StringContent(string.Format("Oops! Sorry! Something went wrong. Please contact support@xtremessoft.com so we can try to fix it.")),
-                ReasonPhrase = "Oops!Sorry!Something went wrong.Please contact support@xtremessoft.com so we can try to fix it."
+                Content = new StringContent(string.Format("Oops! Sorry! Something went wrong. Please contact mati@nss.ae so we can try to fix it.")),
+                ReasonPhrase = "Oops!Sorry!Something went wrong.Please contact mati@nss.ae so we can try to fix it."
             };
         }
         private HttpResponseMessage getAccessErrorMessage()

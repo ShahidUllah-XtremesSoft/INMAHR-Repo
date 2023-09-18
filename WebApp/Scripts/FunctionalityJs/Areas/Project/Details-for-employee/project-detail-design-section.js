@@ -141,7 +141,7 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
 
     //  var MainStepper_ = $('#project-section-stepper').data('kendoStepper').selectedStep.options.conditionalField;
     //  console.log(MainStepper_);
-   // console.log(JSON.parse(inputDataJSON.Value));
+    // console.log(JSON.parse(inputDataJSON.Value));
     if (pass_GridName != "") {
 
         var gridTemplate = '';
@@ -263,8 +263,10 @@ function fn_delete_DesignSection_SubSection_DocumentById(event) {
     var row = $(event).closest("tr");
     var gridId = $(event).closest("div").parent()[0].id;
     var grid = $("#" + gridId).data("kendoGrid");
+    
     localStorage.setItem('grid__id', gridId);
     var dataItem = grid.dataItem(row);
+   // console.log(dataItem.currentFileName);
     Swal.fire({
 
         title: areYouSureTitle,
@@ -298,6 +300,7 @@ function fn_delete_DesignSection_SubSection_DocumentById(event) {
                 commandName: 'Project_DesignSection_Document_Delete',
                 values: {
                     Id: dataItem.attachmentId,
+                    FileName: dataItem.currentFileName,
                     CreatedBy: JSON.parse(localStorage.getItem('User')).id,
                     ProjectId: project_Id,
                     Document: dataItem.combineDocumentType,
@@ -330,6 +333,7 @@ $('#btn-load-upload-document').click(function () {
         $("#design-section-stepper").data('kendoStepper').element.css('background-color', '#f9df6c4f');
 
         setTimeout(function () {
+
             $('.lblPleaseSelectSection').empty();
             $("#design-section-stepper").data('kendoStepper').element.css('background-color', 'transparent');
         }, 1500);

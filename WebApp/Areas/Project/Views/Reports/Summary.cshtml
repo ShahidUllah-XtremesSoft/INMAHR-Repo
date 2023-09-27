@@ -4,29 +4,32 @@
 
 
 }
+
 <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
+
+    <div class="col-sm-12 card">
+
         <form id="frmProjectSummary">
 
-            <div class="card">
-                <div class="card-block">
+            <div class="">
+                <div class="">
 
                     <input type="hidden" class="form-control" id="Language" name="Language" value="" />
-                    <div class="row">
 
-                        <div class="col-sm-3">
+                    <div class="row" style="margin-top: 3px;">
+
+                        <div class="col-sm-3" style="display:none;">
                             <div class="form-group">
                                 <label class="col-form-label">@ProjectUI.ProjectUI.lblProjectCategory </label> <span style="color: red">*</span><br />
-                                <input class="form-control" id="ProjectCategoryDDL" value="" required />
-                                @*<input type="hidden" class="form-control" id="ProjectCategoryType_In_Setup_TypeDetail_Id" name="ProjectCategoryType_In_Setup_TypeDetail_Id" value="" />*@
+                                <input class="form-control" id="ProjectCategoryDDL" value="" />
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="col-form-label">@ProjectUI.ProjectUI.lblProject #</label><span style="color:red"> *</span><br />
-                                <input class="form-control" id="ProjectDDL" name="ProjectDDL" required />
-                            </div>
+                        <div class="col-md-4">
+
+                            <label class="col-xs-2  ">@ProjectUI.ProjectUI.lblProject   </label>
+                            <div class="col-xs-10 controls  ">   <input class="form-control" id="ProjectDDL" name="ProjectDDL" required /></div>
+                            <!-- col-sm-10 -->
+
                         </div>
                         <div class="col-md-2 " style="display:none;">
                             <div class="form-group">
@@ -44,7 +47,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <button type="button" onclick="fnLoadProject_SummaryDataByParamter()" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                                <button type="button" onclick="fnLoadProject_SummaryDataByParamter()" class="btn btn-success" value="Search" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
                             </div>
 
                         </div>
@@ -67,169 +70,309 @@
 
     <div class="col-sm-2"></div>
 </div>
-<div class="row">
-    <div class="col-sm-12">
-        <hr />
-        @*<div class="card">
-                <div class="card-block">
 
-                </div>
-            </div>*@
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="card ">
 
-            <div class="card-header" style="background: #eceff1;">
-                <div class="row">
 
-                    <div class="col-sm-9">
-                        <h6> <span class=" txt-project-title" style="font-weight: bold;margin-right: 15px !important;"> -</span></h6>
-                    </div>
 
-                    <div class="col-sm-3 " style="text-align: end;">
+<style>
 
-                        <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
-                        <span class="badge badge-info    project-number">   </span>
-                    </div>
-                </div>
+
+    <!-- begin snippet: js hide: false console: true babel: null -->
+    <!-- language: lang-css -->
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tree {
+        text-align: center;
+        padding-left: 10px;
+    }
+
+        .tree ul {
+            display: block;
+            white-space: nowrap;
+            padding-top: 15px;
+            position: relative;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+        .tree li {
+            vertical-align: top;
+            display: inline-block;
+            white-space: normal;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            /*padding: 15px 0px 0px 30px;*/
+            padding: 15px 0px 0px 16px;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+
+
+            /*We will use ::before and ::after to draw the connectors*/
+
+            .tree li::before,
+            .tree li::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 50%;
+                border-top: 1px solid #ccc;
+                width: 50%;
+                height: 15px;
+            }
+
+            .tree li::after {
+                right: auto;
+                left: 50%;
+                border-left: 1px solid #ccc;
+            }
+
+
+            /*Remove left-right connectors from elements without any siblings*/
+
+            .tree li:only-child::after,
+            .tree li:only-child::before {
+                display: none;
+            }
+
+
+            /*Remove space from the top of single children*/
+
+            .tree li:only-child {
+                padding-top: 0;
+            }
+
+
+    /*Remove left connector from first child and right connector from last child*/
+
+    ul.first li.first::before,
+    ul.first li.first::after {
+        border: 0 none;
+    }
+
+    .tree li:first-child::before,
+    .tree li:last-child::after {
+        border: 0 none;
+    }
+
+
+    /*Adding back the vertical connector to the last nodes*/
+
+    .tree li:last-child::before {
+        border-right: 1px solid #ccc;
+        border-radius: 0 5px 0 0;
+        -webkit-border-radius: 0 5px 0 0;
+        -moz-border-radius: 0 5px 0 0;
+    }
+
+    .tree li:first-child::after {
+        border-radius: 5px 0 0 0;
+        -webkit-border-radius: 5px 0 0 0;
+        -moz-border-radius: 5px 0 0 0;
+    }
+
+
+    /*Time to add downward connectors from parents*/
+
+    .tree ul ul::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        border-left: 1px solid #ccc;
+        width: 0;
+        height: 15px;
+    }
+
+    .tree li .box {
+        border: 1px solid #ccc;
+        /*padding: 5px 10px 5px 0px;*/
+        padding: 5px 10px 5px 5px;
+        text-decoration: none;
+        color: #666;
+        font-family: arial, verdana, tahoma;
+        font-size: 12px;
+        display: inline-block;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+    }
+
+
+        /*Hover effects*/
+
+        .tree li .box:hover,
+        .tree li .box:hover + ul li .box {
+            /*.tree li .child_hover:hover + li .box {*/
+            background: #c8e4f8;
+            color: #000;
+            border: 1px solid #94a0b4;
+        }
+
+
+            /*Connector styles on hover*/
+
+
+            .tree li .box:hover + ul li::after,
+            .tree li .box:hover + ul li::before,
+            .tree li .box:hover + ul::before,
+            .tree li .box:hover + ul ul::before,
+            .avatar {
+                border-color: #94a0b4;
+            }
+
+
+
+    .tree li .child_hover:hover, .tree li .child_hover:hover + ul li .child_hover {
+        /* background: #f8cb0099;*/
+        background: #eae8e8;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 10%;
+    }
+
+     
+    /*Avatar bubbles*/
+    /*    .avatar {
+        position: relative;
+        top: 0px;
+        left: -35px;
+        width: 75px;
+        height: 75px;
+        margin-right: -30px;
+        background-size: cover;
+        background-color: #fff;
+        background-image: url("temp.jpg");
+        float: left;
+        border: .5px solid #94a0b4;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+    }*/
+    .avatar {
+        padding-top: 10px;
+        font-size: medium;
+        display: flow;
+        position: relative;
+        top: 0px;
+        left: -20px;
+        width: 45px;
+        height: 45px;
+        margin-right: 0px;
+        background-size: cover;
+        background-color: #fff;
+        /*  background-image: url(temp.jpg);*/
+        float: left;
+        border: 0.5px solid #94a0b4;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+    }
+
+    .percentage_ {
+        font-size: inherit;
+        position: relative;
+        left: -27px;
+        background-color: #eae8e894;
+        float: left;
+        border: 0.5px solid #94a0b4;
+        border-color: #94a0b4;
+        /* border-radius: 50%; */
+        -webkit-border-radius: 25%;
+        -moz-border-radius: 50%;
+    }
+</style>
+
+
+<div class="card project-summary-div" style="display:none;">
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class="tree">
+                <ul class="first">
+                    <li class="first techops">
+
+                        <span class=" box">
+                            <span class=" projectName" style="font-size:xx-large"></span><br /><br />
+                            <span style="font-size: initial">@Resources.ProjectUI.lblDate   :<span class=" projectCreatedDate"></span></span><br />
+                            @*<span    style="font-size:large;">@Resources.ProjectUI.lblVIP :<span class=" isVip"></span></span>
+                                <span   style="font-size:large;">@Resources.ProjectUI.lblUrgent :<span class=" isUrgent" style="font-size:large"></span> </span><br />*@
+                            <span style="font-size:large">@Resources.ProjectUI.lblCategory :<span class=" projectCategory" style="font-size:large"></span> </span><br />
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblDesignSection</span>
+                                <ul><li class="ul-design"></li></ul>
+                                @*<ul class="ul-design">
+                                        <li>
+                                            <span class="box"> Government Document<br /><span class="percent">50%</span></span>
+                                            <ul>
+                                                <li><span class="box"><div class="avatar"></div>Site Plan<br />10%</span></li>
+                                            </ul>
+                                            <ul>
+                                                <li><span class="box"><div class="avatar"></div>Effection Plan<br />40%</span></li>
+                                            </ul>
+                                            <ul>
+                                                <li><span class="box"><div class="avatar"></div>Demarcation<br />20%</span></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="box">
+                                                    <span class="box "><div class="avatar"></div>Interlock<br />30%</span>
+                                                    <ul>
+                                                        <li><span class="box"><div class="avatar"></div>Interlock 1<br />10%</span></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="box"><div class="avatar"></div>Interlock 2<br />10%</span>
+                                                            <ul>
+                                                                <li><span class="box"><div class="avatar"></div>Interlock 1<br />10%</span></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li><span class="box"><div class="avatar"></div>Interlock 1<br />10%</span></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li><span class="box"><div class="avatar"></div>Demarcation<br />20%</span></li>
+
+                                            </ul>
+                                        </li>
+
+                                    </ul>*@
+                            </li>
+                            <li>
+                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblTechnicalSection</span>
+                                <ul class="ul-technical"></ul>
+                            </li>
+                            <li>
+                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblSupervisionSection</span>
+                                <ul class="ul-supervision"> </ul>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <div class="card-block">
-
-                <div class="">
-                    <div class="m-b-20">
-                        @*<h6 class="sub-title m-b-15">@Resources.HumanResourceUI.lblDescription</h6>
-                            <hr />*@
-                        <p class="txt-description" style="overflow-x: auto;height: 15rem;">
-                            <hr>
-
-                            @*<div class="div-">
-
-                                <table class="table  " style="font-size: smaller; overflow-y: auto;width:15rem;">
-
-                                    <tbody>
-                                        <tr class="tr-append-multiple-summary-record">
-
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                </div>*@
-
-                            <div class="div-append-multiple-summary-record">
-
-
-                            </div>
-                    </div>
-                </div>
-
-                @*<div class="card-footer">
-
-                        <div class="row">
-
-                            <div class="">
-                                <div class="col-sm-4">
-                                    <span class="badge ">@ProjectUI.ProjectUI.lblStatus:</span>
-                                    <select class="project_status_ddl" disabled id="" style="background-color: #49626a; color: white; font: bold;">
-
-                                        <option value="Active">Active</option>
-                                        <option value="Closed">Closed</option>
-                                        <option value="Hold">Hold</option>
-                                        <option value="Completed">Completed</option>
-                                    </select>
 
 
 
-                                </div>
-                                <div class="col-sm-2"> </div>
-
-
-                                <div class="col-sm-6 " style="text-align: end;">
-
-                                    <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
-                                    <span class="badge badge-danger    text-project-created-by">   </span>
-
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>*@
-            </div>
         </div>
-
-
-
-        @*<div class="col-sm-2">
-                <div class="card ">
-                    <div class="card-header" style="background: #eceff1;">
-                        <h6>
-                            <span class="">.Gas</span>
-                        </h6>
-
-                    </div>
-                    <div class="">
-
-                        <table class="table table-striped table-border">
-                            <tbody>
-                                <tr>
-
-                                    <td>Submission :</td>
-                                    <td class="">
-                                        <b><span class="text-client-name"></span></b>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>Approval :</td>
-                                    <td class="text-price"></td>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-
-
-                    </div>
-
-                </div>
-            </div>*@
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="card ">
 
-            <div class="card-header" style="background: #eceff1;">
-                <div class="row">
-
-                    <div class="col-sm-12">
-                        <h6> <span class="  " style="font-weight: bold;margin-right: 15px !important;"> :Project Summary</span></h6>
-                    </div> 
-                </div>
-            </div>
-            <div class="card-block">
-                <div class="grid-main-div">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="project-summary-grid"></div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-            </div>
-        </div>
-
-
-
-    
-    </div>
-</div>
 
 
 @section scripts {

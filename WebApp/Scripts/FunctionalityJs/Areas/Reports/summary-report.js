@@ -3,15 +3,12 @@
 $(function () {
     $('#Language').val(_currentLanguage);
 
-    // LOAD KENDO DATE PICKERS
-    //renderKendoDatePickerWithNewFormat('StartDate');
-    //renderKendoDatePickerWithNewFormat('EndDate');
-    loadProjectCategoryTypeDDL();
+    // loadProjectCategoryTypeDDL();
     loadProjectDropdownListEng();
 
 });
 //PROJECT CATEGORY DDL
-
+/*
 function loadProjectCategoryTypeDDL() {
     ajaxRequest({ commandName: 'DDL_ProjectCategoryType_In_Setup_TypeDetail_Get', values: { Language: _currentLanguage }, CallBack: loadloadProjectCategoryTypeDDLCallBack });
 }
@@ -21,7 +18,7 @@ function loadloadProjectCategoryTypeDDLCallBack(response) {
         dataTextField: "name",
         dataValueField: "id",
         filter: "contains",
-        value: -1,
+        index: 3,
         dataSource: JSON.parse(response.Value),
         change: function (e) {
             var selected_Id = this.value();
@@ -30,9 +27,9 @@ function loadloadProjectCategoryTypeDDLCallBack(response) {
         },
     });
 }
-
+*/
 //PROJECT DDL
-function loadProjectDropdownListEng() { ajaxRequest({ commandName: 'Project_DDL', values: { Language: _currentLanguage }, CallBack: fnloadProjectDropdownListEngCallBack }); }
+function loadProjectDropdownListEng() { ajaxRequest({ commandName: 'DDL_Project_No', values: { Language: _currentLanguage }, CallBack: fnloadProjectDropdownListEngCallBack }); }
 function fnloadProjectDropdownListEngCallBack(response) {
     $("#ProjectDDL").kendoDropDownList({
         dataTextField: "name",
@@ -49,45 +46,6 @@ function fnloadProjectDropdownListEngCallBack(response) {
 }
 
 
-/*
-function loadDesignSectionDropdownList() {
-    ajaxRequest({ commandName: 'DDL_DESIGN_SECTION_Project_MainType', values: { Language: _currentLanguage }, CallBack: loadDesignSectionDropdownListCallBack });
-}
-var loadDesignSectionDropdownListCallBack = function (responseJSON) {
-    $("#DesignSection").kendoDropDownList({
-        dataValueField: "id",
-        dataTextField: "name",
-        filter: "contains",
-        value: -1,
-        dataSource: JSON.parse(responseJSON.Value),
-        popup: { appendTo: $("#container") },
-        //select: onSelect_DesignSection,
-    });
-}
-function loadDesignSectionReportGrid(sectionId){
-    ajaxRequest({ commandName: 'Reports_DesignSection_GetBySectionId', values: { SectionId: sectionId, Language: _currentLanguage }, CallBack: loadDesignSectionReportGridCallBack });
-}
-var loadDesignSectionReportGridCallBack = function (responseJSON) {
-    bindloadDesignSectionReportGrid(responseJSON);
-}
-function bindloadDesignSectionReportGrid(inputDataJSON) {    
-    var gridColumns = [
-
-        { title: "#", template: "<b>#= ++record #</b>", width: 15 },
-        { field: "id", title: "id", width: 10, hidden: true },
-        {
-            field: "projectNumber", title: lblProjectNo, width: 50, hidden: false, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }            
-        },
-        { field: "assignedBy", title: 'Assigned By Engr', width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "assignedTo", title: 'Assigned To Engr', width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "submissionDate", title: 'Submission Date', width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },
-        { field: "approvedDate", title: 'Approved Date', width: 100, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } } },        
-        
-    ];
-
-    bindKendoGrid($grid, 100, gridColumns, JSON.parse(inputDataJSON.Value), true, 550);    
-};
-*/
 
 function fnLoadProject_SummaryDataByParamter() {
 
@@ -99,7 +57,7 @@ function fnLoadProject_SummaryDataByParamter() {
         ajaxRequest({
             commandName: 'Report_Summary_GetByParamters',
             values: {
-                ProjectCategoryDDL: $('#ProjectCategoryDDL').val(),
+                //  ProjectCategoryDDL: $('#ProjectCategoryDDL').val(),
                 ProjectDDL: $('#ProjectDDL').val(),
                 StartDate: $('#StartDate').val(),
                 EndDate: $('#EndDate').val(),
@@ -119,318 +77,193 @@ function fnLoadProject_SummaryDataByParamter() {
 }
 
 function fnLoadProject_SummaryDataByParamterCallBack(response) {
-    var response = JSON.parse(response.Value);
-    // console.log(response);
-    if (response[0].length > 0) {
+    var response = JSON.parse(response.Value)[0];
 
-        $('.txt-project-title').text(response[0][0].projectName);
-        $('.project-number').text(response[0][0].projectNumber);
-        $('.txt-description').empty();
-        $('.txt-description').append(response[0][0].descriptionEng);
+    $('.project-summary-div').show();
+    $('.projectName').text(response[0].projectName);
+    $('.isVip').text(response[0].vipStatus);
+    $('.isUrgent').text(response[0].urgentStatus);
+    $('.projectCreatedDate').text(response[0].projectCreatedDate);
+    $('.projectCategory').text(response[0].projectCategory);
 
+    loadProjectSectiondownList();
 
-        if (response[1].length > 0 && response[0].length > 0) {
-
-            //------------------- LOOP 
-            $('.div-append-multiple-summary-record').empty();
-            /*$('.tr-append-multiple-summary-record').empty();*/
-            for (var i = 0; i < response[1].length; i++) {
-
-                var pass_Status = '-', status_td_Color = '';
-                if (response[1][i].employee_uploading_document_time_status == 'OnTime') {
-                    pass_Status = lblOnTime;
-                    status_td_Color = 'badge-success';
-                } else if (response[1][i].employee_uploading_document_time_status == 'NotStartYet') {
-                    pass_Status = lblNotStartedYet;
-                    status_td_Color = 'badge-secondary';
-                } else if (response[1][i].employee_uploading_document_time_status == 'Delay') {
-                    pass_Status = lblDelay;
-                    status_td_Color = 'badge-danger';
-                } else {
-                    pass_Status = '-';
-                    status_td_Color = '';
-                }
-
-                $('.div-append-multiple-summary-record').append('' +
-                    '<div class="col-sm-3" style="width: unset;font-size: smaller;">' +
-                    '<div class="card">' +
-                    '<div class="card-header" style="background: #eceff1;">' +
-                    '<b><span class="">' + response[1][i].sT_Name + '</span></b>' +
-                    // '<hr><b><span class="">' + response[1][i].stD_Name + '</span></b>' +
-                    '</div>' +
-                    '<table class="table table-striped table-border">' +
-                    '<tbody>' +
-                    '<tr>' +
-                    '<td style="background: antiquewhite;">' + lblSubmission + ' :</td>' +
-                    '<td style="background: antiquewhite;"><span class="btn btn-sm badge-danger">' + response[1][i].plmE_CreatedDate + '</span> </td>' +
-
-                    '</tr>' +
-                    '<tr>' +
-                    '<td style="background:#10e7101c;">' + lblApproval + ' :</td>' +
-                    '<td style="background:#10e7101c;"><span class="btn btn-sm badge-success">' + response[1][i].plmE_EndDate + '</span></td>' +
-
-                    '</tr>' +
-                    '<tr>' +
-                    '<td style="background:#ffff0045;">' + lblName + ' :</td>' +
-                    '<td style="background:#ffff0045;"><span class="btn btn-sm badge-info">' + response[1][i].emP_Name + '</span></td>' +
-
-                    '</tr>' +
-                    '<tr>' +
-                    '<td style="background:beige;">' + lblStatus + ' :</td>' +
-                    '<td style="background:beige;"><span class="btn btn-sm ' + status_td_Color + '">' + pass_Status + '</span></td>' +
-
-                    '</tr>' +
-                    '</tbody>' +
-                    '</table>' +
-                    '</div>' +
-                    '</div>');
-                /*
+}
+function loadProjectSectiondownList() {
+    ajaxRequest({ commandName: 'STEPPER_SUB_SECTION_MENU_For_Summary', values: { Project_Id: $('#ProjectDDL').val(), Language: _currentLanguage }, CallBack: steppers_DESIGN_SECTION_CallBack });
+}
+function steppers_DESIGN_SECTION_CallBack(response) {
 
 
-                $('.tr-append-multiple-summary-record').append('' +
-                    '<td>' +
-                    '<table class="table table-striped "  >' +
-                    '<thead>' +
-                    '<tr><th>' + response[1][i].sT_Name + ' </th><th> </th></tr>' +
-                    '</thead> ' +
-                    '<tbody> ' +
-                    '<tr>' +
-                    '<td style="background: antiquewhite;">' + lblSubmission + ' :</td>' +
-                    '<td style="background: antiquewhite;"><span class="btn btn-sm badge-danger">' + response[1][i].plmE_CreatedDate + '</span> </td>' +
-                    '</tr> ' +
-                    '<tr> ' +
-                    '<td style="background:#10e7101c;">' + lblApproval + ' :</td> ' +
-                    '<td style="background:#10e7101c;"><span class="btn btn-sm badge-success">' + response[1][i].plmE_EndDate + '</span></td>' +
-                    '</tr> ' +
-                    '</tr>' +
-                    '<tr>' +
-                    '<td style="background:#ffff0045;">' + lblName + ' :</td>' +
-                    '<td style="background:#ffff0045;"><span class="btn btn-sm badge-info">' + response[1][i].emP_Name + '</span></td>' +
+    var step_Columns = []
+    var steppers_ = JSON.parse(response.Value)[0];
+    var steppers_child = JSON.parse(response.Value)[1];
+    //  console.log(steppers_);
 
-                    '</tr>' +
-                    '<tr>' +
-                    '<td style="background:beige;">' + lblStatus + ' :</td>' +
-                    '<td style="background:beige;"><span class="btn btn-sm badge-secondary">' + response[1][i].employee_uploading_document_time_status + '</span></td>' +
+    $('.ul-design').empty();
+    $('.ul-technical').empty();
+    $('.ul-supervision').empty();
 
-                    '</tr>' +
-                    '</tbody> ' +
-                    '</table>' +
-                    '</td>');
-                    */
+    for (var i = 0; i < steppers_.length; i++) {
 
-            }
-        } else {
-            $('.div-append-multiple-summary-record').empty();
-            /*$('.tr-append-multiple-summary-record').empty();*/
+        //************************   BY |\/|ATI 
+        if (steppers_[i].parent_Type == 'DesignSection') {
+            $('.ul-design').append(`<ul><li class='Parent_d' id=` + steppers_[i].id + `><span class="box"><div class="avatar">10%</div>` + steppers_[i].name + `</span></li></ul>`);
+        } else if (steppers_[i].parent_Type == 'TechnicalSection') {
+            /*$('.ul-technical').append(`<ul><li class='Parent_t' id=` + steppers_[i].id + `><span class="box"><div class="avatar percentage_"></div>` + steppers_[i].name + `<br></span></li></ul>`);*/
+            $('.ul-technical').append(`<ul><li class='Parent_t' id=` + steppers_[i].id + `><span class="box"><div class="avatar" style="padding-top:6%;font-size: medium;display:flow;">50% </div>` + steppers_[i].name + `</span></li></ul>`);
+
+        } else if (steppers_[i].parent_Type == 'SupervisionSection') {
+            $('.ul-supervision').append(`<ul><li class='Parent_s' id=` + steppers_[i].id + `><span class="box"><div class="avatar">30%</div>` + steppers_[i].name + `</span></li></ul>`);
 
         }
 
-    } else {
-
-        $('.txt-project-title').empty();
-        $('.project-number').empty();
-        $('.txt-description').empty();
-        $('.div-append-multiple-summary-record').empty();
 
     }
 
-    loadProjectSummaryGrid();
-
-}
-
-// -------------------------- PROJECT SUMMARY GRID BY /\/\ati
 
 
-function loadProjectSummaryGrid() {
-    ajaxRequest({
-        commandName: 'Report_Summary_for_Grid', values: {
-            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
-            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
-            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
-            LoggedInDepartmentId: JSON.parse(localStorage.getItem('User')).departmentId,
-            ProjectCategoryDDL: $('#ProjectCategoryDDL').val(),
-            ProjectDDL: $('#ProjectDDL').val(),
-            Language: $('#Language').val()
-        }, CallBack: loadProjectSummaryGridCallBack
+    const groupedData = {};
+    steppers_child.forEach(entry => {
+        const { std_Id } = entry;
+        if (!groupedData[std_Id]) {
+            groupedData[std_Id] = [];
+        }
+        groupedData[std_Id].push(entry);
     });
 
-}
-var loadProjectSummaryGridCallBack = function (inputDataJSON) {
-    bindProjectSummaryGrid(JSON.parse(inputDataJSON.Value));
+    // Convert the grouped data into an array of arrays
+    const steppers_child_grouped = Object.values(groupedData);
+    var empName = [];
 
-}
-var bindProjectSummaryGrid = function (inputDataJSOns) {
-    var record = 0;
-    //console.log(inputDataJSOns)
 
-    console.log(inputDataJSOns) 
+    for (var z = 0; z < steppers_child_grouped.length; z++) {
+
+        if (steppers_child_grouped[z].length > 0) {
+
+            for (var e = 0; e < steppers_child_grouped[z].length; e++) {
+                if (steppers_child_grouped[z][e].attachment_Id === 0) {
+
+                } else {
+
+                    empName.push(steppers_child_grouped[z][e].employeeName + '<br>');
+                }
+            }
+        }
+        empName = [...new Set(empName)];
 
          
-        var gridColumnss = [
+        $('#' + steppers_child_grouped[z][0].st_Id).addClass('box');
+        var checkstepper_Count = steppers_child_grouped[z];
+         /*
+        if (checkstepper_Count.length > 1) {
+            for (var zero = 0; zero < checkstepper_Count.length; zero++) {
+                if (checkstepper_Count[zero].attachment_Id === 0) {
+                    console.log(checkstepper_Count[zero]);
+                    $('#' + steppers_child_grouped[z][0].st_Id).append(`
+                                                            <ul>
+                                                            <li style='border:2px solid red;' class='child_hover'  id=Notificateion_` + checkstepper_Count[zero].std_Id + `>
+                                                            <span class=" "> ` + checkstepper_Count[zero].stdName + `-` + checkstepper_Count[zero].createdDate + `</br> </span>
+                                                            <ul><li><span class="box child_hover">` + checkstepper_Count[zero].employeeName + `  </span></li></ul>
+                                                            </li>
+                                                            </ul>`);
+                 //   $('#Notificateion_' + checkstepper_Count[zero].std_Id + '>span').append(`</br>  <span style="` + status_css + `" class=' file_status_span'> ` + steppers_child[x].approvedOrReturned + `-` + steppers_child[x].createdDate + ` </span> `);
+                }
+                 
 
-            /*
-             , {
-                title: lblBreak, headerAttributes: { style: "text-align: center;" },
-                columns: 
-                [
-                    { field: "breakIn", title: lblOut, width: 70, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                    { field: "breakOut", title: lblIn, width: 80, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" } },
-                ]
-            },
-             
-             
-             */
-            { field: "sT_Id", title: "ST_Id", hidden: true },
-            { field: "stD_Id", title: "STD_Id", hidden: true },
-            { field: "project_Id", title: "Project_Id", hidden: true },
-            { field: "clientId", title: "clientId", hidden: true },
-            { field: "emP_Id", title: "EMP_Id", hidden: true },
-            { title: "#", template: "<b>#= ++record #</b>", width: 50 },
+            }
+        }
+        */
+        if (steppers_child_grouped[z][0].attachment_Id !== 0) {
 
+            $('#' + steppers_child_grouped[z][0].st_Id).append(`
+                                                            <ul>
+                                                            <li class='child_hover'  id=Child` + steppers_child_grouped[z][0].std_Id + `>
+                                                            <span class="box child_hover" style='background:#eae8e894'>
+                                                            <div class="percentage_"> 100%   </div>` + steppers_child_grouped[z][0].stdName + `
+                                                             </br>
+                                                            </span>
+                                                            <ul><li><span class="box child_hover">` + empName + `  </span></li></ul>
+                                                            </li>
+                                                            </ul>`);
+            empName = [];
+        }
 
-            { field: "clientName", title: lblClient, width: 400, filterable: false },
-            { field: "projectName", title: lblProject, width: 200, filterable: false, hidden: true },
-
-            {
-                title: "Town Planning", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        //   , template: "<a style=''>#=projectNumber#</a> ",
-                        , template: " #  if (sT_Name == 'Town Planning' )  { # <label>#=submissionDate#</label># }# "
-
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(TP)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'Town Planning' && stD_Name == 'Engineer'   )  { # <label >#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Electricity", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Electricity' )  { # <label class=''>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(Elc)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Electricity'  )  { # <label class=''>#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Water", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' &&  stD_Name == 'Water' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(WT)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Water' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Gas", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Gas' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(Gas)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Gas' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Etisalat", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Etisalat' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(Tel)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Etisalat' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Civil Defense", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Civil Defense' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(C.D)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Civil Defense' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Drainage", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' &&  stD_Name == 'Drainage' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(DRG)", width: 140, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Drainage' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
-                    },
-                ]
-            }, {
-                title: "Structure", headerAttributes: { style: "text-align: center;    font-weight: bold;" },
-                columns: [
-                    {
-                        field: "submissionDate", title: "Submission(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(238, 244, 66);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Structure' )  { # <label class='pcoded-badge label label-danger'>#=submissionDate#</label># }# "
-                    },
-                    {
-                        field: "approvalDate", title: "Approval(STR)", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }//, attributes: { style: 'background-color: rgb(53, 140, 63);border-bottom: 1pt solid;' }
-                        , template: " #  if (sT_Name == 'MEP Submission Section' && stD_Name == 'Structure' )  { # <label class='pcoded-badge label label-danger'>#=approvalDate#</label># }# "
-                    },
-                ]
-            },
-            {
-                field: "", title: "Building Permission", width: 150, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
-            },
-            {
-                field: "", title: "Completion Date", width: 130, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
-            },
-            {
-                field: "emP_Name", title: "Arc Name", width: 300, filterable: false, hidden: false, headerAttributes: { style: "text-align: center;" }
-            },
-
-
-        ];
-    
-    bindKendoGrid_Groupable("project-summary-grid", 100, gridColumnss, inputDataJSOns, true, 450);
-};
-
-function fneditById(e) {
-    var row = $(e).closest("tr");
-    var grid = $("#project-summary-grid").data("kendoGrid");
-    var dataItem = grid.dataItem(row);
-    window.location.href = '/Project/Issue/Save?id=' + dataItem.issueId + '';
-}
-
-function fnDetailById(e) {
-    var row = $(e).closest("tr");
-    var grid = $("#project-summary-grid").data("kendoGrid");
-    var dataItem = grid.dataItem(row);
-
-    if (dataItem.isRead == null || dataItem.isRead == false) {
-
-        ajaxRequest({
-            commandName: 'Issue_isRead_Change_Status', values: {
-                Id: dataItem.issueId,
-                LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
-                RoleId: JSON.parse(localStorage.getItem('User')).roleId,
-                LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
-            }, CallBack: ''
-        });
-
+        /*  
+       else {
+           $('#' + steppers_child_grouped[z][0].st_Id).append(`
+                                                           <ul>
+                                                           <li style='border:2px solid red;' class='child_hover'  id=Notificateion_` + steppers_child_grouped[z][0].std_Id + `>
+                                                           <span class=" "> ` + steppers_child_grouped[z][0].stdName + `</br> </span>
+                                                           <ul><li><span class="box child_hover">` + steppers_child_grouped[z][0].employeeName + `  </span></li></ul>
+                                                           </li>
+                                                           </ul>`);
+       }
+       */
     }
 
-    window.location.href = '/Project/Issue/Details?id=' + dataItem.issueId + '';
 
+    for (var x = 0; x < steppers_child.length; x++) {
+
+
+
+
+        // const filteredPeople = steppers_child.filter(child_ => child_.st_Id > 0);
+        var status_css = '';
+        if (steppers_child[x].approvedOrReturned.match(/Approve.*/)) {
+            status_css = `display: table-cell;padding-right: 5px;background: #6fff186e;color: black;`
+        } else if (steppers_child[x].approvedOrReturned.match(/Return.*/)) {
+            status_css = `display: table-cell;padding-right: 5px;background: #ffbdbdfa;color: black;`
+        } else {
+            status_css = `display: table-cell;padding-right: 5px;background: transparent;color: inherit;`
+        }
+
+
+        
+        if (steppers_child[x].attachment_Id !== 0) {
+            var fileExtension = fn_FileExtension(steppers_child[x]);
+            $('#Child' + steppers_child[x].std_Id + '>span').append(`</br>
+                                                                <a target="_blank" href="/UploadFile/` + steppers_child[x].currentFileName + ` " >
+                                                                <span style="`+ status_css + `" class=' file_status_span'> ` + steppers_child[x].approvedOrReturned + `-` + steppers_child[x].createdDate + ` </span>
+                                                                <img src="` + fileExtension + `" class="img-avatar"   style="border-radius: 6px;width: auto;height: 1.3rem;">
+                                                                
+                                                                </a>`);
+        }
+        
+        //else {
+        //    debugger
+        //    $('#Notificateion_' + steppers_child[x].std_Id + '>span').append(`</br>  <span style="` + status_css + `" class=' file_status_span'> ` + steppers_child[x].approvedOrReturned + `-` + steppers_child[x].createdDate + ` </span> `);
+        //
+        //}
+    }
+
+}
+
+
+
+
+
+function fn_FileExtension(loop_data) {
+    if (loop_data.currentFileName != null) {
+
+        var fileExtension = "";
+        //--------------------------- ATTACHMENT WORK HERE ----------------------------------------
+        if (loop_data.filePath.split('.')[1] == "docx" || loop_data.filePath.split('.')[1] == "doc" || loop_data.filePath.split('.')[1] == "docs") {
+            fileExtension = "/Content/Images/docx.png";
+        } else if (loop_data.filePath.split('.')[1] == "pdf" || loop_data.filePath.split('.')[1] == "PDF") {
+
+
+            fileExtension = "/Content/Images/pdf.png";
+
+        } else if (loop_data.filePath.split('.')[1] == "xls" || loop_data.filePath.split('.')[1] == "xlsx") {
+            fileExtension = "/Content/Images/xls.png";
+        }
+        else if (loop_data.filePath.split('.')[1] == "jpg" || loop_data.filePath.split('.')[1] == "JPG" || loop_data.filePath.split('.')[1] == "jpeg" || loop_data.filePath.split('.')[1] == "JPEG" || loop_data.filePath.split('.')[1] == "png" || loop_data.filePath.split('.')[1] == "PNG") {
+            fileExtension = "/Content/Images/attachment-icon.png";
+            // fileExtension = '/UploadFile/' + loop_data.currentFileName;
+        } else {
+            fileExtension = "/Content/Images/attachment.png";
+        }
+        return fileExtension;
+    }
 }

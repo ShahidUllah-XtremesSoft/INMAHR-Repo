@@ -66,6 +66,26 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion  
+    #region ==========   PROJECT No DDL
+
+    [Command(Name = "DDL_Project_No")]
+    public class DDL_Project_NoCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new { Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Project_No.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion  
     #region ==========   PROJECT DDL
 
     [Command(Name = "Project_DDL_By_Role")]

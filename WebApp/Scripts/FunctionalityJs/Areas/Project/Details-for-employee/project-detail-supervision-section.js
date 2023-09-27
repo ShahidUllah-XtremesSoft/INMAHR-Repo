@@ -407,6 +407,7 @@ function fnUpdateSupervisionSection_Employee_document_CompletionDate() {
 }
 
 $('#btn-supervision-section-load-upload-document-modal').click(function () {
+     
     document.getElementById("frmAddUpdate_SupervisionSection_Document").reset();
 
     if ($("#supervision-section-stepper").data('kendoStepper').selectedStep.options.Id != undefined) {
@@ -582,13 +583,12 @@ function fnloadProject_SupervisionSectiondownListsCallBack(response) {
 }
 
 function fn_SupervisionSection_OnSelect_Section_DDL(e) {
-
+     
     var selected_Id = e.dataItem.id;
     $('#Project_SupervisionSection_Setup_SetupType_Id').val(selected_Id);
     var selected_Text = e.dataItem.name;
 
     loadProject_SupervisionSection_SubSection_DDL('Project_SupervisionSection_SetupDetailTypeDDL', selected_Text.trim());
-
 
 };
 

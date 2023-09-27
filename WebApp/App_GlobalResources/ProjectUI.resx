@@ -261,11 +261,17 @@
   <data name="lblCost" xml:space="preserve">
     <value>Cost</value>
   </data>
+  <data name="lblCreated" xml:space="preserve">
+    <value>Created</value>
+  </data>
   <data name="lblCreatedBy" xml:space="preserve">
     <value>Created By</value>
   </data>
   <data name="lblCreatedDate" xml:space="preserve">
     <value>Created Date</value>
+  </data>
+  <data name="lblDate" xml:space="preserve">
+    <value>Date</value>
   </data>
   <data name="lblDelay" xml:space="preserve">
     <value>Delay</value>
@@ -455,6 +461,9 @@
   </data>
   <data name="lblOld" xml:space="preserve">
     <value>Old</value>
+  </data>
+  <data name="lblOpen" xml:space="preserve">
+    <value>Open</value>
   </data>
   <data name="lblOptional" xml:space="preserve">
     <value>Optional</value>

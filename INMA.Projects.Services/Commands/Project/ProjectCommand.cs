@@ -4,14 +4,14 @@ using INMA.HR.Services;
 using INMA.HR.Services.Common;
 using INMA.Projects.Services.Services;
 using System.Collections.Generic;
-using System.Data; 
-using System.Linq; 
+using System.Data;
+using System.Linq;
 
 namespace INMA.Projects.Services.Project
 {
     public class ProjectCommand
     {
-       
+
 
         [Command(Name = "Project_Role_Mapping_For_Employees_Save")]
         public class Project_Role_Mapping_For_Employees_SaveCommand : CamelCommandBase
@@ -618,7 +618,7 @@ namespace INMA.Projects.Services.Project
                 }, v);
                 #region ==========  PARAMETERS
 
-                object result = new { status = false, returnUrl = "#" };
+                //   object result = new { status = false, returnUrl = "#" };
                 IDictionary<string, object> values = new Dictionary<string, object>();
                 CommandParameters _params = new CommandParameters();
                 #endregion
@@ -705,6 +705,19 @@ namespace INMA.Projects.Services.Project
 
 
                     }
+                    if (model.Project_Section_Parent_Type_DDL_Text == "Town Planning" && model.Project_DesignSection_Entity_Id == 109)
+                    {
+                        IDictionary<string, object> send_to_Default_Sections = new Dictionary<string, object>();
+
+                        send_to_Default_Sections.Add("@Project_Id", model.DesignSection_Document_ProjectId);
+                        send_to_Default_Sections.Add("@Sub_Section_Id", model.Project_DesignSection_Entity_Id);
+                        send_to_Default_Sections.Add("@CreatedBy", model.DesignSection_Document_CreatedBy);
+                        send_to_Default_Sections.Add("@Language", model.DesignSection_Document_Language);
+
+                        Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Project_Transfer_To_Default_Section.ToString(), send_to_Default_Sections, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+
+                    }
                 }
 
                 /*SMS Sending Code
@@ -734,7 +747,15 @@ namespace INMA.Projects.Services.Project
                         subject = "File";
                         //   description = "New document( " + model.Project_Section_Parent_Type_DDL_Text + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Section_Parent_Type_DDL_Text + "";
                         //description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )  Project# " + clientDetailInfo.ProjectNumber + "";
-                        description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )";
+                        if (model.Project_DesignSection_Entity_Id == 109) //-- Town Planning Approved File
+                        {
+                            description = "Town Planning Approved ";
+                        }
+                        else
+                        {
+                            description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )";
+
+                        }
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.DesignSection_Document_ProjectId, model.DesignSection_Document_CreatedBy, employee.EmployeeId, model.DesignSection_Document_Language);
@@ -821,6 +842,28 @@ namespace INMA.Projects.Services.Project
             }
         }
         #endregion
+        #region    STEPPER MENU  LIST FOR PROJECT SUMMARY REPORT
+        [Command(Name = "STEPPER_SUB_SECTION_MENU_For_Summary")]
+        public class STEPPER_SUB_SECTION_MENU_For_SummaryCommand : CamelCommandBase
+        {
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    Project_Id = 0,
+                    Language = string.Empty,
+                }, viewInput);
+
+
+                var repository = Ioc.Resolve<IRepository>();
+                IDictionary<string, object> values = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                values = _params.Get(model);
+                return repository.GetDataSet<dynamic>(ProjectStoreProcedure.STEPPER_SUB_SECTION_MENU_For_Summary.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+            }
+        }
+        #endregion
         #region  PROJECT DETAILS DESIGN SECTION DOCUMENTS LIST
         [Command(Name = "Project_DesignSection_Document_GetById")]
         public class Project_DesignSection_Document_GetByIdCommand : CamelCommandBase
@@ -864,10 +907,10 @@ namespace INMA.Projects.Services.Project
 
 
                 //------ PHYSICAL FILE DELETED
-                var model_File = base.MappedModel(new { FileName = string.Empty }, viewInput); 
+                var model_File = base.MappedModel(new { FileName = string.Empty }, viewInput);
                 PhysicalFileManager.PhysicalFileDelete(model_File.FileName);
 
-               
+
                 var _response = repository.GetSingle<dynamic>(ProjectStoreProcedure.Project_DesignSection_Document_Delete.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
                 //SMS Sending Code

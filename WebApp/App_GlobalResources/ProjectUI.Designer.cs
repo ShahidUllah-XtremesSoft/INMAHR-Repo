@@ -493,6 +493,15 @@ namespace ProjectUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string lblCreated {
+            get {
+                return ResourceManager.GetString("lblCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created By.
         /// </summary>
         public static string lblCreatedBy {
@@ -507,6 +516,15 @@ namespace ProjectUI {
         public static string lblCreatedDate {
             get {
                 return ResourceManager.GetString("lblCreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string lblDate {
+            get {
+                return ResourceManager.GetString("lblDate", resourceCulture);
             }
         }
         
@@ -1074,6 +1092,15 @@ namespace ProjectUI {
         public static string lblOld {
             get {
                 return ResourceManager.GetString("lblOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string lblOpen {
+            get {
+                return ResourceManager.GetString("lblOpen", resourceCulture);
             }
         }
         

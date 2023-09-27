@@ -446,6 +446,7 @@ public enum ProjectStoreProcedure
 
     // PROJECT  DESIGN SECTION GOVERNMENT DOCUMENT
     Return_Common_Msg,
+    Project_Transfer_To_Default_Section,
     Project_DesignSection_GovernmentDocument_Edit_By_Id,
     Project_DesignSection_GovernmentDocument_Get,
     Project_DesignSection_Document_Get,
@@ -457,6 +458,7 @@ public enum ProjectStoreProcedure
     Project_DesignSection_Document_GetById,
     Project_DesignSection_Document_Transfer_ById,
     STEPPER_SUB_SECTION_MENU,
+    STEPPER_SUB_SECTION_MENU_For_Summary,
     Project_Linked_Multiple_Employees_Update_StartedDate_By_Paramters,
     Project_Linked_Multiple_Update_Employees_Work_EndDate_By_Paramters,
     Project_Employees_Started_Work,
@@ -572,6 +574,7 @@ public enum ProjectStoreProcedure
     DDL_Setup_City,
     DDL_ProjectCategoryType_In_Setup_TypeDetail_Get,
     DDL_Project,
+    DDL_Project_No,
     Project_DDL_By_Role,
     DDL_HR_Employee,
     DDL_HR_Employee_By_Department,

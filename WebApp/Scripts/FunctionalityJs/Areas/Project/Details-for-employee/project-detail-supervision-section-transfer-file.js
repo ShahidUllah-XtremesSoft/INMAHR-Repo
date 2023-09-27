@@ -153,6 +153,7 @@ function fn_SupervisionSection_OnSelect_Section_DDL(e) {
     $('#Project_Section_Parent_Type_DDL_Text').val(selected_Text.trim());
 
     loadProject_transfer_modal_SupervisionSection_SubSection_DDL(selected_Text.trim());
+    setTimeout(function () { $("#Project_SupervisionSection_SetupDetailTypeDDL_supervision_transfer_modal").data("kendoDropDownList").toggle(); }, 100);
 
 };
 

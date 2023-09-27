@@ -136,11 +136,14 @@ function fnloadloadProjectSectiondownList_in_technical_transfer_modalCallBack(re
         select: fn_TechnicalSection_OnSelect_Section_DDL,
 
     });
+
     setTimeout(function () {
         $("#Project_Section_Parent_Type_DDL_technical_transfer_modal").data("kendoDropDownList").value($("#technical-section-stepper").data('kendoStepper').selectedStep.options.Id);
         loadProject_transfer_modal_TechnicalSection_SubSection_DDL($("#technical-section-stepper").data('kendoStepper').selectedStep.options.label.trim());
 
-    }, 100);
+    }, 150);
+
+    
 }
 
 function fn_TechnicalSection_OnSelect_Section_DDL(e) {
@@ -153,7 +156,7 @@ function fn_TechnicalSection_OnSelect_Section_DDL(e) {
     $('#Project_Section_Parent_Type_DDL_Text').val(selected_Text.trim());
 
     loadProject_transfer_modal_TechnicalSection_SubSection_DDL(selected_Text.trim());
-
+    setTimeout(function () { $("#Project_TechnicalSection_SetupDetailTypeDDL_technical_transfer_modal").data("kendoDropDownList").toggle();}, 100);
 };
 
 
@@ -178,12 +181,13 @@ var loadProject_transfer_modal_TechnicalSection_SubSection_DDLCallBack = functio
         popup: { appendTo: $("#container_child_type_ddl_technical_transfer_modal") },
         select: onSelect_TechnicalSection_transfer_modal,
     });
+   
 
 }
 function onSelect_TechnicalSection_transfer_modal(e) {
     var selected_Id = e.dataItem.id;
     $('#Project_TechnicalSection_Entity_Id_transfer_modal').val(selected_Id);
-
+   
 };
 
 

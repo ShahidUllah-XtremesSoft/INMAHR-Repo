@@ -157,6 +157,7 @@ function fn_DesignSection_OnSelect_Section_DDL(e) {
     $('#Project_Section_Parent_Type_DDL_Text').val(selected_Text.trim());
 
     loadProject_transfer_modal_DesignSection_SubSection_DDL(selected_Text.trim());
+    setTimeout(function () { $("#Project_DesignSection_Transfer_Modal_SetupDetailTypeDDL_design_transfer_modal").data("kendoDropDownList").toggle(); }, 100);
 
 };
 

@@ -61,14 +61,17 @@ function stepper_DESIGN_SECTION(response) {
 
 
         if ($("#design-section-stepper").data('kendoStepper').selectedStep.options.Id == undefined) {
-
+                
             var stepperInstance = $("#design-section-stepper").data('kendoStepper');
             //  fnCheckProject_SubSection_Tab(stepperInstance.options.steps[0].label, stepperInstance.options.steps[0].Id)
-            const enabledObjects = stepper_d.filter(item => item.project_sub_stepper_menu_selected === 1);
+            const enabledObjects_d = stepper_d.filter(item => item.project_sub_stepper_menu_selected === 1);
 
             // console.log(enabledObjects);
             // fn_Project_Dynamic_Section_Tab(stepperInstance.options.steps[0].label, stepperInstance.options.steps[0].Id)
-            fn_Project_Dynamic_Section_Tab(enabledObjects[0].conditionalField, enabledObjects[0].id)
+            if (enabledObjects_d.length > 0) {
+
+                fn_Project_Dynamic_Section_Tab(enabledObjects_d[0].conditionalField, enabledObjects_d[0].id)
+            }
         } else {
 
 
@@ -263,10 +266,10 @@ function fn_delete_DesignSection_SubSection_DocumentById(event) {
     var row = $(event).closest("tr");
     var gridId = $(event).closest("div").parent()[0].id;
     var grid = $("#" + gridId).data("kendoGrid");
-    
+
     localStorage.setItem('grid__id', gridId);
     var dataItem = grid.dataItem(row);
-   // console.log(dataItem.currentFileName);
+    // console.log(dataItem.currentFileName);
     Swal.fire({
 
         title: areYouSureTitle,
@@ -356,7 +359,7 @@ function fn_IsWorkStarted() {
         }, CallBack: fn_IsWorkStarted_Callback
     });
     function fn_IsWorkStarted_Callback(response) {
-
+         
 
         //  console.log(JSON.parse(response.Value));
 
@@ -406,7 +409,7 @@ function fn_IsWorkStarted() {
                     //After ajax call .
                     $('#load-model').click();
 
-
+                     
                     if (JSON.parse(response.Value).assign_employee_StartDate != null) {
                         setTimeout(function () {
 
@@ -434,6 +437,7 @@ function fn_IsWorkStarted() {
                     loadProjectSectiondownLists();
                     loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
 
+                    setTimeout(function () { $("#Project_DesignSection_SetupDetailTypeDDL").data("kendoDropDownList").toggle(); }, 500);
 
                 }
             });
@@ -477,6 +481,8 @@ function fn_IsWorkStarted() {
                 $('.show-hide-employee-task-area').hide();
             }
             loadProjectSectiondownLists();
+            setTimeout(function () { $("#Project_DesignSection_SetupDetailTypeDDL").data("kendoDropDownList").toggle(); }, 500);
+
             // loadProject_DesignSection_SubSection_DDL('Project_DesignSection_SetupDetailTypeDDL', '0');
         }
     }

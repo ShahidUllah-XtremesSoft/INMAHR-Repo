@@ -1,0 +1,755 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblSummaryReport;
+
+
+}
+<style>
+    *,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+}
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 120em;
+}
+
+#container {
+    float: left;
+    padding: 1em;
+    width: 100%;
+}
+
+ol.organizational-chart,
+ol.organizational-chart ol,
+ol.organizational-chart li,
+ol.organizational-chart li > div {
+    position: relative;
+}
+
+ol.organizational-chart,
+ol.organizational-chart ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol.organizational-chart {
+    text-align: center;
+}
+
+ol.organizational-chart ol {
+    padding-top: 1em;
+}
+
+ol.organizational-chart ol:before,
+ol.organizational-chart ol:after,
+ol.organizational-chart li:before,
+ol.organizational-chart li:after,
+ol.organizational-chart > li > div:before,
+ol.organizational-chart > li > div:after {
+   /* background-color: #b7a6aa;*/
+    background-color: black;
+    content: '';
+    position: absolute;
+}
+
+ol.organizational-chart ol > li {
+    padding: 1em 0 0 1em;
+}
+
+ol.organizational-chart > li ol:before {
+    height: 1em;
+    left: 50%;
+    top: 0;
+    width: 3px;
+}
+
+ol.organizational-chart > li ol:after {
+    height: 3px;
+    left: 3px;
+    top: 1em;
+    width: 50%;
+}
+
+ol.organizational-chart > li ol > li:not(:last-of-type):before {
+    height: 3px;
+    left: 0;
+    top: 2em;
+    width: 1em;
+}
+
+ol.organizational-chart > li ol > li:not(:last-of-type):after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 3px;
+}
+
+ol.organizational-chart > li ol > li:last-of-type:before {
+    height: 3px;
+    left: 0;
+    top: 2em;
+    width: 1em;
+}
+
+ol.organizational-chart > li ol > li:last-of-type:after {
+    height: 2em;
+    left: 0;
+    top: 0;
+    width: 3px;
+}
+
+ol.organizational-chart li > div {
+    background-color: #fff;
+    border-radius: 3px;
+    min-height: 2em;
+    padding: 0.5em;
+}
+
+/*** PRIMARY ***/
+    ol.organizational-chart > li > div {
+/*        background-color: #a2ed56;
+        margin-right: 1em;*/
+        background-color: #b0bec5;
+        margin-right: 1em;
+        padding: 10px;
+    }
+
+ol.organizational-chart > li > div:before {
+    bottom: 2em;
+    height: 3px;
+    right: -1em;
+    width: 1em;
+}
+
+ol.organizational-chart > li > div:first-of-type:after {
+    bottom: 0;
+    height: 2em;
+    right: -1em;
+    width: 3px;
+}
+
+ol.organizational-chart > li > div + div {
+    margin-top: 1em;
+}
+
+ol.organizational-chart > li > div + div:after {
+    height: calc(100% + 1em);
+    right: -1em;
+    top: -1em;
+    width: 3px;
+}
+
+/*** SECONDARY ***/
+ol.organizational-chart > li > ol:before {
+    left: inherit;
+    right: 0;
+}
+
+ol.organizational-chart > li > ol:after {
+    left: 0;
+    width: 100%;
+}
+
+ol.organizational-chart > li > ol > li > div {
+    background-color: #83e4e2;
+}
+
+/*** TERTIARY ***/
+ol.organizational-chart > li > ol > li > ol > li > div {
+    background-color: #fd6470;
+}
+
+/*** QUATERNARY ***/
+ol.organizational-chart > li > ol > li > ol > li > ol > li > div {
+    background-color: #fca858;
+}
+
+/*** QUINARY ***/
+ol.organizational-chart > li > ol > li > ol > li > ol > li > ol > li > div {
+    background-color: #fddc32;
+}
+
+/*** MEDIA QUERIES ***/
+@@media only screen and ( min-width: 64em ) {
+
+    ol.organizational-chart {
+        margin-left: -1em;
+        margin-right: -1em;
+    }
+
+    /* PRIMARY */
+    ol.organizational-chart > li > div {
+        display: inline-block;
+        float: none;
+        margin: 0 1em 1em 1em;
+        vertical-align: bottom;
+    }
+
+    ol.organizational-chart > li > div:only-of-type {
+        margin-bottom: 0;
+        width: calc((100% / 1) - 2em - 4px);
+    }
+
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(2),
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(2) ~ div {
+        width: calc((100% / 2) - 2em - 4px);
+    }
+
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(3),
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(3) ~ div {
+        width: calc((100% / 3) - 2em - 4px);
+    }
+
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(4),
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(4) ~ div {
+        width: calc((100% / 4) - 2em - 4px);
+    }
+
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(5),
+    ol.organizational-chart > li > div:first-of-type:nth-last-of-type(5) ~ div {
+        width: calc((100% / 5) - 2em - 4px);
+    }
+
+    ol.organizational-chart > li > div:before,
+    ol.organizational-chart > li > div:after {
+        bottom: -1em!important;
+        top: inherit!important;
+    }
+
+    ol.organizational-chart > li > div:before {
+        height: 1em!important;
+        left: 50%!important;
+        width: 3px!important;
+    }
+
+    ol.organizational-chart > li > div:only-of-type:after {
+        display: none;
+    }
+
+    ol.organizational-chart > li > div:first-of-type:not(:only-of-type):after,
+    ol.organizational-chart > li > div:last-of-type:not(:only-of-type):after {
+        bottom: -1em;
+        height: 3px;
+        width: calc(50% + 1em + 3px);
+    }
+
+    ol.organizational-chart > li > div:first-of-type:not(:only-of-type):after {
+        left: calc(50% + 3px);
+    }
+
+    ol.organizational-chart > li > div:last-of-type:not(:only-of-type):after {
+        left: calc(-1em - 3px);
+    }
+
+    ol.organizational-chart > li > div + div:not(:last-of-type):after {
+        height: 3px;
+        left: -2em;
+        width: calc(100% + 4em);
+    }
+
+    /* SECONDARY */
+    ol.organizational-chart > li > ol {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    ol.organizational-chart > li > ol:before,
+    ol.organizational-chart > li > ol > li:before {
+        height: 1em!important;
+        left: 50%!important;
+        top: 0!important;
+        width: 3px!important;
+    }
+
+    ol.organizational-chart > li > ol:after {
+        display: none;
+    }
+
+    ol.organizational-chart > li > ol > li {
+        flex-grow: 1;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 1em;
+    }
+
+    ol.organizational-chart > li > ol > li:only-of-type {
+        padding-top: 0;
+    }
+
+    ol.organizational-chart > li > ol > li:only-of-type:before,
+    ol.organizational-chart > li > ol > li:only-of-type:after {
+        display: none;
+    }
+
+    ol.organizational-chart > li > ol > li:first-of-type:not(:only-of-type):after,
+    ol.organizational-chart > li > ol > li:last-of-type:not(:only-of-type):after {
+        height: 3px;
+        top: 0;
+        width: 50%;
+    }
+
+    ol.organizational-chart > li > ol > li:first-of-type:not(:only-of-type):after {
+        left: 50%;
+    }
+
+    ol.organizational-chart > li > ol > li:last-of-type:not(:only-of-type):after {
+        left: 0;
+    }
+
+    ol.organizational-chart > li > ol > li + li:not(:last-of-type):after {
+        height: 3px;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+}
+</style>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <form id="frmProjectSummary">
+
+            <div class="card">
+                <div class="card-block">
+
+                    <input type="hidden" class="form-control" id="Language" name="Language" value="" />
+                    <div class="row">
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblProjectCategory </label> <span style="color: red">*</span><br />
+                                <input class="form-control" id="ProjectCategoryDDL" value="" required />
+                                @*<input type="hidden" class="form-control" id="ProjectCategoryType_In_Setup_TypeDetail_Id" name="ProjectCategoryType_In_Setup_TypeDetail_Id" value="" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblProject #</label><span style="color:red"> *</span><br />
+                                <input class="form-control" id="ProjectDDL" name="ProjectDDL" required />
+                            </div>
+                        </div>
+                        <div class="col-md-2 " style="display:none;">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblStartDate</label>
+                                <input class="form-control" type="date" id="StartDate" name="StartDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-2" style="display:none;">
+                            <div class="form-group">
+                                <label class="col-form-label">@Resources.Global.lblEndDate</label>
+                                <input class="form-control" type="date" id="EndDate" name="EndDate" value="@Convert.ToDateTime(DateTime.Today).ToString("yyyy-MM-dd")" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <button type="button" onclick="fnLoadProject_SummaryDataByParamter()" class="btn btn-success" value="Search" style="margin-top:33px;" id="btnSearch"><i class="fa fa-search"></i> @HRModuleUI.HumanResourceUI.lblSearch</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="grid-main-div">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="grid"></div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-sm-2"></div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <hr />
+        @*<div class="card">
+                <div class="card-block">
+
+                </div>
+            </div>*@
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+    <div id="wrapper">
+    <div id="container"> 
+        <ol class="organizational-chart">
+            <li>
+                <div><h2>Design Section</h2></div>
+                <div><h2>Technical Section</h2></div>
+                <div><h2>Supervision Section</h2></div>
+
+                <ol>
+                    <li>
+                        <ol>
+
+                            <li>
+                                <div>
+                                    <h3><span>2 </span>Initial Sketch</h3>
+                                </div>
+                                <ol>
+                                    <li>
+                                        <div>
+                                            <h4>2.1 Pending Approval</h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div style='background:white;border:1px solid'>
+                                            <h4>2.2 Town Planning</h4>
+                                        </div>
+                                        <ol>
+                                            <li>
+                                                <div>
+                                                    <h5>2.2.1 Quinary</h5>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h5>2.2.2 Quinary</h5>
+                                                </div>
+                                                <ol>
+                                                    <li>
+                                                        <div>
+                                                            <h6>2.2.2.1 Senary</h6>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <h4>2.3 Quaternary</h4>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3><span>3</span>Tertiary</h3>
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>Town Planning</h2>
+                        </div>
+                        <ol>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                                <ol>
+                                    <li>
+                                        <div>
+                                            <h4>Quaternary</h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <h4>Quaternary</h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <h4>Quaternary</h4>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>Secondary</h2>
+                        </div>
+                        <ol>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                                <ol>
+                                    <li>
+                                        <div>
+                                            <h4>Quaternary</h4>
+                                        </div>
+                                        <ol>
+                                            <li>
+                                                <div>
+                                                    <h5>Quinary</h5>
+                                                </div>
+                                                <ol>
+                                                    <li>
+                                                        <div>
+                                                            <h6>Senary</h6>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <h6>Senary</h6>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h5>Quinary</h5>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>Secondary</h2>
+                        </div>
+                        <ol>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                                <ol>
+                                    <li>
+                                        <div>
+                                            <h4>Quaternary</h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <h4>Quaternary</h4>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Tertiary</h3>
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+
+    </div>
+</div></div>
+</div>
+  
+
+
+
+<!--<div class="row">
+    <div class="col-sm-12">
+        <div class="card ">
+
+            <div class="card-header" style="background: #eceff1;">
+                <div class="row">
+
+                    <div class="col-sm-9">
+                        <h6> <span class=" txt-project-title" style="font-weight: bold;margin-right: 15px !important;"> -</span></h6>
+                    </div>
+
+                    <div class="col-sm-3 " style="text-align: end;">
+
+                        <span class="badge">@ProjectUI.ProjectUI.lblProjectNo:</span>
+                        <span class="badge badge-info    project-number">   </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+
+                <div class="">
+                    <div class="m-b-20">-->
+                        @*<h6 class="sub-title m-b-15">@Resources.HumanResourceUI.lblDescription</h6>
+                            <hr />*@
+                        <!--<p class="txt-description" style="overflow-x: auto;height: 15rem;">
+                            <hr>-->
+
+                            @*<div class="div-">
+
+                                <table class="table  " style="font-size: smaller; overflow-y: auto;width:15rem;">
+
+                                    <tbody>
+                                        <tr class="tr-append-multiple-summary-record">
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                </div>*@
+
+                            <!--<div class="div-append-multiple-summary-record">
+
+
+                            </div>
+                    </div>
+                </div>-->
+
+                @*<div class="card-footer">
+
+                        <div class="row">
+
+                            <div class="">
+                                <div class="col-sm-4">
+                                    <span class="badge ">@ProjectUI.ProjectUI.lblStatus:</span>
+                                    <select class="project_status_ddl" disabled id="" style="background-color: #49626a; color: white; font: bold;">
+
+                                        <option value="Active">Active</option>
+                                        <option value="Closed">Closed</option>
+                                        <option value="Hold">Hold</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+
+
+
+                                </div>
+                                <div class="col-sm-2"> </div>
+
+
+                                <div class="col-sm-6 " style="text-align: end;">
+
+                                    <span class="badge">@ProjectUI.ProjectUI.lblCreatedBy :</span>
+                                    <span class="badge badge-danger    text-project-created-by">   </span>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>*@
+            <!--</div>
+        </div>-->
+
+
+
+        @*<div class="col-sm-2">
+                <div class="card ">
+                    <div class="card-header" style="background: #eceff1;">
+                        <h6>
+                            <span class="">.Gas</span>
+                        </h6>
+
+                    </div>
+                    <div class="">
+
+                        <table class="table table-striped table-border">
+                            <tbody>
+                                <tr>
+
+                                    <td>Submission :</td>
+                                    <td class="">
+                                        <b><span class="text-client-name"></span></b>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Approval :</td>
+                                    <td class="text-price"></td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                </div>
+            </div>*@
+    <!--</div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card ">
+
+            <div class="card-header" style="background: #eceff1;">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <h6> <span class="  " style="font-weight: bold;margin-right: 15px !important;"> :Project Summary</span></h6>
+                    </div> 
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="grid-main-div">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="project-summary-grid"></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    
+    </div>
+</div>-->
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Reports/summary-report.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+}

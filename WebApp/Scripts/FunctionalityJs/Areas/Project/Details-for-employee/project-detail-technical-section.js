@@ -497,6 +497,7 @@ function fn_IsWorkStarted_TechnicalSection() {
 
                     loadProject_TechnicalSectiondownLists()
                     loadProject_TechnicalSection_SubSection_DDL('Project_TechnicalSection_SetupDetailTypeDDL', '0');
+                    setTimeout(function () { $("#Project_TechnicalSection_SetupDetailTypeDDL").data("kendoDropDownList").toggle(); }, 500);
 
                 }
             });
@@ -530,6 +531,8 @@ function fn_IsWorkStarted_TechnicalSection() {
             }
             loadProject_TechnicalSectiondownLists()
             //  loadProject_TechnicalSection_SubSection_DDL('Project_TechnicalSection_SetupDetailTypeDDL', '0');
+            setTimeout(function () { $("#Project_TechnicalSection_SetupDetailTypeDDL").data("kendoDropDownList").toggle(); }, 500);
+
         }
     }
 

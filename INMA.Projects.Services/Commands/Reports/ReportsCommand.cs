@@ -65,7 +65,7 @@ namespace INMA.Projects.Services.Commands.Reports
             {
                 var model = base.MappedModel(new
                 {
-                    ProjectCategoryDDL = 0,
+                 //   ProjectCategoryDDL = 0,
                     ProjectDDL = 0,
                     StartDate = string.Empty,
                     EndDate = string.Empty,

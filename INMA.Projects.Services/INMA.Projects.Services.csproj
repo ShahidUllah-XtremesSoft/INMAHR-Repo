@@ -106,6 +106,9 @@
   <ItemGroup>
     <Compile Include="Commands\Common\SMSService.cs" />
     <Compile Include="Commands\Contractor\ClientCommand.cs" />
+    <Compile Include="Commands\Dashboard\Dashboard_TwoCommand.cs" />
+    <Compile Include="Commands\Dashboard\Dashboard_OneCommand.cs" />
+    <Compile Include="Commands\Dashboard\Dashboard_EmployeeCommand.cs" />
     <Compile Include="Commands\Dashboard\DashboardCommand.cs" />
     <Compile Include="Commands\Notification\NotificationCommand.cs" />
     <Compile Include="Commands\Issue\IssueCommand.cs" />
@@ -117,6 +120,7 @@
     <Compile Include="Commands\Reports\ReportsCommand.cs" />
     <Compile Include="Commands\Email\EmailCommand.cs" />
     <Compile Include="Commands\SMS\SMSCommand.cs" />
+    <Compile Include="Commands\Task\TaskCommand.cs" />
     <Compile Include="Installer\CommandInstaller.cs" />
     <Compile Include="Models\RoleMappingDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

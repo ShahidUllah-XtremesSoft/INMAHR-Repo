@@ -35,14 +35,14 @@ var getInternalLetterByIdCallBack = function (inputDataJSON) {
     letterToArray.forEach(function (item) {
 
         //   $('#divTo').append('<span class="badge badge-success">'+item+'</span>');
-        $('#divTo').append('<button type="button" class="btn btn-outline-dark waves-effect waves-light">' + item + '</button>');
+        $('#divTo').append('<button type="button" class="btn btn-sm btn-outline-dark waves-effect waves-light">' + item + '</button>');
     });
     //$('#divFrom').text(responseJSON.createdBy);
     //  $('#divFrom').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.createdBy + '</button>');
     //   $('#divFromDepartment').append('<button type="button" class="btn btn btn-success waves-effect waves-light">' + responseJSON.senderDepartmentName + '</button>');
 
-    $('#divFrom').append('<button type="button" class="btn btn btn-outline-dark waves-effect waves-light">' + responseJSON.createdBy + '</button>');
-    $('#divFromDepartment').append('<button type="button" class="btn btn btn-outline-dark waves-effect waves-light">' + responseJSON.senderDepartmentName + '</button>');
+    $('#divFrom').append('<button type="button" class="btn btn-sm btn-outline-dark waves-effect waves-light">' + responseJSON.createdBy + '</button>');
+    $('#divFromDepartment').append('<button type="button" class="btn btn-sm btn-outline-dark waves-effect waves-light">' + responseJSON.senderDepartmentName + '</button>');
     $('.letter-date').append(responseJSON.sendDate);
     $('.letter-number').append(responseJSON.number);
     $('.letter-time').append(responseJSON.letterTime);

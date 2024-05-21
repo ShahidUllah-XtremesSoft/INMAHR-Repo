@@ -19,14 +19,17 @@ namespace WebApp.Controllers
             return View();
 
         }
+       
+
         public ActionResult ChangeLanguage(string language)
         {
-
+             
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(language);
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
             var myLanguageCookie = new HttpCookie("Lang");
             myLanguageCookie.Value = language;
-            myLanguageCookie.Expires = DateTime.Now.AddYears(1);
+             myLanguageCookie.Expires = DateTime.Now.AddYears(1);
+          //  myLanguageCookie.Expires = DateTime.Now;
             Response.Cookies.Add(myLanguageCookie);
             return Redirect(HttpContext.Request.UrlReferrer.PathAndQuery);
         }
@@ -58,6 +61,11 @@ namespace WebApp.Controllers
         {
             //HttpContext.Request.Cookies["Lang"].Value = "en-US";
             ViewBag.Message = "Your application description page.";
+
+            return View();
+        } public ActionResult Developer()
+        {
+           
 
             return View();
         }

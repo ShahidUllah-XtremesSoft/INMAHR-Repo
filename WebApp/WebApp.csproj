@@ -55,6 +55,9 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\Castle.Core.dll</HintPath>
@@ -95,6 +98,39 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\Dapper.Mapper.dll</HintPath>
     </Reference>
+    <Reference Include="itext.barcodes, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.bouncy-castle-connector, Version=8.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext.8.0.2\lib\net461\itext.bouncy-castle-connector.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.commons, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.commons.7.2.5\lib\net461\itext.commons.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.2.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.2.5\lib\net461\itext.svg.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\log4net.dll</HintPath>
@@ -107,6 +143,24 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
@@ -120,8 +174,8 @@
       <HintPath>libs\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>libs\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -129,9 +183,18 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.12.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -152,6 +215,9 @@
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -308,6 +374,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumanResourceUI.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Project\Controllers\TaskController.cs" />
     <Compile Include="Areas\Project\Controllers\ContractorController.cs" />
     <Compile Include="Areas\Project\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Project\Controllers\NotificationController.cs" />
@@ -372,6 +439,7 @@
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Areas\Project\Views\Meeting\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Task_Comment_Hisotry\Task_comment_history.js" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\ar-AE.css" />
@@ -547,6 +615,60 @@
     <Content Include="Content\Themes\CoreUI\css\style-rtl.css" />
     <Content Include="Content\Themes\CoreUI\css\style.css" />
     <Content Include="Content\Themes\CoreUI\css\style.min.css" />
+    <Content Include="Content\Themes\CoreUI\developer\ajax\libs\jquery-easing\1.3\jquery.easing.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\ajax\libs\jquery\1.11.0\jquery.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\apple-touch-icon-144.png" />
+    <Content Include="Content\Themes\CoreUI\developer\apple-touch-icon-57.png" />
+    <Content Include="Content\Themes\CoreUI\developer\css\styles.css" />
+    <Content Include="Content\Themes\CoreUI\developer\favicon-vertica.ico" />
+    <Content Include="Content\Themes\CoreUI\developer\favicon33-vertica.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\avatar.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\background2.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\paper-bg-bot.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\paper-bg2.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item1-photo-thumb.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item1-photo-zoom.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item3-photo-thumb.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item3-photo-zoom.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item5-photo-thumb.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item5-photo-zoom.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item6-photo-thumb.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item6-photo-zoom.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item8-photo-thumb.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\portfolio-item8-photo-zoom.jpg" />
+    <Content Include="Content\Themes\CoreUI\developer\img\progress-bar.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\progress-education4.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\progress-mail3.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\progress-point.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\progress-section-title3.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\progress-work3.png" />
+    <Content Include="Content\Themes\CoreUI\developer\img\timeline-bg.png" />
+    <Content Include="Content\Themes\CoreUI\developer\js\cross-browser.js" />
+    <Content Include="Content\Themes\CoreUI\developer\js\main.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\animate.css" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\jquery.bxslider.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\jquery.mousewheel.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\jquery.nicescroll.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\jquery.nicescroll.plus.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\jquery.validate.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\nivo-lightbox.css" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\nivo-lightbox.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\close%402x.png" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\close.png" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\default.css" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\loading%402x.gif" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\loading.gif" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\next%402x.png" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\next.png" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\prev%402x.png" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\nivo-lightbox\themes\default\prev.png" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\placeholders.jquery.min.js" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\waypoints.min.js" />
     <Content Include="Content\Themes\CoreUI\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Themes\CoreUI\fonts\Simple-Line-Icons.svg" />
     <Content Include="Content\Themes\CoreUI\img\coreui-logotyp.png" />
@@ -640,7 +762,28 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-detail.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-grid.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Meetings\meeting-info-save.js" />
-    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\project-dashboard.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\employee-project-dashboard-tasks.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\employee-project-dashboard.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\generate-static-updated-pdf.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_one-document-expiry.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_one-load-by-search.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_two-new-projects.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_one-total-projects.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_one.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_one_project-summary-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-dashboard_two-new-projects.min.js">
+      <DependentUpon>project-dashboard_two-new-projects.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\two\project-grid-with-tasks.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\one\project-dashboard_one.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\one\project-dashboard_one-document-expiry.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\one\project-dashboard_one-total-projects.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\one\project-dashboard_one-load-by-search.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\one\project-grid-with-tasks.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\one\project-dashboard_one_project-summary-report.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\project-dashboard.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\project-document-expiry.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Project\Dashboard\Managers\project-grid-with-tasks.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-supervision-section-transfer-file.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-technical-section-transfer-file.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\Details-for-employee\project-detail-design-section-transfer-file.js" />
@@ -668,6 +811,7 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-info-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-design-section-document-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Project\project-unit-save.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Reports\summary-report-list.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\summary-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\design-section-report.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Reports\technical-section-report.js" />
@@ -688,6 +832,9 @@
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\Roster\time-roster.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\Setup\PublicHoliday\public-holiday.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\SMS\sms-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Task\project-employees-task-details.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Task\project-employees-task-grid.js" />
+    <Content Include="Scripts\FunctionalityJs\Areas\Task\project-employees-task-save.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesRoleLinking\employees-role-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Areas\UserManagement\EmployeesAttendanceLinking\employees-attendance-linking.js" />
     <Content Include="Scripts\FunctionalityJs\Common\clear-application-cache.js" />
@@ -797,11 +944,33 @@
     <Content Include="Areas\Employees\Views\Request\Appraisal.cshtml" />
     <Content Include="Areas\Setup\Views\Appraisal\Permission.cshtml" />
     <Content Include="Areas\Request\Views\Shared\_EmployeeAttendanceForAppraisal_PartialView.cshtml" />
-    <Content Include="DatabaseBackup\HR-DB-Backup" />
-    <Content Include="DatabaseBackup\Project-db-backup" />
     <Content Include="Areas\Employees\Views\Attendance\Report.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\ClientPartialViews\_ClientPartialView_With_limited_fields.cshtml" />
     <Content Include="Areas\Project\Views\Shared\PartialViews\Project\Details-for-employee\_ProjectDetail_Project_Transfer_Modal.cshtml" />
+    <Content Include="Librarires\readform.pdf" />
+    <Content Include="Areas\Project\Views\Reports\SummaryList.cshtml" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\fonts\glyphicons-halflings-regular-1.eot" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\font-awesome\fonts\fontawesome-webfont-1.eot" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Themes\CoreUI\developer\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Themes\CoreUI\developer\cc\css" />
+    <Content Include="Content\Themes\CoreUI\developer\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVc.ttf" />
+    <Content Include="Content\Themes\CoreUI\developer\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsiH0B4gaVc.ttf" />
+    <Content Include="Content\Themes\CoreUI\developer\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVc.ttf" />
+    <Content Include="Areas\Project\Views\Task\Save.cshtml" />
+    <Content Include="Areas\Project\Views\Task\List.cshtml" />
+    <Content Include="Areas\Project\Views\Task\Details.cshtml" />
+    <Content Include="Areas\Project\Views\Dashboard\EmployeeDashboard.cshtml" />
+    <Content Include="Areas\Project\Views\Shared\PartialViews\Task_Comment_Hisotry\_TASK_COMMENT_History.cshtml" />
+    <Content Include="Content\Themes\CoreUI\fonts\LateefRegOT.ttf" />
+    <Content Include="Content\Themes\CoreUI\fonts\AlHurraTxtBold.ttf" />
+    <Content Include="Content\Themes\CoreUI\fonts\Traditional Arabic Bold.ttf" />
+    <Content Include="Areas\Project\Views\Dashboard\dashboard_one.cshtml" />
+    <Content Include="Areas\Project\Views\Dashboard\dashboard_two.cshtml" />
     <None Include="Resources\dropdowns.cs" />
     <Compile Include="Reports\HR-Reports\HR_Department.cs">
       <SubType>Component</SubType>
@@ -836,13 +1005,47 @@
     <Compile Include="Reports\Payroll\Report_SalarySlip.Designer.cs">
       <DependentUpon>Report_SalarySlip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ProjectReports\CIVIL_CONTRACT_AR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\CIVIL_CONTRACT_AR.Designer.cs">
+      <DependentUpon>CIVIL_CONTRACT_AR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\CLIENT_INFO_FORM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\CLIENT_INFO_FORM.Designer.cs">
+      <DependentUpon>CLIENT_INFO_FORM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\Models\RPT_Model.cs" />
+    <Compile Include="Reports\ProjectReports\Report_AppointmentLetter_AR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\Report_AppointmentLetter_AR.Designer.cs">
+      <DependentUpon>Report_AppointmentLetter_AR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\SEWA_CIVIL_AR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\SEWA_CIVIL_AR.Designer.cs">
+      <DependentUpon>SEWA_CIVIL_AR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\TestReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectReports\TestReport.Designer.cs">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="StreamProviders\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="StreamProviders\JsonContent.cs" />
+    <Compile Include="System\Linq\SystemCore_EnumerableDebugView.cs" />
     <Compile Include="token\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="token\AuthenticationFailureResult.cs" />
     <Compile Include="token\HttpAuthenticationChallengeContextExtensions.cs" />
     <Compile Include="token\XtremeAuthenticationAttribute.cs" />
     <Content Include="Views\Home\Application.cshtml" />
+    <Content Include="Views\Home\Developer.cshtml" />
+    <Content Include="Temp\form.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -1589,6 +1792,21 @@
     <EmbeddedResource Include="Reports\Payroll\Report_SalarySlip.resx">
       <DependentUpon>Report_SalarySlip.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProjectReports\CIVIL_CONTRACT_AR.resx">
+      <DependentUpon>CIVIL_CONTRACT_AR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProjectReports\CLIENT_INFO_FORM.resx">
+      <DependentUpon>CLIENT_INFO_FORM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProjectReports\Report_AppointmentLetter_AR.resx">
+      <DependentUpon>Report_AppointmentLetter_AR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProjectReports\SEWA_CIVIL_AR.resx">
+      <DependentUpon>SEWA_CIVIL_AR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProjectReports\TestReport.resx">
+      <DependentUpon>TestReport.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bundleconfig.json" />
     <Content Include="Content\Images\appointment12.png.crdownload" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
@@ -1752,11 +1970,10 @@
     <Folder Include="Areas\Request\Data\" />
     <Folder Include="Areas\Setup\Data\" />
     <Folder Include="Areas\UserManagement\Data\" />
+    <Folder Include="DatabaseBackup\" />
     <Folder Include="Exceptions\" />
     <Folder Include="logs\" />
     <Folder Include="obj\Release\Package\PackageTmp\bin\" />
-    <Folder Include="Reports\Project-Reports\" />
-    <Folder Include="Temp\" />
     <Folder Include="UploadFile\" />
     <Folder Include="_logs\" />
   </ItemGroup>
@@ -1886,7 +2103,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63292</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63000/</IISUrl>
+          <IISUrl>http://localhost:65000/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

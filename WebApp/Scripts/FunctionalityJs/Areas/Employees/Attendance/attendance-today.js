@@ -250,7 +250,9 @@ var bindAttendanceGrid = function (inputDataJSON) {
                 "else if (status == 'Present')" +
                 " { # <span class=''>" + lblPresent + "</span> # }" +
                 " else if(status == 'Absent')" +
-                " { if(status == 'Absent' && departmentId==11 || departmentId==22  || departmentId == 17 || departmentId == 18) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }}  " +
+                " {  # <span class=''>" + lblAbsent + "</span> # }  " +
+                " else if(status == 'Site')" +
+                " {  # <span class=''>" + lblSite + "</span> # }  " +
                 "else {# <span class='badge badge-primary'>#:status#</span> #}#"
             //   , footerTemplate: "<span class=''>" + lblPresent + ":<span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ":<span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
 
@@ -467,11 +469,12 @@ function fnGridColors() {
     setTimeout(function () {
         var grid = $("#" + attendanceGrid).data("kendoGrid");
         var gridData = grid.dataSource.view();
-         console.log(gridData)
+        console.log(gridData)
         for (var i = 0; i < gridData.length; i++) {
-           
+
             var absentStatus = gridData[i].status;
-            if (gridData[i].status != "Absent" && gridData[i].status != "Site") {
+             if (gridData[i].status != "Absent" && gridData[i].status != "Site") {
+           // if (gridData[i].status != "Absent") {
 
                 if (gridData[i].employeeNumber.match(/INMA.*/)) {
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(0, 137, 160, 0.13)').css("color", 'rgb(0,0,0)');
@@ -483,6 +486,7 @@ function fnGridColors() {
                     //grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(5, 164, 0, 0.13)').css("color", 'rgb(0,0,0)');
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgba(32, 168, 216, 0.25)').css("color", 'rgb(0,0,0)');
                 }
+               
 
                 if (gridData[i].departmentId == 10) { // Design Section
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(56 195 21 / 35%)').css("color", 'rgb(0,0,0)');
@@ -500,6 +504,7 @@ function fnGridColors() {
                     grid.table.find("tr[data-uid='" + gridData[i].uid + "']").css("background-color", 'rgb(0 180 255 / 34%)').css("color", 'rgb(0,0,0)');
 
                 }
+                
             }
 
         }
@@ -512,7 +517,7 @@ function calculateFooterData() {
 
         var grid = $("#AttendanceGrid").data("kendoGrid");
         var gridData = grid.dataSource.view();
-        var totalPresent = 0, totalAbsent = 0, totallateInTime = 0, totalLate = 0;
+        var totalPresent = 0, totalAbsent = 0, totallateInTime = 0, totalLate = 0, totalOnSite = 0;
 
         var t1 = "00:00:00";
         var lateTimeInSeconds = 0, lateTimeInMinutes = 0, lateTimeInHours = 0, earlyTimeOutSeconds = 0, earlyTimeOutMinutes = 0, earlyTimeOutHours = 0;
@@ -523,18 +528,12 @@ function calculateFooterData() {
             //    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
             //}
             if (gridData[i].status == 'Absent') {
-
-                if (gridData[i].departmentId == 11 || gridData[i].departmentId == 22 || gridData[i].departmentId == 17 || gridData[i].employeeId == 24 || gridData[i].departmentId == 18) { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.
-                    // 17 & 22 is NSS and technical section id's ,this color will be orange as per HR       
-                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
-
-
-                } else {
-
-                    grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-danger");
-                }
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-danger");
                 totalAbsent++;
 
+            } else if (gridData[i].status == 'Site') { // 11 is super vision department id ,this color will be orange as per Company Manager Engr.Muhammad Demand.               
+                grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
+                totalOnSite++;
             }
             else if (gridData[i].status == 'Present') {
                 totalPresent++;

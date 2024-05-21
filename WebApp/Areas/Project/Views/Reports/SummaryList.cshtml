@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblSummaryReport;
+
+
+}
+
+<style>
+    .progressBar {
+        height: 14px;
+        text-align: left;
+        color: #783722;
+        border: 1px solid #aaa;
+        border-left: 0px;
+        width: -webkit-fill-available;
+    }
+
+        .progressBar span {
+            display: inline-block;
+            font-size: 14px;
+            margin-top: -2%;
+            float: right;
+        }
+
+    .progressBarItem {
+        padding: 0 !important;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12 card">
+        <div class="card-header" style="background: #eceff1;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h6> <span class="  " style="font-weight: bold;margin-right: 15px !important;"> @ProjectUI.ProjectUI.lblSummaryReport</span></h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="project-summary-grid"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-2"></div>
+</div>
+
+  
+ 
+
+
+
+@section scripts {
+    <script>
+
+
+        var lblDesignSection = '@ProjectUI.ProjectUI.lblDesignSection';
+        var lblTechnicalSection = '@ProjectUI.ProjectUI.lblTechnicalSection';
+        var lblSupervisionSection = '@ProjectUI.ProjectUI.lblSupervisionSection';
+        var lblTenderSection = '@ProjectUI.ProjectUI.lblTenderSection';
+        var lblTotal = '@ProjectUI.ProjectUI.lblTotal';
+        var lblCreatedDate = '@ProjectUI.ProjectUI.lblCreatedDate';
+
+
+    </script>
+
+
+    <script src="~/Scripts/FunctionalityJs/Areas/Reports/summary-report-list.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+}

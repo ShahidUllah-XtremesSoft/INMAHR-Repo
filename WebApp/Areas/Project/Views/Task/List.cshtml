@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblTask;
+
+
+}
+ 
+
+<div class="card">
+    <div class="card-block">
+        <div class="grid-main-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="project-task-grid"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Task/project-employees-task-grid.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script>
+
+        var lblTitle = '@ProjectUI.ProjectUI.lblTitle';
+        var lblDescription = '@ProjectUI.ProjectUI.lblDescription';
+        var lblAssignDate = '@ProjectUI.ProjectUI.lblAssignDate';
+        var lblCompletionDate = '@ProjectUI.ProjectUI.lblCompletionDate';
+        var lblStatus = '@ProjectUI.ProjectUI.lblStatus';
+        var lblPriority = '@ProjectUI.ProjectUI.lblPriority';
+        var lblEmployee = '@ProjectUI.ProjectUI.lblEmployee';
+        var lblProject = '@ProjectUI.ProjectUI.lblProject';
+        var lblTotalTask = '@ProjectUI.ProjectUI.lblTotal @ProjectUI.ProjectUI.lblTask';
+    </script>
+}
+

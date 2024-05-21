@@ -293,6 +293,14 @@ function redirectToEmployeeDetailView(e) {
      
 
     var dataItem = grid.dataItem(row);
+
+    if (JSON.parse(localStorage.User).isHR == true && _btnValue == 'Approved') {
+        localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+
+        window.location.href = '/Employees/Request/Details/';
+    }
+
+
     if (dataItem.isUpperLevel == 0) {
         localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
         

@@ -129,6 +129,12 @@
   <data name="LanguageText" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="lblleft" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="lblright" xml:space="preserve">
+    <value>left</value>
+  </data>
   <data name="PageDirection" xml:space="preserve">
     <value>rtl.js</value>
   </data>

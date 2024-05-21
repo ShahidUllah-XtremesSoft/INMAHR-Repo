@@ -18,13 +18,28 @@ $(function () {
     loadGrid();
 
     $('#btnSearch').click(function (e) {
-        debugger
+
         e.preventDefault();
         loadGrid();
     });
 });
+$('#btnReadAll').click(function (e) {
+
+    ajaxRequest({
+        commandName: 'Notification_Personal_ReadAll', values: {
+            LoggedInUser: JSON.parse(localStorage.getItem('User')).id,
+            RoleId: JSON.parse(localStorage.getItem('User')).roleId,
+            LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId,
+            Language: $('#Language').val()
+        }, CallBack: readAll_CallBack
+    });
+
+});
 
 
+var readAll_CallBack = function (inputDataJSON) {
+    location.reload();
+}
 
 
 
@@ -49,7 +64,7 @@ var bindGrid = function (inputDataJSON) {
 
     //                template: "#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
-  //  console.log(inputDataJSON)
+    //  console.log(inputDataJSON)
 
     var gridColumns = [
 
@@ -92,9 +107,9 @@ var bindGrid = function (inputDataJSON) {
         },
     ];
 
-    bindKendoGrid($grid, 12, gridColumns, inputDataJSON, true, 750);
+    bindKendoGrid($grid, 1000, gridColumns, inputDataJSON, true, 750);
 
-     
+
     if (inputDataJSON.length != null) {
 
         fnGridColors();

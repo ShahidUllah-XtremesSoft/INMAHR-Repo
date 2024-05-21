@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblProject;
+
+
+}
+
+<div class="row">
+    <div class="col-sm-4 col-lg-3" onclick="fnLoadProjectSections();">
+        <div class="card card-inverse card-primary" style="cursor: pointer; background-color: #d7810c">
+            <div class="card-block">
+                <div class="h4 m-a-0 TotalProjectCount" id="TotalProjectCount">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-3">
+        <div class="card card-inverse card-primary">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalClient">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblTotalClients</div>
+                @*<progress class="progress progress-xs progress-success" value="25" max="100">25%</progress>*@
+                @*<a href="/Property/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-3">
+        <div class="card card-inverse card-success">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalMeeting">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblTotalMeetings</div>
+                @*<a href="/Vendor/Expense/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-3">
+        <div class="card card-inverse" style="background-color: #225A8B">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalContractor">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblTotalContractors</div>
+                @*<a href="/Reports/Sale/Detail"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ProjectSection" style="display:none;">
+    <div class="col-sm-4 col-lg-3" onclick="fnLoadSectionAllDocument('DesignSection');">
+        <div class="card card-inverse card-green" style="cursor: pointer; background-color: #1d0432">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="ProjectDesignSectionCount">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProjectDesignSection</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-3" onclick="fnLoadSectionAllDocument('TechnicalSection');">
+        <div class="card card-inverse card-primary" style="cursor: pointer; background-color: #1d0432">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="ProjectTechnicalSectionCount">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProjectTechnicalSection</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-3" onclick="fnLoadSectionAllDocument('SupervisionSection');">
+        <div class="card card-inverse card-success" style="cursor: pointer; background-color: #1d0432">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="ProjectSupervisionSectionCount">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProjectSupervisionSection</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="row Project_Design_SubSection form-control" style="display: none; text-align: center; background: transparent;">
+    <div class="col-sm-2 col-lg-2">
+        <div class="card-inverse" style="cursor: pointer; background-color: #1d0432">
+            <div class=" ">
+                <div class="h4 m-a-0" id="TotalProjects">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 col-lg-2">
+        <div class="card-inverse" style="cursor: pointer; background-color: #1d0432">
+            <div class="  ">
+                <div class="h4 m-a-0" id="TotalProjects">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 col-lg-2">
+        <div class="card-inverse" style="cursor: pointer; background-color: #1d0432">
+            <div class=" ">
+                <div class="h4 m-a-0" id="TotalProjects">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 col-lg-2">
+        <div class="card-inverse" style="cursor: pointer; background-color: #1d0432">
+            <div class=" ">
+                <div class="h4 m-a-0" id="TotalProjects">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 col-lg-2">
+        <div class="card-inverse" style="cursor: pointer; background-color: #1d0432">
+            <div class=" ">
+                <div class="h4 m-a-0" id="TotalProjects">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 col-lg-2">
+        <div class="card-inverse" style="cursor: pointer; background-color: #1d0432">
+            <div class=" ">
+                <div class="h4 m-a-0" id="TotalProjects">0</div>
+                <div class="p-b-1">@ProjectUI.ProjectUI.lblProject</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+
+
+
+<div class="row">
+    @*<div class="col-md-4" hidden>
+            <div class="card">
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <canvas id="chart-project-count-by-vip-urgent"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <div id="chart-project-count-by-vip-urgent-kendo"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-4" hidden>
+            <div class="card">
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <canvas id="chart-project-count-by-category"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <canvas id="chart-category-pieChart" width="100" height="82"></canvas>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <div id="chart-project-count-by-category-kendo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    @*<div class="col-md-4" hidden>
+            <div class="card">
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <canvas id="chart-issue-count-by-status"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class=" ">
+                    <div id="chart-issue-count-by-status-kendo"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- Donut chart start -->
+    @*<div class="col-md-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Donut chart</h5>
+                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                    <div class="card-header-right">
+                        <i class="icofont icofont-rounded-down"></i>
+                        <i class="icofont icofont-refresh"></i>
+                        <i class="icofont icofont-close-circled"></i>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div id="donut-example"></div>
+                </div>
+            </div>
+        </div>*@
+
+    <!-- Donut chart Ends -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-project-count-by-status" width="182%"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <div id="chart-project-count-by-status-kendo"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="col-md-4" hidden>
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <canvas id="chart-total-client-meeting-contractor"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-main-div">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-block">
+                    <div id="issue-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-block">
+                <div class="chart-wrapper">
+                    <div id="chart-total-client-meeting-contractor-kendo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--<div class="col-sm-6 col-lg-3">
+        <div class="card card-inverse" style="background-color: #0B939E">
+            <div class="card-block">
+                <div class="h4 m-a-0" id="TotalDeals">0</div>
+                <div class="p-b-1">Total Deals</div>-->
+    @*<a href="/Deal/List"><small class="text-muted"><strong>View Detail <i class="fa fa-arrow-right"></i></strong></small></a>*@
+    <!--</div>
+        </div>
+    </div>-->
+
+</div>
+
+<div id="load-project-subsection-record-by-section-partial-view"></div>
+
+<script>
+    var lblProjectByVIPUrgent = '@ProjectUI.ProjectUI.lblProjectByVIPUrgent';
+    var lblProjectByCategory = '@ProjectUI.ProjectUI.lblProjectByCategory';
+    var lblClientMeetingAndContractor = '@ProjectUI.ProjectUI.lblClientMeetingAndContractors';
+    var lblIssueByStatus = '@ProjectUI.ProjectUI.lblIssueByStatus';
+    var lblProjectByStatus = '@ProjectUI.ProjectUI.lblProjectByStatus';
+</script>
+@section scripts {
+
+    @*<script src="~/Content/Themes/Dashable/files/assets/pages/chart/chartjs/chartjs-custom.js"></script>*@
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/project-dashboard.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+}
+

@@ -1,0 +1,221 @@
+﻿
+@{
+
+    ViewBag.Title = ProjectUI.ProjectUI.lblDetails;
+
+}
+
+
+<div class="">
+    <div class="">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="col-md-12 col-sm-12 card" style="display: flex; align-items: center; ">
+                        <div class="card-block">
+                            <div class="details text-right">
+                                <div class="">
+                                    <img class="img-sm rounded-circle" id="ProfileImage" style="border-radius: 4%; width: 118px; margin-top: -11px;" src="/Content/Images/user.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <table class="">
+                                <tbody>
+
+                                    <tr>
+                                        <th>@ProjectUI.ProjectUI.lblFrom:</th>
+                                        <td id="divFrom"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>@ProjectUI.ProjectUI.lblAssignDate:</th>
+                                        <td class="task-date"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>@ProjectUI.ProjectUI.lblPriority:</th>
+                                        <td class="task-priority"></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <th>@ProjectUI.ProjectUI.lblProject </th>
+                                        <td style="color:blue;cursor:pointer;" onclick="fnLoadProjectDetailsById()"><u> <b> <span id="ProjectNo"></span> </b></u></td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <input type="hidden" value="" id="hold-project-id" />
+        <input type="hidden" value="" id="hold-status-id" />
+        <input type="hidden" value="" id="hold-status-text" />
+        <textarea type="hidden" value="" id="hold-remarks-text" hidden> </textarea>
+        <input type="hidden" value="" id="Task_Multiple_Id" />
+
+        <div class="card shadow-none mt-3 border border-light ">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-7 ">
+                        <div class="row">
+                            <div class="col-md-12 text-justify">
+                                <p>  <b id="txt-subject">Title</b></p><hr />
+                            </div>
+                        </div>
+                        <br />
+                        <p class="text-justify" id="txt-body" style="max-height: 311px;overflow-x: auto;">
+                        @*<p class="text-justify" id="txt-body"></p>*@
+                        <hr>
+                        <div class="row attachmentRow" style="display:none;">
+                            <h5><i class="fa fa-paperclip mr-2"></i> @ProjectUI.ProjectUI.lblAttachment<span></span></h5>
+                            <div class="appendLetterAttachment">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <p>  <b id="txt-subject">@ProjectUI.ProjectUI.lblTaskDetails</b></p> <hr />
+                        <div class="">
+                            <div class="grid-main-div">
+                                <div id="load-task-details-grid-employee-by-id" style="height:350px !important">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@*<div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-2 col-sm-2">
+                    <img class="img-sm rounded-circle mr-3 " id="ProfileImage"
+                         style="border-radius: 4%; width: 150px;"
+                         src="/Content/Images/user.jpg" alt="">
+                </div>
+                <div class="col-md-10 col-sm-10">
+                    <div class="details text-right">
+
+
+                        <b>
+                            <span id=""> @ProjectUI.ProjectUI.lblFrom:-<strong id="divFromDepartment"></strong>-<span id="divFrom"></span></span> <br />
+                            <p class="msg-subject ">
+                                @ProjectUI.ProjectUI.lblAssignDate:<span class="task-date"></span>  <br />
+
+                                @ProjectUI.ProjectUI.lblPriority:<span class="task-priority"></span>
+                            </p>
+                        </b>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-11">
+                    <div class="details text-right">
+
+                        <p class="sender-email">
+                            <div class="form-group">
+                                <div>
+                                    <strong id="divFrom"></strong>
+                                </div>
+
+                            </div>
+                        </p>
+                        <b>
+                            <p id="">  @ProjectUI.ProjectUI.lblAssignTo: <span id="divTo"></span></p>
+                        </b>
+                        <b>
+                            <p id="">  @ProjectUI.ProjectUI.lblProject: <span id="ProjectNo"></span></p>
+                        </b>
+
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" value="" id="hold-status-id" />
+            <input type="hidden" value="" id="hold-status-text" />
+            <textarea type="hidden" value="" id="hold-remarks-text" hidden> </textarea>
+            <input type="hidden" value="" id="Task_Multiple_Id" />
+
+            <div class="card shadow-none mt-3 border border-light ">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-7 ">
+                            <div class="row">
+                                <div class="col-md-12 text-justify">
+                                    <p>  <b id="txt-subject">Title</b></p><hr />
+                                </div>
+                            </div>
+                            <br />
+
+                            <p class="text-justify" id="txt-body"></p>
+                            <hr>
+                            <div class="row attachmentRow" style="display:none;">
+                                <h5><i class="fa fa-paperclip mr-2"></i> @ProjectUI.ProjectUI.lblAttachment<span></span></h5>
+                                <div class="appendLetterAttachment">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <p>  <b id="txt-subject">@ProjectUI.ProjectUI.lblTaskDetails</b></p> <hr />
+                            <div class="">
+                                <div class="grid-main-div">
+                                    <div id="load-task-details-grid-employee-by-id" style="height:350px !important">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>*@
+<div class="row">
+    <div class="col-lg-12 col-xl-12 ">
+        @Html.Partial("~/Areas/Project/Views/Shared/PartialViews/Task_Comment_Hisotry/_TASK_COMMENT_History.cshtml")
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Task/project-employees-task-details.js?@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Areas/Project/Views/Shared/PartialViews/Task_Comment_Hisotry/Task_comment_history.js?@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+
+    <script>
+
+        var lblTask = '@ProjectUI.ProjectUI.lblTask';
+        var lblTitle = '@ProjectUI.ProjectUI.lblTitle';
+        var lblDescription = '@ProjectUI.ProjectUI.lblDescription';
+        var lblAssignDate = '@ProjectUI.ProjectUI.lblAssignDate';
+        var lblCompletionDate = '@ProjectUI.ProjectUI.lblCompletionDate';
+        var lblStatus = '@ProjectUI.ProjectUI.lblStatus';
+        var lblClickStatus = '@ProjectUI.ProjectUI.lblClickStatus';
+        var lblPriority = '@ProjectUI.ProjectUI.lblPriority';
+        var lblEmployee = '@ProjectUI.ProjectUI.lblEmployee';
+        var lblProject = '@ProjectUI.ProjectUI.lblProject';
+        var lblAction = '@ProjectUI.ProjectUI.lblAction';
+        var btnStart = '@ProjectUI.ProjectUI.lblStart';
+        var lblRemarksOptional = '@ProjectUI.ProjectUI.lblRemarks @ProjectUI.ProjectUI.lblOptional';
+        var lblRemarks = '@ProjectUI.ProjectUI.lblRemarks';
+
+        var lblTotalTask = '@ProjectUI.ProjectUI.lblTotal @ProjectUI.ProjectUI.lblTask';
+    </script>
+
+
+}
+
+

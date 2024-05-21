@@ -12,8 +12,7 @@ var selected_PROJECT_MAIN_SECTION_Supervision_Stepper = false;
 
 
 
-
-//-------- END
+ //-------- END
 
 
 var project_Id = (new URL(location.href)).searchParams.get('id');
@@ -27,8 +26,11 @@ $(function () {
     //loadProject_SupervisionSectiondownList();
 
 
-    fnLoadProjectDetailsById();
+    fn_LoadStatuses();
+    setTimeout(function () {
 
+    fnLoadProjectDetailsById();
+    }, 150);
 });
 
 
@@ -47,10 +49,11 @@ function fnLoadProjectDetailsById() {
 }
 function loadProjectDetailsByIdCallBack(response) {
     var response = JSON.parse(response.Value);
-    // console.log(response);
+    //console.log(response);
     if (response != null) {
         $(".txt-project-title").text(response.projectTitle)
         $(".project-number").text(response.projectNumber)
+        $(".txt-project-old-no").text(response.oldProjectNo)
         $(".txt-description").html(response.descriptionEng)
         $(".text-price").text(response.price)
         $(".text-startdate").text(response.projectCreatedDate)
@@ -58,6 +61,7 @@ function loadProjectDetailsByIdCallBack(response) {
         $(".text-client-name").text(response.clientName)
         $(".text-progress-status").text(response.projectStatus)
         $(".text-project-created-by").text(response.projectCreaterName)
+    //    console.log(response.status);
         $(".project_status_ddl").val(response.status)
         $(".ProjectCategory").text(response.projectCategory)
         $(".IsVIP").text(response.vipStatus)
@@ -78,17 +82,24 @@ function loadProjectDetailsByIdCallBack(response) {
         $(".Garage").text(response.garage)
         //   console.log(response);
 
+        //if (response.employee_Department.match(/Administ.*/) || response.employee_Department.match(/Secret.*/)) {
+        //    localStorage.setItem('employeeDepartment', lblDesignSection);
+        //}else if (response.employee_Department.match(/Tender.*/)) {
+        //    localStorage.setItem('employeeDepartment', lblTechnicalSection);
+        //} else {
+
         localStorage.setItem('employeeDepartment', response.employee_Department);
+        //  }
         localStorage.setItem('isEmployeeExist', response.isEmployeeExist);  // Used in child js for menu stepper retrieving ... by |\/|ati
         localStorage.setItem('isSectionHead', response.isSectionHead);      // Used in child js for menu stepper retrieving ... by |\/|ati           
         localStorage.setItem('isAccountant', response.isAccountant);        // Used in child js for menu stepper retrieving ... by |\/|ati
+         
 
-
-        response.isSectionHead === "Yes" && response.isAccountant === "No" ? $('.onlyForHeadSection').show() : $('.onlyForHeadSection').hide();
-        response.isAccountant === "Yes" ? $('.onlyFor_Accountant').show() : $('.NotFor_Accountant').show();
-
+        //   response.isSectionHead === "Yes" && response.isAccountant === "No" ? $('.onlyForHeadSection').show() : $('.onlyForHeadSection').hide();
+      //  response.isAccountant === "Yes" ? $('.onlyFor_Accountant').show() : $('.NotFor_Accountant').show();
+        $('.onlyFor_Accountant').show()
         fnLoadAttachmentDetailsById();
-       
+
         response.error_d > 0 ? error_PROJECT_MAIN_SECTION_Design_Stepper = true : error_PROJECT_MAIN_SECTION_Design_Stepper = false;
         response.error_t > 0 ? error_PROJECT_MAIN_SECTION_Technical_Stepper = true : error_PROJECT_MAIN_SECTION_Technical_Stepper = false;
         response.error_s > 0 ? error_PROJECT_MAIN_SECTION_Supervision_Stepper = true : error_PROJECT_MAIN_SECTION_Supervision_Stepper = false;
@@ -460,13 +471,13 @@ function fn_Project_Dynamic_Section_Tab(selectedTab, current_Step_Id) {
 
     divId.match('/') != null ? (divId = divId.replace('/', '\-')) : divId
     var gridID = `grid_` + divId;
-
+    $('.' + Main_Selected_Section.toString().replace(" ", "") + '_area').parent().find('.checkbtnValue').show()
+    /*
     localStorage.getItem('employeeDepartment') === Main_Selected_Section
         ?
-        $('.' + Main_Selected_Section.toString().replace(" ", "") + '_area').parent().find('.checkbtnValue').show()
         :
         $('.' + Main_Selected_Section.toString().replace(" ", "") + '_area').parent().find('.checkbtnValue').hide();
-
+    */
     $('.' + Main_Selected_Section.toString().replace(" ", "") + '_area').empty();
     $('.' + Main_Selected_Section.toString().replace(" ", "") + '_area').append
         (
@@ -576,6 +587,7 @@ function fnApprovedOrReturn_DDL(ddlName) {
 // --------------------- CHANGE PROJECT STATUS ---------------------
 
 function fnChangeProject_MainStatus(ddl) {
+     
     Swal.fire({
 
         title: areYouSureTitle,
@@ -626,3 +638,35 @@ function fnChangeProject_MainStatusCallBack(response) {
     swal(response.Value);
 }
 // --------------------- CHANGE PROJECT STATUS END ----------------------BY |\/|ati
+
+
+
+
+
+
+// ------------------- LOAD BRANCHES DDL 
+function fn_LoadStatuses() {
+    ajaxRequest({
+        commandName: 'DDL_Setup_Statuses', values:
+        {
+
+            Area: 'PROJECT',
+            Language: _currentLanguage
+        }, CallBack: fn_LoadStatuses_Callback
+    });
+}
+var fn_LoadStatuses_Callback = function (responseJSON) {
+
+    for (var i = 0; i < JSON.parse(responseJSON.Value).length; i++) {
+        $('.project_status_ddl').append(`<option value=` + JSON.parse(responseJSON.Value)[i].id + `>` + JSON.parse(responseJSON.Value)[i].value + `</option>`);
+        /*
+        if (i == 0) {
+
+            $('.project_status_ddl').append(`<option selected value=` + JSON.parse(responseJSON.Value)[i].id + `>` + JSON.parse(responseJSON.Value)[i].value + `</option>`);
+        } else {
+
+        }
+        */
+    }
+
+}

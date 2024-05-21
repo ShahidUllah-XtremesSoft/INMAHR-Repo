@@ -44,8 +44,10 @@ function fn_Load_Appraisal_Answers() {
 }
 
 function fn_Load_Appraisal_FormCallBack(response) {
+     
+    var db_response = JSON.parse(response.Value)[0];
+    var db_response_preDefiend_answers = JSON.parse(response.Value)[1];
 
-    var db_response = JSON.parse(response.Value);
     if (db_response.length > 0) {
 
         $('.append-appraisal-data').empty();
@@ -84,13 +86,22 @@ function fn_Load_Appraisal_FormCallBack(response) {
                                     <strong>`+ lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span>
                                     <div class="">
                                         <strong>`+ lblAns + ':' + `</strong>
+                                        <div class="" style="display: flex;">
                                         <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id=`+ db_response[i].question_Id + ` name=` + db_response[i].question_Id + `
-                                                  rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;">` + db_response[i].answer + `</textarea>
+                                                  rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;">` + db_response[i].answer + `</textarea> 
+                                             <p class='col-md-6' id='append-predefined-msgs`+ db_response[i].question_Id + `'></p>
+                                    </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                       `);
+                for (var z = 0; z < db_response_preDefiend_answers.length; z++) {
+                    if (db_response_preDefiend_answers[z].question_Id == db_response[i].question_Id)
+                        $(`#append-predefined-msgs` + db_response[i].question_Id + ``).append(`<button data-question-id='` + db_response[i].question_Id + `' onclick="fnPredefiendMsg_Clicked(this)" type="button" style="border: 1px solid darkgrey;border-radius: 20px;color: #0000007d;font-size: small; " class="btn  btn-outline-info">` + db_response_preDefiend_answers[z].preDefined_answer + `</button>`)
+                }
+
                 /* `+ appendFooter + `*/
             } else {
                 appendCategory = '';
@@ -100,9 +111,17 @@ function fn_Load_Appraisal_FormCallBack(response) {
                                     <strong>` + lblQ + '.' + question_Count + `</strong> <span>` + db_response[i].question + `</span>
                                     <div class="">
                                         <strong>`+ lblAns + ':' + `</strong>
+                                    <div class="" style="display: flex;">
                                         <textarea required class="form-control" cols="20" data-helper-text="" data-ui-id="" id=`+ db_response[i].question_Id + ` name=` + db_response[i].question_Id + `
                                                   rows="5" style="width:50%; overflow: hidden; overflow-wrap: break-word; resize: horizontal;">` + db_response[i].answer + `</textarea>
+                             <p class='col-md-6' id='append-predefined-msgs`+ db_response[i].question_Id + `'></p>
+                                        </div>
                                     </div>`)
+                for (var z = 0; z < db_response_preDefiend_answers.length; z++) {
+
+                    if (db_response_preDefiend_answers[z].question_Id == db_response[i].question_Id)
+                        $(`#append-predefined-msgs` + db_response[i].question_Id + ``).append(`<button data-question-id='` + db_response[i].question_Id + `' onclick="fnPredefiendMsg_Clicked(this)" type="button" style="border: 1px solid darkgrey;border-radius: 20px;color: #0000007d;font-size: small; " class="btn  btn-outline-info">` + db_response_preDefiend_answers[z].preDefined_answer + `</button>`)
+                }
 
             }
             /*
@@ -128,6 +147,21 @@ function fn_Load_Appraisal_FormCallBack(response) {
             $('#' + collapse_id_).collapse('show');
         }
     }
+}
+function fnPredefiendMsg_Clicked(e) {
+
+    var questiond_Id_parameter = e.getAttribute('data-question-id');
+    console.log(questiond_Id_parameter);
+     
+    var existingText = document.getElementsByName(questiond_Id_parameter)[0].value // $('.' + questiond_Id_parameter).val();
+    var clickedText = $(e).text();
+    var newText = existingText + ' ' + clickedText + ' , ';
+
+    document.getElementsByName(questiond_Id_parameter)[0].value = newText.trim();
+    $(e).remove();
+
+
+
 }
 function loadEmployeeProfile() {
 
@@ -225,7 +259,7 @@ var fnSaveAppraisalBulk_callback = function (response) {
     AppraisalId = JSON.parse(response.Value).insertedId;
     swal(response.Value);
     setTimeout(function () {
-        window.location.href ='/Request/Appraisal/Create'
+        window.location.href = '/Request/Appraisal/Create'
     }, 1000);
     //fnLoadAllEmployeesListAsPerDepartment();
 }

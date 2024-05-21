@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace INMA.HR.Services.Commands.Request
 {
-     
+
     #region ========== Load Appraisal Pending Requests 
 
     [Command(Name = "Setup_Appraisal_Permission_isAccess")]
@@ -120,7 +120,8 @@ namespace INMA.HR.Services.Commands.Request
         protected override object DoAction(object viewInput)
         {
             var model = base.MappedModel(new
-            {   Language = string.Empty,
+            {
+                Language = string.Empty,
 
             }, viewInput);
 
@@ -129,7 +130,7 @@ namespace INMA.HR.Services.Commands.Request
             CommandParameters _params = new CommandParameters();
 
             IDictionary<string, object> values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Appraisal_Template_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var _response = repository.GetDataSet<dynamic>(StoreProcedure.Appraisal_Template_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }
@@ -158,7 +159,7 @@ namespace INMA.HR.Services.Commands.Request
             CommandParameters _params = new CommandParameters();
 
             IDictionary<string, object> values = _params.Get(model);
-            var _response = repository.GetMultiple<dynamic>(StoreProcedure.Request_Appraisal_Answer_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+            var _response = repository.GetDataSet<dynamic>(StoreProcedure.Request_Appraisal_Answer_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
 
             return _response;
         }
@@ -252,7 +253,7 @@ namespace INMA.HR.Services.Commands.Request
 
             return response.ToList()[0];
 
-            
+
         }
 
     }
@@ -290,7 +291,7 @@ namespace INMA.HR.Services.Commands.Request
 
             return response.ToList()[0];
 
-            
+
         }
 
     }
@@ -331,7 +332,8 @@ namespace INMA.HR.Services.Commands.Request
             var model = base.MappedModel(new
             {
                 Id = 0,
-                LoggedInRoleName = string.Empty,
+                LoggedInRoleId = 0,
+                LoggedInEmployeeId = 0,
                 Language = string.Empty,
 
             }, viewInput);
@@ -357,11 +359,11 @@ namespace INMA.HR.Services.Commands.Request
             var model = base.MappedModel(new
             {
                 Appraisal_Id = 0,
-                LoggedInRoleName = string.Empty,               
+                LoggedInRoleName = string.Empty,
                 Remarks = string.Empty,
                 Status = string.Empty,
                 CreatedBy = 0,
-                isHR = 0,                
+                isHR = 0,
                 Language = string.Empty,
 
             }, viewInput);
@@ -377,11 +379,37 @@ namespace INMA.HR.Services.Commands.Request
         }
     }
     #endregion
+    #region ========== Request_Appraisal_Status_Update_By_Employee
+
+    [Command(Name = "Request_Appraisal_Status_Update_By_Employee")]
+    public class Request_Appraisal_Status_Update_By_EmployeeCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {
+                Appraisal_Id = 0,
+                Status = string.Empty,
+                Language = string.Empty,
+
+            }, viewInput);
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            var _response = repository.GetSingle<dynamic>(StoreProcedure.Request_Appraisal_Status_Update_By_Employee.ToString(), values, XtremeFactory._factory, XtremeFactory.connectionString);
+
+            return _response;
+        }
+    }
+    #endregion
 
     // -------------------- MANAGER REQUEST HISTORY AREA ---------------
     #region Load All Employees Self Pending Request
 
-   
+
     [Command(Name = "Employees_Request_Appraisal_Get")]
     public class Employees_Request_Appraisal_GetCommand : CamelCommandBase
     {
@@ -449,7 +477,7 @@ namespace INMA.HR.Services.Commands.Request
             {
                 AppraisalPerformanceModel = new List<AppraisalPerformanceModel>(),
                 CreatedBy = 0,
-                AppraisalId = 0, 
+                AppraisalId = 0,
                 Language = string.Empty
             }, viewInput);
 
@@ -486,14 +514,14 @@ namespace INMA.HR.Services.Commands.Request
             var model = base.MappedModel(new
             {
                 Id = 0,
-                AppraisalId = 0,                 
+                AppraisalId = 0,
                 Employee_Id = 0,
                 Employee_Department_Id = 0,
                 Employee_Department_Parent_Id = 0,
                 CreatedBy = 0,
                 AppraisalForm = string.Empty,
                 AppraisalFormArb = string.Empty,
-                LoggedInEmployee_RoleId = 0, 
+                LoggedInEmployee_RoleId = 0,
                 Year = string.Empty,
                 Language = string.Empty,
             }, v);
@@ -547,7 +575,7 @@ namespace INMA.HR.Services.Commands.Request
             {
                 Id = 0,
                 AppraisalId = 0,
-                Language = string.Empty, 
+                Language = string.Empty,
             }, viewInput);
 
             var repository = Ioc.Resolve<IRepository>();
@@ -621,7 +649,7 @@ namespace INMA.HR.Services.Commands.Request
         }
     }
     #endregion
-    
+
     #region ========== Load HR EMPLOYEE GET BY DEPARTMENTID 
 
     [Command(Name = "Appraisal_Permission_Get_AllEmployees_by_DepartmentWise")]
@@ -677,7 +705,7 @@ namespace INMA.HR.Services.Commands.Request
             var ProductList = new Dictionary<string, KeyValuePair<string, DataTable>>();
             ProductList.Add("@UD_Setup_Appraisal_Association_Multipe_Save", table);
             var response = repository.GetMultipleWithTableValuParam<dynamic>(StoreProcedure.Setup_Appraisal_Association_Multipe_Save.ToString(), values, ProductList, XtremeFactory._factory, XtremeFactory.connectionString);
-             
+
 
 
             return response.ToList()[0];

@@ -246,6 +246,9 @@
   <data name="lblDelete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="lblDeveloper" xml:space="preserve">
+    <value>Matiullah Zahir</value>
+  </data>
   <data name="lblDocumentAttachment" xml:space="preserve">
     <value>Document/Attachment </value>
   </data>

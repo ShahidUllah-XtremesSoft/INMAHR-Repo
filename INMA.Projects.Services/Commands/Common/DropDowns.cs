@@ -66,6 +66,53 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion  
+    #region ==========   PROJECT DDL
+
+    [Command(Name = "DDL_Project")]
+    public class DDL_Project_Command : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new { Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Project.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion  
+    #region ==========   Branches DDL
+
+    [Command(Name = "Branches_DDL")]
+    public class Branches_DDLCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new
+            {
+                Branch_Id = 0,
+                EmployeeId = 0,
+                UserId = 0,
+                RoleId = 0,
+                Language = string.Empty
+            }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Branches_DDL.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion  
     #region ==========   PROJECT No DDL
 
     [Command(Name = "DDL_Project_No")]
@@ -99,7 +146,7 @@ namespace INMA.Projects.Services.Project
 
         protected override object DoAction(object v)
         {
-            var model = base.MappedModel(new { LoggedInEmployeeId = 0 ,Language = string.Empty }, v);
+            var model = base.MappedModel(new { LoggedInEmployeeId = 0, Language = string.Empty }, v);
             values = _params.Get(model);
             return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_DDL_By_Role.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
@@ -126,6 +173,46 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion 
+    #region ==========   EMPLOYEE DDL
+
+    [Command(Name = "DDL_HR_Employee_For_Task")]
+    public class DDL_HR_Employee_For_TaskCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new { Project_Id = 0, Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_HR_Employee_For_Task.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion 
+    #region ==========     Section Heirarichy DDL
+
+    [Command(Name = "DDL_Section_Heirarichy")]
+    public class DDL_Section_HeirarichyCommand : CamelCommandBase
+    {
+        #region ==========   PARAMETERS
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+        CommandParameters _params = new CommandParameters();
+        #endregion
+
+        protected override object DoAction(object v)
+        {
+            var model = base.MappedModel(new { Language = string.Empty }, v);
+            values = _params.Get(model);
+            return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Section_Heirarichy.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion 
     #region ==========   LOAD EMPLOYEE BY DEPARTMENT ID DDL 
 
     [Command(Name = "DDL_HR_Employee_By_Department")]
@@ -139,12 +226,14 @@ namespace INMA.Projects.Services.Project
 
         protected override object DoAction(object v)
         {
-            var model = base.MappedModel(new {
+            var model = base.MappedModel(new
+            {
                 LoggedInUser = 0,
                 RoleId = 0,
                 LoggedInEmployeeId = 0,
-                LoggedInDepartmentId = 0, 
-                Language = string.Empty }, v);
+                LoggedInDepartmentId = 0,
+                Language = string.Empty
+            }, v);
             values = _params.Get(model);
             return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_HR_Employee_By_Department.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
@@ -337,7 +426,7 @@ namespace INMA.Projects.Services.Project
         }
     }
     #endregion
-     #region ==========   PROJECT  PARENT Section LOAD FROM SETUP_TYPE TABLE 
+    #region ==========   PROJECT  PARENT Section LOAD FROM SETUP_TYPE TABLE 
 
     [Command(Name = "DDL_Load_SetupType_By_ParentName")]
     public class DDL_Load_SetupType_By_ParentNameCommand : CamelCommandBase
@@ -350,7 +439,7 @@ namespace INMA.Projects.Services.Project
 
         protected override object DoAction(object v)
         {
-            var model = base.MappedModel(new { ParentType = string.Empty ,Language = string.Empty }, v);
+            var model = base.MappedModel(new { ParentType = string.Empty, Language = string.Empty }, v);
             values = _params.Get(model);
             return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Load_SetupType_By_ParentName.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
@@ -371,7 +460,7 @@ namespace INMA.Projects.Services.Project
 
         protected override object DoAction(object v)
         {
-            var model = base.MappedModel(new { SectionName= string.Empty, Language = string.Empty }, v);
+            var model = base.MappedModel(new { SectionName = string.Empty, Language = string.Empty }, v);
             values = _params.Get(model);
             return Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Department_GetBy_ProjectSection_Name.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
@@ -396,6 +485,67 @@ namespace INMA.Projects.Services.Project
 
             values = _params.Get(model);
             return repository.GetMultiple<dynamic>(ProjectStoreProcedure.Setup_Main_Section_DropdownByTypeName.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    [Command(Name = "DDL_Setup_Task_Statuses")]
+    public class DDL_Setup_Task_StatusesCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {              
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Setup_Task_Statuses.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    [Command(Name = "DDL_Setup_Task_Priority")]
+    public class DDL_Setup_Task_PriorityCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {              
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Setup_Task_Priority.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    [Command(Name = "DDL_Setup_Statuses")]
+    public class DDL_Setup_StatusesCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+            var model = base.MappedModel(new
+            {              
+                Area = string.Empty,
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            IDictionary<string, object> values = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            values = _params.Get(model);
+            return repository.GetMultiple<dynamic>(ProjectStoreProcedure.DDL_Setup_Statuses.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
         }
     }

@@ -1,5 +1,8 @@
-﻿$(function () {    
-    loadEmployeeVacationLeaveBalanceGrid();
+﻿$(function () {
+    setTimeout(function () {
+
+        loadEmployeeVacationLeaveBalanceGrid();
+    }, 100);
 });
 
 //| Employee Vaction Balance

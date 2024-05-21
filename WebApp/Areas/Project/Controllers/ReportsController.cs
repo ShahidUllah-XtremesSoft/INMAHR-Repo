@@ -19,6 +19,12 @@ namespace WebApp.Areas.Project.Controllers
             return View();
         }
 
+        [ActionName("project-summary-list")]
+        public ActionResult SummaryList()
+        {
+            return View("~/Areas/Project/Views/Reports/SummaryList.cshtml");
+        }
+
      
     }
 }

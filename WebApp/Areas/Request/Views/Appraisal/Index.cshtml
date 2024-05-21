@@ -132,7 +132,7 @@
         <br />
         <br />
 
-        <div class="row" style="display: grid;">
+        <div class="row" style="display: grid; display:none;">
             <div class="col-sm-2">   <button class="btn btn-success    @Resources.Common.PullLeft" id="btn-filter-attendance-record" data-toggle="modal" data-target=".bd-example-modal-lg">  @HRModuleUI.HumanResourceUI.lblEmployeesAttendance</button></div>
             <div class="col-sm-8">
                 <b>@HRModuleUI.HumanResourceUI.lblYearly @HRModuleUI.HumanResourceUI.lblPersonalAttendance</b>
@@ -171,7 +171,7 @@
                 </div>
             </div>
         </div>
-         
+
     </div>
 
 </div>
@@ -244,7 +244,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="appendButtons">   </div>
+                                        <div class="appendButtons">    </div>
+                                        <div class="appendButtons_For_User">    </div>
+                                        
 
                                     </div>
                                     <div class="col-md-6 ">
@@ -276,6 +278,70 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -400,7 +466,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close clearField" data-dismiss="modal" aria-hidden="true">×</button>
-                <h5 class="modal-title" id="">@Resources.HumanResourceUI.lblEmployeesAttendance</h5>
+                <h5 class="modal-title" id="">@HRModuleUI.HumanResourceUI.lblEmployeesAttendance</h5>
             </div>
 
             @{
@@ -423,6 +489,9 @@
         var lblremarks = '@HRModuleUI.HumanResourceUI.lblremarks';
         var lblApprove = '@HRModuleUI.HumanResourceUI.lblApprove';
         var lblDecline = '@HRModuleUI.HumanResourceUI.lblDecline';
+        var lblAgreed = '@HRModuleUI.HumanResourceUI.lblAgreed';
+      
+        var lblDisAgreed = '@HRModuleUI.HumanResourceUI.lblDisAgreed';
         var lblEdit = '@Resources.Global.lblEdit';
 
         var btnSave = '@Resources.Global.btnSave';

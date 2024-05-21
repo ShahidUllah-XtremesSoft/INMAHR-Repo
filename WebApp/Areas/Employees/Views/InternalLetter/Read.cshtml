@@ -18,10 +18,11 @@
                     <p class="sender-email">
                         <div class="form-group">
                             <div>
-                                <strong id=""> @HRModuleUI.HumanResourceUI.lblFrom:-<span id="divFromDepartment"></span>-<span id="divFrom"></span></strong>
-                                <a class="btnForward btn btn-info @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Forward')" style="color: white;"> @HRModuleUI.HumanResourceUI.lblForward <i class="   fa fa-mail-forward "></i></a>
-                                <a class="btnReply btn btn-danger @Resources.Common.PullRight  m-r-10" onclick="fnRedirectToSpecificScreen('Reply')" style="color: white;"><i class="   fa fa-mail-reply"></i> @HRModuleUI.HumanResourceUI.lblReply</a>
+                                <strong id=""> @HRModuleUI.HumanResourceUI.lblFrom:-<span id="divFromDepartment"></span>-<span id="divFrom"></span></strong> <br />
+                                <a class="btnForward btn btn-info @Resources.Common.PullRight btn-sm  " onclick="fnRedirectToSpecificScreen('Forward')" style="color: white;"> @HRModuleUI.HumanResourceUI.lblForward <i class="   fa fa-mail-forward "></i></a>
+                                <a class="btnReply btn btn-danger @Resources.Common.PullRight btn-sm  " onclick="fnRedirectToSpecificScreen('Reply')" style="color: white;"><i class="   fa fa-mail-reply"></i> @HRModuleUI.HumanResourceUI.lblReply</a>
                             </div>
+                                <br />
                             @*<div class="row">
                                     <div class="col-md-12">
                                         <a class="btn btn-success @Resources.Common.PullRight  m-r-10" href="@Url.Action("Reply","InternalLetter")"><i class="fa fa-reply"></i> @HRModuleUI.HumanResourceUI.lblReply</a>
@@ -111,7 +112,7 @@
             <div class="col-md-3  @Resources.Common.PullRight">
                 <div class=" ">
                     <div id="noSignature" style="display:none;">
-                        <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                        <button type="button" disabled class="btn   btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
                     </div>
                     <div id="loadSignature" style="display:none;">
 
@@ -142,7 +143,7 @@
 </div>
 @section scripts {
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-read.js?971522324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-read.js?@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 }
 
 

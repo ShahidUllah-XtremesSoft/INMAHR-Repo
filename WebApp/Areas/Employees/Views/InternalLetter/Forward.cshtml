@@ -65,7 +65,7 @@
 
                 <div class="col-sm-12">
                     <div class="btn-group">
-                        <button type="button" id="" data-toggle="modal" data-target="#modal-internal-letter-section-selection" class="btn btn-outline-info    active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSection</button>
+                        <button type="button" id="" data-toggle="modal" data-target="#modal-internal-letter-section-selection" class="btn btn-sm btn-outline-info    active" value="Pending"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSection</button>
 
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="col-sm-12">
                     <div class=" ">
                         <div id="noSignature" style="display:none;">
-                            <button type="button" disabled class="btn btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
+                            <button type="button" disabled class="btn btn-sm btn-danger @Resources.Common.PullRight m-r-10" style=" font-size: x-large;"> @HRModuleUI.HumanResourceUI.lblNoSignature</button>
                         </div>
                         <div id="loadSignature" style="display:none;">
 
@@ -106,8 +106,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <button type="button" class="btn btn-success  @Resources.Common.PullRight  m-r-10" id="btnSave"><i class="fa fa-send"></i>@HRModuleUI.HumanResourceUI.lblSend</button>
-                        <button type="button" class="btn btn-warning @Resources.Common.PullRight  m-r-10" onclick="fnUploadEmployeeSignature();"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSignature</button>
+                        <button type="button" class="btn btn-sm btn-success  @Resources.Common.PullRight  m-r-10" id="btnSave"><i class="fa fa-send"></i>@HRModuleUI.HumanResourceUI.lblSend</button>
+                        <button type="button" class="btn btn-sm btn-warning @Resources.Common.PullRight  m-r-10" onclick="fnUploadEmployeeSignature();"><i class=""></i> @HRModuleUI.HumanResourceUI.lblSignature</button>
 
                     </div>
                 </div>
@@ -164,6 +164,6 @@
 </div>
 @section scripts {
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-forward.js?+971522324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-forward.js?@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 }
 

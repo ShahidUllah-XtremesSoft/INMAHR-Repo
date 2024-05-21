@@ -254,7 +254,7 @@
         localStorage.setItem('MainApplicationModule_Id', $('#main-module-id').val());
 
 
-         //   debugger
+             
          //   var mainApplicationModule_Id = JSON.parse(localStorage.Menus)[0].mainApplicationModule_Id
 
 
@@ -263,9 +263,16 @@
 
         //    existingUserValue = { ...existingUserValue, MainApplicationModule_Id: mainApplicationModule_Id}
        //     localStorage.setItem('User', JSON.stringify(existingUserValue));
-        
+             
+            const db_Data = JSON.parse(roleMenus.Value).filter(item => item.isDefault_URL === true);
+ 
+            if (db_Data.length >0 && db_Data[0].isDefault_URL) {
+                window.location.href = db_Data[0].url;
+            } else {
 
             window.location.href = "/HumanResource/Employee/Profile";
+            }
+
         } else {
             Swal.fire({
                 icon: 'error',

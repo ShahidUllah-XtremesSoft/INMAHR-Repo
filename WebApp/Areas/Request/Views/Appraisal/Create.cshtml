@@ -26,7 +26,7 @@
                 <div class="tab-pane active" id="PendingAppraisalTab" role="tabpanel">
 
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-2">
                             <form id="frmAppraisal" name="frmAppraisal" action="/services/Xtreme/multipart" method="post">
 
                                 <!--type is required should be same as command name-->
@@ -39,8 +39,9 @@
                                 <input type="hidden" id="LM_Employee_Id" name="LM_Employee_Id" value="0" />
 
                                 <div class="chk_is_Access" style="display:none;">
-                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblYear</label>
-                                    <select class="form-control " id="Year" name="Year">
+                                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblYear</label><br />
+                                    <input type="text" class=" form-control" readonly name="Year" id="Year" />
+                                    @*<select class="form-control " id="Year" name="Year" >
 
                                         <option selected="" value="2023">2023</option>
                                         <option value="2024">2024</option>
@@ -61,7 +62,7 @@
                                         <option value="2039">2039</option>
                                         <option value="2040">2040</option>
 
-                                    </select>
+                                    </select>*@
 
                                 </div>
                             </form>
@@ -152,6 +153,7 @@
         var lblDecline = '@Resources.Global.lblDecline';
         var lblApproved = '@Resources.Global.lblApproved';
         var lblPending = '@HRModuleUI.HumanResourceUI.lblPending';
+        var lblAgreed = '@HRModuleUI.HumanResourceUI.lblAgreed';
         var lblSend = '@HRModuleUI.HumanResourceUI.lblSend';
         var lblRecordAlreadyExist = '@HRModuleUI.HumanResourceUI.lblRecordAlreadyExist';
         var lblYear = '@HRModuleUI.HumanResourceUI.lblYear';

@@ -237,7 +237,7 @@
 
     }
     var loadLetterOutboxGridCallBack = function (inputDataJSON) {
-        console.log(JSON.parse(inputDataJSON.Value));
+       // console.log(JSON.parse(inputDataJSON.Value));
 
         bindLetterOutboxGrid(JSON.parse(inputDataJSON.Value));
         // $('#inboxTable tbody').html('');
@@ -288,23 +288,23 @@
             { field: "id", title: "id", hidden: true },
             { field: "letterMultipleTableId", title: "LetterMultipleTableId", width: 20, hidden: true },
 
-            { title: "#", template: "<b>#= ++record #</b>", width: 5, },
+            { title: "#", template: "<b>#= ++record #</b>", width: 30, },
             {
-                field: "number", title: lblLetterNumber, width: 20, filterable: true, hidden: false,
+                field: "number", title: lblLetterNumber, width: 200, filterable: true, hidden: false,
                 template: "#if(isRead == false){#<a style='cursor:pointer;text-decoration:underline;font-weight:bold;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a> #} else {#<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=number#</a>#}#",
             },
-            { field: "departmentName", title: section, width: 40, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }},
+            { field: "departmentName", title: section, width: 200, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, minScreenWidth: 300},
             {
-                field: "subject", title: subject, width: 40, filterable: true, hidden: true,
+                field: "subject", title: subject, width: 200, filterable: true, hidden: true,
                 template: "<a style='cursor:pointer;text-decoration:underline;'  class='viewbutton' onClick=redirectToViewLetter(this)>#=subject#</a>",
             },
             {
-                field: "body", title: description, width: 70, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },
+                field: "body", title: description, width: 200, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, minScreenWidth: 800,
                 template: "<div style='font-weight:normal;'>#=body#</div>" //"#if(isRead == false){#<div style='font-weight:bold;'>#=body#</div>#}else{#<div style='font-weight:normal;'>#=body#</div>#}# ",
             },
             //{ field: "body", title: description, width: 60, filterable: true },
             {
-                field: "", title: dateTime, width: 20, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } },//createdDate
+                field: "", title: dateTime, width: 200, filterable: { cell: { operator: "contains", suggestionOperator: "contains" } }, minScreenWidth: 300,//createdDate
                 template: "<div  class='viewbutton'>#=createdDate#</div>" //"#if(isRead == false){#<div style='font-weight:bold;' >#=createdDate#</div> #} else {#<div  class='viewbutton'>#=createdDate#</div>#}#",
 
             },
@@ -313,16 +313,16 @@
 
             {
                 field: "",
-                width: 20,
-                title: attachment,
+                width: 100,
+                title: attachment, minScreenWidth: 300,
                 template: "<a style='font-size:20px;cursor:pointer;' onClick= viewAttachment('#=currentFileName#')  title='Download Attachment'>#if(currentFileName == null){}else{ if(currentFileName.split('.').pop().toLowerCase() == 'pdf'){#<img src='/Content/Images/pdf.png' style='width:30px;cursor:pointer;'/></a>#} else {#<img src='/Content/Images/ImageIcon.png' style='width:33px;height:34px;cursor:pointer;'/></a>#} }#"
             },
             {
                 field: "",
-                width: 12,
+                width: 100,
                 title: action,
                 //template:"<a style='font-size:20px;cursor:pointer;' onClick= redirectToViewLetter(this) title='Mark letter as read' ><span class='fa fa-book'></span></a>  <a style='font-size:20px;cursor:pointer;' onClick= deleteInternalLetter(this)  title='Delete Letter'><span class='fa fa-trash'></span></a>"
-                template: '<button type="button" class="btn btn-danger btn-xs" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
+                template: '<button type="button" class="btn btn-danger btn-sm" style="font-weight:normal;" onClick= deleteInternalLetter(this)> <i class="fa fa-trash"></i> ' + lblDelete+'</button>'
                 //template: '<div class="dropdown"><button class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="position:relative;"><a class="dropdown-item" href="\\#">Action</a><a class="dropdown-item" href="\\#">Another action</a><a class="dropdown-item" href="\\#">Something else here</a></div></div>'
 
 

@@ -104,6 +104,7 @@ function fnedit_DesignSection_GovernmentDocumentById(e) {
 
 var fn_Load_DesignSection_GovernmentDocumentByIdResponse = function (inputDataJSON) {
     //console.log(inputDataJSON)
+
     var gridColumns = [
         { field: "attachmentId", title: "attachmentId", hidden: true, width: 20 },
         { field: "DesignSection_Document_Id", title: "DesignSection_Document_Id", hidden: true },

@@ -38,7 +38,7 @@ var loadShortLeaveGridCallBack = function (inputDataJSON) {
 }
 var bindShortLeaveGrid = function (inputDataJSON) {
     var record = 0;
-    console.log(inputDataJSON)
+    // console.log(inputDataJSON)
     var gridColumns = [
         {
             title: '',
@@ -67,10 +67,10 @@ var bindShortLeaveGrid = function (inputDataJSON) {
         { field: "name", title: lblname, hidden: false, width: 50 },
         { field: "requestDate", title: requestDate, hidden: false, width: 20 },
         { field: "startTime", title: startTime, hidden: false, width: 20 },
-        { field: "endTime", title: returnTime, hidden: false, width: 20  },
+        { field: "endTime", title: returnTime, hidden: false, width: 20 },
         { field: "leaveType", title: leaveType, hidden: true, width: 20 },
         { field: "leaveTypeId", title: "leaveTypeId", hidden: true, width: 20 },
-        { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 20  },
+        { field: "numberOfHours", title: numberOfHourse, hidden: false, width: 20 },
         {
             field: "totalRemainingDays", title: lblStatus, hidden: false, width: 15, filterable: false,
             template: "#if (totalRemainingDays >=0 && _btnValue=='Pending' )" +
@@ -89,13 +89,13 @@ var bindShortLeaveGrid = function (inputDataJSON) {
         },
         {
             field: "leaveType", title: " ", filterable: false, width: 20, filterable: false,
-         //   template: "<span class='badge badge-info'>#:leaveType#</span>",
+            //   template: "<span class='badge badge-info'>#:leaveType#</span>",
             template: "#if (leaveType =='Short Leave' )" +
                 " { # <span class=' '>Personal Leave</span> # } else {# <span class=' '> #:leaveType#</span> # }#"
         },
-        
-        { field: "comment", title: comment, hidden: true, width: 40, filterable: false,  },
-        { field: "statusId", title: "StatusId", hidden: true, width: 30 , filterable: false },
+
+        { field: "comment", title: comment, hidden: true, width: 40, filterable: false, },
+        { field: "statusId", title: "StatusId", hidden: true, width: 30, filterable: false },
         {
             title: status,
             field: 'status',
@@ -266,23 +266,32 @@ function redirectToEmployeeDetailView(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $ShortLeaveGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
- //   console.log(dataItem)
-     
-    if (dataItem.isUpperLevel == 0) {
+    //   console.log(dataItem)
+    if (JSON.parse(localStorage.User).isHR == true && _btnValue == 'Approved') {
         localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
 
         window.location.href = '/Employees/Request/Detail/';
-
-    } else {
-
-        localStorage.setItem('EmployeeNumber', dataItem.email);
-        localStorage.setItem('LoggedInEmployeeId', dataItem.requested_EmployeeId);
-        localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.requested_EmployeeId);
-        localStorage.setItem('Employees_Request_Area', window.location.href.split('/').pop());
-        window.location.href = '/HumanResource/Employee/Detail/';
+    }
+    else {
 
 
 
+        if (dataItem.isUpperLevel == 0) {
+            localStorage.setItem('RequestDetails', JSON.stringify(dataItem));
+
+            window.location.href = '/Employees/Request/Detail/';
+
+        } else {
+
+            localStorage.setItem('EmployeeNumber', dataItem.email);
+            localStorage.setItem('LoggedInEmployeeId', dataItem.requested_EmployeeId);
+            localStorage.setItem('EmployeeIdToLoadLeaveBalance', dataItem.requested_EmployeeId);
+            localStorage.setItem('Employees_Request_Area', window.location.href.split('/').pop());
+            window.location.href = '/HumanResource/Employee/Detail/';
+
+
+
+        }
     }
 
 }

@@ -21,9 +21,9 @@ namespace INMA.HR.Services.Commands.Common
             {
                 Id = 0,
                 LoggedInEmployeeId = string.Empty,
-                LoggedInUserDepartmentId = 0,
                 LoggedInUserId = string.Empty,
                 LoggedInUserRoleId = 0,
+                LoggedInUserDepartmentId = 0,
                 MainApplicationModule_Id = 1,
                 Language = string.Empty
 

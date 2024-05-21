@@ -121,7 +121,7 @@ var BindkendoGrid = function ($gridid, $pageSize, $colModel, $data) {
         height: 550,
         scrollable: true,
         sortable: true,
-       // filterable: { mode: "row" },
+        // filterable: { mode: "row" },
         //filterable: true,
         selectable: true,
         pageable: {
@@ -246,21 +246,22 @@ var BindkendoGrid2 = function ($gridid, $pageSize, $colModel, $data) {
 
 
 }
-
-
 var BindHeiraricalkendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
     $("#" + $gridid).kendoGrid({
+        toolbar: ["excel"],
+        excel: {
+            fileName: "Export To Exceel.xlsx"
+        },
         dataSource: {
             data: $data,
             pageSize: $pageSize
         },
-        toolbar: ["search"],
         height: 550,
         scrollable: true,
         sortable: true,
-        //filterable: true,
-        //selectable: true,
+        filterable: { mode: "row" },
+        selectable: false,
         pageable: {
             pageSizes: [5, 10, 15, 20, 50, 100],
             width: 20,
@@ -287,36 +288,36 @@ var BindHeiraricalkendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
 
 }
+ 
+//function detailInit(e) {
 
-function detailInit(e) {
+//    $("<div/>").appendTo(e.detailCell).kendoGrid({
+//        dataSource: {
+//            //  data: $data, 
+//            //  type: "odata",
+//            //transport: {
+//            //    read: ""
+//            //  },
+//            serverPaging: true,
+//            serverSorting: true,
+//            serverFiltering: true,
 
-    $("<div/>").appendTo(e.detailCell).kendoGrid({
-        dataSource: {
-            //  data: $data, 
-            //  type: "odata",
-            //transport: {
-            //    read: ""
-            //  },
-            serverPaging: true,
-            serverSorting: true,
-            serverFiltering: true,
+//            filter: { field: "PropertyID", operator: "eq", value: e.data.propertyID }
+//        },
+//        scrollable: false,
+//        sortable: true,
+//        pageable: true,
+//        pageable: {
+//            pageSizes: [5, 10, 15, 20, 50, 100],
+//            width: 20,
+//        },
+//        columns: [
+//            { field: e.data.unitID, title: "UnitID", width: "10%" },
+//            { field: e.data.title, title: "Title", width: "10%" },
 
-            filter: { field: "PropertyID", operator: "eq", value: e.data.propertyID }
-        },
-        scrollable: false,
-        sortable: true,
-        pageable: true,
-        pageable: {
-            pageSizes: [5, 10, 15, 20, 50, 100],
-            width: 20,
-        },
-        columns: [
-            { field: e.data.unitID, title: "UnitID", width: "10%" },
-            { field: e.data.title, title: "Title", width: "10%" },
-
-        ]
-    });
-}
+//        ]
+//    });
+//}
 
 
 
@@ -349,7 +350,7 @@ var validateForm = function ($form) {
     return valid;
 }
 var customvalidateForm = function ($form) {
-   
+
     var valid = true;
     $('#' + $form + " input[required],#" + $form + " textarea[required],#" + $form + " select[required]").each(function () {
         if ($(this).hasClass('select2')) {
@@ -405,7 +406,7 @@ var BindComboForDefault = function (data, $combo, defaultoption) {
 }
 
 var BindComboForDefaultForJqueryMultiSelectDropDown = function (data, $combo, defaultoption) {
-    
+
     var $list = "";
     $combo.empty();
     var defaultoption = '<option value="00000000-0000-0000-0000-000000000000">' + defaultoption + '</option>'
@@ -421,7 +422,7 @@ var BindkendoMultiSelect = function (data, $combo, defaultoption) {
 
     var $list = "";
     $combo.empty();
-    
+
     var defaultoption = '<option value="00000000-0000-0000-0000-000000000000" selected>' + defaultoption + '</option>'
     // $combo.append($(defaultoption));
     // $combo.append($('<option />'));
@@ -498,7 +499,7 @@ function fnAvoidNegavtiveNumber(Inputvalue) { //Inputvalue is input field value 
 // Add TinyMCE
 function addTinyMCE() {
     // Initialize
-   
+
     tinymce.init({
         selector: '.editor',
         themes: 'advanced',
@@ -516,7 +517,7 @@ function addTinyMCE() {
 }
 $(document).ready(function () {
     setTimeout(function () {
-    
+
         addTinyMCE();
 
     }, 500);

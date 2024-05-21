@@ -6,7 +6,7 @@
     DDL_Attendance_Leave,
     DDL_Department_Parent_Section,
     Setup_Type_DropdownByTypeName_New,
-   
+
     Setup_Type_DropdownByTypeName_For_ShortLeave,
     Get_All_Count_Notifications,
     Notification_Save,
@@ -115,7 +115,7 @@
     HR_Rule_Delete,
     HR_Rule_UpdateStatus,
     #endregion
-    
+
     #region Company Rules
     HR_Penalty_Save,
     HR_Penalty_List,
@@ -339,8 +339,8 @@
     Setup_PublicHoliday_Save,
     Setup_PublicHoliday_Delete,
     Setup_PublicHoliday_Get,
-    
-    
+
+
     Setup_Allowance_Save,
     Setup_Allowance_Delete,
     Setup_Allowance_Get,
@@ -398,6 +398,7 @@
     Appraisal_Request_Delete,
     Request_Appraisal_Status_Update,
     Request_Appraisal_Update,
+    Request_Appraisal_Status_Update_By_Employee,
     Appraisal_Get_AllEmployees_by_DepartmentWise,
     Appraisal_Get_LineManager_by_DepartmentWise,
 
@@ -516,7 +517,7 @@ public enum ProjectStoreProcedure
     Contractor_Delete,
     Contractor_Details_By_Id,
     Contractor_Edit_By_Id,
-    
+
 
     #endregion
 
@@ -554,6 +555,7 @@ public enum ProjectStoreProcedure
     Notification_Details_By_Id,
 
     Notification_Personal_GetAll,
+    Notification_Personal_ReadAll,
     Notification_Employee_GetAll,
     #endregion
 
@@ -575,8 +577,11 @@ public enum ProjectStoreProcedure
     DDL_ProjectCategoryType_In_Setup_TypeDetail_Get,
     DDL_Project,
     DDL_Project_No,
+    Branches_DDL,
     Project_DDL_By_Role,
     DDL_HR_Employee,
+    DDL_HR_Employee_For_Task,
+    DDL_Section_Heirarichy,
     DDL_HR_Employee_By_Department,
     DDL_Project_MainType_In_Setup_Type,
     DDL_Project_SubSection_In_Setup_TypeDetail,
@@ -589,17 +594,21 @@ public enum ProjectStoreProcedure
     DDL_TECHNICAL_SECTION_Project_Setup_TypeDetail_Deleted_Get,
     DDL_Load_SetupType_By_ParentName,
     DDL_Department_GetBy_ProjectSection_Name,
+    DDL_Setup_Task_Statuses,
+    DDL_Setup_Task_Priority,
+    DDL_Setup_Statuses,
     #endregion
 
     #region SMS
     SMS_Save,
-    SMS_GetAll ,
+    SMS_GetAll,
     #endregion
 
     #region REPORTS
     Reports_DesignSection_GetBySectionId,
     Reports_TechnicalSection_GetBySectionId,
     Report_Summary_GetByParamters,
+    Report_Summary_GetByParameters_New,
     Report_Summary_for_Grid,
     #endregion
     #region Project Dashbaord
@@ -607,9 +616,55 @@ public enum ProjectStoreProcedure
     Project_Dashboard_CountByCategory_Get,
     Project_Dashboard_ClientMeetingContractorCount_Get,
     Project_Dashboard_IssueCountByStatus_Get,
-    Project_Dashboard_ProjectCountByStatus_Get,
     Project_Dashboard_ProjectAndSectionCount_Get,
     Project_SubSectionRecordBySectionInDashboard_Get,
+    Project_Dashboard_Document_Expiry_Get,
+    #endregion
+
+    #region Project_Dashboard_one
+    Dashboard_One_Project_Task_with_Details_Getby_Project_Id,
+    Dashboard_One_Project_total_Getby,
+    Dashboard_One_Project_total_Getby_New,
+    Dashboard_One_Projects_Getby_Status_Id,
+    Dashboard_One_Projects_Getby_Status_Text,
+    Dashboard_One_Projects_Getby_Tender,
+    Dashboard_One_Project_Summary_Getby_Project_No,
+    Dashboard_One_Project_STEPPER_Summary_Getby_Project_Id,
+    Dashboard_One_Project_STEPPER_Summary_Getby_Project_Id_and_SectionId,
+    Dashboard_One_Project_Summary_Document_Expiry_Getby_Project_No,
+    #endregion
+    #region Project_Dashboard_Two
+    Dashboard_Two_Get_Projects_by_Year,
+    Dashboard_Two_Get_Project_Tenders_by_Year,
+    Dashboard_Two_Get_Delay_Projects_basedOn_Task,
+    Dashboard_Two_Projects_Getby_Month_name,
+    Dashboard_Two_Tender_Projects_Getby_Month_name,
+    #endregion
+
+    #region Employee Dashboard
+    Project_Employee_Dashboard,
+
+
+
+
+    Project_Task_By_Employee_Id,
+    Project_Task_Details_By_Employee_Id,
+    Project_Task_Seen_Status_Update_By_Employee_Id,
+    Project_Sub_Task_Status_Update_By_Employee_Id,
+    Project_Task_Log_Save,
+    Pre_Defined_MSGS_Get,
+    Project_Task_with_Details_Get,
+    Project_Task_Get_By_Project_Id,
+    #endregion
+
+    #region TASK
+    Project_Task_Get,
+    Project_Task_Save,
+    Project_Task_Edit_By_Id,
+    Project_Task_Detail_By_Id,
+    Project_Task_Attachment_By_Id,
+    Project_Task_Log_by_TaskId,
+    Project_Task_Delete_By_Id,
     #endregion
 
 }

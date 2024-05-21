@@ -23,12 +23,14 @@ namespace WebApp.StreamProviders
         public override string GetLocalFileName(HttpContentHeaders headers)
         {
             // var fileName_ = headers.ContentDisposition.FileName.ToString();
-            var fileName_ = System.IO.Path.GetFileName(headers.ContentDisposition.FileName.Replace("\"", "")).Split('.')[0];
+            var fileName_ = System.IO.Path.GetFileName(headers.ContentDisposition.FileName.Replace("\"", "")).Split('.')[0];            
+            fileName_ = fileName_.Replace(" ", ""); // Remove spaces from the file name
 
             try
             { 
                 var ext = System.IO.Path.GetExtension(headers.ContentDisposition.FileName.Replace("\"", ""));
                 // return "XtremeTech-" + Guid.NewGuid().ToString() + ext;
+                ext = ext.Replace(" ", ""); // Remove spaces from the file name
                 return fileName_+"__" + Guid.NewGuid().ToString() + ext;
             }
             catch (Exception ex)

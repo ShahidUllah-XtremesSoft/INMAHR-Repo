@@ -175,7 +175,7 @@ function fn_Load_Appraisal_Form_For_ManagerCallBack(response) {
             '<td colspan="4" style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="totalPerformanceScore_of_All_Columns">0</strong></td>' +
 
             '</tr>' +
-            '<tr style="border: 1px solid; background: #cde627;" class="TotalPercentageScores">' +
+            '<tr   style="border: 1px solid; background: #cde627;display:none;" class="TotalPercentageScores">' +
             '<td style="text-align:center;border-right: 1px solid;border-left: 1px solid;" class=" "><strong> ' + lblPercentage + '  </strong></td>' +
             '<td colspan="4" style="text-align:center;border-right: 1px solid;font-size: x-large;" class=" "><strong id="totalPercentage_of_All_Columns">0  </strong></td>' +
             '</tr>' +

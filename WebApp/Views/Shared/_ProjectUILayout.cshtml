@@ -138,13 +138,13 @@
 
 <body class="navbar-fixed sidebar-nav fixed-nav">
     @*<div id="RequestLoader" class="modal">
-        <div class="center">
-            <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150" />
-            <h3>@Resources.Global.lblLoading</h3>
-        </div>
-    </div>*@
+            <div class="center">
+                <img src="~/Content/Images/logo.png" alt="Loader" width="150" height="150" />
+                <h3>@Resources.Global.lblLoading</h3>
+            </div>
+        </div>*@
     @{
-     //   Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
+        //   Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.cshtml");
         //Html.RenderPartial("~/Areas/HumanResource/Views/Shared/PartialViews/_CompanyNearToExpireDocument.cshtml");
 
     }
@@ -159,16 +159,16 @@
                     <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a>
                 </li>
             </ul>
-          
+
             <ul class="nav navbar-nav hidden-md-down @Resources.Common.PullRight">
                 @*<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
-                    <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('CompanyDocument');" id="liNewToExpireCompanyDocument"><i class="fa fa-file-o"></i> @Resources.Global.lblCompanyDocument <span class="badge badge-danger" id="companyDocumentCount">0</span></a>
+                        <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-bell"></i><span class="tag tag-pill tag-danger" id="spanNotificationCount">0</span></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('EmployeeDocument');" id="liNewToExpireDocument"><i class="fa fa-file-o"></i> @HRModuleUI.HumanResourceUI.lblDocument <span class="badge badge-danger" id="documentCount">0</span></a>
+                            <a class="dropdown-item" href="#" onclick="viewNearToExpireDocumentsModalGrid('CompanyDocument');" id="liNewToExpireCompanyDocument"><i class="fa fa-file-o"></i> @Resources.Global.lblCompanyDocument <span class="badge badge-danger" id="companyDocumentCount">0</span></a>
 
-                </div>
-            </li>*@
+                        </div>
+                    </li>*@
 
 
                 <li class="nav-item p-x-1">  </li>
@@ -218,12 +218,13 @@
 
     <footer class="footer">
         @*<span class="text-left">
-            
-            <a href="https://inma.ae">@Resources.Global.lblInma</a>  &copy; @DateTime.Now.Year
 
-        </span>*@
+                <a href="https://inma.ae">@Resources.Global.lblInma</a>  &copy; @DateTime.Now.Year
+
+            </span>*@
         <span class="@Resources.Common.PullRight">
-            @Resources.Global.lblPoweredBy <a href="https://inma.ae"  </a>@Resources.Global.lblInma  &copy; @DateTime.Now.Year
+            @*@Resources.Global.lblPoweredBy <a href="https://inma.ae"  </a>@Resources.Global.lblInma  &copy; @DateTime.Now.Year*@
+            @Resources.Global.lblPoweredBy <a href="~/Home/Developer">@Resources.Global.lblDeveloper    </a>
         </span>
     </footer>
 
@@ -306,12 +307,12 @@
 
     <script src="~/Scripts/tinymce.min.js"></script>
     @*<script src="~/Scripts/FunctionalityJs/Common/leave-setup.js"></script>*@
-    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
-    <script src="~/JS/appCommands.min.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/JS/appCommands.min.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
     @*<script src="~/Scripts/FunctionalityJs/Common/common-drop-downs.js"></script>*@
     @*<script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js"></script>*@
 
-    <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
     @*<script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js"></script>*@
 </body>
 
@@ -549,12 +550,12 @@
         var loggedUserName = _currentLanguage == 'en-US' ? (JSON.parse(localStorage.getItem('User')).employeeNameEng) : (JSON.parse(localStorage.getItem('User')).employeeNameArb);
         loggedUserName = '@Resources.Global.Welcome  ' + loggedUserName;
         $('#LoggedInEmployeeName').text(loggedUserName);
-        
+
         setTimeout(function () {
             addTinyMCE();
 
         }, 200);
-         
+
 
 
     });
@@ -563,6 +564,7 @@
 
     $('#btn-logout').click(function () {
         window.location.href = '/User/Login';
+        localStorage.clear();
     });
 
 
@@ -627,7 +629,7 @@
     //}
 
     // Add TinyMCE
-    
+
     function addTinyMCE() {
 
 
@@ -651,6 +653,6 @@
             $('.tox-notifications-container').hide();  //Hide Yellow label which comes on editor body .
         }, 850);
     }
-    
+
 
 </script>

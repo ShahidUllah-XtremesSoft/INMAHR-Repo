@@ -19,6 +19,7 @@
                 <div class="card-block">
 
                     <input type="hidden" name="Id" id="Id" value="0">
+                    <input type="hidden" name="Department_Id" id="Department_Id" value="0">
                     <input type="hidden" name="HR_Employee_Id" id="HR_Employee_Id" value="0">
                     <input type="hidden" name="CreatedBy" id="CreatedBy" value="0" />
                     <input type="hidden" name="ProjectStatus" id="ProjectStatus" value="0%" />
@@ -33,7 +34,7 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <label class="col-form-label">@ProjectUI.ProjectUI.lblClient </label> <span style="color: red">*</span><br />
+                                <label class="col-form-label">@ProjectUI.ProjectUI.lblClient </label> <span style="color: red"> *</span><br />
                                 <input class="form-control " id="ClientDDL" required style="width:70%" />
                                 <input type="hidden" class="form-control" id="Client_Id" name="Client_Id" value="0" />
                                 <div class="input-group-append">
@@ -54,9 +55,9 @@
                                 <input type="text" class="form-control pname" name="NameEng" id="ProjectName" value="" autocomplete="off" placeholder="Enter Name" required>
                             </div>
                         </div>
-                        <div class="col-sm-2" style="display:none;">
+                        <div class="col-sm-2" style="display:block;">
                             <div class="form-group">
-                                <label class="col-form-label">@ProjectUI.ProjectUI.lblOld @ProjectUI.ProjectUI.lblProject #</label><br />
+                                <label class="col-form-label"> @ProjectUI.ProjectUI.lblProject #</label><br />
                                 <input type="number" class="form-control pname" name="OldProjectNo" id="OldProjectNo" value="0">
                             </div>
                         </div>
@@ -69,11 +70,11 @@
 
 
                         @*<div class="col-sm-6" id="ProfileImageDiv">
-                            <div class="form-group">
-                                <label class="col-form-label">@Resources.Global.lblDocumentAttachment   </label><br />
-                                <input type="file" class="form-control" name="ProjectImage" id="ProjectImage" multiple />
-                            </div>
-                        </div>*@
+                                <div class="form-group">
+                                    <label class="col-form-label">@Resources.Global.lblDocumentAttachment   </label><br />
+                                    <input type="file" class="form-control" name="ProjectImage" id="ProjectImage" multiple />
+                                </div>
+                            </div>*@
 
 
                     </div>
@@ -87,12 +88,12 @@
                         </div>
                     </div>
                     @*<div class="row">
-                        <div class="col-sm-12"  style="display:none;">
-                            <div class="form-group">
-                                <textarea type="text" class="form-control editor" name="DescriptionArb" id="DescriptionArb" value=""></textarea>
+                            <div class="col-sm-12"  style="display:none;">
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control editor" name="DescriptionArb" id="DescriptionArb" value=""></textarea>
+                                </div>
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
 
 
                     <div class="row">
@@ -142,7 +143,13 @@
 
                             </div>
                         </div>
-                        <div class="col-sm-2"> </div>
+                        <div class="col-sm-2">
+
+                            <label class="btn btn-secondary       text-white" for="isTender" style="margin-top: 36%; width: 100%;">
+                                <input type="checkbox" class="fnCheckValue" onchange="fnCheckValue(this);" name="isTender" value="0" id="isTender">  <font style="vertical-align: inherit; font-weight: normal;">@ProjectUI.ProjectUI.lblisTender</font>
+                            </label>
+
+                        </div>
 
                     </div>
                     <div class="row">
@@ -155,14 +162,14 @@
 
                     </div>
                     @*<div class="card-footer">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button class="btn btn-success  pull-right" id="btn-save-project"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success  pull-right" id="btn-save-project"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
 
-                                <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                    <a href="@Url.Action("List","Project")" class="btn btn-danger  pull-right  m-r-10" id=""> @Resources.Global.btnCancel</a>
+                                </div>
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                 </div>
             </div>
         </form>

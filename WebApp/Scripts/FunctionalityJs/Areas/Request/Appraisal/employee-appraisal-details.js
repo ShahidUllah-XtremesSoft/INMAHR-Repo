@@ -74,7 +74,7 @@ function redirecttoEdit() {
 
 function fn_Load_Appraisal_FormCallBack(response) {
 
-    var db_response = JSON.parse(response.Value);
+    var db_response = JSON.parse(response.Value)[0];
 
 
     if (db_response.length > 0) {
@@ -97,6 +97,7 @@ function fn_Load_Appraisal_FormCallBack(response) {
             } else {
 
                 $('#Remarks').hide();
+
             }
         } else {
 
@@ -109,6 +110,38 @@ function fn_Load_Appraisal_FormCallBack(response) {
                                                     </div>
                                                 </div>`);
             $('#Remarks').hide();
+        }
+
+
+        if (JSON.parse(localStorage.getItem('User')).employeeId == AppraisalEmployeeId) {
+            if (db_response[0].status == 'Completed') {
+                 
+                var disabled_css = ''
+                if (db_response[0].isUserAgreed != null) {
+                    disabled_css = 'disabled'
+                    var employeeName = $('#EmployeeName').text();
+                    $('.appendButtons_For_User').append(`<div  class="card  ">
+                                                    <div class="row">
+                                                    <div class="col-md-5">
+                                                        <button class="btn btn   ` + PullLeft + `" id="">  ` + employeeName + ` :-</button>                                                       
+                                                    </div>
+                                                    <div class="col-md-7">                                                        
+                                                        <button   class="btn btn-primary   ` + PullLeft + `" id="">  ` + db_response[0].isUserAgreed + `</button>
+                                                    </div>
+                                                    </div>
+                                                </div>`);
+                } else {
+
+                    $('.appendButtons_For_User').append(`<div  class="card-footer  ">
+                                                    <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button  onclick="fn_Update_Appraisal_Status($(this),'Agreed')" class="btn btn-outline-success   ` + PullLeft + `" id=""><i class="fa fa-check"></i>  ` + lblAgreed + `</button>
+                                                        <button  onclick="fn_Update_Appraisal_Status($('#question-answer` + collapse_id_ + `'),'Disagreed')" class="btn btn-outline-danger   ` + PullLeft + `" id=""><i class="fa fa-remove"></i> ` + lblDisAgreed + `   </button>
+                                                    </div>
+                                                    </div>
+                                                </div>`);
+                }
+            }
         }
 
 
@@ -185,6 +218,29 @@ function fn_Load_Appraisal_FormCallBack(response) {
         }
 
     }
+}
+
+function fn_Update_Appraisal_Status(e, bntStatus) {
+
+    ajaxRequest({
+        commandName: 'Request_Appraisal_Status_Update_By_Employee',
+        values:
+        {
+            Appraisal_Id: AppraisalId,
+            Status: bntStatus,
+            Language: _currentLanguage == null ? '' : _currentLanguage
+        }, CallBack: fn_Update_Appraisal_Status_callback
+    });
+
+}
+
+var fn_Update_Appraisal_Status_callback = function (response) {
+    swal(response.Value);
+
+    setTimeout(function () {
+
+        location.reload();
+    }, 1500);
 }
 
 function fnSaveRecord(e, bntStatus) {

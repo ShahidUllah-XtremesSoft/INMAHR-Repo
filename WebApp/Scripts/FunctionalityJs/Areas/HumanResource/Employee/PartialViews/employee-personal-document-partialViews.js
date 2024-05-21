@@ -46,7 +46,9 @@ $(function () {
                     var response = JSON.parse(response);
                     setTimeout(function () {
 
-                        window.location.href = '/User/Login';
+                        if ($('#employeePersonalDocumentGrid tbody tr').length <= 1) {
+                            window.location.href = '/User/Login';
+                        }
                     }, 500);
                     //$('#PersonalDocumentId').val(response.insertedId);
                     //if (response.type != 'erorr') {
@@ -100,13 +102,13 @@ var loadPersonalDocumentsGridCallBack = function (inputDataJSON) {
         }
         var classColor = '';
         if (item.totalDays <= 0) {
-          //  classColor = 'badge badge-danger';
+            //  classColor = 'badge badge-danger';
             classColor = ' ';
         } else if (item.totalDays <= 29) {
-          //  classColor = 'badge badge-warning';
+            //  classColor = 'badge badge-warning';
             classColor = ' ';
         } else {
-           // classColor = 'badge badge-success';
+            // classColor = 'badge badge-success';
             classColor = ' ';
         }
         $('#employeePersonalDocumentGrid tbody').append(

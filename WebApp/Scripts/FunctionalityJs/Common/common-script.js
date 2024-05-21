@@ -101,7 +101,7 @@ var ajaxRequestAsync = function (options) {
 }
 
 
-var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
+var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data, $gridHeight = 550) {
 
     $("#" + $gridid).kendoGrid({
         //  toolbar: ["excel", "pdf"],
@@ -117,7 +117,7 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
         },
 
         // mobile: "phone",
-        height: 550,
+        height: $gridHeight,
         scrollable: true,
         sortable: true,
 
@@ -154,7 +154,8 @@ var bindEditAblekendoGrid = function ($gridid, $pageSize, $colModel, $data) {
 
 }
 
-var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550) {
+var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable = false, height = 550, $pageable = true) {
+
     $("#" + $gridid).kendoGrid({
         //toolbar: ["excel", "pdf", "search"],
         //pdf: {
@@ -179,11 +180,12 @@ var bindKendoGrid = function ($gridid, $pageSize, $colModel, $data, selectable =
         // editable:false,
         filterable: { mode: "row" },
         selectable: selectable,
-
-        pageable: {
-            pageSizes: [50, 100, 250, 500, 1000],
-            width: 20,
-        },
+       // pageable: $pageable
+        pageable: ($pageable === true) ? { pageSizes: [50, 100, 250, 500, 1000], width: 20 } : false,
+        //pageable: {
+        //    pageSizes: [50, 100, 250, 500, 1000],
+        //    width: 20,
+        //},
         columns: $colModel,
         dataBinding: function () {
             record = (this.dataSource.page() - 1) * this.dataSource.pageSize();// this is use to add dynamic serial number in grid 
@@ -389,7 +391,7 @@ var bindkendoGrid2 = function ($gridid, $pageSize, $colModel, $data) {
 }
 
 
-var bindHeiraricalkendoGrid = function ($gridid, $pageSize, $colModel, $data) {
+var bindHeiraricalkendoGrid = function ($gridid, $pageSize, $colModel, $data, height = 550) {
 
     $("#" + $gridid).kendoGrid({
         dataSource: {
@@ -397,7 +399,7 @@ var bindHeiraricalkendoGrid = function ($gridid, $pageSize, $colModel, $data) {
             pageSize: $pageSize
         },
         toolbar: ["search"],
-        height: 550,
+        height: height,
         scrollable: true,
         sortable: true,
         //filterable: true,
@@ -487,7 +489,7 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
 
         }
         */
-
+        /*
         if ($steps[index].approved_file > 0) {
 
             //stepper.find('.k-step-done').css("background-color", "#a1f94a9c");
@@ -496,11 +498,12 @@ var bindkendoStepper = function ($stepperId, $linear, $steps, $onActivate, $onSe
 
         } if ($steps[index].return_file > 0) {
 
-             $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "ridge");
-           // $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "1px ridge");
+            $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "ridge");
+            // $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "1px ridge");
             //  $(stepperr.steps()[index].element[0]).css("background-color", "mistyrose").css("border", "groove");
 
         }
+         */
 
 
         //---------- FOR MAIN SECTION

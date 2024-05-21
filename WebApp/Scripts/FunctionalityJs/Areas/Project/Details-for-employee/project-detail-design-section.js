@@ -143,8 +143,8 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
     var pass_GridName = localStorage.getItem('grid_id');
 
     //  var MainStepper_ = $('#project-section-stepper').data('kendoStepper').selectedStep.options.conditionalField;
-    //  console.log(MainStepper_);
-    // console.log(JSON.parse(inputDataJSON.Value));
+   //    console.log(MainStepper_);
+    //  console.log(JSON.parse(inputDataJSON.Value));
     if (pass_GridName != "") {
 
         var gridTemplate = '';
@@ -242,9 +242,9 @@ var fnLoadDesignSection_Document_CallBacck = function (inputDataJSON) {
                     "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_DesignSection_SubSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
                     " <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
                     "#}" +
-                    "else if(statusForCondition !=null && localStorage.employeeDepartment.match(/Design Section.*/)){ #" +
-                    "  #if(!statusForCondition.match(/approve.*/) && localStorage.employeeDepartment.match(/Design Section.*/)){ # <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> #}#" +
-                    "#}" +
+                  //  "else if(statusForCondition !=null && localStorage.employeeDepartment.match(/Design Section.*/)){ #" +
+                 //   "  #if(!statusForCondition.match(/approve.*/) && localStorage.employeeDepartment.match(/Design Section.*/)){ # <button type='button' onclick='fn_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> #}#" +
+                  //  "#}" +
                     "else { ''} #"
 
 
@@ -517,6 +517,8 @@ $('#btn-design-section-upload-document').click(function () {
                 buttonRemovePleaseWait('btn-design-section-upload-document', save, 'save');
 
                 document.getElementById("frmAddUpdate_DesignSection_Document").reset();
+                document.getElementById("DesignSection_Document_NoExpiry").value = 1;
+
                 swal(response);
 
                 var messageResponseParse = JSON.parse(response);

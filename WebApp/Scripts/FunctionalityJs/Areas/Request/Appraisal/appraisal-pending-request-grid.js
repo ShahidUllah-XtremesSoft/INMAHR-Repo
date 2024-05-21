@@ -57,16 +57,14 @@ var bindAppraisalPendingGrid = function (inputDataJSON) {
             //      "else{ #<a style='font-size:20px;cursor:pointer;' onClick= see_AppraisalDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>#}#"
             //    template: `#if(status == 'Pending' || status == 'Declined')
             //   template: `#if((isManagerApproved==0  || isHRApproved==0  || isUpperManagmentApproved==0)  && statusForCondition == 'Declined')
-            template: `#if(   statusForCondition.match(/Pending*/) || statusForCondition.match(/Declined*/) || statusForCondition.match(/Returned*/)  )
+            template: `#if(   statusForCondition.match(/Pending*/))
 {
 #
 <button type="button" onclick="send_AppraisalPendingGridById(this);"   class="btn-sm btn btn-info    waves-effect" style="font-size: smaller;margin-top: -5px;">` + lblSend + `</button>
 <a style='font-size:20px;cursor:pointer;' onClick=edit_AppraisalPendingGridById(this)  title"` + lblEdit + ` "><span class='fa fa-edit'></span></a>
-<a style='font-size:20px;cursor:pointer;' onClick= see_AppraisalDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>
  <a style='font-size:20px;cursor:pointer;' onClick=delete_AppraisalPendingGridById(this)  title"` + lblDelete + `"><span class='fa fa-trash'></span></a>
-
 #
-}else 
+}else if( statusForCondition.match(/Declined*/) || statusForCondition.match(/Returned*/))
 {
 #
 <a style='font-size:20px;cursor:pointer;' onClick= see_AppraisalDetailsById(this)  title='See Detail '><span class='fa fa-eye'></span></a>
@@ -113,7 +111,7 @@ function send_AppraisalPendingGridById(event) {
         }
     }).then(function (restult) {
         if (restult.value) {
-            ajaxRequest({ commandName: 'Request_Appraisal_Status_Update', values: { Id: send_dataItem.appraisalId, LoggedInRoleName:JSON.parse(localStorage.getItem('User')).roleName, Language: _currentLanguage }, CallBack: status_AppraisalPendingGridByIdCallBack });
+            ajaxRequest({ commandName: 'Request_Appraisal_Status_Update', values: { Id: send_dataItem.appraisalId, LoggedInRoleId: JSON.parse(localStorage.getItem('User')).roleId, LoggedInEmployeeId: JSON.parse(localStorage.getItem('User')).employeeId, Language: _currentLanguage }, CallBack: status_AppraisalPendingGridByIdCallBack });
         }
     });
     var status_AppraisalPendingGridByIdCallBack = function (response) {

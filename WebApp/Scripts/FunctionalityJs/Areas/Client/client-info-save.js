@@ -10,9 +10,10 @@ $(function () {
         fnEditClientById(parameterId);
     }
 
-
-
+     
+    loadCityDropdownListEng();
     fnLoadCityByNationalityId(0)
+
 
     $("#NationalityDDL").kendoDropDownList({
         dataTextField: "name",
@@ -121,7 +122,7 @@ $(function () {
 
     //Load Lists to Local Storage
     function loadCityDropdownListEng() {
-        ajaxRequest({ commandName: 'Setup_City_Get', values: { HR_Nationality_Id: $('#NationalityDDL').val(), Language: 'en-US' }, CallBack: fnloadCityDropdownListEngCallBack });
+        ajaxRequest({ commandName: 'Setup_City_Get', values: { HR_Nationality_Id: $('#NationalityDDL').val() == '' ? 234 : $('#NationalityDDL').val(), Language: 'en-US' }, CallBack: fnloadCityDropdownListEngCallBack });
     }
     function fnloadCityDropdownListEngCallBack(response) {
 

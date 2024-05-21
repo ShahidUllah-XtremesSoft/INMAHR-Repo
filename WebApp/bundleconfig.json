@@ -28,5 +28,11 @@
     "inputFiles": [
       "JS/appCommands.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_two-new-projects.min.js",
+    "inputFiles": [
+      "Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_two-new-projects.js"
+    ]
   }
 ]

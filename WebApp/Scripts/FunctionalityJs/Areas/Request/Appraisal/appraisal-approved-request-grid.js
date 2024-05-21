@@ -40,11 +40,18 @@ var bindAppraisalApprovedGrid = function (inputDataJSON) {
         { field: "year", title: lblYear, width: 30, hidden: false, filterable: false },
         { field: "statusForCondition", title: lblYear, width: 20, hidden: true, filterable: false },
         {
-            title: lblStatus,
+            title: lblAgreed,
             field: 'status',
             width: 50, filterable: false,
             template: " <span class='badge badge-success'>#:status#</span>"
             //template: `<span class='badge badge-success'>` + lblDecline + `</span>`
+
+        }, {
+            title: lblAgreed,
+            field: 'isUserAgreed',
+            width: 30, filterable: false,
+            template: " <span class='badge badge'>#:isUserAgreed#</span>"
+            
 
         },
 

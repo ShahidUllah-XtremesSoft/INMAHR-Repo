@@ -244,6 +244,9 @@
   <data name="lblDelete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="lblDeveloper" xml:space="preserve">
+    <value>مطيع الله زاهر </value>
+  </data>
   <data name="lblDocumentAttachment" xml:space="preserve">
     <value>وثيقة / مرفق</value>
   </data>

@@ -6,9 +6,11 @@ $(function () {
     // renderKendoDatePickerWithNewFormat('StartDate');
     //  renderKendoDatePickerWithNewFormat('EndDate');
     //|End Date Picker
+     
     if (UnitProject_Id > 0 == true) {
-
+       
         $('#UnitProject_Id').val(UnitProject_Id);
+
         /*
         $('#ProjectDesingSectionLI').show();
         $('#ProjectTechnicalSectionLI').show();
@@ -24,7 +26,7 @@ function fnLoadUnitReady() {
     //|Functions Calling
     loadProjectUnitTypeDDL('ProjectUnitType_SetupDetailTypeDDL', 'ProjectUnitType');
     loadProjectUnitAreaDDL('ProjectUnitArea_SetupDetailTypeDDL', 'ProjectUnitArea');
-
+ 
     if (UnitProject_Id > 0 == true) {
 
         $('#UnitProject_Id').val(UnitProject_Id);
@@ -81,7 +83,7 @@ $('#btn-save-unit').click(function () {
                 }
             };
             $("#frmAddUpdateProjectUnit").ajaxSubmit(options);
-        }, 500);
+        }, 1500);
     }
     else {
         buttonRemovePleaseWait('btn-save-unit', save, 'save');
@@ -105,7 +107,7 @@ var loadProjectUnitTypeDDLCallBackk = function (loadjQueryDropdownListResponse, 
         dataValueField: "id",
         dataTextField: "name",
         filter: "contains",
-        value: 82, // 82 is Residential default value
+      //  value: 82, // 82 is Residential default value
         dataSource: JSON.parse(loadjQueryDropdownListResponse.Value),
         change: function (e) {
 
@@ -114,7 +116,7 @@ var loadProjectUnitTypeDDLCallBackk = function (loadjQueryDropdownListResponse, 
 
         },
     });
-    $('#ProjectUnitTypeSetupDetailTypeId').val(82);
+  //  $('#ProjectUnitTypeSetupDetailTypeId').val(82);
 
 
 }
@@ -143,8 +145,8 @@ var loadloadProjectUnitAreaDDLCallBack = function (loadjQueryDropdownListRespons
     });
 
     //------- this is for default
-    $("#ProjectUnitArea_SetupDetailTypeDDL").data('kendoDropDownList').value(87);
-    $('#AreaUnit').val(87);
+ //   $("#ProjectUnitArea_SetupDetailTypeDDL").data('kendoDropDownList').value(87);
+  //  $('#AreaUnit').val(87);
 
 }
 function fnEditProjectUnitById(projectId) {
@@ -161,6 +163,7 @@ function fnEditProjectUnitById(projectId) {
     });
 }
 function fnEditProjectUnitByIdCallBack(response) {
+     
     var response = JSON.parse(response.Value);
 
     if (response != null) {

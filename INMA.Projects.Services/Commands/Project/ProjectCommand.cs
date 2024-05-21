@@ -225,6 +225,8 @@ namespace INMA.Projects.Services.Project
                     ProjectStatus = string.Empty,
                     Location = string.Empty,
                     OldProjectNo = 0,
+                    Department_Id = 0,
+                    isTender = 0,
 
                     Language = string.Empty,
                     UploadedFiles = new List<FileUploadModel>()
@@ -635,7 +637,7 @@ namespace INMA.Projects.Services.Project
                     foreach (var file in model.UploadedFiles)
                     {
                         object entityType_Id = 0, documentType_Id = 0;
-
+                        /*
                         if (model.Project_Section_Parent_Type_DDL_Text == "Government Documents")
                         {
                             entityType_Id = EntityType.Project_DesignSection_GovernmentDocument;
@@ -683,7 +685,7 @@ namespace INMA.Projects.Services.Project
                             documentType_Id = DocumentType.Project_DesignSection_Other_Attachment;
 
                         }
-
+                        */
 
 
                         Service.UploadFileForSingleAndMultiple(
@@ -705,19 +707,21 @@ namespace INMA.Projects.Services.Project
 
 
                     }
-                    if (model.Project_Section_Parent_Type_DDL_Text == "Town Planning" && model.Project_DesignSection_Entity_Id == 109)
-                    {
-                        IDictionary<string, object> send_to_Default_Sections = new Dictionary<string, object>();
 
-                        send_to_Default_Sections.Add("@Project_Id", model.DesignSection_Document_ProjectId);
-                        send_to_Default_Sections.Add("@Sub_Section_Id", model.Project_DesignSection_Entity_Id);
-                        send_to_Default_Sections.Add("@CreatedBy", model.DesignSection_Document_CreatedBy);
-                        send_to_Default_Sections.Add("@Language", model.DesignSection_Document_Language);
+                    // ********** SEND APPROVED DOCUMENT TO MULTIPLE SECTION .
+                    // if (model.Project_Section_Parent_Type_DDL_Text == "Town Planning" && model.Project_DesignSection_Entity_Id == 109)
+                    // {
+                    IDictionary<string, object> send_to_Default_Sections = new Dictionary<string, object>();
 
-                        Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Project_Transfer_To_Default_Section.ToString(), send_to_Default_Sections, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+                    send_to_Default_Sections.Add("@Project_Id", model.DesignSection_Document_ProjectId);
+                    send_to_Default_Sections.Add("@Sub_Section_Id", model.Project_DesignSection_Entity_Id);
+                    send_to_Default_Sections.Add("@CreatedBy", model.DesignSection_Document_CreatedBy);
+                    send_to_Default_Sections.Add("@Language", model.DesignSection_Document_Language);
+
+                    Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Project_Transfer_To_Default_Section.ToString(), send_to_Default_Sections, XtremeFactory._factory, XtremeFactory.projectconnectionString);
 
 
-                    }
+                    //  }
                 }
 
                 /*SMS Sending Code
@@ -747,7 +751,7 @@ namespace INMA.Projects.Services.Project
                         subject = "File";
                         //   description = "New document( " + model.Project_Section_Parent_Type_DDL_Text + " ) attached for  project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Section_Parent_Type_DDL_Text + "";
                         //description = "New file added in ( " + model.Project_Section_Parent_Type_DDL_Text + " )  Project# " + clientDetailInfo.ProjectNumber + "";
-                        if (model.Project_DesignSection_Entity_Id == 109) //-- Town Planning Approved File
+                        if (model.Project_DesignSection_Entity_Id == 67) //-- Town Planning Approved File
                         {
                             description = "Town Planning Approved ";
                         }
@@ -1587,7 +1591,7 @@ namespace INMA.Projects.Services.Project
                     foreach (var file in model.UploadedFiles)
                     {
                         object entityType_Id = 0, documentType_Id = 0;
-
+                        /*
                         if (model.Project_Section_Parent_Type_DDL_Text == "Technical Manager")
                         {
                             entityType_Id = EntityType.Project_TechnicalSection_TechnicalManager;
@@ -1636,7 +1640,7 @@ namespace INMA.Projects.Services.Project
 
                         }
 
-
+                        */
 
 
                         Service.UploadFileForSingleAndMultiple(
@@ -1658,7 +1662,17 @@ namespace INMA.Projects.Services.Project
 
 
                     }
+                    IDictionary<string, object> send_to_Default_Sections = new Dictionary<string, object>();
+
+                    send_to_Default_Sections.Add("@Project_Id", model.TechnicalSection_Document_ProjectId);
+                    send_to_Default_Sections.Add("@Sub_Section_Id", model.Project_TechnicalSection_Entity_Id);
+                    send_to_Default_Sections.Add("@CreatedBy", model.TechnicalSection_Document_CreatedBy);
+                    send_to_Default_Sections.Add("@Language", model.TechnicalSection_Document_Language);
+
+                    Ioc.Resolve<IRepository>().GetSingle<dynamic>(ProjectStoreProcedure.Project_Transfer_To_Default_Section.ToString(), send_to_Default_Sections, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
                 }
+
                 /* SMS Sending Code                 
                 if (_response.Type.ToString().ToLower() == "success")
                 {
@@ -1675,6 +1689,7 @@ namespace INMA.Projects.Services.Project
                     }
                 }
                 */
+
                 if (_response.Type.ToString().ToLower() == "success")
                 {
                     var projectLinkedEmployees = GetProjectLinkedEmployeesByProjectId((object)model.TechnicalSection_Document_ProjectId);
@@ -1686,7 +1701,15 @@ namespace INMA.Projects.Services.Project
                         subject = "File";
                         //description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " ) Project# " + clientDetailInfo.ProjectNumber + ", section: " + model.Project_Technical_Section_Parent_Type_DDL_Text + "";
                         //description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " ) Project# " + clientDetailInfo.ProjectNumber + "";
-                        description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " )";
+                        if (model.Project_TechnicalSection_Entity_Id == 41) //-- Town Planning Approved File
+                        {
+                            
+                            description = "Mun. Approved in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " )";
+                        }
+                        else
+                        {
+                            description = "New file added in ( " + model.Project_Technical_Section_Parent_Type_DDL_Text + " )";
+                        }
                         foreach (var employee in projectLinkedEmployees)
                         {
                             var res = notificationService.Save(subject, subject, description, description, "", model.TechnicalSection_Document_ProjectId, model.TechnicalSection_Document_CreatedBy, employee.EmployeeId, model.TechnicalSection_Document_Language);

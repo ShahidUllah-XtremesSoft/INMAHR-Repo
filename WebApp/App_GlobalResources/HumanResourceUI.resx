@@ -195,6 +195,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
   </data>
+  <data name="lblAgreed" xml:space="preserve">
+    <value>Agreed</value>
+  </data>
   <data name="lblAllowance" xml:space="preserve">
     <value>Allowance</value>
   </data>
@@ -410,6 +413,9 @@
   </data>
   <data name="lblDevelopmentofhisPerformance" xml:space="preserve">
     <value>Development of his Performance</value>
+  </data>
+  <data name="lblDisAgreed" xml:space="preserve">
+    <value>Not Agreed</value>
   </data>
   <data name="lblDisciplineinAttendance" xml:space="preserve">
     <value>Discipline in Attendance</value>

@@ -234,16 +234,17 @@ var fnLoadTechnicalSection_Document_CallBacck = function (inputDataJSON) {
             {
                 field: "", title: "", width: 60 //, hidden: 'statusForCondition !="Transfered" :' + false + '? ' + true + '' //, template: gridTemplate,
                 , template: "#if(localStorage.isSectionHead == 'Yes' && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
-                    "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id  && statusForCondition ==null){# <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>#}#" +
+                  //  "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id  && statusForCondition ==null){# <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>#}#" +
+                    "#if(createdBy ==JSON.parse(localStorage.getItem('User')).id ){# <a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>#}#" +
                     " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class='btn-outline-sm waves-effect    waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
                     "#}" +
                     "else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
                     "<a style='font-size:20px;cursor:pointer;' onClick= fn_delete_TechnicalSection_DocumentById(this)  title=" + lblDelete + "><span class='fa fa-trash'></span></a>   " +
                     " <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> " +
                     "#}" +
-                    "else if(statusForCondition !=null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
-                    "  #if(!statusForCondition.match(/approve.*/) && localStorage.employeeDepartment.match(/Technical Section.*/)){ # <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> #}#" +
-                    "#}" +
+                  //  "else if(statusForCondition !=null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
+                  //  "  #if(!statusForCondition.match(/approve.*/) && localStorage.employeeDepartment.match(/Technical Section.*/)){ # <button type='button' onclick='fn_technical_section_transfer_file(this);' data-grid-name=" + pass_GridName + " class=' btn-sm btn-outline-sm waves-effect'style='font-size: smaller;border:1px solid;'>" + lblTransfer + "</button> #}#" +
+                  //  "#}" +
                     "else { ''} #"
 
                     //"else if(createdBy ==JSON.parse(localStorage.getItem('User')).id && statusForCondition ==null && localStorage.employeeDepartment.match(/Technical Section.*/)){ #" +
@@ -342,6 +343,7 @@ $('#btn-technical-section-upload-document').click(function () {
                 buttonRemovePleaseWait('btn-technical-section-upload-document', save, 'save');
 
                 document.getElementById("frmAddUpdate_TechnicalSection_Document").reset();
+                document.getElementById("TechnicalSection_Document_NoExpiry").value = 1;
                 swal(response);
 
                 var messageResponseParse = JSON.parse(response);

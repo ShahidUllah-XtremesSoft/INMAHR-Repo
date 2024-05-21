@@ -13,7 +13,7 @@
         }
     });
     $('#btnLogin').click(function () {
-
+        localStorage.clear();
         $('#error_span').text('');
         $('#progress').show();
         ////If admin admin logged in

@@ -56,7 +56,8 @@ namespace INMA.HR.Services
         Rule = 39,
         Penalty = 40,
         //PROMOTION
-        Promotion = 41
+        Promotion = 41,
+        Tasks = 42
     }
     public enum DocumentType
     {
@@ -140,13 +141,16 @@ namespace INMA.HR.Services
         Meeting_Multiple = 39,
 
 
+
         Requests = 10001,
         ShorLeave_Requests = 10002,
         Rule_Document = 10003,
         Penalty_Document = 10004,
-
         Promotion_Document = 10005,
 
+        #region TASK
+        Tasks = 42000,
+        #endregion
 
 
     }

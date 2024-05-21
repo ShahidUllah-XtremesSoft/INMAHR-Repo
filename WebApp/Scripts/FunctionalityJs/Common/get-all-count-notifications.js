@@ -41,7 +41,7 @@ var ajaxRequest_OnlyForNotifications = function (options) {
 }
 
 function fnLoadAllCountNotification() {
-
+     
     //values - are key value pair json object
     ajaxRequest_OnlyForNotifications({
         commandName: 'Get_All_Count_Notifications',

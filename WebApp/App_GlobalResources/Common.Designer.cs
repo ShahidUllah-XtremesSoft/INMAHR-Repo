@@ -97,6 +97,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to left.
+        /// </summary>
+        internal static string lblleft {
+            get {
+                return ResourceManager.GetString("lblleft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to right.
+        /// </summary>
+        internal static string lblright {
+            get {
+                return ResourceManager.GetString("lblright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ltr.js.
         /// </summary>
         internal static string PageDirection {

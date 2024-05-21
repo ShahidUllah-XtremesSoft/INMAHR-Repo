@@ -358,6 +358,7 @@ $('#btn-supervision-section-upload-document').click(function () {
                 buttonRemovePleaseWait('btn-supervision-section-upload-document', save, 'save');
 
                 document.getElementById("frmAddUpdate_SupervisionSection_Document").reset();
+                document.getElementById("SupervisionSection_Document_NoExpiry").value = 1;
                 swal(response);
 
                 var messageResponseParse = JSON.parse(response);

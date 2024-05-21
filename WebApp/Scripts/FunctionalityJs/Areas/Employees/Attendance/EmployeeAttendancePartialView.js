@@ -129,6 +129,22 @@ var bindAttendanceGrid = function (inputDataJSON) {
             , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span>"
 
         },
+        /*    {
+                title: status,
+                field: 'status',
+                width: 80,
+                hidden: false,
+                filterable: false,
+                template: "#if (status == 'Present')" +
+                    " { # <span class=''>" + lblPresent + "</span> # } else if(status == 'Absent')" +
+                    " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }} " +
+                    "else  if (status == 'Work P.Leave' || status == 'إذن عمل' ) { if(JSON.parse(localStorage.getItem('User')).isHR == '1' || JSON.parse(localStorage.getItem('User')).roleName =='Chairman' || JSON.parse(localStorage.getItem('User')).roleName =='Company Manager'  || JSON.parse(localStorage.getItem('User')).roleName =='Executive Board Member'  ){ # <span style='cursor:pointer;text-decoration:underline;'  onClick= fnShowLeaveDetailsInPopup(this)>#:status# </span> # }  else { # <span>#:status# </span> #  }}  else " +
+                    " {# <span class=''>#:status#</span> #}#"
+                // , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
+                , footerTemplate: "<span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
+    
+            },
+            */
         {
             title: status,
             field: 'status',
@@ -137,7 +153,8 @@ var bindAttendanceGrid = function (inputDataJSON) {
             filterable: false,
             template: "#if (status == 'Present')" +
                 " { # <span class=''>" + lblPresent + "</span> # } else if(status == 'Absent')" +
-                " { if(status == 'Absent' && departmentId==11) {# <span class=''>" + lblSite + "</span> # } else { # <span class=''>" + lblAbsent + "</span> # }} " +
+                " { # <span class=''>" + lblAbsent + "</span> # }  else if(status == 'Site') " +
+                " { # <span class=''>" + lblSite + "</span> # } " +
                 "else  if (status == 'Work P.Leave' || status == 'إذن عمل' ) { if(JSON.parse(localStorage.getItem('User')).isHR == '1' || JSON.parse(localStorage.getItem('User')).roleName =='Chairman' || JSON.parse(localStorage.getItem('User')).roleName =='Company Manager'  || JSON.parse(localStorage.getItem('User')).roleName =='Executive Board Member'  ){ # <span style='cursor:pointer;text-decoration:underline;'  onClick= fnShowLeaveDetailsInPopup(this)>#:status# </span> # }  else { # <span>#:status# </span> #  }}  else " +
                 " {# <span class=''>#:status#</span> #}#"
             // , footerTemplate: "<span class=''>" + lblPresent + ": <span   class='footerPresentPlaceholder'  >0</span></span> | <span class=''>" + lblAbsent + ": <span   class='footerAbsentPlaceholder' style='color:red;'>0</span></span>"
@@ -411,7 +428,7 @@ function calculateFooterData() {
     var gridData = grid.dataSource.view();
     var
         totalPresent = 0, totalAbsent = 0,
-        totallateInTime = 0, totalDelayTime = 0,
+        totallateInTime = 0, totalDelayTime = 0, totalOnSite = 0,
         totalDelayTimeHours = 0, totalDelayTimeMinutes = 0, totalDelayTimeSeconds = 0,
         totalOvertimeHours = 0, totalOvertimeMinutes = 0, totalOvertimeSeconds = 0;
 
@@ -421,18 +438,22 @@ function calculateFooterData() {
 
 
 
+
     for (var i = 0; i < gridData.length; i++) {
 
-        if (gridData[i].changeColor == 'Yes') {
-            grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
 
-        }
         if (gridData[i].status == 'Absent') {
             grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-danger");
             totalAbsent++;
+        } else if (gridData[i].status == 'Site') {
+            grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("badge-warning");
+            totalOnSite++;
         }
         else if (gridData[i].status == 'Present') {
             totalPresent++;
+        } else if (gridData[i].changeColor == 'Yes') {
+            grid.table.find("tr[data-uid='" + gridData[i].uid + "']").addClass("highlighted-row");
+
         }
 
         if (gridData[i].lateInTime != "" && gridData[i].lateInTime != null) {
@@ -443,6 +464,7 @@ function calculateFooterData() {
 
 
         }
+
 
 
         if (gridData[i].lateInTime != '') {
@@ -620,7 +642,7 @@ function fnShowLeaveDetailsInPopup(e) {
     var row = $(e).closest("tr");
     var grid = $("#AttendanceGrid").data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    console.log(dataItem)
+    //  console.log(dataItem)
     $('.leave-history-modal-title').text(dataItem.status);
 
 

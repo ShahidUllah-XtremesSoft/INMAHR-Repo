@@ -1,10 +1,10 @@
 ﻿var parameterId = (new URL(location.href)).searchParams.get('id');
 $(function () {
 
-    
+
     $('#Language').val(_currentLanguage);
     $('#CreatedBy').val(parseInt(JSON.parse(localStorage.getItem('User')).id));
-
+    $('#Department_Id').val(JSON.parse(localStorage.User).employee_Department_ParentId);
 
     //--------------------------FN LOAD AREA--------------------------
     _currentLanguage == 'en-US' ? loadCityDropdownListEng() : loadCityDropdownListArb();
@@ -14,6 +14,7 @@ $(function () {
     //--------------------------FN LOAD AREA END --------------------------
     if (parameterId > 0 == true) {
         fnEditProjectById(parameterId);
+
     }
 
 
@@ -110,7 +111,7 @@ $(function () {
 
             },
         });
-        $("#ProjectCategoryDDL").data('kendoDropDownList').value(80)
+        // $("#ProjectCategoryDDL").data('kendoDropDownList').value(80)
     }
 
 
@@ -196,7 +197,7 @@ $(function () {
 
             },
         });
-        $("#CityDDL").data('kendoDropDownList').value(3);
+        //  $("#CityDDL").data('kendoDropDownList').value(3);
 
     }
 
@@ -261,19 +262,20 @@ function fnEditProjectById(projectId) {
 function editProjectByIdCallBack(response) {
 
     var response = JSON.parse(response.Value);
+
     $('#Id').val(response.id);
     $('#UnitProject_Id').val(response.id);
-    document.getElementById('btn-save-project').setAttribute("_ProjectId", response.id);     
+    document.getElementById('btn-save-project').setAttribute("_ProjectId", response.id);
     $('#ProjectName').val(response.projectName);
     $('#DescriptionEng').html(response.descriptionEng);
+
 
 
 
     $('#Location').val(response.location);
     $('#IsVIP').val(response.vipStatus);
     $('#IsUrgent').val(response.urgentStatus);
-
-    // $('#OldProjectNo').val(response.oldProjectNo);
+    $('#OldProjectNo').val(response.oldProjectNo);
 
 
     $('#ProjectCategoryType_In_Setup_TypeDetail_Id').val(response.projectCategoryType_In_Setup_TypeDetail_Id);
@@ -281,12 +283,20 @@ function editProjectByIdCallBack(response) {
     $('#City_Id').val(response.city_Id);
     $('#ProjectUnitInformationLI').show();
 
+    if (response.isTender == true) {
+        $('#isTender').val(1)
+        $('#isTender').prop('checked', true)
+    } else {
+        $('#isTender').val(0)
+        $('#isTender').prop('checked', false)
+    }
 
     setTimeout(function () {
 
         $("#ProjectCategoryDDL").data('kendoDropDownList').value(response.projectCategoryType_In_Setup_TypeDetail_Id);
         $("#ClientDDL").data('kendoDropDownList').value(response.client_Id);
         $("#CityDDL").data('kendoDropDownList').value(response.city_Id);
+        // fnEditProjectUnitById(parameterId);
     }, 50);
 
 }
@@ -321,3 +331,23 @@ function fnShowClientPartialView() {
 
 
 
+
+
+//----------------------------- DDLS AJAX FUNCTION END ---------------------------------------------------
+
+function fnCheckValue(e) {
+
+    //if (e.id == "isTender") {
+    //    $('#isTender').prop('checked', false)
+    //} else {
+    //    $('#isTender').prop('checked', false)
+    //}
+    var isTender = $('#isTender').prop('checked');
+    if (isTender == true) {
+
+        $('#isTender').val(1)
+    } else {
+        $('#isTender').val(0)
+
+    }
+}

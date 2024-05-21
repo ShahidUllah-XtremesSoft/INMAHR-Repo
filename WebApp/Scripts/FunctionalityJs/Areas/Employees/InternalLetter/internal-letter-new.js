@@ -1,4 +1,5 @@
 ﻿$(function () {
+    isMobileBrowser();
     //Values settings starts
     $('#CreatedBy').val(JSON.parse(localStorage.getItem('User')).id);
     $("#LetterDate").kendoDatePicker({
@@ -17,7 +18,10 @@
     loadDepartmentTreeDropdownListWithRoleBaseAndCheckbox();
     // loadRoleDropdownList(false);
     setTimeout(function () {
-        $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck);
+        if ($("#DepartmentId").data("kendoDropDownTree") != undefined) {
+
+            $("#DepartmentId").data("kendoDropDownTree").bind("change", departmentTreeViewCheck);
+        }
         //var treeview = $("#DepartmentId").data("kendoDropDownTree");
         //treeview.bind("check", tree_check);
     }, 500);
@@ -25,7 +29,13 @@
     $('#btnSave').on('click', function (e) {
         var thisFieldIsRequired = _currentLanguage == 'en-US' ? 'This field is required' : 'هذه الخانة مطلوبة';
         var valid = true;
-        $("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
+        if (isMobileBrowser()) {
+
+        } else {
+
+            $("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
+        }
+        //$("#Body").val(tinymce.get("Body").getContent({ format: "html" }));
         if ($('#DepartmentIds').val() == null || $('#DepartmentIds').val() == '' || $('#DepartmentIds').val() == -1 || $('#DepartmentIds').val() == '0') {
             $('#DepartmentId').addClass('invalid');
             $('#DepartmentId').attr('title', thisFieldIsRequired);
@@ -77,7 +87,23 @@
         }
     });
     //Events ends
-    setTimeout(function () { $('.tox-notifications-container').hide(); }, 1000);
+    setTimeout(function () {
+        $('.tox-notifications-container').hide();
+
+        if (isMobileBrowser()) {
+            $('.forMobileOnly').empty();
+            $('.forMobileOnlyTextarea_label').show();
+            $('.forMobileOnly').append('<textarea type="text" class="form-control editor" name="Body" id="Body" value=""></textarea>');
+
+            console.log("This is a mobile browser");
+        } else {
+
+            console.log("This is not a mobile browser");
+        }
+
+
+
+    }, 1500);
 
     if (JSON.parse(localStorage.getItem('User')).roleName == 'User') {
         $('#btn-signature').hide();
@@ -359,13 +385,15 @@ function loadfnUploadEmployeeSignatureCallBack(d) {
         $('#noSignature').hide();
         $('#loadSignature').show();
 
-         if (_employeeSignature.currentFileName != null) {
+        if (_employeeSignature.currentFileName != null) {
             var singature_ = '/UploadFile/' + _employeeSignature.currentFileName;
             $('#loadEmployeeSignature').attr('src', singature_);
-             $('#SignedBy').val(1);
+            $('#SignedBy').val(1);
             $('#Signature').val(_employeeSignature.currentFileName);
         }
     }
 
 }
- 
+function isMobileBrowser() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}

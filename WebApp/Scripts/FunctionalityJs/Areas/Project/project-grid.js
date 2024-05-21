@@ -34,7 +34,7 @@ var loadProjectGridCallBack = function (inputDataJSON) {
     bindGrid(JSON.parse(inputDataJSON.Value));
 }
 var bindGrid = function (inputDataJSON) {
-   //  console.log(inputDataJSON);
+     console.log(inputDataJSON);
     var gridColumns = [
 
         { field: "id", title: "id", hidden: true },
@@ -53,14 +53,21 @@ var bindGrid = function (inputDataJSON) {
         { field: "urgentStatus", title: lblUrgent, width: 15, filterable: false },
         { field: "vipStatus", title: lblVIP, width: 15, filterable: false },
         { field: "progressStatus", title: lblStatus, width: 25, filterable: false },
-        { field: "oldProjectNo", title: ":Old Proj.No", width: 20, filterable: false, hidden: true },
+        { field: "oldProjectNo", title: "Proj.No", width: 20, filterable: false, hidden: false },
+        { field: "plotNo", title: "plotNo", width: 20, filterable: false, hidden: true },
+        { field: "mulkNo", title: "mulkNo", width: 20, filterable: false, hidden: true },
+        { field: "categoryName", title: "CategoryName", width: 20, filterable: false, hidden: true },
         { field: "isSectionHead", title: "isSectionHead", width: 20, filterable: false, hidden: true },
         { field: "isAccountant", title: "isAccountant", width: 20, filterable: false, hidden: true },
         { field: "isEmployeeExist", title: "isEmployeeExist", width: 20, filterable: false, hidden: true },
-        
+        {
+            field: "", title: "Generate", width: 25, filterable: false,
+            template: "<a style='cursor:pointer;text-decoration:underline;color:blue;' data-type='PDF'  onClick= fn_GenerateReports(this)  title=''>Report</a> ",
+        },
+
         {
             field: "", title: "", width: 30
-            , template: `#if(isSectionHead =='Yes')
+            , template: `#if(isSectionHead =='Yes' || createdBy== JSON.parse(localStorage.User).id)
                 {#
                        
                      <a style='font-size:20px;cursor:pointer;' onClick= editProject(this) title=` + lblEdit + ` ><span class='fa fa-pencil'></span></a> 
@@ -101,18 +108,55 @@ function detailProject(e) {
     var row = $(e).closest("tr");
     var grid = $("#" + $grid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-    //console.log(dataItem);
+
     window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
+
+}
+function fn_GenerateReports(e) {
+    var row = $(e).closest("tr");
+    var grid = $("#" + $grid).data("kendoGrid");
+    var dataItem = grid.dataItem(row);
+
+    var reportExtension = event.currentTarget.dataset.type;
+   // console.log(dataItem);
     /*
-    if (dataItem.isEmployeeExist == "No" || dataItem.isAccountant == "Yes") {
-
-        window.location.href = '/Project/Project/Details?id=' + dataItem.id + '';
-    } else {
-
-        window.location.href = '/Project/Project/Detail?id=' + dataItem.id + '';
-
-    }
+    var newObject = {
+        type: "Payroll_LoadEmployeeSalarySlipByID",
+        value: {
+            Payroll_Id: dataItem.payrollID,
+            Language: _currentLanguage
+        }
+           
+    } 
+    window.open("/Report/Generate_Initial_Files?" +
+        "type=" + encodeURIComponent(newObject.type) +
+        "&value=" + encodeURIComponent(JSON.stringify(newObject.value)) +
+        "&reportExtension=" + reportExtension, '_blank');
     */
+
+    var customerObject = {
+        customerName: dataItem.clientName,
+        arzNo: dataItem.plotNo,
+        muntaqa: dataItem.categoryName,
+        Language: $('#Language').val(),
+        projectNo: dataItem.oldProjectNo,
+        employeeName: ""
+
+    };
+  
+
+  //  window.open("/Report/GetFillablePDF")
+    
+    window.open("/Report/Generate_Initial_Files?" +
+        "customerName=" + encodeURIComponent(customerObject.customerName) +
+        "&arzNo=" + encodeURIComponent(JSON.stringify(customerObject.arzNo)) +
+        "&muntaqa=" + encodeURIComponent(JSON.stringify(customerObject.muntaqa)) +
+        "&Language=" + encodeURIComponent(JSON.stringify(customerObject.language)) +
+        "&projectNo=" + encodeURIComponent(JSON.stringify(customerObject.projectNo)) +
+        "&employeeName=" + encodeURIComponent(JSON.stringify(customerObject.employeeName)) +
+        "&reportExtension=" + reportExtension, '_blank');
+        
+
 }
 
 
@@ -159,4 +203,3 @@ function deleteProjectById(event) {
 
 }
 
-  

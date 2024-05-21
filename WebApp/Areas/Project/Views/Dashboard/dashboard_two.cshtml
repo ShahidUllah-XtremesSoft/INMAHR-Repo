@@ -1,0 +1,527 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblProject;
+
+
+}
+
+
+<div class="card  ">
+    <div class="card-block">
+        <div class="row">
+
+            <div class="col-sm-7 col-lg-6">  <h5> @ProjectUI.ProjectUI.lblWelcomeBack  <span id="employeeName"></span>  </h5></div>
+            <div class="col-sm-5 col-lg-6" hidden>
+
+                <label class="col-xs-8" style="text-align:end">@ProjectUI.ProjectUI.lblEnterProjectNo   </label>
+                <div class="col-xs-3 controls  ">
+                    <input type="number" class="form-control col-xs-4 @Resources.Common.PullRight" id="Project_No" value="0" />
+                </div>
+                <div class="col-xs-1 controls  ">
+                    <button type="button" id="btn-search-record" class="btn   btn-success  @Resources.Common.PullRight" value="Search"> @ProjectUI.ProjectUI.lblSearch</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="card  ">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-2" style="text-align: -webkit-right;">
+                <style>
+                    .MenuNo {
+                        color: black;
+                        padding: 9px;
+                        border-top-left-radius: 50px;
+                        border-bottom-left-radius: 50px;
+                        border: 1px solid;
+                    }
+
+                    .buttonMenu {
+                        color: black;
+                        padding: 17px;
+                        border-top-left-radius: 50px;
+                        border-bottom-left-radius: 50px;
+                        width: 150px;
+                        border: 1px solid;
+                    }
+                </style>
+                <table>
+                    <tr>
+                        <td>
+                            <div hidden class="MenuNo btn  btn-outline-success "> <h4>1</h4> </div>
+                            <button type="button" id="btn-" class="btn  btn-outline-success  buttonMenu" onclick="fnLoadDataByParam(this)" value="New"><i class=""></i> @ProjectUI.ProjectUI.lblNew </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div hidden class=" MenuNo btn  btn-outline-success "> <h4>2</h4> </div>
+                            <button type="button" id="btn-" class="btn  btn-outline-success buttonMenu" onclick="fnLoadDataByParam(this)" value="Old"><i class=""></i> @ProjectUI.ProjectUI.lblOld </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div hidden class="MenuNo btn  btn-outline-success "> <h4>4</h4> </div>
+                            <button type="button" id="btn-" class="btn  btn-outline-success buttonMenu" onclick="fnLoadDataByParam(this)" value="Tender"><i class=""></i> @ProjectUI.ProjectUI.lblTender </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div hidden class="MenuNo btn  btn-outline-success "> <h4>3</h4> </div>
+                            <button type="button" id="btn-" class="btn  btn-outline-success buttonMenu" onclick="fnLoadDataByParam(this)" value="Delay"><i class=""></i> @ProjectUI.ProjectUI.lblDelay </button>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <div class="col-md-7">
+                <div class="showHideYear" style="display:none;">
+
+                    <label><strong> @ProjectUI.ProjectUI.lblSelect @ProjectUI.ProjectUI.lblYear: </strong></label>
+                    <input id="yearPicker" onchange="fnLoadDataByParam()" />
+                </div>
+                <div class="grid-main-div" style="background: #e4e5e6 ;font-size:large;">
+
+                    <div id="new-total-projects-grid"></div>
+
+                </div>
+            </div>
+            <div class="col-md-3" style="padding-top: 5px;  font-size: larger;">
+                <div id="append-delay-steps-here"></div>
+            </div>
+        </div>
+
+        <div class="row showhideSection">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 showHide-app-dynamic-data" style="display:none;">
+                <div class=" ">
+                    <div class="grid-main-div" style="background: #e4e5e6 ;font-size:large;">
+
+                        <div class="row">
+                            <div class="col-md-11">
+
+                                <span class="  " style="font-weight: bold; margin-right: 15px !important;"> @ProjectUI.ProjectUI.lblDetails</span>
+
+                            </div>
+                            <div class="col-md-1" style="text-align: center;cursor:pointer;" onclick="hideDynamicDataCard_dashboar2()">
+
+                                <div class="close-icon" style="font-weight: bold;">X</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div id="append-dynamic-data">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <div class=" showhideSection col-sm-4">
+
+                <div class="row">
+                    <div class="col-md-4" style="text-align: -webkit-right;padding-top:10px;font-size:larger">
+
+                        @*<style>
+
+
+                                .btn-arrow-right,
+                                .btn-arrow-left {
+                                    position: relative;
+                                    padding-left: 20px;
+                                    padding-right: 100px;
+                                }
+
+                                .btn-arrow-right {
+                                    padding-left: 36px;
+                                }
+
+                                .btn-arrow-left {
+                                    padding-right: 36px;
+                                }
+
+                                    .btn-arrow-right:before,
+                                    .btn-arrow-right:after,
+                                    .btn-arrow-left:before,
+                                    .btn-arrow-left:after { /* make two squares (before and after), looking similar to the button */
+                                        content: "";
+                                        position: absolute;
+                                        top: 5px; /* move it down because of rounded corners */
+                                        width: 22px; /* same as height */
+                                        height: 22px; /* button_outer_height / sqrt(2) */
+                                        background: inherit; /* use parent background */
+                                        border: inherit; /* use parent border */
+                                        border-left-color: transparent; /* hide left border */
+                                        border-bottom-color: transparent; /* hide bottom border */
+                                        border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+                                        -webkit-border-radius: 0px 4px 0px 0px;
+                                        -moz-border-radius: 0px 4px 0px 0px;
+                                    }
+
+                                .btn-arrow-right:before,
+                                .btn-arrow-right:after {
+                                    transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+                                    -webkit-transform: rotate(45deg);
+                                    -moz-transform: rotate(45deg);
+                                    -o-transform: rotate(45deg);
+                                    -ms-transform: rotate(45deg);
+                                }
+
+                                .btn-arrow-left:before,
+                                .btn-arrow-left:after {
+                                    transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+                                    -webkit-transform: rotate(225deg);
+                                    -moz-transform: rotate(225deg);
+                                    -o-transform: rotate(225deg);
+                                    -ms-transform: rotate(225deg);
+                                }
+
+                                .btn-arrow-right:before,
+                                .btn-arrow-left:before { /* align the "before" square to the left */
+                                    left: -11px;
+                                }
+
+                                .btn-arrow-right:after,
+                                .btn-arrow-left:after { /* align the "after" square to the right */
+                                    right: -11px;
+                                }
+
+                                .btn-arrow-right:after,
+                                .btn-arrow-left:before { /* bring arrow pointers to front */
+                                    z-index: 1;
+                                }
+
+                                .btn-arrow-right:before,
+                                .btn-arrow-left:after { /* hide arrow tails background */
+                                    background-color: white;
+                                }
+                            </style>*@
+                        <style>
+                            .MenuNoSteps {
+                                /* color: black;*/
+                                border-top-left-radius: 50%;
+                                border-bottom-left-radius: 50%;
+                                border: 1px solid;
+                            }
+
+                            .doneStep {
+                                border-right: 1px solid;
+                            }
+
+                            .buttonMenuSteps {
+                                /*   color: black;*/
+                                /*  border-top-left-radius: 50%;
+                                border-bottom-left-radius: 50%;*/
+                                width: 100%;
+                                border: 1px solid;
+                                font-size: larger
+                            }
+                        </style>
+                        <table class="table-responsive" style="width: fit-content;">
+                            <tbody id="load_steps_here_dashboard_two"></tbody>
+
+
+                            <tbody id="load_steps_here_dashboard_two_sample" style="display:none;">
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 1 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">Government Documents </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 2 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">Town Planning </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 3 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">MEP Section </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 4 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">Structural Section </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 5 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">Municipality Section </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 6 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">Supervision Contract </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr style="opacity: 0.5;" disabled="disabled">
+                                    <td disabled="disabled" style="opacity: 0.5;"><div style="width: 100%; opacity: 0.5;" class="     btn  " disabled="disabled"> 7 </div></td>
+                                    <td style="display: flex; width: -webkit-fill-available; opacity: 0.5;" disabled="disabled">
+                                        <div class="MenuNoSteps btn     badge-light" disabled="disabled" style="opacity: 0.5;"> - </div>
+
+                                        <button task-id="null" project-id="null" type="button" id="btn-" class="btn      badge-light buttonMenuSteps" onclick="fn_dashboard_two_Load_all_sub_task(this)" value="" disabled="disabled" style="opacity: 0.5;">Completion Document </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row" hidden>
+
+
+    <div class="col-md-12" style="display: flex; justify-content: center;">
+        <table>
+            <thead>
+
+                <tr>
+                    <th>@ProjectUI.ProjectUI.lblYear</th>
+                    <th>@ProjectUI.ProjectUI.lblMonth</th>
+                    <th>@ProjectUI.ProjectUI.lblWeek</th>
+                    <th>@ProjectUI.ProjectUI.lblProject</th>
+                    <th> </th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+                        @*<input id="yearPicker" />*@
+                    </td>
+                    <td>
+                        <input id="monthPicker" />
+                    </td>
+                    <td>
+                        <input id="weekPicker" />
+                    </td>
+                    <td>
+                        <input id="NewOldProjectsPicker" />
+                    </td>
+                    <td>
+                        <button type="button" id="btn-search-project-records" class="btn   btn-sm  @Resources.Common.PullRight" value="Search"> @ProjectUI.ProjectUI.lblClick</button>
+                    </td>
+                    <td>
+                        <button type="button" id="btn-reset-project-records" style="color:darkred" class="btn   btn-sm  @Resources.Common.PullRight" value="Reset"> @ProjectUI.ProjectUI.lblReset</button>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="row showDiv" style="display:none;">
+
+
+    <div class="col-md-12">
+
+
+        @********************************THIS IS PROJECT SUMMAR AREA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*@
+
+        <style>
+            .progressBar {
+                height: 14px;
+                text-align: left;
+                color: #783722;
+                border: 1px solid #aaa;
+                border-left: 0px;
+                width: -webkit-fill-available;
+            }
+
+                .progressBar span {
+                    display: inline-block;
+                    font-size: 16px;
+                    margin-top: -4px;
+                    float: right;
+                }
+
+            .progressBarItem {
+                padding: 0 !important;
+            }
+        </style>
+        <div class="card">
+            <div class="grid-main-div" style="background: #e4e5e6 ">
+                <span class="  " style="font-weight: bold; margin-right: 15px !important;"> @ProjectUI.ProjectUI.lblSummaryReport</span>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="project-summary-grid"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        @********************************THIS IS PROJECT SUMMAR AREA END *@
+
+
+
+    </div>
+
+</div>
+<div class="row showDiv showTotalProjectBasedOnStatus" style="display:none;">
+
+    <div class="col-sm-4">
+
+        <div class="row showDiv showTotalProjectBasedOnStatus" style="display:none;">
+
+
+
+
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="grid-main-div" style="background: #e4e5e6 ">
+                        <span class="  " style="font-weight: bold; margin-right: 15px !important;"> @ProjectUI.ProjectUI.lblTotalProjects</span>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div id="project-total-projects-grid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+        <div class="row showDiv " style="display:none;">
+
+
+
+
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="grid-main-div" style="background: #e4e5e6 ">
+                        <span class="  " style="font-weight: bold; margin-right: 15px !important;"> @ProjectUI.ProjectUI.lblTasks</span>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div id="project-grid-with-tasks"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    var lblProjectNo = '@ProjectUI.ProjectUI.lblProjectNo';
+    var lblDocumentType = '@ProjectUI.ProjectUI.lblDocumentType';
+    var lblExpiryDate = '@ProjectUI.ProjectUI.lblExpiryDate';
+    var lblExpiresIn = '@ProjectUI.ProjectUI.lblExpiresIn';
+    var lblStatus = '@ProjectUI.ProjectUI.lblStatus';
+    var lblStatusExpired = '@ProjectUI.ProjectUI.lblExpired';
+    var lblStatusValid = '@ProjectUI.ProjectUI.lblValid';
+
+
+
+    var lblProjectByVIPUrgent = '@ProjectUI.ProjectUI.lblProjectByVIPUrgent';
+    var lblProjectByCategory = '@ProjectUI.ProjectUI.lblProjectByCategory';
+    var lblClientMeetingAndContractor = '@ProjectUI.ProjectUI.lblClientMeetingAndContractors';
+    var lblIssueByStatus = '@ProjectUI.ProjectUI.lblIssueByStatus';
+    var lblProjectByStatus = '@ProjectUI.ProjectUI.lblProjectByStatus';
+    var lblDelay = '@ProjectUI.ProjectUI.lblDelay';
+    var lblTaskStatuses = '@ProjectUI.ProjectUI.lblTask @ProjectUI.ProjectUI.lblStatus';
+</script>
+@section scripts {
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_two-new-projects.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_one.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-grid-with-tasks.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_one_project-summary-report.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_one-document-expiry.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_one-total-projects.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Project/Dashboard/Managers/two/project-dashboard_one-load-by-search.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+
+    <script>
+
+
+        var lblDesignSection = '@ProjectUI.ProjectUI.lblDesignSection';
+        var lblTechnicalSection = '@ProjectUI.ProjectUI.lblTechnicalSection';
+        var lblSupervisionSection = '@ProjectUI.ProjectUI.lblSupervisionSection';
+        var lblTenderSection = '@ProjectUI.ProjectUI.lblTenderSection';
+        var lblTotal = '@ProjectUI.ProjectUI.lblTotal';
+        var lblCreatedDate = '@ProjectUI.ProjectUI.lblCreatedDate';
+        var lblView = '@ProjectUI.ProjectUI.lblView';
+        var lblCount = '@ProjectUI.ProjectUI.lblCount';
+        var lblProjects = '@ProjectUI.ProjectUI.lblProjects';
+        var lblDetails = '@ProjectUI.ProjectUI.lblDetails';
+        var lblEmployee = '@ProjectUI.ProjectUI.lblEmployee';
+        var lblTask = '@ProjectUI.ProjectUI.lblTask';
+        var lblTasks = '@ProjectUI.ProjectUI.lblTasks';
+        var lblPriority = '@ProjectUI.ProjectUI.lblPriority';
+
+
+    </script>
+
+}

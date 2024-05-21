@@ -69,38 +69,38 @@
             </div>
 
             <!--<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            <label class="col-form-label">HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />-->
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-form-label">HRModuleUI.HumanResourceUI.lblSection. </label> <span style="color: red">*</span><br />-->
             @*<select class="form-control" multiple="multiple" id="DepartmentIds" name="DepartmentIds" required></select>*@
             @*<select class="form-control" multiple="multiple" required id="DepartmentIds"></select>*@
             <!--<input type="text" class="form-control" id="DepartmentId" name="DepartmentId" />
-    <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />-->
+            <input type="hidden" class="form-control" id="DepartmentIds" name="DepartmentIds" />-->
             @*<select class="form-control" id="DepartmentIds"></select>*@
 
 
             <!--</div>
-        </div>
-    </div>-->
+                </div>
+            </div>-->
             @*<div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature</label><span style="color:red">*</span><br />
-                    <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" value="0" />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
-                    <input type="file" class="form-control" name="Attachment" id="Attachment">
-                </div>
-            </div>
-        </div>*@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblSignature</label><span style="color:red">*</span><br />
+                            <input type="text" class="form-control" name="SignatureBy" id="SignatureBy" value="0" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
+                            <input type="file" class="form-control" name="Attachment" id="Attachment">
+                        </div>
+                    </div>
+                </div>*@
 
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span style="color:red">*</span> <br />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment </label> <span style="color:red">*</span> <br />
                         <input type="file" class="form-control" multiple name="Attachment" id="Attachment">
                     </div>
                 </div>
@@ -108,10 +108,17 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="form-group">
+                    <label style="display:none;" class="forMobileOnlyTextarea_label col-form-label">@HRModuleUI.HumanResourceUI.lblTheDescription</label> <br />
+                    <div class="form-group forMobileOnly">
+
                         <textarea type="text" class="form-control editor" name="Body" id="Body" value=""></textarea>
                     </div>
                 </div>
+                @*<div class="col-sm-12">
+                        <div class="form-group forMobileOnly">
+                            <textarea type="text" class="form-control editor" name="Body" id="Body" value=""></textarea>
+                        </div>
+                    </div>*@
             </div>
             <div class="row">
                 <div class="col-sm-12">
@@ -186,6 +193,6 @@
     </div>
 </div>
 @section scripts {
-    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-new.js?+971522324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Employees/InternalLetter/internal-letter-new.js?@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
 }
 

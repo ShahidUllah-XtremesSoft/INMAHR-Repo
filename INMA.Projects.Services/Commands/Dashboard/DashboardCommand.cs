@@ -21,6 +21,7 @@ namespace INMA.Projects.Services.Commands.Dashboard
                 var model = base.MappedModel(new
                 {
                     EmployeeId = 0,
+                    Branch_Id = 0,
                     UserId = 0,
                     Role = 0,
                     Language = string.Empty
@@ -48,6 +49,7 @@ namespace INMA.Projects.Services.Commands.Dashboard
                 var model = base.MappedModel(new
                 {
                     EmployeeId = 0,
+                    Branch_Id = 0,
                     UserId = 0,
                     Role = 0,
                     Language = string.Empty
@@ -119,33 +121,7 @@ namespace INMA.Projects.Services.Commands.Dashboard
 
             }
         }
-        [Command(Name = "Project_Dashboard_ProjectCountByStatus_Get")]
-        public class Project_Dashboard_ProjectCountByStatus_GetCommand : CamelCommandBase
-        {
-
-            protected override object DoAction(object viewInput)
-            {
-                Commands.SMSService smsService = new Commands.SMSService();
-                var model = base.MappedModel(new
-                {
-                    EmployeeId = 0,
-                    UserId = 0,
-                    Role = 0,
-                    Language = string.Empty
-                }, viewInput);
-
-
-                IDictionary<string, object> values = new Dictionary<string, object>();
-                CommandParameters _params = new CommandParameters();
-                values = _params.Get(model);
-                var result = Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_Dashboard_ProjectCountByStatus_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
-
-
-
-                return result;
-
-            }
-        }
+     
         [Command(Name = "Project_Dashboard_ProjectAndSectionCount_Get")]
         public class Project_Dashboard_ProjectAndSectionCount_GetCommand : CamelCommandBase
         {
@@ -238,6 +214,35 @@ namespace INMA.Projects.Services.Commands.Dashboard
             }
         }
         #endregion
+        #region PROJECT TASK WITH DETAILS GET
+        [Command(Name = "Project_Dashboard_Document_Expiry_Get")]
+        public class Project_Dashboard_Document_Expiry_GetCommand : CamelCommandBase
+        {
 
+            protected override object DoAction(object viewInput)
+            {
+                var model = base.MappedModel(new
+                {
+                    LoggedInUser = 0,
+                    RoleId = 0,
+                    LoggedInEmployeeId = 0,
+                    Branch_Id = 0,
+                    Language = string.Empty
+
+                }, viewInput);
+                _ = new Dictionary<string, object>();
+                CommandParameters _params = new CommandParameters();
+                IDictionary<string, object> values = _params.Get(model);
+                var result = Ioc.Resolve<IRepository>().GetMultiple<dynamic>(ProjectStoreProcedure.Project_Dashboard_Document_Expiry_Get.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+
+
+                return result;
+
+
+            }
+        }
+
+        #endregion
     }
 }

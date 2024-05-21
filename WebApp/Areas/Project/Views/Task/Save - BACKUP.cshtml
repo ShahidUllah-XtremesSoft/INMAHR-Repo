@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = ProjectUI.ProjectUI.lblTaskDetails;
+}
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <ul class="nav nav-tabs  tabs  " role="tablist">
+                <li class="nav-item  " id="ProjectTaskSectionLI">
+                    <a class="nav-link active" data-toggle="tab" href="#ProjectTaskSection" role="tab" id="">@ProjectUI.ProjectUI.lblAssign @ProjectUI.ProjectUI.lblTask</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content tabs card-block">
+
+                <div class="tab-pane active" id="ProjectTaskSection" role="tabpanel">
+
+                    <style>
+                        .btn-secondary:active, .btn-secondary.active, .open > .btn-secondary.dropdown-toggle, .selectedColor {
+                            color: #263238;
+                            background-color: oldlace;
+                            border-color: 1px black;
+                        }
+                    </style>
+
+                    <form id="frmAddUpdate_Task" name="frmAddUpdate_Task" action="/services/Xtreme/multipart" method="post">
+
+
+                        <input type="hidden" name="Task_Document_Id" id="Task_Document_Id" value="0">
+                        <input type="hidden" name="Task_Document_CreatedBy" id="Task_Document_CreatedBy" value="0">
+                        <input type="hidden" name="Task_ProjectId" id="Task_ProjectId" value="0">
+                        <input type="hidden" name="type" id="type" value="Project_Task_GovernmentDocument_Save">
+                        <input type="hidden" name="Task_Document_Language" id="Task_Document_Language" class="Language" value="">
+
+                     
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <button type="button" onclick="fnLoadTaskSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft checkbtnValue active" value="Available Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i> @ProjectUI.ProjectUI.lblAvailableEmployees </button>
+                                <button type="button" onclick="fnLoadTaskSectionArea(this);" class="btn btn-secondary @Resources.Common.PullLeft checkbtnValue" value="Assigned Employee"><i class="fa fa-arrow-down"></i> <i class="fa fa-users"></i>  @ProjectUI.ProjectUI.lblAssignedEmployees </button>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="div-show-only-for-task-section-employee-available-area form-control selectedColor">
+                                    <div class="row">
+                                        <div class="col-sm-9">
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblTask @ProjectUI.ProjectUI.lblDetails</label><span style="color:red"> *</span><br />
+                                                        <textarea type="text" class="form-control editor" name="Description" id="Body" value=""></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblAttachment </label> <br />
+                                                        <input type="file" class="form-control" multiple id="Attachment">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblPriority</label>  <br />
+                                                        <select class="form-control " required id="Priority" name="Priority">
+                                                            <option value="Extreme" style="background-color:darkred;color:white;font-size:large">Extreme</option>
+                                                            <option value="High" style="background-color: orange; color: white; font-size: large ">High</option>
+                                                            <option value="Medium" style="background-color: yellow; color: black; font-size: large ">Medium</option>
+                                                            <option value="Low" style="background-color: green; color: white; font-size: large ">Low</option>
+                                                            <option value="None" selected style="background-color:lightgray;color:black;font-size:large">None</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*<div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblPriority</label> <span style="color:red">*</span> <br />
+                                                        <select class="form-control " required id="Priority" name="Priority">
+                                                            <option value="Extreme" style="background-color:darkred;color:white;font-size:large">Extreme</option>
+                                                            <option value="High" style="background-color: orange; color: white; font-size: large ">High</option>
+                                                            <option value="Medium" style="background-color: yellow; color: black; font-size: large ">Medium</option>
+                                                            <option value="Low" style="background-color: green; color: white; font-size: large ">Low</option>
+                                                            <option value="None" selected style="background-color:lightgray;color:black;font-size:large">None</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>*@
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblProject</label><span style="color:red"> *</span><br />
+                                                        <input class="form-control" id="Project_Id" name="Project_Id" required />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6"></div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblWorkOn</label><span style="color:red"> *</span><br />
+                                                        <input type="text" class="form-control" id="Setup_Sub_Section_Id" name="Setup_Sub_Section_Id" required />
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblEmployee</label><span style="color:red"> *</span><br />
+                                                        @*<input class="form-control" id="Employee_DDL" name="Employee_DDL" required />*@
+                                                        <input type="text" class="form-control" id="Employee_Id" name="Employee_Id" required />
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblStart @ProjectUI.ProjectUI.lblDate </label> <span style="color:red">*</span> <br />
+                                                        <input class="form-control" type="datetime" id="Task_StartDate" value="" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">@ProjectUI.ProjectUI.lblCompletionDate</label> <span style="color:red">*</span> <br />
+                                                        <input class="form-control" type="text" id="Task_EndDate" value="" required />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                    
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="card-footer" id="btnAreaShowHideOnConditionBase">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <button type="button" id="btn-save-task" class="btn btn-success  pull-right" value="Save"><i class="fa fa-save"></i> @Resources.Global.btnSave</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="col-sm-9">
+                                                <div id="div-task-section-employees-area"></div>
+                                            </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="div-task-section-assigned-employees-area selectedColor" style="display:none;">
+                        <strong>@Resources.ProjectUI.lblNOTE:</strong><span>@Resources.ProjectUI.lblPlease @Resources.ProjectUI.lblSelect<b> @Resources.ProjectUI.lblSection</b> & <b>@Resources.ProjectUI.lblFile </b> @Resources.ProjectUI.lblFor.ToLower()  @Resources.ProjectUI.lblfilter.ToLower() @Resources.ProjectUI.lblEngineer.ToLower()</span>
+                        <div class="grid-main-div">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="grid-load-all-assigned-employees">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+@section scripts {
+
+
+    <script defer src="~/Scripts/FunctionalityJs/Areas/Task/project-employees-task-save.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    @*<script defer src="~/Scripts/FunctionalityJs/Areas/Task/project-employees-task-grid?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>*@
+}
+
+
+

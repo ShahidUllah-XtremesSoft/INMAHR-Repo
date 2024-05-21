@@ -241,7 +241,7 @@
         border-radius: 10%;
     }
 
-     
+
     /*Avatar bubbles*/
     /*    .avatar {
         position: relative;
@@ -265,7 +265,8 @@
         display: flow;
         position: relative;
         top: 0px;
-        left: -20px;
+        /* left: -20px;*/
+        left: -30px;
         width: 45px;
         height: 45px;
         margin-right: 0px;
@@ -291,27 +292,114 @@
         -webkit-border-radius: 25%;
         -moz-border-radius: 50%;
     }
+    .task_status_ {
+        font-size: inherit;
+        position: relative;
+        left: -60px;
+     /*   background-color: #eae8e894;*/
+        float: left;
+/*        border: 0.5px solid #94a0b4;
+        border-color: #94a0b4; */
+        -webkit-border-radius: 25%;
+        -moz-border-radius: 50%;
+    }  .priority_class_ {
+        font-size: inherit;
+        position: relative;
+        left: -40px;
+     /*   background-color: #eae8e894;*/
+        float: left;
+/*        border: 0.5px solid #94a0b4;
+        border-color: #94a0b4; */
+        -webkit-border-radius: 25%;
+        -moz-border-radius: 50%;
+    }
 </style>
 
+@*<div class="tree">
+        <ul class="first">
+            <li class="first techops">
 
+                <ul>
+                    <li>
+                        <span class="box"><div class="avatar"></div>VILLA G+2</span>
+                        <ul>
+                            <li>
+                                <span class="box"><div class="avatar"></div>Design Section</span>
+                                <ul><li><span class="box"><div class="avatar"></div>Government Document</span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>Town Planning</span></li></ul>
+                            </li>
+                            <li>
+                                <span class="box"><div class="avatar"></div>Modification Section</span>
+                                <ul><li><span class="box"><div class="avatar"></div>modification contract</span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>muncability drawing approval </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>spacification signed by owner  </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>modification type (under construction - Completed - Mun. Approved)  </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>modification urgency ( urgent or normal) </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>STR Subsection </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>Arch. Subsection  </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>owner signature  </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>T.P  </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>CIVIL DEFENCE   </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>M.E.P    </span></li></ul>
+                                <ul><li><span class="box"><div class="avatar"></div>muncability  approval    </span></li></ul>
+
+                            </li>
+                            <li>
+                                <span class="box"><div class="avatar"></div>Technical Section</span>
+                                <ul>
+                                    <li>
+                                        <span class="box"><div class="avatar"></div> MEP Section</span>
+                                        <ul><li><span class="box"><div class="avatar"></div> Etisalat Approval</span></li></ul>
+                                        <ul><li><span class="box"><div class="avatar"></div> Water Approval</span></li></ul>
+                                        <ul><li><span class="box"><div class="avatar"></div> Electricity Approval</span></li></ul>
+                                        <ul><li><span class="box"><div class="avatar"></div> Civil Defense Approval</span></li></ul>
+                                        <ul><li><span class="box"><div class="avatar"></div> GAS Approval</span></li></ul>
+                                        <ul><li><span class="box"><div class="avatar"></div> Drainage Approval</span></li></ul>
+                                        <ul><li><span class="box"><div class="avatar"></div> A/C Approval</span></li></ul>
+
+
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                        <ul>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>*@
 <div class="card project-summary-div" style="display:none;">
     <div class="row">
         <div class="col-md-10">
 
             <div class="tree">
-                <ul class="first">
-                    <li class="first techops">
+                <ul class="first" style=" display: inline-flex; ">
 
-                        <span class=" box">
-                            <span class=" projectName" style="font-size:xx-large"></span><br /><br />
+                    @*<li class="first techops">
+                    *@
+                    <li class=" " style="">
+
+                        <span class=" box" onclick="redirectToProject()" style="cursor:pointer;">
+
+                            <u><span class=" projectName" style="font-size:xx-large"></span></u><br /><br />
                             <span style="font-size: initial">@Resources.ProjectUI.lblDate   :<span class=" projectCreatedDate"></span></span><br />
                             @*<span    style="font-size:large;">@Resources.ProjectUI.lblVIP :<span class=" isVip"></span></span>
                                 <span   style="font-size:large;">@Resources.ProjectUI.lblUrgent :<span class=" isUrgent" style="font-size:large"></span> </span><br />*@
                             <span style="font-size:large">@Resources.ProjectUI.lblCategory :<span class=" projectCategory" style="font-size:large"></span> </span><br />
+                            <span class="  box percentage_" style="margin-left:55px">
+                                <span style="font-size: initial">@Resources.ProjectUI.lblTotal   @Resources.ProjectUI.lblPercentage </span><br />
+                                <u style="cursor:pointer;"><span class=" lblTotalPercentage" style="font-size:x-large"></span></u>
+                            </span><br />
                         </span>
-                        <ul>
+
+                        <ul style="">
                             <li>
-                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblDesignSection</span>
+                                @*<span class="box" style="font-size: x-large;"> <div class="box" style="font-size: xx-large;"> <span class="lblDesignSection">0</span> % </div> <br />  @Resources.ProjectUI.lblDesignSection  </span>*@
+                                @*<span class="box" style="font-size: x-large; "> @Resources.ProjectUI.lblTotal <div class="avatar" style="width: 70px;height: 70px;padding-top: 20px;"> <span class="lblTotalPercentage">0</span> % </div></span>*@
+                                <span class="box" style="font-size: x-large; "> @Resources.ProjectUI.lblDesignSection <div class="avatar" style="width: 70px;height: 70px;padding-top: 20px;"> <span class="lblDesignSection">0</span> % </div></span>
+
                                 <ul><li class="ul-design"></li></ul>
                                 @*<ul class="ul-design">
                                         <li>
@@ -353,16 +441,46 @@
                                     </ul>*@
                             </li>
                             <li>
-                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblTechnicalSection</span>
+                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblTechnicalSection <div class="avatar" style="width: 70px;height: 70px;padding-top: 20px;"> <span class="lblTechnicalSection">0</span> % </div></span>
                                 <ul class="ul-technical"></ul>
                             </li>
                             <li>
-                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblSupervisionSection</span>
+                                <span class="box" style="font-size: x-large;"> @Resources.ProjectUI.lblSupervisionSection <div class="avatar" style="width: 70px;height: 70px;padding-top: 20px;"> <span class="lblSupervisionSection">0</span> % </div></span></span>
                                 <ul class="ul-supervision"> </ul>
                             </li>
 
 
                         </ul>
+                    </li>
+                    <li>
+                        <span class=" box ">
+
+                            <table class="">
+                                <thead>
+                                    <tr><th style="width:100px"> @Resources.ProjectUI.lblTasks</th></tr>
+                                </thead>
+                                <tbody class="append-tasks">
+                                    @*<tr style="font-size: 12px;">
+                                        <td>Started</td>
+                                        <td>
+                                            <span class="tag tag-dark" style="background:black">2</span>
+                                        </td>
+                                    </tr>*@
+
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                    <li>
+                        <span class=" box ">
+
+                            <table class="">
+                                <thead>
+                                    <tr><th style="width:100px"> @Resources.ProjectUI.lblPriority</th></tr>
+                                </thead>
+                                <tbody class="append-tasks-priority"> </tbody>
+                            </table>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -370,6 +488,7 @@
 
 
         </div>
+
     </div>
 </div>
 

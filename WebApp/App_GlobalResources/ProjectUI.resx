@@ -123,8 +123,14 @@
   <data name="lblAboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="lblAction" xml:space="preserve">
+    <value>Action</value>
+  </data>
   <data name="lblActive" xml:space="preserve">
     <value>Active</value>
+  </data>
+  <data name="lblActivity" xml:space="preserve">
+    <value>Activity</value>
   </data>
   <data name="lblAddNew" xml:space="preserve">
     <value>Add New</value>
@@ -162,6 +168,9 @@
   <data name="lblAssignTo" xml:space="preserve">
     <value>Assign To</value>
   </data>
+  <data name="lblAttachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
   <data name="lblAvailableEmployees" xml:space="preserve">
     <value>Available Employee(s)</value>
   </data>
@@ -185,6 +194,18 @@
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>City</value>
+  </data>
+  <data name="lblClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="lblClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="lblClick" xml:space="preserve">
+    <value>Click</value>
+  </data>
+  <data name="lblClickStatus" xml:space="preserve">
+    <value>Click Status</value>
   </data>
   <data name="lblClient" xml:space="preserve">
     <value>Client</value>
@@ -261,6 +282,9 @@
   <data name="lblCost" xml:space="preserve">
     <value>Cost</value>
   </data>
+  <data name="lblCount" xml:space="preserve">
+    <value>Count</value>
+  </data>
   <data name="lblCreated" xml:space="preserve">
     <value>Created</value>
   </data>
@@ -276,6 +300,9 @@
   <data name="lblDelay" xml:space="preserve">
     <value>Delay</value>
   </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="lblDesignSection" xml:space="preserve">
     <value>Design Section</value>
   </data>
@@ -288,6 +315,9 @@
   <data name="lblDocumentInformation" xml:space="preserve">
     <value>Document Information</value>
   </data>
+  <data name="lblDocumentType" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
   <data name="lblEmail" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -297,11 +327,23 @@
   <data name="lblEmployeeName" xml:space="preserve">
     <value>Employee</value>
   </data>
+  <data name="lblEnd" xml:space="preserve">
+    <value>End</value>
+  </data>
   <data name="lblEngineer" xml:space="preserve">
     <value>Engineer</value>
   </data>
   <data name="lblEngineeringConsultancy" xml:space="preserve">
     <value>Engineering Consultancy</value>
+  </data>
+  <data name="lblEnter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="lblEnterProjectNo" xml:space="preserve">
+    <value>Enter Project No:</value>
+  </data>
+  <data name="lblExpired" xml:space="preserve">
+    <value>Expired</value>
   </data>
   <data name="lblExpiresIn" xml:space="preserve">
     <value>Expire In</value>
@@ -351,6 +393,9 @@
   <data name="lblHall" xml:space="preserve">
     <value>Hall</value>
   </data>
+  <data name="lblHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="lblHold" xml:space="preserve">
     <value>Hold</value>
   </data>
@@ -386,6 +431,9 @@
   </data>
   <data name="lblIssueList" xml:space="preserve">
     <value>Issue List</value>
+  </data>
+  <data name="lblisTender" xml:space="preserve">
+    <value>Tender ?</value>
   </data>
   <data name="lblKitchen" xml:space="preserve">
     <value>Kitchen</value>
@@ -429,6 +477,9 @@
   <data name="lblModule" xml:space="preserve">
     <value>Module</value>
   </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
   <data name="lblMulkNo" xml:space="preserve">
     <value>Mulk No</value>
   </data>
@@ -440,6 +491,9 @@
   </data>
   <data name="lblNationality" xml:space="preserve">
     <value>Nationality</value>
+  </data>
+  <data name="lblNew" xml:space="preserve">
+    <value>New</value>
   </data>
   <data name="lblNoAttachment" xml:space="preserve">
     <value>No Attachment</value>
@@ -453,11 +507,17 @@
   <data name="lblNOTE" xml:space="preserve">
     <value>NOTE</value>
   </data>
+  <data name="lblNotification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
   <data name="lblNotificationDetails" xml:space="preserve">
     <value>Notification Details</value>
   </data>
   <data name="lblNotificationList" xml:space="preserve">
     <value>Notification List</value>
+  </data>
+  <data name="lblNotifications" xml:space="preserve">
+    <value>Notifications</value>
   </data>
   <data name="lblOld" xml:space="preserve">
     <value>Old</value>
@@ -480,6 +540,9 @@
   <data name="lblOverview" xml:space="preserve">
     <value>Overview</value>
   </data>
+  <data name="lblPercentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
   <data name="lblPersonalDocument" xml:space="preserve">
     <value>Personal Documents</value>
   </data>
@@ -498,6 +561,9 @@
   <data name="lblPlease" xml:space="preserve">
     <value>Please</value>
   </data>
+  <data name="lblPleaseChooseChildTask" xml:space="preserve">
+    <value>Please Choose Child Task</value>
+  </data>
   <data name="lblPleaseSelectSection" xml:space="preserve">
     <value>Please select the section...!</value>
   </data>
@@ -506,6 +572,9 @@
   </data>
   <data name="lblPrice" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="lblPriority" xml:space="preserve">
+    <value>Priority</value>
   </data>
   <data name="lblProfessionName" xml:space="preserve">
     <value>Profession</value>
@@ -540,6 +609,9 @@
   <data name="lblProjectDocumentInformation" xml:space="preserve">
     <value>Project Document Information</value>
   </data>
+  <data name="lblProjectDocumentsExpiry" xml:space="preserve">
+    <value>Project Documents Expiries</value>
+  </data>
   <data name="lblProjectInformation" xml:space="preserve">
     <value>Project Information</value>
   </data>
@@ -564,6 +636,12 @@
   <data name="lblReActivated" xml:space="preserve">
     <value>ReActivated</value>
   </data>
+  <data name="lblReadAll" xml:space="preserve">
+    <value>Read All</value>
+  </data>
+  <data name="lblRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
   <data name="lblReport" xml:space="preserve">
     <value>Report</value>
   </data>
@@ -573,14 +651,26 @@
   <data name="lblRequired" xml:space="preserve">
     <value>Required</value>
   </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
   <data name="lblRoom" xml:space="preserve">
     <value>Room</value>
+  </data>
+  <data name="lblSearch" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="lblSection" xml:space="preserve">
     <value>Section</value>
   </data>
+  <data name="lblSeeMore" xml:space="preserve">
+    <value>See More</value>
+  </data>
   <data name="lblSelect" xml:space="preserve">
     <value>Select</value>
+  </data>
+  <data name="lblSelectBranch" xml:space="preserve">
+    <value>Select Branch</value>
   </data>
   <data name="lblServices" xml:space="preserve">
     <value>Services</value>
@@ -588,11 +678,17 @@
   <data name="lblSmsList" xml:space="preserve">
     <value>SMS List</value>
   </data>
+  <data name="lblStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="lblStartMeeting" xml:space="preserve">
     <value>Start Meeting</value>
   </data>
   <data name="lblStatus" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="lblSubject" xml:space="preserve">
+    <value>Subject</value>
   </data>
   <data name="lblSubmission" xml:space="preserve">
     <value>Submission</value>
@@ -609,6 +705,18 @@
   <data name="lblSupervisionSection" xml:space="preserve">
     <value>Supervision Section</value>
   </data>
+  <data name="lblTask" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="lblTaskDetail" xml:space="preserve">
+    <value>Task Detail</value>
+  </data>
+  <data name="lblTaskDetails" xml:space="preserve">
+    <value>Task Details</value>
+  </data>
+  <data name="lblTasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
   <data name="lblTeam" xml:space="preserve">
     <value>Team</value>
   </data>
@@ -618,8 +726,23 @@
   <data name="lblTechnicalSectionReport" xml:space="preserve">
     <value>Technical Section Report</value>
   </data>
+  <data name="lblTemporary" xml:space="preserve">
+    <value>Temporary</value>
+  </data>
+  <data name="lblTender" xml:space="preserve">
+    <value>Tender</value>
+  </data>
+  <data name="lblTenderSection" xml:space="preserve">
+    <value>Tender Section</value>
+  </data>
+  <data name="lblTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="lblTo" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="lblTotal" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="lblTotalClients" xml:space="preserve">
     <value>Total Clients</value>
@@ -627,8 +750,14 @@
   <data name="lblTotalContractors" xml:space="preserve">
     <value>Total Contractors</value>
   </data>
+  <data name="lblTotalCounts" xml:space="preserve">
+    <value>Total Counts</value>
+  </data>
   <data name="lblTotalMeetings" xml:space="preserve">
     <value>Total Meetings</value>
+  </data>
+  <data name="lblTotalProjects" xml:space="preserve">
+    <value>Total Projects</value>
   </data>
   <data name="lblTotalTime" xml:space="preserve">
     <value>Total Time</value>
@@ -654,10 +783,28 @@
   <data name="lblUsefulLinks" xml:space="preserve">
     <value>USEFUL LINKS</value>
   </data>
+  <data name="lblValid" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="lblView" xml:space="preserve">
+    <value>View</value>
+  </data>
   <data name="lblVIP" xml:space="preserve">
     <value>VIP</value>
   </data>
+  <data name="lblWeek" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="lblWelcomeBack" xml:space="preserve">
+    <value>Wecome Back</value>
+  </data>
   <data name="lblWork" xml:space="preserve">
     <value>Work</value>
+  </data>
+  <data name="lblWorkOn" xml:space="preserve">
+    <value>Work On</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>Year</value>
   </data>
 </root>

@@ -6,8 +6,40 @@
     /*.k-pivot-table*/
 
 </style>
+<style>
+    /* Define CSS class to style public holiday dates */
+    .public-holiday {
+        background-color: #ffcccc; /* Light red background for public holidays */
+    }
+</style>
+
+<div class="row card holydays-div" style="display:none;">
+    <div class="col-md-12">
+        <p class="blink holydays-append">Holy day leave.</p>
+        <style>
+
+            .blink {
+                animation: blinker 3.5s linear infinite;
+                color: red;
+                font-size: 1.5em;
+                /* Larger, responsive font size */
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+        @@keyframes blinker {
+            80% {
+                opacity: 0;
+            }
+        }
+        </style>
+
+    </div>
+</div>
 <div class="card">
     <div class="card-block">
+
+
         <form id="frmLeaveDetail" name="frmLeaveDetail" action="/services/Xtreme/multipart" method="post">
             <!--type is required should be same as command name-->
             <input type="hidden" name="type" id="type" value="Request_Leave_Save" />
@@ -59,6 +91,7 @@
                         <div class="col-md-2"></div>
                     </div>
 
+
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
@@ -72,16 +105,16 @@
 
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblremarks</label><span  style="color:red">*</span> <br />
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblremarks</label><span style="color:red">*</span> <br />
                         <textarea type="text" required class="form-control editor" name="Leave_Remarks" id="Leave_Remarks" value="" style="height:50%"></textarea>
 
                     </div>
-                    
-                        <div class="form-group div-attachment" style="width:50%">
-                            <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span id="asteric_span" style="color:red;display:none;">*</span> <br />
-                            <input type="file" class="form-control" name="Attachment" id="Attachment">
-                        </div>
-                    
+
+                    <div class="form-group div-attachment" style="width:50%">
+                        <label class="col-form-label">@HRModuleUI.HumanResourceUI.lblAttachment</label> <span id="asteric_span" style="color:red;display:none;">*</span> <br />
+                        <input type="file" class="form-control" name="Attachment" id="Attachment">
+                    </div>
+
                 </div>
             </div>
             <div class="row">
@@ -110,7 +143,7 @@
 
 @section scripts {
 
-    <script src="~/Scripts/FunctionalityJs/Areas/Request/Leave/leave.js?+971506374785"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/Request/Leave/leave.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
     <script>
         //Grid columns
         var leaveType = '@HRModuleUI.HumanResourceUI.lblLeaveType';

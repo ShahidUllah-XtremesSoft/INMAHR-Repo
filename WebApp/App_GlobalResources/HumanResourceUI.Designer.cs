@@ -295,6 +295,15 @@ namespace HRModuleUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agreed.
+        /// </summary>
+        public static string lblAgreed {
+            get {
+                return ResourceManager.GetString("lblAgreed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allowance.
         /// </summary>
         public static string lblAllowance {
@@ -939,6 +948,15 @@ namespace HRModuleUI {
         public static string lblDevelopmentofhisPerformance {
             get {
                 return ResourceManager.GetString("lblDevelopmentofhisPerformance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Agreed.
+        /// </summary>
+        public static string lblDisAgreed {
+            get {
+                return ResourceManager.GetString("lblDisAgreed", resourceCulture);
             }
         }
         

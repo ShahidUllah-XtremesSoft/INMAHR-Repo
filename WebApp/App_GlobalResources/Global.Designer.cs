@@ -448,6 +448,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Matiullah Zahir.
+        /// </summary>
+        internal static string lblDeveloper {
+            get {
+                return ResourceManager.GetString("lblDeveloper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document/Attachment .
         /// </summary>
         internal static string lblDocumentAttachment {

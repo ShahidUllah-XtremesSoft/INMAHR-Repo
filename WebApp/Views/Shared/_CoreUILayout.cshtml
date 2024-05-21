@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    @*<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
     <title>@ViewBag.Title - @Resources.Global.lblInma</title>
 
@@ -172,6 +172,7 @@
     <header class="navbar">
         <div class="container-fluid">
             <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+            <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button" style="font-size: small; margin-@Resources.Common.lblleft: 10%;"> <a href="@Url.Action("ChangeLanguage", "Home",  new { language = (Resources.Common.ChangeLang), area = "" })" style="color: #263238;">@Resources.Common.LanguageText </a></button>
             <a class="navbar-brand" href="#">
                 @*<img src="~/Content/Images/shjcBlue_logo.png" width="155px" height="49px"  />*@
             </a>
@@ -216,6 +217,7 @@
             </ul>
         </div>
     </header>
+
     <div id="left-menu-item"></div>
     <!-- Main content -->
     <main class="main" style="padding-top:30px;">
@@ -244,19 +246,21 @@
     </main>
 
     @*<footer class="footer">
-        <span class="text-left">
-            <a href="https://xtremessoft.com">@Resources.Global.lblInma</a>  &copy; 2022 @Resources.Global.lblXtremesSoftware
-        </span>
-        <span class="@Resources.Common.PullRight">
-            @Resources.Global.lblPoweredBy <a href="https://xtremessoft.com"> @Resources.Global.lblXtremeSoft</a>
-        </span>
-    </footer>*@
+            <span class="text-left">
+                <a href="https://xtremessoft.com">@Resources.Global.lblInma</a>  &copy; 2022 @Resources.Global.lblXtremesSoftware
+            </span>
+            <span class="@Resources.Common.PullRight">
+                @Resources.Global.lblPoweredBy <a href="https://xtremessoft.com"> @Resources.Global.lblXtremeSoft</a>
+            </span>
+        </footer>*@
     <footer class="footer">
         <span class="text-left">
-            <a href="https://inma.ae">@Resources.Global.lblInma</a>  &copy; @DateTime.Now.Year  
+            <a href="https://inma.ae">@Resources.Global.lblInma</a>  &copy; @DateTime.Now.Year
         </span>
         <span class="@Resources.Common.PullRight">
-            @Resources.Global.lblPoweredBy <a href="https://inma.ae"> @Resources.Global.lblInma</a>
+            @*@Resources.Global.lblPoweredBy <a href="https://inma.ae"> @Resources.Global.lblInma</a>*@
+            @Resources.Global.lblPoweredBy <a href="~/Home/Developer">@Resources.Global.lblDeveloper   </a>
+
         </span>
     </footer>
 
@@ -338,12 +342,11 @@
     <script src="~/Content/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <script src="~/Scripts/tinymce.min.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Common/common-script.js"></script>
-    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js?+971502324409"></script>
-
-    <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js?+971502324409"></script>
-    <script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js?+971502324409"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/leave-setup.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Common/common-script.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>
+    <script src="~/Scripts/FunctionalityJs/Areas/HumanResource/Shared/PartialViews/_EmployeeNearToExpireDocumentPartialView.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]" defer></script>
+    <script src="~/Scripts/FunctionalityJs/Common/get-all-count-notifications.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]" defer></script>
+    @*<script src="~/Scripts/FunctionalityJs/Common/clear-application-cache.js?v=@System.Configuration.ConfigurationManager.AppSettings["JSVersion"]"></script>*@
 </body>
 
 </html>
@@ -490,7 +493,7 @@
       //  localStorage.MainApplicationModule_Id == 1 ? $('.languageUL').show() : $('.languageUL').hide();
 
         /*localStorage.MainApplicationModule_Id == 1 ? document.body.style.backgroundImage = "url('../../../Images/logo.png')" : document.body.style.backgroundImage = "url('../../../Images/shjengconLogo.png')";*/
-          
+
         if (localStorage.User != '[object Object]') {
 
         if (localStorage.MainApplicationModule_Id == 2) {
@@ -513,14 +516,24 @@
         }
 
         $(':input').removeAttr('placeholder');
-        $('#LayoutCurrentLanguage').val(_currentLanguage);
+
         var assingedRoleMenus = localStorage.getItem('Menus');
+        var assingedRoleMenus_loaded = localStorage.getItem('Menus_Loaded');
+
         var menuCounts = localStorage.getItem('MenusCount');
         var menuGroupArray = [];
 
+        if (assingedRoleMenus_loaded != null && _currentLanguage == localStorage.getItem('LayoutCurrentLanguage') && localStorage.MainApplicationModule_Id==1) {
+
+            $("#left-menu-item").append(localStorage.getItem('Menus_Loaded'))
+        } else {
+
         $("#left-menu-item").load("/Home/LoadLeftMenuPartialView",
-            { menuItems: assingedRoleMenus,menuCount: menuCounts }
+            { menuItems: assingedRoleMenus, menuCount: menuCounts }
         );
+
+             localStorage.setItem('LayoutCurrentLanguage', _currentLanguage);
+         }
         setTimeout(function () {
             $('.pcoded-main-container').css('margin-top', '23px');
             //$('.pcoded-main-container').css('min-height', '13px');
@@ -538,7 +551,8 @@
         setTimeout(function () {
             addTinyMCE();
 
-        }, 200);
+
+        }, 300);
 
         //alert($('#Language').val());
 
@@ -594,6 +608,7 @@
 
     $('#btn-logout').click(function () {
         window.location.href = '/User/Login';
+        localStorage.clear();
     });
 
 
@@ -679,6 +694,17 @@
 
 
     }
+
+
+
+    $('.sidebar-nav').click(function (event) {
+
+        if (event.target.classList.contains('mobile-toggler')) {
+            $('.sidebar-nav').addClass('mobile-open');
+        }
+
+    });
+
 
 
 </script>

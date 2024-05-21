@@ -26,7 +26,7 @@
 
 <div class="row hideMar">
     <div class="col-sm-12">
-        <div class="row onlyForHeadSection" style="display: block;">
+        <div class="row onlyForHeadSection" style="display: none;">
             <div class="col-sm-12 ">
                 <div class="card " style="margin-bottom: 2px;">
                     <div class="m-b-20">
@@ -200,6 +200,14 @@
                                             <tbody>
                                                 <tr>
 
+                                                    <td>@ProjectUI.ProjectUI.lblProjectNo #</td>
+                                                    <td colspan="2"><h1 class="txt-project-old-no"></h1></td>
+                                                    
+
+
+
+                                                </tr>  <tr>
+
                                                     <td>@ProjectUI.ProjectUI.lblProject:</td>
                                                     <td colspan="2"><span class="txt-project-title"></span></td>
                                                     <td style="display:none; cursor:pointer;font-size:x-large" onclick="window.location.href = '/Project/Project/Save?id=' + project_Id + '';"><span class="fa fa-edit"></span></td>
@@ -288,14 +296,17 @@
                                                         </b>
                                                     </td>
                                                     <td style="border: 2px solid gray;display:none;" class="onlyFor_Accountant">
+                                                             
                                                         <select class="project_status_ddl" onchange="fnChangeProject_MainStatus(this);" style="background-color: #49626a;font: bold;width: 50%;height: 38px;background: white;color: black;">
-
-                                                            <option value="Active">@ProjectUI.ProjectUI.lblActive</option>
+                                                            
+                                                            @*<option value="Active">@ProjectUI.ProjectUI.lblActive</option>
                                                             <option value="Re Activated">@ProjectUI.ProjectUI.lblReActivated</option>
                                                             <option value="Closed">@ProjectUI.ProjectUI.lblClosed</option>
                                                             <option value="Holded">@ProjectUI.ProjectUI.lblHold</option>
                                                             <option value="Delay">@ProjectUI.ProjectUI.lblDelay</option>
-                                                            <option value="Completed">@ProjectUI.ProjectUI.lblCompleted</option>
+                                                            <option value="Temporary">@ProjectUI.ProjectUI.lblTemporary</option>
+                                                            <option value="Completed">@ProjectUI.ProjectUI.lblCompleted</option>*@
+                                                            
                                                         </select>
                                                     </td>
                                                 </tr>

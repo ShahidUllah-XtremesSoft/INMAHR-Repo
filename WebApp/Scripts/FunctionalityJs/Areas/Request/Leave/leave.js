@@ -2,6 +2,8 @@
 var $LeaveGrid = "LeaveGrid";
 var createdBy = 0, roleId = 0, departmentId = 0, isIgnoreLeaveAvailableBalanceForHR = false;
 
+ 
+
 $(function () {
     setTimeout(function () {
 
@@ -37,8 +39,36 @@ $(function () {
     //$("#EndDate").kendoDatePicker({
     //    format: "yyyy-MM-dd"
     //});
-    renderKendoDatePicker('StartDate');
-    renderKendoDatePicker('EndDate');
+    //  renderKendoDatePicker('StartDate');
+    //renderKendoDatePicker('EndDate');
+
+    $("#StartDate").kendoDatePicker({
+
+        //  value: new Date(),
+        disableDates: ["fri", "sat"],
+        format: 'yyyy-MM-dd',
+        dateInput: true
+
+    });
+
+
+
+
+
+    $("#EndDate").kendoDatePicker({
+
+        //  value: new Date(),
+        disableDates: ["fri", "sat"],
+        format: 'yyyy-MM-dd',
+        dateInput: true
+
+    });
+
+
+
+
+
+
 
     $('#Language').val(_currentLanguage);
     $("#OtherDiv").css('display', 'none');
@@ -53,6 +83,8 @@ $(function () {
     //previousDate.setDate(previousDate.getDate() - 1);
     //datePicker.value(previousDate);
     //$("#StartDate").data("kendoDatePicker").trigger("startDateChangeEvent");
+
+
     var startDateDatePicker = $("#StartDate").data("kendoDatePicker");
     startDateDatePicker.bind("change", function () {
         //var value = this.value();
@@ -61,6 +93,7 @@ $(function () {
         //var dateobj = kendo.parseDate(value);
         //console.log(kendo.toString(dateobj, "MM-dd-yyyy")); //value is the selected date in the datepicker
         //compareStartEndDate($("#StartDate").data("kendoDatePicker").value(), $("#EndDate").data("kendoDatePicker").value());
+
         calculateDaysFromStartEndDate();
     });
 
@@ -85,6 +118,7 @@ $(function () {
         //}
         //compareStartEndDate($("#StartDate").data("kendoDatePicker").value(), $("#EndDate").data("kendoDatePicker").value());
         calculateDaysFromStartEndDate();
+        //    updateDisabledDates();
 
     });
 })
@@ -97,6 +131,7 @@ function compareStartEndDate(startDate, endDate) {
     }
     return true;
 }
+/*
 function calculateDaysFromStartEndDate() {
 
     if ($("#StartDate").data("kendoDatePicker").value() != null && $("#EndDate").data("kendoDatePicker").value() != null) {
@@ -110,6 +145,39 @@ function calculateDaysFromStartEndDate() {
         $('#TotalDays').val(0);
     }
 }
+*/
+function calculateDaysFromStartEndDate() {
+    if ($("#StartDate").data("kendoDatePicker").value() != null && $("#EndDate").data("kendoDatePicker").value() != null) {
+        var startDate = kendo.parseDate($("#StartDate").data("kendoDatePicker").value());
+        var endDate = kendo.parseDate($("#EndDate").data("kendoDatePicker").value());
+
+        // Calculate the difference in days between start and end dates
+        var differenceInTime = endDate.getTime() - startDate.getTime();
+        var differenceInDays = differenceInTime / (1000 * 3600 * 24) + 1; // Adding 1 to include both start and end dates
+
+        // Calculate the number of Fridays and Saturdays within the date range
+        var fridaysAndSaturdays = 0;
+        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+            var dayOfWeek = d.getDay();
+            if (dayOfWeek === 5 || dayOfWeek === 6) { // 5 represents Friday, 6 represents Saturday
+                fridaysAndSaturdays++;
+            }
+        }
+
+        // Subtract the number of Fridays and Saturdays from the total count of days
+        var totalDays = differenceInDays - fridaysAndSaturdays;
+
+        $('#TotalDays').val(totalDays);
+    } else {
+        $('#TotalDays').val(0);
+    }
+}
+
+
+
+
+
+
 function requestedDaysShouldBeLessOrEqualToAvailable() {
     if ($('#Id').val() == '0') {
         if (parseInt($("#TotalDays").val()) > parseInt($('#AvailableLeave').val())) {
@@ -392,7 +460,7 @@ function show_Leave_Remarks(event) {
     var row = $(event).closest("tr");
     var grid = $("#" + $LeaveGrid).data("kendoGrid");
     var dataItem = grid.dataItem(row);
-      
+
 
     Swal.fire({
         title: lblRemarks,
@@ -401,3 +469,26 @@ function show_Leave_Remarks(event) {
 }
 
 
+
+// Function to update disabled dates
+function updateDisabledDates() {
+
+    var startDate = $("#StartDate").data("kendoDatePicker").value();
+    var endDate = $("#EndDate").data("kendoDatePicker").value();
+
+    // Disable dates function
+    function disableDates(date) {
+        // Get the day of the week (0: Sunday, 1: Monday, ..., 6: Saturday)
+        var day = date.getDay();
+        // Check if the date is between startDate and endDate and if it's Friday (5) or Saturday (6)
+        return (date >= startDate && date <= endDate) && (day === 5 || day === 6);
+    }
+
+    // Update disabled dates for both date pickers
+    $("#StartDate").data("kendoDatePicker").setOptions({
+        disableDates: disableDates
+    });
+    $("#EndDate").data("kendoDatePicker").setOptions({
+        disableDates: disableDates
+    });
+}

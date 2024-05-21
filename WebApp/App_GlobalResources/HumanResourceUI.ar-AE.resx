@@ -195,6 +195,9 @@
   <data name="lblAddNew" xml:space="preserve">
     <value>اضافة</value>
   </data>
+  <data name="lblAgreed" xml:space="preserve">
+    <value>موافق</value>
+  </data>
   <data name="lblAllowance" xml:space="preserve">
     <value>البدل</value>
   </data>
@@ -407,6 +410,9 @@
   </data>
   <data name="lblDevelopmentofhisPerformance" xml:space="preserve">
     <value>الاطلاع  على أية معارف حديثة</value>
+  </data>
+  <data name="lblDisAgreed" xml:space="preserve">
+    <value>غير موافق</value>
   </data>
   <data name="lblDisciplineinAttendance" xml:space="preserve">
     <value>الانظباط في الحضور  و الانصراف</value>

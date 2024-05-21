@@ -40,6 +40,37 @@ namespace INMA.Projects.Services.Project
 
         }
     }
+
+    #region Notification READ ALL
+
+    [Command(Name = "Notification_Personal_ReadAll")]
+    public class Notification_Personal_ReadAllCommand : CamelCommandBase
+    {
+        protected override object DoAction(object viewInput)
+        {
+
+            object result = new { status = false, returnUrl = "#" };
+
+
+            var model = base.MappedModel(new
+            {
+                LoggedInUser = 0,
+                RoleId = 0,
+                LoggedInEmployeeId = 0, 
+                Language = string.Empty
+            }, viewInput);
+
+
+            var repository = Ioc.Resolve<IRepository>();
+            _ = new Dictionary<string, object>();
+            CommandParameters _params = new CommandParameters();
+
+            IDictionary<string, object> values = _params.Get(model);
+            return repository.GetSingle<dynamic>(ProjectStoreProcedure.Notification_Personal_ReadAll.ToString(), values, XtremeFactory._factory, XtremeFactory.projectconnectionString);
+
+        }
+    }
+    #endregion
     [Command(Name = "Notification_Employee_GetAll")]
     public class Notification_Employee_GetAllCommand : CamelCommandBase
     {
